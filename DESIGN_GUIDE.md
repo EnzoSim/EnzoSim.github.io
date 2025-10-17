@@ -1,144 +1,197 @@
-# Minimal Theme Design Guide
+# Centered Personal Portfolio Design Guide
 
-## About the Minimal Theme
+## About This Design
 
-Your website is styled after the popular [orderedlist/minimal](https://github.com/orderedlist/minimal) theme for GitHub Pages. This is one of the most widely used themes for academic and professional portfolios due to its clean, readable design.
+Your website is styled after [gregoiremaillard.com](https://gregoiremaillard.com/) - a clean, centered, personal portfolio that balances professionalism with approachability.
 
 ## Design Philosophy
 
-### Simplicity First
-The minimal theme focuses on content over decoration. No flashy animations, bold colors, or complex layouts - just clean, readable text that lets your experience speak for itself.
+### Personal Yet Professional
+This design lets your personality shine while maintaining credibility. It's perfect for young professionals who want to be taken seriously without seeming stuffy.
 
-### Academic Aesthetic
-Perfect for researchers, academics, and professionals in technical fields. The design has been battle-tested by thousands of GitHub Pages users.
+### Simplicity is Key
+No sidebars, no complex navigation, no distractions. Just you, your work, and your interests - all clearly presented.
 
-### Key Design Elements
+### Content-First
+The centered design naturally draws attention to what matters: your experience, your research, and your passions.
 
-**Typography**
-- Clean, system fonts for maximum readability
-- Comfortable line spacing
-- Hierarchy established through font sizes and weights
+## Key Design Elements
 
-**Layout**
-- Fixed sidebar on the left (270px wide)
-- Main content area on the right (500px wide)
-- White background with subtle gray accents
-- Plenty of whitespace for easy reading
+### Layout
+- **Centered alignment** - Everything centered for modern, clean look
+- **Single column** - Easy to read, natural flow
+- **Generous spacing** - Lots of whitespace for breathing room
+- **Max width: 600px** - Optimal reading width
 
-**Color Palette**
-- Text: #595959 (body), #222 (headings)
-- Links: #267CB9 (blue)
-- Accents: #e5e5e5 (borders)
-- Background: #fff (white)
+### Typography
+- **Large heading** - Your name at 2.5rem
+- **Readable body text** - 1rem with 1.6 line height
+- **Clean hierarchy** - Size and weight create structure
+- **System fonts** - Fast loading, native appearance
 
-**Sidebar Contents**
-- Profile picture (150px circular)
-- Your name and tagline
-- Navigation menu
-- Contact information
-- Location
+### Color Palette
+- **Text**: #333 (dark gray) for body, #222 for headings
+- **Links**: #0066cc (friendly blue)
+- **Borders**: #e0e0e0 (light gray)
+- **Background**: White
+
+### Profile Photo
+- **Large and prominent** - 200px circular
+- **First thing visitors see** - Makes personal connection
+- **Professional but friendly** - Sets the tone
+
+### Interest Cards
+Three interactive cards that link to detailed sections:
+- Hover effect draws attention
+- Clear icons (📚 🔬 🚀) add personality
+- Each leads to more detailed content
 
 ## What Makes It Work
 
-### 1. Readable
-The minimal theme prioritizes readability above all else. Font sizes, line heights, and spacing are carefully chosen for comfortable reading.
+### 1. Approachable
+The centered design and personal tone make you seem accessible and easy to work with - important for young professionals.
 
-### 2. Professional
-No gimmicks or flashy effects. The simplicity conveys professionalism and lets your credentials shine.
+### 2. Clear
+No confusing navigation. Visitors immediately see who you are, what you do, and what interests you.
 
-### 3. Responsive
-Works perfectly on desktop, tablet, and mobile. The sidebar moves above content on smaller screens.
+### 3. Modern
+This style is contemporary and will age well. It focuses on content, not design trends.
 
 ### 4. Fast
-With minimal CSS and no heavy JavaScript, the site loads instantly.
+Minimal CSS, no heavy JavaScript, loads instantly anywhere.
 
-### 5. Timeless
-This design has remained popular for years because it focuses on fundamentals rather than trends.
+### 5. Personal
+Unlike traditional CV sites, this lets your personality and interests shine through.
 
-## Customization Options
+## Comparison to Other Styles
 
-While the design is intentionally simple, you can customize:
+**vs. Sidebar Portfolio**
+- Centered: More personal, modern, welcoming
+- Sidebar: More formal, traditional, academic
 
-### Colors
-Edit `styles.css` to change:
-- Link color (currently #267CB9)
-- Text colors
-- Border colors
+**vs. Multi-page Site**
+- Centered: Simple, everything in one place
+- Multi-page: More complex, harder to maintain
 
-### Profile Picture
-- Should be square (1:1 ratio)
-- Minimum 300x300 pixels
-- Professional appearance
-- Will be displayed as 150px circle
-
-### Content
-All your CV information is already included. Just update:
-- Your reading list
-- Any new experiences
-- Research updates
-
-## Comparison to Other Themes
-
-**vs. Modern Flashy Themes**
-- Minimal: Focuses on content, loads fast, looks professional
-- Flashy: Can look dated quickly, distracts from content
-
-**vs. Academic Themes**
-- Minimal: Simple, proven, widely used
-- Academic: Often more complex, harder to maintain
-
-**vs. Portfolio Themes**
-- Minimal: Text-focused, professional
-- Portfolio: Image-heavy, more casual
+**vs. Flashy Portfolio**
+- Centered: Clean, timeless, professional
+- Flashy: Can look dated, distracts from content
 
 ## Best For
 
-✅ Academics and researchers
-✅ Economists and analysts
-✅ Consultants and strategists
-✅ Anyone who wants their work to speak for itself
+✅ Young professionals (20s-30s)
+✅ Economists and consultants who want personality
+✅ People transitioning careers
+✅ Graduate students
+✅ Anyone who wants to seem approachable
 
 ## Not Ideal For
 
-❌ Visual artists (needs image galleries)
-❌ Designers (might want to showcase design skills)
-❌ Very casual personal sites
+❌ Very senior executives (might want more formal)
+❌ Pure academic researchers (might want detailed CV format)
+❌ Visual portfolios (designers, artists)
 
-## Examples in the Wild
+## Customization Tips
 
-The minimal theme is used by thousands of professionals on GitHub Pages, including:
-- Academic researchers publishing papers
-- Data scientists sharing their work
-- Consultants showcasing experience
-- Graduate students building their profiles
+### Make It Yours
+
+1. **Bio section**: Write in first person, show personality
+   - Good: "I love analyzing markets..."
+   - Not: "Professional with expertise in..."
+
+2. **Interest cards**: Choose topics you're passionate about
+   - Reading/learning
+   - Research/projects
+   - Hobbies/activities
+   - Side projects
+
+3. **Tone**: Be professional but natural
+   - Write like you're emailing a colleague
+   - Don't be too formal or too casual
+
+### Colors
+To change the blue link color, edit in styles.css:
+```css
+a {
+    color: #0066cc;  /* Change this */
+}
+```
+
+### Photo
+- Should show your face clearly
+- Professional but not stiff
+- Good lighting
+- Natural expression
+
+## Content Strategy
+
+### Above the Fold (First Screen)
+- Your photo
+- Your name
+- Who you are and where
+- Quick links (LinkedIn, Email)
+
+### Main Content
+- Brief bio (2-3 sentences)
+- Experience summary
+- Education summary
+- Interest cards
+
+### Below
+- Detailed sections for each interest
+- Full content revealed on scroll
+
+## Why This Works for You
+
+As an economics consultant:
+- **Not too formal**: You're young, approachable
+- **Not too casual**: You have serious credentials
+- **Shows personality**: Beyond just the CV
+- **Modern**: Fits current professional norms
+- **Focused**: Highlights what matters
 
 ## Maintaining the Aesthetic
 
-To keep the minimal theme's clean look:
+### Do:
+- Keep the centered alignment
+- Use the interest card format for new sections
+- Write in a personal, direct voice
+- Keep sections relatively short
+- Use emojis sparingly but effectively
 
-1. **Don't over-style**: Resist the urge to add decorative elements
-2. **Keep it simple**: Let typography create hierarchy
-3. **White space is good**: Don't feel pressure to fill every pixel
-4. **Content first**: Focus on what you say, not how it looks
-5. **Stay consistent**: Use the existing styling for new content
+### Don't:
+- Add sidebars or complex navigation
+- Over-design with colors/effects
+- Make it too long (people won't scroll)
+- Use overly formal language
+- Add unnecessary sections
 
 ## Making Updates
 
 When adding new content:
-- Use existing heading levels (h2, h3, h4)
-- Keep paragraphs concise
-- Use lists for multiple items
-- Maintain consistent spacing
 
-## Why This Theme Works for You
+1. **New experience**: Add to the experience list (keep it concise)
+2. **New interests**: Add a new interest card
+3. **New research**: Update the research section
+4. **Reading updates**: Keep the reading list current
 
-As an economics consultant and strategist, the minimal theme:
-- Conveys professionalism and seriousness
-- Focuses attention on your credentials
-- Looks appropriate for technical/academic work
-- Won't distract potential employers or collaborators
-- Ages well (still looks good years later)
+## Examples of Good Content
+
+**Bio - Good:**
+"French economist working in economic consulting and antitrust in Montréal, Canada. I love analyzing markets, reading about industrial organization, and exploring the city."
+
+**Bio - Not as good:**
+"Highly motivated economics professional with extensive experience in merger analysis and strategic consulting seeking opportunities in competition policy."
+
+**Interest Card - Good:**
+"📚 Expand my economic thinking
+Books, papers, and articles on economics and strategy."
+
+**Interest Card - Not as good:**
+"Academic Resources
+Comprehensive list of relevant economic literature and research materials."
 
 ---
 
-**Remember**: The best portfolio is one that clearly communicates your experience and makes it easy for others to contact you. The minimal theme does exactly that.
+**Remember**: This design lets you be you. Professional, credible, but also interesting and approachable. Perfect for someone at your career stage.
+

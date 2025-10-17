@@ -2,12 +2,12 @@
 
 ## What's Inside
 
-You now have a professional, minimalist portfolio website ready to deploy! The design is inspired by the popular [orderedlist/minimal](https://github.com/orderedlist/minimal) theme for GitHub Pages.
+You now have a personal, minimalist portfolio website ready to deploy! The design is inspired by [gregoiremaillard.com](https://gregoiremaillard.com/) - clean, centered, and approachable.
 
 ### Core Website Files
 1. **index.html** - Your complete website with all CV content
-2. **styles.css** - Modern, clean design and styling
-3. **script.js** - Smooth animations and interactive features
+2. **styles.css** - Clean, centered design styling
+3. **script.js** - Smooth scrolling features
 
 ### Documentation
 4. **README.md** - Complete deployment guide
@@ -21,21 +21,22 @@ You now have a professional, minimalist portfolio website ready to deploy! The d
 ## What Makes This Great
 
 ### Features ✨
-- **Minimalist Design** - Clean, academic aesthetic inspired by orderedlist/minimal
-- **Sidebar Navigation** - Fixed left sidebar with profile and navigation
-- **Fully Responsive** - Perfect on desktop, tablet, and mobile
-- **Professional Layout** - Optimized for academic and professional portfolios
+- **Centered Design** - Everything centered for clean, modern look
+- **Personal & Professional** - Balances approachability with credibility
+- **Interest Cards** - Interactive sections for your passions
+- **Large Profile Photo** - Makes a strong first impression
 - **Fast Loading** - Lightweight, optimized performance
-- **Easy to Read** - Typography designed for maximum readability
+- **Mobile Friendly** - Perfect on all devices
 
 ### Sections Included 📄
-1. **Sidebar** - Your photo, name, program, navigation, and contact info
-2. **About** - Professional summary and technical skills
-3. **Experience** - Full work history in clean, readable format
-4. **Education** - Degrees, courses, and certifications
-5. **Research** - Your thesis work
-6. **Reading** - Space for your reading list (ready to customize)
-7. **Leadership** - Your involvement and leadership roles
+1. **Hero** - Large profile photo, your name, and quick links
+2. **Bio** - Personal introduction in your own voice
+3. **Experience & Education** - Clean, simple lists
+4. **Interest Cards** - Three interactive sections:
+   - 📚 Reading list
+   - 🔬 Research work
+   - 🚀 Leadership projects
+5. **Detail Sections** - Expandable content for each interest
 
 ### Cost 💰
 **Total: $0/month**
