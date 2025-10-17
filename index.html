@@ -7,82 +7,167 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <img src="profile.jpg" alt="Enzo Simier" class="profile-photo">
-        
-        <h1>Enzo Simier</h1>
-        
-        <div class="links">
-            <a href="https://linkedin.com/in/enzo-simier" target="_blank">LinkedIn</a>
-            <a href="mailto:enzo.simier@hec.ca">Email</a>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-name">Enzo Simier</a>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#research">Research</a>
+                <a href="#reading">Reading</a>
+                <a href="mailto:enzo.simier@hec.ca">Contact</a>
+            </div>
         </div>
+    </nav>
 
-        <p class="bio">
-            French economist working in economic consulting and antitrust in Montréal, Canada.
-        </p>
-
-        <p class="bio">
-            I love analyzing markets, reading about industrial organization, and exploring the city.
-        </p>
-
-        <div class="section">
-            <p><strong>Intern, Mergers Directorate</strong>, Competition Bureau (2025)</p>
-            <p><strong>Intern, Economic Consulting & Strategy</strong>, KPMG Canada (2024)</p>
-            <p><strong>Teaching Assistant</strong>, HEC Montréal (2023)</p>
-            <p><strong>Business Development Intern</strong>, National Bank Accelerator (2023)</p>
-            <p><strong>Business Development Analyst</strong>, Front Row Ventures (2021-2022)</p>
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Enzo Simier</h1>
+                <p class="subtitle">Economic consulting, antitrust analysis, and industrial organization</p>
+                <p class="bio">M.Sc. candidate in Applied Economics at HEC Montréal, specializing in Industrial Organization. I work on merger reviews at the Competition Bureau and economic impact assessments, using data-driven methods to inform policy and business decisions. Previously at KPMG, National Bank Accelerator, and Front Row Ventures.</p>
+                <div class="hero-links">
+                    <a href="https://linkedin.com/in/enzo-simier" target="_blank" class="btn-primary">LinkedIn</a>
+                    <a href="mailto:enzo.simier@hec.ca" class="btn-secondary">Email</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="profile.jpg" alt="Enzo Simier">
+            </div>
         </div>
+    </header>
 
-        <div class="section">
-            <p><strong>Master in Applied Economics</strong>, HEC Montréal (2024-2026)</p>
-            <p><strong>Bachelor in Business Administration</strong>, HEC Montréal (2020-2024)</p>
+    <main>
+        <section id="experience" class="section">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <span class="section-line"></span>
+            </div>
+            
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Competition Bureau</h3>
+                    <span class="year">2025</span>
+                </div>
+                <p class="role">Intern, Mergers Directorate · Ottawa</p>
+                <p class="description">Conducted market definition analysis and value chain mapping for merger reviews. Calculated market shares, HHI indices, and assessed competitive effects using SSNIP tests, UPP/GUPPI metrics, and diversion ratios. Contributed to regulatory filings including Advance Ruling Certificates and No Action Letters, supporting the Bureau's enforcement decisions in Canadian antitrust cases.</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>KPMG Canada</h3>
+                    <span class="year">2024</span>
+                </div>
+                <p class="role">Intern, Economic Consulting & Strategy · Montréal</p>
+                <p class="description">Delivered economic impact assessments across port sector and public health projects, developing quantitative models to inform strategic decisions. Built economic and financial models that shaped project scoping and phasing recommendations for clients. Produced executive summaries translating complex analysis into actionable insights for senior stakeholders.</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>HEC Montréal</h3>
+                    <span class="year">2023</span>
+                </div>
+                <p class="role">Teaching Assistant, Macroeconomics</p>
+                <p class="description">Led review sessions and supervised students in macroeconomic theory and applications. Clarified complex concepts in monetary policy, business cycles, and aggregate demand modeling for undergraduate students.</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>National Bank Accelerator</h3>
+                    <span class="year">2023</span>
+                </div>
+                <p class="role">Business Development Intern · Montréal</p>
+                <p class="description">Supported portfolio of 10+ startups in developing go-to-market strategies and designing key performance indicators. Provided strategic guidance on market positioning, customer acquisition, and growth metrics for early-stage ventures in the fintech ecosystem.</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <h3>Front Row Ventures</h3>
+                    <span class="year">2021-2022</span>
+                </div>
+                <p class="role">Business Development Analyst</p>
+                <p class="description">Designed and implemented a CRM system tracking 50+ venture capital funds to optimize deal sourcing and relationship management. Analyzed investment patterns and market trends to identify high-potential opportunities in the startup ecosystem.</p>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="section-header">
+                <h2>Education</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3>HEC Montréal</h3>
+                    <p class="degree">M.Sc. in Applied Economics</p>
+                    <p class="year-range">2024-2026 (expected)</p>
+                    <p class="details">Specialization in Industrial Organization. Coursework in competition policy, merger analysis, econometric methods, and microeconomic theory.</p>
+                </div>
+
+                <div class="education-item">
+                    <h3>HEC Montréal</h3>
+                    <p class="degree">B.B.A. in Economics and Finance</p>
+                    <p class="year-range">2020-2024</p>
+                    <p class="details">Graduated with distinction. Bilingual profile. Focus on macroeconomics, microeconomics, industrial organization, business cycles, and monetary policy.</p>
+                </div>
+            </div>
+
+            <div class="certifications">
+                <h4>Certifications</h4>
+                <p>LSE Ethics of AI · Bloomberg Market Concepts · Marquee Group (DCF, Merger Modeling, Financial Modeling)</p>
+            </div>
+        </section>
+
+        <section id="research" class="section">
+            <div class="section-header">
+                <h2>Research</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="research-item">
+                <h3>Volumetric Water Pricing in Québec — Benefit Assessment</h3>
+                <p class="research-meta">Master's Thesis · HEC Montréal · 2025-2026</p>
+                <p class="research-description">Analyzing the economic benefits of volumetric water pricing systems using panel data from Québec municipalities and households. The research employs difference-in-differences methodology with staggered adoption to measure consumption effects, combined with heterogeneity analysis to identify differential impacts across demographic groups. Consumer surplus estimation quantifies welfare effects to inform tariff design recommendations that balance efficiency and equity objectives in public utility pricing.</p>
+            </div>
+
+            <div class="leadership">
+                <h4>Leadership & Involvement</h4>
+                <p>VP Projects at HEC Data Science Club, organizing AI competitions for 150+ participants. Project Lead at HEC Entrepreneurs Club, coordinating the Grand Finale event for 200+ attendees. Investor Partner with Time for the Planet and Venture Capital Scout with G. Ventures, supporting early-stage companies in climate tech and innovation.</p>
+            </div>
+        </section>
+
+        <section id="reading" class="section">
+            <div class="section-header">
+                <h2>Reading</h2>
+                <span class="section-line"></span>
+            </div>
+
+            <div class="reading-content">
+                <p class="reading-intro">I keep up with developments in economics, competition policy, and strategy through a mix of academic papers, books, and newsletters.</p>
+                
+                <div class="reading-categories">
+                    <div class="reading-category">
+                        <h4>Economics & Industrial Organization</h4>
+                        <p>Currently exploring merger retrospectives and empirical methods in antitrust. Following recent developments in digital market regulation and platform competition. Interested in behavioral industrial organization and how consumer biases affect market outcomes.</p>
+                    </div>
+
+                    <div class="reading-category">
+                        <h4>Strategy & Business</h4>
+                        <p>Reading about competitive strategy, market entry decisions, and business model innovation. Particularly interested in how economic theory informs practical business decisions and strategic positioning in competitive markets.</p>
+                    </div>
+
+                    <div class="reading-category">
+                        <h4>Current Interests</h4>
+                        <p>Following debates on AI regulation and competition policy in tech markets. Exploring applications of machine learning in economic research and causal inference. Tracking developments in climate economics and sustainable business practices.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Montréal, QC · <a href="mailto:enzo.simier@hec.ca">enzo.simier@hec.ca</a> · <a href="https://linkedin.com/in/enzo-simier" target="_blank">LinkedIn</a></p>
         </div>
-
-        <div class="interests">
-            <a href="#reading" class="interest-link">
-                <h3>📚 Expand my economic thinking</h3>
-                <p>Books, papers, and articles on economics and strategy.</p>
-            </a>
-
-            <a href="#research" class="interest-link">
-                <h3>🔬 Dive into research</h3>
-                <p>Water pricing, consumer behavior, and public policy.</p>
-            </a>
-
-            <a href="#projects" class="interest-link">
-                <h3>🚀 Build and lead</h3>
-                <p>Data science competitions and entrepreneurship events.</p>
-            </a>
-        </div>
-
-        <div id="reading" class="detail-section">
-            <h2>📚 What I'm Reading</h2>
-            <p>Add your favorite economics books, papers, and newsletters here.</p>
-            <ul>
-                <li>Industrial Organization textbooks and papers</li>
-                <li>Competition policy case studies</li>
-                <li>Economic journals and blogs</li>
-            </ul>
-        </div>
-
-        <div id="research" class="detail-section">
-            <h2>🔬 Research</h2>
-            <h3>Volumetric Water Pricing in Québec</h3>
-            <p><em>Master's Thesis, HEC Montréal</em></p>
-            <p>Analyzing the benefits of volumetric water pricing using municipal and household panel data. Methods include difference-in-differences with staggered adoption, heterogeneity analysis, and consumer surplus estimation.</p>
-        </div>
-
-        <div id="projects" class="detail-section">
-            <h2>🚀 Leadership & Projects</h2>
-            <p><strong>VP Projects</strong>, HEC Data Science Club — Organized AI competition with 150+ participants</p>
-            <p><strong>Project Lead</strong>, HEC Entrepreneurs Club — Organized Grand Finale with 200+ participants</p>
-            <p><strong>Investor Partner</strong>, Time for the Planet</p>
-            <p><strong>Venture Capital Scout</strong>, G. Ventures</p>
-        </div>
-
-        <footer>
-            <p>More to come!</p>
-        </footer>
-    </div>
+    </footer>
 </body>
 </html>
