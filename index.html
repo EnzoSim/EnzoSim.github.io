@@ -4,12 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Enzo Simier</title>
-    <meta name="description" content="Enzo Simier — Applied economics and industrial organization." />
-    <link rel="canonical" href="https://enzosim.github.io/" />
-    <meta property="og:title" content="Enzo Simier" />
-    <meta property="og:description" content="Applied economics and industrial organization." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://enzosim.github.io/" />
+    <meta name="description" content="Applied economics and industrial organization." />
+    <meta name="color-scheme" content="light dark">
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -49,7 +45,7 @@
       <main class="right">
         <section id="about" class="section intro">
           <p class="lead">
-            M.Sc. candidate at HEC Montréal. I work in industrial organization and competition topics. Currently focused on my thesis.
+            M.Sc. candidate at HEC Montréal. I work in industrial organization and competition topics. Thesis in progress.
           </p>
         </section>
 
@@ -62,9 +58,7 @@
               <span class="meta">Summer 2025</span>
             </header>
             <p class="role">Intern, Mergers Directorate</p>
-            <p class="text">
-              Worked on merger reviews: market definition, shares and HHI, and basic effects tools like SSNIP and diversion.
-            </p>
+            <p class="text">Merger reviews: market definition, shares and HHI, SSNIP and diversion basics.</p>
           </article>
 
           <article class="item">
@@ -73,9 +67,7 @@
               <span class="meta">2024</span>
             </header>
             <p class="role">Intern, Economic Consulting and Strategy</p>
-            <p class="text">
-              Built impact models for public sector projects and turned results into clear executive notes.
-            </p>
+            <p class="text">Impact models for public sector projects and short executive notes.</p>
           </article>
 
           <article class="item">
@@ -84,9 +76,7 @@
               <span class="meta">2023</span>
             </header>
             <p class="role">Teaching Assistant, Macroeconomics</p>
-            <p class="text">
-              Led review sessions on monetary policy, business cycles, and aggregate demand.
-            </p>
+            <p class="text">Sessions on monetary policy, business cycles, and aggregate demand.</p>
           </article>
 
           <article class="item">
@@ -95,9 +85,7 @@
               <span class="meta">2023</span>
             </header>
             <p class="role">Business Development Intern</p>
-            <p class="text">
-              Helped startups with go to market and KPIs. Focus on positioning and acquisition.
-            </p>
+            <p class="text">Go‑to‑market and KPI work for early‑stage teams.</p>
           </article>
 
           <article class="item">
@@ -106,9 +94,7 @@
               <span class="meta">2021 to 2022</span>
             </header>
             <p class="role">Business Development Analyst</p>
-            <p class="text">
-              Built a CRM for fund tracking and mapped patterns to surface better deal flow.
-            </p>
+            <p class="text">CRM build for fund tracking and better deal flow.</p>
           </article>
         </section>
 
@@ -136,20 +122,20 @@
               <h3>Volumetric Water Pricing in Québec</h3>
               <span class="meta"><span class="pill">Thesis in progress</span></span>
             </header>
-            <p class="text">
-              Benefit assessment with panel data and staggered adoption. Focus on consumption effects and welfare.
-            </p>
+            <p class="text">Panel data with staggered adoption. Consumption effects and welfare.</p>
           </article>
         </section>
 
         <section id="reading" class="section">
           <h2>Library</h2>
-          <p class="note">A few favorites, more coming.</p>
+          <p class="note">A few favorites. I’ll add notes later.</p>
 
           <div class="shelf">
             <article class="book">
               <a class="cover" href="https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015" target="_blank" rel="noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/9781398504103_front-3875095242.jpg/250px-9781398504103_front-3875095242.jpg" alt="Chip War by Chris Miller cover" loading="lazy" decoding="async" />
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/9781398504103_front-3875095242.jpg/400px-9781398504103_front-3875095242.jpg"
+                  width="400" height="600" alt="Chip War by Chris Miller" loading="lazy" decoding="async">
               </a>
               <div class="meta">
                 <h4 class="title">Chip War</h4>
@@ -159,7 +145,9 @@
 
             <article class="book">
               <a class="cover" href="https://danwang.co/breakneck/" target="_blank" rel="noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Breakneck%2C_China%27s_Quest_to_Engineer_the_Future.jpeg/250px-Breakneck%2C_China%27s_Quest_to_Engineer_the_Future.jpeg" alt="Breakneck by Dan Wang cover" loading="lazy" decoding="async" />
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Breakneck%2C_China%27s_Quest_to_Engineer_the_Future.jpeg/400px-Breakneck%2C_China%27s_Quest_to_Engineer_the_Future.jpeg"
+                  width="400" height="600" alt="Breakneck by Dan Wang" loading="lazy" decoding="async">
               </a>
               <div class="meta">
                 <h4 class="title">Breakneck</h4>
@@ -169,7 +157,19 @@
 
             <article class="book">
               <a class="cover" href="https://press.stripe.com/origins-of-efficiency" target="_blank" rel="noreferrer">
-                <img src="https://books.google.co.jp/books/publisher/content?edge=curl&id=YRZ4EQAAQBAJ&img=1&printsec=frontcover&zoom=1" alt="The Origins of Efficiency by Brian Potter cover" loading="lazy" decoding="async" />
+                <!-- Use a simple SVG cover so we’re not at the mercy of third‑party CDNs -->
+                <svg class="svgcover" viewBox="0 0 400 600" width="400" height="600" role="img" aria-label="The Origins of Efficiency by Brian Potter">
+                  <defs>
+                    <linearGradient id="g" x1="0" x2="1">
+                      <stop offset="0" stop-color="#111827"/>
+                      <stop offset="1" stop-color="#3b82f6"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="400" height="600" fill="url(#g)"/>
+                  <text x="28" y="290" font-size="54" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">THE ORIGINS</text>
+                  <text x="28" y="350" font-size="54" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">OF EFFICIENCY</text>
+                  <text x="28" y="410" font-size="22" font-weight="600" fill="#e5e7eb" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Brian Potter · Stripe Press</text>
+                </svg>
               </a>
               <div class="meta">
                 <h4 class="title">The Origins of Efficiency</h4>
