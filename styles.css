@@ -1,4 +1,4 @@
-/* Minimal, left-rail layout inspired by classic personal pages, but not sleepy. */
+/* Minimal left‑rail layout, anchor‑safe (no smooth‑scroll on page load). */
 
 /* Tokens */
 :root{
@@ -6,7 +6,6 @@
   --ink: #0f172a;
   --muted: #475569;
   --line: #e5e7eb;
-  --accent: #111827;
 
   --step--1: clamp(.86rem,.8rem + .15vw,.95rem);
   --step-0: clamp(1rem,.95rem + .2vw,1.0625rem);
@@ -17,7 +16,6 @@
 
 *{box-sizing:border-box}
 html,body{height:100%}
-html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family: -apple-system,BlinkMacSystemFont,Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -28,6 +26,12 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
+
+/* Delete the old global smooth scroll that was causing anchor jitter */
+/* html { scroll-behavior: smooth; }  <-- removed on purpose */
+
+/* Give anchors a little breathing room when jumped to */
+.section{ scroll-margin-top: 16px; }
 
 a{color:inherit;text-underline-offset:3px}
 a:hover{color:#1f2937}
@@ -43,11 +47,7 @@ a:hover{color:#1f2937}
 
 /* Left column */
 .left{position:sticky; top:24px; align-self:start}
-.id h1{
-  margin:0 0 6px 0;
-  font-size: var(--step-3);
-  letter-spacing:-0.02em;
-}
+.id h1{ margin:0 0 6px 0; font-size: var(--step-3); letter-spacing:-0.02em; }
 .tag{margin:0 0 14px 0; color:var(--muted); font-size: var(--step-0)}
 
 .portrait{margin: 12px 0 14px}
@@ -86,11 +86,7 @@ a:hover{color:#1f2937}
 
 /* Right column */
 .right{display:grid; gap:44px}
-.section h2{
-  margin:0 0 10px;
-  font-size: var(--step-2);
-  letter-spacing:-0.01em;
-}
+.section h2{ margin:0 0 10px; font-size: var(--step-2); letter-spacing:-0.01em; }
 .lead{font-size: var(--step-1); color:var(--muted); max-width: 65ch}
 
 .item{padding:16px 0; border-top:1px solid var(--line)}
@@ -116,13 +112,12 @@ a:hover{color:#1f2937}
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap:16px;
 }
-.book{
-  display:grid; grid-template-rows:auto 1fr; gap:8px;
-}
+.book{ display:grid; grid-template-rows:auto 1fr; gap:8px; }
 .cover{
-  display:block; border:1px solid var(--line); border-radius:10px; overflow:hidden; aspect-ratio: 2/3; background:#f8fafc;
+  display:block; border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  aspect-ratio: 2/3; background:#f8fafc;
 }
-.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover img, .svgcover{ width:100%; height:100%; object-fit:cover; display:block; }
 .meta .title{margin:0 0 2px; font-size: 1rem}
 .meta .by{margin:0; font-size:.9rem; color:var(--muted)}
 
