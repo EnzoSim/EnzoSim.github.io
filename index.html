@@ -1,150 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Enzo Simier</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="logo">Enzo Simier</div>
-            <nav>
-                <ul>
-                    <li><a href="#hero">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#library">Library</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <meta name="description" content="Applied economics and industrial organization." />
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-    <main class="container">
-        
-        <section id="hero">
-            <h1>Navigating market competition and early-stage venture capital.</h1>
-            <p class="intro-text">Hi, I'm Enzo. Currently analyzing mergers and ensuring fair competition in Canada, with a background in sourcing innovation in the VC space. I’m driven by curiosity—whether exploring economic theory, insightful biographies, or the evolving tech landscape.</p>
+  <body>
+    <div class="wrap">
+      <aside class="left">
+        <header class="id">
+          <h1>Enzo Simier</h1>
+          <p class="tag">Applied Economics, Industrial Organization</p>
+
+          <figure class="portrait">
+            <img src="profile.jpg" alt="Enzo Simier" loading="lazy" decoding="async" />
+          </figure>
+
+          <nav class="nav" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#research">Research</a>
+            <a href="#reading">Library</a>
+            <a href="mailto:enzo.simier@hec.ca">Contact</a>
+          </nav>
+
+          <div class="links">
+            <a class="btn primary" href="Enzo_Simier_CV.pdf" target="_blank" rel="noreferrer">CV</a>
+            <a class="btn" href="mailto:enzo.simier@hec.ca">Email</a>
+            <a class="btn" href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+
+          <footer class="foot">
+            <small>Montréal, QC</small>
+          </footer>
+        </header>
+      </aside>
+
+      <main class="right">
+        <section id="about" class="section intro">
+          <p class="lead">
+            M.Sc. candidate at HEC Montréal studying industrial organization and competition policy. My thesis examines volumetric water pricing adoption across Québec municipalities using difference-in-differences methods to estimate consumption effects and welfare implications.
+          </p>
+          <p class="lead">
+            I'm interested in market structure, regulatory economics, and empirical IO. Previously worked on merger analysis at the Competition Bureau and economic impact modeling at KPMG. Bilingual in English and French.
+          </p>
         </section>
 
-        <section id="experience">
-            <h2>Professional Experience</h2>
+        <section id="experience" class="section">
+          <h2>Experience</h2>
 
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="title">Competition Law Officer (Mergers)</h3>
-                        <p class="organization">Competition Bureau Canada</p>
-                    </div>
-                    <div class="dates">
-                        [Start Year] – Present<br>Montreal, QC
-                    </div>
-                </div>
-                <ul>
-                    <li>Evaluated complex merger proposals in diverse sectors, identifying potential market impacts and ensuring compliance with the Competition Act.</li>
-                    <li>Conducted detailed economic analysis and market research to support case recommendations.</li>
-                    <li>[Add your specific achievements here using action verbs.]</li>
-                </ul>
-            </div>
+          <article class="item">
+            <header class="head">
+              <h3>Competition Bureau</h3>
+              <span class="meta">Summer 2025</span>
+            </header>
+            <p class="role">Intern, Mergers Directorate</p>
+            <ul class="details">
+              <li>Conducted merger reviews including market definition, market share calculations, and HHI analysis</li>
+              <li>Applied SSNIP test framework and diversion ratio methodologies for competitive effects assessment</li>
+              <li>Prepared technical memoranda on market concentration and competitive harm for senior economists</li>
+            </ul>
+          </article>
 
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="title">Venture Capital Analyst</h3>
-                        <p class="organization">Front Row Ventures</p>
-                    </div>
-                    <div class="dates">
-                        [Start Year] – [End Year]<br>Montreal, QC
-                    </div>
-                </div>
-                <ul>
-                    <li>Sourced and evaluated early-stage startups within the university ecosystem, focusing on innovative technology and market potential.</li>
-                    <li>Performed due diligence, including financial modeling, competitive analysis, and founder interviews.</li>
-                    <li>[Add your specific achievements here.]</li>
-                </ul>
-            </div>
+          <article class="item">
+            <header class="head">
+              <h3>KPMG Canada</h3>
+              <span class="meta">Summer 2024</span>
+            </header>
+            <p class="role">Intern, Economic Consulting and Strategy</p>
+            <ul class="details">
+              <li>Built economic impact models for public infrastructure projects, estimating GDP and employment effects</li>
+              <li>Drafted executive briefing notes synthesizing complex economic analysis for non-technical stakeholders</li>
+              <li>Conducted cost-benefit analysis and fiscal impact assessments for municipal clients</li>
+            </ul>
+          </article>
 
-            <h2>Education</h2>
-             <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="title">B.A. Honours in Economics and Political Science (Example)</h3>
-                        <p class="organization">McGill University</p>
-                    </div>
-                    <div class="dates">
-                        [Graduation Year]
-                    </div>
-                </div>
-            </div>
-             </section>
+          <article class="item">
+            <header class="head">
+              <h3>HEC Montréal</h3>
+              <span class="meta">Fall 2023</span>
+            </header>
+            <p class="role">Teaching Assistant, Macroeconomics</p>
+            <ul class="details">
+              <li>Led tutorial sessions on monetary policy, business cycles, and aggregate demand for 80+ students</li>
+              <li>Prepared problem sets and graded assignments on IS-LM, Phillips curve, and Solow growth model</li>
+            </ul>
+          </article>
 
-        <section id="library">
-            <h2>Library & Learning</h2>
+          <article class="item">
+            <header class="head">
+              <h3>National Bank Accelerator</h3>
+              <span class="meta">Summer 2023</span>
+            </header>
+            <p class="role">Business Development Intern</p>
+            <ul class="details">
+              <li>Developed go-to-market strategies and KPI frameworks for early-stage fintech startups</li>
+              <li>Conducted market sizing and competitive landscape analysis for portfolio companies</li>
+            </ul>
+          </article>
 
-            <div class="weekly-read">
-                <h3>What I Read This Week (Oct 20, 2025)</h3>
-                <h4>Material World by Ed Conway</h4>
-                <p>A fascinating dive into the physical resources (sand, salt, iron, etc.) that underpin the modern economy. The scale of extraction required for future technologies is staggering.</p>
-                <p><strong>Key Insight:</strong> The digital world remains entirely reliant on finite physical resources.</p>
-            </div>
-
-            <h3>Curated Bookshelf</h3>
-            <p>A selection of books that have shaped my thinking on strategy, history, and technology.</p>
-
-            <div class="book-grid">
-                <div class="book-category">
-                    <h4>Strategy & Venture Capital</h4>
-                    <ul>
-                        <li><strong>Zero to One</strong> by Peter Thiel</li>
-                        <li>The Hard Thing About Hard Things by Ben Horowitz</li>
-                    </ul>
-                </div>
-
-                <div class="book-category">
-                    <h4>Technology & Society (Stripe Press)</h4>
-                    <ul>
-                         <li>Working in Public by Nadia Eghbal</li>
-                         <li>The Dream Machine by M. Mitchell Waldrop</li>
-                         <li>Stubborn Attachments by Tyler Cowen</li>
-                         <li>[Add more Stripe Press books here]</li>
-                     </ul>
-                </div>
-
-                <div class="book-category">
-                    <h4>Biographies</h4>
-                    <ul>
-                        <li><strong>Elon Musk</strong> by Walter Isaacson</li>
-                        <li><strong>Churchill: Walking with Destiny</strong> by Andrew Roberts</li>
-                        <li>The Power Broker by Robert Caro</li>
-                    </ul>
-                </div>
-
-                <div class="book-category">
-                    <h4>History & Economics</h4>
-                    <ul>
-                        <li><strong>Material World</strong> by Ed Conway</li>
-                        <li><strong>SPQR: A History of Ancient Rome</strong> by Mary Beard</li>
-                    </ul>
-                </div>
-            </div>
+          <article class="item">
+            <header class="head">
+              <h3>Front Row Ventures</h3>
+              <span class="meta">2021 to 2022</span>
+            </header>
+            <p class="role">Business Development Analyst</p>
+            <ul class="details">
+              <li>Built CRM system for fund tracking, improving deal flow management and portfolio monitoring</li>
+              <li>Screened 100+ early-stage companies and prepared investment memos for partnership review</li>
+            </ul>
+          </article>
         </section>
 
-    </main>
-
-    <footer id="contact">
-        <div class="container">
-            <p>Let's connect.</p>
-            <div class="social-links">
-                <a href="mailto:youremail@example.com">Email</a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-                <a href="https://twitter.com/yourprofile" target="_blank">Twitter/X</a>
+        <section id="skills" class="section">
+          <h2>Skills</h2>
+          
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h4>Econometrics</h4>
+              <p>Panel data methods, difference-in-differences, instrumental variables, regression discontinuity, matching estimators</p>
             </div>
-            <p style="margin-top: 30px; font-size: 0.9rem;">&copy; 2025 Enzo Simier</p>
-        </div>
-    </footer>
-</body>
+            
+            <div class="skill-group">
+              <h4>Software</h4>
+              <p>Stata, R, Python (pandas, NumPy), Excel/VBA, LaTeX</p>
+            </div>
+            
+            <div class="skill-group">
+              <h4>Industrial Organization</h4>
+              <p>Merger analysis, market definition, demand estimation, competition policy, antitrust economics</p>
+            </div>
+            
+            <div class="skill-group">
+              <h4>Languages</h4>
+              <p>English (native), French (fluent/bilingual)</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="education" class="section">
+          <h2>Education</h2>
+
+          <article class="edu">
+            <h3>HEC Montréal</h3>
+            <p class="meta">M.Sc. in Applied Economics · 2024 to 2026 expected</p>
+            <p class="text">Focus on industrial organization, competition policy, and applied econometrics. Thesis supervised by [Advisor Name].</p>
+          </article>
+
+          <article class="edu">
+            <h3>HEC Montréal</h3>
+            <p class="meta">B.B.A. in Economics and Finance · 2020 to 2024</p>
+            <p class="text">Graduated with distinction. Bilingual profile. Relevant coursework: Industrial Organization, Microeconomic Theory, Econometrics, Financial Economics.</p>
+          </article>
+        </section>
+
+        <section id="research" class="section">
+          <h2>Research</h2>
+
+          <article class="item">
+            <header class="head">
+              <h3>Volumetric Water Pricing in Québec Municipalities</h3>
+              <span class="meta"><span class="pill">Thesis in progress</span></span>
+            </header>
+            <div class="tags">
+              <span class="tag-pill">Panel Data</span>
+              <span class="tag-pill">DiD</span>
+              <span class="tag-pill">Public Economics</span>
+            </div>
+            <p class="text">Analyzing staggered adoption of volumetric water pricing across Québec municipalities using difference-in-differences estimation. Examining residential consumption responses and welfare implications of pricing reform.</p>
+          </article>
+
+          <article class="item">
+            <header class="head">
+              <h3>Market Concentration and Entry Barriers: Evidence from Canadian Retail</h3>
+              <span class="meta"><span class="pill">Working paper</span></span>
+            </header>
+            <div class="tags">
+              <span class="tag-pill">Industrial Organization</span>
+              <span class="tag-pill">Market Structure</span>
+            </div>
+            <p class="text">Examining the relationship between local market concentration and entry patterns in Canadian retail markets. Uses administrative data on store openings and market-level HHIs.</p>
+          </article>
+
+          <article class="item">
+            <header class="head">
+              <h3>Price Discrimination in Platform Markets</h3>
+              <span class="meta">Class paper · 2024</span>
+            </header>
+            <p class="text">Literature review and empirical application examining first-degree price discrimination strategies in digital platform markets. Presented at HEC research seminar.</p>
+          </article>
+        </section>
+
+        <section id="reading" class="section">
+          <h2>Library</h2>
+          <p class="note">Current reads and recent favorites that shaped my thinking on technology, competition, and industrial policy.</p>
+
+          <div class="shelf">
+            <article class="book">
+              <a class="cover" href="https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015" target="_blank" rel="noreferrer">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/9781398504103_front-3875095242.jpg/400px-9781398504103_front-3875095242.jpg"
+                  width="400" height="600" alt="Chip War by Chris Miller" loading="lazy" decoding="async">
+              </a>
+              <div class="meta">
+                <h4 class="title">Chip War</h4>
+                <p class="by">Chris Miller · 2022</p>
+                <p class="note-text">The definitive account of semiconductor geopolitics and industrial strategy.</p>
+              </div>
+            </article>
+
+            <article class="book">
+              <a class="cover" href="https://danwang.co/breakneck/" target="_blank" rel="noreferrer">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Breakneck%2C_China%27s_Quest_to_Engineer_the_Future.jpeg/400px-Breakneck%2C_China%27s_Quest_to_Engineer_the_Future.jpeg"
+                  width="400" height="600" alt="Breakneck by Dan Wang" loading="lazy" decoding="async">
+              </a>
+              <div class="meta">
+                <h4 class="title">Breakneck</h4>
+                <p class="by">Dan Wang · 2025</p>
+                <p class="note-text">On China's manufacturing capacity and what it means for global competition.</p>
+              </div>
+            </article>
+
+            <article class="book">
+              <a class="cover" href="https://www.goodreads.com/book/show/239137578-the-origins-of-efficiency" target="_blank" rel="noreferrer">
+                <svg class="svgcover" viewBox="0 0 400 600" width="400" height="600" role="img" aria-label="The Origins of Efficiency by Brian Potter">
+                  <defs>
+                    <linearGradient id="g" x1="0" x2="1">
+                      <stop offset="0" stop-color="#111827"/>
+                      <stop offset="1" stop-color="#3b82f6"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="400" height="600" fill="url(#g)"/>
+                  <text x="28" y="290" font-size="54" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">THE ORIGINS</text>
+                  <text x="28" y="350" font-size="54" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">OF EFFICIENCY</text>
+                  <text x="28" y="410" font-size="22" font-weight="600" fill="#e5e7eb" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Brian Potter · Stripe Press</text>
+                </svg>
+              </a>
+              <div class="meta">
+                <h4 class="title">The Origins of Efficiency</h4>
+                <p class="by">Brian Potter · 2025</p>
+                <p class="note-text">How construction became efficient and what we lost along the way.</p>
+              </div>
+            </article>
+
+            <article class="book">
+              <a class="cover" href="https://mitpress.mit.edu/9780262035255/economics-of-regulation-and-antitrust/" target="_blank" rel="noreferrer">
+                <svg class="svgcover" viewBox="0 0 400 600" width="400" height="600" role="img" aria-label="Economics of Regulation and Antitrust">
+                  <defs>
+                    <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="#dc2626"/>
+                      <stop offset="1" stop-color="#7f1d1d"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="400" height="600" fill="url(#g2)"/>
+                  <text x="28" y="260" font-size="42" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">ECONOMICS OF</text>
+                  <text x="28" y="310" font-size="42" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">REGULATION</text>
+                  <text x="28" y="360" font-size="42" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">AND ANTITRUST</text>
+                  <text x="28" y="410" font-size="20" font-weight="600" fill="#fca5a5" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">W. KIP VISCUSI</text>
+                </svg>
+              </a>
+              <div class="meta">
+                <h4 class="title">Economics of Regulation and Antitrust</h4>
+                <p class="by">W. Kip Viscusi et al. · 2018</p>
+                <p class="note-text">The standard reference for competition economics and regulatory policy.</p>
+              </div>
+            </article>
+
+            <article class="book">
+              <a class="cover" href="https://press.princeton.edu/books/hardcover/9780691142166/industrial-organization" target="_blank" rel="noreferrer">
+                <svg class="svgcover" viewBox="0 0 400 600" width="400" height="600" role="img" aria-label="Industrial Organization">
+                  <defs>
+                    <linearGradient id="g3" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0" stop-color="#0f766e"/>
+                      <stop offset="1" stop-color="#134e4a"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="400" height="600" fill="url(#g3)"/>
+                  <text x="28" y="280" font-size="48" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">INDUSTRIAL</text>
+                  <text x="28" y="340" font-size="48" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">ORGANIZATION</text>
+                  <text x="28" y="390" font-size="22" font-weight="600" fill="#5eead4" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Markets and Strategies</text>
+                  <text x="28" y="430" font-size="20" font-weight="600" fill="#99f6e4" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Belleflamme & Peitz</text>
+                </svg>
+              </a>
+              <div class="meta">
+                <h4 class="title">Industrial Organization</h4>
+                <p class="by">Paul Belleflamme & Martin Peitz · 2015</p>
+                <p class="note-text">Comprehensive IO textbook. Clear treatment of strategic behavior and market power.</p>
+              </div>
+            </article>
+
+            <article class="book">
+              <a class="cover" href="https://www.jstor.org/stable/j.ctvcm4j72" target="_blank" rel="noreferrer">
+                <svg class="svgcover" viewBox="0 0 400 600" width="400" height="600" role="img" aria-label="The Antitrust Paradigm">
+                  <defs>
+                    <linearGradient id="g4" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0" stop-color="#1e40af"/>
+                      <stop offset="1" stop-color="#1e3a8a"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="400" height="600" fill="url(#g4)"/>
+                  <text x="28" y="260" font-size="46" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">THE ANTITRUST</text>
+                  <text x="28" y="320" font-size="46" font-weight="800" fill="#fff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">PARADIGM</text>
+                  <text x="28" y="370" font-size="20" font-weight="600" fill="#93c5fd" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Restoring a Competitive Economy</text>
+                  <text x="28" y="420" font-size="20" font-weight="600" fill="#bfdbfe" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">Jonathan Baker</text>
+                </svg>
+              </a>
+              <div class="meta">
+                <h4 class="title">The Antitrust Paradigm</h4>
+                <p class="by">Jonathan Baker · 2019</p>
+                <p class="note-text">Essential reading on contemporary antitrust enforcement and market power.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <footer class="page-foot">
+          <p>Montréal, QC · <a href="mailto:enzo.simier@hec.ca">enzo.simier@hec.ca</a> · <a href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a></p>
+        </footer>
+      </main>
+    </div>
+  </body>
 </html>
