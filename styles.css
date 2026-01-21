@@ -243,6 +243,18 @@ a:hover{color:#1f2937}
 }
 
 @media (max-width: 640px) {
+  /* Force light mode on mobile */
+  :root {
+    --bg: #ffffff;
+    --ink: #0f172a;
+    --muted: #475569;
+    --line: #e5e7eb;
+    --accent: #3b82f6;
+    --accent-light: #dbeafe;
+    --card: #fafbfc;
+    --elev: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
   /* Show mobile header, hide desktop sidebar */
   .mobile-header {
     display: block;
