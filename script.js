@@ -12,3 +12,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Mobile navigation toggle
+const mobileToggle = document.querySelector('.mobile-toggle');
+const mobileNav = document.querySelector('.mobile-nav');
+
+if (mobileToggle && mobileNav) {
+    mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        mobileToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close nav when a link is clicked
+    mobileNav.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+

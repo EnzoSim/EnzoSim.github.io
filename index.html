@@ -18,6 +18,36 @@
   </head>
 
   <body>
+    <!-- Mobile Header (visible only on small screens) -->
+    <header class="mobile-header">
+      <div class="mobile-header-content">
+        <img src="profile.jpg" alt="Enzo Simier" class="mobile-portrait" />
+        <div class="mobile-info">
+          <span class="mobile-name">Enzo Simier</span>
+          <span class="mobile-tag">Applied Economics · IO</span>
+        </div>
+        <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#week">This Week</a>
+        <a href="#reading">Library</a>
+        <a href="mailto:enzo.simier@hec.ca">Contact</a>
+        <div class="mobile-links">
+          <a class="btn primary" href="Enzo_Simier_CV.pdf" target="_blank" rel="noreferrer">CV</a>
+          <a class="btn" href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </nav>
+    </header>
+
     <div class="wrap">
       <aside class="left">
         <header class="id">
@@ -315,5 +345,6 @@
         </footer>
       </main>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
