@@ -5,7 +5,7 @@
 
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
 img,picture,svg{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer;border:none;background:none}
@@ -644,12 +644,13 @@ body{
   .pill-nav{
     position: fixed;
     top: auto;
-    bottom: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     overflow-x: auto;
     max-width: calc(100vw - 32px);
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
   .pill-nav.hidden{
     transform: translateX(-50%) translateY(120%);
@@ -672,13 +673,16 @@ body{
 
 /* ---------- Responsive: Mobile (≤640px) ---------- */
 @media(max-width: 640px){
-  .hero{ padding: 24px 20px 32px; }
+  body{ overflow-x: hidden; }
+
+  .hero{ padding: 24px 16px 32px; }
 
   .hero-card{
     flex-direction: column-reverse;
     text-align: center;
-    padding: clamp(24px, 4vw, 32px);
+    padding: 24px 20px;
     gap: 20px;
+    overflow: hidden;
   }
   .hero-text{ text-align: center; }
   .hero-text .subtitle{ margin-left: auto; margin-right: auto; }
@@ -698,30 +702,34 @@ body{
       "education"
       "research"
       "library";
-    padding: 0 16px 100px;
+    padding: 0 16px calc(80px + env(safe-area-inset-bottom, 0px));
   }
+
+  .bento-card{ padding: 20px; }
 
   .skills-grid{
     grid-template-columns: 1fr;
   }
 
   .pill-nav{
-    bottom: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     padding: 4px 6px;
     gap: 2px;
   }
   .pill-nav a{
-    padding: 7px 12px;
+    padding: 7px 10px;
     font-size: var(--text-xs);
   }
 
-  .site-footer{ padding: 24px 16px 40px; }
+  .site-footer{ padding: 24px 16px calc(40px + env(safe-area-inset-bottom, 0px)); }
 
   .book{ flex: 0 0 150px; }
 
   .card-heading{
     font-size: var(--text-lg);
   }
+
+  .exp-header{ flex-direction: column; gap: 4px; }
 }
 
 /* ---------- Focus Styles (Accessibility) ---------- */
