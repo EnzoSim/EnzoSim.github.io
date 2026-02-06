@@ -6,10 +6,13 @@
     <title>Enzo Simier · Applied Economics & IO</title>
     <meta name="description" content="Applied economics focused on industrial organization and behavioral policy. Thesis on household water metering in Québec with Justin Leroux and Jean-Luc Martel." />
     <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0c0c0e" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
     <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="styles.css?v=20260121-05" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
     <link rel="canonical" href="https://enzosimier.com/">
     <meta property="og:title" content="Enzo Simier · Applied Economics & IO">
     <meta property="og:description" content="M.Sc. candidate at HEC Montréal focusing on industrial organization and behavioral policy.">
@@ -18,304 +21,274 @@
   </head>
 
   <body>
-    <!-- Mobile Header (visible only on small screens) -->
-    <header class="mobile-header">
-      <div class="mobile-header-content">
-        <img src="profile.jpg" alt="Enzo Simier" class="mobile-portrait" />
-        <div class="mobile-info">
-          <span class="mobile-name">Enzo Simier</span>
-          <span class="mobile-tag">Applied Economics · IO</span>
+
+    <!-- ========== Pill Navigation ========== -->
+    <nav class="pill-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#reading">Library</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <!-- ========== Hero ========== -->
+    <header class="hero">
+      <div class="hero-card">
+        <div class="hero-text">
+          <h1>Enzo Simier</h1>
+          <p class="tagline">Applied Economics · Industrial Organization</p>
+          <p class="subtitle">M.Sc. candidate at HEC Montréal studying how households respond to water metering and simple nudges in pricing and information.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="Enzo_Simier_CV.pdf" target="_blank" rel="noreferrer">CV</a>
+            <a class="btn" href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="mailto:enzo.simier@hec.ca">Email</a>
+          </div>
         </div>
-        <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
+        <div class="hero-photo">
+          <img src="profile.jpg" alt="Portrait of Enzo Simier" loading="eager" decoding="async" />
+        </div>
       </div>
-      <nav class="mobile-nav" aria-label="Mobile navigation">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-                <a href="#reading">Library</a>
-        <a href="mailto:enzo.simier@hec.ca">Contact</a>
-        <div class="mobile-links">
-          <a class="btn primary" href="Enzo_Simier_CV.pdf" target="_blank" rel="noreferrer">CV</a>
-          <a class="btn" href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-      </nav>
     </header>
 
-    <div class="wrap">
-      <aside class="left">
-        <header class="id">
-          <h1>Enzo Simier</h1>
-          <p class="tag">Applied Economics · Industrial Organization</p>
+    <!-- ========== Bento Grid ========== -->
+    <main class="bento-grid">
 
-          <figure class="portrait">
-            <img src="profile.jpg" alt="Portrait of Enzo Simier" loading="lazy" decoding="async" />
-          </figure>
+      <!-- About -->
+      <section id="about" class="bento-card card-about">
+        <h2 class="card-heading">About</h2>
+        <p class="card-lead">I'm drawn to questions where microeconomic theory meets real-world friction — why households ignore price signals, how market definition shapes merger outcomes, and what makes a nudge actually work. My thesis explores these ideas through residential water metering in Québec.</p>
+        <p class="card-lead">Outside the classroom I've worked on merger reviews at Canada's Competition Bureau and built economic-impact models at KPMG. I'm looking for roles where applied economics drives decisions — in consulting, policy, or tech.</p>
+      </section>
 
-          <nav class="nav" aria-label="Sections">
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#research">Research</a>
-                        <a href="#reading">Library</a>
-            <a href="mailto:enzo.simier@hec.ca">Contact</a>
-          </nav>
+      <!-- Experience -->
+      <section id="experience" class="bento-card card-experience">
+        <h2 class="card-heading">Experience</h2>
 
-          <div class="links">
-            <a class="btn primary" href="Enzo_Simier_CV.pdf" target="_blank" rel="noreferrer">CV</a>
-            <a class="btn" href="mailto:enzo.simier@hec.ca">Email</a>
-            <a class="btn" href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
+        <article class="exp-item">
+          <header class="exp-header">
+            <h3>Competition Bureau</h3>
+            <span class="exp-meta">Summer 2025</span>
+          </header>
+          <p class="exp-role">Intern, Mergers Directorate</p>
+          <ul class="exp-details">
+            <li>Analyzed market definition and computed market shares and HHIs across candidate markets.</li>
+            <li>Applied SSNIP logic, diversion ratios, and first-pass UPP/GUPPI screens to assess unilateral effects.</li>
+            <li>Drafted technical notes on concentration and likely competitive impact for senior economists.</li>
+          </ul>
+        </article>
 
-          <footer class="foot">
-            <small>Montréal, QC</small>
-          </footer>
-        </header>
-      </aside>
+        <article class="exp-item">
+          <header class="exp-header">
+            <h3>KPMG Canada</h3>
+            <span class="exp-meta">Summer 2024</span>
+          </header>
+          <p class="exp-role">Intern, Economic Consulting & Strategy</p>
+          <ul class="exp-details">
+            <li>Built economic-impact models for public projects, quantifying GDP and employment multipliers.</li>
+            <li>Produced executive briefings translating technical findings into clear recommendations.</li>
+            <li>Supported cost-benefit and fiscal impact assessments for municipal clients.</li>
+          </ul>
+        </article>
 
-      <main class="right">
-        <section id="about" class="section intro">
-          <p class="lead">
-            M.Sc. candidate at HEC Montréal with a focus on industrial organization and behavioral policy. I study how households respond to water metering and simple nudges in pricing and information.
-          </p>
-          <p class="lead">
-            Experience spans merger reviews at the Competition Bureau and economic impact analysis at KPMG. Bilingual English/French.
-          </p>
-        </section>
-
-        <section id="experience" class="section">
-          <h2>Experience</h2>
-
-          <article class="item">
-            <header class="head">
-              <h3>Competition Bureau</h3>
-              <span class="meta">Summer 2025</span>
-            </header>
-            <p class="role">Intern, Mergers Directorate</p>
-            <ul class="details">
-              <li>Analyzed market definition and computed market shares and HHIs across candidate markets.</li>
-              <li>Applied SSNIP logic, diversion ratios, and first-pass UPP/GUPPI screens to assess unilateral effects.</li>
-              <li>Drafted technical notes on concentration and likely competitive impact for senior economists.</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <header class="head">
-              <h3>KPMG Canada</h3>
-              <span class="meta">Summer 2024</span>
-            </header>
-            <p class="role">Intern, Economic Consulting & Strategy</p>
-            <ul class="details">
-              <li>Built economic-impact models for public projects, quantifying GDP and employment multipliers.</li>
-              <li>Produced executive briefings translating technical findings into clear recommendations.</li>
-              <li>Supported cost-benefit and fiscal impact assessments for municipal clients.</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <header class="head">
-              <h3>HEC Montréal</h3>
-              <span class="meta">Fall 2023</span>
-            </header>
-            <p class="role">Teaching Assistant, Macroeconomics</p>
-            <ul class="details">
-              <li>Led weekly review sessions on monetary policy, business cycles, and growth.</li>
-              <li>Prepared problem sets and graded assignments on IS-LM, Phillips curve, and Solow.</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <header class="head">
-              <h3>National Bank Accelerator</h3>
-              <span class="meta">Summer 2023</span>
-            </header>
-            <p class="role">Business Development Intern</p>
-            <ul class="details">
-              <li>Designed go-to-market and KPI frameworks for early-stage startups.</li>
-              <li>Completed market sizing and competitor scans for portfolio companies.</li>
-            </ul>
-          </article>
-
-          <article class="item">
-            <header class="head">
-              <h3>Front Row Ventures</h3>
-              <span class="meta">2021 to 2022</span>
-            </header>
-            <p class="role">Business Development Analyst</p>
-            <ul class="details">
-              <li>Built a fund CRM to systematize deal flow and portfolio tracking.</li>
-              <li>Screened 100+ startups and prepared concise investment memos.</li>
-            </ul>
-          </article>
-        </section>
-
-        <section id="skills" class="section">
-          <h2>Skills</h2>
-          
-          <div class="skills-grid">
-            <div class="skill-group">
-              <h4>Behavioral & IO</h4>
-              <p>Market structure, pricing and screening, choice architecture, policy design.</p>
-            </div>
-            
-            <div class="skill-group">
-              <h4>Software</h4>
-              <p>Python (pandas, NumPy, statsmodels, scikit-learn), Advanced Excel, R, Stata, LaTeX.</p>
-            </div>
-            
-            <div class="skill-group">
-              <h4>Communication</h4>
-              <p>Executive memos, data visualization, stakeholder synthesis, bilingual EN/FR.</p>
-            </div>
-            
-            <div class="skill-group">
-              <h4>Other</h4>
-              <p>Water systems, municipal policy, public-sector strategy.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="education" class="section">
-          <h2>Education</h2>
-
-          <article class="edu">
+        <article class="exp-item">
+          <header class="exp-header">
             <h3>HEC Montréal</h3>
-            <p class="meta">M.Sc. in Applied Economics · 2024 to 2026 expected</p>
-            <p class="text">Specialization in industrial organization and behavioral policy.</p>
-          </article>
+            <span class="exp-meta">Fall 2023</span>
+          </header>
+          <p class="exp-role">Teaching Assistant, Macroeconomics</p>
+          <ul class="exp-details">
+            <li>Led weekly review sessions on monetary policy, business cycles, and growth.</li>
+            <li>Prepared problem sets and graded assignments on IS-LM, Phillips curve, and Solow.</li>
+          </ul>
+        </article>
 
-          <article class="edu">
-            <h3>HEC Montréal</h3>
-            <p class="meta">B.B.A. in Economics and Finance · 2020 to 2024</p>
-            <p class="text">Graduated with distinction. Bilingual profile.</p>
-          </article>
-        </section>
+        <article class="exp-item">
+          <header class="exp-header">
+            <h3>National Bank Accelerator</h3>
+            <span class="exp-meta">Summer 2023</span>
+          </header>
+          <p class="exp-role">Business Development Intern</p>
+          <ul class="exp-details">
+            <li>Designed go-to-market and KPI frameworks for early-stage startups.</li>
+            <li>Completed market sizing and competitor scans for portfolio companies.</li>
+          </ul>
+        </article>
 
-        <section id="research" class="section">
-          <h2>Research</h2>
+        <article class="exp-item">
+          <header class="exp-header">
+            <h3>Front Row Ventures</h3>
+            <span class="exp-meta">2021 to 2022</span>
+          </header>
+          <p class="exp-role">Business Development Analyst</p>
+          <ul class="exp-details">
+            <li>Built a fund CRM to systematize deal flow and portfolio tracking.</li>
+            <li>Screened 100+ startups and prepared concise investment memos.</li>
+          </ul>
+        </article>
+      </section>
 
-          <article class="item">
-            <header class="head">
-              <h3>Do water meters change household behavior?</h3>
-              <span class="meta"><span class="pill">Thesis in progress</span></span>
-            </header>
-            <div class="tags">
-              <span class="tag-pill">Behavioral Economics</span>
-              <span class="tag-pill">Policy Design</span>
-              <span class="tag-pill">Public Economics</span>
-            </div>
-            <p class="text">Evaluating whether installing a residential meter reduces consumption and how simple informational cues or pricing layouts shift usage. Supervisors: Justin Leroux and Jean-Luc Martel.</p>
-          </article>
-        </section>
+      <!-- Skills -->
+      <section id="skills" class="bento-card card-skills">
+        <h2 class="card-heading">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-chip">
+            <h4>Behavioral & IO</h4>
+            <p>Market structure, pricing and screening, choice architecture, policy design.</p>
+          </div>
+          <div class="skill-chip">
+            <h4>Software</h4>
+            <p>Python (pandas, NumPy, statsmodels, scikit-learn), Advanced Excel, R, Stata, LaTeX.</p>
+          </div>
+          <div class="skill-chip">
+            <h4>Communication</h4>
+            <p>Executive memos, data visualization, stakeholder synthesis, bilingual EN/FR.</p>
+          </div>
+          <div class="skill-chip">
+            <h4>Domain Expertise</h4>
+            <p>Water systems, municipal policy, public-sector strategy.</p>
+          </div>
+        </div>
+      </section>
 
-        <section id="reading" class="section">
-          <h2>Library</h2>
-          <p class="note">Current reads and favorites that shape how I think about technology, competition, and policy.</p>
+      <!-- Education -->
+      <section id="education" class="bento-card card-education">
+        <h2 class="card-heading">Education</h2>
 
-          <div class="shelf">
-            <article class="book">
-              <a class="cover" href="https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015" target="_blank" rel="noreferrer">
-                <img src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982172015/chip-war-9781982172015_hr.jpg" alt="Chip War by Chris Miller cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Chip War</h4>
-                <p class="by">Chris Miller · 2022</p>
-                <p class="note-text">Semiconductor geopolitics and industrial strategy.</p>
-              </div>
-            </article>
+        <article class="edu-item">
+          <h3>HEC Montréal</h3>
+          <p class="edu-meta">M.Sc. in Applied Economics · 2024 to 2026 expected</p>
+          <p class="edu-text">Specialization in industrial organization and behavioral policy.</p>
+        </article>
 
+        <article class="edu-item">
+          <h3>HEC Montréal</h3>
+          <p class="edu-meta">B.B.A. in Economics and Finance · 2020 to 2024</p>
+          <p class="edu-text">Graduated with distinction. Bilingual profile.</p>
+        </article>
+      </section>
 
-            <article class="book">
-              <a class="cover" href="https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/" target="_blank" rel="noreferrer">
-                <img src="https://images1.penguinrandomhouse.com/cover/9780593467428" alt="Material World by Ed Conway cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Material World</h4>
-                <p class="by">Ed Conway · 2023</p>
-                <p class="note-text">Raw materials and the economics beneath everything.</p>
-              </div>
-            </article>
+      <!-- Research -->
+      <section id="research" class="bento-card card-research">
+        <h2 class="card-heading">Research</h2>
 
-            <article class="book">
-              <a class="cover" href="https://press.stripe.com/working-in-public" target="_blank" rel="noreferrer">
-                <img src="https://covers.openlibrary.org/b/isbn/0578675862-L.jpg" alt="Working in Public by Nadia Eghbal cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Working in Public</h4>
-                <p class="by">Nadia Eghbal · Stripe Press</p>
-                <p class="note-text">Open-source dynamics and incentives.</p>
-              </div>
-            </article>
+        <article class="research-item">
+          <header class="exp-header">
+            <h3>Do water meters change household behavior?</h3>
+            <span class="research-pill">Thesis in progress</span>
+          </header>
+          <div class="research-tags">
+            <span class="tag-pill">Behavioral Economics</span>
+            <span class="tag-pill">Policy Design</span>
+            <span class="tag-pill">Public Economics</span>
+          </div>
+          <p class="research-text">Evaluating whether installing a residential meter reduces consumption and how simple informational cues or pricing layouts shift usage. Supervisors: Justin Leroux and Jean-Luc Martel.</p>
+        </article>
+      </section>
 
-            <article class="book">
-              <a class="cover" href="https://en.wikipedia.org/wiki/Zero_to_One" target="_blank" rel="noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Zero_to_One.jpg/400px-Zero_to_One.jpg" alt="Zero to One by Peter Thiel cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Zero to One</h4>
-                <p class="by">Peter Thiel with Blake Masters · 2014</p>
-                <p class="note-text">Differentiation, monopoly power, and building from scratch.</p>
-              </div>
-            </article>
+      <!-- Contact -->
+      <section id="contact" class="bento-card card-contact">
+        <h2 class="card-heading">Contact</h2>
+        <p class="contact-text">Based in Montréal, QC. Always open to conversations about economics, policy, and research.</p>
+        <div class="contact-links">
+          <a class="btn primary" href="mailto:enzo.simier@hec.ca">Email</a>
+          <a class="btn" href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn" href="Enzo_Simier_CV.pdf" target="_blank" rel="noreferrer">CV</a>
+        </div>
+        <p class="contact-detail">enzo.simier@hec.ca</p>
+      </section>
 
-            <article class="book">
-              <a class="cover" href="https://en.wikipedia.org/wiki/Elon_Musk_(Isaacson_book)" target="_blank" rel="noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Elon_Musk_Walter_Isaacson_book_cover.jpg/400px-Elon_Musk_Walter_Isaacson_book_cover.jpg" alt="Elon Musk by Walter Isaacson cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Elon Musk</h4>
-                <p class="by">Walter Isaacson · 2023</p>
-                <p class="note-text">Biography of a polarizing builder.</p>
-              </div>
-            </article>
+      <!-- Library -->
+      <section id="reading" class="bento-card card-library">
+        <h2 class="card-heading">Library</h2>
+        <p class="library-note">Current reads and favorites that shape how I think about technology, competition, and policy.</p>
 
-            <article class="book">
-              <a class="cover" href="https://en.wikipedia.org/wiki/Churchill:_Walking_with_Destiny" target="_blank" rel="noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/62/Churchill_%28Andrew_Roberts_book_cover%29.jpg/400px-Churchill_%28Andrew_Roberts_book_cover%29.jpg" alt="Churchill: Walking with Destiny cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Churchill: Walking with Destiny</h4>
-                <p class="by">Andrew Roberts · 2018</p>
-                <p class="note-text">Leadership, strategy, and impossible decisions.</p>
-              </div>
-            </article>
-
-            <article class="book">
-              <a class="cover" href="https://en.wikipedia.org/wiki/Caesar,_Life_of_a_Colossus" target="_blank" rel="noreferrer">
-                <img src="https://upload.wikimedia.org/wikipedia/en/e/ed/Life_of_a_Colossus%2C_Goldsworthy.png" alt="Caesar: Life of a Colossus cover">
-              </a>
-              <div class="meta">
-                <h4 class="title">Caesar: Life of a Colossus</h4>
-                <p class="by">Adrian Goldsworthy · 2006</p>
-                <p class="note-text">Republic politics, empire building, and strategy.</p>
-              </div>
-            </article>
-            
+        <div class="shelf">
           <article class="book">
-             <a class="cover" href="https://en.wikipedia.org/wiki/Commentarii_de_Bello_Gallico" target="_blank" rel="noreferrer">
-                <img src="https://covers.openlibrary.org/b/isbn/9780140444339-L.jpg" alt="The Conquest of Gaul by Julius Caesar cover">
+            <a class="book-cover" href="https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015" target="_blank" rel="noreferrer">
+              <img src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982172015/chip-war-9781982172015_hr.jpg" alt="Chip War by Chris Miller cover" loading="lazy">
             </a>
-            <div class="meta">
-              <h4 class="title">The Conquest of Gaul</h4>
-              <p class="by">Julius Caesar · c. 50 BCE</p>
-              <p class="note-text">First-hand campaign narrative and political messaging from the Gallic Wars.</p>
-            </div>
+            <p class="book-title">Chip War</p>
+            <p class="book-author">Chris Miller · 2022</p>
+            <p class="book-note">Semiconductor geopolitics and industrial strategy.</p>
           </article>
 
-          </div>
-        </section>
+          <article class="book">
+            <a class="book-cover" href="https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/" target="_blank" rel="noreferrer">
+              <img src="https://images1.penguinrandomhouse.com/cover/9780593467428" alt="Material World by Ed Conway cover" loading="lazy">
+            </a>
+            <p class="book-title">Material World</p>
+            <p class="book-author">Ed Conway · 2023</p>
+            <p class="book-note">Raw materials and the economics beneath everything.</p>
+          </article>
 
-        <footer class="page-foot">
-          <p>Montréal, QC · <a href="mailto:enzo.simier@hec.ca">enzo.simier@hec.ca</a> · <a href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a></p>
-        </footer>
-      </main>
-    </div>
+          <article class="book">
+            <a class="book-cover" href="https://press.stripe.com/working-in-public" target="_blank" rel="noreferrer">
+              <img src="https://covers.openlibrary.org/b/isbn/0578675862-L.jpg" alt="Working in Public by Nadia Eghbal cover" loading="lazy">
+            </a>
+            <p class="book-title">Working in Public</p>
+            <p class="book-author">Nadia Eghbal · Stripe Press</p>
+            <p class="book-note">Open-source dynamics and incentives.</p>
+          </article>
+
+          <article class="book">
+            <a class="book-cover" href="https://en.wikipedia.org/wiki/Zero_to_One" target="_blank" rel="noreferrer">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Zero_to_One.jpg/400px-Zero_to_One.jpg" alt="Zero to One by Peter Thiel cover" loading="lazy">
+            </a>
+            <p class="book-title">Zero to One</p>
+            <p class="book-author">Peter Thiel with Blake Masters · 2014</p>
+            <p class="book-note">Differentiation, monopoly power, and building from scratch.</p>
+          </article>
+
+          <article class="book">
+            <a class="book-cover" href="https://en.wikipedia.org/wiki/Elon_Musk_(Isaacson_book)" target="_blank" rel="noreferrer">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Elon_Musk_Walter_Isaacson_book_cover.jpg/400px-Elon_Musk_Walter_Isaacson_book_cover.jpg" alt="Elon Musk by Walter Isaacson cover" loading="lazy">
+            </a>
+            <p class="book-title">Elon Musk</p>
+            <p class="book-author">Walter Isaacson · 2023</p>
+            <p class="book-note">Biography of a polarizing builder.</p>
+          </article>
+
+          <article class="book">
+            <a class="book-cover" href="https://en.wikipedia.org/wiki/Churchill:_Walking_with_Destiny" target="_blank" rel="noreferrer">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/62/Churchill_%28Andrew_Roberts_book_cover%29.jpg/400px-Churchill_%28Andrew_Roberts_book_cover%29.jpg" alt="Churchill: Walking with Destiny cover" loading="lazy">
+            </a>
+            <p class="book-title">Churchill: Walking with Destiny</p>
+            <p class="book-author">Andrew Roberts · 2018</p>
+            <p class="book-note">Leadership, strategy, and impossible decisions.</p>
+          </article>
+
+          <article class="book">
+            <a class="book-cover" href="https://en.wikipedia.org/wiki/Caesar,_Life_of_a_Colossus" target="_blank" rel="noreferrer">
+              <img src="https://upload.wikimedia.org/wikipedia/en/e/ed/Life_of_a_Colossus%2C_Goldsworthy.png" alt="Caesar: Life of a Colossus cover" loading="lazy">
+            </a>
+            <p class="book-title">Caesar: Life of a Colossus</p>
+            <p class="book-author">Adrian Goldsworthy · 2006</p>
+            <p class="book-note">Republic politics, empire building, and strategy.</p>
+          </article>
+
+          <article class="book">
+            <a class="book-cover" href="https://en.wikipedia.org/wiki/Commentarii_de_Bello_Gallico" target="_blank" rel="noreferrer">
+              <img src="https://covers.openlibrary.org/b/isbn/9780140444339-L.jpg" alt="The Conquest of Gaul by Julius Caesar cover" loading="lazy">
+            </a>
+            <p class="book-title">The Conquest of Gaul</p>
+            <p class="book-author">Julius Caesar · c. 50 BCE</p>
+            <p class="book-note">First-hand campaign narrative and political messaging from the Gallic Wars.</p>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>Montréal, QC · <a href="mailto:enzo.simier@hec.ca">enzo.simier@hec.ca</a> · <a href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a></p>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
