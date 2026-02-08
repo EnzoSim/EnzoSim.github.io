@@ -281,6 +281,8 @@ body{
   border-radius: var(--radius);
   padding: clamp(24px, 3vw, 40px);
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  min-width: 0;
+  overflow: hidden;
   transition: transform 0.3s cubic-bezier(.4,0,.2,1),
               box-shadow 0.3s cubic-bezier(.4,0,.2,1);
 
