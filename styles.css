@@ -269,9 +269,9 @@ body{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
-    "about      about      skills     skills"
-    "experience experience education  education"
+    "about      about      research   research"
     "experience experience research   research"
+    "experience experience skills     education"
     "library    library    library    library";
   gap: var(--gap);
 }
@@ -343,6 +343,10 @@ body{
   max-width: 60ch;
 }
 .card-lead + .card-lead{ margin-top: 12px; }
+.card-about .card-lead{
+  font-size: var(--text-base);
+  line-height: 1.75;
+}
 
 /* ---------- Experience Card ---------- */
 .exp-item{
@@ -441,16 +445,23 @@ body{
 }
 
 /* ---------- Research Card ---------- */
+.card-research{
+  background: linear-gradient(180deg, var(--bg-card) 0%, var(--accent-soft) 100%);
+}
+.card-research .card-heading{
+  border-bottom-color: rgba(37,99,235,0.26);
+}
 .research-item h3{
-  font-size: var(--text-base);
+  font-size: var(--text-xl);
   font-weight: 700;
-  margin-bottom: 8px;
+  line-height: 1.22;
+  margin-bottom: 10px;
 }
 .research-tags{
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .tag-pill{
   display: inline-block;
@@ -481,14 +492,45 @@ body{
 }
 .research-text{
   color: var(--ink-secondary);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   line-height: 1.7;
+  margin-bottom: 18px;
+}
+.research-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.research-block{
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.research-label{
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+  margin-bottom: 6px;
+}
+.research-detail{
+  color: var(--ink-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.65;
+}
+.research-supervisors{
+  color: var(--ink-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.65;
+}
+.research-supervisors strong{
+  color: var(--ink);
 }
 
 /* ---------- Library Card ---------- */
 .library-note{
   color: var(--ink-secondary);
-  font-style: italic;
   font-size: var(--text-sm);
   margin-bottom: 20px;
 }
@@ -667,9 +709,9 @@ body{
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       "about      about"
+      "research   research"
       "experience experience"
-      "skills     skills"
-      "education  research"
+      "skills     education"
       "library    library";
     padding: 0 24px 100px;
   }
@@ -701,10 +743,10 @@ body{
     grid-template-columns: 1fr;
     grid-template-areas:
       "about"
+      "research"
       "experience"
       "skills"
       "education"
-      "research"
       "library";
     padding: 0 16px calc(80px + env(safe-area-inset-bottom, 0px));
   }
@@ -734,6 +776,7 @@ body{
   }
 
   .exp-header{ flex-direction: column; gap: 4px; }
+  .research-grid{ grid-template-columns: 1fr; }
 }
 
 /* ---------- Focus Styles (Accessibility) ---------- */
