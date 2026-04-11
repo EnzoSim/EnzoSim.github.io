@@ -62,12 +62,20 @@
 
   /* ---------- 4. Work Accordion ---------- */
   const expItems = document.querySelectorAll('.exp-item');
+  if (expItems.length && !Array.from(expItems).some((item) => item.open)) {
+    expItems[0].open = true;
+  }
   expItems.forEach((item) => {
     item.addEventListener('toggle', () => {
-      if (!item.open) return;
-      expItems.forEach((other) => {
-        if (other !== item) other.open = false;
-      });
+      if (item.open) {
+        expItems.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+        return;
+      }
+      if (!Array.from(expItems).some((other) => other.open)) {
+        item.open = true;
+      }
     });
   });
 
