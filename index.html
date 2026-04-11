@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260411a" />
+    <link rel="stylesheet" href="styles.css?v=20260411b" />
     <link rel="canonical" href="https://enzosimier.com/">
     <meta property="og:title" content="Enzo Simier · Applied Economics & IO">
     <meta property="og:description" content="Applied economics for industrial organization, pricing, and behavioral policy.">
@@ -25,7 +25,7 @@
     <!-- ========== Pill Navigation ========== -->
     <nav class="pill-nav" aria-label="Main navigation">
       <a href="#about">About</a>
-      <a href="#experience">Experience</a>
+      <a href="#experience">Work</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
       <a href="#research">Research</a>
@@ -67,67 +67,92 @@
 
       <!-- Experience -->
       <section id="experience" class="bento-card card-experience">
-        <h2 class="card-heading">Selected Experience</h2>
+        <h2 class="card-heading">Work</h2>
 
-        <article class="exp-item">
-          <header class="exp-header">
-            <h3>Competition Bureau</h3>
-            <span class="exp-meta">Summer 2025</span>
-          </header>
-          <p class="exp-role">Intern, Mergers Directorate</p>
+        <details class="exp-item" open>
+          <summary class="exp-summary">
+            <div class="exp-main">
+              <h3>Competition Bureau</h3>
+              <p class="exp-role">Intern, Mergers Directorate</p>
+            </div>
+            <div class="exp-side">
+              <span class="exp-meta">Summer 2025</span>
+              <span class="exp-caret" aria-hidden="true"></span>
+            </div>
+          </summary>
           <ul class="exp-details">
             <li>Analyzed candidate markets using shares, HHIs, diversion logic, and first-pass unilateral-effects screens.</li>
             <li>Drafted technical notes translating economic evidence on concentration and substitution for senior economists.</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="exp-item">
-          <header class="exp-header">
-            <h3>KPMG Canada</h3>
-            <span class="exp-meta">Summer 2024</span>
-          </header>
-          <p class="exp-role">Intern, Economic Consulting & Strategy</p>
+        <details class="exp-item">
+          <summary class="exp-summary">
+            <div class="exp-main">
+              <h3>KPMG Canada</h3>
+              <p class="exp-role">Intern, Economic Consulting &amp; Strategy</p>
+            </div>
+            <div class="exp-side">
+              <span class="exp-meta">Summer 2024</span>
+              <span class="exp-caret" aria-hidden="true"></span>
+            </div>
+          </summary>
           <ul class="exp-details">
             <li>Built economic-impact and cost-benefit models for public projects, quantifying GDP, employment, and fiscal effects.</li>
             <li>Produced executive briefings that translated technical analysis into clear recommendations for public-sector clients.</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="exp-item">
-          <header class="exp-header">
-            <h3>HEC Montréal</h3>
-            <span class="exp-meta">Fall 2023</span>
-          </header>
-          <p class="exp-role">Teaching Assistant, Macroeconomics</p>
+        <details class="exp-item">
+          <summary class="exp-summary">
+            <div class="exp-main">
+              <h3>HEC Montréal</h3>
+              <p class="exp-role">Teaching Assistant, Macroeconomics</p>
+            </div>
+            <div class="exp-side">
+              <span class="exp-meta">Fall 2023</span>
+              <span class="exp-caret" aria-hidden="true"></span>
+            </div>
+          </summary>
           <ul class="exp-details">
             <li>Led weekly review sessions on growth, business cycles, and monetary policy for undergraduate students.</li>
             <li>Prepared and graded problem sets on IS-LM, the Phillips curve, and the Solow model.</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="exp-item">
-          <header class="exp-header">
-            <h3>National Bank Accelerator</h3>
-            <span class="exp-meta">Summer 2023</span>
-          </header>
-          <p class="exp-role">Business Development Intern</p>
+        <details class="exp-item">
+          <summary class="exp-summary">
+            <div class="exp-main">
+              <h3>National Bank Accelerator</h3>
+              <p class="exp-role">Business Development Intern</p>
+            </div>
+            <div class="exp-side">
+              <span class="exp-meta">Summer 2023</span>
+              <span class="exp-caret" aria-hidden="true"></span>
+            </div>
+          </summary>
           <ul class="exp-details">
             <li>Designed go-to-market and KPI frameworks for early-stage startups in the accelerator portfolio.</li>
             <li>Completed market sizing and competitor scans to support strategic decision-making for founding teams.</li>
           </ul>
-        </article>
+        </details>
 
-        <article class="exp-item">
-          <header class="exp-header">
-            <h3>Front Row Ventures</h3>
-            <span class="exp-meta">2021 to 2022</span>
-          </header>
-          <p class="exp-role">Business Development Analyst</p>
+        <details class="exp-item">
+          <summary class="exp-summary">
+            <div class="exp-main">
+              <h3>Front Row Ventures</h3>
+              <p class="exp-role">Business Development Analyst</p>
+            </div>
+            <div class="exp-side">
+              <span class="exp-meta">2021 to 2022</span>
+              <span class="exp-caret" aria-hidden="true"></span>
+            </div>
+          </summary>
           <ul class="exp-details">
             <li>Built a fund CRM to systematize deal flow and portfolio tracking.</li>
             <li>Screened startups and prepared concise investment memos for the team.</li>
           </ul>
-        </article>
+        </details>
       </section>
 
       <!-- Skills -->
@@ -244,6 +269,6 @@
       <p>Montréal, QC · <a href="mailto:enzo.simier@hec.ca">enzo.simier@hec.ca</a> · <a href="https://linkedin.com/in/enzo-simier" target="_blank" rel="noreferrer">LinkedIn</a></p>
     </footer>
 
-    <script src="script.js?v=20260403"></script>
+    <script src="script.js?v=20260411b"></script>
   </body>
 </html>

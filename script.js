@@ -60,7 +60,18 @@
     });
   });
 
-  /* ---------- 4. Theme Toggle ---------- */
+  /* ---------- 4. Work Accordion ---------- */
+  const expItems = document.querySelectorAll('.exp-item');
+  expItems.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      expItems.forEach((other) => {
+        if (other !== item) other.open = false;
+      });
+    });
+  });
+
+  /* ---------- 5. Theme Toggle ---------- */
   const themeToggle = document.querySelector('.theme-toggle');
 
   function getSystemTheme() {
@@ -102,7 +113,7 @@
     }
   });
 
-  /* ---------- 5. Auto-Hide Pill Nav ---------- */
+  /* ---------- 6. Auto-Hide Pill Nav ---------- */
   const nav = document.querySelector('.pill-nav');
   let lastScrollY = window.scrollY;
   let ticking = false;
