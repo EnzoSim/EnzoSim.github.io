@@ -270,7 +270,6 @@ body{
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "about      about      research   research"
-    "experience experience research   research"
     "experience experience skills     education"
     "library    library    library    library";
   gap: var(--gap);
@@ -457,32 +456,35 @@ body{
 
 /* ---------- Research Card ---------- */
 .card-research{
-  background: linear-gradient(180deg, var(--bg-card) 0%, var(--accent-soft) 100%);
+  background: linear-gradient(180deg, var(--bg-card) 0%, #f5f9ff 100%);
+  align-self: start;
+}
+@media(prefers-color-scheme:dark){
+  .card-research{
+    background: linear-gradient(180deg, var(--bg-card) 0%, #182233 100%);
+  }
+}
+[data-theme="light"] .card-research{
+  background: linear-gradient(180deg, var(--bg-card) 0%, #f5f9ff 100%);
+}
+[data-theme="dark"] .card-research{
+  background: linear-gradient(180deg, var(--bg-card) 0%, #182233 100%);
 }
 .card-research .card-heading{
   border-bottom-color: rgba(37,99,235,0.26);
 }
+.research-item{
+  display: grid;
+  gap: 12px;
+}
+.research-kicker{
+  width: fit-content;
+}
 .research-item h3{
-  font-size: var(--text-xl);
+  font-size: clamp(1.125rem, 1.02rem + 0.5vw, 1.5rem);
   font-weight: 700;
-  line-height: 1.22;
-  margin-bottom: 10px;
-}
-.research-tags{
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-.tag-pill{
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  border: 1px solid var(--accent);
-  background: var(--accent-soft);
-  color: var(--accent);
+  line-height: 1.24;
+  max-width: 16ch;
 }
 .research-pill{
   display: inline-block;
@@ -503,56 +505,104 @@ body{
 }
 .research-text{
   color: var(--ink-secondary);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   line-height: 1.7;
-  margin-bottom: 18px;
+  max-width: 34ch;
 }
-.research-grid{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.research-block{
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
-.research-label{
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-secondary);
-  margin-bottom: 6px;
-}
-.research-detail{
+.research-focus{
   color: var(--ink-secondary);
   font-size: var(--text-sm);
   line-height: 1.65;
+  padding-top: 12px;
+  border-top: 1px solid rgba(37,99,235,0.16);
 }
 .research-supervisors{
   color: var(--ink-secondary);
   font-size: var(--text-sm);
   line-height: 1.65;
 }
+.research-focus strong,
 .research-supervisors strong{
   color: var(--ink);
 }
 
 /* ---------- Library Card ---------- */
+.card-library{
+  background: linear-gradient(180deg, var(--bg-card) 0%, #fbf6ee 100%);
+}
+@media(prefers-color-scheme:dark){
+  .card-library{
+    background: linear-gradient(180deg, var(--bg-card) 0%, #181311 100%);
+  }
+}
+[data-theme="light"] .card-library{
+  background: linear-gradient(180deg, var(--bg-card) 0%, #fbf6ee 100%);
+}
+[data-theme="dark"] .card-library{
+  background: linear-gradient(180deg, var(--bg-card) 0%, #181311 100%);
+}
+.card-library .card-heading{
+  border-bottom-color: rgba(139,106,50,0.26);
+}
 .library-note{
   color: var(--ink-secondary);
   font-size: var(--text-sm);
   margin-bottom: 20px;
+  max-width: 42ch;
 }
 
+.library-stage{
+  position: relative;
+  margin-top: 28px;
+  padding: 10px 0 30px;
+}
+.library-stage::before{
+  content: "";
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 28px;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0) 72%);
+  filter: blur(10px);
+  opacity: 0.55;
+}
+.library-stage::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #9d7145 0%, #6f4b2f 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 10px 18px rgba(48,29,16,0.18);
+}
+@media(prefers-color-scheme:dark){
+  .library-stage::after{
+    background: linear-gradient(180deg, #5a3c24 0%, #362214 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 18px rgba(0,0,0,0.4);
+  }
+}
+[data-theme="light"] .library-stage::after{
+  background: linear-gradient(180deg, #9d7145 0%, #6f4b2f 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), 0 10px 18px rgba(48,29,16,0.18);
+}
+[data-theme="dark"] .library-stage::after{
+  background: linear-gradient(180deg, #5a3c24 0%, #362214 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 10px 18px rgba(0,0,0,0.4);
+}
 .shelf{
+  position: relative;
+  z-index: 1;
   display: flex;
-  gap: 20px;
+  gap: 24px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
+  align-items: flex-end;
+  padding: 10px 8px 30px;
+  perspective: 1800px;
 }
 
 /* Hide scrollbar but keep functionality */
@@ -564,39 +614,83 @@ body{
 }
 
 .book{
-  flex: 0 0 180px;
+  --book-accent: #8b6a32;
+  flex: 0 0 170px;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: transform 0.2s ease;
+  gap: 12px;
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1);
 }
-.book:hover{ transform: translateY(-4px); }
+.book:hover{ transform: translateY(-10px); }
 
 .book-cover{
+  position: relative;
   display: block;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px 12px 12px 10px;
+  overflow: visible;
   aspect-ratio: 2/3;
   background: var(--bg-page);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transform: rotateY(-24deg);
+  box-shadow: 0 16px 24px rgba(0,0,0,0.16);
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1),
+              box-shadow 0.35s cubic-bezier(.22,1,.36,1),
+              border-color 0.35s ease;
+}
+.book-cover::before{
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: -12px;
+  width: 12px;
+  border-radius: 8px 0 0 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(0,0,0,0.08)), var(--book-accent);
+  transform-origin: right center;
+  transform: rotateY(-72deg);
+}
+.book-cover::after{
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 10%;
+  bottom: -18px;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 72%);
+  filter: blur(5px);
+  transform: translateZ(-16px);
+  pointer-events: none;
+}
+.book:hover .book-cover{
+  transform: rotateY(-12deg) translateY(-8px);
+  box-shadow: 0 24px 32px rgba(0,0,0,0.22);
+  border-color: rgba(37,99,235,0.22);
 }
 @media(prefers-color-scheme:dark){
   .book-cover{
-    background: var(--bg-page);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 28px rgba(0,0,0,0.4);
+  }
+  .book:hover .book-cover{
+    box-shadow: 0 26px 34px rgba(0,0,0,0.48);
   }
 }
-.book-cover:hover{
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  border-color: var(--accent);
+[data-theme="dark"] .book-cover{
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 20px 28px rgba(0,0,0,0.4);
+}
+[data-theme="dark"] .book:hover .book-cover{
+  box-shadow: 0 26px 34px rgba(0,0,0,0.48);
 }
 .book-cover img{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: inherit;
 }
 
 .book-title{
@@ -611,8 +705,8 @@ body{
 .book-note{
   font-size: var(--text-xs);
   color: var(--ink-secondary);
-  font-style: italic;
-  line-height: 1.45;
+  line-height: 1.5;
+  max-width: 20ch;
 }
 
 /* ---------- Theme Toggle Button ---------- */
@@ -720,9 +814,9 @@ body{
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       "about      about"
-      "research   research"
       "experience experience"
       "skills     education"
+      "research   research"
       "library    library";
     padding: 0 24px 100px;
   }
@@ -754,10 +848,10 @@ body{
     grid-template-columns: 1fr;
     grid-template-areas:
       "about"
-      "research"
       "experience"
       "skills"
       "education"
+      "research"
       "library";
     padding: 0 16px calc(80px + env(safe-area-inset-bottom, 0px));
   }
@@ -780,14 +874,45 @@ body{
 
   .site-footer{ padding: 24px 16px calc(40px + env(safe-area-inset-bottom, 0px)); }
 
-  .book{ flex: 0 0 150px; }
+  .library-stage{
+    margin-top: 20px;
+    padding: 8px 0 24px;
+  }
+  .library-stage::before{
+    left: 16px;
+    right: 16px;
+    bottom: 22px;
+  }
+  .library-stage::after{
+    bottom: 4px;
+    height: 14px;
+  }
+
+  .shelf{
+    gap: 16px;
+    padding: 8px 4px 22px;
+    perspective: none;
+  }
+
+  .book{
+    flex: 0 0 140px;
+    gap: 10px;
+  }
+  .book:hover{ transform: none; }
+
+  .book-cover{
+    transform: none;
+    border-radius: 12px;
+  }
+  .book-cover::before{ display: none; }
+  .book-cover::after{ bottom: -14px; }
+  .book:hover .book-cover{ transform: none; }
 
   .card-heading{
     font-size: var(--text-lg);
   }
 
   .exp-header{ flex-direction: column; gap: 4px; }
-  .research-grid{ grid-template-columns: 1fr; }
 }
 
 /* ---------- Focus Styles (Accessibility) ---------- */
