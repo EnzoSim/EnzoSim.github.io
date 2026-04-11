@@ -396,12 +396,19 @@ body{
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
+.card-skills .skills-grid{
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
 .skill-chip{
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 14px;
   background: var(--bg-page);
   transition: border-color 0.2s, transform 0.2s;
+}
+.card-skills .skill-chip{
+  padding: 14px 16px;
 }
 .skill-chip:hover{
   border-color: var(--accent);
@@ -416,6 +423,10 @@ body{
   font-size: var(--text-xs);
   color: var(--ink-secondary);
   line-height: 1.55;
+}
+.card-skills .skill-chip p{
+  font-size: var(--text-sm);
+  line-height: 1.6;
 }
 
 /* ---------- Education Card ---------- */
