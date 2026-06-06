@@ -286,7 +286,6 @@ body{
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "about      about      research   research"
-    "photos     photos     photos     photos"
     "experience experience skills     education"
     "library    library    library    library"
     "travel     travel     travel     travel";
@@ -334,7 +333,6 @@ body{
 
 /* Grid area assignments */
 .card-about      { grid-area: about; }
-.card-photos     { grid-area: photos; }
 .card-skills     { grid-area: skills; }
 .card-experience { grid-area: experience; }
 .card-education  { grid-area: education; }
@@ -365,31 +363,6 @@ body{
 .card-about .card-lead{
   font-size: var(--text-base);
   line-height: 1.75;
-}
-
-/* ---------- Photos Card ---------- */
-.card-photos{
-  padding: clamp(18px, 2.4vw, 32px);
-}
-.photo-pair{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--gap);
-}
-.site-photo{
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  height: auto;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background: var(--bg-page);
-}
-.site-photo:first-child{
-  object-position: center 58%;
-}
-.site-photo:last-child{
-  object-position: center 52%;
 }
 
 /* ---------- Experience Card ---------- */
@@ -960,7 +933,6 @@ body{
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
       "about      about"
-      "photos     photos"
       "experience experience"
       "skills     education"
       "research   research"
@@ -996,7 +968,6 @@ body{
     grid-template-columns: 1fr;
     grid-template-areas:
       "about"
-      "photos"
       "experience"
       "skills"
       "education"
@@ -1007,17 +978,6 @@ body{
   }
 
   .bento-card{ padding: 20px; }
-
-  .photo-pair{
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .site-photo{
-    aspect-ratio: 4 / 5;
-    object-position: center center;
-    border-radius: 14px;
-  }
 
   .skills-grid{
     grid-template-columns: 1fr;
