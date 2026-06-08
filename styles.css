@@ -768,6 +768,10 @@ body{
 .card-travel .card-heading{
   border-bottom-color: color-mix(in srgb, var(--travel-accent) 30%, var(--line));
 }
+.travel-list{
+  display: grid;
+  gap: 14px;
+}
 .travel-card{
   display: grid;
   grid-template-columns: 78px minmax(0, 1fr) auto;
