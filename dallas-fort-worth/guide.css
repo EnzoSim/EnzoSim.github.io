@@ -1023,6 +1023,53 @@ ol {
   margin-top: 46px;
 }
 
+.official-check {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 34px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.official-check article {
+  min-height: 230px;
+  padding: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 240, 0.86), rgba(245, 234, 219, 0.76));
+}
+
+.official-check span {
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.official-check strong {
+  display: block;
+  margin: 12px 0 10px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.22;
+}
+
+.official-check p {
+  margin: 0 0 18px;
+  color: #55483d;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.official-check a {
+  color: var(--terra-deep);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .activity-card {
   display: flex;
   flex-direction: column;
@@ -1063,11 +1110,11 @@ ol {
 
 .photo-arts {
   --photo: url("assets/dallas-arts-dma.jpg");
-  background-position: center 54%;
+  background-position: center 48%;
 }
 .photo-park {
   --photo: url("assets/dallas-klyde-warren.jpg");
-  background-position: center 56%;
+  background-position: center 48%;
 }
 .photo-trail {
   --photo: url("assets/dallas-mline-trolley.jpg");
@@ -1075,12 +1122,12 @@ ol {
 }
 .photo-bishop {
   --photo: url("assets/dallas-bishop-arts.jpg");
-  background-position: center 54%;
+  background-position: center 48%;
 }
 .photo-night {
   --photo: url("assets/dallas-deep-ellum.jpg");
-  background-position: center 52%;
-  filter: saturate(0.82) contrast(1.08);
+  background-position: center 42%;
+  filter: saturate(1.02) contrast(1.04);
 }
 
 .activity-copy {
@@ -1572,6 +1619,7 @@ ol {
   .option-grid,
   .bar-list,
   .fort-grid,
+  .official-check,
   .sightseeing-strip,
   .local-picks,
   .sources-grid {
