@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <title>FDA Catalyst Research · Enzo Simier</title>
-    <meta name="description" content="A biotech and pharma FDA catalyst research product with a BPIQ-backed calendar, FastAPI service, Next.js UI, and planned Railway deployment under enzosimier.com." />
+    <meta name="description" content="A biotech and pharma FDA catalyst research product with a BPIQ-backed calendar, FastAPI service, Next.js UI, and live Railway deployment." />
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#0c0c0e" media="(prefers-color-scheme: dark)">
     <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles.css?v=20260620fda" />
     <link rel="canonical" href="https://enzosimier.com/fda-catalyst.html">
     <meta property="og:title" content="FDA Catalyst Research · Enzo Simier">
-    <meta property="og:description" content="A biotech and pharma FDA catalyst research product with a BPIQ-backed calendar and planned Railway deployment.">
+    <meta property="og:description" content="A biotech and pharma FDA catalyst research product with a BPIQ-backed calendar and live Railway deployment.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://enzosimier.com/fda-catalyst.html">
   </head>
@@ -36,9 +36,9 @@
         <div class="project-hero-copy">
           <a class="project-back" href="index.html">Enzo Simier</a>
           <h1>FDA Catalyst Research</h1>
-          <p>A research product for tracking biotech and pharma companies with near-term FDA or clinical catalysts. The current build turns stored BPIQ data into a compact calendar with source links, event filters, market context, and a Railway deployment path.</p>
+          <p>A research product for tracking biotech and pharma companies with near-term FDA or clinical catalysts. The current build turns stored BPIQ data into a compact live calendar with source links, event filters, market context, and TradingView links.</p>
           <div class="project-actions">
-            <a class="btn primary" href="#deployment">Deployment plan</a>
+            <a class="btn primary" href="https://fda-catalyst-web-production.up.railway.app/calendar">Open live calendar</a>
             <a class="btn" href="#architecture">Architecture</a>
           </div>
         </div>
@@ -46,12 +46,12 @@
         <div class="calendar-preview" aria-label="Stylized FDA catalyst calendar preview">
           <div class="calendar-preview-head">
             <span>90d calendar</span>
-            <strong>129</strong>
+            <strong>128</strong>
           </div>
           <div class="calendar-preview-metrics">
-            <span><strong>103</strong> companies</span>
+            <span><strong>101</strong> companies</span>
             <span><strong>23</strong> PDUFA</span>
-            <span><strong>101</strong> readouts</span>
+            <span><strong>100</strong> readouts</span>
           </div>
           <div class="calendar-preview-table">
             <div><strong>ACHV</strong><span>PDUFA</span><em>Source</em></div>
@@ -67,7 +67,7 @@
       <section class="project-section" id="architecture">
         <div>
           <h2>What exists now</h2>
-          <p>The local app already has the core product surface: a FastAPI service, SQLite-backed BPIQ extraction records, and a Next.js calendar page that can be promoted to a hosted deployment.</p>
+          <p>The app has the core product surface live: a FastAPI service, Postgres-backed BPIQ extraction records, and a Next.js calendar page deployed on Railway.</p>
         </div>
         <div class="project-grid">
           <article class="project-info-card">
@@ -76,7 +76,7 @@
           </article>
           <article class="project-info-card">
             <h3>Data</h3>
-            <p>BPIQ REST API responses are stored as raw records in SQLite locally, with a path to hosted Postgres for production.</p>
+            <p>BPIQ REST API responses are stored as raw records locally and ported into Railway Postgres for the hosted calendar.</p>
           </article>
           <article class="project-info-card">
             <h3>UI</h3>
@@ -88,28 +88,26 @@
       <section class="project-section project-section-split" id="deployment">
         <div>
           <h2>Railway status</h2>
-          <p>The repo is configured for Railway, but it is not yet a full live deployment. The local Railway CLI reports that no project is linked from the repository yet.</p>
+          <p>The Railway deployment is live with two services: a Python API and a Next.js web app. The current public URLs are generated Railway domains while custom subdomains are prepared.</p>
         </div>
         <div class="deployment-status">
-          <div class="status-line"><span>Railway link</span><strong>Not linked yet</strong></div>
-          <div class="status-line"><span>Target web domain</span><strong>catalysts.enzosimier.com</strong></div>
-          <div class="status-line"><span>Target API domain</span><strong>api-catalysts.enzosimier.com</strong></div>
-          <div class="status-line"><span>DNS owner</span><strong>Cloudflare</strong></div>
+          <div class="status-line"><span>Web app</span><strong><a href="https://fda-catalyst-web-production.up.railway.app/calendar">Live calendar</a></strong></div>
+          <div class="status-line"><span>API</span><strong><a href="https://fda-catalyst-api-production.up.railway.app/health">Health check</a></strong></div>
+          <div class="status-line"><span>Data store</span><strong>Railway Postgres</strong></div>
+          <div class="status-line"><span>Custom domains</span><strong>Pending DNS</strong></div>
         </div>
       </section>
 
       <section class="project-section">
         <div>
-          <h2>Deployment path</h2>
-          <p>The intended production setup is two Railway services: one API service at the repo root, and one web service from <code>apps/web</code>. Custom domains should be attached after both generated Railway URLs pass smoke tests.</p>
+          <h2>Production check</h2>
+          <p>The production smoke test loaded the live calendar with 128 visible rows, an API connection badge, PDUFA rows, no console errors, and no mobile horizontal overflow.</p>
         </div>
         <ol class="deploy-steps">
-          <li>Create or link the Railway project.</li>
-          <li>Deploy the API service from the repo root.</li>
-          <li>Deploy the web service from <code>apps/web</code>.</li>
-          <li>Attach hosted Postgres through <code>DATABASE_URL</code>.</li>
-          <li>Configure BPIQ and provider keys only as Railway variables.</li>
-          <li>Attach <code>catalysts.enzosimier.com</code> and <code>api-catalysts.enzosimier.com</code>.</li>
+          <li>API service: <code>fda-catalyst-api</code>, deployed from the repo root with a Python Dockerfile.</li>
+          <li>Web service: <code>fda-catalyst-web</code>, deployed from <code>apps/web</code> with Node 20.</li>
+          <li>Data: local BPIQ snapshot copied into Railway Postgres.</li>
+          <li>Next step: attach <code>catalysts.enzosimier.com</code> and <code>api-catalysts.enzosimier.com</code> after DNS records are added in Cloudflare.</li>
         </ol>
       </section>
     </main>
