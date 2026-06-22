@@ -281,40 +281,55 @@
   }
 
   .project-dashboard {
-    @apply grid gap-5 lg:grid-cols-[360px_minmax(0,1fr)] lg:items-start;
+    @apply grid gap-5 lg:grid-cols-[minmax(260px,0.42fr)_minmax(0,1fr)] lg:items-start;
+  }
+
+  .project-snapshot-panel {
+    @apply flex min-h-full flex-col justify-between gap-5 rounded-lg border bg-background p-5;
+  }
+
+  .snapshot-kicker {
+    @apply text-xs font-medium uppercase text-muted-foreground;
+  }
+
+  .project-snapshot-panel p {
+    @apply text-sm leading-6 text-muted-foreground;
+  }
+
+  .project-snapshot-panel strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .snapshot-strip {
+    @apply grid grid-cols-2 gap-2;
+  }
+
+  .snapshot-item {
+    @apply flex min-h-14 flex-col justify-center rounded-md border bg-muted/30 px-3 py-2;
+  }
+
+  .snapshot-item strong {
+    @apply text-lg font-semibold leading-none text-foreground;
+  }
+
+  .snapshot-item span {
+    @apply mt-1 text-xs font-medium text-muted-foreground;
   }
 
   .metric-grid {
-    @apply grid grid-cols-2 gap-3;
+    @apply grid grid-cols-2 gap-2;
   }
 
   .metric-tile {
-    @apply flex min-h-24 flex-col justify-between rounded-lg border bg-muted/40 p-4;
-  }
-
-  .metric-tile:nth-child(1) {
-    @apply bg-primary text-primary-foreground;
-  }
-
-  .metric-tile:nth-child(1) span,
-  .metric-tile:nth-child(1) strong {
-    @apply text-primary-foreground;
-  }
-
-  .metric-tile:nth-child(2) {
-    background: color-mix(in oklch, var(--muted), oklch(0.52 0.12 185) 12%);
-  }
-
-  .metric-tile:nth-child(3) {
-    background: color-mix(in oklch, var(--muted), oklch(0.73 0.13 83) 18%);
+    @apply flex min-h-[4.5rem] flex-col justify-between rounded-md border bg-muted/30 p-3;
   }
 
   .metric-tile strong {
-    @apply text-3xl font-semibold leading-none text-foreground;
+    @apply text-2xl font-semibold leading-none text-foreground;
   }
 
   .metric-tile span {
-    @apply text-sm font-medium text-muted-foreground;
+    @apply text-xs font-medium text-muted-foreground;
   }
 
   .table-panel {
@@ -326,19 +341,102 @@
   }
 
   .book-grid {
-    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-5;
+    @apply grid justify-items-center gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-5;
   }
 
   .book-card {
-    @apply flex min-w-0 flex-col gap-3 rounded-lg border bg-card p-3 text-left no-underline shadow-sm transition-transform hover:-translate-y-1 focus-visible:ring-3 focus-visible:ring-ring/50;
+    @apply flex w-full min-w-0 flex-col rounded-lg p-2 text-left no-underline outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/50;
+    max-width: 18rem;
   }
 
-  .book-card img {
-    @apply aspect-[2/3] w-full rounded-md bg-muted object-cover;
+  .book-stage {
+    @apply relative mb-4 flex aspect-[2/3] w-full items-center justify-center;
+    perspective: 980px;
+    perspective-origin: 50% 42%;
+  }
+
+  .book-object {
+    --book-depth: 30px;
+    @apply relative;
+    height: 92%;
+    width: 78%;
+    transform: rotateY(-17deg) rotateX(3deg) translateZ(0);
+    transform-style: preserve-3d;
+    transition:
+      transform 280ms ease,
+      filter 280ms ease;
+    filter: drop-shadow(0 24px 24px rgb(0 0 0 / 18%));
+  }
+
+  .book-card:nth-child(even) .book-object {
+    transform: rotateY(15deg) rotateX(3deg) translateZ(0);
+  }
+
+  .book-card:hover .book-object,
+  .book-card:focus-visible .book-object {
+    transform: rotateY(-10deg) rotateX(2deg) translateY(-6px) translateZ(0);
+    filter: drop-shadow(0 30px 28px rgb(0 0 0 / 22%));
+  }
+
+  .book-card:nth-child(even):hover .book-object,
+  .book-card:nth-child(even):focus-visible .book-object {
+    transform: rotateY(10deg) rotateX(2deg) translateY(-6px) translateZ(0);
+  }
+
+  .book-front,
+  .book-pages,
+  .book-spine {
+    @apply absolute block;
+    backface-visibility: hidden;
+  }
+
+  .book-front {
+    @apply inset-0 overflow-hidden rounded-md bg-muted;
+    box-shadow:
+      inset -1px 0 0 rgb(255 255 255 / 28%),
+      inset 1px 0 0 rgb(0 0 0 / 10%),
+      0 18px 42px rgb(0 0 0 / 14%);
+    transform: translateZ(calc(var(--book-depth) / 2));
+  }
+
+  .book-front img {
+    @apply h-full w-full object-cover;
+  }
+
+  .book-pages {
+    bottom: 2%;
+    right: calc(var(--book-depth) * -1);
+    top: 2%;
+    width: var(--book-depth);
+    border-radius: 0 6px 6px 0;
+    background:
+      linear-gradient(90deg, rgb(234 231 220), rgb(252 250 244) 45%, rgb(218 214 204)),
+      repeating-linear-gradient(0deg, rgb(130 121 106 / 28%) 0 1px, transparent 1px 5px);
+    transform: rotateY(90deg);
+    transform-origin: left center;
+  }
+
+  .book-spine {
+    bottom: 3%;
+    left: calc(var(--book-depth) * -1);
+    top: 3%;
+    width: var(--book-depth);
+    border-radius: 6px 0 0 6px;
+    background:
+      linear-gradient(90deg, rgb(38 38 38), rgb(72 72 72), rgb(31 31 31)),
+      linear-gradient(0deg, rgb(255 255 255 / 16%), transparent);
+    transform: rotateY(-90deg);
+    transform-origin: right center;
   }
 
   .book-cover-placeholder {
-    @apply flex aspect-[2/3] w-full flex-col justify-between rounded-md border bg-primary p-4 text-primary-foreground;
+    @apply flex h-full w-full flex-col justify-between bg-primary p-4 text-primary-foreground;
+  }
+
+  .book-cover-placeholder-light {
+    @apply bg-background text-foreground;
+    background: linear-gradient(180deg, rgb(255 255 255), rgb(244 244 242));
+    box-shadow: inset 10px 0 0 rgb(0 0 0 / 6%);
   }
 
   .book-cover-placeholder strong {
@@ -349,8 +447,12 @@
     @apply text-xs font-medium text-primary-foreground/70;
   }
 
+  .book-cover-placeholder-light small {
+    @apply text-muted-foreground;
+  }
+
   .book-title {
-    @apply text-base font-semibold text-foreground;
+    @apply text-base font-semibold leading-snug text-foreground;
   }
 
   .book-author,
@@ -425,5 +527,13 @@
       @apply border-l-0 pl-0;
     }
 
+  }
+}
+
+@media (min-width: 640px) {
+  @layer components {
+    .book-card {
+      max-width: none;
+    }
   }
 }

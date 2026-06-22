@@ -151,8 +151,10 @@ const books = [
     title: 'Working in Public',
     author: 'Nadia Eghbal - Stripe Press',
     href: 'https://press.stripe.com/working-in-public',
-    img: 'https://covers.openlibrary.org/b/isbn/0578675862-L.jpg',
+    img: null,
     alt: 'Working in Public by Nadia Eghbal cover',
+    coverLabel: 'WORKING IN PUBLIC',
+    coverTone: 'light',
     note: 'Still one of the clearest books on incentives, maintenance, and coordination in open systems.',
   },
   {
@@ -425,6 +427,19 @@ function CatalystTable() {
   )
 }
 
+function FdaSnapshotStrip() {
+  return (
+    <div className="snapshot-strip" aria-label="FDA catalyst calendar snapshot">
+      {fdaMetrics.map(([value, label]) => (
+        <span className="snapshot-item" key={label}>
+          <strong>{value}</strong>
+          <span>{label}</span>
+        </span>
+      ))}
+    </div>
+  )
+}
+
 function FdaProjectFeature() {
   return (
     <section className="content-section" id="projects">
@@ -463,13 +478,13 @@ function FdaProjectFeature() {
         </CardHeader>
         <CardContent>
           <div className="project-dashboard">
-            <div className="metric-grid">
-              {fdaMetrics.map(([value, label]) => (
-                <div className="metric-tile" key={label}>
-                  <strong>{value}</strong>
-                  <span>{label}</span>
-                </div>
-              ))}
+            <div className="project-snapshot-panel">
+              <span className="snapshot-kicker">Current 90d snapshot</span>
+              <p>
+                <strong>128 events</strong> across 101 public biopharma companies, with PDUFA decisions and
+                clinical readouts separated for quick screening.
+              </p>
+              <FdaSnapshotStrip />
             </div>
             <div className="table-panel" aria-label="Sample FDA catalyst rows">
               <CatalystTable />
@@ -490,23 +505,42 @@ function FdaProjectFeature() {
   )
 }
 
+function BookCover({ book }) {
+  const placeholderClass =
+    book.coverTone === 'light'
+      ? 'book-cover-placeholder book-cover-placeholder-light'
+      : 'book-cover-placeholder'
+
+  return (
+    <span className="book-stage" aria-hidden="true">
+      <span className="book-object">
+        <span className="book-front">
+          {book.img ? (
+            <img alt="" decoding="async" height="520" loading="eager" src={book.img} width="340" />
+          ) : (
+            <span className={placeholderClass}>
+              <strong>{book.coverLabel}</strong>
+              <small>{book.author}</small>
+            </span>
+          )}
+        </span>
+        <span className="book-pages" />
+        <span className="book-spine" />
+      </span>
+    </span>
+  )
+}
+
 function LibrarySection() {
   return (
     <section className="content-section" id="reading">
-      <SectionHeading icon={BookOpen} eyebrow="Library" title="Books I keep returning to">
+      <SectionHeading icon={BookOpen} eyebrow="Library" title="Books I return to">
         Industry, institutions, strategy, maintenance, and decision-making under constraint.
       </SectionHeading>
       <div className="book-grid">
         {books.map((book) => (
           <a className="book-card" href={book.href} key={book.title} rel="noreferrer" target="_blank">
-            {book.img ? (
-              <img alt={book.alt} decoding="async" height="520" loading="eager" src={book.img} width="340" />
-            ) : (
-              <span aria-label={book.alt} className="book-cover-placeholder" role="img">
-                <strong>{book.coverLabel}</strong>
-                <small>{book.author}</small>
-              </span>
-            )}
+            <BookCover book={book} />
             <span className="book-title">{book.title}</span>
             <span className="book-author">{book.author}</span>
             <span className="book-note">{book.note}</span>
