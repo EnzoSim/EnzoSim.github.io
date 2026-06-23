@@ -145,6 +145,11 @@
   img {
     max-width: 100%;
   }
+
+  section[id],
+  #education {
+    scroll-margin-top: 7rem;
+  }
 }
 
 @layer components {
@@ -152,8 +157,25 @@
     @apply inline-flex min-h-9 items-center rounded-lg px-2 text-sm font-semibold text-foreground hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50;
   }
 
+  .desktop-nav {
+    @apply hidden items-center gap-1 rounded-lg border border-border bg-card p-1 shadow-sm lg:flex;
+  }
+
   .nav-link {
     @apply inline-flex min-h-8 items-center rounded-md px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50;
+  }
+
+  .mobile-nav-row {
+    @apply flex gap-1 overflow-x-auto border-t border-border/70 px-4 py-2 sm:px-6 lg:hidden;
+    scrollbar-width: none;
+  }
+
+  .mobile-nav-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-nav-row .nav-link {
+    @apply shrink-0;
   }
 
   .hero-shell {

@@ -35,7 +35,6 @@ import {
 } from '@/components/ui/table'
 
 const fdaLiveUrl = 'https://fda-catalyst-web-production.up.railway.app/calendar'
-const fdaApiUrl = 'https://fda-catalyst-api-production.up.railway.app/health'
 const linkedinUrl = 'https://linkedin.com/in/enzo-simier'
 
 const navItems = [
@@ -46,6 +45,13 @@ const navItems = [
   ['Research', '#research'],
   ['Projects', '#projects'],
   ['Library', '#reading'],
+]
+
+const projectNavItems = [
+  ['Home', '/'],
+  ['Overview', '#overview'],
+  ['Architecture', '#architecture'],
+  ['Deployment', '#deployment'],
 ]
 
 const workItems = [
@@ -208,22 +214,27 @@ function ThemeButton() {
 }
 
 function SiteNav({ projectPage = false }) {
+  const items = projectPage ? projectNavItems : navItems
+
   return (
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a className="nav-brand" href="/">
           Enzo Simier
         </a>
-        <div className="hidden items-center gap-1 rounded-lg border border-border bg-card p-1 shadow-sm lg:flex">
-          {(projectPage ? [['Home', '/'], ['Overview', '#overview'], ['Architecture', '#architecture'], ['Deployment', '#deployment']] : navItems).map(
-            ([label, href]) => (
-              <a className="nav-link" href={href} key={label}>
-                {label}
-              </a>
-            ),
-          )}
+        <div className="desktop-nav">
+          {items.map(([label, href]) => (
+            <a className="nav-link" href={href} key={label}>
+              {label}
+            </a>
+          ))}
         </div>
         <div className="flex items-center gap-2">
+          <Button asChild variant="outline" size="icon" className="sm:hidden" aria-label="Email">
+            <a href="mailto:enzo.simier@hec.ca">
+              <Mail />
+            </a>
+          </Button>
           <Button asChild variant="outline" className="hidden sm:inline-flex">
             <a href="mailto:enzo.simier@hec.ca">
               <Mail data-icon="inline-start" />
@@ -232,6 +243,13 @@ function SiteNav({ projectPage = false }) {
           </Button>
           <ThemeButton />
         </div>
+      </nav>
+      <nav className="mobile-nav-row" aria-label={projectPage ? 'Project sections' : 'Page sections'}>
+        {items.map(([label, href]) => (
+          <a className="nav-link" href={href} key={label}>
+            {label}
+          </a>
+        ))}
       </nav>
     </header>
   )
@@ -492,13 +510,7 @@ function FdaProjectFeature() {
           </div>
         </CardContent>
         <CardFooter className="project-footer">
-          <span>Production smoke: 128 visible rows, API badge, PDUFA rows, mobile overflow clean.</span>
-          <Button asChild size="sm" variant="ghost">
-            <a href={fdaApiUrl} target="_blank" rel="noreferrer">
-              API health
-              <ArrowUpRight data-icon="inline-end" />
-            </a>
-          </Button>
+          <span>Production smoke: 128 visible rows, live status badge, PDUFA rows, mobile overflow clean.</span>
         </CardFooter>
       </Card>
     </section>
@@ -599,12 +611,6 @@ function ProjectHero() {
               <ArrowUpRight data-icon="inline-end" />
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <a href={fdaApiUrl} target="_blank" rel="noreferrer">
-              API health
-              <ArrowUpRight data-icon="inline-end" />
-            </a>
-          </Button>
         </div>
       </div>
       <Card className="project-page-panel rounded-lg">
@@ -658,7 +664,7 @@ function ArchitectureSection() {
 function DeploymentSection() {
   const lines = [
     ['Web app', 'Live calendar', fdaLiveUrl],
-    ['API', 'Health check', fdaApiUrl],
+    ['API', 'Service online', null],
     ['Data store', 'Railway Postgres', null],
     ['Custom domains', 'Pending DNS', null],
   ]
@@ -724,6 +730,17 @@ function App() {
     document.title = isProjectPage
       ? 'FDA Catalyst Research · Enzo Simier'
       : 'Enzo Simier · Applied Economics & IO'
+  }, [isProjectPage])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.location.hash) return
+
+    const id = window.location.hash.slice(1)
+    const target = document.getElementById(id)
+
+    if (target) {
+      window.requestAnimationFrame(() => target.scrollIntoView())
+    }
   }, [isProjectPage])
 
   return isProjectPage ? <FdaCatalystPage /> : <HomePage />
