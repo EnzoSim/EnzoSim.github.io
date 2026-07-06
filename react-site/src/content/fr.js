@@ -42,7 +42,7 @@ export const fr = {
   hero: {
     kicker: 'Économie appliquée · Organisation industrielle',
     name: 'Enzo Simier',
-    lede: 'Analyste chez Desjardins, je surveille la concurrence des banques de détail canadiennes. Je construis mes outils avec des agents IA : serveurs MCP, pipelines de données, un calendrier biotech en direct. Ma thèse mesure ce que vaut la tarification de l’eau au Québec.',
+    lede: 'Économiste français à Montréal. Je fais de la veille concurrentielle sur le marché bancaire chez Desjardins, je construis mes outils avec des agents IA et je rédige une thèse sur la tarification de l’eau au Québec.',
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Courriel',
@@ -50,10 +50,10 @@ export const fr = {
   about: {
     eyebrow: 'À propos',
     title: 'Économie de la concurrence',
-    lead: 'Je mesure les marchés.',
+    lead: 'Je travaille sur la concurrence et la tarification.',
     paragraphs: [
       'Au Bureau de la concurrence, j’ai examiné des fusions : parts de marché, IHH, ratios de diversion. Chez KPMG, j’ai construit des modèles de retombées économiques pour des ports et la santé publique. Chez Desjardins, je couvre les banques de détail canadiennes et j’écris des recommandations pour la haute direction.',
-      'Je travaille avec des agents LLM, des serveurs MCP et des pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en sortent directement.',
+      'Je construis mes outils avec des agents LLM — serveurs MCP, pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
       'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
     ],
   },
@@ -124,7 +124,7 @@ export const fr = {
       {
         school: 'HEC Montréal',
         meta: 'M. Sc. en économie appliquée · 2024 à 2026',
-        text: 'Je me spécialise en organisation industrielle. Mon mémoire mesure ce que vaut la tarification volumétrique de l’eau au Québec, avec Réseau Environnement.',
+        text: 'Spécialisation en organisation industrielle. Mémoire sur la tarification volumétrique de l’eau, avec Réseau Environnement.',
       },
       {
         school: 'HEC Montréal',
@@ -135,9 +135,9 @@ export const fr = {
   },
   research: {
     eyebrow: 'Recherche',
-    title: 'Ce que vaut la tarification volumétrique de l’eau au Québec.',
+    title: 'La tarification volumétrique de l’eau au Québec.',
     description:
-      'Ma thèse mesure ce qu’une municipalité gagne quand elle tarifie l’eau au volume. J’utilise les doubles différences avec adoption échelonnée, sur des panels municipaux et de ménages — Longueuil et Laval servent de cas. Je modélise le coût de service, les coûts évités et la valeur actualisée nette, avec analyses de sensibilité. HEC Montréal et Réseau Environnement appuient le travail.',
+      'J’estime ce que gagnent les municipalités quand elles tarifient l’eau au volume. Doubles différences avec adoption échelonnée, sur des panels municipaux et de ménages; Longueuil et Laval servent de cas. Je modélise le coût de service, les coûts évités et la valeur actualisée nette, avec analyses de sensibilité. Avec HEC Montréal et Réseau Environnement.',
     lens: 'Organisation industrielle, surplus du consommateur, coût de service.',
     supervisors: 'Direction : Justin Leroux et Jean-Luc Martel.',
   },
@@ -152,32 +152,32 @@ export const fr = {
   library: {
     eyebrow: 'Bibliothèque',
     title: 'Les livres que je relis',
-    lede: 'Cinq livres sur des industries qui se concentrent, des institutions qui tiennent, des gens qui décident sous pression.',
+    lede: 'Des livres sur les industries, les institutions et la décision.',
     books: [
       {
         title: 'Chip War',
         author: 'Chris Miller · 2022',
-        note: 'Le pouvoir de marché au sens propre : une poignée d’entreprises décide qui obtient les puces les plus rapides.',
+        note: 'Comment une poignée d’entreprises contrôle l’approvisionnement mondial en puces.',
       },
       {
         title: 'Material World',
         author: 'Ed Conway · 2023',
-        note: 'La croissance est physique avant d’être financière; le sable, le cuivre et le pétrole fixent les règles.',
+        note: 'Les intrants physiques de la croissance : sable, cuivre, pétrole.',
       },
       {
         title: 'Working in Public',
         author: 'Nadia Eghbal · Stripe Press',
-        note: 'Le logiciel libre repose sur des mainteneurs non rémunérés; Eghbal explique pourquoi le modèle tient quand même.',
+        note: 'Le livre le plus clair sur les incitatifs et la maintenance du logiciel libre.',
       },
       {
         title: 'Churchill',
         author: 'Andrew Roberts · 2018',
-        note: 'Roberts suit les décennies de mandats, d’erreurs et de lectures qui ont forgé un jugement indispensable.',
+        note: 'Roberts sur les décennies de travail derrière le jugement de Churchill.',
       },
       {
         title: 'Caesar',
         author: 'Adrian Goldsworthy · 2006',
-        note: 'César bâtit une coalition, minute chaque geste et brise la république qui l’a formé.',
+        note: 'Bâtir des coalitions et choisir son moment, à la fin de la République.',
       },
     ],
     subscriptions: {
@@ -189,17 +189,17 @@ export const fr = {
             {
               name: 'Arena Magazine',
               url: 'https://arenamag.com',
-              note: 'Le trimestriel de Max Meyer sur la tech et le capitalisme — ouvertement de leur côté.',
+              note: 'Le trimestriel de Max Meyer sur la tech et le capitalisme.',
             },
             {
               name: 'Colossus Review',
               url: 'https://joincolossus.com',
-              note: 'La revue imprimée de Patrick O’Shaughnessy : longs portraits d’investisseurs et de fondateurs au sommet de leur métier.',
+              note: 'La revue imprimée de Patrick O’Shaughnessy : longs portraits d’investisseurs et de fondateurs.',
             },
             {
               name: 'Works in Progress',
               url: 'https://worksinprogress.co',
-              note: 'Le magazine des études du progrès, appuyé par Stripe : ce qui a enrichi le monde, et ce qui pourrait recommencer.',
+              note: 'Le magazine du progrès scientifique et économique, appuyé par Stripe.',
             },
           ],
         },
@@ -209,12 +209,12 @@ export const fr = {
             {
               name: 'Crémieux',
               url: 'https://www.cremieux.xyz',
-              note: 'Des essais denses en données : économie, statistique, sciences sociales. Chaque affirmation arrive avec un graphique.',
+              note: 'Des essais denses en données : économie, statistique, sciences sociales.',
             },
             {
               name: 'Campbell Ramble',
               url: 'https://www.campbellramble.ai',
-              note: 'Alexander Campbell, ancien de Bridgewater, sur les marchés, la macro et le pouvoir.',
+              note: 'Alexander Campbell, ancien de Bridgewater, sur les marchés, la macro et la géopolitique.',
             },
           ],
         },
