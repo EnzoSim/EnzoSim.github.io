@@ -53,7 +53,7 @@ export const fr = {
     title: 'Économie de la concurrence',
     lead: 'Je travaille sur la concurrence et la tarification.',
     paragraphs: [
-      'Je suis français. J’ai vécu à Grenoble, à Rennes et, pendant dix ans, à Tahiti, avec des voyages en Océanie : Nouvelle-Zélande, Australie. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal en 2020 pour HEC. Résident permanent depuis.',
+      'Je suis français. J’ai grandi à Tahiti (dix ans), puis à Grenoble et à Rennes, avec des voyages en Océanie : Nouvelle-Zélande, Australie. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal en 2020 pour HEC. Résident permanent depuis.',
       'Depuis : examen de fusions au Bureau de la concurrence, conseil économique chez KPMG, veille concurrentielle chez Desjardins. Je construis mes outils avec des agents LLM, des serveurs MCP et des pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
       'Hors travail : la bonne table, les cafés et les golden retrievers.',
       'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
