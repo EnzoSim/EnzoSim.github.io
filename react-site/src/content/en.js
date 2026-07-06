@@ -30,6 +30,7 @@ export const en = {
       ['Research', '#research'],
       ['Projects', '#projects'],
       ['Library', '#reading'],
+      ['Cafés', '#cafes'],
     ],
     projectItems: [
       ['Home', '/'],
@@ -52,8 +53,9 @@ export const en = {
     title: 'Competition economics',
     lead: 'I work on competition and pricing.',
     paragraphs: [
-      'I grew up in France and spent two years studying pharmacy in Bordeaux before switching to economics. I moved to Montréal in 2020 for HEC and stayed — I’m a permanent resident now.',
+      'I’m French and spent ten years in Tahiti, with travels through Oceania — New Zealand, Australia. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2020 for HEC. I’m a permanent resident now.',
       'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents — MCP servers, Python pipelines. The thesis model and the FDA calendar below came out of them.',
+      'Off hours: food, unique cafés, and golden retrievers.',
       'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy. Email me.',
     ],
   },
@@ -220,6 +222,14 @@ export const en = {
         },
       ],
     },
+  },
+  // Section renders (and its nav link appears) only once items is non-empty.
+  // Item shape: { name: 'Café name', area: 'Neighborhood', note: 'One line.', url: 'https://…' (optional) }
+  cafes: {
+    eyebrow: 'Cafés',
+    title: 'Montréal cafés',
+    lede: 'A running list.',
+    items: [],
   },
   footer: {
     location: 'Montréal, QC',

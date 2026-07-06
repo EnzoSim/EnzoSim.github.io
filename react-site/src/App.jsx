@@ -72,7 +72,9 @@ function LangButton() {
 
 function SiteNav({ projectPage = false }) {
   const { t } = useLanguage()
-  const items = projectPage ? t.nav.projectItems : t.nav.items
+  const items = (projectPage ? t.nav.projectItems : t.nav.items).filter(
+    ([, href]) => href !== '#cafes' || t.cafes.items.length > 0,
+  )
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur-xl">
@@ -322,6 +324,38 @@ function LibrarySection() {
   )
 }
 
+function CafesSection() {
+  const { t } = useLanguage()
+  if (!t.cafes.items.length) return null
+
+  return (
+    <section className="content-section" id="cafes">
+      <SectionHeading eyebrow={t.cafes.eyebrow} title={t.cafes.title}>
+        {t.cafes.lede}
+      </SectionHeading>
+      <div className="entry-list">
+        {t.cafes.items.map((item) => (
+          <article className="entry" key={item.name}>
+            <div className="entry-head">
+              <h3>
+                {item.url ? (
+                  <a href={item.url} rel="noreferrer" target="_blank">
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+              </h3>
+              <span className="entry-date">{item.area}</span>
+            </div>
+            <p className="entry-note">{item.note}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function SiteFooter() {
   const { t } = useLanguage()
 
@@ -348,6 +382,7 @@ function HomePage() {
         <ResearchSection />
         <FdaProjectFeature />
         <LibrarySection />
+        <CafesSection />
       </main>
       <SiteFooter />
     </>

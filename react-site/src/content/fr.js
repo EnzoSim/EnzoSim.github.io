@@ -30,6 +30,7 @@ export const fr = {
       ['Recherche', '#research'],
       ['Projets', '#projects'],
       ['Bibliothèque', '#reading'],
+      ['Cafés', '#cafes'],
     ],
     projectItems: [
       ['Accueil', '/'],
@@ -52,8 +53,9 @@ export const fr = {
     title: 'Économie de la concurrence',
     lead: 'Je travaille sur la concurrence et la tarification.',
     paragraphs: [
-      'J’ai grandi en France et passé deux ans en pharmacie à Bordeaux avant de bifurquer vers l’économie. Je suis arrivé à Montréal en 2020 pour HEC — et j’y suis resté. Résident permanent depuis.',
+      'Je suis français et j’ai passé dix ans à Tahiti, avec des voyages en Océanie — Nouvelle-Zélande, Australie. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal en 2020 pour HEC. Résident permanent depuis.',
       'Depuis : examen de fusions au Bureau de la concurrence, conseil économique chez KPMG, veille concurrentielle chez Desjardins. Je construis mes outils avec des agents LLM — serveurs MCP, pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
+      'Hors travail : la bonne table, les cafés et les golden retrievers.',
       'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
     ],
   },
@@ -220,6 +222,14 @@ export const fr = {
         },
       ],
     },
+  },
+  // La section (et son lien de navigation) n’apparaît que si items est non vide.
+  // Forme d’un item : { name: 'Nom du café', area: 'Quartier', note: 'Une ligne.', url: 'https://…' (optionnel) }
+  cafes: {
+    eyebrow: 'Cafés',
+    title: 'Cafés à Montréal',
+    lede: 'Une liste en cours.',
+    items: [],
   },
   footer: {
     location: 'Montréal, QC',
