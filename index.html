@@ -19,9 +19,27 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://enzosimier.com/" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:locale:alternate" content="fr_CA" />
     <title>Enzo Simier · Applied Economics & IO</title>
-    <script type="module" crossorigin src="/assets/main-CPDbchcv.js?v=CPDbchcv"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-CAiAgj3O.css?v=CAiAgj3O">
+    <script>
+      ;(function () {
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark')
+          }
+          var lang = localStorage.getItem('lang')
+          if (lang !== 'en' && lang !== 'fr') {
+            lang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'
+          }
+          document.documentElement.lang = lang
+        } catch (error) {
+          /* pre-paint bootstrap only; React re-applies both settings */
+        }
+      })()
+    </script>
+    <script type="module" crossorigin src="/assets/main-29A1ryav.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-BxliLob2.css">
   </head>
   <body>
     <div id="root"></div>
