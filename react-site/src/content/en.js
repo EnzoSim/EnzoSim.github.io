@@ -52,9 +52,9 @@ export const en = {
     title: 'Competition economics',
     lead: 'I measure markets.',
     paragraphs: [
-      'The Competition Bureau internship was merger screening: market shares, HHIs, diversion ratios. At KPMG I built economic-impact models for ports and public health. At Desjardins I track retail banking across Canada and write recommendations for senior management.',
-      'The tooling is AI-native: LLM agents, MCP servers, Python pipelines. The thesis model and the FDA calendar below are outputs.',
-      'The training is an M.Sc. in Applied Economics at HEC Montréal, specialized in industrial organization. I finish in Summer 2026 and am open to opportunities in competition, pricing, and strategy. Email me.',
+      'At the Competition Bureau I screened mergers: market shares, HHIs, diversion ratios. At KPMG I built economic-impact models for ports and public health. At Desjardins I track retail banking across Canada and write recommendations for senior management.',
+      'I work AI-native: LLM agents, MCP servers, Python pipelines. The thesis model and the FDA calendar below came out of that stack.',
+      'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy. Email me.',
     ],
   },
   work: {
@@ -124,7 +124,7 @@ export const en = {
       {
         school: 'HEC Montréal',
         meta: 'M.Sc. Applied Economics · 2024 to 2026',
-        text: 'The specialization is industrial organization. The thesis measures what volumetric water pricing is worth in Québec, in partnership with Réseau Environnement.',
+        text: 'I specialize in industrial organization. My thesis measures what volumetric water pricing is worth in Québec, with Réseau Environnement.',
       },
       {
         school: 'HEC Montréal',
@@ -137,7 +137,7 @@ export const en = {
     eyebrow: 'Research',
     title: 'What volumetric water pricing is worth in Québec.',
     description:
-      'My thesis measures what a municipality gains when it prices water by volume. The method is difference-in-differences with staggered adoption, on municipal and household panel data. Longueuil and Laval are the cases. I model cost of service, avoided costs, and net present value under sensitivity scenarios. HEC Montréal and Réseau Environnement back the work.',
+      'My thesis measures what a municipality gains when it prices water by volume. I use difference-in-differences with staggered adoption, on municipal and household panel data — Longueuil and Laval are the cases. I model cost of service, avoided costs, and net present value under sensitivity scenarios. HEC Montréal and Réseau Environnement back the work.',
     lens: 'Industrial organization, consumer surplus, cost of service.',
     supervisors: 'Supervisors: Justin Leroux and Jean-Luc Martel.',
   },
@@ -180,6 +180,46 @@ export const en = {
         note: 'Caesar built a coalition, timed every move, and broke the republic that trained him.',
       },
     ],
+    subscriptions: {
+      title: 'Subscriptions',
+      groups: [
+        {
+          label: 'Magazines',
+          items: [
+            {
+              name: 'Arena Magazine',
+              url: 'https://arenamag.com',
+              note: 'Max Meyer’s quarterly on tech, capitalism, and the American project — openly on their side.',
+            },
+            {
+              name: 'Colossus Review',
+              url: 'https://joincolossus.com',
+              note: 'Patrick O’Shaughnessy’s print journal: long profiles of investors and founders at the top of their craft.',
+            },
+            {
+              name: 'Works in Progress',
+              url: 'https://worksinprogress.co',
+              note: 'The Stripe-backed magazine of progress studies: what made the world richer, and what could again.',
+            },
+          ],
+        },
+        {
+          label: 'Substacks',
+          items: [
+            {
+              name: 'Crémieux',
+              url: 'https://www.cremieux.xyz',
+              note: 'Data-dense essays on economics, statistics, and social science. Every claim arrives with a chart.',
+            },
+            {
+              name: 'Campbell Ramble',
+              url: 'https://www.campbellramble.ai',
+              note: 'Alexander Campbell, ex-Bridgewater, on markets, macro, and power.',
+            },
+          ],
+        },
+      ],
+    },
   },
   footer: {
     location: 'Montréal, QC',
@@ -206,7 +246,7 @@ export const en = {
     architecture: {
       eyebrow: 'Architecture',
       title: 'The stack',
-      lede: 'The product is three pieces: a FastAPI service, Railway Postgres, and a React calendar.',
+      lede: 'Three pieces run the product: a FastAPI service, Railway Postgres, and a React calendar.',
       cards: [
         ['API', 'A FastAPI service exposes calendar, health, source, catalyst, scanner, watchlist, backtest, and IV-study endpoints.'],
         ['Data', 'BPIQ records flow into Railway Postgres. That store holds the 128 events the calendar shows.'],

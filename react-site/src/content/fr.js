@@ -53,8 +53,8 @@ export const fr = {
     lead: 'Je mesure les marchés.',
     paragraphs: [
       'Au Bureau de la concurrence, j’ai examiné des fusions : parts de marché, IHH, ratios de diversion. Chez KPMG, j’ai construit des modèles de retombées économiques pour des ports et la santé publique. Chez Desjardins, je couvre les banques de détail canadiennes et j’écris des recommandations pour la haute direction.',
-      'Mes outils : agents LLM, serveurs MCP, pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en sortent directement.',
-      'La formation : une M. Sc. en économie appliquée à HEC Montréal, spécialisée en organisation industrielle. Je termine à l’été 2026, ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
+      'Je travaille avec des agents LLM, des serveurs MCP et des pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en sortent directement.',
+      'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
     ],
   },
   work: {
@@ -124,7 +124,7 @@ export const fr = {
       {
         school: 'HEC Montréal',
         meta: 'M. Sc. en économie appliquée · 2024 à 2026',
-        text: 'La spécialisation est l’organisation industrielle. Le mémoire mesure ce que vaut la tarification volumétrique de l’eau au Québec, en partenariat avec Réseau Environnement.',
+        text: 'Je me spécialise en organisation industrielle. Mon mémoire mesure ce que vaut la tarification volumétrique de l’eau au Québec, avec Réseau Environnement.',
       },
       {
         school: 'HEC Montréal',
@@ -137,7 +137,7 @@ export const fr = {
     eyebrow: 'Recherche',
     title: 'Ce que vaut la tarification volumétrique de l’eau au Québec.',
     description:
-      'Ma thèse mesure ce qu’une municipalité gagne quand elle tarifie l’eau au volume. La méthode : doubles différences avec adoption échelonnée, sur des panels municipaux et de ménages. Longueuil et Laval servent de cas. Je modélise le coût de service, les coûts évités et la valeur actualisée nette, avec analyses de sensibilité. HEC Montréal et Réseau Environnement appuient le travail.',
+      'Ma thèse mesure ce qu’une municipalité gagne quand elle tarifie l’eau au volume. J’utilise les doubles différences avec adoption échelonnée, sur des panels municipaux et de ménages — Longueuil et Laval servent de cas. Je modélise le coût de service, les coûts évités et la valeur actualisée nette, avec analyses de sensibilité. HEC Montréal et Réseau Environnement appuient le travail.',
     lens: 'Organisation industrielle, surplus du consommateur, coût de service.',
     supervisors: 'Direction : Justin Leroux et Jean-Luc Martel.',
   },
@@ -180,6 +180,46 @@ export const fr = {
         note: 'César bâtit une coalition, minute chaque geste et brise la république qui l’a formé.',
       },
     ],
+    subscriptions: {
+      title: 'Abonnements',
+      groups: [
+        {
+          label: 'Revues',
+          items: [
+            {
+              name: 'Arena Magazine',
+              url: 'https://arenamag.com',
+              note: 'Le trimestriel de Max Meyer sur la tech et le capitalisme — ouvertement de leur côté.',
+            },
+            {
+              name: 'Colossus Review',
+              url: 'https://joincolossus.com',
+              note: 'La revue imprimée de Patrick O’Shaughnessy : longs portraits d’investisseurs et de fondateurs au sommet de leur métier.',
+            },
+            {
+              name: 'Works in Progress',
+              url: 'https://worksinprogress.co',
+              note: 'Le magazine des études du progrès, appuyé par Stripe : ce qui a enrichi le monde, et ce qui pourrait recommencer.',
+            },
+          ],
+        },
+        {
+          label: 'Substacks',
+          items: [
+            {
+              name: 'Crémieux',
+              url: 'https://www.cremieux.xyz',
+              note: 'Des essais denses en données : économie, statistique, sciences sociales. Chaque affirmation arrive avec un graphique.',
+            },
+            {
+              name: 'Campbell Ramble',
+              url: 'https://www.campbellramble.ai',
+              note: 'Alexander Campbell, ancien de Bridgewater, sur les marchés, la macro et le pouvoir.',
+            },
+          ],
+        },
+      ],
+    },
   },
   footer: {
     location: 'Montréal, QC',

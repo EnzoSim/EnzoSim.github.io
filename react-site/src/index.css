@@ -312,12 +312,31 @@
     @apply flex items-baseline justify-between gap-4;
   }
 
-  .entry-head h3 {
+  .entry-head h3,
+  .entry-head h4 {
     @apply text-base font-semibold text-foreground;
   }
 
-  .entry-head h3 a {
+  .entry-head h3 a,
+  .entry-head h4 a {
     @apply hover:underline;
+  }
+
+  .sub-block {
+    @apply mt-6 flex max-w-3xl flex-col gap-6;
+  }
+
+  .sub-title {
+    @apply text-xl font-semibold leading-tight text-foreground;
+    letter-spacing: -0.01em;
+  }
+
+  .sub-group {
+    @apply flex flex-col gap-6;
+  }
+
+  .group-label {
+    @apply font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground;
   }
 
   .entry-date {

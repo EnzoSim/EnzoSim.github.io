@@ -298,6 +298,26 @@ function LibrarySection() {
           </article>
         ))}
       </div>
+      <div className="sub-block">
+        <h3 className="sub-title">{t.library.subscriptions.title}</h3>
+        {t.library.subscriptions.groups.map((group) => (
+          <div className="sub-group" key={group.label}>
+            <p className="group-label">{group.label}</p>
+            {group.items.map((item) => (
+              <article className="entry" key={item.name}>
+                <div className="entry-head">
+                  <h4>
+                    <a href={item.url} rel="noreferrer" target="_blank">
+                      {item.name}
+                    </a>
+                  </h4>
+                </div>
+                <p className="entry-note">{item.note}</p>
+              </article>
+            ))}
+          </div>
+        ))}
+      </div>
     </section>
   )
 }
