@@ -52,8 +52,8 @@ export const fr = {
     title: 'Économie de la concurrence',
     lead: 'Je travaille sur la concurrence et la tarification.',
     paragraphs: [
-      'Au Bureau de la concurrence, j’ai examiné des fusions : parts de marché, IHH, ratios de diversion. Chez KPMG, j’ai construit des modèles de retombées économiques pour des ports et la santé publique. Chez Desjardins, je couvre les banques de détail canadiennes et j’écris des recommandations pour la haute direction.',
-      'Je construis mes outils avec des agents LLM — serveurs MCP, pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
+      'J’ai grandi en France et passé deux ans en pharmacie à Bordeaux avant de bifurquer vers l’économie. Je suis arrivé à Montréal en 2020 pour HEC — et j’y suis resté. Résident permanent depuis.',
+      'Depuis : examen de fusions au Bureau de la concurrence, conseil économique chez KPMG, veille concurrentielle chez Desjardins. Je construis mes outils avec des agents LLM — serveurs MCP, pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
       'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
     ],
   },

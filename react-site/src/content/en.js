@@ -52,8 +52,8 @@ export const en = {
     title: 'Competition economics',
     lead: 'I work on competition and pricing.',
     paragraphs: [
-      'At the Competition Bureau I screened mergers: market shares, HHIs, diversion ratios. At KPMG I built economic-impact models for ports and public health. At Desjardins I track retail banking across Canada and write recommendations for senior management.',
-      'I build my tools with LLM agents — MCP servers, Python pipelines. The thesis model and the FDA calendar below came out of them.',
+      'I grew up in France and spent two years studying pharmacy in Bordeaux before switching to economics. I moved to Montréal in 2020 for HEC and stayed — I’m a permanent resident now.',
+      'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents — MCP servers, Python pipelines. The thesis model and the FDA calendar below came out of them.',
       'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy. Email me.',
     ],
   },
