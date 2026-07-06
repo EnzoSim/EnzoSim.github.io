@@ -53,8 +53,8 @@ export const en = {
     title: 'Competition economics',
     lead: 'I work on competition and pricing.',
     paragraphs: [
-      'I’m French and spent ten years in Tahiti, with travels through Oceania — New Zealand, Australia. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2020 for HEC. I’m a permanent resident now.',
-      'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents — MCP servers, Python pipelines. The thesis model and the FDA calendar below came out of them.',
+      'I’m French. I lived in Grenoble, Rennes, and for ten years Tahiti, with travels through Oceania: New Zealand, Australia. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2020 for HEC. I’m a permanent resident now.',
+      'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents, MCP servers, and Python pipelines. The thesis model and the FDA calendar below came out of them.',
       'Off hours: food, unique cafés, and golden retrievers.',
       'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy. Email me.',
     ],
@@ -87,7 +87,7 @@ export const en = {
         date: 'Summer 2024',
         details: [
           'I ran economic impact assessments in the port sector, including Port de Magog, and in public health.',
-          'I built scenario models for both sectors — feasibility, risks, sensitivities — and wrote the executive summaries.',
+          'I built scenario models for both sectors (feasibility, risks, sensitivities) and wrote the executive summaries.',
         ],
       },
       {
