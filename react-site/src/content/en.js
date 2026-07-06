@@ -53,7 +53,7 @@ export const en = {
     title: 'Competition economics',
     lead: 'I work on competition and pricing.',
     paragraphs: [
-      'I’m French. I grew up in Tahiti (ten years), then in Grenoble and Rennes, with travels through Oceania: New Zealand, Australia. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2020 for HEC. I’m a permanent resident now.',
+      'I’m French. I grew up in Tahiti (ten years), then in Grenoble and Rennes. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2021 for HEC. I’m a permanent resident now.',
       'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents, MCP servers, and Python pipelines. The thesis model and the FDA calendar below came out of them.',
       'Off hours: food, unique cafés, and golden retrievers.',
       'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy. Email me.',
