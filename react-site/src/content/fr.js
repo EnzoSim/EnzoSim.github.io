@@ -223,13 +223,12 @@ export const fr = {
       ],
     },
   },
-  // La section (et son lien de navigation) n’apparaît que si items est non vide.
-  // Forme d’un item : { name: 'Nom du café', area: 'Quartier', note: 'Une ligne.', url: 'https://…' (optionnel) }
+  // Les DONNÉES des cafés vivent dans /cafes.json à la racine du dépôt
+  // (chargées à l’exécution, mises à jour par l’action add-cafe).
   cafes: {
     eyebrow: 'Cafés',
     title: 'Cafés à Montréal',
     lede: 'Une liste en cours.',
-    items: [],
   },
   footer: {
     location: 'Montréal, QC',

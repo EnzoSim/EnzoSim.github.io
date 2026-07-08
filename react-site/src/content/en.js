@@ -223,13 +223,12 @@ export const en = {
       ],
     },
   },
-  // Section renders (and its nav link appears) only once items is non-empty.
-  // Item shape: { name: 'Café name', area: 'Neighborhood', note: 'One line.', url: 'https://…' (optional) }
+  // Café DATA lives in /cafes.json at the repo root (fetched at runtime,
+  // updated by the add-cafe GitHub Action). Only the labels live here.
   cafes: {
     eyebrow: 'Cafés',
     title: 'Montréal cafés',
     lede: 'A running list.',
-    items: [],
   },
   footer: {
     location: 'Montréal, QC',

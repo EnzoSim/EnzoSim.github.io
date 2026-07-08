@@ -1,0 +1,45 @@
+name: Add café
+
+# The site's "reverse API": POST a repository_dispatch with event_type
+# "add-cafe" and a client_payload of {name, area, note, noteFr?, url?}.
+# Appends to /cafes.json, which the site fetches at runtime (no rebuild).
+#
+# curl -X POST https://api.github.com/repos/EnzoSim/EnzoSim.github.io/dispatches \
+#   -H "Authorization: Bearer <fine-grained PAT with contents:write>" \
+#   -H "Accept: application/vnd.github+json" \
+#   -d '{"event_type":"add-cafe","client_payload":{"name":"Café X","area":"Mile End","note":"..."}}'
+
+on:
+  repository_dispatch:
+    types: [add-cafe]
+
+permissions:
+  contents: write
+
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Append café to cafes.json
+        env:
+          NAME: ${{ github.event.client_payload.name }}
+          AREA: ${{ github.event.client_payload.area }}
+          NOTE: ${{ github.event.client_payload.note }}
+          NOTE_FR: ${{ github.event.client_payload.noteFr }}
+          URL: ${{ github.event.client_payload.url }}
+        run: |
+          if [ -z "$NAME" ]; then echo "name is required"; exit 1; fi
+          case "$URL" in https://*|"") ;; *) echo "dropping non-https url"; URL="" ;; esac
+          jq --arg name "$NAME" --arg area "$AREA" --arg note "$NOTE" --arg noteFr "$NOTE_FR" --arg url "$URL" \
+            '.items += [({name: $name, area: $area, note: $note, noteFr: $noteFr, url: $url} | with_entries(select(.value != "")))] | .items |= unique_by(.name)' \
+            cafes.json > cafes.tmp && mv cafes.tmp cafes.json
+      - name: Commit and push
+        env:
+          NAME: ${{ github.event.client_payload.name }}
+        run: |
+          git config user.name "cafe-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cafes.json
+          git diff --cached --quiet || git commit -m "Add café: $NAME"
+          git push

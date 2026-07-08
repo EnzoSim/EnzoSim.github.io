@@ -21,6 +21,32 @@ import {
   profileImage,
 } from '@/content/shared'
 
+// Cafés load at runtime from /cafes.json (repo root, updated by the
+// add-cafe GitHub Action) so new entries go live without a rebuild.
+let cafesCache = null
+let cafesPromise = null
+
+function useCafes() {
+  const [items, setItems] = useState(cafesCache ?? [])
+
+  useEffect(() => {
+    if (cafesCache) return undefined
+    cafesPromise ??= fetch('/cafes.json')
+      .then((response) => (response.ok ? response.json() : { items: [] }))
+      .catch(() => ({ items: [] }))
+    let alive = true
+    cafesPromise.then((data) => {
+      cafesCache = Array.isArray(data.items) ? data.items : []
+      if (alive) setItems(cafesCache)
+    })
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  return items
+}
+
 function useTheme() {
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'light'
@@ -72,8 +98,9 @@ function LangButton() {
 
 function SiteNav({ projectPage = false }) {
   const { t } = useLanguage()
+  const cafes = useCafes()
   const items = (projectPage ? t.nav.projectItems : t.nav.items).filter(
-    ([, href]) => href !== '#cafes' || t.cafes.items.length > 0,
+    ([, href]) => href !== '#cafes' || cafes.length > 0,
   )
 
   return (
@@ -325,8 +352,9 @@ function LibrarySection() {
 }
 
 function CafesSection() {
-  const { t } = useLanguage()
-  if (!t.cafes.items.length) return null
+  const { lang, t } = useLanguage()
+  const cafes = useCafes()
+  if (!cafes.length) return null
 
   return (
     <section className="content-section" id="cafes">
@@ -334,23 +362,26 @@ function CafesSection() {
         {t.cafes.lede}
       </SectionHeading>
       <div className="entry-list">
-        {t.cafes.items.map((item) => (
-          <article className="entry" key={item.name}>
-            <div className="entry-head">
-              <h3>
-                {item.url ? (
-                  <a href={item.url} rel="noreferrer" target="_blank">
-                    {item.name}
-                  </a>
-                ) : (
-                  item.name
-                )}
-              </h3>
-              <span className="entry-date">{item.area}</span>
-            </div>
-            <p className="entry-note">{item.note}</p>
-          </article>
-        ))}
+        {cafes.map((item) => {
+          const note = lang === 'fr' ? item.noteFr || item.note : item.note
+          return (
+            <article className="entry" key={item.name}>
+              <div className="entry-head">
+                <h3>
+                  {item.url ? (
+                    <a href={item.url} rel="noreferrer" target="_blank">
+                      {item.name}
+                    </a>
+                  ) : (
+                    item.name
+                  )}
+                </h3>
+                <span className="entry-date">{item.area}</span>
+              </div>
+              {note ? <p className="entry-note">{note}</p> : null}
+            </article>
+          )
+        })}
       </div>
     </section>
   )
