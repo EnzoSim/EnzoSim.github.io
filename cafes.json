@@ -1,3 +1,9 @@
 {
-  "items": []
+  "items": [
+    {
+      "name": "E2E Test Café",
+      "area": "Mile End",
+      "note": "Pipeline test, will be removed."
+    }
+  ]
 }
