@@ -247,22 +247,53 @@
     );
   }
 
-  header.sticky [data-slot='button'] {
-    border: 1px solid var(--glass-edge);
-    background:
-      linear-gradient(145deg, var(--glass-highlight), transparent 58%),
-      var(--glass-surface);
-    box-shadow:
-      inset 0 1px 0 var(--glass-highlight),
-      inset 0 -1px 0 color-mix(in oklab, var(--foreground) 8%, transparent),
-      0 10px 24px -20px var(--glass-shadow);
-  }
-
-  header.sticky [data-slot='button']:hover {
-    border-color: color-mix(in oklab, var(--foreground) 18%, var(--glass-edge));
+  [data-slot='button'] {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-color: color-mix(in oklab, var(--foreground) 14%, var(--glass-edge)) !important;
     background:
       linear-gradient(145deg, var(--glass-highlight), transparent 52%),
-      color-mix(in oklab, var(--glass-surface) 84%, var(--glass-tint));
+      linear-gradient(325deg, var(--glass-tint), transparent 68%),
+      color-mix(in oklab, var(--glass-surface) 88%, var(--background)) !important;
+    color: var(--foreground) !important;
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      inset 0 -1px 0 color-mix(in oklab, var(--foreground) 9%, transparent),
+      0 16px 34px -26px var(--glass-shadow);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    backdrop-filter: blur(18px) saturate(150%);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      color 180ms ease,
+      transform 180ms ease !important;
+  }
+
+  [data-slot='button']:hover {
+    border-color: color-mix(in oklab, var(--foreground) 26%, var(--glass-edge)) !important;
+    background:
+      linear-gradient(145deg, var(--glass-highlight), transparent 44%),
+      linear-gradient(325deg, color-mix(in oklab, var(--glass-tint) 72%, transparent), transparent 62%),
+      color-mix(in oklab, var(--glass-surface) 76%, var(--background)) !important;
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      inset 0 -1px 0 color-mix(in oklab, var(--foreground) 11%, transparent),
+      0 20px 38px -26px var(--glass-shadow);
+    transform: translateY(-1px);
+  }
+
+  [data-slot='button']:active:not(:disabled) {
+    transform: translateY(1px) scale(0.99);
+  }
+
+  [data-slot='button']:focus-visible {
+    border-color: color-mix(in oklab, var(--foreground) 38%, var(--glass-edge)) !important;
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      0 0 0 3px color-mix(in oklab, var(--foreground) 12%, transparent),
+      0 18px 38px -28px var(--glass-shadow);
   }
 
   .hero-shell {
@@ -349,35 +380,6 @@
     box-shadow: 0 1px 0 color-mix(in oklab, var(--background) 82%, transparent);
   }
 
-  .hero-shell .hero-actions [data-slot='button'][data-variant='default'] {
-    position: relative;
-    overflow: hidden;
-    border-color: color-mix(in oklab, var(--foreground) 15%, var(--glass-edge)) !important;
-    background:
-      linear-gradient(145deg, var(--glass-highlight), transparent 56%),
-      linear-gradient(325deg, var(--glass-tint), transparent 62%),
-      var(--glass-surface) !important;
-    color: var(--foreground) !important;
-    box-shadow:
-      inset 0 1px 0 var(--glass-highlight),
-      inset 0 -1px 0 color-mix(in oklab, var(--foreground) 9%, transparent),
-      0 16px 36px -28px var(--glass-shadow);
-    transition:
-      background-color 180ms ease,
-      border-color 180ms ease,
-      color 180ms ease,
-      transform 180ms ease !important;
-  }
-
-  .hero-shell .hero-actions [data-slot='button'][data-variant='default']:hover {
-    border-color: var(--foreground) !important;
-    background:
-      linear-gradient(145deg, color-mix(in oklab, var(--background) 22%, transparent), transparent 52%),
-      var(--foreground) !important;
-    color: var(--background) !important;
-    transform: translateY(-1px);
-  }
-
   main {
     counter-reset: section;
   }
@@ -454,21 +456,158 @@
     @apply hover:underline;
   }
 
-  .sub-block {
-    @apply mt-6 flex max-w-3xl flex-col gap-6;
-  }
-
-  .sub-title {
-    @apply text-xl font-semibold leading-tight text-foreground;
-    letter-spacing: -0.01em;
-  }
-
-  .sub-group {
-    @apply flex flex-col gap-6;
-  }
-
   .group-label {
     @apply font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .library-index {
+    @apply grid items-start gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(17rem,0.8fr)] lg:gap-16;
+  }
+
+  .book-index-column {
+    @apply min-w-0;
+  }
+
+  .library-column-head {
+    @apply mb-3 flex items-center justify-between gap-4;
+  }
+
+  .library-count {
+    @apply font-mono text-xs text-muted-foreground;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .book-index,
+  .subscription-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .book-index {
+    border-bottom: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+
+  .book-index-item {
+    border-top: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+
+  .book-index-link {
+    @apply grid rounded-sm py-4 text-foreground no-underline focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50;
+    grid-template-columns: 2rem minmax(0, 1fr) minmax(8.5rem, auto);
+    column-gap: 1rem;
+  }
+
+  .book-index-number {
+    @apply pt-1 font-mono text-xs text-muted-foreground;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .book-index-title {
+    @apply inline-flex items-center gap-1.5 text-lg font-semibold leading-6;
+    letter-spacing: -0.01em;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25rem;
+  }
+
+  .book-index-title svg {
+    @apply size-3.5 transition-transform;
+  }
+
+  .book-index-note {
+    @apply mt-1 block max-w-xl text-[0.9375rem] leading-6 text-muted-foreground;
+  }
+
+  .book-index-meta {
+    @apply pt-1 text-right font-mono text-xs leading-5 text-muted-foreground;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .book-index-link:hover .book-index-title {
+    text-decoration-line: underline;
+  }
+
+  .book-index-link:hover .book-index-title svg,
+  .subscription-link:hover .subscription-name svg {
+    transform: translate(1px, -1px);
+  }
+
+  .library-rail {
+    @apply flex min-w-0 flex-col gap-12;
+  }
+
+  .wiki-note {
+    @apply relative isolate overflow-hidden rounded-xl p-5;
+    border: 1px solid var(--glass-edge);
+    background:
+      linear-gradient(145deg, var(--glass-highlight), transparent 48%),
+      linear-gradient(330deg, var(--glass-tint), transparent 66%),
+      var(--glass-surface);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      inset 0 -1px 0 color-mix(in oklab, var(--foreground) 7%, transparent),
+      0 24px 52px -44px var(--glass-shadow);
+    -webkit-backdrop-filter: blur(18px) saturate(125%);
+    backdrop-filter: blur(18px) saturate(125%);
+  }
+
+  .wiki-note h3 {
+    @apply mt-2 text-xl font-semibold leading-tight text-foreground;
+    letter-spacing: -0.015em;
+  }
+
+  .wiki-note h3 a {
+    @apply inline-flex items-center gap-1.5 rounded-sm focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50;
+  }
+
+  .wiki-note h3 svg {
+    @apply size-3.5 transition-transform;
+  }
+
+  .wiki-note h3 a:hover svg {
+    transform: translate(1px, -1px);
+  }
+
+  .wiki-stack {
+    @apply mt-2 font-mono text-xs leading-5 text-muted-foreground;
+  }
+
+  .wiki-note-copy {
+    @apply mt-4 text-[0.9375rem] leading-6 text-muted-foreground;
+  }
+
+  .subscription-index {
+    @apply flex flex-col gap-8;
+  }
+
+  .subscription-list {
+    @apply mt-3;
+  }
+
+  .subscription-item {
+    border-top: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+
+  .subscription-link {
+    @apply block rounded-sm py-3 text-foreground no-underline focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50;
+  }
+
+  .subscription-name {
+    @apply inline-flex items-center gap-1 text-[0.9375rem] font-semibold leading-5;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2rem;
+  }
+
+  .subscription-name svg {
+    @apply size-3 transition-transform;
+  }
+
+  .subscription-note {
+    @apply mt-1 block text-sm leading-5 text-muted-foreground;
+  }
+
+  .subscription-link:hover .subscription-name {
+    text-decoration-line: underline;
   }
 
   .entry-date {
@@ -641,6 +780,26 @@
     .hero-copy p:not(.hero-kicker),
     .project-page-copy p:not(.hero-kicker) {
       @apply text-base leading-7;
+    }
+
+    .library-index,
+    .library-rail {
+      gap: 2.75rem;
+    }
+
+    .book-index-link {
+      grid-template-columns: 1.75rem minmax(0, 1fr);
+      column-gap: 0.75rem;
+    }
+
+    .book-index-meta {
+      grid-column: 2;
+      padding-top: 0.35rem;
+      text-align: left;
+    }
+
+    .wiki-note {
+      padding: 1.125rem;
     }
   }
 }

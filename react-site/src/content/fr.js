@@ -5,7 +5,7 @@ export const fr = {
     home: {
       title: 'Enzo Simier · Économie appliquée et organisation industrielle',
       description:
-        'Enzo Simier, analyste chez Desjardins à Montréal. Examen de fusions au Bureau de la concurrence, tarification de l’eau à HEC Montréal, calendrier biotech et wiki public.',
+        'Enzo Simier, économiste à Montréal. Concurrence chez Desjardins et au Bureau de la concurrence, tarification de l’eau à HEC Montréal et outils publics.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -27,7 +27,7 @@ export const fr = {
       ['Formation', '#education'],
       ['Recherche', '#research'],
       ['Projets', '#projects'],
-      ['Bibliothèque', '#reading'],
+      ['Lectures', '#reading'],
       ['Cafés', '#cafes'],
     ],
     projectItems: [
@@ -41,7 +41,7 @@ export const fr = {
   hero: {
     kicker: 'Économie appliquée · Organisation industrielle',
     name: 'Enzo Simier',
-    lede: 'Économiste français à Montréal. Je fais de la veille concurrentielle sur le marché bancaire chez Desjardins, je construis mes outils avec des agents IA et je rédige une thèse sur la tarification de l’eau au Québec.',
+    lede: 'Économiste français à Montréal. Je travaille sur la concurrence et la tarification, je rédige un mémoire sur la tarification de l’eau au Québec et je construis de petits outils de recherche et d’analyse.',
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Courriel',
@@ -49,10 +49,10 @@ export const fr = {
   about: {
     eyebrow: 'À propos',
     title: 'Économie de la concurrence',
-    lead: 'Je travaille sur la concurrence et la tarification.',
+    lead: 'Je travaille sur la concurrence, la tarification et la recherche économique appliquée.',
     paragraphs: [
       'Je suis français. J’ai grandi à Tahiti (dix ans), puis à Grenoble et à Rennes. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal en 2021 pour HEC. Résident permanent depuis.',
-      'Depuis : examen de fusions au Bureau de la concurrence, conseil économique chez KPMG, veille concurrentielle chez Desjardins. Je construis mes outils avec des agents LLM, des serveurs MCP et des pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
+      'Au Bureau de la concurrence, j’ai travaillé sur l’examen de fusions. Chez KPMG, j’ai travaillé en conseil économique. Chez Desjardins, j’ai suivi la concurrence bancaire de détail. Je construis aussi des outils de recherche en Python, dont le modèle du mémoire et le calendrier FDA présenté plus bas.',
       'Hors travail : la bonne table, les cafés et les golden retrievers.',
       'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie.',
     ],
@@ -64,10 +64,10 @@ export const fr = {
       {
         company: 'Desjardins',
         role: 'Analyste, analyse d’affaires corporative',
-        date: 'Avril 2026 à aujourd’hui',
+        date: 'Avril à juillet 2026',
         details: [
-          'Je suis la concurrence bancaire de détail au Canada : concurrents, comportements clientèle, signaux de marché.',
-          'J’écris des recommandations, des notes de synthèse et des présentations pour la haute direction.',
+          'J’ai suivi la concurrence bancaire de détail au Canada : concurrents, comportements de la clientèle et signaux de marché.',
+          'J’ai rédigé des recommandations, des notes de synthèse et des présentations pour la haute direction.',
         ],
       },
       {
@@ -150,9 +150,10 @@ export const fr = {
     caseCta: 'Étude de cas',
   },
   library: {
-    eyebrow: 'Bibliothèque',
+    eyebrow: 'Lectures',
     title: 'Livres, notes et abonnements',
     lede: 'Ce que je lis, consulte et maintiens.',
+    booksTitle: 'Livres',
     books: [
       {
         title: 'Chip War',
@@ -181,7 +182,7 @@ export const fr = {
       },
     ],
     wiki: {
-      title: 'Wiki',
+      title: 'Wiki public',
       name: 'Wiki Project',
       stack: 'Next.js · Railway · Supabase',
       note: 'Je tiens un wiki public pour le vocabulaire, les notes de lecture et les fragments de projets.',
@@ -189,7 +190,6 @@ export const fr = {
       sourceCta: 'GitHub',
     },
     subscriptions: {
-      title: 'Abonnements',
       groups: [
         {
           label: 'Revues',
@@ -212,7 +212,7 @@ export const fr = {
           ],
         },
         {
-          label: 'Substacks',
+          label: 'Infolettres',
           items: [
             {
               name: 'Crémieux',

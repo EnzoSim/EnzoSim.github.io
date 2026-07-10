@@ -277,70 +277,95 @@ function LibrarySection() {
   const { t } = useLanguage()
 
   return (
-    <section className="content-section" id="reading">
+    <section className="content-section library-section" id="reading">
       <SectionHeading eyebrow={t.library.eyebrow} title={t.library.title}>
         {t.library.lede}
       </SectionHeading>
-      <div className="entry-list">
-        {t.library.books.map((book, index) => (
-          <article className="entry" key={book.title}>
-            <div className="entry-head">
-              <h3>
-                <a href={bookLinks[index]} rel="noreferrer" target="_blank">
-                  {book.title}
+
+      <div className="library-index">
+        <div className="book-index-column">
+          <div className="library-column-head">
+            <h3 className="group-label">{t.library.booksTitle}</h3>
+            <span className="library-count">{String(t.library.books.length).padStart(2, '0')}</span>
+          </div>
+
+          <ol className="book-index">
+            {t.library.books.map((book, index) => (
+              <li className="book-index-item" key={book.title}>
+                <a
+                  className="book-index-link"
+                  href={bookLinks[index]}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="book-index-number" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="book-index-copy">
+                    <span className="book-index-title">
+                      {book.title}
+                      <ArrowUpRight aria-hidden="true" />
+                    </span>
+                    <span className="book-index-note">{book.note}</span>
+                  </span>
+                  <span className="book-index-meta">{book.author}</span>
                 </a>
-              </h3>
-              <span className="entry-date">{book.author}</span>
-            </div>
-            <p className="entry-note">{book.note}</p>
-          </article>
-        ))}
-      </div>
-      <div className="sub-block">
-        <h3 className="sub-title">{t.library.wiki.title}</h3>
-        <article className="entry">
-          <div className="entry-head">
-            <h4>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="library-rail">
+          <article className="wiki-note">
+            <p className="group-label">{t.library.wiki.title}</p>
+            <h3>
               <a href={wikiLiveUrl} rel="noreferrer" target="_blank">
                 {t.library.wiki.name}
+                <ArrowUpRight aria-hidden="true" />
               </a>
-            </h4>
-            <span className="entry-date" translate="no">
+            </h3>
+            <p className="wiki-stack" translate="no">
               {t.library.wiki.stack}
-            </span>
-          </div>
-          <p className="entry-note">{t.library.wiki.note}</p>
-          <div className="hero-actions mt-3">
-            <a className="text-link" href={wikiLiveUrl} target="_blank" rel="noreferrer">
-              {t.library.wiki.liveCta}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
-            <a className="text-link" href={wikiRepoUrl} target="_blank" rel="noreferrer">
-              {t.library.wiki.sourceCta}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
-          </div>
-        </article>
-      </div>
-      <div className="sub-block">
-        <h3 className="sub-title">{t.library.subscriptions.title}</h3>
-        {t.library.subscriptions.groups.map((group) => (
-          <div className="sub-group" key={group.label}>
-            <p className="group-label">{group.label}</p>
-            {group.items.map((item) => (
-              <article className="entry" key={item.name}>
-                <div className="entry-head">
-                  <h4>
-                    <a href={item.url} rel="noreferrer" target="_blank">
-                      {item.name}
-                    </a>
-                  </h4>
-                </div>
-                <p className="entry-note">{item.note}</p>
-              </article>
+            </p>
+            <p className="wiki-note-copy">{t.library.wiki.note}</p>
+            <div className="hero-actions mt-4">
+              <a className="text-link" href={wikiLiveUrl} target="_blank" rel="noreferrer">
+                {t.library.wiki.liveCta}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+              <a className="text-link" href={wikiRepoUrl} target="_blank" rel="noreferrer">
+                {t.library.wiki.sourceCta}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            </div>
+          </article>
+
+          <div className="subscription-index">
+            {t.library.subscriptions.groups.map((group) => (
+              <section className="subscription-group" key={group.label}>
+                <h3 className="group-label">{group.label}</h3>
+                <ul className="subscription-list">
+                  {group.items.map((item) => (
+                    <li className="subscription-item" key={item.name}>
+                      <a
+                        className="subscription-link"
+                        href={item.url}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <span className="subscription-name">
+                          {item.name}
+                          <ArrowUpRight aria-hidden="true" />
+                        </span>
+                        <span className="subscription-note">{item.note}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   )

@@ -5,7 +5,7 @@ export const en = {
     home: {
       title: 'Enzo Simier · Applied Economics & Industrial Organization',
       description:
-        'Enzo Simier, analyst at Desjardins in Montréal. Merger screening at the Competition Bureau, water pricing at HEC Montréal, a biotech catalyst calendar, and a public wiki.',
+        'Enzo Simier, economist in Montréal. Competition work at Desjardins and the Competition Bureau, water pricing at HEC Montréal, and public tools.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -27,7 +27,7 @@ export const en = {
       ['Education', '#education'],
       ['Research', '#research'],
       ['Projects', '#projects'],
-      ['Library', '#reading'],
+      ['Reading', '#reading'],
       ['Cafés', '#cafes'],
     ],
     projectItems: [
@@ -41,7 +41,7 @@ export const en = {
   hero: {
     kicker: 'Applied Economics · Industrial Organization',
     name: 'Enzo Simier',
-    lede: 'French economist in Montréal. I do competitive intelligence on retail banking at Desjardins, build my own tools with AI agents, and write a thesis on water pricing in Québec.',
+    lede: 'French economist in Montréal. I work on competition and pricing, write a thesis on water pricing in Québec, and build small research and data tools.',
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Email',
@@ -49,10 +49,10 @@ export const en = {
   about: {
     eyebrow: 'About',
     title: 'Competition economics',
-    lead: 'I work on competition and pricing.',
+    lead: 'I work on competition, pricing, and applied economic research.',
     paragraphs: [
       'I’m French. I grew up in Tahiti (ten years), then in Grenoble and Rennes. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2021 for HEC. I’m a permanent resident now.',
-      'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents, MCP servers, and Python pipelines. The thesis model and the FDA calendar below came out of them.',
+      'At the Competition Bureau, I worked on merger reviews. At KPMG, I worked in economic consulting. At Desjardins, I followed retail-banking competition. I also build research tools in Python, including the thesis model and the FDA calendar below.',
       'Off hours: food, unique cafés, and golden retrievers.',
       'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy.',
     ],
@@ -64,10 +64,10 @@ export const en = {
       {
         company: 'Desjardins',
         role: 'Analyst, Corporate Business Analysis',
-        date: 'Apr 2026 to present',
+        date: 'Apr to Jul 2026',
         details: [
-          'I track retail-banking competition across Canada: competitors, customer behavior, market signals.',
-          'I write recommendations, synthesis notes, and executive presentations for senior management.',
+          'I tracked retail-banking competition across Canada: competitors, customer behavior, and market signals.',
+          'I wrote recommendations, synthesis notes, and executive presentations for senior management.',
         ],
       },
       {
@@ -150,9 +150,10 @@ export const en = {
     caseCta: 'Case study',
   },
   library: {
-    eyebrow: 'Library',
+    eyebrow: 'Reading',
     title: 'Books, notes & subscriptions',
     lede: 'Things I read, return to, and maintain.',
+    booksTitle: 'Books',
     books: [
       {
         title: 'Chip War',
@@ -181,7 +182,7 @@ export const en = {
       },
     ],
     wiki: {
-      title: 'Wiki',
+      title: 'Public wiki',
       name: 'Wiki Project',
       stack: 'Next.js · Railway · Supabase',
       note: 'I keep a public wiki for vocabulary, reading notes, and project fragments.',
@@ -189,7 +190,6 @@ export const en = {
       sourceCta: 'GitHub',
     },
     subscriptions: {
-      title: 'Subscriptions',
       groups: [
         {
           label: 'Magazines',
@@ -212,7 +212,7 @@ export const en = {
           ],
         },
         {
-          label: 'Substacks',
+          label: 'Newsletters',
           items: [
             {
               name: 'Crémieux',
