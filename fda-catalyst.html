@@ -7,9 +7,8 @@
       name="description"
       content="FDA Catalyst Research, a biotech and pharma catalyst calendar by Enzo Simier."
     />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#fdfdfe" />
     <link rel="canonical" href="https://enzosimier.com/fda-catalyst.html" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -32,21 +31,20 @@
     <script>
       ;(function () {
         try {
-          if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark')
-          }
+          localStorage.removeItem('theme')
+          document.documentElement.classList.remove('dark')
           var lang = localStorage.getItem('lang')
           if (lang !== 'en' && lang !== 'fr') {
             lang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'
           }
           document.documentElement.lang = lang
         } catch (error) {
-          /* pre-paint bootstrap only; React re-applies both settings */
+          /* pre-paint bootstrap only; React re-applies language */
         }
       })()
     </script>
-    <script type="module" crossorigin src="/assets/main-sW6T3KcK.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-vCOLJbNk.css">
+    <script type="module" crossorigin src="/assets/main-VNES6_N7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CvnVAjli.css">
   </head>
   <body>
     <div id="root"></div>

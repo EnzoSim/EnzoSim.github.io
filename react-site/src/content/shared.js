@@ -2,6 +2,8 @@ import profileSrc from '../assets/profile.jpg'
 
 // Non-translatable values shared by both language dictionaries.
 export const fdaLiveUrl = 'https://fda-catalyst-web-production.up.railway.app/calendar'
+export const wikiLiveUrl = 'https://wiki.enzosimier.com'
+export const wikiRepoUrl = 'https://github.com/EnzoSim/wiki-project'
 export const linkedinUrl = 'https://linkedin.com/in/enzo-simier'
 export const contactEmail = 'enzo.simier@hec.ca'
 export const cvUrl = '/Enzo_Simier_CV.pdf'

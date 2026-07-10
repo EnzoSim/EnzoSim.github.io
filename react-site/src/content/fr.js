@@ -5,7 +5,7 @@ export const fr = {
     home: {
       title: 'Enzo Simier · Économie appliquée et organisation industrielle',
       description:
-        'Enzo Simier, analyste chez Desjardins à Montréal. Examen de fusions au Bureau de la concurrence, tarification de l’eau à HEC Montréal et un calendrier de catalyseurs biotech en ligne.',
+        'Enzo Simier, analyste chez Desjardins à Montréal. Examen de fusions au Bureau de la concurrence, tarification de l’eau à HEC Montréal, calendrier biotech et wiki public.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -14,8 +14,6 @@ export const fr = {
     },
   },
   a11y: {
-    themeToLight: 'Passer au thème clair',
-    themeToDark: 'Passer au thème sombre',
     langSwitch: 'Switch to English',
     pageSections: 'Sections de la page',
     projectSections: 'Sections du projet',
@@ -56,7 +54,7 @@ export const fr = {
       'Je suis français. J’ai grandi à Tahiti (dix ans), puis à Grenoble et à Rennes. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal en 2021 pour HEC. Résident permanent depuis.',
       'Depuis : examen de fusions au Bureau de la concurrence, conseil économique chez KPMG, veille concurrentielle chez Desjardins. Je construis mes outils avec des agents LLM, des serveurs MCP et des pipelines Python. Le modèle de la thèse et le calendrier FDA plus bas en viennent.',
       'Hors travail : la bonne table, les cafés et les golden retrievers.',
-      'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie. Écrivez-moi.',
+      'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie.',
     ],
   },
   work: {
@@ -153,8 +151,8 @@ export const fr = {
   },
   library: {
     eyebrow: 'Bibliothèque',
-    title: 'Les livres que je relis',
-    lede: 'Des livres sur les industries, les institutions et la décision.',
+    title: 'Livres, notes et abonnements',
+    lede: 'Ce que je lis, consulte et maintiens.',
     books: [
       {
         title: 'Chip War',
@@ -182,6 +180,14 @@ export const fr = {
         note: 'Bâtir des coalitions et choisir son moment, à la fin de la République.',
       },
     ],
+    wiki: {
+      title: 'Wiki',
+      name: 'Wiki Project',
+      stack: 'Next.js · Railway · Supabase',
+      note: 'Je tiens un wiki public pour le vocabulaire, les notes de lecture et les fragments de projets.',
+      liveCta: 'Ouvrir le wiki',
+      sourceCta: 'GitHub',
+    },
     subscriptions: {
       title: 'Abonnements',
       groups: [

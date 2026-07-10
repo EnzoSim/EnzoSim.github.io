@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowUpRight, Moon, Sun } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -19,6 +19,8 @@ import {
   fdaMetricValues,
   linkedinUrl,
   profileImage,
+  wikiLiveUrl,
+  wikiRepoUrl,
 } from '@/content/shared'
 
 // Cafés load at runtime from /cafes.json (repo root, updated by the
@@ -45,38 +47,6 @@ function useCafes() {
   }, [])
 
   return items
-}
-
-function useTheme() {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'light'
-    return window.localStorage.getItem('theme') || 'light'
-  })
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    window.localStorage.setItem('theme', theme)
-  }, [theme])
-
-  return [theme, setTheme]
-}
-
-function ThemeButton() {
-  const { t } = useLanguage()
-  const [theme, setTheme] = useTheme()
-  const isDark = theme === 'dark'
-
-  return (
-    <Button
-      type="button"
-      size="icon"
-      variant="ghost"
-      aria-label={isDark ? t.a11y.themeToLight : t.a11y.themeToDark}
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
-    >
-      {isDark ? <Sun /> : <Moon />}
-    </Button>
-  )
 }
 
 function LangButton() {
@@ -124,7 +94,6 @@ function SiteNav({ projectPage = false }) {
             {t.nav.email}
           </a>
           <LangButton />
-          <ThemeButton />
         </div>
       </nav>
       <nav className="mobile-nav-row" aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}>
@@ -175,7 +144,7 @@ function HomeHero() {
           <Button asChild size="lg">
             <a href={cvUrl} target="_blank" rel="noreferrer">
               {t.hero.cvLabel}
-              <ArrowUpRight data-icon="inline-end" />
+              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
             </a>
           </Button>
           <a className="text-link" href={linkedinUrl} target="_blank" rel="noreferrer">
@@ -328,6 +297,32 @@ function LibrarySection() {
         ))}
       </div>
       <div className="sub-block">
+        <h3 className="sub-title">{t.library.wiki.title}</h3>
+        <article className="entry">
+          <div className="entry-head">
+            <h4>
+              <a href={wikiLiveUrl} rel="noreferrer" target="_blank">
+                {t.library.wiki.name}
+              </a>
+            </h4>
+            <span className="entry-date" translate="no">
+              {t.library.wiki.stack}
+            </span>
+          </div>
+          <p className="entry-note">{t.library.wiki.note}</p>
+          <div className="hero-actions mt-3">
+            <a className="text-link" href={wikiLiveUrl} target="_blank" rel="noreferrer">
+              {t.library.wiki.liveCta}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a className="text-link" href={wikiRepoUrl} target="_blank" rel="noreferrer">
+              {t.library.wiki.sourceCta}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
+        </article>
+      </div>
+      <div className="sub-block">
         <h3 className="sub-title">{t.library.subscriptions.title}</h3>
         {t.library.subscriptions.groups.map((group) => (
           <div className="sub-group" key={group.label}>
@@ -461,7 +456,7 @@ function ProjectHero() {
           <Button asChild size="lg">
             <a href={fdaLiveUrl} target="_blank" rel="noreferrer">
               {t.project.openCta}
-              <ArrowUpRight data-icon="inline-end" />
+              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
             </a>
           </Button>
         </div>

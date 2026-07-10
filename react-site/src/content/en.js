@@ -5,7 +5,7 @@ export const en = {
     home: {
       title: 'Enzo Simier · Applied Economics & Industrial Organization',
       description:
-        'Enzo Simier, analyst at Desjardins in Montréal. Merger screening at the Competition Bureau, water pricing at HEC Montréal, and a live biotech catalyst calendar.',
+        'Enzo Simier, analyst at Desjardins in Montréal. Merger screening at the Competition Bureau, water pricing at HEC Montréal, a biotech catalyst calendar, and a public wiki.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -14,8 +14,6 @@ export const en = {
     },
   },
   a11y: {
-    themeToLight: 'Use light theme',
-    themeToDark: 'Use dark theme',
     langSwitch: 'Passer au français',
     pageSections: 'Page sections',
     projectSections: 'Project sections',
@@ -56,7 +54,7 @@ export const en = {
       'I’m French. I grew up in Tahiti (ten years), then in Grenoble and Rennes. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2021 for HEC. I’m a permanent resident now.',
       'Since then: merger screening at the Competition Bureau, economic consulting at KPMG, competitive intelligence at Desjardins. I build my own tools with LLM agents, MCP servers, and Python pipelines. The thesis model and the FDA calendar below came out of them.',
       'Off hours: food, unique cafés, and golden retrievers.',
-      'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy. Email me.',
+      'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy.',
     ],
   },
   work: {
@@ -153,8 +151,8 @@ export const en = {
   },
   library: {
     eyebrow: 'Library',
-    title: 'Books I return to',
-    lede: 'Books on industries, institutions, and decision-making.',
+    title: 'Books, notes & subscriptions',
+    lede: 'Things I read, return to, and maintain.',
     books: [
       {
         title: 'Chip War',
@@ -182,6 +180,14 @@ export const en = {
         note: 'Coalition-building and timing in the late Republic.',
       },
     ],
+    wiki: {
+      title: 'Wiki',
+      name: 'Wiki Project',
+      stack: 'Next.js · Railway · Supabase',
+      note: 'I keep a public wiki for vocabulary, reading notes, and project fragments.',
+      liveCta: 'Open the wiki',
+      sourceCta: 'GitHub',
+    },
     subscriptions: {
       title: 'Subscriptions',
       groups: [
