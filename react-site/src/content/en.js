@@ -22,12 +22,12 @@ export const en = {
   },
   nav: {
     items: [
-      ['About', '#about'],
-      ['Work', '#experience'],
-      ['Education', '#education'],
+      ['Now', '#now'],
+      ['Path', '#path'],
       ['Research', '#research'],
-      ['Projects', '#projects'],
+      ['Built', '#built'],
       ['Reading', '#reading'],
+      ['Personal note', '#personal'],
       ['Cafés', '#cafes'],
     ],
     projectItems: [
@@ -41,33 +41,27 @@ export const en = {
   hero: {
     kicker: 'Applied Economics · Industrial Organization',
     name: 'Enzo Simier',
-    lede: 'French economist in Montréal. I work on competition and pricing, write a thesis on water pricing in Québec, and build small research and data tools.',
+    lede: 'French economist in Montréal. I work on competition, pricing, and applied economic research.',
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Email',
   },
-  about: {
-    eyebrow: 'About',
-    title: 'Competition economics',
-    lead: 'I work on competition, pricing, and applied economic research.',
-    paragraphs: [
-      'I’m French. I grew up in Tahiti (ten years), then in Grenoble and Rennes. After two years of pharmacy in Bordeaux I switched to economics and moved to Montréal in 2021 for HEC. I’m a permanent resident now.',
-      'At the Competition Bureau, I worked on merger reviews. At KPMG, I worked in economic consulting. At Desjardins, I followed retail-banking competition. I also build research tools in Python, including the thesis model and the FDA calendar below.',
-      'Off hours: food, unique cafés, and golden retrievers.',
-      'I finish my M.Sc. in Applied Economics at HEC Montréal in Summer 2026, specialized in industrial organization. I am open to opportunities in competition, pricing, and strategy.',
-    ],
+  now: {
+    eyebrow: 'Now',
+    title: 'Summer 2026',
+    body: 'This summer, I am finishing my thesis and am open to opportunities in competition, pricing, and strategy.',
   },
   work: {
-    eyebrow: 'Work',
-    title: 'Experience',
+    eyebrow: 'Path',
+    title: 'Selected experience',
+    earlier: 'Earlier experience: HEC Montréal, National Bank Accelerator, and Front Row Ventures.',
     items: [
       {
         company: 'Desjardins',
         role: 'Analyst, Corporate Business Analysis',
         date: 'Apr to Jul 2026',
         details: [
-          'I tracked retail-banking competition across Canada: competitors, customer behavior, and market signals.',
-          'I wrote recommendations, synthesis notes, and executive presentations for senior management.',
+          'I read Canada’s retail-banking landscape and turned shifts in competitors, customers, and markets into briefs for senior management.',
         ],
       },
       {
@@ -75,8 +69,7 @@ export const en = {
         role: 'Intern, Mergers Directorate',
         date: 'Summer 2025',
         details: [
-          'In merger reviews I defined markets and measured shares, HHIs, entry barriers, diversion ratios.',
-          'I wrote memos for Advance Ruling Certificate and No Action Letter files, under supervision.',
+          'I learned how merger reviews are built: defining markets, testing concentration and entry, then translating the analysis into decision files under supervision.',
         ],
       },
       {
@@ -84,8 +77,7 @@ export const en = {
         role: 'Intern, Economic Consulting & Strategy',
         date: 'Summer 2024',
         details: [
-          'I ran economic impact assessments in the port sector, including Port de Magog, and in public health.',
-          'I built scenario models for both sectors (feasibility, risks, sensitivities) and wrote the executive summaries.',
+          'I moved between port and public-health mandates, building impact, feasibility, risk, and sensitivity analyses, then distilling them into executive summaries.',
         ],
       },
       {
@@ -124,7 +116,7 @@ export const en = {
       {
         school: 'HEC Montréal',
         meta: 'M.Sc. Applied Economics · 2024 to 2026',
-        text: 'Specialization in industrial organization. Thesis on volumetric water pricing, with Réseau Environnement.',
+        text: 'Specialization in industrial organization.',
       },
       {
         school: 'HEC Montréal',
@@ -135,24 +127,37 @@ export const en = {
   },
   research: {
     eyebrow: 'Research',
-    title: 'Volumetric water pricing in Québec.',
+    title: 'Volumetric water pricing in Québec',
     description:
-      'I estimate what municipalities gain when they price water by volume. Difference-in-differences with staggered adoption, on municipal and household panel data; Longueuil and Laval are the cases. I model cost of service, avoided costs, and net present value under sensitivity scenarios. With HEC Montréal and Réseau Environnement.',
+      'I estimate what municipalities gain when they price water by volume. The research uses staggered difference-in-differences on municipal and household panels, with Longueuil and Laval as cases. I model cost of service, avoided costs, and net present value under sensitivity scenarios.',
+    partners: 'HEC Montréal · Réseau Environnement',
     lens: 'Industrial organization, consumer surplus, cost of service.',
     supervisors: 'Supervisors: Justin Leroux and Jean-Luc Martel.',
   },
   fda: {
-    eyebrow: 'Projects',
     title: 'FDA Catalyst Research',
-    lede: 'I built a live calendar of biotech catalysts. BPIQ records land in Railway Postgres; FastAPI serves them; React renders the page.',
+    stack: 'FastAPI · Railway Postgres · React',
+    lede: 'A live calendar for biotech catalysts, built around structured BPIQ records and case-level verification.',
     metricLabels: ['events', 'companies', 'PDUFA decisions', 'readouts'],
     liveCta: 'Live calendar',
     caseCta: 'Case study',
   },
+  built: {
+    eyebrow: 'Built',
+    title: 'Tools I maintain',
+    lede: 'Two public projects.',
+    wiki: {
+      name: 'Wiki Project',
+      stack: 'Next.js · Railway · Supabase',
+      note: 'A public wiki for vocabulary, reading notes, and project fragments.',
+      liveCta: 'Open the wiki',
+      sourceCta: 'GitHub',
+    },
+  },
   library: {
     eyebrow: 'Reading',
-    title: 'Books, notes & subscriptions',
-    lede: 'Things I read, return to, and maintain.',
+    title: 'Books and publications',
+    lede: 'Books I return to and publications I follow.',
     booksTitle: 'Books',
     books: [
       {
@@ -181,14 +186,6 @@ export const en = {
         note: 'Coalition-building and timing in the late Republic.',
       },
     ],
-    wiki: {
-      title: 'Public wiki',
-      name: 'Wiki Project',
-      stack: 'Next.js · Railway · Supabase',
-      note: 'I keep a public wiki for vocabulary, reading notes, and project fragments.',
-      liveCta: 'Open the wiki',
-      sourceCta: 'GitHub',
-    },
     subscriptions: {
       groups: [
         {
@@ -229,6 +226,11 @@ export const en = {
       ],
     },
   },
+  personal: {
+    eyebrow: 'Personal note',
+    title: 'Tahiti to Montréal',
+    body: 'I’m French. I spent ten years in Tahiti, then lived in Grenoble and Rennes. After two years of pharmacy in Bordeaux, I switched to economics and moved to Montréal for HEC in 2021. I’m now a permanent resident. Outside work: food, unique cafés, and golden retrievers.',
+  },
   // Café DATA lives in /cafes.json at the repo root (fetched at runtime,
   // updated by the add-cafe GitHub Action). Only the labels live here.
   cafes: {
@@ -237,8 +239,7 @@ export const en = {
     lede: 'A running list.',
   },
   footer: {
-    location: 'Montréal, QC',
-    linkedinLabel: 'LinkedIn',
+    note: '© 2026 Enzo Simier',
   },
   project: {
     kicker: 'FDA Catalyst Research',

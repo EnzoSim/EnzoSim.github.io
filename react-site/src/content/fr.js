@@ -22,12 +22,12 @@ export const fr = {
   },
   nav: {
     items: [
-      ['À propos', '#about'],
-      ['Expérience', '#experience'],
-      ['Formation', '#education'],
+      ['En ce moment', '#now'],
+      ['Parcours', '#path'],
       ['Recherche', '#research'],
-      ['Projets', '#projects'],
+      ['Projets', '#built'],
       ['Lectures', '#reading'],
+      ['Note personnelle', '#personal'],
       ['Cafés', '#cafes'],
     ],
     projectItems: [
@@ -41,33 +41,27 @@ export const fr = {
   hero: {
     kicker: 'Économie appliquée · Organisation industrielle',
     name: 'Enzo Simier',
-    lede: 'Économiste français à Montréal. Je travaille sur la concurrence et la tarification, je rédige un mémoire sur la tarification de l’eau au Québec et je construis de petits outils de recherche et d’analyse.',
+    lede: 'Économiste français à Montréal. Je travaille sur la concurrence, la tarification et la recherche économique appliquée.',
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Courriel',
   },
-  about: {
-    eyebrow: 'À propos',
-    title: 'Économie de la concurrence',
-    lead: 'Je travaille sur la concurrence, la tarification et la recherche économique appliquée.',
-    paragraphs: [
-      'Je suis français. J’ai grandi à Tahiti (dix ans), puis à Grenoble et à Rennes. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal en 2021 pour HEC. Résident permanent depuis.',
-      'Au Bureau de la concurrence, j’ai travaillé sur l’examen de fusions. Chez KPMG, j’ai travaillé en conseil économique. Chez Desjardins, j’ai suivi la concurrence bancaire de détail. Je construis aussi des outils de recherche en Python, dont le modèle du mémoire et le calendrier FDA présenté plus bas.',
-      'Hors travail : la bonne table, les cafés et les golden retrievers.',
-      'Je termine ma M. Sc. en économie appliquée à HEC Montréal à l’été 2026, spécialisée en organisation industrielle. Je reste ouvert aux occasions en concurrence, en tarification et en stratégie.',
-    ],
+  now: {
+    eyebrow: 'En ce moment',
+    title: 'Été 2026',
+    body: 'Cet été, je termine mon mémoire et je reste ouvert aux occasions en concurrence, en tarification et en stratégie.',
   },
   work: {
-    eyebrow: 'Travail',
-    title: 'Expérience',
+    eyebrow: 'Parcours',
+    title: 'Expériences choisies',
+    earlier: 'Expériences antérieures : HEC Montréal, Accélérateur Banque Nationale et Front Row Ventures.',
     items: [
       {
         company: 'Desjardins',
         role: 'Analyste, analyse d’affaires corporative',
         date: 'Avril à juillet 2026',
         details: [
-          'J’ai suivi la concurrence bancaire de détail au Canada : concurrents, comportements de la clientèle et signaux de marché.',
-          'J’ai rédigé des recommandations, des notes de synthèse et des présentations pour la haute direction.',
+          'J’ai suivi l’évolution du marché bancaire de détail canadien, puis traduit les mouvements des concurrents, des clients et du marché en notes destinées à la haute direction.',
         ],
       },
       {
@@ -75,8 +69,7 @@ export const fr = {
         role: 'Stagiaire, Direction des fusions',
         date: 'Été 2025',
         details: [
-          'En examen de fusions, j’ai défini les marchés et mesuré parts, IHH, barrières à l’entrée, ratios de diversion.',
-          'J’ai rédigé, sous supervision, des notes pour des certificats de décision préalable et des lettres de non-intervention.',
+          'J’ai appris comment se construit un examen de fusion : définir les marchés, tester la concentration et l’entrée, puis traduire l’analyse en dossiers de décision sous supervision.',
         ],
       },
       {
@@ -84,8 +77,7 @@ export const fr = {
         role: 'Stagiaire, Services-conseils en économie et stratégie',
         date: 'Été 2024',
         details: [
-          'J’ai mesuré l’impact économique de projets portuaires, dont le Port de Magog, et de santé publique.',
-          'J’ai modélisé des scénarios pour les deux secteurs (faisabilité, risques, sensibilités) et écrit les sommaires de gestion.',
+          'J’ai travaillé entre des mandats portuaires et de santé publique, en combinant analyses d’impact, de faisabilité, de risque et de sensibilité avant de les condenser en sommaires de gestion.',
         ],
       },
       {
@@ -124,7 +116,7 @@ export const fr = {
       {
         school: 'HEC Montréal',
         meta: 'M. Sc. en économie appliquée · 2024 à 2026',
-        text: 'Spécialisation en organisation industrielle. Mémoire sur la tarification volumétrique de l’eau, avec Réseau Environnement.',
+        text: 'Spécialisation en organisation industrielle.',
       },
       {
         school: 'HEC Montréal',
@@ -135,24 +127,37 @@ export const fr = {
   },
   research: {
     eyebrow: 'Recherche',
-    title: 'La tarification volumétrique de l’eau au Québec.',
+    title: 'La tarification volumétrique de l’eau au Québec',
     description:
-      'J’estime ce que gagnent les municipalités quand elles tarifient l’eau au volume. Doubles différences avec adoption échelonnée, sur des panels municipaux et de ménages; Longueuil et Laval servent de cas. Je modélise le coût de service, les coûts évités et la valeur actualisée nette, avec analyses de sensibilité. Avec HEC Montréal et Réseau Environnement.',
+      'J’estime ce que gagnent les municipalités quand elles tarifient l’eau au volume. La recherche utilise des doubles différences avec adoption échelonnée sur des panels municipaux et de ménages, avec Longueuil et Laval comme cas. Je modélise le coût de service, les coûts évités et la valeur actualisée nette avec des analyses de sensibilité.',
+    partners: 'HEC Montréal · Réseau Environnement',
     lens: 'Organisation industrielle, surplus du consommateur, coût de service.',
     supervisors: 'Direction : Justin Leroux et Jean-Luc Martel.',
   },
   fda: {
-    eyebrow: 'Projets',
     title: 'FDA Catalyst Research',
-    lede: 'J’ai construit un calendrier en direct des catalyseurs biotech. Les enregistrements BPIQ arrivent dans Railway Postgres; FastAPI les sert; React affiche la page.',
+    stack: 'FastAPI · Railway Postgres · React',
+    lede: 'Un calendrier en direct des catalyseurs biotech, construit à partir d’enregistrements BPIQ structurés et d’une vérification au cas par cas.',
     metricLabels: ['événements', 'sociétés', 'décisions PDUFA', 'résultats cliniques'],
     liveCta: 'Calendrier en direct',
     caseCta: 'Étude de cas',
   },
+  built: {
+    eyebrow: 'Projets',
+    title: 'Outils que je maintiens',
+    lede: 'Deux projets publics.',
+    wiki: {
+      name: 'Wiki Project',
+      stack: 'Next.js · Railway · Supabase',
+      note: 'Un wiki public pour le vocabulaire, les notes de lecture et les fragments de projets.',
+      liveCta: 'Ouvrir le wiki',
+      sourceCta: 'GitHub',
+    },
+  },
   library: {
     eyebrow: 'Lectures',
-    title: 'Livres, notes et abonnements',
-    lede: 'Ce que je lis, consulte et maintiens.',
+    title: 'Livres et publications',
+    lede: 'Des livres auxquels je reviens et les publications que je suis.',
     booksTitle: 'Livres',
     books: [
       {
@@ -181,14 +186,6 @@ export const fr = {
         note: 'Bâtir des coalitions et choisir son moment, à la fin de la République.',
       },
     ],
-    wiki: {
-      title: 'Wiki public',
-      name: 'Wiki Project',
-      stack: 'Next.js · Railway · Supabase',
-      note: 'Je tiens un wiki public pour le vocabulaire, les notes de lecture et les fragments de projets.',
-      liveCta: 'Ouvrir le wiki',
-      sourceCta: 'GitHub',
-    },
     subscriptions: {
       groups: [
         {
@@ -229,6 +226,11 @@ export const fr = {
       ],
     },
   },
+  personal: {
+    eyebrow: 'Note personnelle',
+    title: 'De Tahiti à Montréal',
+    body: 'Je suis français. J’ai passé dix ans à Tahiti, puis vécu à Grenoble et à Rennes. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal pour HEC en 2021. Je suis maintenant résident permanent. Hors travail : la bonne table, les cafés et les golden retrievers.',
+  },
   // Les DONNÉES des cafés vivent dans /cafes.json à la racine du dépôt
   // (chargées à l’exécution, mises à jour par l’action add-cafe).
   cafes: {
@@ -237,8 +239,7 @@ export const fr = {
     lede: 'Une liste en cours.',
   },
   footer: {
-    location: 'Montréal, QC',
-    linkedinLabel: 'LinkedIn',
+    note: '© 2026 Enzo Simier',
   },
   project: {
     kicker: 'FDA Catalyst Research',

@@ -66,6 +66,16 @@ function LangButton() {
   )
 }
 
+function SkipLink() {
+  const { t } = useLanguage()
+
+  return (
+    <a className="skip-link" href="#main">
+      {t.a11y.skipToContent}
+    </a>
+  )
+}
+
 function SiteNav({ projectPage = false }) {
   const { t } = useLanguage()
   const cafes = useCafes()
@@ -75,9 +85,6 @@ function SiteNav({ projectPage = false }) {
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <a className="skip-link" href="#main">
-        {t.a11y.skipToContent}
-      </a>
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a className="nav-brand" href="/">
           Enzo Simier
@@ -131,30 +138,23 @@ function MetricLine() {
   )
 }
 
-function HomeHero() {
+function IdentityPanel() {
   const { t } = useLanguage()
+  const cafes = useCafes()
+  const items = t.nav.items.filter(([, href]) => href !== '#cafes' || cafes.length > 0)
 
   return (
-    <section className="hero-shell" id="about">
-      <div className="hero-copy">
-        <p className="hero-kicker">{t.hero.kicker}</p>
-        <h1>{t.hero.name}</h1>
-        <p>{t.hero.lede}</p>
-        <div className="hero-actions">
-          <Button asChild size="lg">
-            <a href={cvUrl} target="_blank" rel="noreferrer">
-              {t.hero.cvLabel}
-              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
-            </a>
-          </Button>
-          <a className="text-link" href={linkedinUrl} target="_blank" rel="noreferrer">
-            {t.hero.linkedinLabel}
-          </a>
-          <a className="text-link" href={`mailto:${contactEmail}`}>
-            {t.hero.emailLabel}
-          </a>
+    <header className="identity-panel" aria-labelledby="profile-name">
+      <div className="identity-heading">
+        <div className="identity-title-row">
+          <h1 id="profile-name">{t.hero.name}</h1>
+          <span className="identity-lang">
+            <LangButton />
+          </span>
         </div>
+        <p className="hero-kicker">{t.hero.kicker}</p>
       </div>
+
       <div className="portrait-frame">
         <img
           alt={t.a11y.portraitAlt}
@@ -165,71 +165,88 @@ function HomeHero() {
           width={profileImage.width}
         />
       </div>
-    </section>
-  )
-}
 
-function AboutSection() {
-  const { t } = useLanguage()
+      <p className="identity-lede">{t.hero.lede}</p>
 
-  return (
-    <section className="content-section">
-      <div className="two-column">
-        <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title}>
-          {t.about.lead}
-        </SectionHeading>
-        <div className="copy-stack">
-          {t.about.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+      <div className="identity-actions">
+        <Button asChild size="sm">
+          <a href={cvUrl} target="_blank" rel="noreferrer">
+            {t.hero.cvLabel}
+            <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
+          </a>
+        </Button>
+        <Button asChild size="sm" variant="ghost">
+          <a href={linkedinUrl} target="_blank" rel="noreferrer">
+            {t.hero.linkedinLabel}
+            <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
+          </a>
+        </Button>
+        <Button asChild size="sm" variant="ghost">
+          <a href={`mailto:${contactEmail}`}>{t.hero.emailLabel}</a>
+        </Button>
       </div>
-    </section>
-  )
-}
 
-function ExperienceSection() {
-  const { t } = useLanguage()
-
-  return (
-    <section className="content-section" id="experience">
-      <SectionHeading eyebrow={t.work.eyebrow} title={t.work.title} />
-      <div className="entry-list">
-        {t.work.items.map((item) => (
-          <article className="entry" key={`${item.company}-${item.date}`}>
-            <div className="entry-head">
-              <h3>{item.company}</h3>
-              <span className="entry-date">{item.date}</span>
-            </div>
-            <p className="entry-role">{item.role}</p>
-            <ul className="entry-details">
-              {item.details.map((detail) => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function EducationSection() {
-  const { t } = useLanguage()
-
-  return (
-    <section className="content-section" id="education">
-      <SectionHeading eyebrow={t.education.eyebrow} title={t.education.title} />
-      <div className="entry-list">
+      <div className="identity-education" id="education">
+        <p className="group-label">{t.education.title}</p>
         {t.education.items.map((item) => (
-          <article className="entry" key={item.meta}>
-            <div className="entry-head">
-              <h3>{item.meta}</h3>
+          <div className="identity-education-item" key={item.meta}>
+            <p>{item.meta}</p>
+            <span>{item.text}</span>
+          </div>
+        ))}
+      </div>
+
+      <nav className="identity-index" aria-label={t.a11y.pageSections}>
+        {items.map(([label, href], index) => (
+          <a href={href} key={href}>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span>{label}</span>
+          </a>
+        ))}
+      </nav>
+
+    </header>
+  )
+}
+
+function NowSection() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="content-section" id="now">
+      <span className="hash-alias" id="about" aria-hidden="true" />
+      <SectionHeading eyebrow={t.now.eyebrow} title={t.now.title}>
+        {t.now.body}
+      </SectionHeading>
+    </section>
+  )
+}
+
+function SelectedPathSection() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="content-section" id="path">
+      <span className="hash-alias" id="experience" aria-hidden="true" />
+      <SectionHeading eyebrow={t.work.eyebrow} title={t.work.title} />
+      <div className="path-list">
+        {t.work.items.slice(0, 3).map((item, index) => (
+          <article className="path-item" key={`${item.company}-${item.date}`}>
+            <span className="path-index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="path-copy">
+              <div className="path-head">
+                <h3>{item.company}</h3>
+                <span className="entry-date">{item.date}</span>
+              </div>
+              <p className="entry-role">{item.role}</p>
+              <p className="path-summary">{item.details.join(' ')}</p>
             </div>
-            <p className="entry-note">{item.text}</p>
           </article>
         ))}
       </div>
+      <p className="path-earlier">{t.work.earlier}</p>
     </section>
   )
 }
@@ -243,6 +260,7 @@ function ResearchSection() {
         {t.research.description}
       </SectionHeading>
       <div className="research-meta">
+        <span>{t.research.partners}</span>
         <span>{t.research.lens}</span>
         <span>{t.research.supervisors}</span>
       </div>
@@ -250,24 +268,59 @@ function ResearchSection() {
   )
 }
 
-function FdaProjectFeature() {
+function BuiltSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="content-section" id="projects">
-      <SectionHeading eyebrow={t.fda.eyebrow} title={t.fda.title}>
-        {t.fda.lede}
+    <section className="content-section" id="built">
+      <span className="hash-alias" id="projects" aria-hidden="true" />
+      <SectionHeading eyebrow={t.built.eyebrow} title={t.built.title}>
+        {t.built.lede}
       </SectionHeading>
-      <MetricLine />
-      <div className="hero-actions">
-        <a className="text-link" href={fdaLiveUrl} target="_blank" rel="noreferrer">
-          {t.fda.liveCta}
-          <ArrowUpRight aria-hidden="true" />
-        </a>
-        <a className="text-link" href="/fda-catalyst.html">
-          {t.fda.caseCta}
-          <ArrowUpRight aria-hidden="true" />
-        </a>
+
+      <div className="built-ledger">
+        <article className="built-entry">
+          <div className="built-heading">
+            <span className="built-index" aria-hidden="true">01</span>
+            <div>
+              <h3>{t.fda.title}</h3>
+              <p className="built-stack" translate="no">{t.fda.stack}</p>
+            </div>
+          </div>
+          <p className="built-copy">{t.fda.lede}</p>
+          <MetricLine />
+          <div className="hero-actions">
+            <a className="text-link" href={fdaLiveUrl} target="_blank" rel="noreferrer">
+              {t.fda.liveCta}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a className="text-link" href="/fda-catalyst.html">
+              {t.fda.caseCta}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
+        </article>
+
+        <article className="built-entry">
+          <div className="built-heading">
+            <span className="built-index" aria-hidden="true">02</span>
+            <div>
+              <h3>{t.built.wiki.name}</h3>
+              <p className="built-stack" translate="no">{t.built.wiki.stack}</p>
+            </div>
+          </div>
+          <p className="built-copy">{t.built.wiki.note}</p>
+          <div className="hero-actions">
+            <a className="text-link" href={wikiLiveUrl} target="_blank" rel="noreferrer">
+              {t.built.wiki.liveCta}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a className="text-link" href={wikiRepoUrl} target="_blank" rel="noreferrer">
+              {t.built.wiki.sourceCta}
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
+        </article>
       </div>
     </section>
   )
@@ -282,7 +335,7 @@ function LibrarySection() {
         {t.library.lede}
       </SectionHeading>
 
-      <div className="library-index">
+      <div className="reading-layout">
         <div className="book-index-column">
           <div className="library-column-head">
             <h3 className="group-label">{t.library.booksTitle}</h3>
@@ -315,58 +368,44 @@ function LibrarySection() {
           </ol>
         </div>
 
-        <div className="library-rail">
-          <article className="wiki-note">
-            <p className="group-label">{t.library.wiki.title}</p>
-            <h3>
-              <a href={wikiLiveUrl} rel="noreferrer" target="_blank">
-                {t.library.wiki.name}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </h3>
-            <p className="wiki-stack" translate="no">
-              {t.library.wiki.stack}
-            </p>
-            <p className="wiki-note-copy">{t.library.wiki.note}</p>
-            <div className="hero-actions mt-4">
-              <a className="text-link" href={wikiLiveUrl} target="_blank" rel="noreferrer">
-                {t.library.wiki.liveCta}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-              <a className="text-link" href={wikiRepoUrl} target="_blank" rel="noreferrer">
-                {t.library.wiki.sourceCta}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </div>
-          </article>
-
-          <div className="subscription-index">
-            {t.library.subscriptions.groups.map((group) => (
-              <section className="subscription-group" key={group.label}>
-                <h3 className="group-label">{group.label}</h3>
-                <ul className="subscription-list">
-                  {group.items.map((item) => (
-                    <li className="subscription-item" key={item.name}>
-                      <a
-                        className="subscription-link"
-                        href={item.url}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <span className="subscription-name">
-                          {item.name}
-                          <ArrowUpRight aria-hidden="true" />
-                        </span>
-                        <span className="subscription-note">{item.note}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
+        <div className="periodical-grid">
+          {t.library.subscriptions.groups.map((group) => (
+            <section className="subscription-group" key={group.label}>
+              <h3 className="group-label">{group.label}</h3>
+              <ul className="subscription-list">
+                {group.items.map((item) => (
+                  <li className="subscription-item" key={item.name}>
+                    <a
+                      className="subscription-link"
+                      href={item.url}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <span className="subscription-name">
+                        {item.name}
+                        <ArrowUpRight aria-hidden="true" />
+                      </span>
+                      <span className="subscription-note">{item.note}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
         </div>
       </div>
+    </section>
+  )
+}
+
+function PersonalSection() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="content-section personal-section" id="personal">
+      <SectionHeading eyebrow={t.personal.eyebrow} title={t.personal.title}>
+        {t.personal.body}
+      </SectionHeading>
     </section>
   )
 }
@@ -412,11 +451,7 @@ function SiteFooter() {
 
   return (
     <footer className="site-footer">
-      <span>{t.footer.location}</span>
-      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-      <a href={linkedinUrl} rel="noreferrer" target="_blank">
-        {t.footer.linkedinLabel}
-      </a>
+      <span>{t.footer.note}</span>
     </footer>
   )
 }
@@ -424,18 +459,25 @@ function SiteFooter() {
 function HomePage() {
   return (
     <>
-      <SiteNav />
-      <main id="main">
-        <HomeHero />
-        <AboutSection />
-        <ExperienceSection />
-        <EducationSection />
-        <ResearchSection />
-        <FdaProjectFeature />
-        <LibrarySection />
-        <CafesSection />
+      <SkipLink />
+      <div className="home-mobile-nav">
+        <SiteNav />
+      </div>
+      <main className="portfolio-shell" id="main">
+        <IdentityPanel />
+        <div className="portfolio-stage">
+          <div className="portfolio-content">
+            <NowSection />
+            <SelectedPathSection />
+            <ResearchSection />
+            <BuiltSection />
+            <LibrarySection />
+            <PersonalSection />
+            <CafesSection />
+          </div>
+          <SiteFooter />
+        </div>
       </main>
-      <SiteFooter />
     </>
   )
 }
@@ -550,6 +592,7 @@ function DeploymentSection() {
 function FdaCatalystPage() {
   return (
     <>
+      <SkipLink />
       <SiteNav projectPage />
       <main id="main">
         <ProjectHero />
