@@ -22,12 +22,12 @@ export const en = {
   },
   nav: {
     items: [
+      ['About', '#about'],
       ['Now', '#now'],
       ['Path', '#path'],
       ['Research', '#research'],
       ['Built', '#built'],
       ['Reading', '#reading'],
-      ['Personal note', '#personal'],
       ['Cafés', '#cafes'],
     ],
     projectItems: [
@@ -36,7 +36,6 @@ export const en = {
       ['Architecture', '#architecture'],
       ['Deployment', '#deployment'],
     ],
-    email: 'Email',
   },
   hero: {
     kicker: 'Applied Economics · Industrial Organization',
@@ -45,6 +44,11 @@ export const en = {
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Email',
+  },
+  about: {
+    eyebrow: 'About',
+    title: 'About me',
+    body: 'I spent ten years in Tahiti, then lived in Grenoble and Rennes. Before economics, I studied pharmacy in Bordeaux for two years. I am now a Canadian permanent resident. Outside work: food, unique cafés, and golden retrievers.',
   },
   now: {
     eyebrow: 'Now',
@@ -225,11 +229,6 @@ export const en = {
         },
       ],
     },
-  },
-  personal: {
-    eyebrow: 'Personal note',
-    title: 'Tahiti to Montréal',
-    body: 'I’m French. I spent ten years in Tahiti, then lived in Grenoble and Rennes. After two years of pharmacy in Bordeaux, I switched to economics and moved to Montréal for HEC in 2021. I’m now a permanent resident. Outside work: food, unique cafés, and golden retrievers.',
   },
   // Café DATA lives in /cafes.json at the repo root (fetched at runtime,
   // updated by the add-cafe GitHub Action). Only the labels live here.

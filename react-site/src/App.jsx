@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -49,6 +49,51 @@ function useCafes() {
   return items
 }
 
+function useActiveSection(items) {
+  const sectionItems = useMemo(
+    () => items.filter(([, href]) => href.startsWith('#')),
+    [items],
+  )
+  const [activeHref, setActiveHref] = useState(sectionItems[0]?.[1] ?? '')
+
+  useEffect(() => {
+    const targets = sectionItems
+      .map(([, href]) => document.getElementById(href.slice(1)))
+      .filter(Boolean)
+
+    if (!targets.length) return undefined
+
+    const syncFromHash = () => {
+      const match = sectionItems.find(([, href]) => href === window.location.hash)
+      if (match) setActiveHref(match[1])
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => (
+            b.intersectionRatio - a.intersectionRatio
+            || a.boundingClientRect.top - b.boundingClientRect.top
+          ))
+
+        if (visible[0]) setActiveHref(`#${visible[0].target.id}`)
+      },
+      { rootMargin: '-14% 0px -68% 0px', threshold: [0, 0.25, 0.75] },
+    )
+
+    targets.forEach((target) => observer.observe(target))
+    window.addEventListener('hashchange', syncFromHash)
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('hashchange', syncFromHash)
+    }
+  }, [sectionItems])
+
+  return activeHref
+}
+
 function LangButton() {
   const { lang, setLang, t } = useLanguage()
   const next = lang === 'en' ? 'fr' : 'en'
@@ -79,33 +124,59 @@ function SkipLink() {
 function SiteNav({ projectPage = false }) {
   const { t } = useLanguage()
   const cafes = useCafes()
-  const items = (projectPage ? t.nav.projectItems : t.nav.items).filter(
-    ([, href]) => href !== '#cafes' || cafes.length > 0,
+  const items = useMemo(
+    () => (projectPage ? t.nav.projectItems : t.nav.items).filter(
+      ([, href]) => href !== '#cafes' || cafes.length > 0,
+    ),
+    [cafes.length, projectPage, t.nav.items, t.nav.projectItems],
   )
+  const activeHref = useActiveSection(items)
+  const mobileNavRef = useRef(null)
+
+  useEffect(() => {
+    const activeLink = [...(mobileNavRef.current?.querySelectorAll('a') ?? [])]
+      .find((link) => link.getAttribute('href') === activeHref)
+    activeLink?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'nearest',
+      inline: 'nearest',
+    })
+  }, [activeHref])
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a className="nav-brand" href="/">
+      <nav className="site-nav-primary mx-auto flex max-w-5xl items-center justify-between gap-4">
+        <a className="liquid-pill nav-brand" href="/">
           Enzo Simier
         </a>
         <div className="desktop-nav">
           {items.map(([label, href]) => (
-            <a className="nav-link" href={href} key={href}>
+            <a
+              aria-current={activeHref === href ? 'location' : undefined}
+              className="liquid-pill nav-link"
+              href={href}
+              key={href}
+            >
               {label}
             </a>
           ))}
         </div>
-        <div className="flex items-center gap-1">
-          <a className="nav-email" href={`mailto:${contactEmail}`}>
-            {t.nav.email}
-          </a>
+        <div className="flex items-center">
           <LangButton />
         </div>
       </nav>
-      <nav className="mobile-nav-row" aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}>
+      <nav
+        className="mobile-nav-row"
+        aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}
+        ref={mobileNavRef}
+      >
         {items.map(([label, href]) => (
-          <a className="nav-link" href={href} key={href}>
+          <a
+            aria-current={activeHref === href ? 'location' : undefined}
+            className="liquid-pill nav-link"
+            href={href}
+            key={href}
+          >
             {label}
           </a>
         ))}
@@ -141,7 +212,11 @@ function MetricLine() {
 function IdentityPanel() {
   const { t } = useLanguage()
   const cafes = useCafes()
-  const items = t.nav.items.filter(([, href]) => href !== '#cafes' || cafes.length > 0)
+  const items = useMemo(
+    () => t.nav.items.filter(([, href]) => href !== '#cafes' || cafes.length > 0),
+    [cafes.length, t.nav.items],
+  )
+  const activeHref = useActiveSection(items)
 
   return (
     <header className="identity-panel" aria-labelledby="profile-name">
@@ -198,7 +273,12 @@ function IdentityPanel() {
 
       <nav className="identity-index" aria-label={t.a11y.pageSections}>
         {items.map(([label, href], index) => (
-          <a href={href} key={href}>
+          <a
+            aria-current={activeHref === href ? 'location' : undefined}
+            className="liquid-pill identity-index-link"
+            href={href}
+            key={href}
+          >
             <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <span>{label}</span>
           </a>
@@ -209,12 +289,24 @@ function IdentityPanel() {
   )
 }
 
+function AboutSection() {
+  const { t } = useLanguage()
+
+  return (
+    <section className="content-section" id="about">
+      <span className="hash-alias" id="personal" aria-hidden="true" />
+      <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title}>
+        {t.about.body}
+      </SectionHeading>
+    </section>
+  )
+}
+
 function NowSection() {
   const { t } = useLanguage()
 
   return (
     <section className="content-section" id="now">
-      <span className="hash-alias" id="about" aria-hidden="true" />
       <SectionHeading eyebrow={t.now.eyebrow} title={t.now.title}>
         {t.now.body}
       </SectionHeading>
@@ -260,9 +352,13 @@ function ResearchSection() {
         {t.research.description}
       </SectionHeading>
       <div className="research-meta">
-        <span>{t.research.partners}</span>
-        <span>{t.research.lens}</span>
-        <span>{t.research.supervisors}</span>
+        <span className="research-context">{t.research.partners}</span>
+        <span className="research-tags">
+          {t.research.lens.replace(/\.$/, '').split(', ').map((tag) => (
+            <span className="liquid-tag" key={tag}>{tag}</span>
+          ))}
+        </span>
+        <span className="research-context">{t.research.supervisors}</span>
       </div>
     </section>
   )
@@ -284,20 +380,28 @@ function BuiltSection() {
             <span className="built-index" aria-hidden="true">01</span>
             <div>
               <h3>{t.fda.title}</h3>
-              <p className="built-stack" translate="no">{t.fda.stack}</p>
+              <p className="built-stack" translate="no">
+                {t.fda.stack.split(' · ').map((tag) => (
+                  <span className="liquid-tag" key={tag}>{tag}</span>
+                ))}
+              </p>
             </div>
           </div>
           <p className="built-copy">{t.fda.lede}</p>
           <MetricLine />
           <div className="hero-actions">
-            <a className="text-link" href={fdaLiveUrl} target="_blank" rel="noreferrer">
-              {t.fda.liveCta}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
-            <a className="text-link" href="/fda-catalyst.html">
-              {t.fda.caseCta}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
+            <Button asChild className="project-action-pill" size="sm" variant="ghost">
+              <a href={fdaLiveUrl} target="_blank" rel="noreferrer">
+                {t.fda.liveCta}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            </Button>
+            <Button asChild className="project-action-pill" size="sm" variant="ghost">
+              <a href="/fda-catalyst.html">
+                {t.fda.caseCta}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            </Button>
           </div>
         </article>
 
@@ -306,19 +410,27 @@ function BuiltSection() {
             <span className="built-index" aria-hidden="true">02</span>
             <div>
               <h3>{t.built.wiki.name}</h3>
-              <p className="built-stack" translate="no">{t.built.wiki.stack}</p>
+              <p className="built-stack" translate="no">
+                {t.built.wiki.stack.split(' · ').map((tag) => (
+                  <span className="liquid-tag" key={tag}>{tag}</span>
+                ))}
+              </p>
             </div>
           </div>
           <p className="built-copy">{t.built.wiki.note}</p>
           <div className="hero-actions">
-            <a className="text-link" href={wikiLiveUrl} target="_blank" rel="noreferrer">
-              {t.built.wiki.liveCta}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
-            <a className="text-link" href={wikiRepoUrl} target="_blank" rel="noreferrer">
-              {t.built.wiki.sourceCta}
-              <ArrowUpRight aria-hidden="true" />
-            </a>
+            <Button asChild className="project-action-pill" size="sm" variant="ghost">
+              <a href={wikiLiveUrl} target="_blank" rel="noreferrer">
+                {t.built.wiki.liveCta}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            </Button>
+            <Button asChild className="project-action-pill" size="sm" variant="ghost">
+              <a href={wikiRepoUrl} target="_blank" rel="noreferrer">
+                {t.built.wiki.sourceCta}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            </Button>
           </div>
         </article>
       </div>
@@ -398,18 +510,6 @@ function LibrarySection() {
   )
 }
 
-function PersonalSection() {
-  const { t } = useLanguage()
-
-  return (
-    <section className="content-section personal-section" id="personal">
-      <SectionHeading eyebrow={t.personal.eyebrow} title={t.personal.title}>
-        {t.personal.body}
-      </SectionHeading>
-    </section>
-  )
-}
-
 function CafesSection() {
   const { lang, t } = useLanguage()
   const cafes = useCafes()
@@ -467,12 +567,12 @@ function HomePage() {
         <IdentityPanel />
         <div className="portfolio-stage">
           <div className="portfolio-content">
+            <AboutSection />
             <NowSection />
             <SelectedPathSection />
             <ResearchSection />
             <BuiltSection />
             <LibrarySection />
-            <PersonalSection />
             <CafesSection />
           </div>
           <SiteFooter />

@@ -22,12 +22,12 @@ export const fr = {
   },
   nav: {
     items: [
+      ['À propos', '#about'],
       ['En ce moment', '#now'],
       ['Parcours', '#path'],
       ['Recherche', '#research'],
       ['Projets', '#built'],
       ['Lectures', '#reading'],
-      ['Note personnelle', '#personal'],
       ['Cafés', '#cafes'],
     ],
     projectItems: [
@@ -36,7 +36,6 @@ export const fr = {
       ['Architecture', '#architecture'],
       ['Déploiement', '#deployment'],
     ],
-    email: 'Courriel',
   },
   hero: {
     kicker: 'Économie appliquée · Organisation industrielle',
@@ -45,6 +44,11 @@ export const fr = {
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Courriel',
+  },
+  about: {
+    eyebrow: 'À propos',
+    title: 'À propos de moi',
+    body: 'J’ai passé dix ans à Tahiti, puis vécu à Grenoble et à Rennes. Avant l’économie, j’ai étudié la pharmacie à Bordeaux pendant deux ans. Je suis maintenant résident permanent du Canada. Hors travail : la bonne table, les cafés et les golden retrievers.',
   },
   now: {
     eyebrow: 'En ce moment',
@@ -225,11 +229,6 @@ export const fr = {
         },
       ],
     },
-  },
-  personal: {
-    eyebrow: 'Note personnelle',
-    title: 'De Tahiti à Montréal',
-    body: 'Je suis français. J’ai passé dix ans à Tahiti, puis vécu à Grenoble et à Rennes. Après deux ans de pharmacie à Bordeaux, j’ai bifurqué vers l’économie et je suis arrivé à Montréal pour HEC en 2021. Je suis maintenant résident permanent. Hors travail : la bonne table, les cafés et les golden retrievers.',
   },
   // Les DONNÉES des cafés vivent dans /cafes.json à la racine du dépôt
   // (chargées à l’exécution, mises à jour par l’action add-cafe).
