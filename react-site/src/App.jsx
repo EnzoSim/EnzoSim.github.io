@@ -63,31 +63,35 @@ function useActiveSection(items) {
 
     if (!targets.length) return undefined
 
-    const syncFromHash = () => {
-      const match = sectionItems.find(([, href]) => href === window.location.hash)
-      if (match) setActiveHref(match[1])
+    let frameId = null
+
+    const updateActiveSection = () => {
+      frameId = null
+      const marker = Math.min(window.innerHeight * 0.24, 240)
+      let activeTarget = targets[0]
+
+      for (const target of targets) {
+        if (target.getBoundingClientRect().top <= marker) activeTarget = target
+        else break
+      }
+
+      setActiveHref(`#${activeTarget.id}`)
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => (
-            b.intersectionRatio - a.intersectionRatio
-            || a.boundingClientRect.top - b.boundingClientRect.top
-          ))
+    const scheduleUpdate = () => {
+      if (frameId === null) frameId = window.requestAnimationFrame(updateActiveSection)
+    }
 
-        if (visible[0]) setActiveHref(`#${visible[0].target.id}`)
-      },
-      { rootMargin: '-14% 0px -68% 0px', threshold: [0, 0.25, 0.75] },
-    )
-
-    targets.forEach((target) => observer.observe(target))
-    window.addEventListener('hashchange', syncFromHash)
+    scheduleUpdate()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    window.addEventListener('hashchange', scheduleUpdate)
 
     return () => {
-      observer.disconnect()
-      window.removeEventListener('hashchange', syncFromHash)
+      if (frameId !== null) window.cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      window.removeEventListener('hashchange', scheduleUpdate)
     }
   }, [sectionItems])
 
