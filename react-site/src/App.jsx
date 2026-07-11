@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { LanguageProvider, useLanguage } from '@/lib/i18n'
+import { en as t } from '@/content/en'
 import {
   bookLinks,
   contactEmail,
@@ -98,26 +98,7 @@ function useActiveSection(items) {
   return activeHref
 }
 
-function LangButton() {
-  const { lang, setLang, t } = useLanguage()
-  const next = lang === 'en' ? 'fr' : 'en'
-
-  return (
-    <Button
-      type="button"
-      size="icon"
-      variant="ghost"
-      aria-label={t.a11y.langSwitch}
-      onClick={() => setLang(next)}
-    >
-      <span className="text-xs font-semibold uppercase">{next}</span>
-    </Button>
-  )
-}
-
 function SkipLink() {
-  const { t } = useLanguage()
-
   return (
     <a className="skip-link" href="#main">
       {t.a11y.skipToContent}
@@ -126,34 +107,40 @@ function SkipLink() {
 }
 
 function SiteNav({ projectPage = false }) {
-  const { t } = useLanguage()
   const cafes = useCafes()
   const items = useMemo(
     () => (projectPage ? t.nav.projectItems : t.nav.items).filter(
       ([, href]) => href !== '#cafes' || cafes.length > 0,
     ),
-    [cafes.length, projectPage, t.nav.items, t.nav.projectItems],
+    [cafes.length, projectPage],
   )
   const activeHref = useActiveSection(items)
   const mobileNavRef = useRef(null)
 
   useEffect(() => {
-    const activeLink = [...(mobileNavRef.current?.querySelectorAll('a') ?? [])]
+    const rail = mobileNavRef.current
+    const activeLink = [...(rail?.querySelectorAll('a') ?? [])]
       .find((link) => link.getAttribute('href') === activeHref)
-    activeLink?.scrollIntoView({
+
+    if (!rail || !activeLink) return
+
+    const left = activeLink.offsetLeft - ((rail.clientWidth - activeLink.offsetWidth) / 2)
+    rail.scrollTo({
+      left: Math.max(0, left),
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'nearest',
-      inline: 'nearest',
     })
   }, [activeHref])
 
   return (
-    <header className="sticky top-0 z-20 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <nav className="site-nav-primary mx-auto flex max-w-5xl items-center justify-between gap-4">
-        <a className="liquid-pill nav-brand" href="/">
+    <header className="site-header">
+      <div className="site-nav-primary">
+        <a className="nav-brand" href="/">
           Enzo Simier
         </a>
-        <div className="desktop-nav">
+        <nav
+          className="desktop-nav"
+          aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}
+        >
           {items.map(([label, href]) => (
             <a
               aria-current={activeHref === href ? 'location' : undefined}
@@ -164,27 +151,24 @@ function SiteNav({ projectPage = false }) {
               {label}
             </a>
           ))}
-        </div>
-        <div className="flex items-center">
-          <LangButton />
-        </div>
-      </nav>
-      <nav
-        className="mobile-nav-row"
-        aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}
-        ref={mobileNavRef}
-      >
-        {items.map(([label, href]) => (
-          <a
-            aria-current={activeHref === href ? 'location' : undefined}
-            className="liquid-pill nav-link"
-            href={href}
-            key={href}
-          >
-            {label}
-          </a>
-        ))}
-      </nav>
+        </nav>
+        <nav
+          className="mobile-nav-row"
+          aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}
+          ref={mobileNavRef}
+        >
+          {items.map(([label, href]) => (
+            <a
+              aria-current={activeHref === href ? 'location' : undefined}
+              className="liquid-pill nav-link"
+              href={href}
+              key={href}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </header>
   )
 }
@@ -200,8 +184,6 @@ function SectionHeading({ eyebrow, title, children }) {
 }
 
 function MetricLine() {
-  const { t } = useLanguage()
-
   return (
     <p className="metric-line">
       {fdaMetricValues.map((value, index) => (
@@ -213,28 +195,11 @@ function MetricLine() {
   )
 }
 
-function IdentityPanel() {
-  const { t } = useLanguage()
-  const cafes = useCafes()
-  const items = useMemo(
-    () => t.nav.items.filter(([, href]) => href !== '#cafes' || cafes.length > 0),
-    [cafes.length, t.nav.items],
-  )
-  const activeHref = useActiveSection(items)
-
+function IntroSection() {
   return (
-    <header className="identity-panel" aria-labelledby="profile-name">
-      <div className="identity-heading">
-        <div className="identity-title-row">
-          <h1 id="profile-name">{t.hero.name}</h1>
-          <span className="identity-lang">
-            <LangButton />
-          </span>
-        </div>
-        <p className="hero-kicker">{t.hero.kicker}</p>
-      </div>
-
-      <div className="portrait-frame">
+    <section className="home-intro" id="about" aria-labelledby="about-title">
+      <span className="hash-alias" id="personal" aria-hidden="true" />
+      <div className="intro-portrait-frame">
         <img
           alt={t.a11y.portraitAlt}
           decoding="async"
@@ -243,72 +208,42 @@ function IdentityPanel() {
           src={profileImage.src}
           width={profileImage.width}
         />
+        <div className="intro-portrait-caption">
+          <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
+          <span>Economist · Montréal</span>
+        </div>
       </div>
 
-      <p className="identity-lede">{t.hero.lede}</p>
-
-      <div className="identity-actions">
-        <Button asChild size="sm">
-          <a href={cvUrl} target="_blank" rel="noreferrer">
-            {t.hero.cvLabel}
-            <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
-          </a>
-        </Button>
-        <Button asChild size="sm" variant="ghost">
-          <a href={linkedinUrl} target="_blank" rel="noreferrer">
-            {t.hero.linkedinLabel}
-            <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
-          </a>
-        </Button>
-        <Button asChild size="sm" variant="ghost">
-          <a href={`mailto:${contactEmail}`}>{t.hero.emailLabel}</a>
-        </Button>
+      <div className="intro-copy">
+        <p className="intro-eyebrow">
+          <span aria-hidden="true">01 / </span>
+          {t.about.eyebrow}
+        </p>
+        <h1 id="about-title">{t.about.title}</h1>
+        <p className="intro-body">{t.about.body}</p>
+        <div className="intro-actions">
+          <Button asChild>
+            <a href={cvUrl} target="_blank" rel="noreferrer">
+              {t.hero.cvLabel}
+              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
+            </a>
+          </Button>
+          <Button asChild variant="ghost">
+            <a href={linkedinUrl} target="_blank" rel="noreferrer">
+              {t.hero.linkedinLabel}
+              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
+            </a>
+          </Button>
+          <Button asChild variant="ghost">
+            <a href={`mailto:${contactEmail}`}>{t.hero.emailLabel}</a>
+          </Button>
+        </div>
       </div>
-
-      <div className="identity-education" id="education">
-        <p className="group-label">{t.education.title}</p>
-        {t.education.items.map((item) => (
-          <div className="identity-education-item" key={item.meta}>
-            <p>{item.meta}</p>
-            <span>{item.text}</span>
-          </div>
-        ))}
-      </div>
-
-      <nav className="identity-index" aria-label={t.a11y.pageSections}>
-        {items.map(([label, href], index) => (
-          <a
-            aria-current={activeHref === href ? 'location' : undefined}
-            className="liquid-pill identity-index-link"
-            href={href}
-            key={href}
-          >
-            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-            <span>{label}</span>
-          </a>
-        ))}
-      </nav>
-
-    </header>
-  )
-}
-
-function AboutSection() {
-  const { t } = useLanguage()
-
-  return (
-    <section className="content-section" id="about">
-      <span className="hash-alias" id="personal" aria-hidden="true" />
-      <SectionHeading eyebrow={t.about.eyebrow} title={t.about.title}>
-        {t.about.body}
-      </SectionHeading>
     </section>
   )
 }
 
 function NowSection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section" id="now">
       <SectionHeading eyebrow={t.now.eyebrow} title={t.now.title}>
@@ -319,8 +254,6 @@ function NowSection() {
 }
 
 function SelectedPathSection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section" id="path">
       <span className="hash-alias" id="experience" aria-hidden="true" />
@@ -343,13 +276,22 @@ function SelectedPathSection() {
         ))}
       </div>
       <p className="path-earlier">{t.work.earlier}</p>
+      <div className="path-education" id="education">
+        <p className="group-label">{t.education.eyebrow}</p>
+        <div className="path-education-list">
+          {t.education.items.map((item) => (
+            <article className="path-education-item" key={item.meta}>
+              <h3>{item.meta}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
 
 function ResearchSection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section" id="research">
       <SectionHeading eyebrow={t.research.eyebrow} title={t.research.title}>
@@ -369,8 +311,6 @@ function ResearchSection() {
 }
 
 function BuiltSection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section" id="built">
       <span className="hash-alias" id="projects" aria-hidden="true" />
@@ -443,8 +383,6 @@ function BuiltSection() {
 }
 
 function LibrarySection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section library-section" id="reading">
       <SectionHeading eyebrow={t.library.eyebrow} title={t.library.title}>
@@ -515,7 +453,6 @@ function LibrarySection() {
 }
 
 function CafesSection() {
-  const { lang, t } = useLanguage()
   const cafes = useCafes()
   if (!cafes.length) return null
 
@@ -526,7 +463,7 @@ function CafesSection() {
       </SectionHeading>
       <div className="entry-list">
         {cafes.map((item) => {
-          const note = lang === 'fr' ? item.noteFr || item.note : item.note
+          const note = item.note
           return (
             <article className="entry" key={item.name}>
               <div className="entry-head">
@@ -551,8 +488,6 @@ function CafesSection() {
 }
 
 function SiteFooter() {
-  const { t } = useLanguage()
-
   return (
     <footer className="site-footer">
       <span>{t.footer.note}</span>
@@ -564,31 +499,24 @@ function HomePage() {
   return (
     <>
       <SkipLink />
-      <div className="home-mobile-nav">
-        <SiteNav />
-      </div>
-      <main className="portfolio-shell" id="main">
-        <IdentityPanel />
-        <div className="portfolio-stage">
-          <div className="portfolio-content">
-            <AboutSection />
-            <NowSection />
-            <SelectedPathSection />
-            <ResearchSection />
-            <BuiltSection />
-            <LibrarySection />
-            <CafesSection />
-          </div>
-          <SiteFooter />
+      <SiteNav />
+      <main className="home-main" id="main">
+        <IntroSection />
+        <div className="portfolio-content">
+          <NowSection />
+          <SelectedPathSection />
+          <ResearchSection />
+          <BuiltSection />
+          <LibrarySection />
+          <CafesSection />
         </div>
       </main>
+      <SiteFooter />
     </>
   )
 }
 
 function CatalystTable() {
-  const { t } = useLanguage()
-
   return (
     <Table>
       <TableHeader>
@@ -615,8 +543,6 @@ function CatalystTable() {
 }
 
 function ProjectHero() {
-  const { t } = useLanguage()
-
   return (
     <section className="project-page-hero" id="overview">
       <div className="project-page-copy">
@@ -642,8 +568,6 @@ function ProjectHero() {
 }
 
 function ArchitectureSection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section" id="architecture">
       <SectionHeading eyebrow={t.project.architecture.eyebrow} title={t.project.architecture.title}>
@@ -662,8 +586,6 @@ function ArchitectureSection() {
 }
 
 function DeploymentSection() {
-  const { t } = useLanguage()
-
   return (
     <section className="content-section" id="deployment">
       <div className="two-column">
@@ -709,7 +631,6 @@ function FdaCatalystPage() {
 }
 
 function AppContent() {
-  const { lang, t } = useLanguage()
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
   const isProjectPage = useMemo(() => pathname.includes('fda-catalyst'), [pathname])
 
@@ -718,7 +639,7 @@ function AppContent() {
     document.title = meta.title
     const description = document.querySelector('meta[name="description"]')
     if (description) description.setAttribute('content', meta.description)
-  }, [isProjectPage, lang, t])
+  }, [isProjectPage])
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.location.hash) return
@@ -735,11 +656,7 @@ function AppContent() {
 }
 
 function App() {
-  return (
-    <LanguageProvider>
-      <AppContent />
-    </LanguageProvider>
-  )
+  return <AppContent />
 }
 
 export default App

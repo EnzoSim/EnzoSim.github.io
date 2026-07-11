@@ -1,20 +1,21 @@
-// EN copy dictionary. Shape is the contract — strings only, never keys.
+import { fdaSnapshot } from './shared'
+
+// EN copy dictionary. Shape is the contract: strings only, never keys.
 // Copy converged through the voice-guide judge pipeline (Thiel-declarative register).
 export const en = {
   meta: {
     home: {
       title: 'Enzo Simier · Applied Economics & Industrial Organization',
       description:
-        'Enzo Simier, economist in Montréal. Competition work at Desjardins and the Competition Bureau, water pricing at HEC Montréal, and public tools.',
+        'Enzo Simier, economist in Montréal. Competition work at Desjardins and the Competition Bureau, water pricing at HEC Montréal, and public projects.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
       description:
-        'A live biotech catalyst calendar: 128 events, 101 companies, 23 PDUFA decisions. FastAPI, Railway Postgres, React. Built by Enzo Simier.',
+        `A live 90-day biotech catalyst view: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, ${fdaSnapshot.pdufa} PDUFA decisions. FastAPI, Railway Postgres, React. Built by Enzo Simier.`,
     },
   },
   a11y: {
-    langSwitch: 'Passer au français',
     pageSections: 'Page sections',
     projectSections: 'Project sections',
     portraitAlt: 'Portrait of Enzo Simier',
@@ -38,22 +39,19 @@ export const en = {
     ],
   },
   hero: {
-    kicker: 'Applied Economics · Industrial Organization',
-    name: 'Enzo Simier',
-    lede: 'French economist in Montréal. I work on competition, pricing, and applied economic research.',
     cvLabel: 'CV',
     linkedinLabel: 'LinkedIn',
     emailLabel: 'Email',
   },
   about: {
     eyebrow: 'About',
-    title: 'About me',
-    body: 'I spent ten years in Tahiti, then lived in Grenoble and Rennes. Before economics, I studied pharmacy in Bordeaux for two years. I am now a Canadian permanent resident. Outside work: food, unique cafés, and golden retrievers.',
+    title: 'A little background.',
+    body: 'I spent ten years in Tahiti, then lived in Grenoble and Rennes. Before economics, I studied pharmacy in Bordeaux for two years. I am now a Canadian permanent resident. Outside work: good food, cafés, and golden retrievers.',
   },
   now: {
     eyebrow: 'Now',
     title: 'Summer 2026',
-    body: 'This summer, I am finishing my thesis and am open to opportunities in competition, pricing, and strategy.',
+    body: 'I am finishing my thesis and remain open to opportunities in competition, pricing, and strategy.',
   },
   work: {
     eyebrow: 'Path',
@@ -65,7 +63,7 @@ export const en = {
         role: 'Analyst, Corporate Business Analysis',
         date: 'Apr to Jul 2026',
         details: [
-          'I read Canada’s retail-banking landscape and turned shifts in competitors, customers, and markets into briefs for senior management.',
+          'I tracked Canada’s retail-banking market and summarized changes in competitors, customers, and market conditions for senior management.',
         ],
       },
       {
@@ -73,7 +71,7 @@ export const en = {
         role: 'Intern, Mergers Directorate',
         date: 'Summer 2025',
         details: [
-          'I learned how merger reviews are built: defining markets, testing concentration and entry, then translating the analysis into decision files under supervision.',
+          'I worked on merger reviews: defining markets, testing concentration and entry, then preparing decision files under supervision.',
         ],
       },
       {
@@ -81,7 +79,7 @@ export const en = {
         role: 'Intern, Economic Consulting & Strategy',
         date: 'Summer 2024',
         details: [
-          'I moved between port and public-health mandates, building impact, feasibility, risk, and sensitivity analyses, then distilling them into executive summaries.',
+          'I conducted impact, feasibility, risk, and sensitivity analyses across port and public-health mandates, then distilled the results into executive summaries.',
         ],
       },
       {
@@ -115,7 +113,6 @@ export const en = {
   },
   education: {
     eyebrow: 'Education',
-    title: 'HEC Montréal',
     items: [
       {
         school: 'HEC Montréal',
@@ -149,7 +146,7 @@ export const en = {
   built: {
     eyebrow: 'Built',
     title: 'Tools I maintain',
-    lede: 'Two public projects.',
+    lede: '',
     wiki: {
       name: 'Wiki Project',
       stack: 'Next.js · Railway · Supabase',
@@ -243,19 +240,19 @@ export const en = {
   project: {
     kicker: 'FDA Catalyst Research',
     title: 'A biotech catalyst calendar, live on Railway.',
-    lede: 'The calendar tracks dated catalysts for 101 biotech companies. It converts BPIQ records into events with filters, source links, and TradingView links. Right now it holds 128 events; 23 are PDUFA decisions.',
+    lede: `The current 90-day view tracks ${fdaSnapshot.events} dated catalysts across ${fdaSnapshot.companies} biotech companies. It converts BPIQ records into events with filters, source links, and TradingView links. ${fdaSnapshot.pdufa} are PDUFA decisions.`,
     openCta: 'Open the live calendar',
     snapshot: {
       title: 'Production snapshot',
-      description: 'Four metrics from the live production build.',
+      description: `Live 90-day API view as of ${fdaSnapshot.asOf}.`,
     },
     table: {
       headers: ['Metric', 'Count', 'Source', 'Status'],
       rows: [
-        { ticker: 'Events', event: '128', window: 'BPIQ', status: 'Live' },
-        { ticker: 'Companies', event: '101', window: 'BPIQ', status: 'Live' },
-        { ticker: 'PDUFA decisions', event: '23', window: 'BPIQ', status: 'Live' },
-        { ticker: 'Readouts', event: '100', window: 'BPIQ', status: 'Live' },
+        { ticker: 'Events', event: fdaSnapshot.events, window: 'BPIQ · 90d', status: 'Live' },
+        { ticker: 'Companies', event: fdaSnapshot.companies, window: 'BPIQ · 90d', status: 'Live' },
+        { ticker: 'PDUFA decisions', event: fdaSnapshot.pdufa, window: 'BPIQ · 90d', status: 'Live' },
+        { ticker: 'Readouts', event: fdaSnapshot.readouts, window: 'BPIQ · 90d', status: 'Live' },
       ],
     },
     architecture: {
@@ -264,7 +261,7 @@ export const en = {
       lede: 'Three pieces run the product: a FastAPI service, Railway Postgres, and a React calendar.',
       cards: [
         ['API', 'A FastAPI service exposes calendar, health, source, catalyst, scanner, watchlist, backtest, and IV-study endpoints.'],
-        ['Data', 'BPIQ records flow into Railway Postgres. That store holds the 128 events the calendar shows.'],
+        ['Data', `BPIQ records flow into Railway Postgres. The current 90-day view returns ${fdaSnapshot.events} events.`],
         ['UI', 'The calendar page shows dated catalysts with filters, source links, and TradingView links.'],
       ],
     },
@@ -280,7 +277,7 @@ export const en = {
       ],
       check: {
         title: 'Verification',
-        description: 'The live calendar loads 128 events across 101 companies. Anyone can open it.',
+        description: `The public API returned ${fdaSnapshot.events} events across ${fdaSnapshot.companies} companies on ${fdaSnapshot.asOf}.`,
       },
     },
   },

@@ -8,7 +8,7 @@
       content="FDA Catalyst Research, a biotech and pharma catalyst calendar by Enzo Simier."
     />
     <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#fdfdfe" />
+    <meta name="theme-color" content="#fcfcfa" />
     <link rel="canonical" href="https://enzosimier.com/fda-catalyst.html" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -21,7 +21,6 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://enzosimier.com/fda-catalyst.html" />
     <meta property="og:locale" content="en_CA" />
-    <meta property="og:locale:alternate" content="fr_CA" />
     <meta property="og:image" content="https://enzosimier.com/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -32,19 +31,16 @@
       ;(function () {
         try {
           localStorage.removeItem('theme')
+          localStorage.removeItem('lang')
           document.documentElement.classList.remove('dark')
-          var lang = localStorage.getItem('lang')
-          if (lang !== 'en' && lang !== 'fr') {
-            lang = (navigator.language || 'en').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en'
-          }
-          document.documentElement.lang = lang
+          document.documentElement.lang = 'en'
         } catch (error) {
-          /* pre-paint bootstrap only; React re-applies language */
+          /* pre-paint cleanup only */
         }
       })()
     </script>
-    <script type="module" crossorigin src="/assets/main-BuzR77nJ.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-DUTxkMNB.css">
+    <script type="module" crossorigin src="/assets/main-BXSOqJz5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-D39Tazzg.css">
   </head>
   <body>
     <div id="root"></div>
