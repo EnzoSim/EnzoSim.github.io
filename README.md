@@ -6,7 +6,7 @@ Personal site for Enzo Simier. The editable source lives in `react-site/`; the r
 
 - English editorial copy: `react-site/src/content/en.js`
 - Shared URLs, image metadata, and the dated FDA snapshot: `react-site/src/content/shared.js`
-- Local book covers and publisher provenance: `react-site/src/assets/books/`
+- Book titles, links, and deterministic 3D presentation values: `react-site/src/content/en.js`
 - Layout and behavior: `react-site/src/App.jsx`
 - Visual system: `react-site/src/index.css`
 
@@ -21,7 +21,7 @@ npm run lint
 npm run build
 ```
 
-`npm run build` writes `/index.html`, `/work/index.html`, `/reading/index.html`, `/fda-catalyst.html`, and hashed files under `/assets/` for GitHub Pages. Remove superseded `assets/main-*.js` and `assets/main-*.css` bundles when committing a new build.
+`npm run build` writes `/index.html`, the compatibility redirect at `/work/index.html`, `/reading/index.html`, `/fda-catalyst.html`, and hashed files under `/assets/` for GitHub Pages. Remove superseded `assets/main-*.js` and `assets/main-*.css` bundles when committing a new build.
 
 ## Publishing
 

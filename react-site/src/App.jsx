@@ -19,8 +19,7 @@ const externalProps = {
 }
 
 function currentRoute(pathname) {
-  if (pathname.includes('fda-catalyst')) return '/work/'
-  if (pathname.startsWith('/work')) return '/work/'
+  if (pathname.includes('fda-catalyst')) return null
   if (pathname.startsWith('/reading')) return '/reading/'
   return '/'
 }
@@ -138,14 +137,24 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <section className="home-projects" id="projects" aria-labelledby="projects-title">
+        <div className="section-title-row heading-with-line">
+          <h2 id="projects-title">{t.projects.title}</h2>
+        </div>
+        <div className="work-grid">
+          {t.projects.items.map((project) => (
+            <WorkObject key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
     </Shell>
   )
 }
 
-function RouteHeading({ label, title, lede }) {
+function RouteHeading({ title, lede }) {
   return (
     <header className="route-heading">
-      <p className="page-kicker">{label}</p>
       <h1>{title}</h1>
       <p>{lede}</p>
     </header>
@@ -189,6 +198,7 @@ function ProjectActions({ project }) {
 function WorkObject({ project }) {
   return (
     <article
+      aria-labelledby={`${project.slug}-title`}
       className={`work-object work-object-${project.presentation}`}
       id={project.slug}
     >
@@ -197,7 +207,7 @@ function WorkObject({ project }) {
         <span>{project.context}</span>
       </div>
       <div className="work-object-copy">
-        <h2>{project.title}</h2>
+        <h3 id={`${project.slug}-title`}>{project.title}</h3>
         <p>{project.description}</p>
       </div>
       <div className="work-object-foot">
@@ -205,39 +215,6 @@ function WorkObject({ project }) {
         <ProjectActions project={project} />
       </div>
     </article>
-  )
-}
-
-function WorkPage() {
-  return (
-    <Shell className="route-page work-page">
-      <RouteHeading label="Selected practice" title={t.work.title} lede={t.work.lede} />
-
-      <section className="work-grid" aria-label="Featured research and projects">
-        {t.work.featured.map((project) => (
-          <WorkObject key={project.slug} project={project} />
-        ))}
-      </section>
-
-      <section className="experience-section" aria-labelledby="experience-title">
-        <div className="section-title-row">
-          <h2 id="experience-title">{t.work.experience.title}</h2>
-          <span>2024 to 2026</span>
-        </div>
-        <ol className="experience-list">
-          {t.work.experience.items.map((item) => (
-            <li key={`${item.company}-${item.date}`}>
-              <div className="experience-role">
-                <strong>{item.company}</strong>
-                <span>{item.role}</span>
-              </div>
-              <p>{item.summary}</p>
-              <time>{item.date}</time>
-            </li>
-          ))}
-        </ol>
-      </section>
-    </Shell>
   )
 }
 
@@ -263,12 +240,11 @@ function handleBookPointerMove(event) {
 
 function Book({ book }) {
   const linkRef = useRef(null)
-  const ratio = book.cover.width / book.cover.height
-  const width = Math.round(book.presentation.height * ratio)
+  const width = book.presentation.width
   const tabletHeight = Math.round(book.presentation.height * 0.82)
-  const tabletWidth = Math.round(tabletHeight * ratio)
+  const tabletWidth = Math.round(width * 0.82)
   const mobileHeight = Math.min(238, book.presentation.height)
-  const mobileWidth = Math.round(mobileHeight * ratio)
+  const mobileWidth = Math.round(width * (mobileHeight / book.presentation.height))
   const style = {
     '--book-height': `${book.presentation.height}px`,
     '--book-width': `${width}px`,
@@ -278,6 +254,11 @@ function Book({ book }) {
     '--book-mobile-width': `${mobileWidth}px`,
     '--book-depth': `${book.presentation.depth}px`,
     '--rest-angle': `${book.presentation.restAngle}deg`,
+    '--rest-yaw': `${book.presentation.restYaw}deg`,
+    '--book-cover': book.design.cover,
+    '--book-spine': book.design.spine,
+    '--book-ink': book.design.ink,
+    '--book-accent': book.design.accent,
   }
 
   return (
@@ -295,18 +276,17 @@ function Book({ book }) {
         >
           <span className="book-volume" aria-hidden="true">
             <span className="book-face book-front">
-              <img
-                alt=""
-                decoding="async"
-                height={book.cover.height}
-                loading="eager"
-                src={book.cover.src}
-                width={book.cover.width}
-              />
+              <span className="book-cover-frame" />
+              <span className="book-cover-ornament" />
+              <span className="book-cover-copy">
+                <span className="book-cover-title">{book.title}</span>
+                <span className="book-cover-author">{book.author}</span>
+              </span>
               <span className="book-glint" />
             </span>
             <span className="book-face book-spine">
-              <span>{book.title}</span>
+              <span className="book-spine-title">{book.title}</span>
+              <span className="book-spine-author">{book.author}</span>
             </span>
             <span className="book-face book-pages" />
             <span className="book-face book-top" />
@@ -321,9 +301,6 @@ function Book({ book }) {
           </a>
           <span className="book-meta">{book.author} · {book.year}</span>
           <p>{book.note}</p>
-          <a className="cover-source" href={book.cover.sourceUrl} {...externalProps}>
-            Cover source
-          </a>
         </div>
       </article>
     </li>
@@ -362,7 +339,7 @@ function Publications() {
 function ReadingPage() {
   return (
     <Shell className="route-page reading-page">
-      <RouteHeading label="A working shelf" title={t.library.title} lede={t.library.lede} />
+      <RouteHeading title={t.library.title} lede={t.library.lede} />
 
       <section className="bookshelf-section" aria-label="Five books on Enzo Simier's shelf">
         <div className="bookshelf-viewport">
@@ -373,7 +350,7 @@ function ReadingPage() {
             <span />
           </div>
         </div>
-        <p className="shelf-hint">Swipe the shelf · Tap a cover to open</p>
+        <p className="shelf-hint">Swipe the shelf · Tap a book to open</p>
       </section>
 
       <Publications />
@@ -496,9 +473,6 @@ function AppContent() {
   if (pathname.includes('fda-catalyst')) {
     page = <FdaCatalystPage />
     meta = t.meta.project
-  } else if (pathname.startsWith('/work')) {
-    page = <WorkPage />
-    meta = t.meta.work
   } else if (pathname.startsWith('/reading')) {
     page = <ReadingPage />
     meta = t.meta.reading

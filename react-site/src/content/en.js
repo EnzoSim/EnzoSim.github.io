@@ -1,8 +1,3 @@
-import caesarCover from '../assets/books/caesar-life-of-a-colossus.webp'
-import chipWarCover from '../assets/books/chip-war.webp'
-import churchillCover from '../assets/books/churchill-walking-with-destiny.webp'
-import materialWorldCover from '../assets/books/material-world.webp'
-import workingInPublicCover from '../assets/books/working-in-public.webp'
 import {
   contactEmail,
   cvUrl,
@@ -20,11 +15,6 @@ export const en = {
       title: 'Enzo Simier · Applied Economist',
       description:
         'Enzo Simier is an applied economist in Montréal working across competition, pricing, strategy, and public-interest research.',
-    },
-    work: {
-      title: 'Work · Enzo Simier',
-      description:
-        'Research and products by Enzo Simier, including water pricing in Québec, FDA Catalyst, and Wiki Project.',
     },
     reading: {
       title: 'Reading · Enzo Simier',
@@ -44,7 +34,6 @@ export const en = {
   nav: {
     items: [
       { label: 'Home', href: '/' },
-      { label: 'Work', href: '/work/' },
       { label: 'Reading', href: '/reading/' },
     ],
   },
@@ -65,10 +54,9 @@ export const en = {
       { label: 'Email', href: `mailto:${contactEmail}`, external: false },
     ],
   },
-  work: {
-    title: 'Work',
-    lede: 'Research, products, and recent experience.',
-    featured: [
+  projects: {
+    title: 'Projects',
+    items: [
       {
         slug: 'water-pricing',
         kind: 'Research',
@@ -108,29 +96,6 @@ export const en = {
         presentation: 'offset',
       },
     ],
-    experience: {
-      title: 'Selected experience',
-      items: [
-        {
-          company: 'Desjardins',
-          role: 'Analyst, Corporate Business Analysis',
-          date: 'Apr to Jul 2026',
-          summary: 'Tracked Canada’s retail-banking market and translated competitive changes for senior management.',
-        },
-        {
-          company: 'Competition Bureau',
-          role: 'Intern, Mergers Directorate',
-          date: 'Summer 2025',
-          summary: 'Supported merger reviews through market definition, concentration, entry, and decision-file analysis.',
-        },
-        {
-          company: 'KPMG Canada',
-          role: 'Intern, Economic Consulting & Strategy',
-          date: 'Summer 2024',
-          summary: 'Built impact, feasibility, risk, and sensitivity analyses for port and public-health mandates.',
-        },
-      ],
-    },
   },
   library: {
     title: 'Reading',
@@ -143,14 +108,13 @@ export const en = {
         year: 2022,
         note: 'How a handful of firms came to control the world’s chip supply.',
         href: 'https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015',
-        cover: {
-          src: chipWarCover,
-          width: 788,
-          height: 1200,
-          alt: 'Cover of Chip War by Chris Miller',
-          sourceUrl: 'https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015',
+        design: {
+          cover: '#294238',
+          spine: '#172a22',
+          ink: '#f5f2e8',
+          accent: '#aebfb5',
         },
-        presentation: { height: 296, depth: 24, restAngle: -3.5 },
+        presentation: { width: 184, height: 296, depth: 32, restAngle: -3.5, restYaw: 30 },
       },
       {
         slug: 'material-world',
@@ -159,14 +123,13 @@ export const en = {
         year: 2023,
         note: 'The physical inputs behind growth: sand, copper, and oil.',
         href: 'https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/',
-        cover: {
-          src: materialWorldCover,
-          width: 304,
-          height: 450,
-          alt: 'Cover of Material World by Ed Conway',
-          sourceUrl: 'https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/',
+        design: {
+          cover: '#a35d43',
+          spine: '#754231',
+          ink: '#fff6e8',
+          accent: '#e1b890',
         },
-        presentation: { height: 282, depth: 21, restAngle: 2.5 },
+        presentation: { width: 180, height: 282, depth: 30, restAngle: 2.5, restYaw: 32 },
       },
       {
         slug: 'working-in-public',
@@ -175,14 +138,13 @@ export const en = {
         year: 2020,
         note: 'The clearest book on incentives and maintenance in open source.',
         href: 'https://press.stripe.com/working-in-public',
-        cover: {
-          src: workingInPublicCover,
-          width: 600,
-          height: 934,
-          alt: 'Cover of Working in Public by Nadia Eghbal',
-          sourceUrl: 'https://press.stripe.com/working-in-public',
+        design: {
+          cover: '#ddd7c9',
+          spine: '#aaa18f',
+          ink: '#20231f',
+          accent: '#486354',
         },
-        presentation: { height: 288, depth: 22, restAngle: -1 },
+        presentation: { width: 178, height: 288, depth: 31, restAngle: -1, restYaw: 28 },
       },
       {
         slug: 'churchill-walking-with-destiny',
@@ -191,14 +153,13 @@ export const en = {
         year: 2018,
         note: 'The decades of work behind Churchill’s judgment.',
         href: 'https://www.penguinrandomhouse.com/books/533764/churchill-by-andrew-roberts/9781101980996/',
-        cover: {
-          src: churchillCover,
-          width: 296,
-          height: 450,
-          alt: 'Cover of Churchill: Walking with Destiny by Andrew Roberts',
-          sourceUrl: 'https://www.penguinrandomhouse.com/books/533764/churchill-by-andrew-roberts/9781101980996/',
+        design: {
+          cover: '#272721',
+          spine: '#171713',
+          ink: '#f1eadb',
+          accent: '#b79d67',
         },
-        presentation: { height: 306, depth: 27, restAngle: 3.75 },
+        presentation: { width: 190, height: 306, depth: 36, restAngle: 3.75, restYaw: 34 },
       },
       {
         slug: 'caesar-life-of-a-colossus',
@@ -207,14 +168,13 @@ export const en = {
         year: 2006,
         note: 'Coalition-building and timing in the late Republic.',
         href: 'https://yalebooks.yale.edu/book/9780300126891/caesar/',
-        cover: {
-          src: caesarCover,
-          width: 794,
-          height: 1200,
-          alt: 'Cover of Caesar: Life of a Colossus by Adrian Goldsworthy',
-          sourceUrl: 'https://yalebooks.yale.edu/book/9780300126891/caesar/',
+        design: {
+          cover: '#713831',
+          spine: '#49231f',
+          ink: '#f7efe1',
+          accent: '#c7a66c',
         },
-        presentation: { height: 292, depth: 25, restAngle: -2.25 },
+        presentation: { width: 182, height: 292, depth: 33, restAngle: -2.25, restYaw: 30 },
       },
     ],
     subscriptions: {
