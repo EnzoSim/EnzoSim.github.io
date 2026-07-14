@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -11,91 +11,18 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { en as t } from '@/content/en'
-import {
-  bookLinks,
-  contactEmail,
-  cvUrl,
-  fdaLiveUrl,
-  fdaMetricValues,
-  linkedinUrl,
-  profileImage,
-  wikiLiveUrl,
-  wikiRepoUrl,
-} from '@/content/shared'
+import { fdaLiveUrl, profileImage } from '@/content/shared'
 
-// Cafés load at runtime from /cafes.json (repo root, updated by the
-// add-cafe GitHub Action) so new entries go live without a rebuild.
-let cafesCache = null
-let cafesPromise = null
-
-function useCafes() {
-  const [items, setItems] = useState(cafesCache ?? [])
-
-  useEffect(() => {
-    if (cafesCache) return undefined
-    cafesPromise ??= fetch('/cafes.json')
-      .then((response) => (response.ok ? response.json() : { items: [] }))
-      .catch(() => ({ items: [] }))
-    let alive = true
-    cafesPromise.then((data) => {
-      cafesCache = Array.isArray(data.items) ? data.items : []
-      if (alive) setItems(cafesCache)
-    })
-    return () => {
-      alive = false
-    }
-  }, [])
-
-  return items
+const externalProps = {
+  target: '_blank',
+  rel: 'noopener noreferrer',
 }
 
-function useActiveSection(items) {
-  const sectionItems = useMemo(
-    () => items.filter(([, href]) => href.startsWith('#')),
-    [items],
-  )
-  const [activeHref, setActiveHref] = useState(sectionItems[0]?.[1] ?? '')
-
-  useEffect(() => {
-    const targets = sectionItems
-      .map(([, href]) => document.getElementById(href.slice(1)))
-      .filter(Boolean)
-
-    if (!targets.length) return undefined
-
-    let frameId = null
-
-    const updateActiveSection = () => {
-      frameId = null
-      const marker = Math.min(window.innerHeight * 0.24, 240)
-      let activeTarget = targets[0]
-
-      for (const target of targets) {
-        if (target.getBoundingClientRect().top <= marker) activeTarget = target
-        else break
-      }
-
-      setActiveHref(`#${activeTarget.id}`)
-    }
-
-    const scheduleUpdate = () => {
-      if (frameId === null) frameId = window.requestAnimationFrame(updateActiveSection)
-    }
-
-    scheduleUpdate()
-    window.addEventListener('scroll', scheduleUpdate, { passive: true })
-    window.addEventListener('resize', scheduleUpdate)
-    window.addEventListener('hashchange', scheduleUpdate)
-
-    return () => {
-      if (frameId !== null) window.cancelAnimationFrame(frameId)
-      window.removeEventListener('scroll', scheduleUpdate)
-      window.removeEventListener('resize', scheduleUpdate)
-      window.removeEventListener('hashchange', scheduleUpdate)
-    }
-  }, [sectionItems])
-
-  return activeHref
+function currentRoute(pathname) {
+  if (pathname.includes('fda-catalyst')) return '/work/'
+  if (pathname.startsWith('/work')) return '/work/'
+  if (pathname.startsWith('/reading')) return '/reading/'
+  return '/'
 }
 
 function SkipLink() {
@@ -106,65 +33,26 @@ function SkipLink() {
   )
 }
 
-function SiteNav({ projectPage = false }) {
-  const cafes = useCafes()
-  const items = useMemo(
-    () => (projectPage ? t.nav.projectItems : t.nav.items).filter(
-      ([, href]) => href !== '#cafes' || cafes.length > 0,
-    ),
-    [cafes.length, projectPage],
-  )
-  const activeHref = useActiveSection(items)
-  const mobileNavRef = useRef(null)
-
-  useEffect(() => {
-    const rail = mobileNavRef.current
-    const activeLink = [...(rail?.querySelectorAll('a') ?? [])]
-      .find((link) => link.getAttribute('href') === activeHref)
-
-    if (!rail || !activeLink) return
-
-    const left = activeLink.offsetLeft - ((rail.clientWidth - activeLink.offsetWidth) / 2)
-    rail.scrollTo({
-      left: Math.max(0, left),
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-    })
-  }, [activeHref])
+function SiteNav() {
+  const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
+  const activeRoute = currentRoute(pathname)
 
   return (
     <header className="site-header">
-      <div className="site-nav-primary">
-        <a className="nav-brand" href="/">
-          Enzo Simier
+      <div className="site-nav-shell">
+        <a className="nav-brand" href="/" aria-label="Enzo Simier, home">
+          <span className="brand-mark" aria-hidden="true">ES</span>
+          <span>Enzo Simier</span>
         </a>
-        <nav
-          className="desktop-nav"
-          aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}
-        >
-          {items.map(([label, href]) => (
+        <nav className="primary-nav" aria-label={t.a11y.primaryNavigation}>
+          {t.nav.items.map((item) => (
             <a
-              aria-current={activeHref === href ? 'location' : undefined}
+              aria-current={activeRoute === item.href ? 'page' : undefined}
               className="liquid-pill nav-link"
-              href={href}
-              key={href}
+              href={item.href}
+              key={item.href}
             >
-              {label}
-            </a>
-          ))}
-        </nav>
-        <nav
-          className="mobile-nav-row"
-          aria-label={projectPage ? t.a11y.projectSections : t.a11y.pageSections}
-          ref={mobileNavRef}
-        >
-          {items.map(([label, href]) => (
-            <a
-              aria-current={activeHref === href ? 'location' : undefined}
-              className="liquid-pill nav-link"
-              href={href}
-              key={href}
-            >
-              {label}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -173,346 +61,323 @@ function SiteNav({ projectPage = false }) {
   )
 }
 
-function SectionHeading({ eyebrow, title, children }) {
-  return (
-    <div className="section-heading">
-      <p className="section-eyebrow">{eyebrow}</p>
-      <h2>{title}</h2>
-      {children ? <p>{children}</p> : null}
-    </div>
-  )
-}
-
-function MetricLine() {
-  return (
-    <p className="metric-line">
-      {fdaMetricValues.map((value, index) => (
-        <span key={t.fda.metricLabels[index]}>
-          <strong>{value}</strong> {t.fda.metricLabels[index]}
-        </span>
-      ))}
-    </p>
-  )
-}
-
-function IntroSection() {
-  return (
-    <section className="home-intro" id="about" aria-labelledby="about-title">
-      <span className="hash-alias" id="personal" aria-hidden="true" />
-      <div className="intro-portrait-frame">
-        <img
-          alt={t.a11y.portraitAlt}
-          decoding="async"
-          fetchPriority="high"
-          height={profileImage.height}
-          src={profileImage.src}
-          width={profileImage.width}
-        />
-        <div className="intro-portrait-caption">
-          <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
-          <span>Economist · Montréal</span>
-        </div>
-      </div>
-
-      <div className="intro-copy">
-        <p className="intro-eyebrow">
-          <span aria-hidden="true">01 / </span>
-          {t.about.eyebrow}
-        </p>
-        <h1 id="about-title">{t.about.title}</h1>
-        <p className="intro-body">{t.about.body}</p>
-        <div className="intro-actions">
-          <Button asChild>
-            <a href={cvUrl} target="_blank" rel="noreferrer">
-              {t.hero.cvLabel}
-              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
-            </a>
-          </Button>
-          <Button asChild variant="ghost">
-            <a href={linkedinUrl} target="_blank" rel="noreferrer">
-              {t.hero.linkedinLabel}
-              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
-            </a>
-          </Button>
-          <Button asChild variant="ghost">
-            <a href={`mailto:${contactEmail}`}>{t.hero.emailLabel}</a>
-          </Button>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function NowSection() {
-  return (
-    <section className="content-section" id="now">
-      <SectionHeading eyebrow={t.now.eyebrow} title={t.now.title}>
-        {t.now.body}
-      </SectionHeading>
-    </section>
-  )
-}
-
-function SelectedPathSection() {
-  return (
-    <section className="content-section" id="path">
-      <span className="hash-alias" id="experience" aria-hidden="true" />
-      <SectionHeading eyebrow={t.work.eyebrow} title={t.work.title} />
-      <div className="path-list">
-        {t.work.items.slice(0, 3).map((item, index) => (
-          <article className="path-item" key={`${item.company}-${item.date}`}>
-            <span className="path-index" aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <div className="path-copy">
-              <div className="path-head">
-                <h3>{item.company}</h3>
-                <span className="entry-date">{item.date}</span>
-              </div>
-              <p className="entry-role">{item.role}</p>
-              <p className="path-summary">{item.details.join(' ')}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-      <p className="path-earlier">{t.work.earlier}</p>
-      <div className="path-education" id="education">
-        <p className="group-label">{t.education.eyebrow}</p>
-        <div className="path-education-list">
-          {t.education.items.map((item) => (
-            <article className="path-education-item" key={item.meta}>
-              <h3>{item.meta}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ResearchSection() {
-  return (
-    <section className="content-section" id="research">
-      <SectionHeading eyebrow={t.research.eyebrow} title={t.research.title}>
-        {t.research.description}
-      </SectionHeading>
-      <div className="research-meta">
-        <span className="research-context">{t.research.partners}</span>
-        <span className="research-tags">
-          {t.research.lens.replace(/\.$/, '').split(', ').map((tag) => (
-            <span className="liquid-tag" key={tag}>{tag}</span>
-          ))}
-        </span>
-        <span className="research-context">{t.research.supervisors}</span>
-      </div>
-    </section>
-  )
-}
-
-function BuiltSection() {
-  return (
-    <section className="content-section" id="built">
-      <span className="hash-alias" id="projects" aria-hidden="true" />
-      <SectionHeading eyebrow={t.built.eyebrow} title={t.built.title}>
-        {t.built.lede}
-      </SectionHeading>
-
-      <div className="built-ledger">
-        <article className="built-entry">
-          <div className="built-heading">
-            <span className="built-index" aria-hidden="true">01</span>
-            <div>
-              <h3>{t.fda.title}</h3>
-              <p className="built-stack" translate="no">
-                {t.fda.stack.split(' · ').map((tag) => (
-                  <span className="liquid-tag" key={tag}>{tag}</span>
-                ))}
-              </p>
-            </div>
-          </div>
-          <p className="built-copy">{t.fda.lede}</p>
-          <MetricLine />
-          <div className="hero-actions">
-            <Button asChild className="project-action-pill" size="sm" variant="ghost">
-              <a href={fdaLiveUrl} target="_blank" rel="noreferrer">
-                {t.fda.liveCta}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </Button>
-            <Button asChild className="project-action-pill" size="sm" variant="ghost">
-              <a href="/fda-catalyst.html">
-                {t.fda.caseCta}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </Button>
-          </div>
-        </article>
-
-        <article className="built-entry">
-          <div className="built-heading">
-            <span className="built-index" aria-hidden="true">02</span>
-            <div>
-              <h3>{t.built.wiki.name}</h3>
-              <p className="built-stack" translate="no">
-                {t.built.wiki.stack.split(' · ').map((tag) => (
-                  <span className="liquid-tag" key={tag}>{tag}</span>
-                ))}
-              </p>
-            </div>
-          </div>
-          <p className="built-copy">{t.built.wiki.note}</p>
-          <div className="hero-actions">
-            <Button asChild className="project-action-pill" size="sm" variant="ghost">
-              <a href={wikiLiveUrl} target="_blank" rel="noreferrer">
-                {t.built.wiki.liveCta}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </Button>
-            <Button asChild className="project-action-pill" size="sm" variant="ghost">
-              <a href={wikiRepoUrl} target="_blank" rel="noreferrer">
-                {t.built.wiki.sourceCta}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            </Button>
-          </div>
-        </article>
-      </div>
-    </section>
-  )
-}
-
-function LibrarySection() {
-  return (
-    <section className="content-section library-section" id="reading">
-      <SectionHeading eyebrow={t.library.eyebrow} title={t.library.title}>
-        {t.library.lede}
-      </SectionHeading>
-
-      <div className="reading-layout">
-        <div className="book-index-column">
-          <div className="library-column-head">
-            <h3 className="group-label">{t.library.booksTitle}</h3>
-            <span className="library-count">{String(t.library.books.length).padStart(2, '0')}</span>
-          </div>
-
-          <ol className="book-index">
-            {t.library.books.map((book, index) => (
-              <li className="book-index-item" key={book.title}>
-                <a
-                  className="book-index-link"
-                  href={bookLinks[index]}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="book-index-number" aria-hidden="true">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="book-index-copy">
-                    <span className="book-index-title">
-                      {book.title}
-                      <ArrowUpRight aria-hidden="true" />
-                    </span>
-                    <span className="book-index-note">{book.note}</span>
-                  </span>
-                  <span className="book-index-meta">{book.author}</span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        <div className="periodical-grid">
-          {t.library.subscriptions.groups.map((group) => (
-            <section className="subscription-group" key={group.label}>
-              <h3 className="group-label">{group.label}</h3>
-              <ul className="subscription-list">
-                {group.items.map((item) => (
-                  <li className="subscription-item" key={item.name}>
-                    <a
-                      className="subscription-link"
-                      href={item.url}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <span className="subscription-name">
-                        {item.name}
-                        <ArrowUpRight aria-hidden="true" />
-                      </span>
-                      <span className="subscription-note">{item.note}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function CafesSection() {
-  const cafes = useCafes()
-  if (!cafes.length) return null
-
-  return (
-    <section className="content-section" id="cafes">
-      <SectionHeading eyebrow={t.cafes.eyebrow} title={t.cafes.title}>
-        {t.cafes.lede}
-      </SectionHeading>
-      <div className="entry-list">
-        {cafes.map((item) => {
-          const note = item.note
-          return (
-            <article className="entry" key={item.name}>
-              <div className="entry-head">
-                <h3>
-                  {item.url ? (
-                    <a href={item.url} rel="noreferrer" target="_blank">
-                      {item.name}
-                    </a>
-                  ) : (
-                    item.name
-                  )}
-                </h3>
-                <span className="entry-date">{item.area}</span>
-              </div>
-              {note ? <p className="entry-note">{note}</p> : null}
-            </article>
-          )
-        })}
-      </div>
-    </section>
-  )
-}
-
 function SiteFooter() {
   return (
     <footer className="site-footer">
       <span>{t.footer.note}</span>
+      <span aria-hidden="true">Montréal</span>
     </footer>
   )
 }
 
-function HomePage() {
+function Shell({ children, className = '' }) {
   return (
     <>
       <SkipLink />
       <SiteNav />
-      <main className="home-main" id="main">
-        <IntroSection />
-        <div className="portfolio-content">
-          <NowSection />
-          <SelectedPathSection />
-          <ResearchSection />
-          <BuiltSection />
-          <LibrarySection />
-          <CafesSection />
-        </div>
+      <main className={className} id="main">
+        {children}
       </main>
       <SiteFooter />
     </>
+  )
+}
+
+function ExternalArrow() {
+  return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
+}
+
+function HomePage() {
+  return (
+    <Shell className="home-page">
+      <section className="home-hero" aria-labelledby="home-title">
+        <figure className="portrait-column">
+          <div className="portrait-lens">
+            <img
+              alt={t.a11y.portraitAlt}
+              decoding="async"
+              fetchPriority="high"
+              height={profileImage.height}
+              src={profileImage.src}
+              width={profileImage.width}
+            />
+          </div>
+          <figcaption className="portrait-caption">
+            <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
+            <span>{t.home.portraitCaption}</span>
+          </figcaption>
+        </figure>
+
+        <div className="home-copy">
+          <p className="page-kicker">Applied economics · Montréal</p>
+          <h1 id="home-title">{t.home.title}</h1>
+          <p className="home-introduction">{t.home.introduction}</p>
+          <p className="home-about">{t.home.about}</p>
+
+          <div className="now-line">
+            <span>{t.home.now.label}</span>
+            <p>{t.home.now.text}</p>
+          </div>
+
+          <div className="contact-row" aria-label="Contact links">
+            {t.home.contacts.map((contact, index) => (
+              <Button
+                asChild
+                key={contact.label}
+                variant={index === 0 ? 'default' : 'ghost'}
+              >
+                <a
+                  href={contact.href}
+                  {...(contact.external || contact.label === 'CV' ? externalProps : {})}
+                >
+                  {contact.label}
+                  {contact.label !== 'Email' ? <ExternalArrow /> : null}
+                </a>
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+    </Shell>
+  )
+}
+
+function RouteHeading({ label, title, lede }) {
+  return (
+    <header className="route-heading">
+      <p className="page-kicker">{label}</p>
+      <h1>{title}</h1>
+      <p>{lede}</p>
+    </header>
+  )
+}
+
+function ProjectActions({ project }) {
+  if (!project.href) return null
+
+  return (
+    <div className="project-actions">
+      <Button asChild size="sm" variant="ghost">
+        <a
+          href={project.href}
+          {...(project.href.startsWith('http') ? externalProps : {})}
+        >
+          {project.cta}
+          <ExternalArrow />
+        </a>
+      </Button>
+      {project.slug === 'fda-catalyst' ? (
+        <Button asChild size="sm" variant="ghost">
+          <a href={fdaLiveUrl} {...externalProps}>
+            Live calendar
+            <ExternalArrow />
+          </a>
+        </Button>
+      ) : null}
+      {project.sourceHref ? (
+        <Button asChild size="sm" variant="ghost">
+          <a href={project.sourceHref} {...externalProps}>
+            {project.sourceCta}
+            <ExternalArrow />
+          </a>
+        </Button>
+      ) : null}
+    </div>
+  )
+}
+
+function WorkObject({ project }) {
+  return (
+    <article
+      className={`work-object work-object-${project.presentation}`}
+      id={project.slug}
+    >
+      <div className="work-object-label">
+        <span>{project.kind}</span>
+        <span>{project.context}</span>
+      </div>
+      <div className="work-object-copy">
+        <h2>{project.title}</h2>
+        <p>{project.description}</p>
+      </div>
+      <div className="work-object-foot">
+        <p>{project.detail}</p>
+        <ProjectActions project={project} />
+      </div>
+    </article>
+  )
+}
+
+function WorkPage() {
+  return (
+    <Shell className="route-page work-page">
+      <RouteHeading label="Selected practice" title={t.work.title} lede={t.work.lede} />
+
+      <section className="work-grid" aria-label="Featured research and projects">
+        {t.work.featured.map((project) => (
+          <WorkObject key={project.slug} project={project} />
+        ))}
+      </section>
+
+      <section className="experience-section" aria-labelledby="experience-title">
+        <div className="section-title-row">
+          <h2 id="experience-title">{t.work.experience.title}</h2>
+          <span>2024 to 2026</span>
+        </div>
+        <ol className="experience-list">
+          {t.work.experience.items.map((item) => (
+            <li key={`${item.company}-${item.date}`}>
+              <div className="experience-role">
+                <strong>{item.company}</strong>
+                <span>{item.role}</span>
+              </div>
+              <p>{item.summary}</p>
+              <time>{item.date}</time>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </Shell>
+  )
+}
+
+function resetBookTilt(target) {
+  target.style.setProperty('--tilt-x', '0deg')
+  target.style.setProperty('--tilt-y', '0deg')
+  target.style.setProperty('--glint-x', '50%')
+}
+
+function handleBookPointerMove(event) {
+  if (
+    !window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) return
+
+  const rect = event.currentTarget.getBoundingClientRect()
+  const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width))
+  const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height))
+  event.currentTarget.style.setProperty('--tilt-x', `${((0.5 - y) * 4).toFixed(2)}deg`)
+  event.currentTarget.style.setProperty('--tilt-y', `${((x - 0.5) * 6).toFixed(2)}deg`)
+  event.currentTarget.style.setProperty('--glint-x', `${(x * 100).toFixed(1)}%`)
+}
+
+function Book({ book }) {
+  const linkRef = useRef(null)
+  const ratio = book.cover.width / book.cover.height
+  const width = Math.round(book.presentation.height * ratio)
+  const tabletHeight = Math.round(book.presentation.height * 0.82)
+  const tabletWidth = Math.round(tabletHeight * ratio)
+  const mobileHeight = Math.min(238, book.presentation.height)
+  const mobileWidth = Math.round(mobileHeight * ratio)
+  const style = {
+    '--book-height': `${book.presentation.height}px`,
+    '--book-width': `${width}px`,
+    '--book-tablet-height': `${tabletHeight}px`,
+    '--book-tablet-width': `${tabletWidth}px`,
+    '--book-mobile-height': `${mobileHeight}px`,
+    '--book-mobile-width': `${mobileWidth}px`,
+    '--book-depth': `${book.presentation.depth}px`,
+    '--rest-angle': `${book.presentation.restAngle}deg`,
+  }
+
+  return (
+    <li className="book-item" style={style}>
+      <article className="book-card">
+        <a
+          aria-label={`Open ${book.title} by ${book.author}`}
+          className="book-cover-link"
+          href={book.href}
+          onBlur={(event) => resetBookTilt(event.currentTarget)}
+          onPointerLeave={(event) => resetBookTilt(event.currentTarget)}
+          onPointerMove={handleBookPointerMove}
+          ref={linkRef}
+          {...externalProps}
+        >
+          <span className="book-volume" aria-hidden="true">
+            <span className="book-face book-front">
+              <img
+                alt=""
+                decoding="async"
+                height={book.cover.height}
+                loading="eager"
+                src={book.cover.src}
+                width={book.cover.width}
+              />
+              <span className="book-glint" />
+            </span>
+            <span className="book-face book-spine">
+              <span>{book.title}</span>
+            </span>
+            <span className="book-face book-pages" />
+            <span className="book-face book-top" />
+            <span className="book-shadow" />
+          </span>
+        </a>
+
+        <div className="book-caption">
+          <a className="book-title-link" href={book.href} {...externalProps}>
+            <strong>{book.title}</strong>
+            <ExternalArrow />
+          </a>
+          <span className="book-meta">{book.author} · {book.year}</span>
+          <p>{book.note}</p>
+          <a className="cover-source" href={book.cover.sourceUrl} {...externalProps}>
+            Cover source
+          </a>
+        </div>
+      </article>
+    </li>
+  )
+}
+
+function Publications() {
+  return (
+    <section className="publications-section" aria-labelledby="publications-title">
+      <div className="section-title-row">
+        <h2 id="publications-title">{t.library.subscriptions.title}</h2>
+        <span>Magazines + newsletters</span>
+      </div>
+      <div className="publication-grid">
+        {t.library.subscriptions.groups.map((group) => (
+          <section className="publication-group" key={group.label}>
+            <h3>{group.label}</h3>
+            <ul>
+              {group.items.map((item) => (
+                <li key={item.name}>
+                  <a href={item.url} {...externalProps}>
+                    <span>{item.name}</span>
+                    <ExternalArrow />
+                  </a>
+                  <p>{item.note}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function ReadingPage() {
+  return (
+    <Shell className="route-page reading-page">
+      <RouteHeading label="A working shelf" title={t.library.title} lede={t.library.lede} />
+
+      <section className="bookshelf-section" aria-label="Five books on Enzo Simier's shelf">
+        <div className="bookshelf-viewport">
+          <ol className="bookshelf-rail">
+            {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
+          </ol>
+          <div className="glass-shelf" aria-hidden="true">
+            <span />
+          </div>
+        </div>
+        <p className="shelf-hint">Swipe the shelf · Tap a cover to open</p>
+      </section>
+
+      <Publications />
+    </Shell>
   )
 }
 
@@ -542,121 +407,117 @@ function CatalystTable() {
   )
 }
 
-function ProjectHero() {
+function ProjectSectionHeading({ label, title, children }) {
   return (
-    <section className="project-page-hero" id="overview">
-      <div className="project-page-copy">
-        <p className="hero-kicker">{t.project.kicker}</p>
-        <h1>{t.project.title}</h1>
-        <p>{t.project.lede}</p>
-        <div className="hero-actions">
-          <Button asChild size="lg">
-            <a href={fdaLiveUrl} target="_blank" rel="noreferrer">
-              {t.project.openCta}
-              <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
-            </a>
-          </Button>
-        </div>
-      </div>
-      <div className="project-snapshot">
-        <p className="section-eyebrow">{t.project.snapshot.title}</p>
-        <p className="snapshot-note">{t.project.snapshot.description}</p>
-        <CatalystTable />
-      </div>
-    </section>
-  )
-}
-
-function ArchitectureSection() {
-  return (
-    <section className="content-section" id="architecture">
-      <SectionHeading eyebrow={t.project.architecture.eyebrow} title={t.project.architecture.title}>
-        {t.project.architecture.lede}
-      </SectionHeading>
-      <dl className="definition-list">
-        {t.project.architecture.cards.map(([term, text]) => (
-          <div className="definition-row" key={term}>
-            <dt>{term}</dt>
-            <dd>{text}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-  )
-}
-
-function DeploymentSection() {
-  return (
-    <section className="content-section" id="deployment">
-      <div className="two-column">
-        <SectionHeading eyebrow={t.project.deployment.eyebrow} title={t.project.deployment.title}>
-          {t.project.deployment.lede}
-        </SectionHeading>
-        <div className="status-list">
-          {t.project.deployment.lines.map(([label, value], index) => (
-            <div className="status-line" key={label}>
-              <span>{label}</span>
-              {index === 0 ? (
-                <a href={fdaLiveUrl} rel="noreferrer" target="_blank">
-                  {value}
-                </a>
-              ) : (
-                <strong>{value}</strong>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="check-block">
-        <h3>{t.project.deployment.check.title}</h3>
-        <p>{t.project.deployment.check.description}</p>
-      </div>
-    </section>
+    <div className="project-section-heading">
+      <p className="page-kicker">{label}</p>
+      <h2>{title}</h2>
+      {children ? <p>{children}</p> : null}
+    </div>
   )
 }
 
 function FdaCatalystPage() {
   return (
-    <>
-      <SkipLink />
-      <SiteNav projectPage />
-      <main id="main">
-        <ProjectHero />
-        <ArchitectureSection />
-        <DeploymentSection />
-      </main>
-      <SiteFooter />
-    </>
+    <Shell className="project-page">
+      <section className="project-page-hero" aria-labelledby="project-title">
+        <div className="project-page-copy">
+          <p className="page-kicker">{t.project.kicker}</p>
+          <h1 id="project-title">{t.project.title}</h1>
+          <p>{t.project.lede}</p>
+          <div className="project-actions">
+            <Button asChild size="lg">
+              <a href={t.project.openHref} {...externalProps}>
+                {t.project.openCta}
+                <ExternalArrow />
+              </a>
+            </Button>
+          </div>
+        </div>
+        <div className="project-snapshot">
+          <p className="page-kicker">{t.project.snapshot.title}</p>
+          <p className="snapshot-note">{t.project.snapshot.description}</p>
+          <CatalystTable />
+        </div>
+      </section>
+
+      <section className="project-content-section">
+        <ProjectSectionHeading
+          label={t.project.architecture.label}
+          title={t.project.architecture.title}
+        >
+          {t.project.architecture.lede}
+        </ProjectSectionHeading>
+        <dl className="definition-list">
+          {t.project.architecture.cards.map(([term, text]) => (
+            <div className="definition-row" key={term}>
+              <dt>{term}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section className="project-content-section">
+        <div className="two-column">
+          <ProjectSectionHeading
+            label={t.project.deployment.label}
+            title={t.project.deployment.title}
+          >
+            {t.project.deployment.lede}
+          </ProjectSectionHeading>
+          <div className="status-list">
+            {t.project.deployment.lines.map(([label, value], index) => (
+              <div className="status-line" key={label}>
+                <span>{label}</span>
+                {index === 0 ? (
+                  <a href={fdaLiveUrl} {...externalProps}>{value}</a>
+                ) : (
+                  <strong>{value}</strong>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="check-block">
+          <h3>{t.project.deployment.check.title}</h3>
+          <p>{t.project.deployment.check.description}</p>
+        </div>
+      </section>
+    </Shell>
   )
 }
 
 function AppContent() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
-  const isProjectPage = useMemo(() => pathname.includes('fda-catalyst'), [pathname])
+  let page = <HomePage />
+  let meta = t.meta.home
+
+  if (pathname.includes('fda-catalyst')) {
+    page = <FdaCatalystPage />
+    meta = t.meta.project
+  } else if (pathname.startsWith('/work')) {
+    page = <WorkPage />
+    meta = t.meta.work
+  } else if (pathname.startsWith('/reading')) {
+    page = <ReadingPage />
+    meta = t.meta.reading
+  }
 
   useEffect(() => {
-    const meta = isProjectPage ? t.meta.project : t.meta.home
     document.title = meta.title
     const description = document.querySelector('meta[name="description"]')
     if (description) description.setAttribute('content', meta.description)
-  }, [isProjectPage])
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !window.location.hash) return
-
-    const id = window.location.hash.slice(1)
-    const target = document.getElementById(id)
-
-    if (target) {
-      window.requestAnimationFrame(() => target.scrollIntoView())
+    if (window.location.hash) {
+      const target = document.getElementById(window.location.hash.slice(1))
+      if (target) window.requestAnimationFrame(() => target.scrollIntoView())
     }
-  }, [isProjectPage])
+  }, [meta])
 
-  return isProjectPage ? <FdaCatalystPage /> : <HomePage />
+  return page
 }
 
-function App() {
+export default function App() {
   return <AppContent />
 }
-
-export default App
