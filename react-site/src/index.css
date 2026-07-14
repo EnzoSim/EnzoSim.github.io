@@ -1338,7 +1338,7 @@
 
     .now-line {
       grid-template-columns: 4.5rem minmax(0, 1fr);
-      align-items: start;
+      align-items: baseline;
     }
 
     .work-grid {
