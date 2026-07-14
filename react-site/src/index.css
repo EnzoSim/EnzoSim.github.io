@@ -270,8 +270,7 @@
 
   .nav-link:focus-visible,
   .nav-brand:focus-visible,
-  .book-cover-link:focus-visible,
-  .book-title-link:focus-visible,
+  .shelf-book-link:focus-visible,
   .publication-group a:focus-visible {
     outline: 2px solid var(--evergreen);
     outline-offset: 3px;
@@ -338,9 +337,7 @@
   .page-kicker,
   .section-title-row > span,
   .work-object-label,
-  .book-meta,
-  .publication-group h3,
-  .shelf-hint {
+  .publication-group h3 {
     color: var(--muted-foreground);
     font-family: var(--font-mono);
     font-size: 0.69rem;
@@ -648,407 +645,304 @@
   }
 
   .bookshelf-section {
-    --stage-height: 17.6rem;
     position: relative;
     min-width: 0;
   }
 
-  .bookshelf-viewport {
+  /* A web approximation of liquid glass, used here as a physical shelf. */
+  .bookcase {
     position: relative;
-    min-width: 0;
+    width: min(100%, 49rem);
+    margin-inline: auto;
+    padding-top: 1.05rem;
+    isolation: isolate;
+    perspective: 1200px;
   }
 
-  .bookshelf-rail {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    margin: 0;
-    padding: 0 18vw 0.75rem 0.5rem;
-    gap: 0.9rem;
-    grid-auto-columns: minmax(13.75rem, 72vw);
-    grid-auto-flow: column;
-    list-style: none;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-padding-inline: 0.5rem;
-    scroll-snap-type: inline mandatory;
-    scrollbar-width: none;
-  }
-
-  .bookshelf-rail::-webkit-scrollbar {
-    display: none;
-  }
-
-  .book-item {
-    min-width: 0;
-    height: 26.75rem;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
-  .book-card {
-    position: relative;
-    display: grid;
-    height: 100%;
-    grid-template-rows: var(--stage-height) minmax(0, 1fr);
-  }
-
-  .book-cover-link {
-    --tilt-x: 0deg;
-    --tilt-y: 0deg;
-    --glint-x: 50%;
-    position: relative;
-    z-index: 3;
-    display: flex;
-    width: 100%;
-    height: var(--stage-height);
-    align-items: flex-end;
-    justify-content: center;
-    perspective: 1100px;
-    text-decoration: none;
-  }
-
-  .book-volume {
-    position: relative;
-    display: block;
-    width: var(--book-mobile-width);
-    height: var(--book-mobile-height);
-    transform:
-      translateY(0)
-      rotateZ(var(--rest-angle))
-      rotateX(var(--tilt-x))
-      rotateY(calc(var(--rest-yaw) + var(--tilt-y)));
-    transform-origin: 50% 100%;
-    transform-style: preserve-3d;
-    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-  }
-
-  .book-face {
+  .bookcase::before {
     position: absolute;
-    display: block;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-  }
-
-  .book-front {
-    inset: 0;
-    overflow: hidden;
-    border-radius: 0.16rem 0.32rem 0.32rem 0.16rem;
-    color: var(--book-ink);
+    z-index: 5;
+    top: 0;
+    right: 0.5rem;
+    left: 0.5rem;
+    height: 1.15rem;
+    border: 1px solid rgb(36 66 53 / 15%);
+    border-radius: 0.85rem 0.85rem 0.3rem 0.3rem;
     background:
-      linear-gradient(90deg, rgb(0 0 0 / 12%), transparent 5%, transparent 96%, rgb(255 255 255 / 10%)),
-      repeating-linear-gradient(0deg, rgb(255 255 255 / 2%) 0 1px, rgb(0 0 0 / 2%) 1px 3px),
-      var(--book-cover);
+      linear-gradient(180deg, rgb(255 255 255 / 92%), rgb(255 255 255 / 52%)),
+      rgb(237 243 239 / 48%);
     box-shadow:
-      inset 1px 0 0 rgb(255 255 255 / 45%),
-      inset -1px 0 0 rgb(21 21 21 / 15%),
-      0 14px 27px rgb(21 21 21 / 17%);
-    transform: translateZ(calc(var(--book-depth) / 2));
-  }
-
-  .book-cover-frame {
-    position: absolute;
-    inset: 0.68rem;
-    border: 1px solid color-mix(in srgb, var(--book-ink) 28%, transparent);
-    border-radius: 0.12rem;
-    box-shadow:
-      inset 0 0 0 1px rgb(255 255 255 / 5%),
-      0 0 0 1px rgb(0 0 0 / 4%);
-  }
-
-  .book-cover-ornament {
-    position: absolute;
-    top: 17%;
-    left: 50%;
-    width: 52%;
-    aspect-ratio: 1;
-    border: 1px solid color-mix(in srgb, var(--book-accent) 78%, transparent);
-    border-radius: 50%;
-    box-shadow:
-      inset 0 0 0 0.48rem color-mix(in srgb, var(--book-accent) 9%, transparent),
-      0 0 0 0.24rem color-mix(in srgb, var(--book-accent) 12%, transparent);
-    opacity: 0.88;
-    transform: translateX(-50%);
-  }
-
-  .book-cover-ornament::before,
-  .book-cover-ornament::after {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--book-accent);
+      inset 0 1px 0 rgb(255 255 255 / 98%),
+      inset 0 -4px 9px rgb(36 66 53 / 8%),
+      0 9px 20px rgb(36 66 53 / 7%);
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    backdrop-filter: blur(20px) saturate(125%);
     content: "";
   }
 
-  .book-cover-ornament::before {
-    inset: 27%;
-    opacity: 0.22;
-  }
-
-  .book-cover-ornament::after {
-    top: 50%;
-    left: 50%;
-    width: 0.36rem;
-    height: 0.36rem;
-    box-shadow:
-      -1.15rem 0 0 color-mix(in srgb, var(--book-accent) 52%, transparent),
-      1.15rem 0 0 color-mix(in srgb, var(--book-accent) 52%, transparent);
-    transform: translate(-50%, -50%);
-  }
-
-  .book-cover-copy {
-    position: absolute;
-    right: 1.15rem;
-    bottom: 1.25rem;
-    left: 1.15rem;
+  .bookcase-bay {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 0.42rem;
+    min-height: 18.9rem;
+    margin-inline: 0.85rem;
+    padding: 2.4rem clamp(0.55rem, 4vw, 2.5rem) 0;
+    align-items: flex-end;
+    justify-content: center;
+    border: 1px solid rgb(36 66 53 / 13%);
+    border-bottom: 0;
+    border-radius: 1.15rem 1.15rem 0.15rem 0.15rem;
+    background:
+      radial-gradient(circle at 50% 8%, rgb(255 255 255 / 84%), transparent 42%),
+      linear-gradient(180deg, rgb(255 255 255 / 52%), rgb(237 243 239 / 42%));
+    box-shadow:
+      inset 1.1rem 0 1.4rem -1.3rem rgb(36 66 53 / 28%),
+      inset -1.1rem 0 1.4rem -1.3rem rgb(36 66 53 / 28%),
+      inset 0 1px 0 rgb(255 255 255 / 95%),
+      inset 0 -2rem 2.8rem -2.5rem rgb(36 66 53 / 25%);
+    -webkit-backdrop-filter: blur(22px) saturate(118%);
+    backdrop-filter: blur(22px) saturate(118%);
   }
 
-  .book-cover-title {
-    font-size: clamp(0.72rem, 1.15vw, 0.9rem);
-    font-weight: 650;
-    line-height: 1.03;
-    letter-spacing: -0.025em;
-    text-wrap: balance;
-  }
-
-  .book-cover-author {
-    padding-top: 0.45rem;
-    border-top: 1px solid color-mix(in srgb, var(--book-ink) 32%, transparent);
-    font-family: var(--font-mono);
-    font-size: 0.42rem;
-    font-weight: 560;
-    letter-spacing: 0.1em;
-    line-height: 1.3;
-    text-transform: uppercase;
-  }
-
-  .book-glint {
+  .bookcase-bay::before {
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      108deg,
-      transparent 23%,
-      rgb(255 255 255 / 4%) 36%,
-      rgb(255 255 255 / 38%) 49%,
-      rgb(255 255 255 / 5%) 61%,
-      transparent 74%
-    );
-    mix-blend-mode: screen;
-    opacity: 0.22;
-    transform: translateX(calc(var(--glint-x) - 50%));
-    transition: opacity 220ms ease, transform 240ms ease;
+    z-index: 0;
+    right: 1.25rem;
+    bottom: 0.1rem;
+    left: 1.25rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background: rgb(36 66 53 / 10%);
+    filter: blur(10px);
+    content: "";
+  }
+
+  .bookcase-side {
+    position: absolute;
+    z-index: 4;
+    top: -0.2rem;
+    bottom: -0.4rem;
+    width: 0.95rem;
+    border: 1px solid rgb(36 66 53 / 14%);
+    background:
+      linear-gradient(90deg, rgb(255 255 255 / 94%), rgb(255 255 255 / 45%) 56%, rgb(36 66 53 / 6%));
+    box-shadow:
+      inset 1px 0 0 rgb(255 255 255 / 96%),
+      0 8px 18px rgb(36 66 53 / 7%);
+    -webkit-backdrop-filter: blur(18px) saturate(122%);
+    backdrop-filter: blur(18px) saturate(122%);
     pointer-events: none;
   }
 
-  .book-spine {
-    top: 0;
-    left: 0;
-    width: var(--book-depth);
-    height: 100%;
-    overflow: hidden;
-    border-radius: 0.16rem 0 0 0.16rem;
-    color: var(--book-ink);
-    background:
-      linear-gradient(90deg, rgb(0 0 0 / 16%), transparent 30%, rgb(255 255 255 / 9%) 75%, rgb(0 0 0 / 12%)),
-      var(--book-spine);
-    box-shadow:
-      inset -1px 0 rgb(255 255 255 / 18%),
-      inset 2px 0 rgb(0 0 0 / 16%);
-    transform: translateZ(calc(var(--book-depth) / 2)) rotateY(-90deg);
-    transform-origin: 0 50%;
+  .bookcase-side-left {
+    left: -0.35rem;
+    border-radius: 0.65rem 0.2rem 0.15rem 0.3rem;
   }
 
-  .book-spine-title,
-  .book-spine-author {
-    position: absolute;
-    left: 50%;
-    overflow: hidden;
-    font-family: var(--font-mono);
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    transform: translateX(-50%);
-    writing-mode: vertical-rl;
+  .bookcase-side-right {
+    right: -0.35rem;
+    border-radius: 0.2rem 0.65rem 0.3rem 0.15rem;
+    transform: scaleX(-1);
   }
 
-  .book-spine-title {
-    top: 0.68rem;
-    height: calc(100% - 3.35rem);
-    font-size: 0.48rem;
-    font-weight: 650;
-    letter-spacing: 0.08em;
-  }
-
-  .book-spine-author {
-    bottom: 0.68rem;
-    height: 2rem;
-    padding-top: 0.42rem;
-    border-top: 1px solid color-mix(in srgb, var(--book-ink) 32%, transparent);
-    font-size: 0.34rem;
-    letter-spacing: 0.06em;
-    opacity: 0.82;
-  }
-
-  .book-pages {
-    top: 0.28rem;
-    right: 0;
-    width: var(--book-depth);
-    height: calc(100% - 0.56rem);
-    background:
-      linear-gradient(90deg, var(--book-cover) 0 2px, transparent 2px),
-      repeating-linear-gradient(90deg, #f5f0e5 0, #f5f0e5 2px, #d8d0c1 3px, #eee8dc 4px);
-    box-shadow: inset 0 0 5px rgb(21 21 21 / 15%);
-    transform: translateZ(calc(var(--book-depth) / 2)) rotateY(90deg);
-    transform-origin: 100% 50%;
-  }
-
-  .book-top {
-    top: 0;
-    left: 0.2rem;
-    width: calc(100% - 0.4rem);
-    height: var(--book-depth);
-    background:
-      linear-gradient(180deg, var(--book-cover) 0 2px, transparent 2px),
-      repeating-linear-gradient(0deg, #f5f0e5 0, #f5f0e5 2px, #d8d0c1 3px, #eee8dc 4px);
-    box-shadow: inset 0 0 4px rgb(21 21 21 / 13%);
-    transform: translateZ(calc(var(--book-depth) / 2)) rotateX(90deg);
-    transform-origin: 50% 0;
-  }
-
-  .book-shadow {
-    position: absolute;
-    right: -0.9rem;
-    bottom: -0.5rem;
-    left: 0.45rem;
-    height: 1.15rem;
-    border-radius: 50%;
-    background: rgb(21 21 21 / 18%);
-    filter: blur(7px);
-    opacity: 0.65;
-    transform: translateZ(calc(var(--book-depth) * -1));
-    transition: opacity 260ms ease, transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .book-caption {
+  .shelf-books {
     position: relative;
-    z-index: 4;
-    align-self: start;
-    min-height: 8.3rem;
-    margin-top: 0.8rem;
-    padding: 0.8rem;
-    overflow: hidden;
-    border: 1px solid transparent;
-    border-radius: 1rem;
-    background: transparent;
-    box-shadow: inset 0 1px 0 transparent;
-    transition:
-      border-color 220ms ease,
-      background-color 220ms ease,
-      box-shadow 220ms ease,
-      transform 220ms ease;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    height: 16.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1px;
+    list-style: none;
   }
 
-  .book-title-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    color: var(--foreground);
-    font-size: 0.88rem;
-    line-height: 1.22;
+  .shelf-book-item {
+    position: relative;
+    width: var(--spine-mobile-width);
+    height: var(--spine-mobile-height);
+    min-width: 2.75rem;
+    flex: 0 0 auto;
+  }
+
+  .shelf-book-item:has(.shelf-book-link:hover),
+  .shelf-book-item:focus-within {
+    z-index: 3;
+  }
+
+  .shelf-book-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    perspective: 900px;
     text-decoration: none;
   }
 
-  .book-title-link strong {
-    font-weight: 650;
-  }
-
-  .book-title-link svg {
-    width: 0.78rem;
-    height: 0.78rem;
-  }
-
-  .book-meta {
+  .shelf-book {
+    position: relative;
     display: block;
-    margin-top: 0.25rem;
-    font-size: 0.57rem;
-  }
-
-  .book-caption p {
-    margin-top: 0.48rem;
-    color: var(--body-copy);
-    font-size: 0.76rem;
-    line-height: 1.42;
-  }
-
-  .book-card:has(.book-cover-link:hover) .book-caption,
-  .book-card:focus-within .book-caption {
-    border-color: rgb(36 66 53 / 12%);
-    background: rgb(255 255 255 / 61%);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 94%),
-      0 12px 26px rgb(36 66 53 / 7%);
-    -webkit-backdrop-filter: blur(17px) saturate(120%);
-    backdrop-filter: blur(17px) saturate(120%);
-    transform: translateY(-2px);
-  }
-
-  .book-cover-link:hover .book-volume,
-  .book-cover-link:focus-visible .book-volume {
-    transform:
-      translateY(-12px)
-      rotateZ(var(--rest-angle))
-      rotateX(var(--tilt-x))
-      rotateY(calc(var(--rest-yaw) + var(--tilt-y)));
-  }
-
-  .book-cover-link:hover .book-glint,
-  .book-cover-link:focus-visible .book-glint {
-    opacity: 0.7;
-  }
-
-  .book-cover-link:hover .book-shadow,
-  .book-cover-link:focus-visible .book-shadow {
-    opacity: 0.9;
-    transform: translate(0.25rem, 0.35rem) translateZ(calc(var(--book-depth) * -1));
-  }
-
-  .glass-shelf {
-    position: absolute;
-    z-index: 1;
-    top: calc(var(--stage-height) - 0.45rem);
-    right: 0.2rem;
-    left: 0.2rem;
-    height: 1.15rem;
-    border: 1px solid rgb(36 66 53 / 16%);
-    border-radius: 999px;
-    background: rgb(255 255 255 / 56%);
-    box-shadow:
-      inset 0 2px 0 rgb(255 255 255 / 94%),
-      inset 0 -4px 8px rgb(36 66 53 / 7%),
-      0 13px 24px rgb(36 66 53 / 9%);
-    -webkit-backdrop-filter: blur(16px) saturate(118%);
-    backdrop-filter: blur(16px) saturate(118%);
-    transform: perspective(500px) rotateX(52deg);
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0, 0, 0);
     transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    transition:
+      filter 260ms ease,
+      transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
   }
 
-  .glass-shelf span {
+  .shelf-book-spine {
     position: absolute;
-    right: 1.25rem;
-    bottom: -0.45rem;
-    left: 1.25rem;
-    height: 0.45rem;
-    border-radius: 0 0 999px 999px;
-    background: rgb(36 66 53 / 8%);
-    filter: blur(2px);
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    border: 1px solid rgb(21 21 21 / 24%);
+    border-radius: 0.38rem 0.38rem 0.13rem 0.13rem;
+    color: var(--book-ink);
+    background:
+      linear-gradient(90deg, rgb(0 0 0 / 24%), transparent 12%, rgb(255 255 255 / 11%) 50%, transparent 82%, rgb(0 0 0 / 22%)),
+      repeating-linear-gradient(0deg, rgb(255 255 255 / 2%) 0 1px, rgb(0 0 0 / 2%) 1px 3px),
+      var(--book-spine);
+    box-shadow:
+      inset 2px 0 0 rgb(255 255 255 / 14%),
+      inset -2px 0 0 rgb(0 0 0 / 16%),
+      inset 0 1px 0 rgb(255 255 255 / 18%),
+      0 9px 15px rgb(21 21 21 / 13%);
   }
 
-  .shelf-hint {
-    display: block;
-    margin: 0.3rem 0.5rem 0;
-    font-size: 0.56rem;
+  .shelf-book-spine::before,
+  .shelf-book-spine::after {
+    position: absolute;
+    top: 0.38rem;
+    bottom: 0.3rem;
+    width: 1px;
+    background: color-mix(in srgb, var(--book-ink) 22%, transparent);
+    box-shadow: 1px 0 rgb(255 255 255 / 8%);
+    content: "";
+  }
+
+  .shelf-book-spine::before {
+    left: 0.32rem;
+  }
+
+  .shelf-book-spine::after {
+    right: 0.32rem;
+  }
+
+  .shelf-book-title,
+  .shelf-book-author {
+    position: absolute;
+    left: 50%;
+    z-index: 2;
+    overflow: hidden;
+    font-family: var(--font-mono);
+    line-height: 1;
+    text-align: left;
+    text-transform: uppercase;
+    transform: translateX(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+  }
+
+  .shelf-book-title {
+    top: 2rem;
+    bottom: 5rem;
+    font-size: clamp(0.52rem, 2.25vw, 0.66rem);
+    font-weight: 680;
+    letter-spacing: 0.075em;
+  }
+
+  .shelf-book-author {
+    bottom: 1.35rem;
+    height: 2.8rem;
+    font-size: 0.43rem;
+    font-weight: 560;
+    letter-spacing: 0.06em;
+    opacity: 0.84;
+  }
+
+  .shelf-book-band {
+    position: absolute;
+    z-index: 2;
+    right: 0.34rem;
+    left: 0.34rem;
+    height: 2px;
+    background: color-mix(in srgb, var(--book-accent) 78%, transparent);
+    box-shadow:
+      0 1px rgb(0 0 0 / 14%),
+      0 -1px rgb(255 255 255 / 9%);
+    opacity: 0.8;
+  }
+
+  .shelf-book-band-top {
+    top: 1.1rem;
+  }
+
+  .shelf-book-band-bottom {
+    bottom: 1.05rem;
+  }
+
+  .shelf-book-glint {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    background: linear-gradient(96deg, transparent 18%, rgb(255 255 255 / 24%) 45%, transparent 68%);
+    mix-blend-mode: screen;
+    opacity: 0.22;
+    transform: translateX(-55%);
+    transition: opacity 260ms ease, transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+
+  .shelf-book-link:hover .shelf-book,
+  .shelf-book-link:focus-visible .shelf-book {
+    filter: drop-shadow(0 12px 10px rgb(36 66 53 / 13%));
+    transform: translate3d(0, -0.7rem, 1rem) scale(1.012);
+  }
+
+  .shelf-book-link:hover .shelf-book-glint,
+  .shelf-book-link:focus-visible .shelf-book-glint {
+    opacity: 0.52;
+    transform: translateX(50%);
+  }
+
+  .shelf-book-link:active .shelf-book {
+    transform: translate3d(0, -0.2rem, 0.25rem) scale(0.992);
+  }
+
+  .bookcase-shelf {
+    position: relative;
+    z-index: 6;
+    height: 1.45rem;
+    margin-top: -0.08rem;
+    border: 1px solid rgb(36 66 53 / 16%);
+    border-radius: 0.25rem 0.25rem 0.9rem 0.9rem;
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 96%), rgb(255 255 255 / 48%) 58%, rgb(227 237 231 / 50%)),
+      rgb(255 255 255 / 58%);
+    box-shadow:
+      inset 0 2px 0 rgb(255 255 255 / 98%),
+      inset 0 -5px 10px rgb(36 66 53 / 8%),
+      0 16px 28px rgb(36 66 53 / 10%);
+    -webkit-backdrop-filter: blur(20px) saturate(126%);
+    backdrop-filter: blur(20px) saturate(126%);
+    transform: perspective(580px) rotateX(17deg);
+    transform-origin: 50% 0;
+  }
+
+  .bookcase-shelf-edge {
+    position: absolute;
+    right: 1.15rem;
+    bottom: -0.55rem;
+    left: 1.15rem;
+    height: 0.65rem;
+    border-radius: 0 0 999px 999px;
+    background: linear-gradient(180deg, rgb(36 66 53 / 10%), rgb(36 66 53 / 3%));
+    filter: blur(2px);
   }
 
   .publication-grid {
@@ -1281,7 +1175,7 @@
   .route-heading > *,
   .project-page-copy > *,
   .project-snapshot,
-  .book-item {
+  .shelf-book-item {
     animation: settle-in 520ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
@@ -1307,10 +1201,10 @@
     animation-delay: 180ms;
   }
 
-  .book-item:nth-child(2) { animation-delay: 45ms; }
-  .book-item:nth-child(3) { animation-delay: 90ms; }
-  .book-item:nth-child(4) { animation-delay: 135ms; }
-  .book-item:nth-child(5) { animation-delay: 180ms; }
+  .shelf-book-item:nth-child(2) { animation-delay: 45ms; }
+  .shelf-book-item:nth-child(3) { animation-delay: 90ms; }
+  .shelf-book-item:nth-child(4) { animation-delay: 135ms; }
+  .shelf-book-item:nth-child(5) { animation-delay: 180ms; }
 }
 
 @media (min-width: 42rem) {
@@ -1426,49 +1320,22 @@
       margin-inline: 0;
     }
 
-    .bookshelf-section {
-      --stage-height: 17.25rem;
+    .bookcase-bay {
+      min-height: 22rem;
+      padding-top: 3rem;
     }
 
-    .bookshelf-rail {
-      padding: 0 0 0.75rem;
-      gap: clamp(0.45rem, 1.3vw, 1rem);
-      grid-auto-flow: row;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      overflow: visible;
-      scroll-snap-type: none;
+    .shelf-books {
+      height: 19rem;
     }
 
-    .book-item {
-      height: 27rem;
+    .shelf-book-item {
+      width: var(--spine-width);
+      height: var(--spine-height);
     }
 
-    .book-volume {
-      width: var(--book-tablet-width);
-      height: var(--book-tablet-height);
-    }
-
-    .book-caption {
-      min-height: 9.7rem;
-      margin-top: 0.85rem;
-      padding: 0.75rem;
-    }
-
-    .book-title-link {
-      font-size: 0.82rem;
-    }
-
-    .book-caption p {
-      font-size: 0.72rem;
-    }
-
-    .glass-shelf {
-      right: -0.5rem;
-      left: -0.5rem;
-    }
-
-    .shelf-hint {
-      display: none;
+    .shelf-book-title {
+      font-size: 0.66rem;
     }
 
     .project-page-hero {
@@ -1484,31 +1351,15 @@
   }
 }
 
-@media (min-width: 75rem) {
-  @layer components {
-    .bookshelf-section {
-      --stage-height: 20.5rem;
-    }
-
-    .book-item {
-      height: 30.25rem;
-    }
-
-    .book-volume {
-      width: var(--book-width);
-      height: var(--book-height);
-    }
-  }
-}
-
 @media (hover: none), (pointer: coarse) {
-  .book-volume {
-    transform: rotateZ(var(--rest-angle)) rotateY(var(--rest-yaw));
-    transition: none;
+  .shelf-book-link:hover .shelf-book {
+    filter: none;
+    transform: none;
   }
 
-  .book-card:focus-within .book-caption {
-    transform: none;
+  .shelf-book-link:hover .shelf-book-glint {
+    opacity: 0.22;
+    transform: translateX(-55%);
   }
 }
 
@@ -1533,14 +1384,16 @@
   .nav-link,
   [data-slot="button"],
   [data-icon="inline-end"],
-  .book-glint,
-  .book-shadow,
-  .book-caption {
+  .shelf-book,
+  .shelf-book-glint {
     transform: none !important;
   }
 
-  .book-volume {
-    transform: rotateZ(var(--rest-angle)) rotateY(var(--rest-yaw)) !important;
+  .shelf-book-link:hover .shelf-book,
+  .shelf-book-link:focus-visible .shelf-book,
+  .shelf-book-link:active .shelf-book {
+    filter: none !important;
+    transform: none !important;
   }
 }
 
@@ -1549,8 +1402,10 @@
   .liquid-pill,
   [data-slot="button"],
   .portrait-lens,
-  .book-caption,
-  .glass-shelf,
+  .bookcase::before,
+  .bookcase-bay,
+  .bookcase-side,
+  .bookcase-shelf,
   .project-snapshot {
     background: #fff !important;
     -webkit-backdrop-filter: none !important;
@@ -1563,8 +1418,10 @@
   .liquid-pill,
   [data-slot="button"],
   .portrait-lens,
-  .book-caption,
-  .glass-shelf,
+  .bookcase::before,
+  .bookcase-bay,
+  .bookcase-side,
+  .bookcase-shelf,
   .project-snapshot {
     border-color: rgb(21 21 21 / 55%) !important;
     background: #fff !important;
@@ -1572,8 +1429,7 @@
     backdrop-filter: none !important;
   }
 
-  .book-cover-link:focus-visible,
-  .book-title-link:focus-visible,
+  .shelf-book-link:focus-visible,
   .publication-group a:focus-visible,
   .nav-link:focus-visible,
   [data-slot="button"]:focus-visible {

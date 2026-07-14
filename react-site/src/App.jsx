@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -218,91 +218,41 @@ function WorkObject({ project }) {
   )
 }
 
-function resetBookTilt(target) {
-  target.style.setProperty('--tilt-x', '0deg')
-  target.style.setProperty('--tilt-y', '0deg')
-  target.style.setProperty('--glint-x', '50%')
-}
-
-function handleBookPointerMove(event) {
-  if (
-    !window.matchMedia('(hover: hover) and (pointer: fine)').matches
-    || window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) return
-
-  const rect = event.currentTarget.getBoundingClientRect()
-  const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width))
-  const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height))
-  event.currentTarget.style.setProperty('--tilt-x', `${((0.5 - y) * 4).toFixed(2)}deg`)
-  event.currentTarget.style.setProperty('--tilt-y', `${((x - 0.5) * 6).toFixed(2)}deg`)
-  event.currentTarget.style.setProperty('--glint-x', `${(x * 100).toFixed(1)}%`)
-}
-
 function Book({ book }) {
-  const linkRef = useRef(null)
-  const width = book.presentation.width
-  const tabletHeight = Math.round(book.presentation.height * 0.82)
-  const tabletWidth = Math.round(width * 0.82)
-  const mobileHeight = Math.min(238, book.presentation.height)
-  const mobileWidth = Math.round(width * (mobileHeight / book.presentation.height))
+  const width = book.presentation.spineWidth
+  const height = book.presentation.height
   const style = {
-    '--book-height': `${book.presentation.height}px`,
-    '--book-width': `${width}px`,
-    '--book-tablet-height': `${tabletHeight}px`,
-    '--book-tablet-width': `${tabletWidth}px`,
-    '--book-mobile-height': `${mobileHeight}px`,
-    '--book-mobile-width': `${mobileWidth}px`,
-    '--book-depth': `${book.presentation.depth}px`,
-    '--rest-angle': `${book.presentation.restAngle}deg`,
-    '--rest-yaw': `${book.presentation.restYaw}deg`,
-    '--book-cover': book.design.cover,
+    '--spine-height': `${height}px`,
+    '--spine-width': `${width}px`,
+    '--spine-mobile-height': `${Math.round(height * 0.76)}px`,
+    '--spine-mobile-width': `${Math.max(44, Math.round(width * 0.72))}px`,
     '--book-spine': book.design.spine,
     '--book-ink': book.design.ink,
     '--book-accent': book.design.accent,
   }
 
   return (
-    <li className="book-item" style={style}>
-      <article className="book-card">
-        <a
-          aria-label={`Open ${book.title} by ${book.author}`}
-          className="book-cover-link"
-          href={book.href}
-          onBlur={(event) => resetBookTilt(event.currentTarget)}
-          onPointerLeave={(event) => resetBookTilt(event.currentTarget)}
-          onPointerMove={handleBookPointerMove}
-          ref={linkRef}
-          {...externalProps}
-        >
-          <span className="book-volume" aria-hidden="true">
-            <span className="book-face book-front">
-              <span className="book-cover-frame" />
-              <span className="book-cover-ornament" />
-              <span className="book-cover-copy">
-                <span className="book-cover-title">{book.title}</span>
-                <span className="book-cover-author">{book.author}</span>
-              </span>
-              <span className="book-glint" />
-            </span>
-            <span className="book-face book-spine">
-              <span className="book-spine-title">{book.title}</span>
-              <span className="book-spine-author">{book.author}</span>
-            </span>
-            <span className="book-face book-pages" />
-            <span className="book-face book-top" />
-            <span className="book-shadow" />
+    <li className="shelf-book-item" style={style}>
+      <a
+        aria-describedby={`${book.slug}-book-details`}
+        aria-label={`Open ${book.title} by ${book.author}`}
+        className="shelf-book-link"
+        href={book.href}
+        {...externalProps}
+      >
+        <span className="shelf-book" aria-hidden="true">
+          <span className="shelf-book-spine">
+            <span className="shelf-book-band shelf-book-band-top" />
+            <span className="shelf-book-title">{book.spineTitle ?? book.title}</span>
+            <span className="shelf-book-author">{book.spineAuthor ?? book.author}</span>
+            <span className="shelf-book-band shelf-book-band-bottom" />
+            <span className="shelf-book-glint" />
           </span>
-        </a>
-
-        <div className="book-caption">
-          <a className="book-title-link" href={book.href} {...externalProps}>
-            <strong>{book.title}</strong>
-            <ExternalArrow />
-          </a>
-          <span className="book-meta">{book.author} · {book.year}</span>
-          <p>{book.note}</p>
-        </div>
-      </article>
+        </span>
+        <span className="sr-only" id={`${book.slug}-book-details`}>
+          {book.year}. {book.note}
+        </span>
+      </a>
     </li>
   )
 }
@@ -342,15 +292,18 @@ function ReadingPage() {
       <RouteHeading title={t.library.title} lede={t.library.lede} />
 
       <section className="bookshelf-section" aria-label="Five books on Enzo Simier's shelf">
-        <div className="bookshelf-viewport">
-          <ol className="bookshelf-rail">
-            {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
-          </ol>
-          <div className="glass-shelf" aria-hidden="true">
-            <span />
+        <div className="bookcase">
+          <div className="bookcase-bay">
+            <span className="bookcase-side bookcase-side-left" aria-hidden="true" />
+            <ul className="shelf-books">
+              {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
+            </ul>
+            <span className="bookcase-side bookcase-side-right" aria-hidden="true" />
+          </div>
+          <div className="bookcase-shelf" aria-hidden="true">
+            <span className="bookcase-shelf-edge" />
           </div>
         </div>
-        <p className="shelf-hint">Swipe the shelf · Tap a book to open</p>
       </section>
 
       <Publications />
