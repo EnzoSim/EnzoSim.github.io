@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { HomeAmbient } from '@/components/HomeAmbient'
 import {
   Table,
   TableBody,
@@ -39,8 +40,8 @@ function SiteNav() {
   return (
     <header className="site-header">
       <div className="site-nav-shell">
-        <a className="nav-brand" href="/" aria-label="Enzo Simier, home">
-          <span className="brand-mark" aria-hidden="true">ES</span>
+        <a className="nav-brand" href="/">
+          <span className="brand-mark">ES</span>
           <span>Enzo Simier</span>
         </a>
         <nav className="primary-nav" aria-label={t.a11y.primaryNavigation}>
@@ -102,6 +103,7 @@ function HomePage() {
   return (
     <Shell className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
+        <HomeAmbient />
         <div className="home-hero-content">
           <figure className="portrait-column">
             <div className="portrait-lens">
