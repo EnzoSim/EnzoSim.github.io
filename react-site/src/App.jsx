@@ -226,8 +226,10 @@ function WorkObject({ project }) {
       id={project.slug}
     >
       <div className="work-object-label">
-        <span>{project.context}</span>
+        <span className="work-object-kind">{project.kind}</span>
+        <span className="work-object-context">{project.context}</span>
       </div>
+      <span aria-hidden="true" className="work-object-lens" />
       <div className="work-object-copy">
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
         <p>{project.description}</p>

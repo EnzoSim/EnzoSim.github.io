@@ -62,10 +62,11 @@ export const en = {
   },
   projects: {
     title: 'Projects',
-    lede: 'Research and tools I am currently developing.',
+    lede: 'A thesis on water pricing, a biotech calendar, and a public knowledge library.',
     items: [
       {
         slug: 'water-pricing',
+        kind: 'Research',
         title: 'Volumetric water pricing in Québec',
         description:
           'My thesis estimates how volumetric pricing changes water use, cost recovery, and welfare across Québec municipalities.',
@@ -77,6 +78,7 @@ export const en = {
       },
       {
         slug: 'fda-catalyst',
+        kind: 'Tool',
         title: 'FDA Catalyst',
         description:
           'A live biotech catalyst calendar that turns structured records into dated events with filters, source links, and company-level context.',
@@ -87,6 +89,7 @@ export const en = {
       },
       {
         slug: 'wiki-project',
+        kind: 'Library',
         title: 'Wiki Project',
         description:
           'A public working library for vocabulary, reading notes, and project fragments, built to make ideas easier to revisit and connect.',
