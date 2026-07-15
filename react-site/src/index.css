@@ -80,14 +80,12 @@
 
   html {
     @apply font-sans;
-    min-width: 320px;
     background: var(--background);
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground;
-    min-width: 320px;
     min-height: 100vh;
     margin: 0;
     overflow-x: clip;
@@ -567,7 +565,7 @@
     gap: 0.8rem;
   }
 
-  .work-object-copy h3 {
+  .work-object-copy h2 {
     max-width: 42rem;
     color: var(--foreground);
     font-size: clamp(2rem, 7vw, 3.75rem);
@@ -577,8 +575,8 @@
     text-wrap: balance;
   }
 
-  .work-object-standard .work-object-copy h3,
-  .work-object-offset .work-object-copy h3 {
+  .work-object-standard .work-object-copy h2,
+  .work-object-offset .work-object-copy h2 {
     font-size: clamp(1.75rem, 5vw, 2.6rem);
   }
 
@@ -1711,9 +1709,9 @@
     width: 100%;
   }
 
-  .work-object-copy h3,
-  .work-object-standard .work-object-copy h3,
-  .work-object-offset .work-object-copy h3 {
+  .work-object-copy h2,
+  .work-object-standard .work-object-copy h2,
+  .work-object-offset .work-object-copy h2 {
     max-width: 34rem;
     font-size: clamp(1.9rem, 5vw, 2.55rem);
     font-weight: 620;
@@ -1954,6 +1952,501 @@
   }
 }
 
+/* Living Lens: one coordinated depth and light system across the portfolio. */
+@layer components {
+  .home-hero {
+    --pointer-x: 0;
+    --pointer-y: 0;
+  }
+
+  .home-hero-content {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .home-hero .home-portrait {
+    position: relative;
+    isolation: isolate;
+    transform:
+      perspective(1000px)
+      translate3d(
+        calc(var(--pointer-x) * -16px),
+        calc(var(--pointer-y) * -10px),
+        0
+      )
+      rotateX(calc(var(--pointer-y) * -3.5deg))
+      rotateY(calc(var(--pointer-x) * 4.5deg));
+    transform-style: preserve-3d;
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    animation: living-lens-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) 80ms backwards;
+  }
+
+  .home-hero .home-portrait::before {
+    position: absolute;
+    z-index: -1;
+    inset: -13% -17%;
+    border: 1px solid rgb(255 255 255 / 66%);
+    border-radius: 48% 52% 46% 54% / 55% 44% 56% 45%;
+    background:
+      radial-gradient(circle at 32% 28%, rgb(255 255 255 / 68%), transparent 31%),
+      radial-gradient(circle at 72% 76%, rgb(36 66 53 / 14%), transparent 44%),
+      rgb(255 255 255 / 16%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 88%),
+      0 26px 70px rgb(36 66 53 / 10%);
+    -webkit-backdrop-filter: blur(12px) saturate(118%);
+    backdrop-filter: blur(12px) saturate(118%);
+    content: "";
+    pointer-events: none;
+    transform: translate3d(0, 0, -38px);
+    animation: living-lens-orbit 9s ease-in-out infinite alternate;
+  }
+
+  .home-hero .home-portrait .portrait-lens {
+    transform: translate3d(0, 0, 28px);
+    transform-style: preserve-3d;
+    will-change: transform;
+    animation: portrait-float 7.5s ease-in-out 950ms infinite alternate;
+  }
+
+  .home-hero .home-portrait .portrait-lens::before {
+    position: absolute;
+    z-index: 3;
+    top: -22%;
+    bottom: -22%;
+    left: -58%;
+    width: 34%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 8%) 20%,
+      rgb(255 255 255 / 66%) 50%,
+      rgb(220 239 226 / 22%) 72%,
+      transparent
+    );
+    content: "";
+    filter: blur(1px);
+    mix-blend-mode: screen;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-80%, 0, 0) rotate(12deg);
+    animation: portrait-caustic 8s cubic-bezier(0.4, 0, 0.2, 1) 1.2s infinite;
+  }
+
+  .home-hero .home-portrait .portrait-lens::after {
+    z-index: 4;
+  }
+
+  .home-hero .home-portrait .portrait-lens img {
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-copy {
+    transform: translate3d(
+      calc(var(--pointer-x) * 7px),
+      calc(var(--pointer-y) * 4px),
+      0
+    );
+    transition: transform 340ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .home-copy > * {
+    animation-name: lens-copy-reveal;
+    animation-duration: 820ms;
+  }
+
+  .home-copy > :nth-child(2) {
+    animation-delay: 110ms;
+  }
+
+  .home-copy > :nth-child(3) {
+    animation-delay: 190ms;
+  }
+
+  .home-copy > :nth-child(4) {
+    animation-delay: 270ms;
+  }
+
+  .home-copy h1 {
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+  }
+
+  .home-copy h1::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    color: transparent;
+    content: attr(data-title);
+    font: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    pointer-events: none;
+    -webkit-text-stroke: 1px rgb(36 66 53 / 32%);
+    transform: translate3d(-2px, 1px, -1px);
+    animation: name-refraction 8s ease-in-out 1s infinite alternate;
+  }
+
+  .home-hero [data-slot="button"]::after,
+  .nav-link[aria-current="page"]::after {
+    position: absolute;
+    z-index: 2;
+    top: -65%;
+    bottom: -65%;
+    left: -48%;
+    width: 34%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 18%) 24%,
+      rgb(255 255 255 / 82%) 51%,
+      rgb(218 237 224 / 24%) 76%,
+      transparent
+    );
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-70%, 0, 0) rotate(16deg);
+    animation: glass-light-circuit 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .home-hero .contact-row > :nth-child(2)::after {
+    animation-delay: 350ms;
+  }
+
+  .home-hero .contact-row > :nth-child(3)::after {
+    animation-delay: 700ms;
+  }
+
+  .nav-link[aria-current="page"]::after {
+    animation-delay: 1.05s;
+  }
+
+  .projects-stage .work-object {
+    --card-x: 0;
+    --card-y: 0;
+    isolation: isolate;
+    animation: project-object-reveal 760ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  .projects-stage .work-object:nth-child(2) {
+    animation-delay: 90ms;
+  }
+
+  .projects-stage .work-object:nth-child(3) {
+    animation-delay: 180ms;
+  }
+
+  .projects-stage .work-object::before {
+    position: absolute;
+    z-index: 0;
+    inset: -18%;
+    background: radial-gradient(
+      circle at
+        calc(50% + var(--card-x) * 28%)
+        calc(48% + var(--card-y) * 24%),
+      rgb(255 255 255 / 72%),
+      rgb(223 232 220 / 19%) 28%,
+      transparent 58%
+    );
+    content: "";
+    opacity: 0.44;
+    pointer-events: none;
+    transition: opacity 260ms ease;
+    animation: project-field-breathe 8s ease-in-out infinite alternate;
+  }
+
+  .projects-stage .work-object > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .projects-stage .work-object-label {
+    transform: translate3d(
+      calc(var(--card-x) * -3px),
+      calc(var(--card-y) * -2px),
+      0
+    );
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .projects-stage .work-object-copy,
+  .projects-stage .work-object-foot {
+    transform: translate3d(
+      calc(var(--card-x) * 6px),
+      calc(var(--card-y) * 4px),
+      0
+    );
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .projects-stage .work-object:hover::before {
+    opacity: 0.82;
+  }
+
+  .bookcase-bay::after {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: -38%;
+    width: 28%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 34%) 50%,
+      transparent
+    );
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-60%, 0, 0) skewX(-12deg);
+    animation: shelf-light-circuit 10s cubic-bezier(0.4, 0, 0.2, 1) 1.8s infinite;
+  }
+
+  @keyframes living-lens-reveal {
+    from {
+      opacity: 0;
+      clip-path: inset(14% 10% 14% 10% round 2.2rem);
+      filter: blur(8px);
+    }
+
+    to {
+      opacity: 1;
+      clip-path: inset(0 round 0);
+      filter: none;
+    }
+  }
+
+  @keyframes living-lens-orbit {
+    0% {
+      border-radius: 48% 52% 46% 54% / 55% 44% 56% 45%;
+      transform: translate3d(-3%, -2%, -38px) rotate(-4deg) scale(0.98);
+    }
+
+    50% {
+      border-radius: 54% 46% 52% 48% / 46% 56% 44% 54%;
+      transform: translate3d(3%, 2%, -38px) rotate(3deg) scale(1.035);
+    }
+
+    100% {
+      border-radius: 46% 54% 48% 52% / 52% 46% 54% 48%;
+      transform: translate3d(-1%, 4%, -38px) rotate(-1deg) scale(1.01);
+    }
+  }
+
+  @keyframes portrait-float {
+    0% {
+      transform: translate3d(-3px, -6px, 28px) rotateX(-1deg) rotateY(1.6deg) rotateZ(-0.45deg);
+    }
+
+    50% {
+      transform: translate3d(3px, 5px, 34px) rotateX(1.5deg) rotateY(-1.4deg) rotateZ(0.45deg) scale(1.008);
+    }
+
+    100% {
+      transform: translate3d(-1px, -2px, 30px) rotateX(-0.8deg) rotateY(0.8deg) rotateZ(-0.2deg);
+    }
+  }
+
+  @keyframes portrait-caustic {
+    0%,
+    14% {
+      opacity: 0;
+      transform: translate3d(-80%, 0, 0) rotate(12deg);
+    }
+
+    24% {
+      opacity: 0.72;
+    }
+
+    43% {
+      opacity: 0;
+      transform: translate3d(500%, 0, 0) rotate(12deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate3d(500%, 0, 0) rotate(12deg);
+    }
+  }
+
+  @keyframes lens-copy-reveal {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 18px, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes name-refraction {
+    0% {
+      opacity: 0.16;
+      transform: translate3d(-3px, 1px, -1px);
+    }
+
+    50% {
+      opacity: 0.34;
+      transform: translate3d(5px, -3px, -1px);
+    }
+
+    100% {
+      opacity: 0.21;
+      transform: translate3d(-1px, 4px, -1px);
+    }
+  }
+
+  @keyframes glass-light-circuit {
+    0%,
+    18% {
+      opacity: 0;
+      transform: translate3d(-70%, 0, 0) rotate(16deg);
+    }
+
+    24% {
+      opacity: 0.84;
+    }
+
+    38% {
+      opacity: 0;
+      transform: translate3d(520%, 0, 0) rotate(16deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate3d(520%, 0, 0) rotate(16deg);
+    }
+  }
+
+  @keyframes project-object-reveal {
+    from {
+      opacity: 0;
+      clip-path: inset(0 0 16% 0);
+    }
+
+    to {
+      opacity: 1;
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes project-field-breathe {
+    from {
+      opacity: 0.34;
+    }
+
+    to {
+      opacity: 0.62;
+    }
+  }
+
+  @keyframes shelf-light-circuit {
+    0%,
+    12% {
+      opacity: 0;
+      transform: translate3d(-60%, 0, 0) skewX(-12deg);
+    }
+
+    20% {
+      opacity: 0.42;
+    }
+
+    38% {
+      opacity: 0;
+      transform: translate3d(540%, 0, 0) skewX(-12deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translate3d(540%, 0, 0) skewX(-12deg);
+    }
+  }
+}
+
+@media (max-width: 47.999rem) {
+  @layer components {
+    .home-hero .home-portrait,
+    .home-copy {
+      transform: none;
+    }
+
+    .home-hero .home-portrait::before {
+      inset: -9% -12%;
+      animation-duration: 12s;
+    }
+
+    .home-hero .home-portrait .portrait-lens {
+      animation-name: portrait-float-mobile;
+      animation-duration: 12s;
+    }
+
+    .home-copy h1::after {
+      display: none;
+    }
+
+    .home-hero [data-slot="button"]::after,
+    .nav-link[aria-current="page"]::after {
+      animation-duration: 12s;
+    }
+
+    .projects-stage .work-object-label,
+    .projects-stage .work-object-copy,
+    .projects-stage .work-object-foot {
+      transform: none;
+    }
+
+    @keyframes portrait-float-mobile {
+      from {
+        transform: translate3d(0, -2px, 0) rotateZ(-0.25deg);
+      }
+
+      to {
+        transform: translate3d(0, 3px, 0) rotateZ(0.25deg);
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero .home-portrait,
+  .home-hero .home-portrait .portrait-lens,
+  .home-copy,
+  .projects-stage .work-object-label,
+  .projects-stage .work-object-copy,
+  .projects-stage .work-object-foot {
+    transform: none !important;
+  }
+
+  .home-hero .home-portrait::before,
+  .home-hero .home-portrait .portrait-lens::before,
+  .home-copy h1::after,
+  .home-hero [data-slot="button"]::after,
+  .nav-link[aria-current="page"]::after,
+  .projects-stage .work-object::before,
+  .bookcase-bay::after {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .home-hero .home-portrait::before,
+  .home-hero .home-portrait .portrait-lens::before,
+  .home-copy h1::after,
+  .home-hero [data-slot="button"]::after,
+  .nav-link[aria-current="page"]::after,
+  .bookcase-bay::after {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-hero::before {
     animation: none !important;
@@ -2079,15 +2572,15 @@
     font-weight: 560;
   }
 
-  .projects-stage .work-object-copy h3,
-  .projects-stage .work-object-standard .work-object-copy h3,
-  .projects-stage .work-object-offset .work-object-copy h3 {
+  .projects-stage .work-object-copy h2,
+  .projects-stage .work-object-standard .work-object-copy h2,
+  .projects-stage .work-object-offset .work-object-copy h2 {
     max-width: 32rem;
     font-size: clamp(2rem, 4.8vw, 3.4rem);
   }
 
-  .projects-stage .work-object-standard .work-object-copy h3,
-  .projects-stage .work-object-offset .work-object-copy h3 {
+  .projects-stage .work-object-standard .work-object-copy h2,
+  .projects-stage .work-object-offset .work-object-copy h2 {
     font-size: clamp(1.8rem, 3.2vw, 2.45rem);
   }
 
@@ -2260,5 +2753,199 @@
   .projects-stage .work-object {
     border-color: rgb(21 21 21 / 55%);
     background: #fff !important;
+  }
+}
+
+/* The About page is the animated identity surface; Projects is its own route. */
+@layer components {
+  .home-hero {
+    min-height: calc(100dvh - 4.75rem);
+    padding: clamp(2rem, 4vw, 3.25rem) 1.5rem clamp(3rem, 5vw, 4.5rem);
+  }
+
+  .home-hero-content {
+    display: grid;
+    width: min(100%, 66rem);
+    grid-template-columns: minmax(12rem, 0.68fr) minmax(0, 1.32fr);
+    align-items: center;
+    gap: clamp(2.75rem, 6vw, 5.5rem);
+    text-align: left;
+  }
+
+  .home-hero .home-portrait {
+    width: min(100%, 18.5rem);
+    justify-self: end;
+  }
+
+  .home-hero .home-portrait .portrait-lens {
+    padding: 0.38rem;
+    border-radius: 1.8rem;
+    background: rgb(255 255 255 / 37%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 96%),
+      inset 0 -1px 0 rgb(36 66 53 / 7%),
+      0 30px 75px rgb(36 66 53 / 16%);
+  }
+
+  .home-hero .home-portrait .portrait-lens::after,
+  .home-hero .home-portrait .portrait-lens img {
+    border-radius: 1.42rem;
+  }
+
+  .home-hero .home-portrait .portrait-lens::after {
+    inset: 0.38rem;
+  }
+
+  .home-copy {
+    width: 100%;
+    max-width: 43rem;
+    align-items: flex-start;
+    gap: 0.95rem;
+  }
+
+  .home-copy h1 {
+    font-size: clamp(4.5rem, 9vw, 7rem);
+    line-height: 0.88;
+    letter-spacing: -0.075em;
+  }
+
+  .home-introduction {
+    max-width: 39rem;
+    color: #30322f;
+    font-size: clamp(1.04rem, 1.65vw, 1.2rem);
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .home-hero .contact-row {
+    justify-content: flex-start;
+    padding-top: 0.15rem;
+  }
+
+  .home-details {
+    width: 100%;
+    max-width: 39rem;
+    margin-top: 0.45rem;
+  }
+
+  .home-details .now-line {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+    padding: 0.85rem 0;
+    align-items: baseline;
+  }
+
+  .home-details .home-about {
+    max-width: 38rem;
+    margin-top: 1rem;
+    color: #484a46;
+    font-size: 0.92rem;
+    line-height: 1.62;
+  }
+
+  .projects-page {
+    width: 100%;
+    min-height: calc(100dvh - 8.75rem);
+  }
+
+  .projects-page .projects-stage {
+    padding-top: clamp(4.75rem, 8vw, 7rem);
+  }
+
+  .projects-stage-heading {
+    display: grid;
+    padding-bottom: 1.5rem;
+    align-items: start;
+    gap: 0.85rem;
+  }
+
+  .projects-stage-heading h1 {
+    font-size: clamp(3.8rem, 9vw, 6.5rem);
+    font-weight: 630;
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+    view-transition-name: page-title;
+  }
+
+  .projects-stage-heading > p {
+    max-width: 30rem;
+    color: var(--body-copy);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  @layer components {
+    .home-hero {
+      min-height: calc(100dvh - 4rem);
+      padding: 1.6rem 1rem 3rem;
+    }
+
+    .home-hero-content {
+      grid-template-columns: minmax(0, 1fr);
+      justify-items: center;
+      gap: 1.45rem;
+      text-align: center;
+    }
+
+    .home-hero .home-portrait {
+      width: min(44vw, 9.5rem);
+      justify-self: center;
+    }
+
+    .home-copy {
+      max-width: 36rem;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .home-copy h1 {
+      font-size: clamp(3.65rem, 18vw, 5rem);
+    }
+
+    .home-introduction {
+      max-width: 23rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .home-hero .contact-row {
+      justify-content: center;
+    }
+
+    .home-details {
+      max-width: 31rem;
+      text-align: left;
+    }
+  }
+}
+
+@media (max-width: 41.999rem) {
+  @layer components {
+    .nav-link {
+      padding-inline: 0.52rem;
+      font-size: 0.72rem;
+    }
+
+    .home-details .now-line {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .home-copy {
+      min-width: 0;
+    }
+
+    .home-copy h1 {
+      max-width: 6.5ch;
+      font-size: clamp(3.35rem, 18vw, 4.7rem);
+    }
+
+    .projects-stage-heading h1 {
+      font-size: clamp(3.6rem, 18vw, 4.8rem);
+    }
+
+    .projects-stage-heading > p {
+      font-size: 0.94rem;
+    }
   }
 }

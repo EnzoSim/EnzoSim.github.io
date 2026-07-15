@@ -2,51 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="About Enzo Simier, an applied economist in Montréal working across competition, pricing, strategy, and public-interest research."
-    />
+    <meta name="robots" content="noindex" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#f7f8f4" />
-    <link rel="canonical" href="https://enzosimier.com/about/" />
+    <link rel="canonical" href="https://enzosimier.com/" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta property="og:title" content="About · Enzo Simier" />
-    <meta
-      property="og:description"
-      content="About Enzo Simier, an applied economist in Montréal working across competition, pricing, strategy, and public-interest research."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://enzosimier.com/about/" />
-    <meta property="og:locale" content="en_CA" />
-    <meta property="og:image" content="https://enzosimier.com/og.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="About · Enzo Simier" />
-    <meta
-      name="twitter:description"
-      content="About Enzo Simier, an applied economist in Montréal working across competition, pricing, strategy, and public-interest research."
-    />
-    <meta name="twitter:image" content="https://enzosimier.com/og.png" />
     <title>About · Enzo Simier</title>
     <script>
-      ;(function () {
-        try {
-          localStorage.removeItem('theme')
-          localStorage.removeItem('lang')
-          document.documentElement.classList.remove('dark')
-          document.documentElement.lang = 'en'
-        } catch (error) {
-          /* pre-paint cleanup only */
-        }
-      })()
+      var destination = window.location.hash.toLowerCase() === '#now' ? '/#now' : '/'
+      window.location.replace(destination)
     </script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <p>About now lives on <a href="/">the home page</a>.</p>
   </body>
 </html>

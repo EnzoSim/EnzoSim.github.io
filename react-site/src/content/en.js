@@ -11,7 +11,7 @@ import {
 // Route-oriented English copy. Public facts have a single canonical location.
 export const en = {
   meta: {
-    home: {
+    about: {
       title: 'Enzo Simier · Applied Economist',
       description:
         'Enzo Simier is an applied economist in Montréal working across competition, pricing, strategy, and public-interest research.',
@@ -21,10 +21,10 @@ export const en = {
       description:
         'Five books Enzo Simier returns to, plus a short list of magazines and newsletters.',
     },
-    about: {
-      title: 'About · Enzo Simier',
+    projects: {
+      title: 'Projects · Enzo Simier',
       description:
-        'About Enzo Simier, an applied economist in Montréal working across competition, pricing, strategy, and public-interest research.',
+        'Research and tools by Enzo Simier across water pricing, biotech catalysts, and connected knowledge.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -38,21 +38,13 @@ export const en = {
   },
   nav: {
     items: [
-      { label: 'Home', href: '/' },
+      { label: 'About', href: '/' },
+      { label: 'Projects', href: '/projects/' },
       { label: 'Reading', href: '/reading/' },
-      { label: 'About', href: '/about/' },
     ],
   },
   home: {
     title: 'Enzo Simier',
-    contacts: [
-      { label: 'CV', href: cvUrl, external: false },
-      { label: 'LinkedIn', href: linkedinUrl, external: true },
-      { label: 'Email', href: `mailto:${contactEmail}`, external: false },
-    ],
-  },
-  about: {
-    title: 'About',
     introduction:
       'Applied economist in Montréal, interested in competition, pricing, strategy, and the practical tools that make complex decisions easier to examine.',
     personal:
@@ -62,9 +54,15 @@ export const en = {
       label: 'Now',
       text: 'Finishing my thesis on volumetric water pricing in Québec and exploring roles in competition, pricing, and strategy.',
     },
+    contacts: [
+      { label: 'CV', href: cvUrl, external: false },
+      { label: 'LinkedIn', href: linkedinUrl, external: true },
+      { label: 'Email', href: `mailto:${contactEmail}`, external: false },
+    ],
   },
   projects: {
     title: 'Projects',
+    lede: 'Research and tools I am currently developing.',
     items: [
       {
         slug: 'water-pricing',

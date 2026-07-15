@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -23,9 +23,9 @@ function routeForPathname(pathname) {
   const normalized = pathname.replace(/\/index\.html$/, '/')
 
   if (normalized === '/fda-catalyst.html') return 'fda-catalyst'
-  if (normalized === '/about' || normalized.startsWith('/about/')) return 'about'
-  if (normalized === '/reading' || normalized.startsWith('/reading/')) return 'reading'
-  return 'home'
+  if (normalized === '/projects' || normalized === '/projects/') return 'projects'
+  if (normalized === '/reading' || normalized === '/reading/') return 'reading'
+  return 'about'
 }
 
 function SkipLink() {
@@ -102,14 +102,164 @@ function ExternalArrow() {
   return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
 }
 
-function HomePage() {
+function useHeroDepth(heroRef) {
+  useEffect(() => {
+    const hero = heroRef.current
+
+    if (!hero) return undefined
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
+    let animationFrame = 0
+    let pointerX = 0
+    let pointerY = 0
+
+    const paint = () => {
+      animationFrame = 0
+      hero.style.setProperty('--pointer-x', pointerX.toFixed(4))
+      hero.style.setProperty('--pointer-y', pointerY.toFixed(4))
+    }
+
+    const schedulePaint = () => {
+      if (!animationFrame) animationFrame = window.requestAnimationFrame(paint)
+    }
+
+    const onPointerMove = (event) => {
+      if (reducedMotion.matches || !finePointer.matches) return
+
+      const bounds = hero.getBoundingClientRect()
+      pointerX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1
+      pointerY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1
+      schedulePaint()
+    }
+
+    const onPointerLeave = () => {
+      pointerX = 0
+      pointerY = 0
+      schedulePaint()
+    }
+
+    const onPreferenceChange = () => {
+      if (reducedMotion.matches || !finePointer.matches) onPointerLeave()
+    }
+
+    hero.addEventListener('pointermove', onPointerMove, { passive: true })
+    hero.addEventListener('pointerleave', onPointerLeave)
+    reducedMotion.addEventListener?.('change', onPreferenceChange)
+    finePointer.addEventListener?.('change', onPreferenceChange)
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame)
+      hero.removeEventListener('pointermove', onPointerMove)
+      hero.removeEventListener('pointerleave', onPointerLeave)
+      reducedMotion.removeEventListener?.('change', onPreferenceChange)
+      finePointer.removeEventListener?.('change', onPreferenceChange)
+      hero.style.removeProperty('--pointer-x')
+      hero.style.removeProperty('--pointer-y')
+    }
+  }, [heroRef])
+}
+
+function useProjectDepth(stageRef) {
+  useEffect(() => {
+    const stage = stageRef.current
+
+    if (!stage) return undefined
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
+
+    const controls = [...stage.querySelectorAll('.work-object')].map((card) => {
+      let animationFrame = 0
+      let pointerX = 0
+      let pointerY = 0
+
+      const paint = () => {
+        animationFrame = 0
+        card.style.setProperty('--card-x', pointerX.toFixed(4))
+        card.style.setProperty('--card-y', pointerY.toFixed(4))
+      }
+
+      const schedulePaint = () => {
+        if (!animationFrame) animationFrame = window.requestAnimationFrame(paint)
+      }
+
+      const onPointerMove = (event) => {
+        if (reducedMotion.matches || !finePointer.matches) return
+
+        const bounds = card.getBoundingClientRect()
+        pointerX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1
+        pointerY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1
+        schedulePaint()
+      }
+
+      const onPointerLeave = () => {
+        pointerX = 0
+        pointerY = 0
+        schedulePaint()
+      }
+
+      card.addEventListener('pointermove', onPointerMove, { passive: true })
+      card.addEventListener('pointerleave', onPointerLeave)
+
+      return {
+        reset: onPointerLeave,
+        cleanup: () => {
+          window.cancelAnimationFrame(animationFrame)
+          card.removeEventListener('pointermove', onPointerMove)
+          card.removeEventListener('pointerleave', onPointerLeave)
+          card.style.removeProperty('--card-x')
+          card.style.removeProperty('--card-y')
+        },
+      }
+    })
+
+    const onPreferenceChange = () => {
+      if (reducedMotion.matches || !finePointer.matches) {
+        controls.forEach(({ reset }) => reset())
+      }
+    }
+
+    reducedMotion.addEventListener?.('change', onPreferenceChange)
+    finePointer.addEventListener?.('change', onPreferenceChange)
+
+    return () => {
+      reducedMotion.removeEventListener?.('change', onPreferenceChange)
+      finePointer.removeEventListener?.('change', onPreferenceChange)
+      controls.forEach(({ cleanup }) => cleanup())
+    }
+  }, [stageRef])
+}
+
+function AboutPage() {
+  const heroRef = useRef(null)
+  useHeroDepth(heroRef)
+
   return (
     <Shell className="home-page">
-      <section className="home-hero" aria-labelledby="home-title">
+      <section className="home-hero" aria-labelledby="home-title" ref={heroRef}>
         <HomeAmbient />
         <div className="home-hero-content">
+          <figure className="portrait-column home-portrait">
+            <div className="portrait-lens">
+              <img
+                alt={t.a11y.portraitAlt}
+                decoding="async"
+                fetchPriority="high"
+                height={profileImage.height}
+                src={profileImage.src}
+                width={profileImage.width}
+              />
+            </div>
+            <figcaption className="portrait-caption">
+              <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
+              <span>{t.home.portraitCaption}</span>
+            </figcaption>
+          </figure>
+
           <div className="home-copy">
-            <h1 id="home-title">{t.home.title}</h1>
+            <h1 data-title={t.home.title} id="home-title">{t.home.title}</h1>
+            <p className="home-introduction">{t.home.introduction}</p>
             <div className="contact-row" aria-label="Contact links">
               {t.home.contacts.map((contact, index) => (
                 <Button
@@ -127,18 +277,14 @@ function HomePage() {
                 </Button>
               ))}
             </div>
+            <div className="home-details">
+              <div className="now-line" id="now">
+                <span>{t.home.now.label}</span>
+                <p>{t.home.now.text}</p>
+              </div>
+              <p className="home-about">{t.home.personal}</p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section className="projects-stage" id="projects" aria-labelledby="projects-title">
-        <div className="projects-stage-heading">
-          <h2 id="projects-title">{t.projects.title}</h2>
-        </div>
-        <div className="work-grid">
-          {t.projects.items.map((project) => (
-            <WorkObject key={project.slug} project={project} />
-          ))}
         </div>
       </section>
     </Shell>
@@ -154,38 +300,23 @@ function RouteHeading({ title, lede }) {
   )
 }
 
-function AboutPage() {
-  return (
-    <Shell className="route-page about-page">
-      <div className="about-layout">
-        <div className="about-copy">
-          <RouteHeading title={t.about.title} lede={t.about.introduction} />
-          <div className="about-details">
-            <div className="now-line" id="now">
-              <span>{t.about.now.label}</span>
-              <p>{t.about.now.text}</p>
-            </div>
-            <p className="home-about">{t.about.personal}</p>
-          </div>
-        </div>
+function ProjectsPage() {
+  const stageRef = useRef(null)
+  useProjectDepth(stageRef)
 
-        <figure className="portrait-column about-portrait">
-          <div className="portrait-lens">
-            <img
-              alt={t.a11y.portraitAlt}
-              decoding="async"
-              fetchPriority="high"
-              height={profileImage.height}
-              src={profileImage.src}
-              width={profileImage.width}
-            />
-          </div>
-          <figcaption className="portrait-caption">
-            <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
-            <span>{t.about.portraitCaption}</span>
-          </figcaption>
-        </figure>
-      </div>
+  return (
+    <Shell className="projects-page">
+      <section className="projects-stage" aria-labelledby="projects-title" ref={stageRef}>
+        <header className="projects-stage-heading">
+          <h1 id="projects-title">{t.projects.title}</h1>
+          <p>{t.projects.lede}</p>
+        </header>
+        <div className="work-grid">
+          {t.projects.items.map((project) => (
+            <WorkObject key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
     </Shell>
   )
 }
@@ -235,7 +366,7 @@ function WorkObject({ project }) {
         <span>{project.context}</span>
       </div>
       <div className="work-object-copy">
-        <h3 id={`${project.slug}-title`}>{project.title}</h3>
+        <h2 id={`${project.slug}-title`}>{project.title}</h2>
         <p>{project.description}</p>
       </div>
       <div className="work-object-foot">
@@ -460,15 +591,15 @@ function FdaCatalystPage() {
 function AppContent() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
   const route = routeForPathname(pathname)
-  let page = <HomePage />
-  let meta = t.meta.home
+  let page = <AboutPage />
+  let meta = t.meta.about
 
   if (route === 'fda-catalyst') {
     page = <FdaCatalystPage />
     meta = t.meta.project
-  } else if (route === 'about') {
-    page = <AboutPage />
-    meta = t.meta.about
+  } else if (route === 'projects') {
+    page = <ProjectsPage />
+    meta = t.meta.projects
   } else if (route === 'reading') {
     page = <ReadingPage />
     meta = t.meta.reading

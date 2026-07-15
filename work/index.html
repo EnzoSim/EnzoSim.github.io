@@ -2,19 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/#projects" />
+    <meta http-equiv="refresh" content="0; url=/projects/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#fcfcfa" />
-    <link rel="canonical" href="https://enzosimier.com/" />
+    <link rel="canonical" href="https://enzosimier.com/projects/" />
     <link rel="icon" href="/favicon.ico" />
     <title>Projects · Enzo Simier</title>
     <script>
-      window.location.replace('/#projects')
+      var routes = {
+        '#water-pricing': '/projects/#water-pricing',
+        '#fda-catalyst': '/projects/#fda-catalyst',
+        '#wiki-project': '/projects/#wiki-project',
+      }
+      window.location.replace(routes[window.location.hash.toLowerCase()] || '/projects/')
     </script>
   </head>
   <body>
-    <p>Projects now live on <a href="/#projects">the home page</a>.</p>
+    <p>Projects now live on <a href="/projects/">the projects page</a>.</p>
   </body>
 </html>

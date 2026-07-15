@@ -24,6 +24,7 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         about: path.resolve(__dirname, 'about/index.html'),
+        projects: path.resolve(__dirname, 'projects/index.html'),
         work: path.resolve(__dirname, 'work/index.html'),
         reading: path.resolve(__dirname, 'reading/index.html'),
         fdaCatalyst: path.resolve(__dirname, 'fda-catalyst.html'),
