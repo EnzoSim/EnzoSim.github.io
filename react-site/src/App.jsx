@@ -1,8 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { HomeAmbient } from '@/components/HomeAmbient'
 import {
   Table,
   TableBody,
@@ -102,143 +101,10 @@ function ExternalArrow() {
   return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
 }
 
-function useHeroDepth(heroRef) {
-  useEffect(() => {
-    const hero = heroRef.current
-
-    if (!hero) return undefined
-
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
-    let animationFrame = 0
-    let pointerX = 0
-    let pointerY = 0
-
-    const paint = () => {
-      animationFrame = 0
-      hero.style.setProperty('--pointer-x', pointerX.toFixed(4))
-      hero.style.setProperty('--pointer-y', pointerY.toFixed(4))
-    }
-
-    const schedulePaint = () => {
-      if (!animationFrame) animationFrame = window.requestAnimationFrame(paint)
-    }
-
-    const onPointerMove = (event) => {
-      if (reducedMotion.matches || !finePointer.matches) return
-
-      const bounds = hero.getBoundingClientRect()
-      pointerX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1
-      pointerY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1
-      schedulePaint()
-    }
-
-    const onPointerLeave = () => {
-      pointerX = 0
-      pointerY = 0
-      schedulePaint()
-    }
-
-    const onPreferenceChange = () => {
-      if (reducedMotion.matches || !finePointer.matches) onPointerLeave()
-    }
-
-    hero.addEventListener('pointermove', onPointerMove, { passive: true })
-    hero.addEventListener('pointerleave', onPointerLeave)
-    reducedMotion.addEventListener?.('change', onPreferenceChange)
-    finePointer.addEventListener?.('change', onPreferenceChange)
-
-    return () => {
-      window.cancelAnimationFrame(animationFrame)
-      hero.removeEventListener('pointermove', onPointerMove)
-      hero.removeEventListener('pointerleave', onPointerLeave)
-      reducedMotion.removeEventListener?.('change', onPreferenceChange)
-      finePointer.removeEventListener?.('change', onPreferenceChange)
-      hero.style.removeProperty('--pointer-x')
-      hero.style.removeProperty('--pointer-y')
-    }
-  }, [heroRef])
-}
-
-function useProjectDepth(stageRef) {
-  useEffect(() => {
-    const stage = stageRef.current
-
-    if (!stage) return undefined
-
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)')
-
-    const controls = [...stage.querySelectorAll('.work-object')].map((card) => {
-      let animationFrame = 0
-      let pointerX = 0
-      let pointerY = 0
-
-      const paint = () => {
-        animationFrame = 0
-        card.style.setProperty('--card-x', pointerX.toFixed(4))
-        card.style.setProperty('--card-y', pointerY.toFixed(4))
-      }
-
-      const schedulePaint = () => {
-        if (!animationFrame) animationFrame = window.requestAnimationFrame(paint)
-      }
-
-      const onPointerMove = (event) => {
-        if (reducedMotion.matches || !finePointer.matches) return
-
-        const bounds = card.getBoundingClientRect()
-        pointerX = ((event.clientX - bounds.left) / bounds.width) * 2 - 1
-        pointerY = ((event.clientY - bounds.top) / bounds.height) * 2 - 1
-        schedulePaint()
-      }
-
-      const onPointerLeave = () => {
-        pointerX = 0
-        pointerY = 0
-        schedulePaint()
-      }
-
-      card.addEventListener('pointermove', onPointerMove, { passive: true })
-      card.addEventListener('pointerleave', onPointerLeave)
-
-      return {
-        reset: onPointerLeave,
-        cleanup: () => {
-          window.cancelAnimationFrame(animationFrame)
-          card.removeEventListener('pointermove', onPointerMove)
-          card.removeEventListener('pointerleave', onPointerLeave)
-          card.style.removeProperty('--card-x')
-          card.style.removeProperty('--card-y')
-        },
-      }
-    })
-
-    const onPreferenceChange = () => {
-      if (reducedMotion.matches || !finePointer.matches) {
-        controls.forEach(({ reset }) => reset())
-      }
-    }
-
-    reducedMotion.addEventListener?.('change', onPreferenceChange)
-    finePointer.addEventListener?.('change', onPreferenceChange)
-
-    return () => {
-      reducedMotion.removeEventListener?.('change', onPreferenceChange)
-      finePointer.removeEventListener?.('change', onPreferenceChange)
-      controls.forEach(({ cleanup }) => cleanup())
-    }
-  }, [stageRef])
-}
-
 function AboutPage() {
-  const heroRef = useRef(null)
-  useHeroDepth(heroRef)
-
   return (
     <Shell className="home-page">
-      <section className="home-hero" aria-labelledby="home-title" ref={heroRef}>
-        <HomeAmbient />
+      <section className="home-hero" aria-labelledby="home-title">
         <div className="home-hero-content">
           <figure className="portrait-column home-portrait">
             <div className="portrait-lens">
@@ -258,7 +124,7 @@ function AboutPage() {
           </figure>
 
           <div className="home-copy">
-            <h1 data-title={t.home.title} id="home-title">{t.home.title}</h1>
+            <h1 id="home-title">{t.home.title}</h1>
             <p className="home-introduction">{t.home.introduction}</p>
             <div className="contact-row" aria-label="Contact links">
               {t.home.contacts.map((contact, index) => (
@@ -301,12 +167,9 @@ function RouteHeading({ title, lede }) {
 }
 
 function ProjectsPage() {
-  const stageRef = useRef(null)
-  useProjectDepth(stageRef)
-
   return (
     <Shell className="projects-page">
-      <section className="projects-stage" aria-labelledby="projects-title" ref={stageRef}>
+      <section className="projects-stage" aria-labelledby="projects-title">
         <header className="projects-stage-heading">
           <h1 id="projects-title">{t.projects.title}</h1>
           <p>{t.projects.lede}</p>
