@@ -64,8 +64,20 @@ function SiteFooter() {
   return (
     <footer className="site-footer">
       <span>{t.footer.note}</span>
-      <span aria-hidden="true">Montréal</span>
     </footer>
+  )
+}
+
+function PageIndex({ label, items }) {
+  return (
+    <aside className="editorial-index" aria-label={`${label} index`}>
+      <p>{label}</p>
+      <nav>
+        {items.map((item) => (
+          <a href={item.href} key={item.href}>{item.label}</a>
+        ))}
+      </nav>
+    </aside>
   )
 }
 
@@ -90,64 +102,81 @@ function HomePage() {
   return (
     <Shell className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
-        <figure className="portrait-column">
-          <div className="portrait-lens">
-            <img
-              alt={t.a11y.portraitAlt}
-              decoding="async"
-              fetchPriority="high"
-              height={profileImage.height}
-              src={profileImage.src}
-              width={profileImage.width}
-            />
-          </div>
-          <figcaption className="portrait-caption">
-            <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
-            <span>{t.home.portraitCaption}</span>
-          </figcaption>
-        </figure>
+        <div className="home-hero-content">
+          <figure className="portrait-column">
+            <div className="portrait-lens">
+              <img
+                alt={t.a11y.portraitAlt}
+                decoding="async"
+                fetchPriority="high"
+                height={profileImage.height}
+                src={profileImage.src}
+                width={profileImage.width}
+              />
+            </div>
+            <figcaption className="portrait-caption">
+              <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
+              <span>{t.home.portraitCaption}</span>
+            </figcaption>
+          </figure>
 
-        <div className="home-copy">
-          <p className="page-kicker">Applied economics · Montréal</p>
-          <h1 id="home-title">{t.home.title}</h1>
-          <p className="home-introduction">{t.home.introduction}</p>
-          <p className="home-about">{t.home.about}</p>
-
-          <div className="now-line">
-            <span>{t.home.now.label}</span>
-            <p>{t.home.now.text}</p>
-          </div>
-
-          <div className="contact-row" aria-label="Contact links">
-            {t.home.contacts.map((contact, index) => (
-              <Button
-                asChild
-                key={contact.label}
-                variant={index === 0 ? 'default' : 'ghost'}
-              >
-                <a
-                  href={contact.href}
-                  {...(contact.external || contact.label === 'CV' ? externalProps : {})}
+          <div className="home-copy">
+            <h1 id="home-title">{t.home.title}</h1>
+            <p className="home-introduction">{t.home.introduction}</p>
+            <div className="contact-row" aria-label="Contact links">
+              {t.home.contacts.map((contact, index) => (
+                <Button
+                  asChild
+                  key={contact.label}
+                  variant={index === 0 ? 'default' : 'ghost'}
                 >
-                  {contact.label}
-                  {contact.label !== 'Email' ? <ExternalArrow /> : null}
-                </a>
-              </Button>
-            ))}
+                  <a
+                    href={contact.href}
+                    {...(contact.external || contact.label === 'CV' ? externalProps : {})}
+                  >
+                    {contact.label}
+                    {contact.label !== 'Email' ? <ExternalArrow /> : null}
+                  </a>
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="home-projects" id="projects" aria-labelledby="projects-title">
-        <div className="section-title-row heading-with-line">
-          <h2 id="projects-title">{t.projects.title}</h2>
+      <div className="editorial-layout home-record">
+        <PageIndex
+          label="Sections"
+          items={[
+            { label: 'About', href: '#about' },
+            { label: 'Projects', href: '#projects' },
+          ]}
+        />
+        <div className="editorial-column">
+          <section className="about-record" id="about" aria-labelledby="about-title">
+            <div className="section-title-row">
+              <h2 id="about-title">About</h2>
+            </div>
+            <div className="now-line">
+              <span>{t.home.now.label}</span>
+              <p>{t.home.now.text}</p>
+            </div>
+            <p className="home-about">{t.home.about}</p>
+          </section>
+
+          <section className="home-projects" id="projects" aria-labelledby="projects-title">
+            <div className="section-title-row">
+              <h2 id="projects-title">{t.projects.title}</h2>
+              <span>Three selected projects</span>
+            </div>
+            <div className="work-grid">
+              {t.projects.items.map((project) => (
+                <WorkObject key={project.slug} project={project} />
+              ))}
+            </div>
+          </section>
         </div>
-        <div className="work-grid">
-          {t.projects.items.map((project) => (
-            <WorkObject key={project.slug} project={project} />
-          ))}
-        </div>
-      </section>
+      </div>
     </Shell>
   )
 }
@@ -259,7 +288,7 @@ function Book({ book }) {
 
 function Publications() {
   return (
-    <section className="publications-section" aria-labelledby="publications-title">
+    <section className="publications-section" id="publications" aria-labelledby="publications-title">
       <div className="section-title-row">
         <h2 id="publications-title">{t.library.subscriptions.title}</h2>
         <span>Magazines + newsletters</span>
@@ -289,24 +318,35 @@ function Publications() {
 function ReadingPage() {
   return (
     <Shell className="route-page reading-page">
-      <RouteHeading title={t.library.title} lede={t.library.lede} />
+      <div className="editorial-layout reading-record">
+        <PageIndex
+          label="Reading"
+          items={[
+            { label: 'Books', href: '#books' },
+            { label: 'Publications', href: '#publications' },
+          ]}
+        />
+        <div className="reading-column">
+          <RouteHeading title={t.library.title} lede={t.library.lede} />
 
-      <section className="bookshelf-section" aria-label="Five books on Enzo Simier's shelf">
-        <div className="bookcase">
-          <div className="bookcase-bay">
-            <span className="bookcase-side bookcase-side-left" aria-hidden="true" />
-            <ul className="shelf-books">
-              {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
-            </ul>
-            <span className="bookcase-side bookcase-side-right" aria-hidden="true" />
-          </div>
-          <div className="bookcase-shelf" aria-hidden="true">
-            <span className="bookcase-shelf-edge" />
-          </div>
+          <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
+            <div className="bookcase">
+              <div className="bookcase-bay">
+                <span className="bookcase-side bookcase-side-left" aria-hidden="true" />
+                <ul className="shelf-books">
+                  {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
+                </ul>
+                <span className="bookcase-side bookcase-side-right" aria-hidden="true" />
+              </div>
+              <div className="bookcase-shelf" aria-hidden="true">
+                <span className="bookcase-shelf-edge" />
+              </div>
+            </div>
+          </section>
+
+          <Publications />
         </div>
-      </section>
-
-      <Publications />
+      </div>
     </Shell>
   )
 }
