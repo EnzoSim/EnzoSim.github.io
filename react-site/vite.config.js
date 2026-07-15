@@ -23,6 +23,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
+        about: path.resolve(__dirname, 'about/index.html'),
         work: path.resolve(__dirname, 'work/index.html'),
         reading: path.resolve(__dirname, 'reading/index.html'),
         fdaCatalyst: path.resolve(__dirname, 'fda-catalyst.html'),

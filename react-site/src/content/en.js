@@ -21,6 +21,11 @@ export const en = {
       description:
         'Five books Enzo Simier returns to, plus a short list of magazines and newsletters.',
     },
+    about: {
+      title: 'About · Enzo Simier',
+      description:
+        'About Enzo Simier, an applied economist in Montréal working across competition, pricing, strategy, and public-interest research.',
+    },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
       description: `A live 90-day biotech catalyst view: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, and ${fdaSnapshot.pdufa} PDUFA decisions.`,
@@ -35,60 +40,59 @@ export const en = {
     items: [
       { label: 'Home', href: '/' },
       { label: 'Reading', href: '/reading/' },
+      { label: 'About', href: '/about/' },
     ],
   },
   home: {
     title: 'Enzo Simier',
-    introduction:
-      'Applied economist in Montréal, interested in competition, pricing, strategy, and the practical tools that make complex decisions easier to examine.',
-    about:
-      'I spent ten years in Tahiti, then lived in Grenoble and Rennes before moving to Montréal. I studied pharmacy in Bordeaux for two years before turning to economics. Outside work, I care about good food, cafés, and golden retrievers.',
-    portraitCaption: 'Montréal, 2026',
-    now: {
-      label: 'Now',
-      text: 'Finishing my thesis on volumetric water pricing in Québec and exploring roles in competition, pricing, and strategy.',
-    },
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
       { label: 'LinkedIn', href: linkedinUrl, external: true },
       { label: 'Email', href: `mailto:${contactEmail}`, external: false },
     ],
   },
+  about: {
+    title: 'About',
+    introduction:
+      'Applied economist in Montréal, interested in competition, pricing, strategy, and the practical tools that make complex decisions easier to examine.',
+    personal:
+      'I spent ten years in Tahiti, then lived in Grenoble and Rennes before moving to Montréal. I studied pharmacy in Bordeaux for two years before turning to economics. Outside work, I care about good food, cafés, and golden retrievers.',
+    portraitCaption: 'Montréal, 2026',
+    now: {
+      label: 'Now',
+      text: 'Finishing my thesis on volumetric water pricing in Québec and exploring roles in competition, pricing, and strategy.',
+    },
+  },
   projects: {
     title: 'Projects',
     items: [
       {
         slug: 'water-pricing',
-        kind: 'Research',
         title: 'Volumetric water pricing in Québec',
         description:
-          'My thesis estimates what municipalities gain when they price water by volume. It combines staggered difference-in-differences with municipal and household panels, then tests cost of service, avoided costs, and net present value across scenarios for Longueuil and Laval.',
+          'My thesis estimates how volumetric pricing changes water use, cost recovery, and welfare across Québec municipalities.',
         context: 'HEC Montréal · Réseau Environnement',
-        detail: 'Industrial organization · Consumer surplus · Cost of service',
+        detail: 'Industrial organization, consumer surplus, cost of service',
         href: null,
         cta: null,
         presentation: 'lead',
       },
       {
         slug: 'fda-catalyst',
-        kind: 'Product',
         title: 'FDA Catalyst',
         description:
           'A live biotech catalyst calendar that turns structured records into dated events with filters, source links, and company-level context.',
-        context: 'FastAPI · Railway Postgres · React',
-        detail: `${fdaSnapshot.events} events across ${fdaSnapshot.companies} companies in the current 90-day view.`,
+        context: 'FastAPI, Railway Postgres, React',
         href: '/fda-catalyst.html',
         cta: 'View the case study',
         presentation: 'standard',
       },
       {
         slug: 'wiki-project',
-        kind: 'Product',
         title: 'Wiki Project',
         description:
           'A public working library for vocabulary, reading notes, and project fragments, built to make ideas easier to revisit and connect.',
-        context: 'Next.js · Railway · Supabase',
-        detail: 'A living system for notes that are useful before they become polished essays.',
+        context: 'Next.js, Railway, Supabase',
         href: wikiLiveUrl,
         sourceHref: wikiRepoUrl,
         cta: 'Open the wiki',

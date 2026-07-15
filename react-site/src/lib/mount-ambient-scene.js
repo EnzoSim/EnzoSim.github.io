@@ -64,8 +64,8 @@ const fragmentShader = /* glsl */ `
     vec2 local = (point - center) / radius;
     float angle = atan(local.y, local.x);
     float contour = length(local);
-    float edgeMotion = 0.055 * sin(angle * 3.0 + uTime * 0.16 + phase)
-      + 0.032 * sin(angle * 5.0 - uTime * 0.11 + phase * 1.7);
+    float edgeMotion = 0.085 * sin(angle * 3.0 + uTime * 0.31 + phase)
+      + 0.045 * sin(angle * 5.0 - uTime * 0.23 + phase * 1.7);
 
     return 1.0 - smoothstep(0.63 + edgeMotion, 1.17 + edgeMotion, contour);
   }
@@ -73,17 +73,17 @@ const fragmentShader = /* glsl */ `
   float surface(vec2 point) {
     float aspect = clamp(uResolution.x / max(uResolution.y, 1.0), 0.46, 2.2);
     float horizontalRadius = mix(0.47, 0.78, smoothstep(0.5, 1.7, aspect));
-    vec2 pointerDrift = uPointer * vec2(aspect, 1.0) * 0.015;
+    vec2 pointerDrift = uPointer * vec2(aspect, 1.0) * 0.038;
     vec2 slowDrift = vec2(
-      0.055 * sin(uTime * 0.105),
-      0.045 * cos(uTime * 0.087)
+      0.09 * sin(uTime * 0.24),
+      0.07 * cos(uTime * 0.19)
     );
     vec2 warp = vec2(
-      fbm(point * 1.35 + vec2(uTime * 0.023, -uTime * 0.016)),
-      fbm(point * 1.35 + vec2(8.2 - uTime * 0.018, 3.4 + uTime * 0.021))
+      fbm(point * 1.35 + vec2(uTime * 0.055, -uTime * 0.038)),
+      fbm(point * 1.35 + vec2(8.2 - uTime * 0.042, 3.4 + uTime * 0.050))
     ) - 0.5;
 
-    point += warp * 0.12;
+    point += warp * 0.18;
 
     float left = ellipseField(
       point,
@@ -134,8 +134,8 @@ const fragmentShader = /* glsl */ `
     vec3 moss = vec3(0.704, 0.768, 0.594);
     vec3 mist = vec3(0.745, 0.824, 0.769);
     vec3 lightDirection = normalize(vec3(
-      -0.36 + uPointer.x * 0.025,
-      0.72 + uPointer.y * 0.018,
+      -0.36 + 0.13 * sin(uTime * 0.27) + uPointer.x * 0.08,
+      0.72 + 0.09 * cos(uTime * 0.21) + uPointer.y * 0.06,
       0.68
     ));
     vec3 viewDirection = vec3(0.0, 0.0, 1.0);
@@ -161,9 +161,18 @@ const fragmentShader = /* glsl */ `
     color += specular * 0.15;
     color += fresnel * edge * vec3(0.11, 0.14, 0.12);
 
+    float sweepCoordinate = point.x / aspect + point.y * 0.18;
+    float sweepCenter = 0.72 * sin(uTime * 0.42);
+    float caustic = exp(-pow(sweepCoordinate - sweepCenter, 2.0) * 13.0) * volume;
+    color += caustic * (0.025 + edge * 0.085) * vec3(0.82, 1.0, 0.88);
+
     vec2 focusRadius = vec2(0.55 * aspect, 0.62);
-    float focus = exp(-dot(point / focusRadius, point / focusRadius) * 1.48);
-    color = mix(color, vec3(0.991, 0.991, 0.976), focus * 0.58);
+    vec2 focusPoint = point - vec2(
+      0.07 * sin(uTime * 0.20),
+      0.045 * cos(uTime * 0.17)
+    );
+    float focus = exp(-dot(focusPoint / focusRadius, focusPoint / focusRadius) * 1.48);
+    color = mix(color, vec3(0.991, 0.991, 0.976), focus * 0.46);
 
     float veil = 0.018 * (fbm(point * 3.4 + uTime * 0.012) - 0.5);
     color += veil;
@@ -235,7 +244,7 @@ export function mountAmbientScene(host) {
     const delta = Math.min((now - lastFrame) / 1000, 0.05)
     lastFrame = now
     elapsed += delta
-    pointer.lerp(pointerTarget, 0.025)
+    pointer.lerp(pointerTarget, 1 - Math.exp(-delta * 7.5))
 
     if (now - lastPaint >= 1000 / 30) {
       uniforms.uTime.value = elapsed

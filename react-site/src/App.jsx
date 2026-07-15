@@ -19,10 +19,13 @@ const externalProps = {
   rel: 'noopener noreferrer',
 }
 
-function currentRoute(pathname) {
-  if (pathname.includes('fda-catalyst')) return null
-  if (pathname.startsWith('/reading')) return '/reading/'
-  return '/'
+function routeForPathname(pathname) {
+  const normalized = pathname.replace(/\/index\.html$/, '/')
+
+  if (normalized === '/fda-catalyst.html') return 'fda-catalyst'
+  if (normalized === '/about' || normalized.startsWith('/about/')) return 'about'
+  if (normalized === '/reading' || normalized.startsWith('/reading/')) return 'reading'
+  return 'home'
 }
 
 function SkipLink() {
@@ -35,19 +38,19 @@ function SkipLink() {
 
 function SiteNav() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
-  const activeRoute = currentRoute(pathname)
+  const activeRoute = routeForPathname(pathname)
 
   return (
     <header className="site-header">
       <div className="site-nav-shell">
         <a className="nav-brand" href="/">
           <span className="brand-mark">ES</span>
-          <span>Enzo Simier</span>
+          <span className="sr-only">Enzo Simier</span>
         </a>
         <nav className="primary-nav" aria-label={t.a11y.primaryNavigation}>
           {t.nav.items.map((item) => (
             <a
-              aria-current={activeRoute === item.href ? 'page' : undefined}
+              aria-current={activeRoute === routeForPathname(item.href) ? 'page' : undefined}
               className="liquid-pill nav-link"
               href={item.href}
               key={item.href}
@@ -105,26 +108,8 @@ function HomePage() {
       <section className="home-hero" aria-labelledby="home-title">
         <HomeAmbient />
         <div className="home-hero-content">
-          <figure className="portrait-column">
-            <div className="portrait-lens">
-              <img
-                alt={t.a11y.portraitAlt}
-                decoding="async"
-                fetchPriority="high"
-                height={profileImage.height}
-                src={profileImage.src}
-                width={profileImage.width}
-              />
-            </div>
-            <figcaption className="portrait-caption">
-              <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
-              <span>{t.home.portraitCaption}</span>
-            </figcaption>
-          </figure>
-
           <div className="home-copy">
             <h1 id="home-title">{t.home.title}</h1>
-            <p className="home-introduction">{t.home.introduction}</p>
             <div className="contact-row" aria-label="Contact links">
               {t.home.contacts.map((contact, index) => (
                 <Button
@@ -146,39 +131,16 @@ function HomePage() {
         </div>
       </section>
 
-      <div className="editorial-layout home-record">
-        <PageIndex
-          label="Sections"
-          items={[
-            { label: 'About', href: '#about' },
-            { label: 'Projects', href: '#projects' },
-          ]}
-        />
-        <div className="editorial-column">
-          <section className="about-record" id="about" aria-labelledby="about-title">
-            <div className="section-title-row">
-              <h2 id="about-title">About</h2>
-            </div>
-            <div className="now-line">
-              <span>{t.home.now.label}</span>
-              <p>{t.home.now.text}</p>
-            </div>
-            <p className="home-about">{t.home.about}</p>
-          </section>
-
-          <section className="home-projects" id="projects" aria-labelledby="projects-title">
-            <div className="section-title-row">
-              <h2 id="projects-title">{t.projects.title}</h2>
-              <span>Three selected projects</span>
-            </div>
-            <div className="work-grid">
-              {t.projects.items.map((project) => (
-                <WorkObject key={project.slug} project={project} />
-              ))}
-            </div>
-          </section>
+      <section className="projects-stage" id="projects" aria-labelledby="projects-title">
+        <div className="projects-stage-heading">
+          <h2 id="projects-title">{t.projects.title}</h2>
         </div>
-      </div>
+        <div className="work-grid">
+          {t.projects.items.map((project) => (
+            <WorkObject key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
     </Shell>
   )
 }
@@ -189,6 +151,42 @@ function RouteHeading({ title, lede }) {
       <h1>{title}</h1>
       <p>{lede}</p>
     </header>
+  )
+}
+
+function AboutPage() {
+  return (
+    <Shell className="route-page about-page">
+      <div className="about-layout">
+        <div className="about-copy">
+          <RouteHeading title={t.about.title} lede={t.about.introduction} />
+          <div className="about-details">
+            <div className="now-line" id="now">
+              <span>{t.about.now.label}</span>
+              <p>{t.about.now.text}</p>
+            </div>
+            <p className="home-about">{t.about.personal}</p>
+          </div>
+        </div>
+
+        <figure className="portrait-column about-portrait">
+          <div className="portrait-lens">
+            <img
+              alt={t.a11y.portraitAlt}
+              decoding="async"
+              fetchPriority="high"
+              height={profileImage.height}
+              src={profileImage.src}
+              width={profileImage.width}
+            />
+          </div>
+          <figcaption className="portrait-caption">
+            <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
+            <span>{t.about.portraitCaption}</span>
+          </figcaption>
+        </figure>
+      </div>
+    </Shell>
   )
 }
 
@@ -234,7 +232,6 @@ function WorkObject({ project }) {
       id={project.slug}
     >
       <div className="work-object-label">
-        <span>{project.kind}</span>
         <span>{project.context}</span>
       </div>
       <div className="work-object-copy">
@@ -242,7 +239,7 @@ function WorkObject({ project }) {
         <p>{project.description}</p>
       </div>
       <div className="work-object-foot">
-        <p>{project.detail}</p>
+        {project.detail ? <p>{project.detail}</p> : null}
         <ProjectActions project={project} />
       </div>
     </article>
@@ -462,13 +459,17 @@ function FdaCatalystPage() {
 
 function AppContent() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
+  const route = routeForPathname(pathname)
   let page = <HomePage />
   let meta = t.meta.home
 
-  if (pathname.includes('fda-catalyst')) {
+  if (route === 'fda-catalyst') {
     page = <FdaCatalystPage />
     meta = t.meta.project
-  } else if (pathname.startsWith('/reading')) {
+  } else if (route === 'about') {
+    page = <AboutPage />
+    meta = t.meta.about
+  } else if (route === 'reading') {
     page = <ReadingPage />
     meta = t.meta.reading
   }

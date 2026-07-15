@@ -4158,8 +4158,8 @@ void main() {
     vec2 local = (point - center) / radius;
     float angle = atan(local.y, local.x);
     float contour = length(local);
-    float edgeMotion = 0.055 * sin(angle * 3.0 + uTime * 0.16 + phase)
-      + 0.032 * sin(angle * 5.0 - uTime * 0.11 + phase * 1.7);
+    float edgeMotion = 0.085 * sin(angle * 3.0 + uTime * 0.31 + phase)
+      + 0.045 * sin(angle * 5.0 - uTime * 0.23 + phase * 1.7);
 
     return 1.0 - smoothstep(0.63 + edgeMotion, 1.17 + edgeMotion, contour);
   }
@@ -4167,17 +4167,17 @@ void main() {
   float surface(vec2 point) {
     float aspect = clamp(uResolution.x / max(uResolution.y, 1.0), 0.46, 2.2);
     float horizontalRadius = mix(0.47, 0.78, smoothstep(0.5, 1.7, aspect));
-    vec2 pointerDrift = uPointer * vec2(aspect, 1.0) * 0.015;
+    vec2 pointerDrift = uPointer * vec2(aspect, 1.0) * 0.038;
     vec2 slowDrift = vec2(
-      0.055 * sin(uTime * 0.105),
-      0.045 * cos(uTime * 0.087)
+      0.09 * sin(uTime * 0.24),
+      0.07 * cos(uTime * 0.19)
     );
     vec2 warp = vec2(
-      fbm(point * 1.35 + vec2(uTime * 0.023, -uTime * 0.016)),
-      fbm(point * 1.35 + vec2(8.2 - uTime * 0.018, 3.4 + uTime * 0.021))
+      fbm(point * 1.35 + vec2(uTime * 0.055, -uTime * 0.038)),
+      fbm(point * 1.35 + vec2(8.2 - uTime * 0.042, 3.4 + uTime * 0.050))
     ) - 0.5;
 
-    point += warp * 0.12;
+    point += warp * 0.18;
 
     float left = ellipseField(
       point,
@@ -4228,8 +4228,8 @@ void main() {
     vec3 moss = vec3(0.704, 0.768, 0.594);
     vec3 mist = vec3(0.745, 0.824, 0.769);
     vec3 lightDirection = normalize(vec3(
-      -0.36 + uPointer.x * 0.025,
-      0.72 + uPointer.y * 0.018,
+      -0.36 + 0.13 * sin(uTime * 0.27) + uPointer.x * 0.08,
+      0.72 + 0.09 * cos(uTime * 0.21) + uPointer.y * 0.06,
       0.68
     ));
     vec3 viewDirection = vec3(0.0, 0.0, 1.0);
@@ -4255,13 +4255,22 @@ void main() {
     color += specular * 0.15;
     color += fresnel * edge * vec3(0.11, 0.14, 0.12);
 
+    float sweepCoordinate = point.x / aspect + point.y * 0.18;
+    float sweepCenter = 0.72 * sin(uTime * 0.42);
+    float caustic = exp(-pow(sweepCoordinate - sweepCenter, 2.0) * 13.0) * volume;
+    color += caustic * (0.025 + edge * 0.085) * vec3(0.82, 1.0, 0.88);
+
     vec2 focusRadius = vec2(0.55 * aspect, 0.62);
-    float focus = exp(-dot(point / focusRadius, point / focusRadius) * 1.48);
-    color = mix(color, vec3(0.991, 0.991, 0.976), focus * 0.58);
+    vec2 focusPoint = point - vec2(
+      0.07 * sin(uTime * 0.20),
+      0.045 * cos(uTime * 0.17)
+    );
+    float focus = exp(-dot(focusPoint / focusRadius, focusPoint / focusRadius) * 1.48);
+    color = mix(color, vec3(0.991, 0.991, 0.976), focus * 0.46);
 
     float veil = 0.018 * (fbm(point * 3.4 + uTime * 0.012) - 0.5);
     color += veil;
 
     gl_FragColor = vec4(color, 0.94);
   }
-`;function dc(e){let t=e.closest(`.home-hero`),n=new dn,r=new Oi(-1,1,1,-1,0,1),i=new Gr(2,2),a=new K,o=new K,s={uPointer:{value:a},uResolution:{value:new K(1,1)},uTime:{value:0}},c=new ei({depthTest:!1,depthWrite:!1,fragmentShader:uc,transparent:!0,uniforms:s,vertexShader:lc}),l=new Or(i,c),u=new cc({alpha:!0,antialias:!1,powerPreference:`high-performance`,premultipliedAlpha:!0});u.outputColorSpace=Pe,u.setClearColor(16777215,0),u.domElement.setAttribute(`aria-hidden`,`true`),u.domElement.tabIndex=-1,n.add(l),e.appendChild(u.domElement);let d=0,f=0,p=!0,m=performance.now(),h=0,g=!1,_=!1,v=()=>{let{height:t,width:n}=e.getBoundingClientRect(),r=n<640,i=r?1:1.25,a=r?.78:.72,o=Math.max(.68,Math.min(window.devicePixelRatio||1,i)*a);u.setPixelRatio(o),u.setSize(Math.max(1,n),Math.max(1,t),!1),s.uResolution.value.set(u.domElement.width,u.domElement.height)},y=e=>{if(d=0,!g||_)return;let t=Math.min((e-m)/1e3,.05);m=e,f+=t,a.lerp(o,.025),e-h>=1e3/30&&(s.uTime.value=f,u.render(n,r),h=e),d=window.requestAnimationFrame(y)},b=()=>{g=!1,window.cancelAnimationFrame(d),d=0},x=()=>{g||_||document.hidden||!p||(g=!0,m=performance.now(),d=window.requestAnimationFrame(y))},S=()=>{document.hidden||!p?b():x()},C=window.matchMedia(`(hover: hover) and (pointer: fine)`),w=e=>{let n=t?.getBoundingClientRect();n&&o.set((e.clientX-n.left)/n.width*2-1,-((e.clientY-n.top)/n.height*2-1))},T=()=>o.set(0,0),E=n=>{n.preventDefault(),_=!0,b(),e.classList.remove(`is-ready`),t?.removeAttribute(`data-webgl-ready`)},D=new ResizeObserver(v),O=new IntersectionObserver(([e])=>{p=e.isIntersecting,S()},{rootMargin:`120px`});return D.observe(e),O.observe(e),document.addEventListener(`visibilitychange`,S),u.domElement.addEventListener(`webglcontextlost`,E),C.matches&&(t?.addEventListener(`pointermove`,w,{passive:!0}),t?.addEventListener(`pointerleave`,T)),v(),u.render(n,r),e.classList.add(`is-ready`),t?.setAttribute(`data-webgl-ready`,`true`),x(),()=>{b(),D.disconnect(),O.disconnect(),document.removeEventListener(`visibilitychange`,S),u.domElement.removeEventListener(`webglcontextlost`,E),t?.removeEventListener(`pointermove`,w),t?.removeEventListener(`pointerleave`,T),e.classList.remove(`is-ready`),t?.removeAttribute(`data-webgl-ready`),i.dispose(),c.dispose(),u.dispose(),u.domElement.remove()}}export{dc as mountAmbientScene};
+`;function dc(e){let t=e.closest(`.home-hero`),n=new dn,r=new Oi(-1,1,1,-1,0,1),i=new Gr(2,2),a=new K,o=new K,s={uPointer:{value:a},uResolution:{value:new K(1,1)},uTime:{value:0}},c=new ei({depthTest:!1,depthWrite:!1,fragmentShader:uc,transparent:!0,uniforms:s,vertexShader:lc}),l=new Or(i,c),u=new cc({alpha:!0,antialias:!1,powerPreference:`high-performance`,premultipliedAlpha:!0});u.outputColorSpace=Pe,u.setClearColor(16777215,0),u.domElement.setAttribute(`aria-hidden`,`true`),u.domElement.tabIndex=-1,n.add(l),e.appendChild(u.domElement);let d=0,f=0,p=!0,m=performance.now(),h=0,g=!1,_=!1,v=()=>{let{height:t,width:n}=e.getBoundingClientRect(),r=n<640,i=r?1:1.25,a=r?.78:.72,o=Math.max(.68,Math.min(window.devicePixelRatio||1,i)*a);u.setPixelRatio(o),u.setSize(Math.max(1,n),Math.max(1,t),!1),s.uResolution.value.set(u.domElement.width,u.domElement.height)},y=e=>{if(d=0,!g||_)return;let t=Math.min((e-m)/1e3,.05);m=e,f+=t,a.lerp(o,1-Math.exp(-t*7.5)),e-h>=1e3/30&&(s.uTime.value=f,u.render(n,r),h=e),d=window.requestAnimationFrame(y)},b=()=>{g=!1,window.cancelAnimationFrame(d),d=0},x=()=>{g||_||document.hidden||!p||(g=!0,m=performance.now(),d=window.requestAnimationFrame(y))},S=()=>{document.hidden||!p?b():x()},C=window.matchMedia(`(hover: hover) and (pointer: fine)`),w=e=>{let n=t?.getBoundingClientRect();n&&o.set((e.clientX-n.left)/n.width*2-1,-((e.clientY-n.top)/n.height*2-1))},T=()=>o.set(0,0),E=n=>{n.preventDefault(),_=!0,b(),e.classList.remove(`is-ready`),t?.removeAttribute(`data-webgl-ready`)},D=new ResizeObserver(v),O=new IntersectionObserver(([e])=>{p=e.isIntersecting,S()},{rootMargin:`120px`});return D.observe(e),O.observe(e),document.addEventListener(`visibilitychange`,S),u.domElement.addEventListener(`webglcontextlost`,E),C.matches&&(t?.addEventListener(`pointermove`,w,{passive:!0}),t?.addEventListener(`pointerleave`,T)),v(),u.render(n,r),e.classList.add(`is-ready`),t?.setAttribute(`data-webgl-ready`,`true`),x(),()=>{b(),D.disconnect(),O.disconnect(),document.removeEventListener(`visibilitychange`,S),u.domElement.removeEventListener(`webglcontextlost`,E),t?.removeEventListener(`pointermove`,w),t?.removeEventListener(`pointerleave`,T),e.classList.remove(`is-ready`),t?.removeAttribute(`data-webgl-ready`),i.dispose(),c.dispose(),u.dispose(),u.domElement.remove()}}export{dc as mountAmbientScene};
