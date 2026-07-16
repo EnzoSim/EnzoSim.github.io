@@ -1372,36 +1372,158 @@
     gap: 0;
     overflow: clip;
     isolation: isolate;
-    background:
-      radial-gradient(ellipse at 50% 52%, rgb(255 255 251 / 98%) 0 10%, rgb(255 255 251 / 76%) 22%, transparent 49%),
-      radial-gradient(circle at 15% 20%, rgb(167 185 145 / 62%), transparent 42%),
-      radial-gradient(circle at 88% 23%, rgb(130 169 151 / 50%), transparent 43%),
-      radial-gradient(circle at 78% 88%, rgb(205 218 178 / 52%), transparent 46%),
-      #dfe8dc;
+    background: linear-gradient(180deg, #fff 0%, #fcfdfb 48%, #fafcf8 100%);
   }
 
   .home-hero::before,
   .home-hero::after {
+    display: none;
+  }
+
+  .ambient-bubbles {
     position: absolute;
-    z-index: -1;
-    inset: -18%;
-    content: "";
+    z-index: 0;
+    inset: 0;
+    contain: layout paint;
+    overflow: hidden;
     pointer-events: none;
+  }
+
+  .ambient-bubble {
+    position: absolute;
+    display: block;
+    aspect-ratio: 1;
+    border: 1px solid rgb(255 255 255 / 74%);
+    box-shadow:
+      inset 18px 20px 42px rgb(255 255 255 / 48%),
+      inset -18px -20px 44px rgb(36 66 53 / 7%),
+      0 22px 60px rgb(36 66 53 / 5%);
+    opacity: 0.78;
+    backface-visibility: hidden;
     will-change: transform;
   }
 
-  .home-hero::before {
+  .ambient-bubble-1 {
+    top: -24%;
+    left: -9%;
+    width: clamp(19rem, 39vw, 37rem);
+    border-radius: 55% 45% 61% 39% / 48% 56% 44% 52%;
     background:
-      radial-gradient(circle at 28% 38%, rgb(255 255 249 / 78%), transparent 29%),
-      radial-gradient(circle at 64% 72%, rgb(82 126 104 / 14%), transparent 31%);
-    animation: ambient-orbit-a 16s ease-in-out infinite;
+      radial-gradient(circle at 34% 28%, rgb(255 255 255 / 92%) 0 9%, transparent 30%),
+      linear-gradient(145deg, rgb(222 231 205 / 88%), rgb(192 213 190 / 62%));
+    animation: bubble-separate-a 24s ease-in-out infinite;
   }
 
-  .home-hero::after {
+  .ambient-bubble-2 {
+    top: -18%;
+    right: -7%;
+    width: clamp(17rem, 32vw, 30rem);
+    border-radius: 44% 56% 47% 53% / 58% 41% 59% 42%;
     background:
-      radial-gradient(circle at 72% 32%, rgb(255 255 255 / 66%), transparent 27%),
-      radial-gradient(circle at 38% 76%, rgb(172 199 177 / 24%), transparent 34%);
-    animation: ambient-orbit-b 19s ease-in-out infinite;
+      radial-gradient(circle at 30% 27%, rgb(255 255 255 / 90%) 0 10%, transparent 32%),
+      linear-gradient(155deg, rgb(203 224 210 / 82%), rgb(157 194 173 / 54%));
+    animation: bubble-separate-b 29s ease-in-out -8s infinite;
+  }
+
+  .ambient-bubble-3 {
+    top: 34%;
+    left: 4%;
+    width: clamp(11rem, 19vw, 18rem);
+    border-radius: 62% 38% 54% 46% / 43% 60% 40% 57%;
+    background:
+      radial-gradient(circle at 32% 25%, rgb(255 255 255 / 96%) 0 12%, transparent 34%),
+      linear-gradient(145deg, rgb(245 247 235 / 92%), rgb(214 224 196 / 64%));
+    animation: bubble-separate-c 21s ease-in-out -5s infinite;
+  }
+
+  .ambient-bubble-4 {
+    right: 5%;
+    bottom: -24%;
+    width: clamp(21rem, 38vw, 36rem);
+    border-radius: 49% 51% 39% 61% / 58% 44% 56% 42%;
+    background:
+      radial-gradient(circle at 31% 24%, rgb(255 255 255 / 88%) 0 10%, transparent 31%),
+      linear-gradient(150deg, rgb(220 232 216 / 84%), rgb(172 202 179 / 57%));
+    animation: bubble-separate-a 32s ease-in-out -13s infinite reverse;
+  }
+
+  .ambient-bubble-5 {
+    bottom: -20%;
+    left: -8%;
+    width: clamp(15rem, 28vw, 27rem);
+    border-radius: 58% 42% 48% 52% / 39% 54% 46% 61%;
+    background:
+      radial-gradient(circle at 33% 24%, rgb(255 255 255 / 90%) 0 10%, transparent 31%),
+      linear-gradient(145deg, rgb(231 235 211 / 84%), rgb(197 213 180 / 56%));
+    animation: bubble-separate-b 27s ease-in-out -17s infinite reverse;
+  }
+
+  .ambient-bubble-6 {
+    top: 30%;
+    right: 22%;
+    width: clamp(10rem, 17vw, 16rem);
+    border-radius: 47% 53% 63% 37% / 55% 43% 57% 45%;
+    background:
+      radial-gradient(circle at 34% 26%, rgb(255 255 255 / 98%) 0 13%, transparent 34%),
+      linear-gradient(150deg, rgb(255 255 252 / 94%), rgb(229 238 226 / 72%));
+    animation: bubble-separate-c 25s ease-in-out -11s infinite reverse;
+  }
+
+  @keyframes bubble-separate-a {
+    0%,
+    100% {
+      transform: translate3d(-3vw, -2vh, 0) rotate(-2deg);
+    }
+
+    28% {
+      transform: translate3d(5vw, 1vh, 0) rotate(3deg);
+    }
+
+    57% {
+      transform: translate3d(2vw, 7vh, 0) rotate(-1deg);
+    }
+
+    81% {
+      transform: translate3d(-6vw, 4vh, 0) rotate(2deg);
+    }
+  }
+
+  @keyframes bubble-separate-b {
+    0%,
+    100% {
+      transform: translate3d(4vw, -3vh, 0) rotate(2deg);
+    }
+
+    26% {
+      transform: translate3d(-5vw, 2vh, 0) rotate(-3deg);
+    }
+
+    54% {
+      transform: translate3d(-2vw, 7vh, 0) rotate(1deg);
+    }
+
+    79% {
+      transform: translate3d(6vw, 3vh, 0) rotate(-2deg);
+    }
+  }
+
+  @keyframes bubble-separate-c {
+    0%,
+    100% {
+      transform: translate3d(-2vw, 5vh, 0) rotate(-3deg);
+    }
+
+    31% {
+      transform: translate3d(5vw, -3vh, 0) rotate(4deg);
+    }
+
+    63% {
+      transform: translate3d(7vw, 4vh, 0) rotate(0deg);
+    }
+
+    84% {
+      transform: translate3d(-4vw, -1vh, 0) rotate(3deg);
+    }
   }
 
   .home-hero-content {
@@ -2048,7 +2170,7 @@
   .home-details .now-line {
     grid-template-columns: 4.25rem minmax(0, 1fr);
     padding: 0.85rem 0;
-    align-items: baseline;
+    align-items: start;
   }
 
   .home-details .home-about {
@@ -2178,6 +2300,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .ambient-bubble,
   .home-hero::before,
   .home-hero::after,
   .projects-page::before,
@@ -2193,12 +2316,7 @@
   @layer components {
     .home-hero {
       padding: clamp(1.5rem, 2.5vh, 2.5rem) 1.5rem clamp(5rem, 8vh, 6.5rem);
-      background:
-        radial-gradient(ellipse at 50% 48%, rgb(255 255 251 / 98%) 0 11%, rgb(255 255 251 / 78%) 24%, transparent 51%),
-        radial-gradient(circle at 14% 19%, rgb(164 184 142 / 64%), transparent 43%),
-        radial-gradient(circle at 87% 22%, rgb(119 158 128 / 52%), transparent 44%),
-        radial-gradient(circle at 77% 89%, rgb(205 219 174 / 58%), transparent 47%),
-        #e2eadf;
+      background: linear-gradient(180deg, #fff 0%, #fcfdfb 48%, #fafcf8 100%);
     }
 
     .home-hero-content {
@@ -2249,17 +2367,6 @@
       font-size: 0.64rem;
     }
 
-    .home-hero::before {
-      background:
-        radial-gradient(ellipse 32% 26% at 25% 38%, rgb(255 255 251 / 92%) 0 38%, rgb(255 255 251 / 30%) 55%, transparent 73%),
-        radial-gradient(ellipse 28% 34% at 66% 72%, rgb(70 112 88 / 22%) 0 34%, rgb(70 112 88 / 7%) 58%, transparent 75%);
-    }
-
-    .home-hero::after {
-      background:
-        radial-gradient(ellipse 30% 25% at 74% 31%, rgb(255 255 255 / 84%) 0 37%, rgb(255 255 255 / 22%) 56%, transparent 73%),
-        radial-gradient(ellipse 34% 28% at 39% 77%, rgb(160 190 161 / 34%) 0 34%, rgb(160 190 161 / 9%) 58%, transparent 75%);
-    }
   }
 }
 
@@ -2582,5 +2689,15 @@
     animation: none;
     transform: none;
     will-change: auto;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .home-hero {
+    background: #fff;
+  }
+
+  .ambient-bubbles {
+    display: none;
   }
 }

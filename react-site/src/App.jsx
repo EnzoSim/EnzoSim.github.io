@@ -101,10 +101,21 @@ function ExternalArrow() {
   return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
 }
 
+function AmbientBubbles() {
+  return (
+    <div className="ambient-bubbles" aria-hidden="true">
+      {Array.from({ length: 6 }, (_, index) => (
+        <span className={`ambient-bubble ambient-bubble-${index + 1}`} key={index} />
+      ))}
+    </div>
+  )
+}
+
 function AboutPage() {
   return (
     <Shell className="home-page">
       <section className="home-hero" aria-labelledby="home-title">
+        <AmbientBubbles />
         <div className="home-hero-content">
           <figure className="portrait-column home-portrait">
             <div className="portrait-lens">
