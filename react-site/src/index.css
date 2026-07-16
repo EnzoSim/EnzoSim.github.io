@@ -741,6 +741,7 @@
     width: 100%;
     height: 100%;
     color: inherit;
+    perspective: 900px;
     text-decoration: none;
   }
 
@@ -749,7 +750,10 @@
     display: block;
     width: 100%;
     height: 100%;
+    transform: translate3d(0, 0, 0);
     transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    transition: transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .shelf-book-spine {
@@ -850,7 +854,17 @@
     mix-blend-mode: screen;
     opacity: 0.22;
     transform: translateX(-55%);
+    transition: opacity 260ms ease, transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
+  }
+
+  .shelf-book-link:focus-visible .shelf-book {
+    transform: translate3d(0, -0.7rem, 1rem) scale(1.012);
+  }
+
+  .shelf-book-link:focus-visible .shelf-book-glint {
+    opacity: 0.52;
+    transform: translateX(50%);
   }
 
   .bookcase-shelf {
@@ -1180,6 +1194,17 @@
   }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .shelf-book-link:hover .shelf-book {
+    transform: translate3d(0, -0.7rem, 1rem) scale(1.012);
+  }
+
+  .shelf-book-link:hover .shelf-book-glint {
+    opacity: 0.52;
+    transform: translateX(50%);
+  }
+}
+
 @media (hover: none), (pointer: coarse) {
   .shelf-book-link:hover .shelf-book {
     filter: none;
@@ -1218,6 +1243,12 @@
   .shelf-book-link:focus-visible .shelf-book,
   .shelf-book-link:active .shelf-book {
     filter: none !important;
+    transform: none !important;
+  }
+
+  .shelf-book-link:hover .shelf-book-glint,
+  .shelf-book-link:focus-visible .shelf-book-glint {
+    opacity: 0.22 !important;
     transform: none !important;
   }
 
@@ -2252,7 +2283,7 @@
   }
 }
 
-/* Motion contract: the ambient forest-light field is the only moving layer. */
+/* Motion contract: ambient shapes move continuously; books respond only to direct interaction. */
 @layer components {
   .home-hero-content {
     perspective: none;
@@ -2266,9 +2297,7 @@
   .projects-stage .work-object,
   .projects-stage .work-object-label,
   .projects-stage .work-object-copy,
-  .projects-stage .work-object-foot,
-  .shelf-book,
-  .shelf-book-glint {
+  .projects-stage .work-object-foot {
     animation: none;
     transition: none;
     will-change: auto;
