@@ -2278,6 +2278,10 @@
       #fafbf8;
   }
 
+  .route-page.projects-page {
+    padding: 0;
+  }
+
   .projects-page::before,
   .projects-page::after {
     position: absolute;
