@@ -2188,23 +2188,101 @@
   }
 }
 
-/* Project horizon: a working margin, not a dashboard mosaic. */
+/* Wide-screen finish: bring the identity closer without moving the content. */
+@media (min-width: 64rem) {
+  @layer components {
+    .home-hero {
+      padding: clamp(1.5rem, 2.5vh, 2.5rem) 1.5rem clamp(5rem, 8vh, 6.5rem);
+      background:
+        radial-gradient(ellipse at 50% 48%, rgb(255 255 251 / 98%) 0 11%, rgb(255 255 251 / 78%) 24%, transparent 51%),
+        radial-gradient(circle at 14% 19%, rgb(164 184 142 / 64%), transparent 43%),
+        radial-gradient(circle at 87% 22%, rgb(119 158 128 / 52%), transparent 44%),
+        radial-gradient(circle at 77% 89%, rgb(205 219 174 / 58%), transparent 47%),
+        #e2eadf;
+    }
+
+    .home-hero-content {
+      width: min(100%, 74rem);
+      grid-template-columns: minmax(19rem, 0.68fr) minmax(0, 1.32fr);
+      align-items: start;
+      gap: clamp(3.25rem, 4.4vw, 5rem);
+    }
+
+    .home-hero .home-portrait {
+      width: min(100%, 21rem);
+    }
+
+    .home-copy {
+      max-width: 46rem;
+      gap: 1rem;
+    }
+
+    .home-copy h1 {
+      font-size: clamp(4.8rem, 9.4vw, 7.75rem);
+    }
+
+    .home-introduction {
+      max-width: 42rem;
+      font-size: clamp(1.08rem, 1.4vw, 1.28rem);
+    }
+
+    .home-details {
+      max-width: 42rem;
+      margin-top: 0.55rem;
+    }
+
+    .home-hero .home-details .home-about {
+      max-width: 41rem;
+      color: #3c3f3a;
+      font-size: 1rem;
+      line-height: 1.62;
+    }
+
+    .home-hero .home-details .now-line p {
+      color: #3f433d;
+      font-size: 0.94rem;
+      line-height: 1.55;
+    }
+
+    .home-hero .portrait-caption {
+      color: #4b5048;
+      font-size: 0.64rem;
+    }
+
+    .home-hero::before {
+      background:
+        radial-gradient(ellipse 32% 26% at 25% 38%, rgb(255 255 251 / 92%) 0 38%, rgb(255 255 251 / 30%) 55%, transparent 73%),
+        radial-gradient(ellipse 28% 34% at 66% 72%, rgb(70 112 88 / 22%) 0 34%, rgb(70 112 88 / 7%) 58%, transparent 75%);
+    }
+
+    .home-hero::after {
+      background:
+        radial-gradient(ellipse 30% 25% at 74% 31%, rgb(255 255 255 / 84%) 0 37%, rgb(255 255 255 / 22%) 56%, transparent 73%),
+        radial-gradient(ellipse 34% 28% at 39% 77%, rgb(160 190 161 / 34%) 0 34%, rgb(160 190 161 / 9%) 58%, transparent 75%);
+    }
+  }
+}
+
+/* Projects index: a compact editorial record, not a timeline or dashboard. */
 @layer components {
   .projects-page {
     position: relative;
+    width: 100%;
     min-height: calc(100dvh - 8.75rem);
+    padding: 0;
     overflow: clip;
     isolation: isolate;
     background:
-      radial-gradient(ellipse at 58% 18%, rgb(255 255 252 / 88%) 0 12%, transparent 48%),
-      linear-gradient(145deg, #f4f7f1, #edf3ee 52%, #f6f8f3);
+      radial-gradient(circle at 13% 16%, rgb(190 207 181 / 20%), transparent 35%),
+      radial-gradient(circle at 87% 76%, rgb(153 181 163 / 14%), transparent 38%),
+      #fafbf8;
   }
 
   .projects-page::before,
   .projects-page::after {
     position: absolute;
     z-index: 0;
-    inset: -18%;
+    inset: -20%;
     content: "";
     pointer-events: none;
     will-change: transform;
@@ -2212,101 +2290,85 @@
 
   .projects-page::before {
     background:
-      radial-gradient(circle at 18% 28%, rgb(173 194 165 / 32%), transparent 30%),
-      radial-gradient(circle at 78% 76%, rgb(112 151 131 / 15%), transparent 34%);
+      radial-gradient(ellipse 32% 25% at 23% 34%, rgb(255 255 252 / 86%) 0 36%, transparent 72%),
+      radial-gradient(ellipse 30% 36% at 73% 72%, rgb(78 121 98 / 12%) 0 34%, transparent 74%);
     animation: ambient-orbit-a 22s ease-in-out infinite;
   }
 
   .projects-page::after {
     background:
-      radial-gradient(circle at 82% 24%, rgb(255 255 255 / 72%), transparent 27%),
-      radial-gradient(circle at 34% 82%, rgb(205 218 178 / 32%), transparent 32%);
+      radial-gradient(ellipse 28% 24% at 78% 27%, rgb(255 255 255 / 76%) 0 35%, transparent 72%),
+      radial-gradient(ellipse 35% 28% at 38% 82%, rgb(181 204 178 / 18%) 0 35%, transparent 74%);
     animation: ambient-orbit-b 27s ease-in-out infinite;
   }
 
-  .projects-page .projects-stage {
-    --project-rail: 8.5rem;
-    --project-node: 2.75rem;
+  .projects-record {
     position: relative;
     z-index: 1;
-    width: min(calc(100% - 3rem), 80rem);
-    margin-inline: auto;
-    padding: clamp(5rem, 8vw, 7.5rem) 0 clamp(5.5rem, 9vw, 8rem);
+    width: min(calc(100% - 2.5rem), 73rem);
+    padding: clamp(5rem, 8vw, 6.75rem) 0 clamp(5.5rem, 8vw, 7rem);
+  }
+
+  .projects-page .projects-stage {
+    width: min(100%, 49rem);
+    justify-self: center;
   }
 
   .projects-page .projects-stage-heading {
-    display: grid;
-    padding: 0 0 clamp(3.5rem, 6vw, 5.5rem);
-    grid-template-columns: calc(var(--project-rail) + var(--project-node) + 2.5rem) minmax(0, 1fr);
-    align-items: end;
-    gap: 0;
+    display: block;
+    max-width: 42rem;
+    margin: 0 0 clamp(3.25rem, 5vw, 4rem);
+    padding: 0;
     border: 0;
+    text-align: left;
   }
 
   .projects-page .projects-stage-heading h1 {
-    grid-column: 2;
     max-width: none;
-    font-size: clamp(5.5rem, 10vw, 9rem);
+    font-size: clamp(4.5rem, 8vw, 5.75rem);
     font-weight: 650;
-    line-height: 0.82;
-    letter-spacing: -0.078em;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
   }
 
   .projects-page .projects-stage-heading > p {
-    grid-column: 2;
-    max-width: 36rem;
-    margin-top: 1.6rem;
-    color: #41443f;
-    font-size: clamp(1.02rem, 1.55vw, 1.2rem);
-    line-height: 1.55;
+    max-width: 34rem;
+    margin-top: 1.25rem;
+    color: #454942;
+    font-size: clamp(1rem, 1.25vw, 1.08rem);
+    line-height: 1.62;
     text-wrap: balance;
   }
 
   .projects-page .projects-stage .work-grid {
-    position: relative;
     display: grid;
     margin: 0;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: none;
     gap: 0;
     overflow: visible;
     border: 0;
-    border-top: 1px solid rgb(21 21 21 / 18%);
+    border-top: 1px solid rgb(21 21 21 / 19%);
     border-radius: 0;
     background: transparent;
-  }
-
-  .projects-page .projects-stage .work-grid::before {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    bottom: 0;
-    left: calc(var(--project-rail) + 1.25rem + (var(--project-node) / 2));
-    width: 1px;
-    background: rgb(36 66 53 / 28%);
-    content: "";
-    pointer-events: none;
   }
 
   .projects-page .projects-stage .work-object,
   .projects-page .projects-stage .work-object-lead,
   .projects-page .projects-stage .work-object-standard,
   .projects-page .projects-stage .work-object-offset {
-    position: relative;
     display: grid;
     width: 100%;
     min-height: 0;
     margin: 0;
-    padding: clamp(2.6rem, 4.2vw, 3.75rem) 0 clamp(2.9rem, 4.8vw, 4.25rem);
-    grid-template-columns: var(--project-rail) var(--project-node) minmax(0, 1fr);
-    grid-column: 1;
-    grid-row: auto;
+    padding: clamp(2.15rem, 3.5vw, 2.75rem) 0 clamp(2.35rem, 3.8vw, 3rem);
+    grid-template-columns: 7.75rem minmax(0, 1fr);
     align-items: start;
-    column-gap: 1.25rem;
-    row-gap: 1.35rem;
+    column-gap: 1.75rem;
+    row-gap: 1rem;
+    scroll-margin-top: 2rem;
     overflow: visible;
     border: 0;
-    border-bottom: 1px solid rgb(21 21 21 / 18%);
+    border-bottom: 1px solid rgb(21 21 21 / 19%);
     border-radius: 0;
     background: transparent;
     box-shadow: none;
@@ -2318,11 +2380,11 @@
 
   .projects-page .work-object-label {
     display: flex;
+    min-width: 0;
     grid-column: 1;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.8rem;
+    gap: 0.65rem;
     color: inherit;
     letter-spacing: normal;
     text-transform: none;
@@ -2332,82 +2394,61 @@
   .projects-page .work-object-label .work-object-kind:first-child {
     color: var(--evergreen);
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 620;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
+    font-size: 0.78rem;
+    font-weight: 640;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
   }
 
   .projects-page .work-object-context {
-    max-width: 8rem;
-    color: #62665f;
+    max-width: 7.5rem;
+    color: #686d65;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.66rem;
     font-weight: 520;
     line-height: 1.55;
-    letter-spacing: 0.055em;
-  }
-
-  .projects-page .work-object-lens {
-    position: relative;
-    z-index: 2;
-    display: block;
-    width: 1.95rem;
-    height: 1.95rem;
-    grid-column: 2;
-    justify-self: center;
-    border: 1px solid rgb(36 66 53 / 18%);
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 36% 28%, rgb(255 255 255 / 96%), transparent 34%),
-      rgb(255 255 255 / 64%);
-    box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 98%),
-      0 8px 24px rgb(36 66 53 / 12%);
-    -webkit-backdrop-filter: blur(14px) saturate(116%);
-    backdrop-filter: blur(14px) saturate(116%);
+    letter-spacing: 0.045em;
   }
 
   .projects-page .work-object-copy {
     display: flex;
     min-width: 0;
-    grid-column: 3;
+    grid-column: 2;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .projects-page .work-object-copy h2,
   .projects-page .work-object-standard .work-object-copy h2,
   .projects-page .work-object-offset .work-object-copy h2 {
-    max-width: 57rem;
-    font-size: clamp(2.8rem, 5.5vw, 5.25rem);
+    max-width: 39rem;
+    font-size: clamp(2.6rem, 3.8vw, 3.35rem);
     font-weight: 630;
-    line-height: 0.94;
-    letter-spacing: -0.06em;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
     text-wrap: balance;
   }
 
   .projects-page .work-object-copy p {
-    max-width: 43rem;
-    color: #444842;
-    font-size: clamp(0.98rem, 1.25vw, 1.08rem);
-    line-height: 1.62;
+    max-width: 37rem;
+    color: #454942;
+    font-size: clamp(0.98rem, 1.1vw, 1.04rem);
+    line-height: 1.66;
   }
 
   .projects-page .work-object-foot {
     display: flex;
     min-width: 0;
-    margin-top: 0;
-    grid-column: 3;
-    flex-direction: row;
+    margin-top: 0.1rem;
+    grid-column: 2;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem 2rem;
+    gap: 0.9rem 1.5rem;
   }
 
   .projects-page .work-object-foot > p {
-    max-width: 35rem;
-    color: #696d66;
+    max-width: 31rem;
+    color: #6a6f67;
     font-size: 0.66rem;
     line-height: 1.55;
     letter-spacing: 0.035em;
@@ -2419,41 +2460,33 @@
   }
 
   .projects-page [data-slot="button"] {
-    background: rgb(255 255 255 / 52%) !important;
+    border-color: rgb(255 255 255 / 62%);
+    background: rgb(255 255 255 / 56%) !important;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 96%),
+      inset 0 -1px 0 rgb(36 66 53 / 7%),
+      0 12px 28px rgb(36 66 53 / 9%);
   }
 }
 
 @media (max-width: 63.999rem) {
   @layer components {
-    .projects-page .projects-stage {
-      --project-rail: 0rem;
-      --project-node: 0rem;
-      width: min(calc(100% - 2rem), 47rem);
-      padding-top: clamp(4rem, 9vw, 6rem);
+    .projects-record {
+      width: min(calc(100% - 2rem), 49rem);
+      padding: clamp(4rem, 9vw, 5.5rem) 0 6rem;
     }
 
     .projects-page .projects-stage-heading {
-      display: block;
-      padding: 0 0 clamp(3rem, 7vw, 4.5rem);
+      max-width: 38rem;
+      margin-bottom: clamp(2.75rem, 7vw, 3.75rem);
     }
 
     .projects-page .projects-stage-heading h1 {
-      font-size: clamp(4.25rem, 15vw, 7rem);
+      font-size: clamp(4.2rem, 15vw, 5.5rem);
     }
 
     .projects-page .projects-stage-heading > p {
       max-width: 32rem;
-      margin-top: 1.4rem;
-    }
-
-    .projects-page .projects-stage .work-grid {
-      padding-left: clamp(1rem, 4vw, 1.75rem);
-      border-left: 1px solid rgb(36 66 53 / 28%);
-    }
-
-    .projects-page .projects-stage .work-grid::before,
-    .projects-page .work-object-lens {
-      display: none;
     }
 
     .projects-page .projects-stage .work-object,
@@ -2461,14 +2494,14 @@
     .projects-page .projects-stage .work-object-standard,
     .projects-page .projects-stage .work-object-offset {
       display: block;
-      padding: clamp(2.4rem, 6vw, 3.4rem) 0;
+      padding: clamp(2.25rem, 6vw, 2.85rem) 0;
     }
 
     .projects-page .work-object-label {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.05rem;
       flex-direction: row;
       align-items: baseline;
-      gap: 0.75rem 1.25rem;
+      gap: 0.75rem 1.15rem;
     }
 
     .projects-page .work-object-context {
@@ -2478,11 +2511,11 @@
     .projects-page .work-object-copy h2,
     .projects-page .work-object-standard .work-object-copy h2,
     .projects-page .work-object-offset .work-object-copy h2 {
-      font-size: clamp(2.4rem, 8.5vw, 4.15rem);
+      font-size: clamp(2.45rem, 8vw, 3.5rem);
     }
 
     .projects-page .work-object-foot {
-      margin-top: 1.35rem;
+      margin-top: 1.2rem;
       flex-wrap: wrap;
       justify-content: flex-start;
     }
@@ -2498,33 +2531,28 @@
 
 @media (max-width: 31.999rem) {
   @layer components {
-    .projects-page .projects-stage {
-      width: min(calc(100% - 1.5rem), 47rem);
+    .projects-record {
+      width: min(calc(100% - 1.5rem), 49rem);
       padding-top: 3.5rem;
     }
 
     .projects-page .projects-stage-heading h1 {
-      font-size: clamp(3.8rem, 20vw, 5rem);
+      font-size: clamp(3.6rem, 18vw, 4.6rem);
     }
 
     .projects-page .projects-stage-heading > p {
       font-size: 0.98rem;
     }
 
-    .projects-page .projects-stage .work-grid {
-      padding-left: 1rem;
-    }
-
     .projects-page .work-object-copy h2,
     .projects-page .work-object-standard .work-object-copy h2,
     .projects-page .work-object-offset .work-object-copy h2 {
-      font-size: clamp(2.15rem, 11vw, 3rem);
+      font-size: clamp(2.2rem, 11vw, 2.85rem);
     }
   }
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .projects-page .work-object-lens,
   .projects-page [data-slot="button"] {
     background: #fff !important;
     -webkit-backdrop-filter: none;
@@ -2533,11 +2561,14 @@
 }
 
 @media (prefers-contrast: more) {
-  .projects-page .work-object-lens {
+  .projects-page .projects-stage .work-grid,
+  .projects-page .projects-stage .work-object {
+    border-color: rgb(21 21 21 / 62%);
+  }
+
+  .projects-page [data-slot="button"] {
     border-color: rgb(21 21 21 / 68%);
     background: #fff !important;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
   }
 }
 

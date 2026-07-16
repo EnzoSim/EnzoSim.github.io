@@ -168,18 +168,27 @@ function RouteHeading({ title, lede }) {
 
 function ProjectsPage() {
   return (
-    <Shell className="projects-page">
-      <section className="projects-stage" aria-labelledby="projects-title">
-        <header className="projects-stage-heading">
-          <h1 id="projects-title">{t.projects.title}</h1>
-          <p>{t.projects.lede}</p>
-        </header>
-        <div className="work-grid">
-          {t.projects.items.map((project) => (
-            <WorkObject key={project.slug} project={project} />
-          ))}
-        </div>
-      </section>
+    <Shell className="route-page projects-page">
+      <div className="editorial-layout projects-record">
+        <PageIndex
+          label="Projects"
+          items={t.projects.items.map((project) => ({
+            label: project.kind,
+            href: `#${project.slug}`,
+          }))}
+        />
+        <section className="projects-stage" aria-labelledby="projects-title">
+          <header className="projects-stage-heading">
+            <h1 id="projects-title">{t.projects.title}</h1>
+            <p>{t.projects.lede}</p>
+          </header>
+          <div className="work-grid">
+            {t.projects.items.map((project) => (
+              <WorkObject key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+      </div>
     </Shell>
   )
 }
@@ -229,7 +238,6 @@ function WorkObject({ project }) {
         <span className="work-object-kind">{project.kind}</span>
         <span className="work-object-context">{project.context}</span>
       </div>
-      <span aria-hidden="true" className="work-object-lens" />
       <div className="work-object-copy">
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
         <p>{project.description}</p>
