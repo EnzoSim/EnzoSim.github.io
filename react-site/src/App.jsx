@@ -91,6 +91,18 @@ function SiteNav() {
 
   const dragState = useRef(null)
   const suppressClick = useRef(false)
+  const pendingNav = useRef(null)
+
+  const navigateAfterGlide = useCallback((href) => {
+    if (pendingNav.current) window.clearTimeout(pendingNav.current)
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    pendingNav.current = window.setTimeout(
+      () => {
+        window.location.href = href
+      },
+      reduceMotion ? 0 : 180,
+    )
+  }, [])
 
   const onNavClick = (event) => {
     if (suppressClick.current) {
@@ -99,11 +111,10 @@ function SiteNav() {
     }
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
     const link = event.currentTarget
-    if (routeForPathname(link.getAttribute('href')) === activeRoute) {
-      event.preventDefault()
-      return
-    }
+    event.preventDefault()
+    if (routeForPathname(link.getAttribute('href')) === activeRoute) return
     moveLens(link)
+    navigateAfterGlide(link.href)
   }
 
   const linkMetrics = (nav, navBox) => {
@@ -209,9 +220,7 @@ function SiteNav() {
     const nearest = links[nearestIndex]
     moveLens(nearest)
     if (routeForPathname(nearest.getAttribute('href')) !== activeRoute) {
-      window.setTimeout(() => {
-        window.location.href = nearest.href
-      }, 160)
+      navigateAfterGlide(nearest.href)
     }
   }
 
