@@ -347,8 +347,8 @@ function AboutPage() {
               ))}
             </div>
             <div className="home-details">
-              <div className="now-line" id="now">
-                <span>{t.home.now.label}</span>
+              <div className="now-card" id="now">
+                <span className="now-kicker">{t.home.now.label}</span>
                 <p>{t.home.now.text}</p>
                 <Button asChild size="sm" variant="ghost">
                   <a href={t.home.now.action.href} {...externalProps}>
