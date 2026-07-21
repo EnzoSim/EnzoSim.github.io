@@ -78,8 +78,15 @@ function SiteNav() {
     } else {
       ready()
     }
+    const onPageShow = (event) => {
+      if (event.persisted) placeLens()
+    }
     window.addEventListener('resize', placeLens)
-    return () => window.removeEventListener('resize', placeLens)
+    window.addEventListener('pageshow', onPageShow)
+    return () => {
+      window.removeEventListener('resize', placeLens)
+      window.removeEventListener('pageshow', onPageShow)
+    }
   }, [placeLens])
 
   const dragState = useRef(null)
@@ -87,11 +94,27 @@ function SiteNav() {
 
   const onNavClick = (event) => {
     if (suppressClick.current) {
-      suppressClick.current = false
       event.preventDefault()
       return
     }
-    moveLens(event.currentTarget)
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    const link = event.currentTarget
+    if (routeForPathname(link.getAttribute('href')) === activeRoute) {
+      event.preventDefault()
+      return
+    }
+    moveLens(link)
+  }
+
+  const linkMetrics = (nav, navBox) => {
+    const links = Array.from(nav.querySelectorAll('.nav-link'))
+    return {
+      links,
+      metrics: links.map((link) => {
+        const box = link.getBoundingClientRect()
+        return { center: box.left + box.width / 2 - navBox.left, width: box.width }
+      }),
+    }
   }
 
   const onNavPointerDown = (event) => {
@@ -100,11 +123,12 @@ function SiteNav() {
     if (!nav || !lens || event.button !== 0) return
     if (lens.style.opacity === '0') return
     const navBox = nav.getBoundingClientRect()
+    const lensBox = lens.getBoundingClientRect()
     dragState.current = {
       pointerId: event.pointerId,
       startX: event.clientX,
-      startLeft: lens.getBoundingClientRect().left - navBox.left,
-      latest: null,
+      startCenter: lensBox.left - navBox.left + lensBox.width / 2,
+      center: null,
       navBox,
       dragging: false,
     }
@@ -120,15 +144,42 @@ function SiteNav() {
       if (Math.abs(delta) < 5) return
       state.dragging = true
       lens.dataset.dragging = 'true'
+      nav.dataset.dragging = 'true'
       nav.setPointerCapture(state.pointerId)
     }
-    const links = Array.from(nav.querySelectorAll('.nav-link'))
-    const first = links[0].getBoundingClientRect()
-    const last = links[links.length - 1].getBoundingClientRect()
-    const min = first.left - state.navBox.left
-    const max = last.right - state.navBox.left - lens.offsetWidth
-    state.latest = Math.min(max, Math.max(min, state.startLeft + delta))
-    lens.style.setProperty('--x', `${state.latest}px`)
+    const { links, metrics } = linkMetrics(nav, state.navBox)
+    const min = metrics[0].center
+    const max = metrics[metrics.length - 1].center
+    state.center = Math.min(max, Math.max(min, state.startCenter + delta))
+
+    // The lens width morphs between the two segments its center sits between.
+    let width = metrics[0].width
+    for (let i = 0; i < metrics.length - 1; i += 1) {
+      const a = metrics[i]
+      const b = metrics[i + 1]
+      if (state.center >= b.center) {
+        width = b.width
+      } else if (state.center >= a.center) {
+        const t = (state.center - a.center) / (b.center - a.center)
+        width = a.width + t * (b.width - a.width)
+        break
+      }
+    }
+    lens.style.setProperty('--w', `${width}px`)
+    lens.style.setProperty('--x', `${state.center - width / 2}px`)
+
+    let nearestIndex = 0
+    let best = Infinity
+    metrics.forEach((metric, index) => {
+      const distance = Math.abs(metric.center - state.center)
+      if (distance < best) {
+        best = distance
+        nearestIndex = index
+      }
+    })
+    links.forEach((link, index) => {
+      link.classList.toggle('is-lens-target', index === nearestIndex)
+    })
   }
 
   const onNavPointerUp = () => {
@@ -136,21 +187,26 @@ function SiteNav() {
     dragState.current = null
     const nav = navRef.current
     const lens = lensRef.current
-    if (!state || !state.dragging || state.latest === null || !nav || !lens) return
+    if (!nav || !lens) return
+    if (!state || !state.dragging || state.center === null) return
     lens.dataset.dragging = 'false'
+    nav.dataset.dragging = 'false'
     suppressClick.current = true
-    const links = Array.from(nav.querySelectorAll('.nav-link'))
-    const center = state.navBox.left + state.latest + lens.offsetWidth / 2
-    let nearest = links[0]
+    window.setTimeout(() => {
+      suppressClick.current = false
+    }, 0)
+    const { links, metrics } = linkMetrics(nav, state.navBox)
+    let nearestIndex = 0
     let best = Infinity
-    for (const link of links) {
-      const box = link.getBoundingClientRect()
-      const distance = Math.abs(box.left + box.width / 2 - center)
+    metrics.forEach((metric, index) => {
+      const distance = Math.abs(metric.center - state.center)
       if (distance < best) {
         best = distance
-        nearest = link
+        nearestIndex = index
       }
-    }
+    })
+    links.forEach((link) => link.classList.remove('is-lens-target'))
+    const nearest = links[nearestIndex]
     moveLens(nearest)
     if (routeForPathname(nearest.getAttribute('href')) !== activeRoute) {
       window.setTimeout(() => {

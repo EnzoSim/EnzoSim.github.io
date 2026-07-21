@@ -2883,12 +2883,26 @@
 
   .nav-lens[data-dragging="true"] {
     transition: none;
+    transform: translate(var(--x, 0px), -50%) scale(1.04);
   }
 
   .primary-nav .nav-link {
     touch-action: pan-y;
     user-select: none;
     -webkit-user-select: none;
+  }
+
+  .primary-nav[data-dragging="true"] .nav-link:hover {
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .primary-nav[data-dragging="true"] .nav-link {
+    color: var(--muted-foreground);
+  }
+
+  .primary-nav[data-dragging="true"] .nav-link.is-lens-target {
+    color: var(--foreground);
   }
 }
 
