@@ -240,6 +240,51 @@ function ProjectActions({ project }) {
   )
 }
 
+function ProjectObject({ slug }) {
+  if (slug === 'water-pricing') {
+    return (
+      <div className="project-object" aria-hidden="true">
+        <div className="object-steps-wrap">
+          <div className="object-steps">
+            <i />
+            <i />
+            <i />
+          </div>
+          <p className="object-caption">$ / m³</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (slug === 'fda-catalyst') {
+    return (
+      <div className="project-object" aria-hidden="true">
+        <div className="object-cal">
+          <p className="object-cal-head">90 days</p>
+          <div className="object-cal-grid">
+            {Array.from({ length: 15 }, (_, index) => (
+              <i className={index === 6 || index === 13 ? 'hot' : undefined} key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="project-object" aria-hidden="true">
+      <div className="object-cards">
+        <span className="object-card object-card-back" />
+        <span className="object-card object-card-front">
+          <span className="object-card-title" />
+          <span className="object-card-line" />
+          <span className="object-card-line" />
+        </span>
+      </div>
+    </div>
+  )
+}
+
 function WorkObject({ project }) {
   return (
     <article
@@ -247,16 +292,11 @@ function WorkObject({ project }) {
       className={`work-object work-object-${project.presentation}`}
       id={project.slug}
     >
-      <div className="work-object-label">
-        <span className="work-object-kind">{project.kind}</span>
-        <span className="work-object-context">{project.context}</span>
-      </div>
+      <ProjectObject slug={project.slug} />
       <div className="work-object-copy">
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
         <p>{project.description}</p>
-      </div>
-      <div className="work-object-foot">
-        {project.detail ? <p>{project.detail}</p> : null}
+        <p className="work-object-context">{project.context}</p>
         <ProjectActions project={project} />
       </div>
     </article>

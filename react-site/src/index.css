@@ -2153,9 +2153,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ambient-bubble,
   .home-hero::before,
-  .home-hero::after,
-  .projects-page::before,
-  .projects-page::after {
+  .home-hero::after {
     animation: none;
     transform: none;
     will-change: auto;
@@ -2230,38 +2228,10 @@
     padding: 0;
     overflow: clip;
     isolation: isolate;
-    background:
-      radial-gradient(circle at 13% 16%, rgb(190 207 181 / 20%), transparent 35%),
-      radial-gradient(circle at 87% 76%, rgb(153 181 163 / 14%), transparent 38%),
-      #fafbf8;
   }
 
   .route-page.projects-page {
     padding: 0;
-  }
-
-  .projects-page::before,
-  .projects-page::after {
-    position: absolute;
-    z-index: 0;
-    inset: -20%;
-    content: "";
-    pointer-events: none;
-    will-change: transform;
-  }
-
-  .projects-page::before {
-    background:
-      radial-gradient(ellipse 32% 25% at 23% 34%, rgb(255 255 252 / 86%) 0 36%, transparent 72%),
-      radial-gradient(ellipse 30% 36% at 73% 72%, rgb(78 121 98 / 12%) 0 34%, transparent 74%);
-    animation: ambient-orbit-a 22s ease-in-out infinite;
-  }
-
-  .projects-page::after {
-    background:
-      radial-gradient(ellipse 28% 24% at 78% 27%, rgb(255 255 255 / 76%) 0 35%, transparent 72%),
-      radial-gradient(ellipse 35% 28% at 38% 82%, rgb(181 204 178 / 18%) 0 35%, transparent 74%);
-    animation: ambient-orbit-b 27s ease-in-out infinite;
   }
 
   .projects-record {
@@ -2340,37 +2310,8 @@
     box-shadow: none;
   }
 
-  .projects-page .work-object-label {
-    display: flex;
-    min-width: 0;
-    grid-column: 1;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.65rem;
-    color: inherit;
-    letter-spacing: normal;
-    text-transform: none;
-  }
 
-  .projects-page .work-object-kind,
-  .projects-page .work-object-label .work-object-kind:first-child {
-    color: var(--evergreen);
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    font-weight: 640;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
 
-  .projects-page .work-object-context {
-    max-width: 7.5rem;
-    color: #686d65;
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 520;
-    line-height: 1.55;
-    letter-spacing: 0.045em;
-  }
 
   .projects-page .work-object-copy {
     display: flex;
@@ -2458,21 +2399,12 @@
       padding: clamp(2.25rem, 6vw, 2.85rem) 0;
     }
 
-    .projects-page .work-object-label {
-      margin-bottom: 1.05rem;
-      flex-direction: row;
-      align-items: baseline;
-      gap: 0.75rem 1.15rem;
-    }
 
-    .projects-page .work-object-context {
-      max-width: none;
-    }
 
     .projects-page .work-object-copy h2,
     .projects-page .work-object-standard .work-object-copy h2,
     .projects-page .work-object-offset .work-object-copy h2 {
-      font-size: clamp(2.45rem, 8vw, 3.5rem);
+      font-size: clamp(1.5rem, 4.5vw, 1.8rem);
     }
 
     .projects-page .work-object-foot {
@@ -2508,7 +2440,7 @@
     .projects-page .work-object-copy h2,
     .projects-page .work-object-standard .work-object-copy h2,
     .projects-page .work-object-offset .work-object-copy h2 {
-      font-size: clamp(2.2rem, 11vw, 2.85rem);
+      font-size: clamp(1.45rem, 6vw, 1.7rem);
     }
   }
 }
@@ -2530,15 +2462,6 @@
   .projects-page [data-slot="button"] {
     border-color: rgb(21 21 21 / 68%);
     background: #fff !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .projects-page::before,
-  .projects-page::after {
-    animation: none;
-    transform: none;
-    will-change: auto;
   }
 }
 
@@ -2680,5 +2603,221 @@
 
   .home-details .now-line [data-slot="button"] {
     margin-top: 0.3rem;
+  }
+}
+
+/* Projects: a crafted glass object beside each record, sibling to Reading's ledge. */
+@layer components {
+  .projects-page .projects-stage-heading h1 {
+    font-size: clamp(3.6rem, 10vw, 5.5rem);
+    font-weight: 620;
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+  }
+
+  .projects-record {
+    padding-top: 6.5rem;
+  }
+
+  .projects-page .projects-stage .work-object,
+  .projects-page .projects-stage .work-object-lead,
+  .projects-page .projects-stage .work-object-standard,
+  .projects-page .projects-stage .work-object-offset {
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    padding: 2.4rem 0 2.6rem;
+    align-items: center;
+    column-gap: 2.75rem;
+  }
+
+  .projects-page .work-object-copy {
+    gap: 0.6rem;
+  }
+
+  .projects-page .work-object-copy h2,
+  .projects-page .work-object-standard .work-object-copy h2,
+  .projects-page .work-object-offset .work-object-copy h2 {
+    max-width: 34rem;
+    font-size: clamp(1.45rem, 2vw, 1.8rem);
+    font-weight: 630;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+
+  .projects-page .work-object-copy p {
+    max-width: 33rem;
+    color: #50524d;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .projects-page .work-object-copy .work-object-context {
+    color: #6e716a;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 520;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .projects-page .work-object-copy .project-actions {
+    margin-top: 0.45rem;
+    justify-content: flex-start;
+  }
+
+  .project-object {
+    display: grid;
+    width: 8.25rem;
+    height: 8.25rem;
+    place-items: center;
+    border: 1px solid rgb(36 66 53 / 14%);
+    border-radius: 1.375rem;
+    background: rgb(255 255 255 / 62%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 96%),
+      0 18px 40px rgb(36 66 53 / 10%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
+  }
+
+  .object-steps {
+    display: flex;
+    height: 4rem;
+    align-items: flex-end;
+    gap: 0.45rem;
+  }
+
+  .object-steps i {
+    display: block;
+    width: 1rem;
+    border-radius: 0.25rem 0.25rem 0.15rem 0.15rem;
+    background: linear-gradient(180deg, #9db8a8, var(--evergreen));
+  }
+
+  .object-steps i:nth-child(1) { height: 1.4rem; opacity: 0.55; }
+  .object-steps i:nth-child(2) { height: 2.4rem; opacity: 0.75; }
+  .object-steps i:nth-child(3) { height: 3.6rem; }
+
+  .object-caption {
+    margin-top: 0.5rem;
+    color: #4b5048;
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .object-cal {
+    width: 5.25rem;
+  }
+
+  .object-cal-head {
+    padding: 0.3rem 0;
+    border-radius: 0.45rem 0.45rem 0 0;
+    color: #f1f5f0;
+    background: var(--evergreen);
+    font-family: var(--font-mono);
+    font-size: 0.53rem;
+    letter-spacing: 0.14em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .object-cal-grid {
+    display: grid;
+    padding: 0.55rem 0.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    gap: 0.32rem;
+    border: 1px solid rgb(36 66 53 / 18%);
+    border-top: 0;
+    border-radius: 0 0 0.45rem 0.45rem;
+    background: #fff;
+  }
+
+  .object-cal-grid i {
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: rgb(36 66 53 / 14%);
+  }
+
+  .object-cal-grid i.hot {
+    background: var(--evergreen);
+    box-shadow: 0 0 0 2.5px rgb(36 66 53 / 22%);
+  }
+
+  .object-cards {
+    position: relative;
+    width: 5.25rem;
+    height: 4.5rem;
+  }
+
+  .object-card {
+    position: absolute;
+    inset: 0;
+    display: block;
+    border: 1px solid rgb(36 66 53 / 18%);
+    border-radius: 0.55rem;
+    background: #fff;
+    box-shadow: 0 6px 14px rgb(36 66 53 / 8%);
+  }
+
+  .object-card-back {
+    background: #f2f4ee;
+    transform: rotate(-4deg) translate(-0.45rem, 0.3rem);
+  }
+
+  .object-card-front {
+    transform: rotate(2deg) translate(0.35rem, -0.1rem);
+  }
+
+  .object-card-title {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.85rem;
+    left: 0.85rem;
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    background: var(--evergreen);
+    opacity: 0.75;
+  }
+
+  .object-card-line {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.6rem;
+    left: 0.85rem;
+    height: 0.19rem;
+    border-radius: 0.1rem;
+    background: rgb(21 21 21 / 18%);
+  }
+
+  .object-card-line + .object-card-line {
+    top: 2.05rem;
+    right: 2.35rem;
+  }
+}
+
+@media (max-width: 63.999rem) {
+  @layer components {
+    .projects-page .projects-stage .work-object,
+    .projects-page .projects-stage .work-object-lead,
+    .projects-page .projects-stage .work-object-standard,
+    .projects-page .projects-stage .work-object-offset {
+      display: block;
+    }
+
+    .project-object {
+      margin-bottom: 1.15rem;
+    }
+  }
+}
+
+/* Both route pages land their heading at the same level. */
+@layer components {
+  .route-page.reading-page {
+    padding-top: 0;
   }
 }
