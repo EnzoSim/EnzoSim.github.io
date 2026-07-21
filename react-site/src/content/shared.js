@@ -7,6 +7,7 @@ export const fdaApiUrl = 'https://fda-catalyst-api-production.up.railway.app/bpi
 export const wikiLiveUrl = 'https://wiki.enzosimier.com'
 export const wikiRepoUrl = 'https://github.com/EnzoSim/wiki-project'
 export const linkedinUrl = 'https://linkedin.com/in/enzo-simier'
+export const bookingUrl = 'https://calendar.app.google/tnALkaQGRdLaDPqB6'
 export const contactEmail = 'enzo.simier@hec.ca'
 export const cvUrl = '/Enzo_Simier_CV.pdf'
 export const profileImage = { src: profileSrc, width: 430, height: 481 }

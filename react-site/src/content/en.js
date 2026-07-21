@@ -1,4 +1,5 @@
 import {
+  bookingUrl,
   contactEmail,
   cvUrl,
   fdaLiveUrl,
@@ -58,6 +59,7 @@ export const en = {
       { label: 'CV', href: cvUrl, external: false },
       { label: 'LinkedIn', href: linkedinUrl, external: true },
       { label: 'Email', href: `mailto:${contactEmail}`, external: false },
+      { label: 'Book a call', href: bookingUrl, external: true },
     ],
   },
   projects: {

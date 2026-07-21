@@ -65,6 +65,10 @@
   --glass-edge: rgb(36 66 53 / 14%);
   --glass-highlight: rgb(255 255 255 / 96%);
   --glass-shadow: rgb(36 66 53 / 10%);
+
+  /* One glass material: constant blur and saturation per tier; surfaces vary only in opacity. */
+  --glass-filter-pill: blur(18px) saturate(120%);
+  --glass-filter-panel: blur(22px) saturate(120%);
   --radius: 0.625rem;
 }
 
@@ -154,8 +158,8 @@
       inset 0 1px 0 var(--glass-highlight),
       inset 0 -1px 0 rgb(36 66 53 / 5%),
       0 14px 34px rgb(36 66 53 / 7%);
-    -webkit-backdrop-filter: blur(24px) saturate(128%);
-    backdrop-filter: blur(24px) saturate(128%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
     pointer-events: auto;
   }
 
@@ -218,8 +222,8 @@
     border-radius: 999px;
     background: rgb(255 255 255 / 18%);
     box-shadow: inset 0 1px 0 rgb(255 255 255 / 65%);
-    -webkit-backdrop-filter: blur(14px) saturate(116%);
-    backdrop-filter: blur(14px) saturate(116%);
+    -webkit-backdrop-filter: var(--glass-filter-pill);
+    backdrop-filter: var(--glass-filter-pill);
   }
 
   .nav-link {
@@ -270,8 +274,8 @@
       inset 0 1px 0 var(--glass-highlight),
       inset 0 -1px 0 rgb(21 21 21 / 5%),
       0 11px 25px rgb(36 66 53 / 8%);
-    -webkit-backdrop-filter: blur(18px) saturate(122%);
-    backdrop-filter: blur(18px) saturate(122%);
+    -webkit-backdrop-filter: var(--glass-filter-pill);
+    backdrop-filter: var(--glass-filter-pill);
   }
 
   [data-slot="button"][data-variant="ghost"] {
@@ -350,8 +354,8 @@
     box-shadow:
       inset 0 1px 0 var(--glass-highlight),
       0 24px 58px rgb(36 66 53 / 10%);
-    -webkit-backdrop-filter: blur(24px) saturate(118%);
-    backdrop-filter: blur(24px) saturate(118%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
   }
 
   .portrait-lens::after {
@@ -616,7 +620,7 @@
   /* A web approximation of liquid glass, used here as a physical shelf. */
   .bookcase {
     position: relative;
-    width: min(100%, 49rem);
+    width: min(100%, 36rem);
     margin-inline: auto;
     padding-top: 1.05rem;
     isolation: isolate;
@@ -638,8 +642,8 @@
       inset 0 1px 0 rgb(255 255 255 / 98%),
       inset 0 -4px 9px rgb(36 66 53 / 8%),
       0 9px 20px rgb(36 66 53 / 7%);
-    -webkit-backdrop-filter: blur(20px) saturate(125%);
-    backdrop-filter: blur(20px) saturate(125%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
     content: "";
   }
 
@@ -662,8 +666,8 @@
       inset -1.1rem 0 1.4rem -1.3rem rgb(36 66 53 / 28%),
       inset 0 1px 0 rgb(255 255 255 / 95%),
       inset 0 -2rem 2.8rem -2.5rem rgb(36 66 53 / 25%);
-    -webkit-backdrop-filter: blur(22px) saturate(118%);
-    backdrop-filter: blur(22px) saturate(118%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
   }
 
   .bookcase-bay::before {
@@ -691,8 +695,8 @@
     box-shadow:
       inset 1px 0 0 rgb(255 255 255 / 96%),
       0 8px 18px rgb(36 66 53 / 7%);
-    -webkit-backdrop-filter: blur(18px) saturate(122%);
-    backdrop-filter: blur(18px) saturate(122%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
     pointer-events: none;
   }
 
@@ -881,8 +885,8 @@
       inset 0 2px 0 rgb(255 255 255 / 98%),
       inset 0 -5px 10px rgb(36 66 53 / 8%),
       0 16px 28px rgb(36 66 53 / 10%);
-    -webkit-backdrop-filter: blur(20px) saturate(126%);
-    backdrop-filter: blur(20px) saturate(126%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
     transform: perspective(580px) rotateX(17deg);
     transform-origin: 50% 0;
   }
@@ -957,7 +961,7 @@
 
   .project-page-hero {
     display: grid;
-    padding: 4.5rem 0 5rem;
+    padding: 4.5rem 0 2.75rem;
     gap: 2.75rem;
   }
 
@@ -990,8 +994,8 @@
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 93%),
       0 20px 45px rgb(36 66 53 / 7%);
-    -webkit-backdrop-filter: blur(18px) saturate(115%);
-    backdrop-filter: blur(18px) saturate(115%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
   }
 
   .snapshot-note {
@@ -1005,6 +1009,10 @@
     flex-direction: column;
     gap: 1.5rem;
     padding-top: 2rem;
+  }
+
+  .project-page .project-content-section {
+    margin-top: 3.25rem;
   }
 
   .project-section-heading {
@@ -1377,8 +1385,8 @@
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 88%),
       0 8px 22px rgb(36 66 53 / 7%);
-    -webkit-backdrop-filter: blur(18px) saturate(115%);
-    backdrop-filter: blur(18px) saturate(115%);
+    -webkit-backdrop-filter: var(--glass-filter-pill);
+    backdrop-filter: var(--glass-filter-pill);
   }
 
   .nav-link:hover {
@@ -1583,8 +1591,8 @@
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 94%),
       0 24px 65px rgb(36 66 53 / 15%);
-    -webkit-backdrop-filter: blur(22px) saturate(112%);
-    backdrop-filter: blur(22px) saturate(112%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
   }
 
   .home-hero .portrait-lens::after {
@@ -2600,7 +2608,6 @@
   }
 
   .projects-page [data-slot="button"] {
-    border-color: rgb(255 255 255 / 62%);
     background: rgb(255 255 255 / 56%) !important;
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 96%),
