@@ -42,10 +42,6 @@ function SiteNav() {
   return (
     <header className="site-header">
       <div className="site-nav-shell">
-        <a className="nav-brand" href="/">
-          <span className="brand-mark">ES</span>
-          <span className="sr-only">Enzo Simier</span>
-        </a>
         <nav className="primary-nav" aria-label={t.a11y.primaryNavigation}>
           {t.nav.items.map((item) => (
             <a
@@ -274,10 +270,11 @@ function Book({ book }) {
     '--book-accent': book.design.accent,
   }
 
+  const leanClass = book.presentation.lean ? ' shelf-book-item-lean' : ''
+
   return (
-    <li className="shelf-book-item" style={style}>
+    <li className={`shelf-book-item${leanClass}`} style={style}>
       <a
-        aria-describedby={`${book.slug}-book-details`}
         aria-label={`Open ${book.title} by ${book.author}`}
         className="shelf-book-link"
         href={book.href}
@@ -292,11 +289,29 @@ function Book({ book }) {
             <span className="shelf-book-glint" />
           </span>
         </span>
-        <span className="sr-only" id={`${book.slug}-book-details`}>
-          {book.year}. {book.note}
-        </span>
       </a>
     </li>
+  )
+}
+
+function BookNotes() {
+  return (
+    <ul className="shelf-notes">
+      {t.library.books.map((book) => (
+        <li key={book.slug}>
+          <span
+            aria-hidden="true"
+            className="shelf-note-dot"
+            style={{ '--book-spine': book.design.spine }}
+          />
+          <div className="shelf-note-id">
+            <b>{book.spineTitle ?? book.title}</b>
+            <span>{`${book.spineAuthor ?? book.author} · ${book.year}`}</span>
+          </div>
+          <p>{book.note}</p>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -344,17 +359,14 @@ function ReadingPage() {
           <RouteHeading title={t.library.title} lede={t.library.lede} />
 
           <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
-            <div className="bookcase">
-              <div className="bookcase-bay">
-                <span className="bookcase-side bookcase-side-left" aria-hidden="true" />
+            <div className="ledge-composition">
+              <div className="ledge-stage">
                 <ul className="shelf-books">
                   {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
                 </ul>
-                <span className="bookcase-side bookcase-side-right" aria-hidden="true" />
+                <div className="ledge-plank" aria-hidden="true" />
               </div>
-              <div className="bookcase-shelf" aria-hidden="true">
-                <span className="bookcase-shelf-edge" />
-              </div>
+              <BookNotes />
             </div>
           </section>
 

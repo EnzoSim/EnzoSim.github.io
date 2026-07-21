@@ -186,7 +186,7 @@ export const en = {
           ink: '#f7efe1',
           accent: '#c7a66c',
         },
-        presentation: { spineWidth: 64, height: 290 },
+        presentation: { spineWidth: 64, height: 290, lean: true },
       },
     ],
     subscriptions: {
