@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef } from 'react'
 import { ArrowUpRight, Circle } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -38,17 +38,148 @@ function SkipLink() {
 function SiteNav() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
   const activeRoute = routeForPathname(pathname)
+  const navRef = useRef(null)
+  const lensRef = useRef(null)
+
+  const moveLens = useCallback((target) => {
+    const nav = navRef.current
+    const lens = lensRef.current
+    if (!nav || !lens) return
+    if (!target) {
+      lens.style.opacity = '0'
+      return
+    }
+    const navBox = nav.getBoundingClientRect()
+    const box = target.getBoundingClientRect()
+    lens.style.opacity = '1'
+    lens.style.setProperty('--x', `${box.left - navBox.left}px`)
+    lens.style.setProperty('--w', `${box.width}px`)
+  }, [])
+
+  const placeLens = useCallback(() => {
+    moveLens(navRef.current?.querySelector('[aria-current="page"]'))
+  }, [moveLens])
+
+  // The lens must sit on the active tab before first paint so cross-document
+  // view transitions snapshot it in place.
+  useLayoutEffect(() => {
+    placeLens()
+  }, [placeLens])
+
+  useEffect(() => {
+    const ready = () => {
+      placeLens()
+      window.requestAnimationFrame(() => {
+        if (lensRef.current) lensRef.current.dataset.ready = 'true'
+      })
+    }
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(ready)
+    } else {
+      ready()
+    }
+    window.addEventListener('resize', placeLens)
+    return () => window.removeEventListener('resize', placeLens)
+  }, [placeLens])
+
+  const dragState = useRef(null)
+  const suppressClick = useRef(false)
+
+  const onNavClick = (event) => {
+    if (suppressClick.current) {
+      suppressClick.current = false
+      event.preventDefault()
+      return
+    }
+    moveLens(event.currentTarget)
+  }
+
+  const onNavPointerDown = (event) => {
+    const nav = navRef.current
+    const lens = lensRef.current
+    if (!nav || !lens || event.button !== 0) return
+    if (lens.style.opacity === '0') return
+    const navBox = nav.getBoundingClientRect()
+    dragState.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startLeft: lens.getBoundingClientRect().left - navBox.left,
+      latest: null,
+      navBox,
+      dragging: false,
+    }
+  }
+
+  const onNavPointerMove = (event) => {
+    const state = dragState.current
+    const nav = navRef.current
+    const lens = lensRef.current
+    if (!state || !nav || !lens) return
+    const delta = event.clientX - state.startX
+    if (!state.dragging) {
+      if (Math.abs(delta) < 5) return
+      state.dragging = true
+      lens.dataset.dragging = 'true'
+      nav.setPointerCapture(state.pointerId)
+    }
+    const links = Array.from(nav.querySelectorAll('.nav-link'))
+    const first = links[0].getBoundingClientRect()
+    const last = links[links.length - 1].getBoundingClientRect()
+    const min = first.left - state.navBox.left
+    const max = last.right - state.navBox.left - lens.offsetWidth
+    state.latest = Math.min(max, Math.max(min, state.startLeft + delta))
+    lens.style.setProperty('--x', `${state.latest}px`)
+  }
+
+  const onNavPointerUp = () => {
+    const state = dragState.current
+    dragState.current = null
+    const nav = navRef.current
+    const lens = lensRef.current
+    if (!state || !state.dragging || state.latest === null || !nav || !lens) return
+    lens.dataset.dragging = 'false'
+    suppressClick.current = true
+    const links = Array.from(nav.querySelectorAll('.nav-link'))
+    const center = state.navBox.left + state.latest + lens.offsetWidth / 2
+    let nearest = links[0]
+    let best = Infinity
+    for (const link of links) {
+      const box = link.getBoundingClientRect()
+      const distance = Math.abs(box.left + box.width / 2 - center)
+      if (distance < best) {
+        best = distance
+        nearest = link
+      }
+    }
+    moveLens(nearest)
+    if (routeForPathname(nearest.getAttribute('href')) !== activeRoute) {
+      window.setTimeout(() => {
+        window.location.href = nearest.href
+      }, 160)
+    }
+  }
 
   return (
     <header className="site-header">
       <div className="site-nav-shell">
-        <nav className="primary-nav" aria-label={t.a11y.primaryNavigation}>
+        <nav
+          aria-label={t.a11y.primaryNavigation}
+          className="primary-nav"
+          onPointerCancel={onNavPointerUp}
+          onPointerDown={onNavPointerDown}
+          onPointerMove={onNavPointerMove}
+          onPointerUp={onNavPointerUp}
+          ref={navRef}
+        >
+          <span aria-hidden="true" className="nav-lens" ref={lensRef} />
           {t.nav.items.map((item) => (
             <a
               aria-current={activeRoute === routeForPathname(item.href) ? 'page' : undefined}
               className="liquid-pill nav-link"
+              draggable={false}
               href={item.href}
               key={item.href}
+              onClick={onNavClick}
             >
               {item.label}
             </a>
