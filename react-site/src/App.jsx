@@ -154,6 +154,12 @@ function AboutPage() {
               <div className="now-line" id="now">
                 <span>{t.home.now.label}</span>
                 <p>{t.home.now.text}</p>
+                <Button asChild size="sm" variant="ghost">
+                  <a href={t.home.now.action.href} {...externalProps}>
+                    {t.home.now.action.label}
+                    <ExternalArrow />
+                  </a>
+                </Button>
               </div>
               <p className="home-about">{t.home.personal}</p>
             </div>
