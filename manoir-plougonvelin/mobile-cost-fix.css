@@ -1,0 +1,82 @@
+/* Mobile layout corrections for the recurring-cost section. */
+.ten-year {
+  align-items: stretch;
+}
+
+.ten-year-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  min-width: 0;
+}
+
+.ten-year-card .substat {
+  display: block !important;
+  width: 100%;
+  margin: 0 !important;
+  line-height: 1.35 !important;
+  white-space: normal;
+}
+
+.ten-year-card > b {
+  display: block !important;
+  width: 100%;
+  margin: 0 !important;
+  font-size: clamp(28px, 3.4vw, 34px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.045em !important;
+  white-space: nowrap !important;
+}
+
+.ten-year-card > p {
+  display: block !important;
+  width: 100%;
+  margin: 2px 0 0 !important;
+}
+
+@media (max-width: 760px) {
+  .ten-year {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .ten-year-card {
+    padding: 18px !important;
+    gap: 10px !important;
+  }
+
+  .ten-year-card > b {
+    font-size: clamp(31px, 8.2vw, 38px) !important;
+  }
+
+  #depenses .callout {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+    gap: 10px !important;
+  }
+
+  #depenses .callout strong {
+    display: block !important;
+    max-width: none !important;
+    font-size: clamp(23px, 6.5vw, 30px) !important;
+    line-height: 1.16 !important;
+    letter-spacing: -0.03em;
+    white-space: normal !important;
+  }
+
+  #depenses .callout span {
+    display: block !important;
+    max-width: none !important;
+    font-size: 13px !important;
+    line-height: 1.58 !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .ten-year-card > b {
+    font-size: 30px !important;
+  }
+}
