@@ -28,21 +28,60 @@
       legend.innerHTML = '<span>Fond cartographique réel</span><span>Localisation communale, non cadastrale</span><span>Cliquer sur les points pour le contexte</span>';
     }
 
+    const isMobile = window.matchMedia('(max-width: 560px)').matches;
     const map = L.map('regionRealMap', {
       scrollWheelZoom: false,
       zoomControl: false,
       attributionControl: true,
-      preferCanvas: true
+      preferCanvas: true,
+      dragging: true,
+      tap: true
     });
 
-    L.control.zoom({ position: 'topright' }).addTo(map);
-    L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map);
+    if (!isMobile) {
+      L.control.zoom({ position: 'topright' }).addTo(map);
+      L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map);
+    }
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      subdomains: 'abcd',
-      maxZoom: 19,
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
-    }).addTo(map);
+    const neutralErrorTile = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><rect width="256" height="256" fill="#e7ecec"/></svg>'
+    );
+
+    const esri = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+      {
+        maxZoom: 16,
+        errorTileUrl: neutralErrorTile,
+        attribution: 'Tiles &copy; Esri'
+      }
+    );
+
+    const labels = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+      {
+        maxZoom: 16,
+        errorTileUrl: neutralErrorTile,
+        attribution: 'Esri, HERE, Garmin, FAO, NOAA, USGS'
+      }
+    );
+
+    const osmFallback = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      errorTileUrl: neutralErrorTile,
+      attribution: '&copy; OpenStreetMap contributors'
+    });
+
+    let fallbackActive = false;
+    esri.on('tileerror', function () {
+      if (fallbackActive) return;
+      fallbackActive = true;
+      map.removeLayer(esri);
+      map.removeLayer(labels);
+      osmFallback.addTo(map);
+    });
+
+    esri.addTo(map);
+    labels.addTo(map);
 
     const markers = [];
     places.forEach(function (place) {
@@ -99,8 +138,8 @@
     }).addTo(map).bindPopup('<strong>Zone de lecture</strong><br>Repère communal et littoral, sans afficher l’adresse exacte du manoir.');
 
     const group = L.featureGroup(markers);
-    map.fitBounds(group.getBounds().pad(0.17));
-    setTimeout(function () { map.invalidateSize(); }, 150);
+    map.fitBounds(group.getBounds().pad(isMobile ? 0.12 : 0.17));
+    setTimeout(function () { map.invalidateSize(); }, 180);
     return true;
   }
 
