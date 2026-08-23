@@ -379,8 +379,10 @@
 /* ------------------------------------------------------------------------
    05 · Home.
 
-   One fold: name / role / now / three equal index rows.
-   Not a left-rail poster. Not a thesis masthead.
+   An asymmetric identity spread: copy column on the left, a real
+   photograph on the right at desktop width. On phones the photograph runs
+   the full measure between the name block and the Now tape. Left-anchored
+   throughout — not a centered stack, not a thumbnail.
    ------------------------------------------------------------------------ */
 @layer components {
   .home-shell {
@@ -389,12 +391,16 @@
 
   .home-identity {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-    column-gap: 1rem;
+    grid-template-areas:
+      "head"
+      "figure"
+      "now"
+      "about";
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .home-copy {
+    grid-area: head;
     min-width: 0;
   }
 
@@ -432,32 +438,60 @@
     text-decoration: underline;
   }
 
+  /* The portrait is a photograph behind a thin glass lens, not a stamp. */
   .home-figure {
-    width: 3.35rem;
-    margin: 0.15rem 0 0;
+    grid-area: figure;
+    width: 100%;
+    margin: 1.05rem 0 0;
   }
 
-  .home-stamp {
-    width: 3.35rem;
-    height: 3.75rem;
-    border: 1px solid var(--line);
-    border-radius: 0.2rem;
+  .portrait-lens {
+    position: relative;
+    aspect-ratio: 715 / 800;
+    padding: 0.3rem;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 74%);
+    border-radius: 1rem;
+    background: rgb(255 255 255 / 40%);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      inset 0 -1px 0 rgb(32 36 46 / 7%),
+      0 18px 44px rgb(32 36 46 / 13%);
+    -webkit-backdrop-filter: var(--glass-filter-panel);
+    backdrop-filter: var(--glass-filter-panel);
+  }
+
+  .portrait-lens::after {
+    position: absolute;
+    inset: 0.3rem;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 0.72rem;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 58%);
+    content: "";
+    pointer-events: none;
+  }
+
+  .portrait-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.72rem;
     object-fit: cover;
     object-position: center;
   }
 
   .portrait-caption {
-    margin-top: 0.28rem;
+    margin-top: 0.5rem;
     color: var(--muted-foreground);
     font-family: var(--font-mono);
-    font-size: 0.52rem;
-    letter-spacing: 0.08em;
+    font-size: 0.56rem;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
   }
 
   /* Now is a tape, not a glass card. */
   .now-tape {
-    margin-top: 1.05rem;
+    grid-area: now;
+    margin-top: 1.15rem;
     padding: 0.7rem 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
@@ -471,18 +505,14 @@
     line-height: 1.45;
   }
 
-  .home-index {
-    margin-top: 1.05rem;
-  }
-
-  .home-index .page-kicker,
   .now-tape .page-kicker {
     margin: 0 0 0.15rem;
   }
 
   .home-about {
+    grid-area: about;
     max-width: 36rem;
-    margin: 1.35rem 0 0;
+    margin: 1.15rem 0 0;
     color: var(--body-copy);
     font-size: 0.88rem;
     line-height: 1.55;
@@ -554,13 +584,27 @@
       font-size: 1.7rem;
     }
 
-    .home-figure {
-      width: 3.7rem;
+    /* The photograph becomes a true right-hand column beside the copy.
+       A trailing 1fr row absorbs any height the figure has over the text
+       stack, so head / now / about keep their own rhythm. */
+    .home-identity {
+      grid-template-areas:
+        "head figure"
+        "now figure"
+        "about figure"
+        ". figure";
+      grid-template-columns: minmax(0, 1fr) 16.5rem;
+      grid-template-rows: auto auto auto 1fr;
+      align-items: start;
+      column-gap: 2rem;
     }
 
-    .home-stamp {
-      width: 3.7rem;
-      height: 4.15rem;
+    .home-figure {
+      margin-top: 0.2rem;
+    }
+
+    .portrait-caption {
+      font-size: 0.58rem;
     }
 
     .home-record {
@@ -622,8 +666,7 @@
   }
 
   .index-field,
-  .index-context,
-  .index-meta {
+  .index-context {
     margin: 0;
     color: var(--muted-foreground);
     font-family: var(--font-mono);
@@ -674,18 +717,6 @@
 
 @media (min-width: 40rem) {
   @layer components {
-    .home-index .index-row {
-      grid-template-columns: minmax(9.5rem, 0.7fr) minmax(0, 1.3fr);
-      align-items: baseline;
-      column-gap: 1rem;
-      padding: 0.58rem 0;
-    }
-
-    .home-index .index-meta {
-      justify-self: end;
-      text-align: right;
-    }
-
     .projects-page .index-row {
       grid-template-columns: minmax(0, 1.15fr) minmax(7rem, 0.45fr);
       align-items: start;
@@ -1399,7 +1430,8 @@
 
 @media (prefers-reduced-transparency: reduce) {
   .ledge-plank,
-  .project-snapshot {
+  .project-snapshot,
+  .portrait-lens {
     background: #fff !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -1409,7 +1441,7 @@
 @media (prefers-contrast: more) {
   .ledge-plank,
   .project-snapshot,
-  .home-stamp {
+  .portrait-lens {
     border-color: rgb(21 21 21 / 55%) !important;
     background: #fff !important;
     -webkit-backdrop-filter: none !important;

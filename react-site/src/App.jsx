@@ -149,14 +149,8 @@ function QuietRecord() {
   )
 }
 
-function projectRowHref(project, { onHome }) {
-  if (project.href) return project.href
-  if (onHome) return `/projects/#${project.slug}`
-  return null
-}
-
-function IndexRow({ project, showNotes = false, onHome = false }) {
-  const href = projectRowHref(project, { onHome })
+function IndexRow({ project }) {
+  const href = project.href
   const isExternal = Boolean(href && href.startsWith('http'))
 
   return (
@@ -176,17 +170,11 @@ function IndexRow({ project, showNotes = false, onHome = false }) {
             project.title
           )}
         </h2>
-        {showNotes && project.note ? <p className="index-note">{project.note}</p> : null}
+        {project.note ? <p className="index-note">{project.note}</p> : null}
       </div>
-      {onHome ? (
-        <p className="index-meta">{`${project.field} · ${project.context}`}</p>
-      ) : (
-        <>
-          <p className="index-field">{project.field}</p>
-          <p className="index-context">{project.context}</p>
-        </>
-      )}
-      {showNotes ? <ProjectTextActions project={project} /> : null}
+      <p className="index-field">{project.field}</p>
+      <p className="index-context">{project.context}</p>
+      <ProjectTextActions project={project} />
     </article>
   )
 }
@@ -222,16 +210,11 @@ function ProjectTextActions({ project }) {
   )
 }
 
-function ProjectIndex({ items, showNotes = false, onHome = false }) {
+function ProjectIndex({ items }) {
   return (
     <div className="index-list">
       {items.map((project) => (
-        <IndexRow
-          key={project.slug}
-          onHome={onHome}
-          project={project}
-          showNotes={showNotes}
-        />
+        <IndexRow key={project.slug} project={project} />
       ))}
     </div>
   )
@@ -247,31 +230,30 @@ function AboutPage() {
             <p className="home-role">{t.home.role}</p>
             <ContactLinks />
           </div>
+
           <figure className="home-figure">
-            <img
-              alt={t.a11y.portraitAlt}
-              className="home-stamp"
-              decoding="async"
-              fetchPriority="high"
-              height={profileImage.height}
-              src={profileImage.src}
-              width={profileImage.width}
-            />
+            <div className="portrait-lens">
+              <img
+                alt={t.a11y.portraitAlt}
+                className="portrait-photo"
+                decoding="async"
+                fetchPriority="high"
+                height={profileImage.height}
+                src={profileImage.src}
+                width={profileImage.width}
+              />
+            </div>
             <figcaption className="portrait-caption">{t.home.portraitCaption}</figcaption>
           </figure>
+
+          <section className="now-tape" id="now" aria-labelledby="now-label">
+            <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
+            <p>{t.home.now.text}</p>
+          </section>
+
+          <p className="home-about">{t.home.personal}</p>
         </section>
 
-        <section className="now-tape" id="now" aria-labelledby="now-label">
-          <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
-          <p>{t.home.now.text}</p>
-        </section>
-
-        <section className="home-index" aria-labelledby="home-index-label">
-          <h2 className="page-kicker" id="home-index-label">{t.home.indexLabel}</h2>
-          <ProjectIndex items={t.projects.items} onHome />
-        </section>
-
-        <p className="home-about">{t.home.personal}</p>
         <QuietRecord />
       </div>
     </Shell>
@@ -292,7 +274,7 @@ function ProjectsPage() {
     <Shell className="route-page projects-page" showMark>
       <section className="page-shell route-shell" aria-labelledby="projects-title">
         <RouteHead id="projects-title" lede={t.projects.lede} title={t.projects.title} />
-        <ProjectIndex items={t.projects.items} showNotes />
+        <ProjectIndex items={t.projects.items} />
       </section>
     </Shell>
   )
