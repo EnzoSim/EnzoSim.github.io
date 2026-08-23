@@ -477,10 +477,15 @@
     }
 
     /* Left-weighted, like a working page: content starts at the rail's edge
-       and the air lives on the right. */
+       and the air lives on the right. Tailwind hoists media blocks after all
+       base rules, so Home's wider shell must be restated here to win. */
     .page-shell {
       width: min(100%, var(--shell-max));
       margin-inline: 0;
+    }
+
+    .home-shell {
+      width: min(100%, var(--home-max));
     }
   }
 }
@@ -692,10 +697,11 @@
       font-size: clamp(1.7rem, 2.6vw, 2rem);
     }
 
+    /* Same template as the hero, so Education aligns under the plate. */
     .home-record {
       margin-top: 2.5rem;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      column-gap: 2.25rem;
+      grid-template-columns: minmax(0, 1fr) var(--plate-w);
+      column-gap: clamp(1.9rem, 4.5vw, 3.25rem);
     }
 
     .record-list li {
