@@ -81,6 +81,10 @@
 
   --radius: 0.375rem;
   --shell-max: 40rem;
+  --home-max: 58rem;
+  --frame-max: 76rem;
+  --rail-w: 8.25rem;
+  --plate-w: clamp(19rem, 34vw, 26.5rem);
 }
 
 /* ------------------------------------------------------------------------
@@ -172,10 +176,12 @@
 }
 
 /* ------------------------------------------------------------------------
-   02 · Header and nav.
+   02 · Chrome: the left rail.
 
-   A working strip, not a floating island. Routes sit on paper, left-aligned
-   on Home, trailing the name on inner pages. Active = copper tick, no pill.
+   Corner-anchored, not a centered pill island. On phones the nav is a plain
+   left-aligned strip; from 64rem the rail sticks to the left edge with the
+   routes stacked, a copper tick in the gutter, and the © in the bottom
+   corner. Active = copper tick, no pill, ever.
    ------------------------------------------------------------------------ */
 @layer components {
   .skip-link {
@@ -192,21 +198,19 @@
     background: #fff;
   }
 
-  .site-header {
+  .site-rail {
     position: relative;
     z-index: 40;
     width: 100%;
-    padding: max(0.35rem, env(safe-area-inset-top)) 0 0;
+    padding: max(0.35rem, env(safe-area-inset-top)) 1rem 0;
     background: var(--paper);
     border: 0;
     box-shadow: none;
   }
 
-  .site-mast {
+  .rail-top {
     display: flex;
-    width: min(calc(100% - 2rem), var(--shell-max));
     min-height: 2.6rem;
-    margin-inline: auto;
     align-items: baseline;
     justify-content: flex-start;
     gap: 1.25rem;
@@ -268,6 +272,10 @@
     color: var(--foreground);
   }
 
+  .rail-note {
+    display: none;
+  }
+
   .nav-link:focus-visible,
   .site-mark:focus-visible,
   .shelf-book-link:focus-visible,
@@ -277,6 +285,70 @@
   .contact-line a:focus-visible {
     outline: 2px solid var(--copper);
     outline-offset: 3px;
+  }
+}
+
+@media (min-width: 64rem) {
+  @layer components {
+    .site-rail {
+      position: sticky;
+      top: 0;
+      display: flex;
+      height: 100dvh;
+      padding: max(1.6rem, env(safe-area-inset-top)) 0 1.4rem;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .rail-top {
+      display: block;
+      min-height: 0;
+      border-bottom: 0;
+    }
+
+    .site-mark {
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .primary-nav {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.05rem;
+    }
+
+    .primary-nav-trail {
+      margin-left: 0;
+    }
+
+    .nav-link {
+      min-height: 2rem;
+      padding-left: 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .nav-link[aria-current="page"]::after {
+      content: none;
+    }
+
+    .nav-link[aria-current="page"]::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 2px;
+      height: 0.85em;
+      background: var(--copper);
+      content: "";
+      transform: translateY(-50%);
+    }
+
+    .rail-note {
+      display: block;
+      margin: 0;
+      color: var(--muted-foreground);
+      font-size: 0.68rem;
+      line-height: 1.4;
+    }
   }
 }
 
@@ -334,8 +406,26 @@
 
 /* ------------------------------------------------------------------------
    04 · Shared shell.
+
+   .site-frame holds rail + body. On phones it is a plain document flow; from
+   64rem it is a two-column grid, rail left, everything else right. The body
+   is a flex column so the footer lands at the bottom of short pages.
    ------------------------------------------------------------------------ */
 @layer components {
+  .site-frame {
+    width: 100%;
+  }
+
+  .site-body {
+    display: flex;
+    min-height: calc(100dvh - 3.1rem);
+    flex-direction: column;
+  }
+
+  .site-body #main {
+    flex: 1 0 auto;
+  }
+
   .page-shell {
     width: min(calc(100% - 2rem), var(--shell-max));
     margin-inline: auto;
@@ -345,10 +435,6 @@
   .route-page {
     width: 100%;
     background: var(--paper);
-  }
-
-  .route-page {
-    min-height: calc(100dvh - 4.25rem);
   }
 
   .route-shell {
@@ -376,48 +462,131 @@
   }
 }
 
+@media (min-width: 64rem) {
+  @layer components {
+    .site-frame {
+      display: grid;
+      width: min(calc(100% - 4rem), var(--frame-max));
+      margin-inline: auto;
+      grid-template-columns: var(--rail-w) minmax(0, 1fr);
+      column-gap: clamp(2rem, 4vw, 3.25rem);
+    }
+
+    .site-body {
+      min-height: 100dvh;
+    }
+
+    /* Left-weighted, like a working page: content starts at the rail's edge
+       and the air lives on the right. */
+    .page-shell {
+      width: min(100%, var(--shell-max));
+      margin-inline: 0;
+    }
+  }
+}
+
 /* ------------------------------------------------------------------------
    05 · Home.
 
-   One fold: name / role / now / three equal index rows.
-   Not a left-rail poster. Not a thesis masthead.
+   Photo-forward: name / role, then the photograph as a large matted plate,
+   then now / about / contacts, then the ledger. On phones the plate runs the
+   full column; from 48rem it holds the right column at its native 715×800
+   while the brief reads down the left. No project index here — that lives
+   on /projects/. Thesis is a line inside Now, never the H1.
    ------------------------------------------------------------------------ */
 @layer components {
   .home-shell {
-    padding: 1.15rem 0 3.5rem;
+    width: min(calc(100% - 2rem), var(--home-max));
+    padding: 1.1rem 0 3rem;
   }
 
-  .home-identity {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-    column-gap: 1rem;
-  }
-
-  .home-copy {
-    min-width: 0;
+  .home-hero {
+    display: flex;
+    flex-direction: column;
   }
 
   .home-name {
     margin: 0;
     color: var(--foreground);
-    font-size: 1.55rem;
+    font-size: clamp(1.6rem, 6.5vw, 1.9rem);
     font-weight: 620;
-    line-height: 1.1;
+    line-height: 1.08;
     letter-spacing: -0.035em;
   }
 
   .home-role {
-    margin: 0.22rem 0 0;
+    margin: 0.24rem 0 0;
     color: var(--body-copy);
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     line-height: 1.35;
   }
 
-  .contact-line {
-    margin: 0.45rem 0 0;
+  /* The one large object on the page: a photograph on a thin white mat,
+     with a single mono instrument line under it. */
+  .home-plate {
+    width: 100%;
+    margin: 1.05rem 0 0;
+  }
+
+  .home-portrait {
+    width: 100%;
+    height: auto;
+    padding: 0.3rem;
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
+    background: #fff;
+    box-shadow: 0 14px 30px rgb(32 36 46 / 7%);
+  }
+
+  .plate-meta {
+    display: flex;
+    margin-top: 0.55rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.2rem 1rem;
     color: var(--muted-foreground);
-    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 540;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .home-brief {
+    margin-top: 1.2rem;
+  }
+
+  /* Now is a tape, not a glass card. */
+  .now-tape {
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 2.5rem;
+  }
+
+  .now-tape .page-kicker {
+    margin: 0 0 0.15rem;
+  }
+
+  .now-tape p {
+    margin: 0.28rem 0 0;
+    color: var(--foreground);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .home-about {
+    max-width: 34rem;
+    margin: 1.1rem 0 0;
+    color: var(--body-copy);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .contact-line {
+    margin: 0.9rem 0 0;
+    color: var(--muted-foreground);
+    font-size: 0.8rem;
     line-height: 1.4;
   }
 
@@ -432,65 +601,9 @@
     text-decoration: underline;
   }
 
-  .home-figure {
-    width: 3.35rem;
-    margin: 0.15rem 0 0;
-  }
-
-  .home-stamp {
-    width: 3.35rem;
-    height: 3.75rem;
-    border: 1px solid var(--line);
-    border-radius: 0.2rem;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .portrait-caption {
-    margin-top: 0.28rem;
-    color: var(--muted-foreground);
-    font-family: var(--font-mono);
-    font-size: 0.52rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  /* Now is a tape, not a glass card. */
-  .now-tape {
-    margin-top: 1.05rem;
-    padding: 0.7rem 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    scroll-margin-top: 2.5rem;
-  }
-
-  .now-tape p {
-    margin: 0.28rem 0 0;
-    color: var(--foreground);
-    font-size: 0.9rem;
-    line-height: 1.45;
-  }
-
-  .home-index {
-    margin-top: 1.05rem;
-  }
-
-  .home-index .page-kicker,
-  .now-tape .page-kicker {
-    margin: 0 0 0.15rem;
-  }
-
-  .home-about {
-    max-width: 36rem;
-    margin: 1.35rem 0 0;
-    color: var(--body-copy);
-    font-size: 0.88rem;
-    line-height: 1.55;
-  }
-
   .home-record {
     display: grid;
-    margin-top: 1.75rem;
+    margin-top: 2.1rem;
     gap: 1.6rem;
   }
 
@@ -548,24 +661,41 @@
   }
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 48rem) {
   @layer components {
+    .home-hero {
+      display: grid;
+      grid-template-areas:
+        "id plate"
+        "brief plate";
+      grid-template-columns: minmax(0, 1fr) var(--plate-w);
+      grid-template-rows: auto 1fr;
+      align-items: start;
+      column-gap: clamp(1.9rem, 4.5vw, 3.25rem);
+    }
+
+    .home-id {
+      grid-area: id;
+    }
+
+    .home-plate {
+      grid-area: plate;
+      margin-top: 0.3rem;
+    }
+
+    .home-brief {
+      grid-area: brief;
+      margin-top: 1.3rem;
+    }
+
     .home-name {
-      font-size: 1.7rem;
-    }
-
-    .home-figure {
-      width: 3.7rem;
-    }
-
-    .home-stamp {
-      width: 3.7rem;
-      height: 4.15rem;
+      font-size: clamp(1.7rem, 2.6vw, 2rem);
     }
 
     .home-record {
+      margin-top: 2.5rem;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      column-gap: 2rem;
+      column-gap: 2.25rem;
     }
 
     .record-list li {
@@ -622,8 +752,7 @@
   }
 
   .index-field,
-  .index-context,
-  .index-meta {
+  .index-context {
     margin: 0;
     color: var(--muted-foreground);
     font-family: var(--font-mono);
@@ -674,18 +803,6 @@
 
 @media (min-width: 40rem) {
   @layer components {
-    .home-index .index-row {
-      grid-template-columns: minmax(9.5rem, 0.7fr) minmax(0, 1.3fr);
-      align-items: baseline;
-      column-gap: 1rem;
-      padding: 0.58rem 0;
-    }
-
-    .home-index .index-meta {
-      justify-self: end;
-      text-align: right;
-    }
-
     .projects-page .index-row {
       grid-template-columns: minmax(0, 1.15fr) minmax(7rem, 0.45fr);
       align-items: start;
@@ -1275,6 +1392,11 @@
 
 @media (min-width: 64rem) {
   @layer components {
+    .project-page {
+      width: min(100%, 64rem);
+      margin-inline: 0;
+    }
+
     .project-page-hero {
       grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.8fr);
       padding-top: 1.75rem;
@@ -1290,19 +1412,30 @@
 
 /* ------------------------------------------------------------------------
    10 · Footer.
+
+   Chrome, like the nav strip: full width on phones. From 64rem the © moves
+   to the rail's bottom corner and this footer stands down.
    ------------------------------------------------------------------------ */
 @layer components {
   .site-footer {
     display: flex;
-    width: min(calc(100% - 2rem), var(--shell-max));
+    width: 100%;
     min-height: 3.5rem;
-    margin-inline: auto;
+    padding-inline: 1rem;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     border-top: 1px solid var(--line);
     color: var(--muted-foreground);
     font-size: 0.72rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  @layer components {
+    .site-footer {
+      display: none;
+    }
   }
 }
 
@@ -1409,7 +1542,7 @@
 @media (prefers-contrast: more) {
   .ledge-plank,
   .project-snapshot,
-  .home-stamp {
+  .home-portrait {
     border-color: rgb(21 21 21 / 55%) !important;
     background: #fff !important;
     -webkit-backdrop-filter: none !important;
