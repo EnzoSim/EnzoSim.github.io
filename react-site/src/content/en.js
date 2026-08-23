@@ -54,7 +54,6 @@ export const en = {
       label: 'Now',
       text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement. Corporate business analysis at Desjardins.',
     },
-    indexLabel: 'Index',
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
       { label: 'LinkedIn', href: linkedinUrl, external: true },
