@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -11,7 +11,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { en as t } from '@/content/en'
-import { fdaLiveUrl, profileImage } from '@/content/shared'
+import { fdaLiveUrl, portrait } from '@/content/shared'
 
 const externalProps = {
   target: '_blank',
@@ -47,8 +47,8 @@ function SiteNav({ showMark = false }) {
   }
 
   return (
-    <header className="site-header">
-      <div className="site-mast">
+    <header className="site-rail">
+      <div className="rail-top">
         {showMark ? (
           <a className="site-mark" href="/">
             {t.home.name}
@@ -71,6 +71,7 @@ function SiteNav({ showMark = false }) {
           ))}
         </nav>
       </div>
+      <p className="rail-note">{t.footer.note}</p>
     </header>
   )
 }
@@ -87,11 +88,15 @@ function Shell({ children, className = '', showMark = false }) {
   return (
     <>
       <SkipLink />
-      <SiteNav showMark={showMark} />
-      <main className={className} id="main">
-        {children}
-      </main>
-      <SiteFooter />
+      <div className="site-frame">
+        <SiteNav showMark={showMark} />
+        <div className="site-body">
+          <main className={className} id="main">
+            {children}
+          </main>
+          <SiteFooter />
+        </div>
+      </div>
     </>
   )
 }
@@ -149,14 +154,8 @@ function QuietRecord() {
   )
 }
 
-function projectRowHref(project, { onHome }) {
-  if (project.href) return project.href
-  if (onHome) return `/projects/#${project.slug}`
-  return null
-}
-
-function IndexRow({ project, showNotes = false, onHome = false }) {
-  const href = projectRowHref(project, { onHome })
+function IndexRow({ project }) {
+  const href = project.href
   const isExternal = Boolean(href && href.startsWith('http'))
 
   return (
@@ -176,17 +175,11 @@ function IndexRow({ project, showNotes = false, onHome = false }) {
             project.title
           )}
         </h2>
-        {showNotes && project.note ? <p className="index-note">{project.note}</p> : null}
+        {project.note ? <p className="index-note">{project.note}</p> : null}
       </div>
-      {onHome ? (
-        <p className="index-meta">{`${project.field} · ${project.context}`}</p>
-      ) : (
-        <>
-          <p className="index-field">{project.field}</p>
-          <p className="index-context">{project.context}</p>
-        </>
-      )}
-      {showNotes ? <ProjectTextActions project={project} /> : null}
+      <p className="index-field">{project.field}</p>
+      <p className="index-context">{project.context}</p>
+      <ProjectTextActions project={project} />
     </article>
   )
 }
@@ -222,18 +215,60 @@ function ProjectTextActions({ project }) {
   )
 }
 
-function ProjectIndex({ items, showNotes = false, onHome = false }) {
+function ProjectIndex({ items }) {
   return (
     <div className="index-list">
       {items.map((project) => (
-        <IndexRow
-          key={project.slug}
-          onHome={onHome}
-          project={project}
-          showNotes={showNotes}
-        />
+        <IndexRow key={project.slug} project={project} />
       ))}
     </div>
+  )
+}
+
+const montrealClock = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'America/Toronto',
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23',
+  timeZoneName: 'short',
+})
+
+function useMontrealTime() {
+  const [parts, setParts] = useState(() => montrealClock.formatToParts(new Date()))
+
+  useEffect(() => {
+    const id = window.setInterval(
+      () => setParts(montrealClock.formatToParts(new Date())),
+      30_000,
+    )
+    return () => window.clearInterval(id)
+  }, [])
+
+  const read = (type) => parts.find((part) => part.type === type)?.value ?? ''
+  return { clock: `${read('hour')}:${read('minute')}`, zone: read('timeZoneName') }
+}
+
+function HomePlate() {
+  const { clock, zone } = useMontrealTime()
+
+  return (
+    <figure className="home-plate">
+      <img
+        alt={t.a11y.portraitAlt}
+        className="home-portrait"
+        decoding="async"
+        fetchPriority="high"
+        height={portrait.height}
+        sizes="(min-width: 64rem) 26.5rem, (min-width: 48rem) 24rem, calc(100vw - 2.5rem)"
+        src={portrait.src}
+        srcSet={portrait.srcSet}
+        width={portrait.width}
+      />
+      <figcaption className="plate-meta">
+        <span>{`${t.home.place.city} · ${t.home.place.coords}`}</span>
+        <time dateTime={clock}>{`${clock} ${zone}`}</time>
+      </figcaption>
+    </figure>
   )
 }
 
@@ -241,37 +276,24 @@ function AboutPage() {
   return (
     <Shell className="home-page">
       <div className="page-shell home-shell">
-        <section className="home-identity" aria-labelledby="home-title">
-          <div className="home-copy">
+        <section className="home-hero" aria-labelledby="home-title">
+          <header className="home-id">
             <h1 className="home-name" id="home-title">{t.home.name}</h1>
             <p className="home-role">{t.home.role}</p>
+          </header>
+
+          <HomePlate />
+
+          <div className="home-brief">
+            <section className="now-tape" id="now" aria-labelledby="now-label">
+              <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
+              <p>{t.home.now.text}</p>
+            </section>
+            <p className="home-about">{t.home.personal}</p>
             <ContactLinks />
           </div>
-          <figure className="home-figure">
-            <img
-              alt={t.a11y.portraitAlt}
-              className="home-stamp"
-              decoding="async"
-              fetchPriority="high"
-              height={profileImage.height}
-              src={profileImage.src}
-              width={profileImage.width}
-            />
-            <figcaption className="portrait-caption">{t.home.portraitCaption}</figcaption>
-          </figure>
         </section>
 
-        <section className="now-tape" id="now" aria-labelledby="now-label">
-          <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
-          <p>{t.home.now.text}</p>
-        </section>
-
-        <section className="home-index" aria-labelledby="home-index-label">
-          <h2 className="page-kicker" id="home-index-label">{t.home.indexLabel}</h2>
-          <ProjectIndex items={t.projects.items} onHome />
-        </section>
-
-        <p className="home-about">{t.home.personal}</p>
         <QuietRecord />
       </div>
     </Shell>
@@ -292,7 +314,7 @@ function ProjectsPage() {
     <Shell className="route-page projects-page" showMark>
       <section className="page-shell route-shell" aria-labelledby="projects-title">
         <RouteHead id="projects-title" lede={t.projects.lede} title={t.projects.title} />
-        <ProjectIndex items={t.projects.items} showNotes />
+        <ProjectIndex items={t.projects.items} />
       </section>
     </Shell>
   )

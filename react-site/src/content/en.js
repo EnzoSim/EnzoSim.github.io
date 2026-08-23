@@ -48,13 +48,16 @@ export const en = {
     name: 'Enzo Simier',
     role: 'Applied economist, Montréal',
     personal:
-      'Applied economist in Montréal. I spent ten years in Tahiti, then lived in Grenoble and Rennes. I studied pharmacy in Bordeaux for two years before turning to economics. I care about good food, cafés, and golden retrievers.',
-    portraitCaption: 'Montréal, 2026',
+      'I spent ten years in Tahiti, then lived in Grenoble and Rennes. I studied pharmacy in Bordeaux for two years before turning to economics. I care about good food, cafés, and golden retrievers.',
+    // One instrument line under the portrait: where Enzo is based, as data.
+    place: {
+      city: 'Montréal',
+      coords: '45.50°N 73.57°W',
+    },
     now: {
       label: 'Now',
       text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement. Corporate business analysis at Desjardins.',
     },
-    indexLabel: 'Index',
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
       { label: 'LinkedIn', href: linkedinUrl, external: true },
