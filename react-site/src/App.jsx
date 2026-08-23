@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useLayoutEffect, useRef } from 'react'
-import { ArrowUpRight, Circle } from 'lucide-react'
+import { useEffect } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -35,199 +35,33 @@ function SkipLink() {
   )
 }
 
-function SiteNav() {
+function SiteNav({ showMark = false }) {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
   const activeRoute = routeForPathname(pathname)
-  const navRef = useRef(null)
-  const lensRef = useRef(null)
-
-  const moveLens = useCallback((target) => {
-    const nav = navRef.current
-    const lens = lensRef.current
-    if (!nav || !lens) return
-    if (!target) {
-      lens.style.opacity = '0'
-      return
-    }
-    const navBox = nav.getBoundingClientRect()
-    const box = target.getBoundingClientRect()
-    lens.style.opacity = '1'
-    lens.style.setProperty('--x', `${box.left - navBox.left}px`)
-    lens.style.setProperty('--w', `${box.width}px`)
-  }, [])
-
-  const placeLens = useCallback(() => {
-    moveLens(navRef.current?.querySelector('[aria-current="page"]'))
-  }, [moveLens])
-
-  // The lens must sit on the active tab before first paint so cross-document
-  // view transitions snapshot it in place.
-  useLayoutEffect(() => {
-    placeLens()
-  }, [placeLens])
-
-  useEffect(() => {
-    const ready = () => {
-      placeLens()
-      window.requestAnimationFrame(() => {
-        if (lensRef.current) lensRef.current.dataset.ready = 'true'
-      })
-    }
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(ready)
-    } else {
-      ready()
-    }
-    const onPageShow = (event) => {
-      if (event.persisted) placeLens()
-    }
-    window.addEventListener('resize', placeLens)
-    window.addEventListener('pageshow', onPageShow)
-    return () => {
-      window.removeEventListener('resize', placeLens)
-      window.removeEventListener('pageshow', onPageShow)
-    }
-  }, [placeLens])
-
-  const dragState = useRef(null)
-  const suppressClick = useRef(false)
 
   const onNavClick = (event) => {
-    if (suppressClick.current) {
-      event.preventDefault()
-      return
-    }
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
     if (routeForPathname(event.currentTarget.getAttribute('href')) === activeRoute) {
       event.preventDefault()
     }
   }
 
-  const linkMetrics = (nav, navBox) => {
-    const links = Array.from(nav.querySelectorAll('.nav-link'))
-    return {
-      links,
-      metrics: links.map((link) => {
-        const box = link.getBoundingClientRect()
-        return { center: box.left + box.width / 2 - navBox.left, width: box.width }
-      }),
-    }
-  }
-
-  const onNavPointerDown = (event) => {
-    const nav = navRef.current
-    const lens = lensRef.current
-    if (!nav || !lens || event.button !== 0) return
-    if (lens.style.opacity === '0') return
-    const navBox = nav.getBoundingClientRect()
-    const lensBox = lens.getBoundingClientRect()
-    dragState.current = {
-      pointerId: event.pointerId,
-      startX: event.clientX,
-      startCenter: lensBox.left - navBox.left + lensBox.width / 2,
-      center: null,
-      navBox,
-      dragging: false,
-    }
-  }
-
-  const onNavPointerMove = (event) => {
-    const state = dragState.current
-    const nav = navRef.current
-    const lens = lensRef.current
-    if (!state || !nav || !lens) return
-    const delta = event.clientX - state.startX
-    if (!state.dragging) {
-      if (Math.abs(delta) < 5) return
-      state.dragging = true
-      lens.dataset.dragging = 'true'
-      nav.dataset.dragging = 'true'
-      nav.setPointerCapture(state.pointerId)
-    }
-    const { links, metrics } = linkMetrics(nav, state.navBox)
-    const min = metrics[0].center
-    const max = metrics[metrics.length - 1].center
-    state.center = Math.min(max, Math.max(min, state.startCenter + delta))
-
-    // The lens width morphs between the two segments its center sits between.
-    let width = metrics[0].width
-    for (let i = 0; i < metrics.length - 1; i += 1) {
-      const a = metrics[i]
-      const b = metrics[i + 1]
-      if (state.center >= b.center) {
-        width = b.width
-      } else if (state.center >= a.center) {
-        const t = (state.center - a.center) / (b.center - a.center)
-        width = a.width + t * (b.width - a.width)
-        break
-      }
-    }
-    lens.style.setProperty('--w', `${width}px`)
-    lens.style.setProperty('--x', `${state.center - width / 2}px`)
-
-    let nearestIndex = 0
-    let best = Infinity
-    metrics.forEach((metric, index) => {
-      const distance = Math.abs(metric.center - state.center)
-      if (distance < best) {
-        best = distance
-        nearestIndex = index
-      }
-    })
-    links.forEach((link, index) => {
-      link.classList.toggle('is-lens-target', index === nearestIndex)
-    })
-  }
-
-  const onNavPointerUp = () => {
-    const state = dragState.current
-    dragState.current = null
-    const nav = navRef.current
-    const lens = lensRef.current
-    if (!nav || !lens) return
-    if (!state || !state.dragging || state.center === null) return
-    lens.dataset.dragging = 'false'
-    nav.dataset.dragging = 'false'
-    suppressClick.current = true
-    window.setTimeout(() => {
-      suppressClick.current = false
-    }, 0)
-    const { links, metrics } = linkMetrics(nav, state.navBox)
-    let nearestIndex = 0
-    let best = Infinity
-    metrics.forEach((metric, index) => {
-      const distance = Math.abs(metric.center - state.center)
-      if (distance < best) {
-        best = distance
-        nearestIndex = index
-      }
-    })
-    links.forEach((link) => link.classList.remove('is-lens-target'))
-    const nearest = links[nearestIndex]
-    moveLens(nearest)
-    if (routeForPathname(nearest.getAttribute('href')) !== activeRoute) {
-      window.location.href = nearest.href
-    }
-  }
-
   return (
     <header className="site-header">
-      <div className="site-nav-shell">
+      <div className="site-mast">
+        {showMark ? (
+          <a className="site-mark" href="/">
+            {t.home.name}
+          </a>
+        ) : null}
         <nav
           aria-label={t.a11y.primaryNavigation}
-          className="primary-nav"
-          onPointerCancel={onNavPointerUp}
-          onPointerDown={onNavPointerDown}
-          onPointerMove={onNavPointerMove}
-          onPointerUp={onNavPointerUp}
-          ref={navRef}
+          className={showMark ? 'primary-nav primary-nav-trail' : 'primary-nav'}
         >
-          <span aria-hidden="true" className="nav-lens" ref={lensRef} />
           {t.nav.items.map((item) => (
             <a
               aria-current={activeRoute === routeForPathname(item.href) ? 'page' : undefined}
-              className="liquid-pill nav-link"
-              draggable={false}
+              className="nav-link"
               href={item.href}
               key={item.href}
               onClick={onNavClick}
@@ -249,11 +83,11 @@ function SiteFooter() {
   )
 }
 
-function Shell({ children, className = '' }) {
+function Shell({ children, className = '', showMark = false }) {
   return (
     <>
       <SkipLink />
-      <SiteNav />
+      <SiteNav showMark={showMark} />
       <main className={className} id="main">
         {children}
       </main>
@@ -266,13 +100,21 @@ function ExternalArrow() {
   return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
 }
 
-function AmbientBubbles({ count = 6, variant = 'hero' }) {
+function ContactLinks() {
   return (
-    <div className={`ambient-bubbles ambient-bubbles-${variant}`} aria-hidden="true">
-      {Array.from({ length: count }, (_, index) => (
-        <span className={`ambient-bubble ambient-bubble-${index + 1}`} key={index} />
+    <p className="contact-line" aria-label="Contact links">
+      {t.home.contacts.map((contact, index) => (
+        <span key={contact.label}>
+          {index > 0 ? <span aria-hidden="true"> · </span> : null}
+          <a
+            href={contact.href}
+            {...(contact.external || contact.label === 'CV' ? externalProps : {})}
+          >
+            {contact.label}
+          </a>
+        </span>
       ))}
-    </div>
+    </p>
   )
 }
 
@@ -307,60 +149,131 @@ function QuietRecord() {
   )
 }
 
+function projectRowHref(project, { onHome }) {
+  if (project.href) return project.href
+  if (onHome) return `/projects/#${project.slug}`
+  return null
+}
+
+function IndexRow({ project, showNotes = false, onHome = false }) {
+  const href = projectRowHref(project, { onHome })
+  const isExternal = Boolean(href && href.startsWith('http'))
+
+  return (
+    <article
+      aria-labelledby={`${project.slug}-title`}
+      className="index-row"
+      id={project.slug}
+    >
+      <div className="index-id">
+        <h2 className="index-name" id={`${project.slug}-title`}>
+          {href ? (
+            <a href={href} {...(isExternal ? externalProps : {})}>
+              {project.title}
+              {isExternal ? <ExternalArrow /> : null}
+            </a>
+          ) : (
+            project.title
+          )}
+        </h2>
+        {showNotes && project.note ? <p className="index-note">{project.note}</p> : null}
+      </div>
+      {onHome ? (
+        <p className="index-meta">{`${project.field} · ${project.context}`}</p>
+      ) : (
+        <>
+          <p className="index-field">{project.field}</p>
+          <p className="index-context">{project.context}</p>
+        </>
+      )}
+      {showNotes ? <ProjectTextActions project={project} /> : null}
+    </article>
+  )
+}
+
+function ProjectTextActions({ project }) {
+  const extras = []
+  if (project.slug === 'fda-catalyst') {
+    extras.push({ href: fdaLiveUrl, label: project.liveCta, external: true })
+  }
+  if (project.sourceHref) {
+    extras.push({ href: project.sourceHref, label: project.sourceCta, external: true })
+  }
+  if (!project.href && extras.length === 0) return null
+
+  return (
+    <p className="index-actions">
+      {project.href ? (
+        <a
+          href={project.href}
+          {...(project.href.startsWith('http') ? externalProps : {})}
+        >
+          {project.cta}
+          <ExternalArrow />
+        </a>
+      ) : null}
+      {extras.map((item) => (
+        <a key={item.href} href={item.href} {...(item.external ? externalProps : {})}>
+          {item.label}
+          <ExternalArrow />
+        </a>
+      ))}
+    </p>
+  )
+}
+
+function ProjectIndex({ items, showNotes = false, onHome = false }) {
+  return (
+    <div className="index-list">
+      {items.map((project) => (
+        <IndexRow
+          key={project.slug}
+          onHome={onHome}
+          project={project}
+          showNotes={showNotes}
+        />
+      ))}
+    </div>
+  )
+}
+
 function AboutPage() {
   return (
     <Shell className="home-page">
-      <section className="home-lead" aria-labelledby="home-title">
-        <AmbientBubbles />
-        <div className="home-shell">
-          <div className="home-main">
-            <div className="home-copy">
-              <p className="page-kicker home-kicker">{t.home.role}</p>
-              <h1 className="home-claim" id="home-title">{t.home.title}</h1>
-              <p className="home-byline">{t.home.name}</p>
-              <p className="home-about">{t.home.personal}</p>
-              <div className="contact-row" aria-label="Contact links">
-                {t.home.contacts.map((contact, index) => (
-                  <Button
-                    asChild
-                    key={contact.label}
-                    variant={index === 0 ? 'default' : 'ghost'}
-                  >
-                    <a
-                      href={contact.href}
-                      {...(contact.external || contact.label === 'CV' ? externalProps : {})}
-                    >
-                      {contact.label}
-                      {contact.label !== 'Email' ? <ExternalArrow /> : null}
-                    </a>
-                  </Button>
-                ))}
-              </div>
-              <div className="now-card" id="now">
-                <span className="now-kicker">{t.home.now.label}</span>
-                <p>{t.home.now.text}</p>
-              </div>
-            </div>
-            <figure className="home-figure">
-              <div className="portrait-lens">
-                <img
-                  alt={t.a11y.portraitAlt}
-                  decoding="async"
-                  fetchPriority="high"
-                  height={profileImage.height}
-                  src={profileImage.src}
-                  width={profileImage.width}
-                />
-              </div>
-              <figcaption className="portrait-caption">
-                <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
-                <span>{t.home.portraitCaption}</span>
-              </figcaption>
-            </figure>
+      <div className="page-shell home-shell">
+        <section className="home-identity" aria-labelledby="home-title">
+          <div className="home-copy">
+            <h1 className="home-name" id="home-title">{t.home.name}</h1>
+            <p className="home-role">{t.home.role}</p>
+            <ContactLinks />
           </div>
-          <QuietRecord />
-        </div>
-      </section>
+          <figure className="home-figure">
+            <img
+              alt={t.a11y.portraitAlt}
+              className="home-stamp"
+              decoding="async"
+              fetchPriority="high"
+              height={profileImage.height}
+              src={profileImage.src}
+              width={profileImage.width}
+            />
+            <figcaption className="portrait-caption">{t.home.portraitCaption}</figcaption>
+          </figure>
+        </section>
+
+        <section className="now-tape" id="now" aria-labelledby="now-label">
+          <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
+          <p>{t.home.now.text}</p>
+        </section>
+
+        <section className="home-index" aria-labelledby="home-index-label">
+          <h2 className="page-kicker" id="home-index-label">{t.home.indexLabel}</h2>
+          <ProjectIndex items={t.projects.items} onHome />
+        </section>
+
+        <p className="home-about">{t.home.personal}</p>
+        <QuietRecord />
+      </div>
     </Shell>
   )
 }
@@ -376,118 +289,12 @@ function RouteHead({ id, title, lede }) {
 
 function ProjectsPage() {
   return (
-    <Shell className="route-page projects-page">
-      <AmbientBubbles count={4} variant="route" />
-      <section className="route-shell" aria-labelledby="projects-title">
+    <Shell className="route-page projects-page" showMark>
+      <section className="page-shell route-shell" aria-labelledby="projects-title">
         <RouteHead id="projects-title" lede={t.projects.lede} title={t.projects.title} />
-        <div className="plate-list">
-          {t.projects.items.map((project, index) => (
-            <ProjectPlate index={index} key={project.slug} project={project} />
-          ))}
-        </div>
+        <ProjectIndex items={t.projects.items} showNotes />
       </section>
     </Shell>
-  )
-}
-
-function ProjectActions({ project }) {
-  if (!project.href) return null
-
-  return (
-    <div className="project-actions">
-      <Button asChild size="sm" variant="ghost">
-        <a
-          href={project.href}
-          {...(project.href.startsWith('http') ? externalProps : {})}
-        >
-          {project.cta}
-          <ExternalArrow />
-        </a>
-      </Button>
-      {project.slug === 'fda-catalyst' ? (
-        <Button asChild size="sm" variant="ghost">
-          <a href={fdaLiveUrl} {...externalProps}>
-            Live calendar
-            <ExternalArrow />
-          </a>
-        </Button>
-      ) : null}
-      {project.sourceHref ? (
-        <Button asChild size="sm" variant="ghost">
-          <a href={project.sourceHref} {...externalProps}>
-            {project.sourceCta}
-            <ExternalArrow />
-          </a>
-        </Button>
-      ) : null}
-    </div>
-  )
-}
-
-function ProjectObject({ slug }) {
-  if (slug === 'water-pricing') {
-    return (
-      <div className="project-object object-water" aria-hidden="true">
-        <div className="object-steps">
-          <i />
-          <i />
-          <i />
-          <i />
-        </div>
-        <p className="object-caption">$ / m³</p>
-      </div>
-    )
-  }
-
-  if (slug === 'fda-catalyst') {
-    return (
-      <div className="project-object" aria-hidden="true">
-        <div className="object-cal">
-          <p className="object-cal-head">90 days</p>
-          <div className="object-cal-grid">
-            {Array.from({ length: 15 }, (_, index) => (
-              <i className={index === 6 || index === 13 ? 'hot' : undefined} key={index} />
-            ))}
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="project-object" aria-hidden="true">
-      <div className="object-cards">
-        <span className="object-card object-card-back" />
-        <span className="object-card object-card-front">
-          <span className="object-card-title" />
-          <span className="object-card-line" />
-          <span className="object-card-line" />
-        </span>
-      </div>
-    </div>
-  )
-}
-
-function ProjectPlate({ project, index }) {
-  return (
-    <article
-      aria-labelledby={`${project.slug}-title`}
-      className={`plate plate-${project.presentation}`}
-      id={project.slug}
-    >
-      <span aria-hidden="true" className="plate-ordinal">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-      <div className="plate-caption">
-        <p className="page-kicker">{project.field}</p>
-        <h2 id={`${project.slug}-title`}>{project.title}</h2>
-        <p className="plate-context">{project.context}</p>
-        <ProjectActions project={project} />
-      </div>
-      <div className="plate-stage">
-        <ProjectObject slug={project.slug} />
-      </div>
-    </article>
   )
 }
 
@@ -580,9 +387,8 @@ function Publications() {
 
 function ReadingPage() {
   return (
-    <Shell className="route-page reading-page">
-      <AmbientBubbles count={4} variant="route" />
-      <section className="route-shell" aria-labelledby="reading-title">
+    <Shell className="route-page reading-page" showMark>
+      <section className="page-shell route-shell" aria-labelledby="reading-title">
         <RouteHead id="reading-title" title={t.library.title} />
 
         <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
@@ -640,7 +446,7 @@ function ProjectSectionHeading({ label, title, children }) {
 
 function FdaCatalystPage() {
   return (
-    <Shell className="project-page">
+    <Shell className="project-page" showMark>
       <section className="project-page-hero" aria-labelledby="project-title">
         <div className="project-page-copy">
           <p className="page-kicker">{t.project.kicker}</p>
