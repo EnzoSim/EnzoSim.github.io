@@ -15,17 +15,17 @@ export const en = {
     about: {
       title: 'Enzo Simier · Applied Economist',
       description:
-        'Applied economist in Montréal. Current question: how volumetric prices change water use, cost recovery, and welfare in Québec.',
+        'Applied economist in Montréal. Thesis on volumetric water pricing in Québec; corporate business analysis at Desjardins.',
     },
     reading: {
       title: 'Reading · Enzo Simier',
       description:
-        'Annotations on five books that bear on the work, plus magazines and newsletters.',
+        'Five books I come back to, and why they stay. Then magazines and newsletters.',
     },
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'Briefs on volumetric water pricing, a biotech catalyst calendar, and a public working library.',
+        'A thesis on volumetric water pricing, a biotech catalyst calendar, and a public working library.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -50,11 +50,11 @@ export const en = {
     name: 'Enzo Simier',
     role: 'Applied economist, Montréal',
     personal:
-      'I spent ten years in Tahiti, then lived in Grenoble and Rennes before moving to Montréal. I studied pharmacy in Bordeaux for two years before turning to economics. Outside work, I care about good food, cafés, and golden retrievers.',
+      'Applied economist in Montréal. I spent ten years in Tahiti, then lived in Grenoble and Rennes. I studied pharmacy in Bordeaux for two years before turning to economics. I care about good food, cafés, and golden retrievers.',
     portraitCaption: 'Montréal, 2026',
     now: {
       label: 'Now',
-      text: 'Finishing the thesis on volumetric water pricing in Québec. Looking at roles in competition, pricing, and strategy.',
+      text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement. Corporate business analysis at Desjardins.',
       action: { label: 'Book a call', href: bookingUrl },
     },
     contacts: [
@@ -65,14 +65,14 @@ export const en = {
   },
   projects: {
     title: 'Projects',
-    lede: 'A pricing thesis, a catalyst calendar, and a working library.',
+    lede: 'A thesis, a catalyst calendar, and a working library.',
     items: [
       {
         slug: 'water-pricing',
         field: 'Public finance',
-        title: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
+        title: 'How does volumetric pricing change water use, cost recovery, and welfare in Québec?',
         description:
-          'The thesis estimates those effects across municipalities. The setup is industrial organization: consumer surplus and cost of service.',
+          'I estimate those effects across municipalities, using industrial organization: consumer surplus and cost of service. The thesis is still underway, so there are no results to post yet.',
         context: 'HEC Montréal · Réseau Environnement',
         href: null,
         cta: null,
@@ -81,9 +81,9 @@ export const en = {
       {
         slug: 'fda-catalyst',
         field: 'Markets',
-        title: 'Can dated biotech catalysts be read as one filterable calendar?',
+        title: 'How do you turn biotech catalyst records into a dated calendar?',
         description:
-          'FDA Catalyst converts BPIQ records into dated events with filters, source links, and company-level context. The live view is a 90-day calendar of those events.',
+          'FDA Catalyst converts BPIQ records into dated events with filters, source links, and company context. The live 90-day view is on Railway.',
         context: 'FastAPI, Railway Postgres, React',
         href: '/fda-catalyst.html',
         cta: 'View the case study',
@@ -92,9 +92,9 @@ export const en = {
       {
         slug: 'wiki-project',
         field: 'Knowledge',
-        title: 'Can vocabulary, notes, and fragments stay connected enough to reuse?',
+        title: 'How do I keep vocabulary, notes, and fragments reusable?',
         description:
-          'A public working library for vocabulary, reading notes, and project fragments. Built so those pieces can be revisited and connected.',
+          'A public working library for those pieces. Built so I can revisit them and connect them later.',
         context: 'Next.js, Railway, Supabase',
         href: wikiLiveUrl,
         sourceHref: wikiRepoUrl,
@@ -106,7 +106,7 @@ export const en = {
   },
   library: {
     title: 'Reading',
-    lede: 'Notes on five books that bear on the work, then magazines and newsletters.',
+    lede: 'Five books I come back to, and why they stay. Then magazines and newsletters.',
     books: [
       {
         slug: 'chip-war',
@@ -115,7 +115,7 @@ export const en = {
         author: 'Chris Miller',
         spineAuthor: 'Miller',
         year: 2022,
-        note: 'Concentrated capacity: a few firms set the constraint for everyone else. Useful when the object of study is a bottleneck, not a market with many substitutes.',
+        note: 'How a handful of firms came to control chip supply. I keep it for concentrated markets and bottlenecks.',
         href: 'https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015',
         design: {
           spine: '#172a22',
@@ -131,7 +131,7 @@ export const en = {
         author: 'Ed Conway',
         spineAuthor: 'Conway',
         year: 2023,
-        note: 'Growth still runs through sand, copper, and oil. A reminder that pricing problems start from physical limits, including water.',
+        note: 'The physical inputs behind growth: sand, copper, and oil. Relevant when the scarce thing is physical, including water.',
         href: 'https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/',
         design: {
           spine: '#754231',
@@ -147,7 +147,7 @@ export const en = {
         author: 'Nadia Eghbal',
         spineAuthor: 'Eghbal',
         year: 2020,
-        note: 'Maintenance is the scarce input in open work. The incentive problem is why a public library of notes does not stay public without someone paying the cost.',
+        note: 'Incentives and maintenance in open source. Why notes do not stay public unless someone pays the cost.',
         href: 'https://press.stripe.com/working-in-public',
         design: {
           spine: '#aaa18f',
@@ -163,7 +163,7 @@ export const en = {
         author: 'Andrew Roberts',
         spineAuthor: 'Roberts',
         year: 2018,
-        note: 'A long record of judgment under incomplete information. The useful part is the wait, not the speeches.',
+        note: 'The long build-up behind the judgment. I keep it for decisions made with incomplete information.',
         href: 'https://www.penguinrandomhouse.com/books/533764/churchill-by-andrew-roberts/9781101980996/',
         design: {
           spine: '#171713',
@@ -179,7 +179,7 @@ export const en = {
         author: 'Adrian Goldsworthy',
         spineAuthor: 'Goldsworthy',
         year: 2006,
-        note: 'Coalition and timing in a system with no idle capacity. Strategy as a sequence of binding constraints, not a single choice.',
+        note: 'Coalition-building and timing in the late Republic. I read it as a sequence of constraints, not one big choice.',
         href: 'https://yalebooks.yale.edu/book/9780300126891/caesar/',
         design: {
           spine: '#49231f',
@@ -230,21 +230,49 @@ export const en = {
       ],
     },
   },
-  // Retained as a factual source record for the CV. The compact site does not render it.
-  education: [
-    {
-      school: 'HEC Montréal',
-      degree: 'M.Sc. Applied Economics',
-      date: '2024 to 2026',
-      detail: 'Specialization in industrial organization.',
-    },
-    {
-      school: 'HEC Montréal',
-      degree: 'B.B.A. Economics and Finance',
-      date: '2020 to 2024',
-      detail: 'Mention d’excellence for a top 5% cumulative GPA.',
-    },
-  ],
+  // Quiet record on the homepage. Roles and degrees come from the CV in this repo.
+  experience: {
+    title: 'Experience',
+    items: [
+      {
+        role: 'Analyst, Corporate Business Analysis',
+        org: 'Desjardins',
+        date: '2026 – present',
+      },
+      {
+        role: 'Intern, Regulated Industries',
+        org: 'Competition Bureau',
+        date: 'May–Aug 2025',
+      },
+      {
+        role: 'Intern, Economic Consulting & Strategy',
+        org: 'KPMG Canada',
+        date: 'May–Aug 2024',
+      },
+      {
+        role: 'Intern, Business Development',
+        org: 'National Bank Accelerator',
+        date: 'May–Aug 2023',
+      },
+    ],
+  },
+  education: {
+    title: 'Education',
+    items: [
+      {
+        school: 'HEC Montréal',
+        degree: 'M.Sc. Applied Economics',
+        date: '2024 to 2026',
+        detail: 'Specialization in industrial organization.',
+      },
+      {
+        school: 'HEC Montréal',
+        degree: 'B.B.A. Economics and Finance',
+        date: '2020 to 2024',
+        detail: 'Mention d’excellence for a top 5% cumulative GPA.',
+      },
+    ],
+  },
   footer: {
     note: '© 2026 Enzo Simier',
   },

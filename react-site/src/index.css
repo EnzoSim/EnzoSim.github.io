@@ -2916,6 +2916,7 @@
   }
 
   .home-name {
+    margin: 0;
     color: var(--foreground);
     font-size: 0.98rem;
     font-weight: 620;
@@ -2925,6 +2926,41 @@
   .home-role {
     color: var(--body-copy);
     font-size: 0.92rem;
+  }
+
+  .home-byline .home-about {
+    max-width: 36rem;
+    margin: 0;
+    text-align: inherit;
+  }
+
+  .home-record-block {
+    display: grid;
+    width: min(calc(100% - 3rem), 39rem);
+    margin: 0 auto 4.5rem;
+    gap: 1.35rem;
+  }
+
+  .home-record-list {
+    margin: 0.35rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-record-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.42rem 0;
+    border-top: 1px solid var(--line);
+    color: var(--foreground);
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .home-record-list li span:last-child {
+    color: var(--muted-foreground);
+    text-align: right;
   }
 }
 
@@ -2940,6 +2976,16 @@
     .home-byline-id {
       align-items: center;
       justify-content: center;
+    }
+
+    .home-record-list li {
+      flex-direction: column;
+      align-items: inherit;
+      gap: 0.12rem;
+    }
+
+    .home-record-list li span:last-child {
+      text-align: inherit;
     }
   }
 }

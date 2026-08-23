@@ -289,6 +289,35 @@ function AmbientBubbles() {
   )
 }
 
+function QuietRecord() {
+  return (
+    <div className="home-record-block">
+      <section aria-labelledby="experience-title" id="experience">
+        <h2 className="page-kicker" id="experience-title">{t.experience.title}</h2>
+        <ul className="home-record-list">
+          {t.experience.items.map((item) => (
+            <li key={`${item.org}-${item.date}`}>
+              <span>{item.role}</span>
+              <span>{`${item.org} · ${item.date}`}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section aria-labelledby="education-title" id="education">
+        <h2 className="page-kicker" id="education-title">{t.education.title}</h2>
+        <ul className="home-record-list">
+          {t.education.items.map((item) => (
+            <li key={`${item.degree}-${item.date}`}>
+              <span>{item.degree}</span>
+              <span>{`${item.school} · ${item.date}`}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  )
+}
+
 function AboutPage() {
   return (
     <Shell className="home-page">
@@ -315,10 +344,8 @@ function AboutPage() {
           <div className="home-copy">
             <h1 className="home-claim" id="home-title">{t.home.title}</h1>
             <div className="home-byline">
-              <p className="home-byline-id">
-                <span className="home-name">{t.home.name}</span>
-                <span className="home-role">{t.home.role}</span>
-              </p>
+              <p className="home-name">{t.home.name}</p>
+              <p className="home-about">{t.home.personal}</p>
               <div className="contact-row" aria-label="Contact links">
                 {t.home.contacts.map((contact, index) => (
                   <Button
@@ -348,11 +375,11 @@ function AboutPage() {
                   </a>
                 </Button>
               </div>
-              <p className="home-about">{t.home.personal}</p>
             </div>
           </div>
         </div>
       </section>
+      <QuietRecord />
     </Shell>
   )
 }
