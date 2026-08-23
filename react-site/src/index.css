@@ -379,19 +379,19 @@
 /* ------------------------------------------------------------------------
    05 · Home.
 
-   One fold: name / role / now / three equal index rows.
-   Not a left-rail poster. Not a thesis masthead.
+   A large photograph sits as a right-hand figure beside name, role, now,
+   about, and contacts. Not a thumbnail. Not a centered Instagram stack.
    ------------------------------------------------------------------------ */
 @layer components {
   .home-shell {
     padding: 1.15rem 0 3.5rem;
   }
 
-  .home-identity {
+  .home-lead {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(9.75rem, 11.25rem);
     align-items: start;
-    column-gap: 1rem;
+    column-gap: 0.95rem;
   }
 
   .home-copy {
@@ -401,7 +401,7 @@
   .home-name {
     margin: 0;
     color: var(--foreground);
-    font-size: 1.55rem;
+    font-size: 1.4rem;
     font-weight: 620;
     line-height: 1.1;
     letter-spacing: -0.035em;
@@ -410,12 +410,12 @@
   .home-role {
     margin: 0.22rem 0 0;
     color: var(--body-copy);
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     line-height: 1.35;
   }
 
   .contact-line {
-    margin: 0.45rem 0 0;
+    margin: 0.7rem 0 0;
     color: var(--muted-foreground);
     font-size: 0.78rem;
     line-height: 1.4;
@@ -433,13 +433,13 @@
   }
 
   .home-figure {
-    width: 3.35rem;
-    margin: 0.15rem 0 0;
+    width: 100%;
+    margin: 0.1rem 0 0;
   }
 
-  .home-stamp {
-    width: 3.35rem;
-    height: 3.75rem;
+  .home-portrait {
+    width: 100%;
+    aspect-ratio: 715 / 800;
     border: 1px solid var(--line);
     border-radius: 0.2rem;
     object-fit: cover;
@@ -447,7 +447,7 @@
   }
 
   .portrait-caption {
-    margin-top: 0.28rem;
+    margin-top: 0.35rem;
     color: var(--muted-foreground);
     font-family: var(--font-mono);
     font-size: 0.52rem;
@@ -455,37 +455,30 @@
     text-transform: uppercase;
   }
 
-  /* Now is a tape, not a glass card. */
   .now-tape {
-    margin-top: 1.05rem;
-    padding: 0.7rem 0;
+    margin-top: 0.85rem;
+    padding: 0.6rem 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     scroll-margin-top: 2.5rem;
   }
 
-  .now-tape p {
-    margin: 0.28rem 0 0;
-    color: var(--foreground);
-    font-size: 0.9rem;
-    line-height: 1.45;
-  }
-
-  .home-index {
-    margin-top: 1.05rem;
-  }
-
-  .home-index .page-kicker,
   .now-tape .page-kicker {
     margin: 0 0 0.15rem;
   }
 
+  .now-tape p {
+    margin: 0.2rem 0 0;
+    color: var(--foreground);
+    font-size: 0.86rem;
+    line-height: 1.42;
+  }
+
   .home-about {
-    max-width: 36rem;
-    margin: 1.35rem 0 0;
+    margin: 0.75rem 0 0;
     color: var(--body-copy);
-    font-size: 0.88rem;
-    line-height: 1.55;
+    font-size: 0.84rem;
+    line-height: 1.5;
   }
 
   .home-record {
@@ -548,19 +541,41 @@
   }
 }
 
+@media (min-width: 24rem) {
+  @layer components {
+    .home-lead {
+      grid-template-columns: minmax(0, 1fr) minmax(11.5rem, 13rem);
+      column-gap: 1.15rem;
+    }
+
+    .home-name {
+      font-size: 1.5rem;
+    }
+  }
+}
+
 @media (min-width: 40rem) {
   @layer components {
+    #root:has(.home-page) {
+      --shell-max: 46rem;
+    }
+
+    .home-lead {
+      grid-template-columns: minmax(0, 1fr) minmax(16.5rem, 18.5rem);
+      column-gap: 1.75rem;
+    }
+
     .home-name {
       font-size: 1.7rem;
     }
 
-    .home-figure {
-      width: 3.7rem;
+    .home-role,
+    .now-tape p {
+      font-size: 0.9rem;
     }
 
-    .home-stamp {
-      width: 3.7rem;
-      height: 4.15rem;
+    .home-about {
+      font-size: 0.88rem;
     }
 
     .home-record {
@@ -570,6 +585,18 @@
 
     .record-list li {
       grid-template-columns: 7.1rem minmax(0, 1fr);
+    }
+  }
+}
+
+@media (min-width: 56rem) {
+  @layer components {
+    #root:has(.home-page) {
+      --shell-max: 50rem;
+    }
+
+    .home-lead {
+      grid-template-columns: minmax(0, 1fr) minmax(18.5rem, 20.5rem);
     }
   }
 }
@@ -622,8 +649,7 @@
   }
 
   .index-field,
-  .index-context,
-  .index-meta {
+  .index-context {
     margin: 0;
     color: var(--muted-foreground);
     font-family: var(--font-mono);
@@ -674,18 +700,6 @@
 
 @media (min-width: 40rem) {
   @layer components {
-    .home-index .index-row {
-      grid-template-columns: minmax(9.5rem, 0.7fr) minmax(0, 1.3fr);
-      align-items: baseline;
-      column-gap: 1rem;
-      padding: 0.58rem 0;
-    }
-
-    .home-index .index-meta {
-      justify-self: end;
-      text-align: right;
-    }
-
     .projects-page .index-row {
       grid-template-columns: minmax(0, 1.15fr) minmax(7rem, 0.45fr);
       align-items: start;
@@ -1409,7 +1423,7 @@
 @media (prefers-contrast: more) {
   .ledge-plank,
   .project-snapshot,
-  .home-stamp {
+  .home-portrait {
     border-color: rgb(21 21 21 / 55%) !important;
     background: #fff !important;
     -webkit-backdrop-filter: none !important;

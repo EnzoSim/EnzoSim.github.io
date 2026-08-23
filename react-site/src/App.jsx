@@ -149,14 +149,8 @@ function QuietRecord() {
   )
 }
 
-function projectRowHref(project, { onHome }) {
-  if (project.href) return project.href
-  if (onHome) return `/projects/#${project.slug}`
-  return null
-}
-
-function IndexRow({ project, showNotes = false, onHome = false }) {
-  const href = projectRowHref(project, { onHome })
+function IndexRow({ project, showNotes = false }) {
+  const href = project.href
   const isExternal = Boolean(href && href.startsWith('http'))
 
   return (
@@ -178,14 +172,8 @@ function IndexRow({ project, showNotes = false, onHome = false }) {
         </h2>
         {showNotes && project.note ? <p className="index-note">{project.note}</p> : null}
       </div>
-      {onHome ? (
-        <p className="index-meta">{`${project.field} · ${project.context}`}</p>
-      ) : (
-        <>
-          <p className="index-field">{project.field}</p>
-          <p className="index-context">{project.context}</p>
-        </>
-      )}
+      <p className="index-field">{project.field}</p>
+      <p className="index-context">{project.context}</p>
       {showNotes ? <ProjectTextActions project={project} /> : null}
     </article>
   )
@@ -222,16 +210,11 @@ function ProjectTextActions({ project }) {
   )
 }
 
-function ProjectIndex({ items, showNotes = false, onHome = false }) {
+function ProjectIndex({ items, showNotes = false }) {
   return (
     <div className="index-list">
       {items.map((project) => (
-        <IndexRow
-          key={project.slug}
-          onHome={onHome}
-          project={project}
-          showNotes={showNotes}
-        />
+        <IndexRow key={project.slug} project={project} showNotes={showNotes} />
       ))}
     </div>
   )
@@ -241,16 +224,21 @@ function AboutPage() {
   return (
     <Shell className="home-page">
       <div className="page-shell home-shell">
-        <section className="home-identity" aria-labelledby="home-title">
+        <section className="home-lead" aria-labelledby="home-title">
           <div className="home-copy">
             <h1 className="home-name" id="home-title">{t.home.name}</h1>
             <p className="home-role">{t.home.role}</p>
+            <section className="now-tape" id="now" aria-labelledby="now-label">
+              <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
+              <p>{t.home.now.text}</p>
+            </section>
+            <p className="home-about">{t.home.personal}</p>
             <ContactLinks />
           </div>
           <figure className="home-figure">
             <img
               alt={t.a11y.portraitAlt}
-              className="home-stamp"
+              className="home-portrait"
               decoding="async"
               fetchPriority="high"
               height={profileImage.height}
@@ -260,18 +248,6 @@ function AboutPage() {
             <figcaption className="portrait-caption">{t.home.portraitCaption}</figcaption>
           </figure>
         </section>
-
-        <section className="now-tape" id="now" aria-labelledby="now-label">
-          <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
-          <p>{t.home.now.text}</p>
-        </section>
-
-        <section className="home-index" aria-labelledby="home-index-label">
-          <h2 className="page-kicker" id="home-index-label">{t.home.indexLabel}</h2>
-          <ProjectIndex items={t.projects.items} onHome />
-        </section>
-
-        <p className="home-about">{t.home.personal}</p>
         <QuietRecord />
       </div>
     </Shell>
