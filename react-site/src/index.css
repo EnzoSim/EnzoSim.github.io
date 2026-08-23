@@ -495,9 +495,12 @@
 
    Photo-forward: name / role, then the photograph as a large matted plate,
    then now / about / contacts, then the ledger. On phones the plate runs the
-   full column; from 48rem it holds the right column at its native 715×800
-   while the brief reads down the left. No project index here — that lives
-   on /projects/. Thesis is a line inside Now, never the H1.
+   full column; from 48rem the plate holds the right column at its native
+   715×800 while the left column reads straight down without a break:
+   id, brief, then Experience and Education stacked beside the photo. The
+   ledger must never wait for the plate's bottom edge — that opened a dead
+   band across the middle of desktop viewports. No project index here — that
+   lives on /projects/. Thesis is a line inside Now, never the H1.
    ------------------------------------------------------------------------ */
 @layer components {
   .home-shell {
@@ -668,13 +671,18 @@
 
 @media (min-width: 48rem) {
   @layer components {
+    /* The record is the hero's third left row, so Experience starts right
+       under the contacts instead of waiting below the plate. The plate spans
+       all three rows; the trailing 1fr keeps the photo inside the hero even
+       if the ledger ever runs short. */
     .home-hero {
       display: grid;
       grid-template-areas:
         "id plate"
-        "brief plate";
+        "brief plate"
+        "record plate";
       grid-template-columns: minmax(0, 1fr) var(--plate-w);
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto auto 1fr;
       align-items: start;
       column-gap: clamp(1.9rem, 4.5vw, 3.25rem);
     }
@@ -697,11 +705,8 @@
       font-size: clamp(1.7rem, 2.6vw, 2rem);
     }
 
-    /* Same template as the hero, so Education aligns under the plate. */
     .home-record {
-      margin-top: 2.5rem;
-      grid-template-columns: minmax(0, 1fr) var(--plate-w);
-      column-gap: clamp(1.9rem, 4.5vw, 3.25rem);
+      grid-area: record;
     }
 
     .record-list li {

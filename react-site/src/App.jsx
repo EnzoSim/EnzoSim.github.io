@@ -292,9 +292,9 @@ function AboutPage() {
             <p className="home-about">{t.home.personal}</p>
             <ContactLinks />
           </div>
-        </section>
 
-        <QuietRecord />
+          <QuietRecord />
+        </section>
       </div>
     </Shell>
   )
