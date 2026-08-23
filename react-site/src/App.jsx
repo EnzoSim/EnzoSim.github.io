@@ -249,19 +249,6 @@ function SiteFooter() {
   )
 }
 
-function PageIndex({ label, items }) {
-  return (
-    <aside className="editorial-index" aria-label={`${label} index`}>
-      <p>{label}</p>
-      <nav>
-        {items.map((item) => (
-          <a href={item.href} key={item.href}>{item.label}</a>
-        ))}
-      </nav>
-    </aside>
-  )
-}
-
 function Shell({ children, className = '' }) {
   return (
     <>
@@ -279,10 +266,10 @@ function ExternalArrow() {
   return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
 }
 
-function AmbientBubbles() {
+function AmbientBubbles({ count = 6, variant = 'hero' }) {
   return (
-    <div className="ambient-bubbles" aria-hidden="true">
-      {Array.from({ length: 6 }, (_, index) => (
+    <div className={`ambient-bubbles ambient-bubbles-${variant}`} aria-hidden="true">
+      {Array.from({ length: count }, (_, index) => (
         <span className={`ambient-bubble ambient-bubble-${index + 1}`} key={index} />
       ))}
     </div>
@@ -368,12 +355,6 @@ function AboutPage() {
               <div className="now-card" id="now">
                 <span className="now-kicker">{t.home.now.label}</span>
                 <p>{t.home.now.text}</p>
-                <Button asChild size="sm" variant="ghost">
-                  <a href={t.home.now.action.href} {...externalProps}>
-                    {t.home.now.action.label}
-                    <ExternalArrow />
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
@@ -384,11 +365,11 @@ function AboutPage() {
   )
 }
 
-function RouteHeading({ title, lede }) {
+function RouteHead({ id, title, lede }) {
   return (
-    <header className="route-heading">
-      <h1>{title}</h1>
-      <p>{lede}</p>
+    <header className="route-head">
+      <h1 id={id}>{title}</h1>
+      {lede ? <p>{lede}</p> : null}
     </header>
   )
 }
@@ -396,26 +377,15 @@ function RouteHeading({ title, lede }) {
 function ProjectsPage() {
   return (
     <Shell className="route-page projects-page">
-      <div className="editorial-layout projects-record">
-        <PageIndex
-          label="Projects"
-          items={t.projects.items.map((project) => ({
-            label: project.field,
-            href: `#${project.slug}`,
-          }))}
-        />
-        <section className="projects-stage" aria-labelledby="projects-title">
-          <header className="projects-stage-heading">
-            <h1 id="projects-title">{t.projects.title}</h1>
-            <p>{t.projects.lede}</p>
-          </header>
-          <div className="work-grid">
-            {t.projects.items.map((project) => (
-              <WorkObject key={project.slug} project={project} />
-            ))}
-          </div>
-        </section>
-      </div>
+      <AmbientBubbles count={4} variant="route" />
+      <section className="route-shell" aria-labelledby="projects-title">
+        <RouteHead id="projects-title" lede={t.projects.lede} title={t.projects.title} />
+        <div className="exhibit-list">
+          {t.projects.items.map((project, index) => (
+            <ProjectExhibit index={index} key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
     </Shell>
   )
 }
@@ -499,19 +469,23 @@ function ProjectObject({ slug }) {
   )
 }
 
-function WorkObject({ project }) {
+function ProjectExhibit({ project, index }) {
   return (
     <article
       aria-labelledby={`${project.slug}-title`}
-      className={`work-object work-object-${project.presentation}`}
+      className={`exhibit exhibit-${project.presentation}`}
       id={project.slug}
     >
-      <ProjectObject slug={project.slug} />
-      <div className="work-object-copy">
+      <div className="exhibit-stage">
+        <span aria-hidden="true" className="exhibit-ordinal">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <ProjectObject slug={project.slug} />
+      </div>
+      <div className="exhibit-caption">
         <p className="page-kicker">{project.field}</p>
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
-        <p>{project.description}</p>
-        <p className="work-object-context">{project.context}</p>
+        <p className="exhibit-context">{project.context}</p>
         <ProjectActions project={project} />
       </div>
     </article>
@@ -608,32 +582,23 @@ function Publications() {
 function ReadingPage() {
   return (
     <Shell className="route-page reading-page">
-      <div className="editorial-layout reading-record">
-        <PageIndex
-          label="Reading"
-          items={[
-            { label: 'Books', href: '#books' },
-            { label: 'Publications', href: '#publications' },
-          ]}
-        />
-        <div className="reading-column">
-          <RouteHeading title={t.library.title} lede={t.library.lede} />
+      <AmbientBubbles count={4} variant="route" />
+      <section className="route-shell" aria-labelledby="reading-title">
+        <RouteHead id="reading-title" title={t.library.title} />
 
-          <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
-            <div className="ledge-composition">
-              <div className="ledge-stage">
-                <ul className="shelf-books">
-                  {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
-                </ul>
-                <div className="ledge-plank" aria-hidden="true" />
-              </div>
-              <BookNotes />
-            </div>
-          </section>
+        <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
+          <div className="ledge-stage">
+            <ul className="shelf-books">
+              {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
+            </ul>
+            <div className="ledge-plank" aria-hidden="true" />
+            <div className="ledge-shadow" aria-hidden="true" />
+          </div>
+          <BookNotes />
+        </section>
 
-          <Publications />
-        </div>
-      </div>
+        <Publications />
+      </section>
     </Shell>
   )
 }
