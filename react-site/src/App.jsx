@@ -276,30 +276,32 @@ function AmbientBubbles({ count = 6, variant = 'hero' }) {
   )
 }
 
+function RecordList({ items }) {
+  return (
+    <ul className="record-list">
+      {items.map((item) => (
+        <li key={`${item.role ?? item.degree}-${item.date}`}>
+          <span className="record-date">{item.date}</span>
+          <span className="record-body">
+            <span className="record-role">{item.role ?? item.degree}</span>
+            <span className="record-org">{item.org ?? item.school}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function QuietRecord() {
   return (
-    <div className="home-record-block">
-      <section aria-labelledby="experience-title" id="experience">
+    <div className="home-record">
+      <section aria-labelledby="experience-title" className="record-section" id="experience">
         <h2 className="page-kicker" id="experience-title">{t.experience.title}</h2>
-        <ul className="home-record-list">
-          {t.experience.items.map((item) => (
-            <li key={`${item.org}-${item.date}`}>
-              <span>{item.role}</span>
-              <span>{`${item.org} · ${item.date}`}</span>
-            </li>
-          ))}
-        </ul>
+        <RecordList items={t.experience.items} />
       </section>
-      <section aria-labelledby="education-title" id="education">
+      <section aria-labelledby="education-title" className="record-section" id="education">
         <h2 className="page-kicker" id="education-title">{t.education.title}</h2>
-        <ul className="home-record-list">
-          {t.education.items.map((item) => (
-            <li key={`${item.degree}-${item.date}`}>
-              <span>{item.degree}</span>
-              <span>{`${item.school} · ${item.date}`}</span>
-            </li>
-          ))}
-        </ul>
+        <RecordList items={t.education.items} />
       </section>
     </div>
   )
@@ -308,30 +310,14 @@ function QuietRecord() {
 function AboutPage() {
   return (
     <Shell className="home-page">
-      <section className="home-hero" aria-labelledby="home-title">
+      <section className="home-lead" aria-labelledby="home-title">
         <AmbientBubbles />
-        <div className="home-hero-content">
-          <figure className="portrait-column home-portrait">
-            <div className="portrait-lens">
-              <img
-                alt={t.a11y.portraitAlt}
-                decoding="async"
-                fetchPriority="high"
-                height={profileImage.height}
-                src={profileImage.src}
-                width={profileImage.width}
-              />
-            </div>
-            <figcaption className="portrait-caption">
-              <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
-              <span>{t.home.portraitCaption}</span>
-            </figcaption>
-          </figure>
-
-          <div className="home-copy">
-            <h1 className="home-claim" id="home-title">{t.home.title}</h1>
-            <div className="home-byline">
-              <p className="home-name">{t.home.name}</p>
+        <div className="home-shell">
+          <div className="home-main">
+            <div className="home-copy">
+              <p className="page-kicker home-kicker">{t.home.role}</p>
+              <h1 className="home-claim" id="home-title">{t.home.title}</h1>
+              <p className="home-byline">{t.home.name}</p>
               <p className="home-about">{t.home.personal}</p>
               <div className="contact-row" aria-label="Contact links">
                 {t.home.contacts.map((contact, index) => (
@@ -350,17 +336,31 @@ function AboutPage() {
                   </Button>
                 ))}
               </div>
-            </div>
-            <div className="home-details">
               <div className="now-card" id="now">
                 <span className="now-kicker">{t.home.now.label}</span>
                 <p>{t.home.now.text}</p>
               </div>
             </div>
+            <figure className="home-figure">
+              <div className="portrait-lens">
+                <img
+                  alt={t.a11y.portraitAlt}
+                  decoding="async"
+                  fetchPriority="high"
+                  height={profileImage.height}
+                  src={profileImage.src}
+                  width={profileImage.width}
+                />
+              </div>
+              <figcaption className="portrait-caption">
+                <Circle aria-hidden="true" fill="currentColor" strokeWidth={0} />
+                <span>{t.home.portraitCaption}</span>
+              </figcaption>
+            </figure>
           </div>
+          <QuietRecord />
         </div>
       </section>
-      <QuietRecord />
     </Shell>
   )
 }
@@ -380,9 +380,9 @@ function ProjectsPage() {
       <AmbientBubbles count={4} variant="route" />
       <section className="route-shell" aria-labelledby="projects-title">
         <RouteHead id="projects-title" lede={t.projects.lede} title={t.projects.title} />
-        <div className="exhibit-list">
+        <div className="plate-list">
           {t.projects.items.map((project, index) => (
-            <ProjectExhibit index={index} key={project.slug} project={project} />
+            <ProjectPlate index={index} key={project.slug} project={project} />
           ))}
         </div>
       </section>
@@ -427,15 +427,14 @@ function ProjectActions({ project }) {
 function ProjectObject({ slug }) {
   if (slug === 'water-pricing') {
     return (
-      <div className="project-object" aria-hidden="true">
-        <div className="object-steps-wrap">
-          <div className="object-steps">
-            <i />
-            <i />
-            <i />
-          </div>
-          <p className="object-caption">$ / m³</p>
+      <div className="project-object object-water" aria-hidden="true">
+        <div className="object-steps">
+          <i />
+          <i />
+          <i />
+          <i />
         </div>
+        <p className="object-caption">$ / m³</p>
       </div>
     )
   }
@@ -469,24 +468,24 @@ function ProjectObject({ slug }) {
   )
 }
 
-function ProjectExhibit({ project, index }) {
+function ProjectPlate({ project, index }) {
   return (
     <article
       aria-labelledby={`${project.slug}-title`}
-      className={`exhibit exhibit-${project.presentation}`}
+      className={`plate plate-${project.presentation}`}
       id={project.slug}
     >
-      <div className="exhibit-stage">
-        <span aria-hidden="true" className="exhibit-ordinal">
-          {String(index + 1).padStart(2, '0')}
-        </span>
-        <ProjectObject slug={project.slug} />
-      </div>
-      <div className="exhibit-caption">
+      <span aria-hidden="true" className="plate-ordinal">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      <div className="plate-caption">
         <p className="page-kicker">{project.field}</p>
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
-        <p className="exhibit-context">{project.context}</p>
+        <p className="plate-context">{project.context}</p>
         <ProjectActions project={project} />
+      </div>
+      <div className="plate-stage">
+        <ProjectObject slug={project.slug} />
       </div>
     </article>
   )
