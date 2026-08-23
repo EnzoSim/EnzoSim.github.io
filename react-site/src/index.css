@@ -2887,3 +2887,68 @@
     border-color: rgb(21 21 21 / 55%);
   }
 }
+
+/* Hierarchy only: the home lead is a claim, not a name-as-logo. Existing tokens. */
+@layer components {
+  .home-copy h1.home-claim {
+    max-width: 28rem;
+    font-size: clamp(1.55rem, 3.4vw, 2.2rem);
+    font-weight: 620;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .home-byline {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: inherit;
+    gap: 0.7rem;
+  }
+
+  .home-byline-id {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.75rem;
+    margin: 0;
+  }
+
+  .home-name {
+    color: var(--foreground);
+    font-size: 0.98rem;
+    font-weight: 620;
+    letter-spacing: -0.02em;
+  }
+
+  .home-role {
+    color: var(--body-copy);
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 47.999rem) {
+  @layer components {
+    .home-copy h1.home-claim {
+      max-width: 22rem;
+      font-size: clamp(1.35rem, 5.4vw, 1.7rem);
+      text-align: center;
+    }
+
+    .home-byline,
+    .home-byline-id {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 41.999rem) {
+  @layer components {
+    .home-copy h1.home-claim {
+      max-width: 20rem;
+      font-size: clamp(1.28rem, 6.2vw, 1.55rem);
+    }
+  }
+}

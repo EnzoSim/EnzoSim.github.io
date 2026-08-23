@@ -15,17 +15,17 @@ export const en = {
     about: {
       title: 'Enzo Simier · Applied Economist',
       description:
-        'Enzo Simier is an applied economist in Montréal working across competition, pricing, strategy, and public-interest research.',
+        'Applied economist in Montréal. Current question: how volumetric prices change water use, cost recovery, and welfare in Québec.',
     },
     reading: {
       title: 'Reading · Enzo Simier',
       description:
-        'Five books Enzo Simier returns to, plus a short list of magazines and newsletters.',
+        'Annotations on five books that bear on the work, plus magazines and newsletters.',
     },
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'Research and tools by Enzo Simier across water pricing, biotech catalysts, and connected knowledge.',
+        'Briefs on volumetric water pricing, a biotech catalyst calendar, and a public working library.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -45,15 +45,16 @@ export const en = {
     ],
   },
   home: {
-    title: 'Enzo Simier',
-    introduction:
-      'Applied economist in Montréal, interested in competition, pricing, strategy, and the practical tools that make complex decisions easier to examine.',
+    title:
+      'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
+    name: 'Enzo Simier',
+    role: 'Applied economist, Montréal',
     personal:
       'I spent ten years in Tahiti, then lived in Grenoble and Rennes before moving to Montréal. I studied pharmacy in Bordeaux for two years before turning to economics. Outside work, I care about good food, cafés, and golden retrievers.',
     portraitCaption: 'Montréal, 2026',
     now: {
       label: 'Now',
-      text: 'Finishing my thesis on volumetric water pricing in Québec and exploring roles in competition, pricing, and strategy.',
+      text: 'Finishing the thesis on volumetric water pricing in Québec. Looking at roles in competition, pricing, and strategy.',
       action: { label: 'Book a call', href: bookingUrl },
     },
     contacts: [
@@ -64,26 +65,25 @@ export const en = {
   },
   projects: {
     title: 'Projects',
-    lede: 'A thesis on water pricing, a biotech calendar, and a public knowledge library.',
+    lede: 'A pricing thesis, a catalyst calendar, and a working library.',
     items: [
       {
         slug: 'water-pricing',
-        kind: 'Research',
-        title: 'Volumetric water pricing in Québec',
+        field: 'Public finance',
+        title: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
         description:
-          'My thesis estimates how volumetric pricing changes water use, cost recovery, and welfare across Québec municipalities.',
+          'The thesis estimates those effects across municipalities. The setup is industrial organization: consumer surplus and cost of service.',
         context: 'HEC Montréal · Réseau Environnement',
-        detail: 'Industrial organization, consumer surplus, cost of service',
         href: null,
         cta: null,
         presentation: 'lead',
       },
       {
         slug: 'fda-catalyst',
-        kind: 'Tool',
-        title: 'FDA Catalyst',
+        field: 'Markets',
+        title: 'Can dated biotech catalysts be read as one filterable calendar?',
         description:
-          'A live biotech catalyst calendar that turns structured records into dated events with filters, source links, and company-level context.',
+          'FDA Catalyst converts BPIQ records into dated events with filters, source links, and company-level context. The live view is a 90-day calendar of those events.',
         context: 'FastAPI, Railway Postgres, React',
         href: '/fda-catalyst.html',
         cta: 'View the case study',
@@ -91,10 +91,10 @@ export const en = {
       },
       {
         slug: 'wiki-project',
-        kind: 'Library',
-        title: 'Wiki Project',
+        field: 'Knowledge',
+        title: 'Can vocabulary, notes, and fragments stay connected enough to reuse?',
         description:
-          'A public working library for vocabulary, reading notes, and project fragments, built to make ideas easier to revisit and connect.',
+          'A public working library for vocabulary, reading notes, and project fragments. Built so those pieces can be revisited and connected.',
         context: 'Next.js, Railway, Supabase',
         href: wikiLiveUrl,
         sourceHref: wikiRepoUrl,
@@ -106,7 +106,7 @@ export const en = {
   },
   library: {
     title: 'Reading',
-    lede: 'Five books I return to, followed by a short list of publications I read.',
+    lede: 'Notes on five books that bear on the work, then magazines and newsletters.',
     books: [
       {
         slug: 'chip-war',
@@ -115,7 +115,7 @@ export const en = {
         author: 'Chris Miller',
         spineAuthor: 'Miller',
         year: 2022,
-        note: 'How a handful of firms came to control the world’s chip supply.',
+        note: 'Concentrated capacity: a few firms set the constraint for everyone else. Useful when the object of study is a bottleneck, not a market with many substitutes.',
         href: 'https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015',
         design: {
           spine: '#172a22',
@@ -131,7 +131,7 @@ export const en = {
         author: 'Ed Conway',
         spineAuthor: 'Conway',
         year: 2023,
-        note: 'The physical inputs behind growth: sand, copper, and oil.',
+        note: 'Growth still runs through sand, copper, and oil. A reminder that pricing problems start from physical limits, including water.',
         href: 'https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/',
         design: {
           spine: '#754231',
@@ -147,7 +147,7 @@ export const en = {
         author: 'Nadia Eghbal',
         spineAuthor: 'Eghbal',
         year: 2020,
-        note: 'The clearest book on incentives and maintenance in open source.',
+        note: 'Maintenance is the scarce input in open work. The incentive problem is why a public library of notes does not stay public without someone paying the cost.',
         href: 'https://press.stripe.com/working-in-public',
         design: {
           spine: '#aaa18f',
@@ -163,7 +163,7 @@ export const en = {
         author: 'Andrew Roberts',
         spineAuthor: 'Roberts',
         year: 2018,
-        note: 'The decades of work behind Churchill’s judgment.',
+        note: 'A long record of judgment under incomplete information. The useful part is the wait, not the speeches.',
         href: 'https://www.penguinrandomhouse.com/books/533764/churchill-by-andrew-roberts/9781101980996/',
         design: {
           spine: '#171713',
@@ -179,7 +179,7 @@ export const en = {
         author: 'Adrian Goldsworthy',
         spineAuthor: 'Goldsworthy',
         year: 2006,
-        note: 'Coalition-building and timing in the late Republic.',
+        note: 'Coalition and timing in a system with no idle capacity. Strategy as a sequence of binding constraints, not a single choice.',
         href: 'https://yalebooks.yale.edu/book/9780300126891/caesar/',
         design: {
           spine: '#49231f',
