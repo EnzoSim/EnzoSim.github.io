@@ -93,19 +93,27 @@
 
   html {
     @apply font-sans;
-    background: var(--background);
+    background: var(--paper);
+    border: 0;
     scroll-behavior: auto;
   }
 
   body {
-    @apply bg-background text-foreground;
-    min-height: 100vh;
+    @apply text-foreground;
+    min-height: 100dvh;
     margin: 0;
     overflow-x: clip;
-    background: var(--background);
+    background: var(--paper);
+    border: 0;
     -webkit-font-smoothing: antialiased;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-height: 100dvh;
+    background: var(--paper);
+    border: 0;
   }
 
   a,
@@ -150,6 +158,9 @@
     top: 0;
     width: 100%;
     padding: max(0.6rem, env(safe-area-inset-top)) 0.6rem 0;
+    background: var(--paper);
+    border: 0;
+    box-shadow: none;
     pointer-events: none;
   }
 
@@ -444,11 +455,8 @@
   }
 
   .route-heading::before {
-    width: 100%;
-    height: 1px;
-    align-self: center;
-    background: var(--line);
-    content: "";
+    display: none;
+    content: none;
   }
 
   .route-heading h1 {
@@ -1137,7 +1145,7 @@
   body::after {
     position: fixed;
     z-index: 90;
-    inset: 0;
+    inset: env(safe-area-inset-top, 0px) 0 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
     content: "";
     mix-blend-mode: multiply;
@@ -1151,6 +1159,9 @@
     position: relative;
     z-index: 40;
     padding: max(1rem, env(safe-area-inset-top)) 1.25rem 0;
+    background: var(--paper);
+    border: 0;
+    box-shadow: none;
     pointer-events: auto;
   }
 
@@ -1217,7 +1228,7 @@
     gap: 0;
     overflow: clip;
     isolation: isolate;
-    background: linear-gradient(180deg, #fff 0%, var(--paper) 72%, var(--paper-mid) 100%);
+    background: var(--paper);
   }
 
   .home-hero::before,
@@ -2117,7 +2128,7 @@
   @layer components {
     .home-hero {
       padding: clamp(1.5rem, 2.5vh, 2.5rem) 1.5rem clamp(5rem, 8vh, 6.5rem);
-      background: linear-gradient(180deg, #fff 0%, var(--paper) 72%, var(--paper-mid) 100%);
+      background: var(--paper);
     }
 
     .home-hero-content {
@@ -2407,7 +2418,7 @@
 
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .home-hero {
-    background: #fff;
+    background: var(--paper);
   }
 
   .ambient-bubbles {
@@ -3008,6 +3019,134 @@
     .home-copy h1.home-claim {
       max-width: 20rem;
       font-size: clamp(1.28rem, 6.2vw, 1.55rem);
+    }
+  }
+}
+
+/* One paper from iOS chrome through the header. Kill leftover stacked washes. */
+@layer base {
+  html,
+  body,
+  #root {
+    background-color: var(--paper);
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+@layer components {
+  .site-header,
+  .home-hero,
+  .home-page,
+  .route-page,
+  .projects-page,
+  .reading-page,
+  .project-page,
+  main {
+    background-color: var(--paper);
+    border-top-width: 0;
+    box-shadow: none;
+  }
+
+  .home-hero {
+    background: var(--paper);
+  }
+
+  .home-hero::before,
+  .home-hero::after,
+  .route-heading::before,
+  .about-page .route-heading::before,
+  .reading-page .route-heading::before {
+    display: none;
+    content: none;
+  }
+
+  /* Projects: glass object first, then a field kicker and a short name. */
+  .projects-page .projects-stage-heading h1 {
+    font-size: clamp(2.2rem, 8vw, 3.25rem);
+  }
+
+  .projects-page .projects-stage-heading > p {
+    max-width: 22rem;
+    margin-top: 0.7rem;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .projects-page .projects-stage .work-object,
+  .projects-page .projects-stage .work-object-lead,
+  .projects-page .projects-stage .work-object-standard,
+  .projects-page .projects-stage .work-object-offset {
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    align-items: center;
+    column-gap: 1.75rem;
+    padding: 1.75rem 0;
+  }
+
+  .projects-page .work-object-copy {
+    gap: 0.4rem;
+  }
+
+  .projects-page .work-object-copy h2,
+  .projects-page .work-object-standard .work-object-copy h2,
+  .projects-page .work-object-offset .work-object-copy h2 {
+    max-width: 18rem;
+    font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+    font-weight: 620;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  .project-object {
+    width: 9.25rem;
+    height: 9.25rem;
+  }
+
+  /* Reading: the ledge is the page. Notes and publications stay quiet. */
+  .reading-page .route-heading {
+    margin-bottom: 2.25rem;
+  }
+
+  .reading-page .route-heading h1 {
+    font-size: clamp(2.2rem, 8vw, 3.25rem);
+  }
+
+  .shelf-notes p {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .publications-section {
+    margin-top: 3.75rem;
+    opacity: 0.86;
+  }
+
+  .publications-section .section-title-row {
+    min-height: 3rem;
+  }
+
+  .publication-group p {
+    color: var(--muted-foreground);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 63.999rem) {
+  @layer components {
+    .projects-page .projects-stage .work-object,
+    .projects-page .projects-stage .work-object-lead,
+    .projects-page .projects-stage .work-object-standard,
+    .projects-page .projects-stage .work-object-offset {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.6rem 0;
+    }
+
+    .project-object {
+      width: 8.5rem;
+      height: 8.5rem;
     }
   }
 }

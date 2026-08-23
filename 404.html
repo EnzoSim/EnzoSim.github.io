@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f5f4f1" />
     <title>Page not found · Enzo Simier</title>
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -11,11 +12,11 @@
     <style>
       :root {
         color-scheme: light;
-        --background: #f7f8f4;
-        --foreground: #151515;
-        --body-copy: #56534e;
-        --muted: #716d66;
-        --evergreen: #244235;
+        --background: #f5f4f1;
+        --foreground: #1c1b19;
+        --body-copy: #58544e;
+        --muted: #5f5a55;
+        --copper: #70482e;
       }
 
       * {
@@ -28,7 +29,7 @@
         margin: 0;
         place-items: center;
         color: var(--foreground);
-        background: linear-gradient(180deg, #fff 0%, #fcfdfb 48%, #fafcf8 100%);
+        background: #f5f4f1;
         font-family: "Geist Variable", "Geist", -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
@@ -44,7 +45,7 @@
 
       .kicker {
         margin: 0 0 1.4rem;
-        color: var(--evergreen);
+        color: var(--copper);
         font-family: "Geist Mono Variable", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
         font-size: 0.7rem;
         font-weight: 620;
@@ -115,7 +116,7 @@
       }
 
       nav a:focus-visible {
-        outline: 2px solid var(--evergreen);
+        outline: 2px solid var(--copper);
         outline-offset: 2px;
       }
 
@@ -142,7 +143,7 @@
         border-radius: 55% 45% 61% 39% / 48% 56% 44% 52%;
         background:
           radial-gradient(circle at 34% 28%, rgb(255 255 255 / 92%) 0 9%, transparent 30%),
-          linear-gradient(145deg, rgb(222 231 205 / 88%), rgb(192 213 190 / 62%));
+          linear-gradient(145deg, rgb(245 240 232 / 88%), rgb(214 206 194 / 58%));
       }
 
       .ambient span:last-child {
@@ -152,12 +153,12 @@
         border-radius: 49% 51% 39% 61% / 58% 44% 56% 42%;
         background:
           radial-gradient(circle at 31% 24%, rgb(255 255 255 / 88%) 0 10%, transparent 31%),
-          linear-gradient(150deg, rgb(220 232 216 / 84%), rgb(172 202 179 / 57%));
+          linear-gradient(150deg, rgb(232 226 216 / 80%), rgb(196 186 172 / 50%));
       }
 
       @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
         body {
-          background: #fff;
+          background: #f5f4f1;
         }
 
         .ambient {

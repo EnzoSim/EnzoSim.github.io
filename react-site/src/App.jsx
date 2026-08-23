@@ -368,12 +368,6 @@ function AboutPage() {
               <div className="now-card" id="now">
                 <span className="now-kicker">{t.home.now.label}</span>
                 <p>{t.home.now.text}</p>
-                <Button asChild size="sm" variant="ghost">
-                  <a href={t.home.now.action.href} {...externalProps}>
-                    {t.home.now.action.label}
-                    <ExternalArrow />
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
@@ -388,7 +382,7 @@ function RouteHeading({ title, lede }) {
   return (
     <header className="route-heading">
       <h1>{title}</h1>
-      <p>{lede}</p>
+      {lede ? <p>{lede}</p> : null}
     </header>
   )
 }
@@ -510,7 +504,6 @@ function WorkObject({ project }) {
       <div className="work-object-copy">
         <p className="page-kicker">{project.field}</p>
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
-        <p>{project.description}</p>
         <p className="work-object-context">{project.context}</p>
         <ProjectActions project={project} />
       </div>
@@ -617,7 +610,7 @@ function ReadingPage() {
           ]}
         />
         <div className="reading-column">
-          <RouteHeading title={t.library.title} lede={t.library.lede} />
+          <RouteHeading title={t.library.title} />
 
           <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
             <div className="ledge-composition">

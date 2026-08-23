@@ -1,5 +1,4 @@
 import {
-  bookingUrl,
   contactEmail,
   cvUrl,
   fdaLiveUrl,
@@ -20,7 +19,7 @@ export const en = {
     reading: {
       title: 'Reading · Enzo Simier',
       description:
-        'Five books I come back to, and why they stay. Then magazines and newsletters.',
+        'Five books on a shelf, plus magazines and newsletters.',
     },
     projects: {
       title: 'Projects · Enzo Simier',
@@ -55,7 +54,6 @@ export const en = {
     now: {
       label: 'Now',
       text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement. Corporate business analysis at Desjardins.',
-      action: { label: 'Book a call', href: bookingUrl },
     },
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
@@ -65,14 +63,12 @@ export const en = {
   },
   projects: {
     title: 'Projects',
-    lede: 'A thesis, a catalyst calendar, and a working library.',
+    lede: 'A thesis, a calendar, a library.',
     items: [
       {
         slug: 'water-pricing',
         field: 'Public finance',
-        title: 'How does volumetric pricing change water use, cost recovery, and welfare in Québec?',
-        description:
-          'I estimate those effects across municipalities, using industrial organization: consumer surplus and cost of service. The thesis is still underway, so there are no results to post yet.',
+        title: 'Water pricing',
         context: 'HEC Montréal · Réseau Environnement',
         href: null,
         cta: null,
@@ -81,9 +77,7 @@ export const en = {
       {
         slug: 'fda-catalyst',
         field: 'Markets',
-        title: 'How do you turn biotech catalyst records into a dated calendar?',
-        description:
-          'FDA Catalyst converts BPIQ records into dated events with filters, source links, and company context. The live 90-day view is on Railway.',
+        title: 'FDA Catalyst',
         context: 'FastAPI, Railway Postgres, React',
         href: '/fda-catalyst.html',
         cta: 'View the case study',
@@ -92,9 +86,7 @@ export const en = {
       {
         slug: 'wiki-project',
         field: 'Knowledge',
-        title: 'How do I keep vocabulary, notes, and fragments reusable?',
-        description:
-          'A public working library for those pieces. Built so I can revisit them and connect them later.',
+        title: 'Wiki',
         context: 'Next.js, Railway, Supabase',
         href: wikiLiveUrl,
         sourceHref: wikiRepoUrl,
@@ -106,7 +98,6 @@ export const en = {
   },
   library: {
     title: 'Reading',
-    lede: 'Five books I come back to, and why they stay. Then magazines and newsletters.',
     books: [
       {
         slug: 'chip-war',
@@ -115,7 +106,7 @@ export const en = {
         author: 'Chris Miller',
         spineAuthor: 'Miller',
         year: 2022,
-        note: 'How a handful of firms came to control chip supply. I keep it for concentrated markets and bottlenecks.',
+        note: 'Concentrated chip supply, and the bottlenecks that follow.',
         href: 'https://www.simonandschuster.com/books/Chip-War/Chris-Miller/9781982172015',
         design: {
           spine: '#172a22',
@@ -131,7 +122,7 @@ export const en = {
         author: 'Ed Conway',
         spineAuthor: 'Conway',
         year: 2023,
-        note: 'The physical inputs behind growth: sand, copper, and oil. Relevant when the scarce thing is physical, including water.',
+        note: 'Sand, copper, oil: the physical inputs behind growth.',
         href: 'https://www.penguinrandomhouse.com/books/703268/material-world-by-ed-conway/',
         design: {
           spine: '#754231',
@@ -147,7 +138,7 @@ export const en = {
         author: 'Nadia Eghbal',
         spineAuthor: 'Eghbal',
         year: 2020,
-        note: 'Incentives and maintenance in open source. Why notes do not stay public unless someone pays the cost.',
+        note: 'Who pays to keep notes and software public.',
         href: 'https://press.stripe.com/working-in-public',
         design: {
           spine: '#aaa18f',
@@ -163,7 +154,7 @@ export const en = {
         author: 'Andrew Roberts',
         spineAuthor: 'Roberts',
         year: 2018,
-        note: 'The long build-up behind the judgment. I keep it for decisions made with incomplete information.',
+        note: 'Judgment built over decades, with incomplete information.',
         href: 'https://www.penguinrandomhouse.com/books/533764/churchill-by-andrew-roberts/9781101980996/',
         design: {
           spine: '#171713',
@@ -179,7 +170,7 @@ export const en = {
         author: 'Adrian Goldsworthy',
         spineAuthor: 'Goldsworthy',
         year: 2006,
-        note: 'Coalition-building and timing in the late Republic. I read it as a sequence of constraints, not one big choice.',
+        note: 'Coalitions and timing as a sequence of constraints.',
         href: 'https://yalebooks.yale.edu/book/9780300126891/caesar/',
         design: {
           spine: '#49231f',
