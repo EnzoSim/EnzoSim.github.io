@@ -91,18 +91,6 @@ function SiteNav() {
 
   const dragState = useRef(null)
   const suppressClick = useRef(false)
-  const pendingNav = useRef(null)
-
-  const navigateAfterGlide = useCallback((href) => {
-    if (pendingNav.current) window.clearTimeout(pendingNav.current)
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    pendingNav.current = window.setTimeout(
-      () => {
-        window.location.href = href
-      },
-      reduceMotion ? 0 : 180,
-    )
-  }, [])
 
   const onNavClick = (event) => {
     if (suppressClick.current) {
@@ -110,11 +98,9 @@ function SiteNav() {
       return
     }
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-    const link = event.currentTarget
-    event.preventDefault()
-    if (routeForPathname(link.getAttribute('href')) === activeRoute) return
-    moveLens(link)
-    navigateAfterGlide(link.href)
+    if (routeForPathname(event.currentTarget.getAttribute('href')) === activeRoute) {
+      event.preventDefault()
+    }
   }
 
   const linkMetrics = (nav, navBox) => {
@@ -220,7 +206,7 @@ function SiteNav() {
     const nearest = links[nearestIndex]
     moveLens(nearest)
     if (routeForPathname(nearest.getAttribute('href')) !== activeRoute) {
-      navigateAfterGlide(nearest.href)
+      window.location.href = nearest.href
     }
   }
 
@@ -303,6 +289,35 @@ function AmbientBubbles() {
   )
 }
 
+function QuietRecord() {
+  return (
+    <div className="home-record-block">
+      <section aria-labelledby="experience-title" id="experience">
+        <h2 className="page-kicker" id="experience-title">{t.experience.title}</h2>
+        <ul className="home-record-list">
+          {t.experience.items.map((item) => (
+            <li key={`${item.org}-${item.date}`}>
+              <span>{item.role}</span>
+              <span>{`${item.org} · ${item.date}`}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section aria-labelledby="education-title" id="education">
+        <h2 className="page-kicker" id="education-title">{t.education.title}</h2>
+        <ul className="home-record-list">
+          {t.education.items.map((item) => (
+            <li key={`${item.degree}-${item.date}`}>
+              <span>{item.degree}</span>
+              <span>{`${item.school} · ${item.date}`}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  )
+}
+
 function AboutPage() {
   return (
     <Shell className="home-page">
@@ -327,24 +342,27 @@ function AboutPage() {
           </figure>
 
           <div className="home-copy">
-            <h1 id="home-title">{t.home.title}</h1>
-            <p className="home-introduction">{t.home.introduction}</p>
-            <div className="contact-row" aria-label="Contact links">
-              {t.home.contacts.map((contact, index) => (
-                <Button
-                  asChild
-                  key={contact.label}
-                  variant={index === 0 ? 'default' : 'ghost'}
-                >
-                  <a
-                    href={contact.href}
-                    {...(contact.external || contact.label === 'CV' ? externalProps : {})}
+            <h1 className="home-claim" id="home-title">{t.home.title}</h1>
+            <div className="home-byline">
+              <p className="home-name">{t.home.name}</p>
+              <p className="home-about">{t.home.personal}</p>
+              <div className="contact-row" aria-label="Contact links">
+                {t.home.contacts.map((contact, index) => (
+                  <Button
+                    asChild
+                    key={contact.label}
+                    variant={index === 0 ? 'default' : 'ghost'}
                   >
-                    {contact.label}
-                    {contact.label !== 'Email' ? <ExternalArrow /> : null}
-                  </a>
-                </Button>
-              ))}
+                    <a
+                      href={contact.href}
+                      {...(contact.external || contact.label === 'CV' ? externalProps : {})}
+                    >
+                      {contact.label}
+                      {contact.label !== 'Email' ? <ExternalArrow /> : null}
+                    </a>
+                  </Button>
+                ))}
+              </div>
             </div>
             <div className="home-details">
               <div className="now-card" id="now">
@@ -357,11 +375,11 @@ function AboutPage() {
                   </a>
                 </Button>
               </div>
-              <p className="home-about">{t.home.personal}</p>
             </div>
           </div>
         </div>
       </section>
+      <QuietRecord />
     </Shell>
   )
 }
@@ -382,7 +400,7 @@ function ProjectsPage() {
         <PageIndex
           label="Projects"
           items={t.projects.items.map((project) => ({
-            label: project.kind,
+            label: project.field,
             href: `#${project.slug}`,
           }))}
         />
@@ -490,6 +508,7 @@ function WorkObject({ project }) {
     >
       <ProjectObject slug={project.slug} />
       <div className="work-object-copy">
+        <p className="page-kicker">{project.field}</p>
         <h2 id={`${project.slug}-title`}>{project.title}</h2>
         <p>{project.description}</p>
         <p className="work-object-context">{project.context}</p>
