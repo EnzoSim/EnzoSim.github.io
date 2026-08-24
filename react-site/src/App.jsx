@@ -1,15 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import { FaEnvelope, FaLinkedinIn } from 'react-icons/fa6'
 
-import { Button } from '@/components/ui/button'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
 import { en as t } from '@/content/en'
 import { fdaLiveUrl, portrait } from '@/content/shared'
 
@@ -35,65 +27,103 @@ function SkipLink() {
   )
 }
 
-function SiteNav({ showMark = false }) {
-  const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
-  const activeRoute = routeForPathname(pathname)
+function ExternalArrow() {
+  return <ArrowUpRight aria-hidden="true" data-icon="external" />
+}
 
-  const onNavClick = (event) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-    if (routeForPathname(event.currentTarget.getAttribute('href')) === activeRoute) {
-      event.preventDefault()
-    }
-  }
+function ContactIcon({ label }) {
+  if (label === 'LinkedIn') return <FaLinkedinIn aria-hidden="true" data-icon="contact" />
+  if (label === 'Email') return <FaEnvelope aria-hidden="true" data-icon="contact" />
+  return null
+}
+
+function ProfileRail({ activeRoute }) {
+  const contacts = [...t.home.contacts].sort((a, b) => {
+    const order = ['LinkedIn', 'CV', 'Email']
+    return order.indexOf(a.label) - order.indexOf(b.label)
+  })
 
   return (
-    <header className="site-rail">
-      <div className="rail-top">
-        {showMark ? (
-          <a className="site-mark" href="/">
-            {t.home.name}
-          </a>
-        ) : null}
-        <nav
-          aria-label={t.a11y.primaryNavigation}
-          className={showMark ? 'primary-nav primary-nav-trail' : 'primary-nav'}
-        >
-          {t.nav.items.map((item) => (
+    <aside className="profile-rail">
+      <a className="profile-name" href="/">{t.home.name}</a>
+
+      <figure className="profile-figure">
+        <picture>
+          <img
+            alt={t.a11y.portraitAlt}
+            className="profile-photo"
+            decoding="async"
+            fetchPriority="high"
+            height={portrait.height}
+            sizes="(min-width: 61rem) 20rem, (min-width: 36rem) 22rem, calc(100vw - 2.5rem)"
+            src={portrait.src}
+            srcSet={portrait.srcSet}
+            width={portrait.width}
+          />
+        </picture>
+        <figcaption>Montréal.</figcaption>
+      </figure>
+
+      <p className="profile-role">{t.home.role}</p>
+
+      <div className="profile-links" aria-label="Contact links">
+        {contacts.map((contact) => {
+          const isIconContact = contact.label === 'LinkedIn' || contact.label === 'Email'
+
+          return (
             <a
-              aria-current={activeRoute === routeForPathname(item.href) ? 'page' : undefined}
-              className="nav-link"
-              href={item.href}
-              key={item.href}
-              onClick={onNavClick}
+              aria-label={isIconContact ? contact.label : undefined}
+              className={`profile-link profile-link-glass ${isIconContact ? 'profile-link-icon' : 'profile-link-text'}`}
+              href={contact.href}
+              key={contact.label}
+              title={isIconContact ? contact.label : undefined}
+              {...(contact.external || contact.label === 'CV' ? externalProps : {})}
             >
+              {isIconContact ? (
+                <ContactIcon label={contact.label} />
+              ) : (
+                <>
+                  <span>{contact.label}</span>
+                  <ExternalArrow />
+                </>
+              )}
+            </a>
+          )
+        })}
+      </div>
+
+      <nav aria-label={t.a11y.primaryNavigation} className="profile-nav">
+        {t.nav.items.map((item) => {
+          const itemRoute = routeForPathname(item.href)
+          const isActive = activeRoute === itemRoute || (activeRoute === 'fda-catalyst' && itemRoute === 'projects')
+          return (
+            <a aria-current={isActive ? 'page' : undefined} href={item.href} key={item.href}>
               {item.label}
             </a>
-          ))}
-        </nav>
-      </div>
-      <p className="rail-note">{t.footer.note}</p>
-    </header>
+          )
+        })}
+      </nav>
+    </aside>
   )
 }
 
 function SiteFooter() {
   return (
     <footer className="site-footer">
-      <span>{t.footer.note}</span>
+      <span>© 2026</span>
+      <span>Built in Montréal</span>
     </footer>
   )
 }
 
-function Shell({ children, className = '', showMark = false }) {
+function Shell({ activeRoute, children }) {
   return (
     <>
       <SkipLink />
-      <div className="site-frame">
-        <SiteNav showMark={showMark} />
-        <div className="site-body">
-          <main className={className} id="main">
-            {children}
-          </main>
+      <div className="profile-layout">
+        <ProfileRail activeRoute={activeRoute} />
+        <div className="content-column">
+          <main id="main">{children}</main>
           <SiteFooter />
         </div>
       </div>
@@ -101,208 +131,108 @@ function Shell({ children, className = '', showMark = false }) {
   )
 }
 
-function ExternalArrow() {
-  return <ArrowUpRight aria-hidden="true" data-icon="inline-end" />
+function ProjectLinks({ project }) {
+  const links = []
+
+  if (project.href) {
+    links.push({
+      href: project.href,
+      label: project.cta,
+      external: project.href.startsWith('http'),
+    })
+  }
+  if (project.slug === 'fda-catalyst') {
+    links.push({ href: fdaLiveUrl, label: project.liveCta, external: true })
+  }
+  if (project.sourceHref) {
+    links.push({ href: project.sourceHref, label: project.sourceCta, external: true })
+  }
+
+  if (links.length === 0) return null
+
+  return (
+    <span className="inline-links">
+      {links.map((link) => (
+        <a href={link.href} key={`${project.slug}-${link.label}`} {...(link.external ? externalProps : {})}>
+          {link.label}
+          <ExternalArrow />
+        </a>
+      ))}
+    </span>
+  )
 }
 
-function ContactLinks() {
+function ProjectItem({ project, showContext = false }) {
+  const titleHref = project.href ?? (project.slug === 'water-pricing' ? null : undefined)
+  const isExternal = Boolean(titleHref?.startsWith('http'))
+
   return (
-    <p className="contact-line" aria-label="Contact links">
-      {t.home.contacts.map((contact, index) => (
-        <span key={contact.label}>
-          {index > 0 ? <span aria-hidden="true"> · </span> : null}
-          <a
-            href={contact.href}
-            {...(contact.external || contact.label === 'CV' ? externalProps : {})}
-          >
-            {contact.label}
-          </a>
-        </span>
-      ))}
-    </p>
+    <article className="prose-item" id={project.slug}>
+      <h3>
+        {titleHref ? (
+          <a href={titleHref} {...(isExternal ? externalProps : {})}>{project.title}</a>
+        ) : project.title}
+      </h3>
+      {showContext ? <p className="item-context">{`${project.field} · ${project.context}`}</p> : null}
+      <p>{project.note}</p>
+      <ProjectLinks project={project} />
+    </article>
   )
 }
 
 function RecordList({ items }) {
   return (
-    <ul className="record-list">
+    <ul className="plain-list record-list">
       {items.map((item) => (
         <li key={`${item.role ?? item.degree}-${item.date}`}>
-          <span className="record-date">{item.date}</span>
-          <span className="record-body">
-            <span className="record-role">{item.role ?? item.degree}</span>
-            <span className="record-org">{item.org ?? item.school}</span>
+          <span className="record-main">
+            <strong>{item.role ?? item.degree}</strong>, <em>{item.org ?? item.school}</em>
           </span>
+          <span className="record-date">{item.date}</span>
         </li>
       ))}
     </ul>
   )
 }
 
-function QuietRecord() {
-  return (
-    <div className="home-record">
-      <section aria-labelledby="experience-title" className="record-section" id="experience">
-        <h2 className="page-kicker" id="experience-title">{t.experience.title}</h2>
-        <RecordList items={t.experience.items} />
-      </section>
-      <section aria-labelledby="education-title" className="record-section" id="education">
-        <h2 className="page-kicker" id="education-title">{t.education.title}</h2>
-        <RecordList items={t.education.items} />
-      </section>
-    </div>
-  )
-}
-
-function IndexRow({ project }) {
-  const href = project.href
-  const isExternal = Boolean(href && href.startsWith('http'))
-
-  return (
-    <article
-      aria-labelledby={`${project.slug}-title`}
-      className="index-row"
-      id={project.slug}
-    >
-      <div className="index-id">
-        <h2 className="index-name" id={`${project.slug}-title`}>
-          {href ? (
-            <a href={href} {...(isExternal ? externalProps : {})}>
-              {project.title}
-              {isExternal ? <ExternalArrow /> : null}
-            </a>
-          ) : (
-            project.title
-          )}
-        </h2>
-        {project.note ? <p className="index-note">{project.note}</p> : null}
-      </div>
-      <p className="index-field">{project.field}</p>
-      <p className="index-context">{project.context}</p>
-      <ProjectTextActions project={project} />
-    </article>
-  )
-}
-
-function ProjectTextActions({ project }) {
-  const extras = []
-  if (project.slug === 'fda-catalyst') {
-    extras.push({ href: fdaLiveUrl, label: project.liveCta, external: true })
-  }
-  if (project.sourceHref) {
-    extras.push({ href: project.sourceHref, label: project.sourceCta, external: true })
-  }
-  if (!project.href && extras.length === 0) return null
-
-  return (
-    <p className="index-actions">
-      {project.href ? (
-        <a
-          href={project.href}
-          {...(project.href.startsWith('http') ? externalProps : {})}
-        >
-          {project.cta}
-          <ExternalArrow />
-        </a>
-      ) : null}
-      {extras.map((item) => (
-        <a key={item.href} href={item.href} {...(item.external ? externalProps : {})}>
-          {item.label}
-          <ExternalArrow />
-        </a>
-      ))}
-    </p>
-  )
-}
-
-function ProjectIndex({ items }) {
-  return (
-    <div className="index-list">
-      {items.map((project) => (
-        <IndexRow key={project.slug} project={project} />
-      ))}
-    </div>
-  )
-}
-
-const montrealClock = new Intl.DateTimeFormat('en-CA', {
-  timeZone: 'America/Toronto',
-  hour: '2-digit',
-  minute: '2-digit',
-  hourCycle: 'h23',
-  timeZoneName: 'short',
-})
-
-function useMontrealTime() {
-  const [parts, setParts] = useState(() => montrealClock.formatToParts(new Date()))
-
-  useEffect(() => {
-    const id = window.setInterval(
-      () => setParts(montrealClock.formatToParts(new Date())),
-      30_000,
-    )
-    return () => window.clearInterval(id)
-  }, [])
-
-  const read = (type) => parts.find((part) => part.type === type)?.value ?? ''
-  return { clock: `${read('hour')}:${read('minute')}`, zone: read('timeZoneName') }
-}
-
-function HomePlate() {
-  const { clock, zone } = useMontrealTime()
-
-  return (
-    <figure className="home-plate">
-      <img
-        alt={t.a11y.portraitAlt}
-        className="home-portrait"
-        decoding="async"
-        fetchPriority="high"
-        height={portrait.height}
-        sizes="(min-width: 64rem) 26.5rem, (min-width: 48rem) 24rem, calc(100vw - 2.5rem)"
-        src={portrait.src}
-        srcSet={portrait.srcSet}
-        width={portrait.width}
-      />
-      <figcaption className="plate-meta">
-        <span>{`${t.home.place.city} · ${t.home.place.coords}`}</span>
-        <time dateTime={clock}>{`${clock} ${zone}`}</time>
-      </figcaption>
-    </figure>
-  )
-}
-
 function AboutPage() {
   return (
-    <Shell className="home-page">
-      <div className="page-shell home-shell">
-        <section className="home-hero" aria-labelledby="home-title">
-          <header className="home-id">
-            <h1 className="home-name" id="home-title">{t.home.name}</h1>
-            <p className="home-role">{t.home.role}</p>
-          </header>
+    <Shell activeRoute="about">
+      <section className="content-section" aria-labelledby="about-title">
+        <h1 id="about-title">About me</h1>
+        <p>{t.home.personal}</p>
+      </section>
 
-          <HomePlate />
+      <section className="content-section" aria-labelledby="now-title">
+        <h2 id="now-title">{t.home.now.label}</h2>
+        <p>{t.home.now.text}</p>
+      </section>
 
-          <div className="home-brief">
-            <section className="now-tape" id="now" aria-labelledby="now-label">
-              <h2 className="page-kicker" id="now-label">{t.home.now.label}</h2>
-              <p>{t.home.now.text}</p>
-            </section>
-            <p className="home-about">{t.home.personal}</p>
-            <ContactLinks />
-          </div>
+      <section className="content-section" aria-labelledby="selected-title">
+        <h2 id="selected-title">Selected projects</h2>
+        <div className="prose-list">
+          {t.projects.items.map((project) => (
+            <ProjectItem key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
 
-          <QuietRecord />
-        </section>
-      </div>
+      <section className="content-section" id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">{t.experience.title}</h2>
+        <RecordList items={t.experience.items} />
+      </section>
+
+      <section className="content-section" id="education" aria-labelledby="education-title">
+        <h2 id="education-title">{t.education.title}</h2>
+        <RecordList items={t.education.items} />
+      </section>
     </Shell>
   )
 }
 
-function RouteHead({ id, title, lede }) {
+function PageIntro({ id, lede, title }) {
   return (
-    <header className="route-head">
+    <header className="page-intro">
       <h1 id={id}>{title}</h1>
       {lede ? <p>{lede}</p> : null}
     </header>
@@ -311,195 +241,116 @@ function RouteHead({ id, title, lede }) {
 
 function ProjectsPage() {
   return (
-    <Shell className="route-page projects-page" showMark>
-      <section className="page-shell route-shell" aria-labelledby="projects-title">
-        <RouteHead id="projects-title" lede={t.projects.lede} title={t.projects.title} />
-        <ProjectIndex items={t.projects.items} />
+    <Shell activeRoute="projects">
+      <PageIntro id="projects-title" lede={t.projects.lede} title={t.projects.title} />
+      <section className="content-section" aria-labelledby="projects-title">
+        <div className="prose-list prose-list-roomy">
+          {t.projects.items.map((project) => (
+            <ProjectItem key={project.slug} project={project} showContext />
+          ))}
+        </div>
       </section>
     </Shell>
   )
 }
 
-function Book({ book }) {
-  const width = book.presentation.spineWidth
-  const height = book.presentation.height
-  const style = {
-    '--spine-height': `${height}px`,
-    '--spine-width': `${width}px`,
-    '--spine-mobile-height': `${Math.round(height * 0.76)}px`,
-    '--spine-mobile-width': `${Math.max(44, Math.round(width * 0.72))}px`,
-    '--book-spine': book.design.spine,
-    '--book-ink': book.design.ink,
-    '--book-accent': book.design.accent,
-  }
-
-  const leanClass = book.presentation.lean ? ' shelf-book-item-lean' : ''
-
+function BookList() {
   return (
-    <li className={`shelf-book-item${leanClass}`} style={style}>
-      <a
-        aria-label={`Open ${book.title} by ${book.author}`}
-        className="shelf-book-link"
-        href={book.href}
-        {...externalProps}
-      >
-        <span className="shelf-book" aria-hidden="true">
-          <span className="shelf-book-spine">
-            <span className="shelf-book-band shelf-book-band-top" />
-            <span className="shelf-book-title">{book.spineTitle ?? book.title}</span>
-            <span className="shelf-book-author">{book.spineAuthor ?? book.author}</span>
-            <span className="shelf-book-band shelf-book-band-bottom" />
-            <span className="shelf-book-glint" />
-          </span>
-        </span>
-      </a>
-    </li>
-  )
-}
-
-function BookNotes() {
-  return (
-    <ul className="shelf-notes">
+    <div className="prose-list prose-list-roomy">
       {t.library.books.map((book) => (
-        <li key={book.slug}>
-          <span
-            aria-hidden="true"
-            className="shelf-note-dot"
-            style={{ '--book-spine': book.design.spine }}
-          />
-          <div className="shelf-note-id">
-            <b>{book.spineTitle ?? book.title}</b>
-            <span>{`${book.spineAuthor ?? book.author} · ${book.year}`}</span>
-          </div>
+        <article className="prose-item" key={book.slug}>
+          <h3>
+            <a href={book.href} {...externalProps}>{book.title}</a>
+          </h3>
+          <p className="item-context">{`${book.author} · ${book.year}`}</p>
           <p>{book.note}</p>
-        </li>
+        </article>
       ))}
-    </ul>
+    </div>
   )
 }
 
 function Publications() {
   return (
-    <section className="publications-section" id="publications" aria-labelledby="publications-title">
-      <div className="section-title-row">
-        <h2 id="publications-title">{t.library.subscriptions.title}</h2>
-        <span>Magazines + newsletters</span>
-      </div>
-      <div className="publication-grid">
-        {t.library.subscriptions.groups.map((group) => (
-          <section className="publication-group" key={group.label}>
-            <h3>{group.label}</h3>
-            <ul>
-              {group.items.map((item) => (
-                <li key={item.name}>
-                  <a href={item.url} {...externalProps}>
-                    <span>{item.name}</span>
-                    <ExternalArrow />
-                  </a>
-                  <p>{item.note}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+    <section className="content-section" aria-labelledby="publications-title">
+      <h2 id="publications-title">{t.library.subscriptions.title}</h2>
+      {t.library.subscriptions.groups.map((group) => (
+        <section className="publication-group" key={group.label}>
+          <h3>{group.label}</h3>
+          <div className="prose-list">
+            {group.items.map((item) => (
+              <article className="prose-item" key={item.name}>
+                <h4><a href={item.url} {...externalProps}>{item.name}</a></h4>
+                <p>{item.note}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
     </section>
   )
 }
 
 function ReadingPage() {
   return (
-    <Shell className="route-page reading-page" showMark>
-      <section className="page-shell route-shell" aria-labelledby="reading-title">
-        <RouteHead id="reading-title" title={t.library.title} />
-
-        <section className="bookshelf-section" id="books" aria-label="Five books on Enzo Simier's shelf">
-          <div className="ledge-stage">
-            <ul className="shelf-books">
-              {t.library.books.map((book) => <Book book={book} key={book.slug} />)}
-            </ul>
-            <div className="ledge-plank" aria-hidden="true" />
-            <div className="ledge-shadow" aria-hidden="true" />
-          </div>
-          <BookNotes />
-        </section>
-
-        <Publications />
+    <Shell activeRoute="reading">
+      <PageIntro id="reading-title" lede={t.library.lede} title={t.library.title} />
+      <section className="content-section" aria-labelledby="reading-title">
+        <BookList />
       </section>
+      <Publications />
     </Shell>
   )
 }
 
 function CatalystTable() {
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          {t.project.table.headers.map((header, index) => (
-            <TableHead className={index === 3 ? 'text-right' : undefined} key={header}>
-              {header}
-            </TableHead>
+    <div className="data-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            {t.project.table.headers.map((header) => <th key={header}>{header}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {t.project.table.rows.map((row) => (
+            <tr key={row.ticker}>
+              <th scope="row">{row.ticker}</th>
+              <td>{row.event}</td>
+              <td>{row.window}</td>
+              <td>{row.status}</td>
+            </tr>
           ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {t.project.table.rows.map((row) => (
-          <TableRow key={row.ticker}>
-            <TableCell className="font-mono text-xs font-medium">{row.ticker}</TableCell>
-            <TableCell>{row.event}</TableCell>
-            <TableCell>{row.window}</TableCell>
-            <TableCell className="text-right">{row.status}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  )
-}
-
-function ProjectSectionHeading({ label, title, children }) {
-  return (
-    <div className="project-section-heading">
-      <p className="page-kicker">{label}</p>
-      <h2>{title}</h2>
-      {children ? <p>{children}</p> : null}
+        </tbody>
+      </table>
     </div>
   )
 }
 
 function FdaCatalystPage() {
   return (
-    <Shell className="project-page" showMark>
-      <section className="project-page-hero" aria-labelledby="project-title">
-        <div className="project-page-copy">
-          <p className="page-kicker">{t.project.kicker}</p>
-          <h1 id="project-title">{t.project.title}</h1>
-          <p>{t.project.lede}</p>
-          <div className="project-actions">
-            <Button asChild size="lg">
-              <a href={t.project.openHref} {...externalProps}>
-                {t.project.openCta}
-                <ExternalArrow />
-              </a>
-            </Button>
-          </div>
-        </div>
-        <div className="project-snapshot">
-          <p className="page-kicker">{t.project.snapshot.title}</p>
-          <p className="snapshot-note">{t.project.snapshot.description}</p>
-          <CatalystTable />
-        </div>
+    <Shell activeRoute="fda-catalyst">
+      <PageIntro id="project-title" lede={t.project.lede} title={t.project.title} />
+
+      <p className="detail-action">
+        <a className="blue-glass-button" href={t.project.openHref} {...externalProps}>
+          {t.project.openCta}
+          <ExternalArrow />
+        </a>
+      </p>
+
+      <section className="content-section" aria-labelledby="snapshot-title">
+        <h2 id="snapshot-title">{t.project.snapshot.title}</h2>
+        <p>{t.project.snapshot.description}</p>
+        <CatalystTable />
       </section>
 
-      <section className="project-content-section">
-        <ProjectSectionHeading
-          label={t.project.architecture.label}
-          title={t.project.architecture.title}
-        >
-          {t.project.architecture.lede}
-        </ProjectSectionHeading>
+      <section className="content-section" aria-labelledby="architecture-title">
+        <h2 id="architecture-title">{t.project.architecture.title}</h2>
+        <p>{t.project.architecture.lede}</p>
         <dl className="definition-list">
           {t.project.architecture.cards.map(([term, text]) => (
-            <div className="definition-row" key={term}>
+            <div key={term}>
               <dt>{term}</dt>
               <dd>{text}</dd>
             </div>
@@ -507,31 +358,21 @@ function FdaCatalystPage() {
         </dl>
       </section>
 
-      <section className="project-content-section">
-        <div className="two-column">
-          <ProjectSectionHeading
-            label={t.project.deployment.label}
-            title={t.project.deployment.title}
-          >
-            {t.project.deployment.lede}
-          </ProjectSectionHeading>
-          <div className="status-list">
-            {t.project.deployment.lines.map(([label, value], index) => (
-              <div className="status-line" key={label}>
-                <span>{label}</span>
+      <section className="content-section" aria-labelledby="deployment-title">
+        <h2 id="deployment-title">{t.project.deployment.title}</h2>
+        <p>{t.project.deployment.lede}</p>
+        <dl className="definition-list status-list">
+          {t.project.deployment.lines.map(([label, value], index) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>
                 {index === 0 ? (
-                  <a href={fdaLiveUrl} {...externalProps}>{value}</a>
-                ) : (
-                  <strong>{value}</strong>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="check-block">
-          <h3>{t.project.deployment.check.title}</h3>
-          <p>{t.project.deployment.check.description}</p>
-        </div>
+                  <a href={fdaLiveUrl} {...externalProps}>{value}<ExternalArrow /></a>
+                ) : value}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </Shell>
   )
