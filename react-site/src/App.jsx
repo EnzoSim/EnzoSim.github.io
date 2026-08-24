@@ -61,7 +61,7 @@ function ProfileRail({ activeRoute }) {
             width={portrait.width}
           />
         </picture>
-        <figcaption>Montréal.</figcaption>
+        <figcaption>Hiking Mount Royal, Montréal.</figcaption>
       </figure>
 
       <p className="profile-role">{t.home.role}</p>
