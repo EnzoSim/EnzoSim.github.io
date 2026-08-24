@@ -14,7 +14,7 @@ export const en = {
     about: {
       title: 'Enzo Simier · Applied Economist',
       description:
-        'Applied economist in Montréal. Thesis on volumetric water pricing in Québec; corporate business analysis at Desjardins.',
+        'Applied economist in Montréal. Thesis on volumetric water pricing in Québec.',
     },
     reading: {
       title: 'Reading · Enzo Simier',
@@ -56,7 +56,7 @@ export const en = {
     },
     now: {
       label: 'Now',
-      text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement. Corporate business analysis at Desjardins.',
+      text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement.',
     },
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
@@ -230,11 +230,6 @@ export const en = {
   experience: {
     title: 'Experience',
     items: [
-      {
-        role: 'Analyst, Corporate Business Analysis',
-        org: 'Desjardins',
-        date: '2026 – present',
-      },
       {
         role: 'Intern, Regulated Industries',
         org: 'Competition Bureau',
