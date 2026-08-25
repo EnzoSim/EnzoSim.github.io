@@ -13,6 +13,8 @@ npm run build
 `npm run build` writes the static output to the repository root so GitHub Pages can serve:
 
 - `/`
+- `/projects/`
 - `/fda-catalyst.html`
+- `/research/vista-vs-vistra/`
 
 The published FDA Catalyst links point to the live Railway deployment.

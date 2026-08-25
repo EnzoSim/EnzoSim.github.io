@@ -24,7 +24,7 @@ export const en = {
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'A thesis on volumetric water pricing, a biotech catalyst calendar, and a public working library.',
+        'Applied-economics research, comparative equity work, a biotech catalyst calendar, and a public working library.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -66,7 +66,7 @@ export const en = {
   },
   projects: {
     title: 'Projects',
-    lede: 'A thesis, a calendar, a library.',
+    lede: 'Research, markets, and useful public tools.',
     items: [
       {
         slug: 'water-pricing',
@@ -76,6 +76,15 @@ export const en = {
         note: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
         href: null,
         cta: null,
+      },
+      {
+        slug: 'energy-scarcity',
+        field: 'Equity research',
+        title: 'Two kinds of scarcity',
+        context: 'Vista Energy / Vistra · Preliminary initiation',
+        note: 'A comparative underwrite: high-growth barrels at a country and commodity discount versus scarce power assets with contracted-cash optionality.',
+        href: '/research/vista-vs-vistra/',
+        cta: 'Read the report',
       },
       {
         slug: 'fda-catalyst',
