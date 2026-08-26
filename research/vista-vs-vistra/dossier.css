@@ -1986,6 +1986,7 @@ footer {
 .decision-ledger table,
 .exposure-spread .comparison-ledger table,
 .monitoring-table table {
+  min-width: 0;
   table-layout: fixed;
 }
 
@@ -2124,6 +2125,185 @@ footer {
 
 .economics-company.vista .micro-facts dd:first-letter {
   color: inherit;
+}
+
+.financial-delivery {
+  border-bottom: 1px solid var(--line);
+}
+
+.financial-delivery-head {
+  display: flex;
+  padding: 0.55rem 0 0.45rem;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.financial-delivery-head h3 {
+  margin: 0.12rem 0 0.14rem;
+  font-size: 0.82rem;
+  letter-spacing: -0.015em;
+  line-height: 1.16;
+}
+
+.financial-delivery-head p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.58rem;
+  line-height: 1.35;
+}
+
+.delivery-key {
+  display: flex;
+  padding-bottom: 0.12rem;
+  gap: 0.8rem;
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 0.54rem;
+  white-space: nowrap;
+}
+
+.delivery-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.delivery-ring,
+.delivery-dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+
+.delivery-ring {
+  background: var(--paper);
+  border: 1.5px solid #69727e;
+}
+
+.delivery-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  background: var(--ink);
+}
+
+.financial-delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.delivery-company {
+  min-width: 0;
+  padding: 0.5rem 0.65rem 0.44rem 0;
+}
+
+.delivery-company + .delivery-company {
+  padding-right: 0;
+  padding-left: 0.65rem;
+  border-left: 1px solid var(--line);
+}
+
+.delivery-company-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 0.7rem;
+}
+
+.delivery-company h4 {
+  margin: 0.1rem 0 0;
+  color: var(--ink);
+  font-size: 0.68rem;
+  line-height: 1.15;
+}
+
+.metric-tabs {
+  display: inline-flex;
+  gap: 0.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.metric-tabs button {
+  position: relative;
+  min-width: 3.1rem;
+  padding: 0.22rem 0.35rem 0.3rem;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.55rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.metric-tabs button::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: transparent;
+  content: "";
+}
+
+.metric-tabs button[aria-selected="true"] {
+  color: var(--ink);
+}
+
+.delivery-company.vista .metric-tabs button[aria-selected="true"]::after {
+  background: var(--vista);
+}
+
+.delivery-company.vistra .metric-tabs button[aria-selected="true"]::after {
+  background: var(--vistra);
+}
+
+.metric-tabs button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.delivery-readout {
+  display: flex;
+  margin-top: 0.34rem;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.53rem;
+}
+
+.delivery-readout strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+}
+
+.delivery-chart {
+  height: 8.55rem;
+  margin: 0.08rem 0 0;
+}
+
+.delivery-chart img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.delivery-note {
+  min-height: 1.55rem;
+  margin: 0.12rem 0 0;
+  color: var(--muted);
+  font-size: 0.5rem;
+  line-height: 1.32;
+}
+
+.delivery-chart[hidden],
+.delivery-readout [hidden] {
+  display: none !important;
 }
 
 .paired-evidence {
@@ -2527,11 +2707,32 @@ footer {
   }
 
   .snapshot-grid,
-  .paired-evidence {
+  .paired-evidence,
+  .financial-delivery-grid {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+  }
+
+  .financial-delivery-head {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .delivery-company,
+  .delivery-company + .delivery-company {
+    min-width: 86vw;
+    padding: 0.52rem 0.65rem 0.45rem 0;
+    border-top: 0;
+    border-right: 1px solid var(--line);
+    border-left: 0;
+    scroll-snap-align: start;
+  }
+
+  .delivery-company + .delivery-company {
+    padding-left: 0.65rem;
   }
 
   .system-row {

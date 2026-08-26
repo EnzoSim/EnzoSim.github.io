@@ -2308,7 +2308,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="dossier.css?v=20260826-3" />
+  <link rel="stylesheet" href="dossier.css?v=20260826-4" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to report</a>
@@ -2543,17 +2543,67 @@
         </article>
       </div>
 
+      <section class="financial-delivery reveal" aria-labelledby="financial-delivery-title">
+        <header class="financial-delivery-head">
+          <div>
+            <span class="figure-kicker">Market expectations · secondary evidence</span>
+            <h3 id="financial-delivery-title">Quarterly delivery versus consensus.</h3>
+            <p>Five reported quarters, using one consistent vendor history. Toggle between earnings and revenue without adding another dashboard layer.</p>
+          </div>
+          <div class="delivery-key" aria-label="Chart legend">
+            <span><i class="delivery-ring" aria-hidden="true"></i>Consensus</span>
+            <span><i class="delivery-dot" aria-hidden="true"></i>Reported</span>
+          </div>
+        </header>
+
+        <div class="financial-delivery-grid">
+          <article class="delivery-company vista" data-financial-tabs>
+            <header class="delivery-company-head">
+              <div><span class="ticker vista">VIST · Vista Energy</span><h4>Result delivery</h4></div>
+              <div class="metric-tabs" role="tablist" aria-label="Vista financial metric">
+                <button id="vista-eps-tab" type="button" role="tab" aria-selected="true" aria-controls="vista-eps-panel" data-metric-target="eps">EPS</button>
+                <button id="vista-revenue-tab" type="button" role="tab" aria-selected="false" aria-controls="vista-revenue-panel" data-metric-target="revenue" tabindex="-1">Revenue</button>
+              </div>
+            </header>
+            <div class="delivery-readout">
+              <span>Latest · Q2 2026</span>
+              <strong data-financial-summary="eps">$2.38 reported / $3.15 consensus</strong>
+              <strong data-financial-summary="revenue" hidden>$1.23bn reported / $1.19bn consensus</strong>
+            </div>
+            <figure id="vista-eps-panel" class="delivery-chart" role="tabpanel" aria-labelledby="vista-eps-tab" data-financial-chart="eps">
+              <img src="assets/chart-vista-eps-delivery.png" width="1270" height="401" alt="Vista quarterly EPS consensus shown as open circles and reported EPS shown as filled gold circles from Q2 2025 through Q2 2026." />
+            </figure>
+            <figure id="vista-revenue-panel" class="delivery-chart" role="tabpanel" aria-labelledby="vista-revenue-tab" data-financial-chart="revenue" hidden>
+              <img src="assets/chart-vista-revenue-delivery.png" width="1290" height="401" alt="Vista quarterly revenue consensus shown as open circles and reported revenue shown as filled gold circles from Q2 2025 through Q2 2026." />
+            </figure>
+            <p class="delivery-note">EPS surprise is shown in dollars; revenue surprise in percent. Vendor-defined historical figures.<a class="cite" href="#source-11" aria-label="Source 11">11</a></p>
+          </article>
+
+          <article class="delivery-company vistra" data-financial-tabs>
+            <header class="delivery-company-head">
+              <div><span class="ticker vistra">VST · Vistra</span><h4>Result delivery</h4></div>
+              <div class="metric-tabs" role="tablist" aria-label="Vistra financial metric">
+                <button id="vistra-eps-tab" type="button" role="tab" aria-selected="true" aria-controls="vistra-eps-panel" data-metric-target="eps">EPS</button>
+                <button id="vistra-revenue-tab" type="button" role="tab" aria-selected="false" aria-controls="vistra-revenue-panel" data-metric-target="revenue" tabindex="-1">Revenue</button>
+              </div>
+            </header>
+            <div class="delivery-readout">
+              <span>Latest · Q2 2026</span>
+              <strong data-financial-summary="eps">$0.76 reported / $1.61 consensus</strong>
+              <strong data-financial-summary="revenue" hidden>$4.02bn reported / $5.46bn consensus</strong>
+            </div>
+            <figure id="vistra-eps-panel" class="delivery-chart" role="tabpanel" aria-labelledby="vistra-eps-tab" data-financial-chart="eps">
+              <img src="assets/chart-vistra-eps-delivery.png" width="1270" height="401" alt="Vistra quarterly EPS consensus shown as open circles and reported EPS shown as filled blue circles from Q2 2025 through Q2 2026." />
+            </figure>
+            <figure id="vistra-revenue-panel" class="delivery-chart" role="tabpanel" aria-labelledby="vistra-revenue-tab" data-financial-chart="revenue" hidden>
+              <img src="assets/chart-vistra-revenue-delivery.png" width="1270" height="401" alt="Vistra quarterly revenue consensus shown as open circles and reported revenue shown as filled blue circles from Q2 2025 through Q2 2026." />
+            </figure>
+            <p class="delivery-note">EPS surprise is shown in dollars; revenue surprise in percent. Vendor-defined historical figures.<a class="cite" href="#source-12" aria-label="Source 12">12</a></p>
+          </article>
+        </div>
+      </section>
+
       <div class="paired-evidence" aria-label="Comparative operating evidence">
-        <figure class="figure reveal" aria-labelledby="economics-vista-financial-title">
-          <figcaption><span class="figure-kicker">Vista · reported performance</span><strong class="figure-title" id="economics-vista-financial-title">Revenue and adjusted EBITDA</strong><span class="figure-subtitle">USD millions. Q2 2026 adjusted EBITDA margin was about 70%.</span></figcaption>
-          <img class="chart-image" src="assets/chart-vista-financial.png" width="1027" height="570" alt="Vista quarterly revenue and adjusted EBITDA for Q2 2025, Q1 2026 and Q2 2026." />
-          <p class="chart-note">Vista Q2 2026 results.<a class="cite" href="#source-1" aria-label="Source 1">1</a></p>
-        </figure>
-        <figure class="figure reveal" aria-labelledby="economics-vistra-segment-title">
-          <figcaption><span class="figure-kicker">Vistra · reported performance</span><strong class="figure-title" id="economics-vistra-segment-title">Q2 adjusted EBITDA by segment</strong><span class="figure-subtitle">USD millions. Generation drove the step-up; retail stayed comparatively stable.</span></figcaption>
-          <img class="chart-image" src="assets/chart-vistra-segment.png" width="1029" height="570" alt="Vistra Q2 adjusted EBITDA by retail and generation segment in 2024, 2025 and 2026." />
-          <p class="chart-note">Vistra Q2 2026 presentation.<a class="cite" href="#source-5" aria-label="Source 5">5</a></p>
-        </figure>
         <figure class="figure reveal" aria-labelledby="economics-vista-plan-title">
           <figcaption><span class="figure-kicker">Vista · forward framework</span><strong class="figure-title" id="economics-vista-plan-title">Production, EBITDA, and free-cash-flow plan</strong><span class="figure-subtitle">Guidance and vision. The 2030 production figure is strategic vision, not formal guidance.</span></figcaption>
           <img class="chart-image" src="assets/chart-vista-plan.png" width="1503" height="599" alt="Vista company plan for production, adjusted EBITDA and free cash flow from 2026 through 2028, plus the 2030 production vision." />
@@ -3049,7 +3099,7 @@
           <ol>
             <li>Refresh the scenario table after the next quarterly production, cash-conversion, and leverage disclosures.</li>
             <li>Tie Cogentrix and large-load funding into a pro forma Vistra cash bridge before treating all FCFbG as distributable.</li>
-            <li>Add consensus and estimate revision context before moving from preliminary initiation to a target-price framework.</li>
+            <li>Add a full forward consensus surface and estimate-revision history before moving from preliminary initiation to a target-price framework.</li>
           </ol>
         </article>
         <article class="next-panel glass reveal">
@@ -3058,7 +3108,7 @@
           <ul>
             <li>How much of Vista's 2027–2028 free cash flow survives a materially lower Brent path after capex and fiscal leakage?</li>
             <li>What fully funded return does Vistra earn on Cogentrix, Meta uprates, AWS, and Helix after debt, equity issuance, and growth investment?</li>
-            <li>How do current consensus estimates, positioning, short interest, and index ownership change the apparent variant perception?</li>
+            <li>How do forward consensus estimates, positioning, short interest, and index ownership change the apparent variant perception?</li>
             <li>Which company can preserve capital returns when the broad energy-scarcity narrative de-rates?</li>
           </ul>
         </article>
@@ -3071,39 +3121,40 @@
         <div>
           <span class="section-index">Evidence and methods</span>
           <h2 id="methods-title">What is known, modeled, and still missing.</h2>
-          <p>Full methodology, evidence posture, and the ten-source register remain attached to the report and expand automatically for print.</p>
+          <p>Full methodology, evidence posture, and the twelve-source register remain attached to the report and expand automatically for print.</p>
         </div>
       </div>
 
       <details class="support-disclosure methods-disclosure">
-        <summary><span>Methodology, limitations, and primary source register</span><small>12 evidence notes · 10 sources</small></summary>
+        <summary><span>Methodology, limitations, and source register</span><small>13 evidence notes · 12 sources</small></summary>
       <div class="methods">
         <article class="method-panel glass reveal">
           <h3>Methodology and limitations</h3>
           <ul>
-            <li><strong>Research status:</strong> preliminary comparative initiation. No consensus estimate database, transcript archive, or full three-statement model was available in this workstream.</li>
+            <li><strong>Research status:</strong> preliminary comparative initiation. A limited third-party history of quarterly EPS and revenue consensus was added; no transcript archive, full forward consensus dataset, estimate-revision history, or three-statement model was available.</li>
             <li><strong>Market prices:</strong> latest trades near the August 25 close, not a guaranteed official closing-price record. Market-sensitive values can change after the cut-off.</li>
             <li><strong>Vista equity value:</strong> current price multiplied by Q2 weighted-average ordinary shares because the third-party market-cap feed conflicts with the company-reported count.</li>
             <li><strong>Vistra adjusted EV:</strong> common equity plus long-term debt, receivables financing, forward repurchase obligation, and preferred stock, less cash. It may differ from vendor EV.</li>
             <li><strong>Non-GAAP measures:</strong> adjusted EBITDA, Vista FCF, and Vistra FCFbG follow company definitions. FCFbG is before growth and differs from conventional free cash flow.</li>
             <li><strong>Scenarios:</strong> analyst assumptions. They omit tax, FX, timing, dilution, buyback, acquisition-closing, and path-dependency effects except where noted.</li>
+            <li><strong>Consensus delivery charts:</strong> secondary vendor history. EPS definitions are vendor-specific and are not reconciled to company adjusted EBITDA or other non-GAAP measures.</li>
           </ul>
         </article>
         <article class="method-panel glass reveal">
           <h3>Evidence posture</h3>
           <ul>
             <li><strong>High confidence:</strong> company-reported historical operating figures, published guidance, hedge coverage, transaction terms, and capital-return disclosures.</li>
-            <li><strong>Medium confidence:</strong> analyst-normalized enterprise-value bridges, because financing classifications can differ from vendor conventions.</li>
+            <li><strong>Medium confidence:</strong> analyst-normalized enterprise-value bridges and the secondary quarterly consensus history, because financing and EPS classifications can differ from vendor conventions.</li>
             <li><strong>Medium-low confidence:</strong> valuation scenarios, which intentionally isolate selected drivers and are not supported by a complete operating model.</li>
             <li><strong>Unresolved conflict:</strong> Vista market capitalization from the finance feed is below the equity value implied by the Q2 weighted-average share count.</li>
-            <li><strong>Missing required context:</strong> current consensus, estimate revisions, ownership, short interest, factor exposure, and a full cash-flow bridge for funded growth.</li>
+            <li><strong>Missing required context:</strong> a full forward consensus surface, estimate revisions, ownership, short interest, factor exposure, and a full cash-flow bridge for funded growth.</li>
             <li><strong>Underwriting implication:</strong> the evidence supports a relative research preference and watchlist posture—not a personalized investment recommendation or publication-ready target price.</li>
           </ul>
         </article>
       </div>
 
       <section class="source-ledger glass reveal" aria-labelledby="source-ledger-title">
-        <header><h3 id="source-ledger-title">Primary source register</h3><span>Accessed 25 AUG 2026</span></header>
+        <header><h3 id="source-ledger-title">Source register</h3><span>Accessed 25–26 AUG 2026</span></header>
         <ol class="source-list">
           <li class="source-item" id="source-1"><span class="source-id">01</span><div><strong><a class="source-link" href="https://www.sec.gov/Archives/edgar/data/1762506/000119312526306139/d151775dex1.htm" target="_blank" rel="noopener noreferrer">Vista Energy · Q2 2026 results</a></strong><p>SEC-filed exhibit. Production, realized pricing, adjusted EBITDA, free cash flow, debt, leverage, and acquisition-payment detail. Published July 16, 2026.</p></div><span class="source-meta">Primary · high</span></li>
           <li class="source-item" id="source-2"><span class="source-id">02</span><div><strong><a class="source-link" href="https://vista-energy.cdn.prismic.io/vista-energy/agG2D6YofJOwHEBC_Vista-Updateto2026-2028guidanceand2030vision.pdf" target="_blank" rel="noopener noreferrer">Vista Energy · Updated 2026–2028 guidance and 2030 vision</a></strong><p>Production, capex, revenue, adjusted EBITDA, free cash flow, and oil-price assumptions. Company guidance and strategic vision.</p></div><span class="source-meta">Primary · high</span></li>
@@ -3115,6 +3166,8 @@
           <li class="source-item" id="source-8"><span class="source-id">08</span><div><strong><a class="source-link" href="https://investor.vistracorp.com/2026-01-05-Vistra-Adds-to-its-Industry-Leading-Generation-Portfolio-with-Acquisition-of-Cogentrix" target="_blank" rel="noopener noreferrer">Vistra · Cogentrix acquisition</a></strong><p>Approximately 5,500 MW of gas generation and announced transaction economics, including the roughly $4.0bn net purchase price. Published January 5, 2026.</p></div><span class="source-meta">Company claim · high</span></li>
           <li class="source-item" id="source-9"><span class="source-id">09</span><div><strong><a class="source-link" href="https://investor.vistracorp.com/2026-02-26-Vistra-Reports-Fourth-Quarter-and-Full-Year-2025-Results" target="_blank" rel="noopener noreferrer">Vistra · Full-year 2025 results</a></strong><p>Historical adjusted EBITDA, adjusted FCFbG, and AWS agreement context. Published February 26, 2026.</p></div><span class="source-meta">Primary · high</span></li>
           <li class="source-item" id="source-10"><span class="source-id">10</span><div><strong>Market data · OpenAI finance feed</strong><p>Retrieved August 25, 2026 near 4:02 p.m. ET. VIST $68.365 and reported market cap $6.64bn; VST $139.02 and reported market cap $47.16bn. No durable source URL was exposed.</p></div><span class="source-meta">Market · medium</span></li>
+          <li class="source-item" id="source-11"><span class="source-id">11</span><div><strong><a class="source-link" href="https://www.marketbeat.com/stocks/NYSE/VIST/earnings/" target="_blank" rel="noopener noreferrer">MarketBeat · Vista earnings history</a></strong><p>Quarterly analyst EPS and revenue consensus versus reported results. MarketBeat attributes the underlying earnings data to Fiscal.ai. Retrieved August 26, 2026.</p></div><span class="source-meta">Secondary · medium</span></li>
+          <li class="source-item" id="source-12"><span class="source-id">12</span><div><strong><a class="source-link" href="https://www.marketbeat.com/stocks/NYSE/VST/earnings/" target="_blank" rel="noopener noreferrer">MarketBeat · Vistra earnings history</a></strong><p>Quarterly analyst EPS and revenue consensus versus reported results. MarketBeat attributes the underlying earnings data to Fiscal.ai. Retrieved August 26, 2026.</p></div><span class="source-meta">Secondary · medium</span></li>
         </ol>
       </section>
 
@@ -3148,6 +3201,36 @@
           if (!target) return
           var disclosure = target.closest('details')
           if (disclosure) disclosure.open = true
+        })
+      })
+
+      document.querySelectorAll('[data-financial-tabs]').forEach(function (panel) {
+        var tabs = Array.prototype.slice.call(panel.querySelectorAll('[data-metric-target]'))
+        var activateMetric = function (metric) {
+          tabs.forEach(function (tab) {
+            var active = tab.getAttribute('data-metric-target') === metric
+            tab.setAttribute('aria-selected', active ? 'true' : 'false')
+            tab.tabIndex = active ? 0 : -1
+          })
+          panel.querySelectorAll('[data-financial-chart]').forEach(function (chart) {
+            chart.hidden = chart.getAttribute('data-financial-chart') !== metric
+          })
+          panel.querySelectorAll('[data-financial-summary]').forEach(function (summary) {
+            summary.hidden = summary.getAttribute('data-financial-summary') !== metric
+          })
+        }
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener('click', function () {
+            activateMetric(tab.getAttribute('data-metric-target'))
+          })
+          tab.addEventListener('keydown', function (event) {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+            event.preventDefault()
+            var direction = event.key === 'ArrowRight' ? 1 : -1
+            var next = tabs[(index + direction + tabs.length) % tabs.length]
+            activateMetric(next.getAttribute('data-metric-target'))
+            next.focus()
+          })
         })
       })
 
