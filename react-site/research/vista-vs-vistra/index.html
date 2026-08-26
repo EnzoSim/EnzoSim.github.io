@@ -2308,17 +2308,18 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="dossier.css?v=20260826-5" />
+  <link rel="stylesheet" href="dossier.css?v=20260826-6" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to report</a>
   <div class="scroll-progress" aria-hidden="true"></div>
   <nav class="report-nav" aria-label="Report navigation">
     <a class="report-home" href="/projects/" aria-label="Back to Enzo Simier projects">
-      <span>Capital &amp; Asset Dossier</span>
+      <span class="report-home-full">Capital &amp; Asset Dossier</span>
+      <span class="report-home-short" aria-hidden="true">V/V</span>
     </a>
-    <div class="report-nav-links">
-      <a href="#top">Overview</a>
+    <div class="report-nav-links" role="group" aria-label="Report sections">
+      <a href="#top" aria-current="true">Overview</a>
       <a href="#systems">Systems</a>
       <a href="#comparison">Exposure</a>
       <a href="#economics">Economics</a>
@@ -2399,7 +2400,7 @@
         <p>The diagrams combine operating logistics with the capital claims that sit between physical output and shareholder cash.</p>
       </div>
 
-      <div class="system-row vista">
+      <div class="system-row vista" data-scroll-region role="region" aria-label="Vista value chain and asset footprint. Scroll horizontally to compare on small screens.">
         <figure class="system-panel system-diagram">
           <figcaption><strong>Vista Energy · Oil value chain</strong><span>Working interests → drilling → takeaway → export realizations → free cash flow</span></figcaption>
           <picture>
@@ -2413,7 +2414,7 @@
         </figure>
       </div>
 
-      <div class="system-row vistra">
+      <div class="system-row vistra" data-scroll-region role="region" aria-label="Vistra value chain and asset footprint. Scroll horizontally to compare on small screens.">
         <figure class="system-panel system-diagram">
           <figcaption><strong>Vistra · Power value chain</strong><span>Generation → ISO markets → retail and contracted load → FCFbG</span></figcaption>
           <picture>
@@ -2427,7 +2428,7 @@
         </figure>
       </div>
 
-      <div class="snapshot-grid" aria-label="Research snapshot">
+      <div class="snapshot-grid" data-scroll-region role="region" aria-label="Research snapshot. Scroll horizontally to review all charts on small screens.">
         <figure class="snapshot">
           <figcaption><strong>Vista production</strong><span>Quarterly average · thousand boe/d</span></figcaption>
           <img src="assets/chart-vista-production.png" width="1028" height="570" alt="Vista production increased from 118 thousand boe per day in Q2 2025 to 134.7 in Q1 2026 and 156.1 in Q2 2026." />
@@ -2468,9 +2469,10 @@
       </div>
 
       <div class="decision-ledger glass reveal">
-        <div class="table-scroll">
+        <div class="table-scroll" data-scroll-region role="region" aria-label="Decision comparison. Scroll horizontally to review all columns on small screens.">
           <table>
-            <thead><tr><th>Decision test</th><th>Vista Energy · VIST</th><th>Vistra · VST</th><th>Relative conclusion</th></tr></thead>
+            <caption class="sr-only">Investment decision comparison for Vista Energy and Vistra</caption>
+            <thead><tr><th scope="col">Decision test</th><th scope="col">Vista Energy · VIST</th><th scope="col">Vistra · VST</th><th scope="col">Relative conclusion</th></tr></thead>
             <tbody>
               <tr><th scope="row">Case</th><td><strong>Wider rerating range.</strong> Production growth, $4.50/boe lifting cost, and a 3.5x adjusted 2026E EV / EBITDA entry multiple create torque.</td><td><strong>Risk-adjusted preference.</strong> Hedging, retail, nuclear, and contracted-load options make the earnings path more visible.</td><td>Pay more for the business with fewer simultaneous failure modes.</td></tr>
               <tr><th scope="row">Must prove</th><td>Post-acquisition free cash flow compounds while infrastructure access holds and leverage trends toward the 1.0x objective.<a class="cite" href="#source-1" aria-label="Source 1">1</a></td><td>Scarce generation becomes durable contracted cash without Cogentrix or growth funding crowding out returns.<a class="cite" href="#source-8" aria-label="Source 8">8</a></td><td>Financing discipline is the shared gate.</td></tr>
@@ -2504,9 +2506,10 @@
           <p class="chart-note">Analyst synthesis; not company guidance.<a class="cite" href="#source-1" aria-label="Source 1">1</a><a class="cite" href="#source-4" aria-label="Source 4">4</a><a class="cite" href="#source-8" aria-label="Source 8">8</a></p>
         </figure>
 
-        <div class="comparison-ledger reveal">
+        <div class="comparison-ledger reveal" data-scroll-region role="region" aria-label="Exposure comparison. Scroll horizontally to review all columns on small screens.">
           <table>
-            <thead><tr><th>Dimension</th><th>Vista</th><th>Vistra</th></tr></thead>
+            <caption class="sr-only">Operating exposure comparison for Vista Energy and Vistra</caption>
+            <thead><tr><th scope="col">Dimension</th><th scope="col">Vista</th><th scope="col">Vistra</th></tr></thead>
             <tbody>
               <tr><th scope="row">Core exposure</th><td>Vaca Muerta oil, Argentina policy, global crude.</td><td>U.S. generation, retail, nuclear, gas, large-load demand.</td></tr>
               <tr><th scope="row">Growth engine</th><td>Inventory, drilling pace, working interests, takeaway.</td><td>Realizations, capacity, PPAs, acquisitions, buybacks.</td></tr>
@@ -2556,7 +2559,7 @@
           </div>
         </header>
 
-        <div class="financial-delivery-grid">
+        <div class="financial-delivery-grid" data-scroll-region role="region" aria-label="Quarterly delivery versus consensus for Vista and Vistra. Scroll horizontally to compare on small screens.">
           <article class="delivery-company vista" data-financial-tabs>
             <header class="delivery-company-head">
               <div><span class="ticker vista">VIST · Vista Energy</span><h4>Result delivery</h4></div>
@@ -2603,7 +2606,7 @@
         </div>
       </section>
 
-      <div class="paired-evidence" aria-label="Comparative operating evidence">
+      <div class="paired-evidence" data-scroll-region role="region" aria-label="Comparative operating evidence. Scroll horizontally to review all charts on small screens.">
         <figure class="figure reveal" aria-labelledby="economics-vista-plan-title">
           <figcaption><span class="figure-kicker">Vista · forward framework</span><strong class="figure-title" id="economics-vista-plan-title">Production, EBITDA, and free-cash-flow plan</strong><span class="figure-subtitle">Guidance and vision. The 2030 production figure is strategic vision, not formal guidance.</span></figcaption>
           <img class="chart-image" src="assets/chart-vista-plan.png" width="1503" height="599" alt="Vista company plan for production, adjusted EBITDA and free cash flow from 2026 through 2028, plus the 2030 production vision." />
@@ -2690,7 +2693,7 @@
           <p class="chart-note">Source: Vista Q2 2026 results.<a class="cite" href="#source-1" aria-label="Source 1">1</a></p>
           <details class="chart-data">
             <summary>Accessible data</summary>
-            <table><thead><tr><th>Quarter</th><th>Thousand boe/d</th></tr></thead><tbody><tr><td>Q2 2025</td><td>118.018</td></tr><tr><td>Q1 2026</td><td>134.741</td></tr><tr><td>Q2 2026</td><td>156.061</td></tr></tbody></table>
+            <table><caption class="sr-only">Vista quarterly production data</caption><thead><tr><th scope="col">Quarter</th><th scope="col">Thousand boe/d</th></tr></thead><tbody><tr><th scope="row">Q2 2025</th><td>118.018</td></tr><tr><th scope="row">Q1 2026</th><td>134.741</td></tr><tr><th scope="row">Q2 2026</th><td>156.061</td></tr></tbody></table>
           </details>
         </figure>
 
@@ -2722,7 +2725,7 @@
           <p class="chart-note">Source: Vista Q2 2026 results.<a class="cite" href="#source-1" aria-label="Source 1">1</a></p>
           <details class="chart-data">
             <summary>Accessible data</summary>
-            <table><thead><tr><th>Quarter</th><th>Revenue, $m</th><th>Adjusted EBITDA, $m</th></tr></thead><tbody><tr><td>Q2 2025</td><td>610.5</td><td>404.5</td></tr><tr><td>Q1 2026</td><td>694.3</td><td>451.0</td></tr><tr><td>Q2 2026</td><td>1,154.4</td><td>805.2</td></tr></tbody></table>
+            <table><caption class="sr-only">Vista quarterly revenue and adjusted EBITDA data</caption><thead><tr><th scope="col">Quarter</th><th scope="col">Revenue, $m</th><th scope="col">Adjusted EBITDA, $m</th></tr></thead><tbody><tr><th scope="row">Q2 2025</th><td>610.5</td><td>404.5</td></tr><tr><th scope="row">Q1 2026</th><td>694.3</td><td>451.0</td></tr><tr><th scope="row">Q2 2026</th><td>1,154.4</td><td>805.2</td></tr></tbody></table>
           </details>
         </figure>
 
@@ -3073,9 +3076,10 @@
       </div>
 
       <div class="monitoring-table glass reveal">
-        <div class="table-scroll">
+        <div class="table-scroll" data-scroll-region role="region" aria-label="Monitoring framework. Scroll horizontally to review all columns on small screens.">
           <table>
-            <thead><tr><th>Company</th><th>KPI or event</th><th>Constructive evidence</th><th>Disconfirming evidence</th></tr></thead>
+            <caption class="sr-only">Monitoring framework and thesis falsifiers for Vista Energy and Vistra</caption>
+            <thead><tr><th scope="col">Company</th><th scope="col">KPI or event</th><th scope="col">Constructive evidence</th><th scope="col">Disconfirming evidence</th></tr></thead>
             <tbody>
               <tr><th scope="row"><span class="company-chip vista">Vista</span></th><td>Production and tie-ins</td><td>Quarterly production remains on a credible path toward 158k boe/d in 2026 and 185k in 2027.</td><td>Repeated misses, slower tie-ins, or weaker-than-planned well productivity.</td></tr>
               <tr><th scope="row"><span class="company-chip vista">Vista</span></th><td>Costs and free cash flow</td><td>Lifting cost stays controlled and free cash flow grows after acquisition payments normalize.</td><td>Capex rises faster than production or free cash flow stays weak despite high realized prices.</td></tr>
@@ -3177,8 +3181,11 @@
   </main>
 
   <footer>
-    <span>Enzo Simier · Montréal · 2026</span>
-    <span>Comparative equity research · Vista Energy / Vistra</span>
+    <span>Enzo Simier · Montréal · 2026 · Comparative equity research</span>
+    <nav class="report-footer-nav" aria-label="Report footer">
+      <a href="/projects/">Projects</a>
+      <a href="#top">Back to top</a>
+    </nav>
   </footer>
 
   <script>
@@ -3195,6 +3202,8 @@
       var printButton = document.querySelector('[data-print]')
       if (printButton) printButton.addEventListener('click', function () { window.print() })
 
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
         link.addEventListener('click', function () {
           var target = document.querySelector(link.getAttribute('href'))
@@ -3203,6 +3212,26 @@
           if (disclosure) disclosure.open = true
         })
       })
+
+      document.querySelectorAll('[data-scroll-region]').forEach(function (region) {
+        region.addEventListener('keydown', function (event) {
+          if (event.target !== region || (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight')) return
+          if (region.scrollWidth <= region.clientWidth + 4) return
+          event.preventDefault()
+          var direction = event.key === 'ArrowRight' ? 1 : -1
+          region.scrollBy({ left: direction * region.clientWidth * 0.78, behavior: reducedMotion ? 'auto' : 'smooth' })
+        })
+      })
+
+      var updateScrollableRegions = function () {
+        document.querySelectorAll('[data-scroll-region]').forEach(function (region) {
+          if (region.scrollWidth > region.clientWidth + 4) region.tabIndex = 0
+          else region.removeAttribute('tabindex')
+        })
+      }
+      updateScrollableRegions()
+      window.addEventListener('load', updateScrollableRegions, { once: true })
+      window.addEventListener('resize', updateScrollableRegions, { passive: true })
 
       document.querySelectorAll('[data-financial-tabs]').forEach(function (panel) {
         var tabs = Array.prototype.slice.call(panel.querySelectorAll('[data-metric-target]'))
@@ -3234,7 +3263,6 @@
         })
       })
 
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       var reveals = document.querySelectorAll('.reveal')
       if (reducedMotion || !('IntersectionObserver' in window)) {
         reveals.forEach(function (item) { item.classList.add('is-visible') })
@@ -3260,7 +3288,13 @@
             if (!entry.isIntersecting) return
             links.forEach(function (link) {
               var active = link.getAttribute('href') === '#' + entry.target.id
-              if (active) link.setAttribute('aria-current', 'true')
+              if (active) {
+                link.setAttribute('aria-current', 'true')
+                if (window.matchMedia('(max-width: 680px)').matches) {
+                  var navStrip = link.closest('.report-nav-links')
+                  navStrip.scrollTo({ left: link.offsetLeft - (navStrip.clientWidth - link.offsetWidth) / 2, behavior: reducedMotion ? 'auto' : 'smooth' })
+                }
+              }
               else link.removeAttribute('aria-current')
             })
           })
