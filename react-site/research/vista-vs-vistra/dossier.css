@@ -48,6 +48,7 @@ body {
 
 body::before,
 body::after,
+.hero::before,
 .ambient-orb,
 .glass::before,
 .glass::after {
