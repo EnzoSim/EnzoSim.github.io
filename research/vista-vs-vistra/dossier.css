@@ -2769,7 +2769,9 @@ footer {
 
   .system-panel,
   .system-panel + .system-panel {
-    min-width: 94vw;
+    width: 100%;
+    min-width: 0;
+    flex: 0 0 100%;
     padding: 0.55rem 0.65rem 0.45rem 0;
     border-top: 0;
     border-right: 1px solid var(--line);
@@ -2783,14 +2785,10 @@ footer {
   }
 
   .system-diagram img {
-    width: min(100%, 30rem);
+    width: 100%;
+    max-width: 100%;
     height: auto;
     max-height: none;
-  }
-
-  .system-row.vistra .system-diagram img {
-    width: min(100%, 18rem);
-    margin-inline: auto;
   }
 
   .snapshot,
