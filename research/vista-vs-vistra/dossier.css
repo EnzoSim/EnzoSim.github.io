@@ -401,16 +401,16 @@ main {
 }
 
 .hero-call {
-  padding: 0.05rem 0 0.05rem 0.9rem;
-  border-left: 3px solid var(--line-dark);
+  padding: 0.5rem 0 0.05rem;
+  border-top: 2px solid var(--line-dark);
 }
 
 .hero-call.vistra {
-  border-left-color: var(--vistra);
+  border-top-color: var(--vistra);
 }
 
 .hero-call.vista {
-  border-left-color: var(--vista);
+  border-top-color: var(--vista);
 }
 
 .hero-call strong {
@@ -978,9 +978,9 @@ tbody th {
 }
 
 .company-intro aside {
-  padding-left: 0.8rem;
+  padding-top: 0.55rem;
   color: var(--muted);
-  border-left: 2px solid var(--line-dark);
+  border-top: 2px solid var(--line-dark);
   font-size: 0.67rem;
   line-height: 1.45;
 }
@@ -2626,6 +2626,29 @@ footer {
   }
 }
 
+@media (max-width: 1280px) and (min-width: 681px) {
+  .system-row {
+    grid-template-columns: 1fr;
+  }
+
+  .system-panel + .system-panel {
+    padding: 0.5rem 0 0.35rem;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .system-panel img {
+    height: auto;
+    max-height: 13rem;
+  }
+
+  .system-panel figcaption {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.12rem;
+  }
+}
+
 @media (max-width: 980px) {
   :root {
     --rail: 0rem;
@@ -2746,7 +2769,7 @@ footer {
 
   .system-panel,
   .system-panel + .system-panel {
-    min-width: 86vw;
+    min-width: 94vw;
     padding: 0.55rem 0.65rem 0.45rem 0;
     border-top: 0;
     border-right: 1px solid var(--line);
@@ -2757,6 +2780,17 @@ footer {
   .system-panel img {
     height: 13rem;
     max-height: 13rem;
+  }
+
+  .system-diagram img {
+    width: min(100%, 30rem);
+    height: auto;
+    max-height: none;
+  }
+
+  .system-row.vistra .system-diagram img {
+    width: min(100%, 18rem);
+    margin-inline: auto;
   }
 
   .snapshot,
