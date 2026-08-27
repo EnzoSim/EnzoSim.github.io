@@ -773,8 +773,57 @@ body:has(.research-report) {
   content: none;
 }
 
-.rr-power-node.is-strong {
-  background: var(--rr-vistra-wash);
+.rr-power-node.is-glass {
+  isolation: isolate;
+  min-height: 74px;
+  padding: 9px 10px;
+  border: 1px solid rgba(30, 75, 178, .20);
+  border-radius: 14px;
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(119, 157, 228, .30) 0%, rgba(191, 212, 248, .13) 46%, transparent 72%),
+    linear-gradient(135deg, rgba(255, 255, 255, .94) 0%, rgba(245, 248, 253, .78) 44%, rgba(225, 235, 251, .56) 100%);
+  box-shadow:
+    0 18px 34px -28px rgba(30, 75, 178, .72),
+    0 5px 14px -10px rgba(17, 19, 24, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .98),
+    inset 0 -1px 0 rgba(30, 75, 178, .08);
+  backdrop-filter: blur(18px) saturate(155%);
+  -webkit-backdrop-filter: blur(18px) saturate(155%);
+}
+
+.rr-power-node.is-glass::before {
+  content: "";
+  position: absolute;
+  inset: 1px 1px auto;
+  z-index: 0;
+  height: 42%;
+  border-radius: 13px 13px 60% 60%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .82), rgba(255, 255, 255, .06));
+  pointer-events: none;
+}
+
+.rr-power-node.is-glass::after {
+  z-index: 2;
+}
+
+.rr-power-node.is-glass > span,
+.rr-power-node.is-glass > strong,
+.rr-power-node.is-glass > small {
+  position: relative;
+  z-index: 1;
+}
+
+.rr-power-node.is-glass span {
+  color: #19429c;
+}
+
+.rr-power-node.is-glass strong {
+  font-size: 13px;
+  letter-spacing: -.015em;
+}
+
+.rr-power-node.is-glass small {
+  color: #5e6a7b;
 }
 
 .rr-power-node span,
@@ -2419,6 +2468,18 @@ body:has(.research-report) {
   table,
   .rr-map-panel {
     break-inside: avoid;
+  }
+
+  .rr-power-node.is-glass {
+    border-color: #aebfdd;
+    background: #f4f7fc;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .rr-power-node.is-glass::before {
+    display: none;
   }
 
   .rr-appendix details {

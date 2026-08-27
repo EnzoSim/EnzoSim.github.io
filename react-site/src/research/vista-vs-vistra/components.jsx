@@ -345,8 +345,8 @@ export function VistraSystemDiagram() {
       <div className="rr-power-network" aria-label="Vistra power value chain">
         <SystemNode eyebrow="Fleet" title="Nuclear + gas" detail="Dispatchable generation" />
         <div className="rr-branch"><SystemNode eyebrow="Wholesale" title="ERCOT + PJM" detail="Energy + capacity" /><SystemNode eyebrow="Retail" title="Customers" detail="Retail margin" /></div>
-        <SystemNode eyebrow="Earnings" title="Adjusted EBITDA" detail="$7.2bn · 2026 midpoint" strong />
-        <SystemNode eyebrow="Cash" title="FCFbG" detail="$4.325bn · before growth" strong />
+        <SystemNode eyebrow="Earnings" title="Adjusted EBITDA" detail="$7.2bn · 2026 midpoint" glass />
+        <SystemNode eyebrow="Cash" title="FCFbG" detail="$4.325bn · before growth" glass />
       </div>
       <div className="rr-optionality-band"><b>Future optionality · outside 2026 guidance</b><span>Cogentrix · ~5.5GW gas · ~$4.0bn</span><span>Meta PPAs · &gt;2.6GW · 20 years</span></div>
       <div className="rr-capital-ledger"><b>Capital claims + uses</b><span>Growth + acquisitions</span><span>Debt + preferred</span><span>Repurchases + retained cash</span></div>
@@ -355,8 +355,8 @@ export function VistraSystemDiagram() {
   )
 }
 
-function SystemNode({ eyebrow, title, detail, strong = false }) {
-  return <div className={`rr-power-node ${strong ? 'is-strong' : ''}`}><span>{eyebrow}</span><strong>{title}</strong><small>{detail}</small></div>
+function SystemNode({ eyebrow, title, detail, glass = false }) {
+  return <div className={`rr-power-node ${glass ? 'is-glass' : ''}`}><span>{eyebrow}</span><strong>{title}</strong><small>{detail}</small></div>
 }
 
 export function MetricBars() {
