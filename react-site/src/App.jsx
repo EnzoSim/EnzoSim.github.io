@@ -65,7 +65,6 @@ function ProfileRail({ activeRoute }) {
       </figure>
 
       <p className="profile-role">{t.home.role}</p>
-      <p className="profile-availability">{t.home.availability}</p>
 
       <div className="profile-links" aria-label="Contact links">
         {contacts.map((contact) => {
@@ -207,6 +206,7 @@ function AboutPage() {
       <section className="content-section" aria-labelledby="now-title">
         <h2 id="now-title">{t.home.now.label}</h2>
         <p>{t.home.now.text}</p>
+        <p className="now-availability">{t.home.now.availability}</p>
       </section>
 
       <section className="content-section" aria-labelledby="selected-title">

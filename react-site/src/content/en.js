@@ -47,7 +47,6 @@ export const en = {
     title: 'Enzo Simier',
     name: 'Enzo Simier',
     role: 'Applied economist, Montréal',
-    availability: 'Open to pricing and revenue management roles, particularly in aviation.',
     personal:
       'I spent ten years in Tahiti, then lived in Grenoble and Rennes. I have been a Montrealer since 2021 and a Canadian permanent resident since 2025. I studied pharmacy in Bordeaux for two years before turning to economics. I care about good food, cafés, and golden retrievers.',
     // One instrument line under the portrait: where Enzo is based, as data.
@@ -58,6 +57,7 @@ export const en = {
     now: {
       label: 'Now',
       text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement.',
+      availability: 'Open to pricing and revenue management roles in the airline industry.',
     },
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
