@@ -134,8 +134,14 @@ img {
 }
 
 .profile-role {
-  margin: 0 0 1rem;
+  margin: 0 0 0.35rem;
   color: var(--body);
+}
+
+.profile-availability {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .profile-links {

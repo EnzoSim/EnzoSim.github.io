@@ -65,6 +65,7 @@ function ProfileRail({ activeRoute }) {
       </figure>
 
       <p className="profile-role">{t.home.role}</p>
+      <p className="profile-availability">{t.home.availability}</p>
 
       <div className="profile-links" aria-label="Contact links">
         {contacts.map((contact) => {
