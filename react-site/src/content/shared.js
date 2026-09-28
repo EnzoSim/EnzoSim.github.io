@@ -1,5 +1,5 @@
-import portrait768 from '../assets/montreal-portrait-768.webp'
-import portrait1440 from '../assets/montreal-portrait-1440.webp'
+import portrait768 from '../assets/tremblant-portrait-768.webp'
+import portrait1440 from '../assets/tremblant-portrait-1440.webp'
 
 // Site-wide values kept separate from editorial copy.
 export const siteUrl = 'https://enzosimier.com'
@@ -11,7 +11,7 @@ export const linkedinUrl = 'https://linkedin.com/in/enzo-simier'
 export const contactEmail = 'enzo.simier@hec.ca'
 export const cvUrl = '/Enzo_Simier_CV.pdf'
 
-// The Montréal portrait is exported at two responsive sizes. CSS controls the
+// The Tremblant portrait is exported at two responsive sizes. CSS controls the
 // editorial crop so the original photograph remains intact.
 export const portrait = {
   src: portrait1440,
