@@ -4,6 +4,8 @@ import {
   fdaLiveUrl,
   fdaSnapshot,
   linkedinUrl,
+  poseidonPath,
+  poseidonRepoUrl,
   wikiLiveUrl,
   wikiRepoUrl,
 } from './shared'
@@ -24,11 +26,16 @@ export const en = {
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'Applied-economics research, comparative equity work, a biotech catalyst calendar, and a public working library.',
+        'Applied-economics research, an air cargo route and pricing model, comparative equity work, a biotech catalyst calendar, and a public working library.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
       description: `A live 90-day biotech catalyst view: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, and ${fdaSnapshot.pdufa} PDUFA decisions.`,
+    },
+    poseidon: {
+      title: 'Poseidon network model · Enzo Simier',
+      description:
+        'A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia, with a live dashboard and a market note.',
     },
   },
   a11y: {
@@ -77,6 +84,17 @@ export const en = {
         note: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
         href: null,
         cta: null,
+      },
+      {
+        slug: 'poseidon',
+        field: 'Air cargo',
+        title: 'Poseidon network model',
+        context: 'Python, JavaScript, Railway',
+        note: 'Routes, prices, and payback for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia.',
+        href: poseidonPath,
+        cta: 'Open the model',
+        sourceHref: poseidonRepoUrl,
+        sourceCta: 'Source',
       },
       {
         slug: 'energy-scarcity',
@@ -276,6 +294,26 @@ export const en = {
   },
   footer: {
     note: '© 2026 Enzo Simier',
+  },
+  poseidon: {
+    title: 'Poseidon network model',
+    lede: 'A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft, applied to Nunavik and French Polynesia.',
+    noteCta: 'Download the market note',
+    sourceCta: 'Source on GitHub',
+    model: {
+      title: 'The model',
+      rows: [
+        ['Markets', 'Nunavik from Montréal, and French Polynesia from Tahiti.'],
+        ['Aircraft', 'The Egret land plane and the Heron seaplane.'],
+        ['Outputs', 'Routes, weekly flights, fleet, NPV, IRR, payback, and break-even price.'],
+        ['Inputs', 'Each input is either sourced or labelled as an assumption you can change in the dashboard.'],
+      ],
+    },
+    dashboard: {
+      title: 'Live dashboard',
+      openCta: 'Open full screen',
+      frameTitle: 'Poseidon network model dashboard',
+    },
   },
   project: {
     kicker: 'FDA Catalyst',

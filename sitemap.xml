@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://enzosimier.com/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-09-30</lastmod>
   </url>
   <url>
     <loc>https://enzosimier.com/projects/</loc>
-    <lastmod>2026-07-20</lastmod>
+    <lastmod>2026-09-30</lastmod>
   </url>
   <url>
     <loc>https://enzosimier.com/reading/</loc>
@@ -19,5 +19,9 @@
   <url>
     <loc>https://enzosimier.com/research/vista-vs-vistra/</loc>
     <lastmod>2026-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://enzosimier.com/poseidon/</loc>
+    <lastmod>2026-09-30</lastmod>
   </url>
 </urlset>

@@ -2,34 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      ;(function () {
-        var routes = {
-          '#path': '/projects/',
-          '#experience': '/#experience',
-          '#education': '/#education',
-          '#research': '/projects/',
-          '#built': '/projects/',
-          '#projects': '/projects/',
-          '#water-pricing': '/projects/#water-pricing',
-          '#fda-catalyst': '/projects/#fda-catalyst',
-          '#wiki-project': '/projects/#wiki-project',
-          '#about': '/',
-          '#personal': '/',
-          '#reading': '/reading/',
-        }
-        var destination = routes[window.location.hash.toLowerCase()]
-
-        if (destination) {
-          window.location.replace(destination)
-        }
-      })()
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Enzo Simier is an applied economist in Montréal working across competition, pricing, strategy, and public-interest research."
+      content="A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia, with a live dashboard and a market note."
     />
+    <meta name="author" content="Enzo Simier" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
@@ -37,29 +15,30 @@
     <style>
       html, body, #root { background: #fff; }
     </style>
-    <link rel="canonical" href="https://enzosimier.com/" />
+    <link rel="canonical" href="https://enzosimier.com/poseidon/" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta property="og:title" content="Enzo Simier · Applied Economist" />
+    <link rel="preconnect" href="https://dashboard-production-f0ed7.up.railway.app" />
+    <meta property="og:title" content="Poseidon network model · Enzo Simier" />
     <meta
       property="og:description"
-      content="Applied economics across competition, pricing, strategy, and public-interest research."
+      content="A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia, with a live dashboard and a market note."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://enzosimier.com/" />
+    <meta property="og:url" content="https://enzosimier.com/poseidon/" />
     <meta property="og:locale" content="en_CA" />
     <meta property="og:image" content="https://enzosimier.com/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Enzo Simier · Applied Economist" />
+    <meta name="twitter:title" content="Poseidon network model · Enzo Simier" />
     <meta
       name="twitter:description"
-      content="Applied economics across competition, pricing, strategy, and public-interest research."
+      content="A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia, with a live dashboard and a market note."
     />
     <meta name="twitter:image" content="https://enzosimier.com/og.png" />
-    <title>Enzo Simier · Applied Economist</title>
+    <title>Poseidon network model · Enzo Simier</title>
     <script>
       ;(function () {
         try {
@@ -72,11 +51,9 @@
         }
       })()
     </script>
-    <script type="module" crossorigin src="/assets/jsx-runtime-BS88FfKd.js"></script>
-    <script type="module" crossorigin src="/assets/main-DYkZ4822.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-BbLA73V1.css">
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

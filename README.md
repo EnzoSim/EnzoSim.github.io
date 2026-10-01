@@ -6,6 +6,7 @@ Personal site for Enzo Simier. The editable source lives in `react-site/`; the r
 
 - English editorial copy: `react-site/src/content/en.js`
 - Shared URLs, image metadata, and the dated FDA snapshot: `react-site/src/content/shared.js`
+- Poseidon market note: `/poseidon/Enzo-Simier-Poseidon-market-note.pdf` is a static file committed at the repository root, like `/Enzo_Simier_CV.pdf`; the build does not generate or delete it. To update it, replace that file (and the git-ignored copy in `react-site/poseidon/` for `npm run dev`).
 - Book titles, links, and deterministic 3D presentation values: `react-site/src/content/en.js`
 - Layout and behavior: `react-site/src/App.jsx`
 - Visual system: `react-site/src/index.css`
@@ -21,7 +22,7 @@ npm run lint
 npm run build
 ```
 
-`npm run build` writes `/index.html`, the compatibility redirect at `/work/index.html`, `/reading/index.html`, `/fda-catalyst.html`, and hashed files under `/assets/` for GitHub Pages. Remove superseded `assets/main-*.js` and `assets/main-*.css` bundles when committing a new build.
+`npm run build` writes `/index.html`, the compatibility redirect at `/work/index.html`, `/reading/index.html`, `/fda-catalyst.html`, `/poseidon/index.html`, and hashed files under `/assets/` for GitHub Pages. Remove superseded `assets/main-*.js` and `assets/main-*.css` bundles when committing a new build.
 
 ## Publishing
 

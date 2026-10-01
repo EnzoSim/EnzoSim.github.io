@@ -1,9 +1,16 @@
-import { useEffect } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowDownToLine, ArrowUpRight } from 'lucide-react'
 import { FaEnvelope, FaLinkedinIn } from 'react-icons/fa6'
 
 import { en as t } from '@/content/en'
-import { fdaLiveUrl, portrait } from '@/content/shared'
+import {
+  fdaLiveUrl,
+  portrait,
+  poseidonDashboardUrl,
+  poseidonNoteFilename,
+  poseidonNoteUrl,
+  poseidonRepoUrl,
+} from '@/content/shared'
 
 const externalProps = {
   target: '_blank',
@@ -14,6 +21,7 @@ function routeForPathname(pathname) {
   const normalized = pathname.replace(/\/index\.html$/, '/')
 
   if (normalized === '/fda-catalyst.html') return 'fda-catalyst'
+  if (normalized === '/poseidon' || normalized === '/poseidon/') return 'poseidon'
   if (normalized === '/projects' || normalized === '/projects/') return 'projects'
   if (normalized === '/reading' || normalized === '/reading/') return 'reading'
   return 'about'
@@ -95,7 +103,8 @@ function ProfileRail({ activeRoute }) {
       <nav aria-label={t.a11y.primaryNavigation} className="profile-nav">
         {t.nav.items.map((item) => {
           const itemRoute = routeForPathname(item.href)
-          const isActive = activeRoute === itemRoute || (activeRoute === 'fda-catalyst' && itemRoute === 'projects')
+          const isProjectPage = activeRoute === 'fda-catalyst' || activeRoute === 'poseidon'
+          const isActive = activeRoute === itemRoute || (isProjectPage && itemRoute === 'projects')
           return (
             <a aria-current={isActive ? 'page' : undefined} href={item.href} key={item.href}>
               {item.label}
@@ -116,7 +125,25 @@ function SiteFooter() {
   )
 }
 
-function Shell({ activeRoute, children }) {
+function Shell({ activeRoute, children, wide = null }) {
+  if (wide) {
+    // Wide pages keep the rail and intro side by side, then give one block
+    // (an embedded app) the full layout width underneath. Both stay in <main>.
+    return (
+      <>
+        <SkipLink />
+        <div className="profile-layout profile-layout-wide">
+          <ProfileRail activeRoute={activeRoute} />
+          <main className="wide-main" id="main">
+            <div className="wide-main-intro">{children}</div>
+            <div className="wide-main-full">{wide}</div>
+          </main>
+          <SiteFooter />
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <SkipLink />
@@ -379,6 +406,98 @@ function FdaCatalystPage() {
   )
 }
 
+// A scenario link such as /poseidon/?market=nunavik&price_pct=85 is passed on to
+// the dashboard, both in the embed and in the full-screen link.
+function dashboardQuery() {
+  if (typeof window === 'undefined') return ''
+  const params = new URLSearchParams(window.location.search)
+  params.delete('embed')
+  return params.toString()
+}
+
+// The dashboard draws its board to the frame's width and reports the board's
+// height, so the frame grows to fit and the page keeps a single scroll.
+function useDashboardHeight() {
+  const [height, setHeight] = useState(null)
+
+  useEffect(() => {
+    const onMessage = (event) => {
+      if (event.origin !== poseidonDashboardUrl) return
+      const data = event.data
+      if (data && data.type === 'poseidon:height' && Number.isFinite(data.height) && data.height > 0) {
+        setHeight(Math.min(Math.round(data.height), 20000))
+      }
+    }
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [])
+
+  return height
+}
+
+function PoseidonDashboard() {
+  const { dashboard } = t.poseidon
+  const query = dashboardQuery()
+  const embedSrc = query ? `${poseidonDashboardUrl}/?${query}` : `${poseidonDashboardUrl}/`
+  const fullScreenHref = embedSrc
+  const height = useDashboardHeight()
+
+  return (
+    <section className="dashboard-embed" aria-labelledby="dashboard-title">
+      <div className="dashboard-embed-header">
+        <h2 id="dashboard-title">{dashboard.title}</h2>
+        <a className="text-action" href={fullScreenHref} {...externalProps}>
+          {dashboard.openCta}
+          <ExternalArrow />
+        </a>
+      </div>
+      <div className="dashboard-frame">
+        <iframe
+          allow="clipboard-write"
+          src={embedSrc}
+          style={height ? { height: `${height}px`, aspectRatio: 'auto' } : undefined}
+          title={dashboard.frameTitle}
+        />
+      </div>
+    </section>
+  )
+}
+
+function PoseidonPage() {
+  const page = t.poseidon
+
+  return (
+    <Shell activeRoute="poseidon" wide={<PoseidonDashboard />}>
+      <PageIntro id="poseidon-title" lede={page.lede} title={page.title} />
+
+      <p className="detail-action detail-actions">
+        <a className="blue-glass-button" download={poseidonNoteFilename} href={poseidonNoteUrl}>
+          {page.noteCta}
+          <ArrowDownToLine aria-hidden="true" data-icon="download" />
+        </a>
+        {poseidonRepoUrl ? (
+          <a className="text-action" href={poseidonRepoUrl} {...externalProps}>
+            {page.sourceCta}
+            <ExternalArrow />
+          </a>
+        ) : null}
+      </p>
+
+      <section className="content-section" aria-labelledby="model-title">
+        <h2 id="model-title">{page.model.title}</h2>
+        <dl className="definition-list">
+          {page.model.rows.map(([term, text]) => (
+            <div key={term}>
+              <dt>{term}</dt>
+              <dd>{text}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </Shell>
+  )
+}
+
 function AppContent() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
   const route = routeForPathname(pathname)
@@ -388,6 +507,9 @@ function AppContent() {
   if (route === 'fda-catalyst') {
     page = <FdaCatalystPage />
     meta = t.meta.project
+  } else if (route === 'poseidon') {
+    page = <PoseidonPage />
+    meta = t.meta.poseidon
   } else if (route === 'projects') {
     page = <ProjectsPage />
     meta = t.meta.projects

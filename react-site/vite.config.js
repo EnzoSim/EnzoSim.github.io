@@ -28,6 +28,7 @@ export default defineConfig({
         work: path.resolve(__dirname, 'work/index.html'),
         reading: path.resolve(__dirname, 'reading/index.html'),
         fdaCatalyst: path.resolve(__dirname, 'fda-catalyst.html'),
+        poseidon: path.resolve(__dirname, 'poseidon/index.html'),
         energyScarcity: path.resolve(__dirname, 'research/vista-vs-vistra/index.html'),
       },
     },

@@ -16,5 +16,6 @@ npm run build
 - `/projects/`
 - `/fda-catalyst.html`
 - `/research/vista-vs-vistra/`
+- `/poseidon/` (the Poseidon network model page; the dashboard is embedded from Railway)
 
 The published FDA Catalyst links point to the live Railway deployment.
