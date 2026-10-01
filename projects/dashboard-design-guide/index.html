@@ -214,6 +214,10 @@ rect[data-w].hot{fill:var(--well);opacity:.55}
 .checks.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));column-gap:28px;align-content:center}
 .checks.two label:nth-child(2){border-top:0}
 @media (max-width:1010px){.checks.two label:nth-child(2){border-top:1px solid var(--line)}}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font:500 12px/16px var(--sans);color:var(--ink2)}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key i{display:block;width:22px;height:12px;border-radius:2px}
+@media (max-width:560px){.stage{padding:12px}.fig.wide .stage{padding:10px}.panel{padding:6px}}
 .readout{font:600 15px/22px var(--sans);color:var(--ink)}
 .readout small{font:500 13px/18px var(--sans);color:var(--ink3);margin-left:8px}
 .eq{font:500 14px/22px var(--sans);color:var(--ink2);font-variant-numeric:tabular-nums}
@@ -579,8 +583,11 @@ const nn=v=>Math.round(v).toLocaleString('en-CA');
 const R=(x,y,w,h,c,rx=0,ex='')=>`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(0,w).toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="${rx}" class="${c}" ${ex}/>`;
 const L=(x1,y1,x2,y2,c,ex='')=>`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" class="${c}" ${ex}/>`;
 const T=(x,y,s,c,a='start',ex='')=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" class="${c}" text-anchor="${a}" ${ex}>${s}</text>`;
-const S=(w,h,body,ex='')=>`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" ${ex.replace('data-fluid',`style="width:100%;height:auto;min-width:${Math.round(w*0.7)}px"`)}>${body}</svg>`;
-const fluid='data-fluid';   /* scale with the container, down to 70% of the drawn size; narrower containers scroll */
+const S=(w,h,body,ex='')=>`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" ${ex}>${body}</svg>`;
+const fluid='style="width:100%;height:auto"';
+/* A chart is drawn at the width it has. Under 600 px it gets a compact geometry of its own, so nothing is cropped or shrunk past reading. */
+const drawW=(el,wide)=>{const cs=getComputedStyle(el),w=el.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight); return w>0&&w<600?Math.max(380,Math.round(w)):wide;};
+const redraw=[];   /* each responsive figure registers a check that redraws it when its width changes */
 const seg=(name,opts,cur,label)=>`<div class="seg" role="radiogroup" aria-label="${label}">${opts.map(([v,t])=>`<button type="button" role="radio" data-${name}="${v}" aria-checked="${String(v)===String(cur)}">${t}</button>`).join('')}</div>`;
 const setSeg=(root,name,cur)=>$$(`[data-${name}]`,root).forEach(b=>b.setAttribute('aria-checked',String(b.dataset[name]===String(cur))));
 
@@ -629,16 +636,16 @@ const inst=o=>`<div class="inst"><div class="top"><b>${o.label}</b><span>${o.ctx
   <div class="foot"><b>${o.gap}</b><span>${o.ref}</span></div>${o.facts?facts(o.facts):''}</div>`;
 
 function strip(P,o={}){
-  const cw=o.cw||142,H=o.H||190,y0=H-44,yt=24,sc=v=>y0-v/100*(y0-yt),bw=o.bw||64,W=8*cw; let s='';
-  for(let k=0;k<8;k++) s+=R(k*cw,0,cw,H,'',0,`data-w="${k}"`);
-  [0,50,100].forEach(v=>{s+=L(0,sc(v),W,sc(v),v?'l-g':'l-a')+T(8,sc(v)-5,v,'t-tk')});
-  s+=L(4*cw,6,4*cw,y0,'l-a','stroke-dasharray="3 4"')+T(4*cw+8,14,o.short?'snapshot':'28 Sep snapshot','t-tk');
+  const cw=o.cw||142,H=o.H||190,y0=H-44,yt=24,sc=v=>y0-v/100*(y0-yt),bw=o.bw||64,pad=o.pad||0,W=pad+8*cw; let s='';
+  for(let k=0;k<8;k++) s+=R(pad+k*cw,0,cw,H,'',0,`data-w="${k}"`);
+  [0,50,100].forEach(v=>{s+=L(0,sc(v),W,sc(v),v?'l-g':'l-a')+T(pad?2:8,sc(v)-5,v,'t-tk')});
+  s+=L(pad+4*cw,6,pad+4*cw,y0,'l-a','stroke-dasharray="3 4"')+T(pad+4*cw+8,14,o.short?'snapshot':'28 Sep snapshot','t-tk');
   for(let k=0;k<8;k++){
-    const cx=k*cw+cw/2,x=cx-bw/2;
+    const cx=pad+k*cw+cw/2,x=cx-bw/2;
     if(k<4){const v=D.actual[k]; s+=R(x,sc(v),bw,y0-sc(v),'f-slate',2)+T(cx,sc(v)-7,f1(v),'t-v','middle');}
     else{const d=P.dW[k-4],sv=P.sW[k-4];
       s+=R(x,sc(sv),bw,y0-sc(sv),'hx',2)+R(x,sc(d),bw,y0-sc(d),'o-sig',2)+T(cx,sc(d)-7,f1(d),'t-vs','middle');
-      if(d-sv>0.05){const gh=sc(sv)-sc(d);
+      if(d-sv>0.05&&!o.noGap){const gh=sc(sv)-sc(d);
         if(gh>=16) s+=T(cx,sc(d)+gh/2+4.5,f1(sv-d),'t-v','middle');
         else s+=T(x+bw+6,sc(d)+10,f1(sv-d),'t-v');
         if(!o.short) s+=T(cx,sc(sv)+15,f1(sv)+' served','t-tk','middle','style="fill:var(--ink);paint-order:stroke;stroke:var(--sig-wash);stroke-width:4px"');}
@@ -671,22 +678,24 @@ function matrix(P,o={}){
 function bridge(v,W,o={}){
   const x0=o.x0??104,rm=o.rm??44,max=o.max??400,px=(W-x0-rm)/max,X=x=>x0+x*px,yN=30,yC=96,bh=26;
   const need=v.cogs+v.target,have=v.open+v.rc,otb=need-have; let s='';
-  const lab=(cx,y,t,w)=>w>t.length*5.6?T(cx,y,t,'t-lb','middle'):'';
+  const lab=(cx,y,name,short,v,w)=>{const t=[name+' '+f1(v),short+' '+f1(v),f1(v)].find(t=>w>t.length*5.6); return t?T(cx,y,t,'t-lb','middle'):'';};
   s+=T(o.lx??16,yN+12,'Needed','t-v')+T(o.lx??16,yN+27,f1(need),'t-tk')+T(o.lx??16,yC+12,'Covered','t-v')+T(o.lx??16,yC+27,f1(have),'t-tk');
   s+=R(X(0),yN,v.cogs*px,bh,'hx',2)+R(X(0),yN,v.cogs*px,bh,'o-sig',2)+R(X(v.cogs)+2,yN,v.target*px-2,bh,'f-wash',2)+R(X(v.cogs)+2,yN,v.target*px-2,bh,'o-sig',2);
-  s+=lab(X(v.cogs/2),yN-8,'Cost of sales '+f1(v.cogs),v.cogs*px)+lab(X(v.cogs+v.target/2),yN-8,'Target closing stock '+f1(v.target),v.target*px);
+  s+=lab(X(v.cogs/2),yN-8,'Cost of sales','Cost',v.cogs,v.cogs*px)+lab(X(v.cogs+v.target/2),yN-8,'Target closing stock','Target',v.target,v.target*px);
   s+=R(X(0),yC,v.open*px,bh,'f-slate',2);
   if(v.rc>0.05) s+=R(X(v.open)+2,yC,v.rc*px-2,bh,'f-wash',2)+R(X(v.open)+2,yC,v.rc*px-2,bh,'o-sig',2);
-  s+=lab(X(v.open/2),yC+bh+16,'Opening stock '+f1(v.open),v.open*px)+lab(X(v.open+v.rc/2),yC+bh+16,'On order '+f1(v.rc),v.rc*px);
+  s+=lab(X(v.open/2),yC+bh+16,'Opening stock','Stock',v.open,v.open*px)+lab(X(v.open+v.rc/2),yC+bh+16,'On order','Order',v.rc,v.rc*px);
   if(otb>=0.05){
     const gx=X(have)+3,gw=X(need)-gx;
     s+=R(gx,yN+bh+8,gw,yC-yN-8,'f-wash',2,'style="opacity:.45"')
       +`<path d="M${gx.toFixed(1)},${yN+bh+2} V${yC+bh} H${X(need).toFixed(1)} V${yN+bh+2}" class="l-s" stroke-dasharray="4 3"/>`;
-    s+=(gw>34?T(gx+gw/2,yC+4,f1(otb),'t-vs','middle','style="font-size:17px"'):'')+(o.label===false?'':T(X(need)+10,yC+3,'Open-to-buy'+(gw>34?'':' '+f1(otb)),'t-vs','start','style="font-size:12px"'));
+    s+=o.stack?T(X(need)+8,yC-6,'Open-to-buy','t-vs','start','style="font-size:12px"')+T(X(need)+8,yC+14,f1(otb),'t-vs','start','style="font-size:17px"')
+      :(gw>34?T(gx+gw/2,yC+4,f1(otb),'t-vs','middle','style="font-size:17px"'):'')+(o.label===false?'':T(X(need)+10,yC+3,'Open-to-buy'+(gw>34?'':' '+f1(otb)),'t-vs','start','style="font-size:12px"'));
   }else if(otb<=-0.05){
     const gx=X(need)+3,gw=X(have)-gx;
     s+=`<path d="M${gx.toFixed(1)},${yC-2} V${yN} H${X(have).toFixed(1)} V${yC-2}" class="l-i" stroke-dasharray="4 3"/>`;
-    s+=(gw>34?T(gx+gw/2,yN+18,f1(otb),'t-v','middle','style="font-size:15px"'):'')+(o.label===false?'':T(X(have)+10,yN+17,'Over plan'+(gw>34?'':' '+f1(otb)),'t-v','start','style="font-size:12px"'));
+    s+=o.stack?T(X(have)+8,yN+10,'Over plan','t-v','start','style="font-size:12px"')+T(X(have)+8,yN+29,f1(otb),'t-v','start','style="font-size:15px"')
+      :(gw>34?T(gx+gw/2,yN+18,f1(otb),'t-v','middle','style="font-size:15px"'):'')+(o.label===false?'':T(X(have)+10,yN+17,'Over plan'+(gw>34?'':' '+f1(otb)),'t-v','start','style="font-size:12px"'));
   }
   return S(W,150,s,o.fluid?fluid:'');
 }
@@ -793,17 +802,20 @@ function demoProgramme(root){
       <span class="rng" style="grid-template-columns:auto auto"><span>Gutter</span>${seg('g',[[8,'8'],[16,'16'],[24,'24'],[32,'32']],16,'Gutter in pixels')}</span></div>
     <div class="panel"><div class="fieldbox ui scroll-x" id="pg-view" style="padding:14px 14px 10px"></div></div><p class="status" id="pg-status" aria-live="polite"></p>`;
   const view=$('#pg-view',root),status=$('#pg-status',root),wo=$('#pg-wo',root),rng=$('#pg-w',root);
+  let VW=0;
   function render(){
-    const {W,g,unit}=st,px=unit==='px',sc=760/W,x0=44; let s='';
+    VW=drawW(view,960);
+    const {W,g,unit}=st,px=unit==='px',compact=VW<600,x0=compact?22:44,sc=(compact?VW-x0-2:760)/W; let s='';
     for(let n=1;n<=8;n++){
       const y=4+(n-1)*30,cwid=(W-(n-1)*g)/n,whole=Math.abs(cwid-Math.round(cwid))<1e-9,mod=px&&whole&&Math.round(cwid)%8===0;
       const look=!whole?'style="fill:url(#hx-slate);stroke:var(--line2)"':(px&&!mod)?'style="fill:var(--sheet);stroke:var(--line2)"':'style="fill:var(--slate-wash)"';
       s+=T(0,y+16,n,'t-v');
       for(let c=0;c<n;c++){const x=x0+c*(cwid+g)*sc; s+=R(x,y,cwid*sc,22,'',2,look);
-        if(cwid*sc>40) s+=T(x+cwid*sc/2,y+15.5,whole?Math.round(cwid):cwid.toFixed(1),whole?'t-v':'t-tk','middle');}
-      s+=T(x0+772,y+16,!whole?'fractional':px?(mod?'on the 8 px module':'whole pixels'):'whole units',whole?'t-lb':'t-tk');
+        if(cwid*sc>(compact?32:40)) s+=T(x+cwid*sc/2,y+15.5,whole?Math.round(cwid):cwid.toFixed(1),whole?'t-v':'t-tk','middle');}
+      if(!compact) s+=T(x0+772,y+16,!whole?'fractional':px?(mod?'on the 8 px module':'whole pixels'):'whole units',whole?'t-lb':'t-tk');
     }
-    view.innerHTML=S(960,246,s,fluid);
+    const key=(style,t)=>`<span><i style="${style}"></i>${t}</span>`;
+    view.innerHTML=S(VW,246,s,fluid)+(compact?`<div class="key">${px?key('background:var(--slate-wash)','on the 8 px module')+key('background:var(--sheet);box-shadow:inset 0 0 0 1px var(--line2)','whole pixels'):key('background:var(--slate-wash)','whole units')}${key('background:repeating-linear-gradient(135deg,var(--line2) 0 1.5px,var(--field) 1.5px 5px);box-shadow:inset 0 0 0 1px var(--line2)','fractional')}</div>`:'');
     const sum=W+g,div=[];for(let n=1;n<=12;n++) if(sum%n===0) div.push(n);
     status.innerHTML=`<b>${W} + ${g} = ${sum}.</b> Column counts up to twelve that give whole ${px?'pixels':'units'}: ${div.join(', ')}.`;
     wo.textContent=W+(px?' px':' units'); rng.disabled=!px; if(px) rng.value=W;
@@ -816,7 +828,7 @@ function demoProgramme(root){
     if(b.dataset.preset==='capital'){st.W=58;st.g=2;st.unit='units';render();}
     if(b.dataset.preset==='guide'){st.W=1424;st.g=16;st.unit='px';render();}
   });
-  render();
+  render(); redraw.push(()=>{if(drawW(view,960)!==VW) render();});
 }
 
 /* Rule 2: what each part of an instrument answers. */
@@ -858,23 +870,25 @@ function demoXmr(root){
     <label class="rng" style="min-width:min(100%,340px)"><span>Latest week</span><input type="range" id="xm-v" min="48" max="66" step="0.1" value="58.6" aria-label="Latest week"><output id="xm-vo"></output></label></div>
     <div class="panel"><div class="fieldbox ui scroll-x" id="xm-view" style="padding:12px 12px 6px"></div></div><p class="status" id="xm-status" aria-live="polite"></p>`;
   const view=$('#xm-view',root),status=$('#xm-status',root),vo=$('#xm-vo',root);
+  let VW=0;
   function render(){
-    const x=i=>56+i*66,y=v=>214-(v-47)/(67-47)*196,all=base.concat([st.v]),out=st.v>hi||st.v<lo; let s='';
-    [50,55,60,65].forEach(v=>s+=L(40,y(v),800,y(v),'l-g')+T(34,y(v)+4,v,'t-tk','end'));
-    s+=R(40,y(hi),760,y(lo)-y(hi),'f-sw',0,'style="opacity:.35"');
-    s+=L(40,y(hi),800,y(hi),'l-a','stroke-dasharray="5 4"')+L(40,y(lo),800,y(lo),'l-a','stroke-dasharray="5 4"')+L(40,y(mean),800,y(mean),'l-a');
-    s+=T(808,y(hi)+4,'upper limit '+f1(hi),'t-lb')+T(808,y(mean)+4,'mean '+f1(mean),'t-lb')+T(808,y(lo)+4,'lower limit '+f1(lo),'t-lb');
+    VW=drawW(view,940);
+    const compact=VW<600,xr=compact?VW-100:800,x=i=>+(56+i*(xr-74)/11).toFixed(1),y=v=>214-(v-47)/(67-47)*196,all=base.concat([st.v]),out=st.v>hi||st.v<lo; let s='';
+    [50,55,60,65].forEach(v=>s+=L(40,y(v),xr,y(v),'l-g')+T(34,y(v)+4,v,'t-tk','end'));
+    s+=R(40,y(hi),xr-40,y(lo)-y(hi),'f-sw',0,'style="opacity:.35"');
+    s+=L(40,y(hi),xr,y(hi),'l-a','stroke-dasharray="5 4"')+L(40,y(lo),xr,y(lo),'l-a','stroke-dasharray="5 4"')+L(40,y(mean),xr,y(mean),'l-a');
+    s+=T(xr+8,y(hi)+4,'upper limit '+f1(hi),'t-lb')+T(xr+8,y(mean)+4,'mean '+f1(mean),'t-lb')+T(xr+8,y(lo)+4,'lower limit '+f1(lo),'t-lb');
     s+=`<path d="${all.map((v,i)=>(i?'L':'M')+x(i)+','+y(v).toFixed(1)).join('')}" style="fill:none;stroke:var(--slate);stroke-width:1.5"/>`;
     base.forEach((v,i)=>s+=`<circle cx="${x(i)}" cy="${y(v).toFixed(1)}" r="3.5" class="f-slate"/>`);
     s+=`<circle cx="${x(11)}" cy="${y(st.v).toFixed(1)}" r="6" class="f-ink"/>`+(out?`<circle cx="${x(11)}" cy="${y(st.v).toFixed(1)}" r="11" class="l-i"/>`:'')+T(x(11),y(st.v)+(st.v>mean?-16:24),f1(st.v),'t-v','middle');
-    for(let i=0;i<12;i++) s+=T(x(i),234,i===11?'latest':(i+1),'t-tk','middle');
-    view.innerHTML=S(940,240,s,fluid);
+    for(let i=0;i<12;i++) if(!compact||i===11||i%3===0) s+=T(x(i),234,i===11?'latest':(i+1),'t-tk','middle');
+    view.innerHTML=S(VW,240,s,fluid);
     status.innerHTML=out?`<b>${f1(st.v)} is ${st.v>hi?'above the upper limit of '+f1(hi):'below the lower limit of '+f1(lo)}.</b> A signal: something changed, and it is worth asking what.`
       :`<b>${f1(st.v)} sits between ${f1(lo)} and ${f1(hi)}.</b> Routine variation: no explanation is owed.`;
     vo.textContent=f1(st.v);
   }
   root.addEventListener('input',e=>{if(e.target.id==='xm-v'){st.v=+e.target.value;render();}});
-  render();
+  render(); redraw.push(()=>{if(drawW(view,940)!==VW) render();});
 }
 
 /* Rule 4: the open-to-buy identity with every term movable. */
@@ -886,15 +900,17 @@ function demoBridge(root){
     <div class="panel"><div class="fieldbox ui scroll-x" id="br-view" style="padding:14px 8px 6px"></div></div></div>
     <p class="status" id="br-status" aria-live="polite"></p>`;
   const view=$('#br-view',root),status=$('#br-status',root);
+  let VW=0;
   function render(sync){
-    view.innerHTML=bridge(st,640,{x0:84,rm:96,max:520,lx:8,fluid:true});
+    VW=drawW(view,640);
+    view.innerHTML=VW<600?bridge(st,VW,{x0:62,rm:90,max:520,lx:0,fluid:true,stack:true}):bridge(st,640,{x0:84,rm:96,max:520,lx:8,fluid:true});
     const need=st.cogs+st.target,have=st.open+st.rc,otb=need-have;
     status.innerHTML=`<span class="eq">${f1(st.cogs)} + ${f1(st.target)} − ${f1(st.open)} − ${f1(st.rc)} = <b>${f1(otb)}</b></span> &nbsp; ${otb>=0.05?'The plan may still buy <b>'+f1(otb)+'</b>.':otb<=-0.05?'Stock on hand and on order exceed what the plan needs by <b>'+f1(-otb)+'</b>.':'The plan is exactly covered.'}`;
     rows.forEach(r=>{$('#br-'+r[0]+'o',root).textContent=f1(st[r[0]]); if(sync) $('#br-'+r[0],root).value=st[r[0]];});
   }
   root.addEventListener('input',e=>{const k=e.target.id.slice(3); if(k in st){st[k]=+e.target.value;render(false);}});
   $('#br-reset',root).addEventListener('click',()=>{Object.assign(st,def);render(true);});
-  render(true);
+  render(true); redraw.push(()=>{if(drawW(view,640)!==VW) render(false);});
 }
 
 /* Rule 5: four small models of surface. */
@@ -947,20 +963,22 @@ function demoNotation(root){
     <p class="status" id="nt-status" aria-live="polite"></p>`;
   const view=$('#nt-view',root),key=$('#nt-key',root),status=$('#nt-status',root);
   const sw=(style,t)=>`<span style="display:inline-flex;align-items:center;gap:6px"><i style="display:block;width:22px;height:12px;border-radius:2px;${style}"></i>${t}</span>`;
-  function hue(){
-    const cw=100,H=190,y0=H-44,yt=24,sc=v=>y0-v/100*(y0-yt); let s='';
-    [0,50,100].forEach(v=>{s+=L(0,sc(v),800,sc(v),v?'l-g':'l-a')+T(8,sc(v)-5,v,'t-tk')});
-    for(let k=0;k<8;k++){const cx=k*cw+cw/2;
-      if(k<4){const v=D.actual[k]; s+=R(cx-24,sc(v),48,y0-sc(v),'f-slate',2)+T(cx,sc(v)-7,f1(v),'t-v','middle');}
+  let VW=0;
+  function hue(compact,cw){
+    const pad=compact?24:0,W=pad+8*cw,H=190,y0=H-44,yt=24,sc=v=>y0-v/100*(y0-yt),b=compact?Math.min(18,cw/2-4):30,ga=compact?2:4,ba=compact?Math.min(40,cw-18):48,fs=compact?'style="font-size:9.5px"':''; let s='';
+    [0,50,100].forEach(v=>{s+=L(0,sc(v),W,sc(v),v?'l-g':'l-a')+T(pad?2:8,sc(v)-5,v,'t-tk')});
+    for(let k=0;k<8;k++){const cx=pad+k*cw+cw/2;
+      if(k<4){const v=D.actual[k]; s+=R(cx-ba/2,sc(v),ba,y0-sc(v),'f-slate',2)+T(cx,sc(v)-7,f1(v),'t-v','middle');}
       else{const d=P.dW[k-4],sv=P.sW[k-4];
-        s+=R(cx-32,sc(d),30,y0-sc(d),'',2,'style="fill:var(--hue-a)"')+R(cx+2,sc(sv),30,y0-sc(sv),'',2,'style="fill:var(--hue-b)"');
-        s+=T(cx-17,sc(d)-7,f1(d),'t-tk','middle')+T(cx+17,sc(sv)-7,f1(sv),'t-tk','middle');}
+        s+=R(cx-b-ga/2,sc(d),b,y0-sc(d),'',2,'style="fill:var(--hue-a)"')+R(cx+ga/2,sc(sv),b,y0-sc(sv),'',2,'style="fill:var(--hue-b)"');
+        s+=compact&&Math.abs(d-sv)<0.05?T(cx,sc(d)-7,f1(d),'t-tk','middle'):T(cx-b/2-ga/2,sc(d)-7,f1(d),'t-tk','middle',fs)+T(cx+b/2+ga/2,sc(sv)-7,f1(sv),'t-tk','middle',fs);}
       s+=T(cx,y0+19,D.weeks[k],'t-lb','middle','style="font-weight:600"')+T(cx,y0+34,D.dates[k],'t-tk','middle');
     }
-    return S(800,H,s,fluid);
+    return S(W,H,s,fluid);
   }
   function render(){
-    view.innerHTML=st.mode==='hue'?hue():strip(P,{cw:100,bw:48,short:true,fluid:true});
+    VW=drawW(view,800); const compact=VW<600,cw=compact?(VW-24)/8:100;
+    view.innerHTML=st.mode==='hue'?hue(compact,cw):strip(P,{cw,bw:compact?Math.min(40,cw-18):48,pad:compact?24:0,short:true,fluid:true,noGap:compact});
     view.style.filter=key.style.filter=st.grey?'grayscale(1)':'';
     key.innerHTML=st.mode==='hue'
       ?sw('background:var(--slate)','sold')+sw('background:var(--hue-a)','planned demand')+sw('background:var(--hue-b)','projected served sales')
@@ -972,7 +990,7 @@ function demoNotation(root){
   }
   root.addEventListener('click',e=>{const b=e.target.closest('[data-mode]'); if(b){st.mode=b.dataset.mode;render();}});
   root.addEventListener('input',e=>{if(e.target.id==='nt-grey'){st.grey=e.target.checked;render();}});
-  render();
+  render(); redraw.push(()=>{if(drawW(view,800)!==VW) render();});
 }
 
 /* Rule 7: two rows on one week axis, and a matrix whose rows reorder. */
@@ -1052,25 +1070,28 @@ function demoUncertainty(root){
     <label class="rng" style="margin:12px 2px 0;max-width:520px"><span>Stock on hand</span><input type="range" id="un-s" min="50" max="115" step="5" value="95" aria-label="Stock on hand"><output id="un-so"></output></label>
     <p class="status" id="un-status" aria-live="polite"></p>`;
   const view=$('#un-view',root),status=$('#un-status',root),so=$('#un-so',root);
+  let VW=0;
   function render(){
-    const x=u=>44+u*(840/120),base=186; let s='';
+    VW=drawW(view,900);
+    const compact=VW<600,xl=compact?14:44,per=(VW-xl-16)/120,x=u=>xl+u*per,H=compact?156:212,base=H-26,r=Math.min(11,5*per/2-1.5),halo='style="paint-order:stroke;stroke:var(--field);stroke-width:4px"'; let s='',lab='';
     [0,20,40,60,80,100,120].forEach(v=>s+=L(x(v),base,x(v),base+5,'l-a')+T(x(v),base+19,v,'t-tk','middle'));
     s+=L(x(0),base,x(120),base,'l-a');
     const over=Q.filter(q=>q>st.stock).length;
     if(st.form==='bar'){
       s+=R(x(0),base-66,x(M)-x(0),40,'hx',2)+R(x(0),base-66,x(M)-x(0),40,'o-sig',2);
       s+=L(x(M-1.645*SD),base-46,x(M+1.645*SD),base-46,'l-i')+L(x(M-1.645*SD),base-54,x(M-1.645*SD),base-38,'l-i')+L(x(M+1.645*SD),base-54,x(M+1.645*SD),base-38,'l-i');
-      s+=T(x(M),base-74,'expected 80','t-vs','middle');
+      lab+=T(x(M),base-74,'expected 80','t-vs','middle',halo);
     }else if(st.form==='bands'){
       s+=R(x(M-1.645*SD),base-66,x(M+1.645*SD)-x(M-1.645*SD),40,'f-wash',2)+R(x(M-0.6745*SD),base-66,x(M+0.6745*SD)-x(M-0.6745*SD),40,'f-sig',2,'style="opacity:.45"')+L(x(M),base-70,x(M),base-22,'l-i');
-      s+=T(x(M-1.645*SD),base-74,'9 in 10 between 57 and 103','t-lb')+T(x(M),base-8,'half between 71 and 89','t-lb','middle');
+      lab+=compact?T(x(M-1.645*SD)-6,base-52,'9 in 10 between 57 and 103','t-lb','end',halo)+T(x(M-1.645*SD)-6,base-36,'half between 71 and 89','t-lb','end',halo)
+        :T(x(M-1.645*SD),base-74,'9 in 10 between 57 and 103','t-lb','start',halo)+T(x(M),base-8,'half between 71 and 89','t-lb','middle',halo);
     }else{
       const stack={};
       Q.forEach(q=>{const b=Math.floor(q/5)*5,j=stack[b]=(stack[b]||0)+1,o=q>st.stock;
-        s+=`<circle cx="${x(b+2.5).toFixed(1)}" cy="${base-13-(j-1)*25}" r="11" class="${o?'o-sig':'f-sig'}" ${o?'style="fill:var(--field)"':''}/>`;});
+        s+=`<circle cx="${x(b+2.5).toFixed(1)}" cy="${(base-r-2-(j-1)*(2*r+3)).toFixed(1)}" r="${r.toFixed(1)}" class="${o?'o-sig':'f-sig'}" ${o?'style="fill:var(--field)"':''}/>`;});
     }
-    s+=L(x(st.stock),14,x(st.stock),base,'l-i')+T(x(st.stock)+(st.stock>100?-8:8),24,'stock '+st.stock,'t-v',st.stock>100?'end':'start');
-    view.innerHTML=S(900,212,s,fluid);
+    s+=L(x(st.stock),14,x(st.stock),base,'l-i')+lab+T(x(st.stock)+(st.stock>100?-8:8),24,'stock '+st.stock,'t-v',st.stock>100?'end':'start');
+    view.innerHTML=S(VW,H,s,fluid);
     so.textContent=st.stock+' units';
     status.innerHTML=st.form==='dots'?`<b>Demand exceeds stock in ${over} of 20 outcomes.</b> Each dot is one equally likely week. The hollow ones are the weeks that run short.`
       :st.form==='bar'?`<b>The whisker runs from 57 to 103.</b> How often demand exceeds ${st.stock} cannot be read from it, and values inside the bar look likelier than values just beyond its end.`
@@ -1079,7 +1100,7 @@ function demoUncertainty(root){
   }
   root.addEventListener('click',e=>{const b=e.target.closest('[data-form]'); if(b){st.form=b.dataset.form;render();}});
   root.addEventListener('input',e=>{if(e.target.id==='un-s'){st.stock=+e.target.value;render();}});
-  render();
+  render(); redraw.push(()=>{if(drawW(view,900)!==VW) render();});
 }
 
 /* Rule 11: a slider drawn on its own consequences. */
@@ -1226,7 +1247,7 @@ $('#fig-note').innerHTML=figNote();
 {const cb=$('#copy-tokens'); if(cb) cb.addEventListener('click',()=>{const t=$('#tokens').textContent,done=ok=>{cb.textContent=ok?'Copied':'Select the block to copy';setTimeout(()=>cb.textContent='Copy tokens',1800);};
   if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(()=>done(true),()=>done(false)); else done(false);});}
 $('#srclist').innerHTML=srcList();
-let raf=0;new ResizeObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(fitAll);}).observe(document.body);
+let raf=0;new ResizeObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{redraw.forEach(f=>f());fitAll();});}).observe(document.body);
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitAll);
 window.__guide={P0,P1};
 })();
