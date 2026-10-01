@@ -785,7 +785,7 @@ function bridge(v,W,o={}){
     s+=T(X(0),20,f1(v.sell),'t-v')+T(X(0),38,'To sell','t-lb');
     if(v.keep*k>150) s+=T(X(need),20,f1(v.keep),'t-v','end')+T(X(need),38,'To keep in stock','t-lb','end');
     s+=T(X(0),yH+bh+22,f1(v.stock),'t-v')+T(X(0),yH+bh+40,'In stock','t-lb');
-    if(X(Math.max(need,have+buy))-X(v.stock)>170&&v.stock*k>70) s+=T(X(v.stock)+4,yH+bh+22,f1(v.order),'t-v')+T(X(v.stock)+4,yH+bh+40,'On order','t-lb');
+    if(X(Math.max(need,have+buy))-X(v.stock)>150&&v.stock*k>70) s+=T(X(v.stock)+4,yH+bh+22,f1(v.order),'t-v')+T(X(v.stock)+4,yH+bh+40,'On order','t-lb');
   }
   if(buy>0) s+=R(X(have)+gap,yH+1,buy*k-gap*2,bh-2,'o-dash tintfill',3);
   if(left>=0.05){
