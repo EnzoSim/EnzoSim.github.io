@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#ffffff">
+<title>A design guide for planning dashboards · Enzo Simier</title>
+<meta name="description" content="Eleven rules for drawing a plan so its arithmetic can be read, with the sources behind each one and small models to play with. The worked example uses synthetic data.">
+<link rel="canonical" href="https://enzosimier.com/projects/dashboard-design-guide/">
+<meta property="og:title" content="A design guide for planning dashboards">
+<meta property="og:description" content="Eleven rules for drawing a plan so its arithmetic can be read, with the sources behind each one and small models to play with. The worked example uses synthetic data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://enzosimier.com/projects/dashboard-design-guide/">
+<meta property="og:locale" content="en_CA">
+<meta property="og:image" content="https://enzosimier.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- Hand-written page, not built by Vite. Light theme only. See the repository README. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=Geist+Mono:wght@400..600&family=Geist:wght@400;700&family=Archivo:wght@400;700&display=swap">
+<style>
+/* Layout: an article. Prose sits in a 680 px column with its sources in the margin beside it;
+   every figure is a "stage" in the interface's own ground tone, so the page is paper and the figures are the system. */
+:root{
+  color-scheme:light;
+  --page:#FFFFFF; --ground:#E3E7ED; --sheet:#F1F3F7; --field:#FFFFFF; --well:#D6DCE5;
+  --ink:#121923; --ink2:#414B59; --ink3:#5D6776;
+  --line:#CBD2DC; --line2:#98A2B1;
+  --sig:#2146D6; --sig-wash:#DCE4FB;
+  --slate:#5A6676; --slate-wash:#D5DAE2;
+  --hue-a:#2F6FE0; --hue-b:#12807A;
+  --lift:0 1px 2px rgba(18,25,35,.12),0 0 0 1px rgba(18,25,35,.05);
+  --sans:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.62;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px);padding-block:32px 120px}
+a{color:var(--sig);text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--sig);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--sans);color:var(--ink)}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.04;font-weight:600;letter-spacing:-.026em;margin:8px 0 20px;text-wrap:balance;max-width:17ch}
+.crumb{display:flex;gap:10px;align-items:center;font:600 13px/20px var(--sans);color:var(--ink3);margin:0 0 44px}
+.crumb a{color:var(--ink2);text-decoration:none}.crumb a:hover{color:var(--sig)}
+.kicker{font:600 12px/16px var(--sans);font-stretch:85%;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
+.lede{font-size:clamp(19px,1.9vw,22px);line-height:1.5;max-width:62ch;margin:0}
+.num{font-variant-numeric:tabular-nums lining-nums}
+code,.mono{font-family:var(--mono);font-size:.86em}
+
+/* prose with margin sources */
+.t{display:grid;grid-template-columns:minmax(0,680px) minmax(0,1fr);column-gap:56px;align-items:start}
+.t>p{margin:0 0 18px}
+.t>aside{padding-top:5px;margin-bottom:18px}
+.src{margin:0;padding:0;list-style:none;font:500 13px/19px var(--sans);color:var(--ink3);display:grid;gap:7px;max-width:320px}
+.src a{color:var(--ink2);text-decoration-color:var(--line2)}
+.src a:hover{color:var(--sig)}
+.src b{font-weight:600;color:var(--ink)}
+@media (max-width:920px){
+  .t{grid-template-columns:minmax(0,1fr)}
+  .t>aside{margin:-6px 0 22px;padding:2px 0 2px 12px;border-left:2px solid var(--line)}
+}
+section{margin-top:88px}
+.rule-h{display:flex;align-items:baseline;gap:16px;margin:0 0 18px;max-width:680px}
+.rule-h .n{font:600 15px/24px var(--sans);font-variant-numeric:tabular-nums;color:var(--field);background:var(--ink);min-width:28px;height:28px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;transform:translateY(-4px);flex:none}
+h2{font-size:clamp(25px,3vw,32px);line-height:1.14;font-weight:600;letter-spacing:-.018em;margin:0;text-wrap:balance}
+h2.plain{margin:0 0 18px;max-width:680px}
+.toc{margin:26px 0 0;padding:0;list-style:none;font:500 15px/22px var(--sans);columns:2;column-gap:40px;max-width:760px;counter-reset:r}
+.toc li{counter-increment:r;break-inside:avoid;padding:7px 0;border-top:1px solid var(--line);display:flex;gap:12px}
+.toc li::before{content:counter(r);color:var(--ink3);font-variant-numeric:tabular-nums;min-width:18px}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{color:var(--sig)}
+@media (max-width:640px){.toc{columns:1}}
+
+/* figures */
+.fig{margin:10px 0 40px}
+.fig.wide{width:min(1456px,calc(100vw - 2*clamp(16px,4vw,40px)));position:relative;left:50%;transform:translateX(-50%)}
+.stage{background:var(--ground);border-radius:20px;padding:20px}
+.fig.wide .stage{padding:16px}
+.cap{font:400 13px/20px var(--sans);color:var(--ink2);max-width:86ch;margin:10px 0 0}
+.cap b{font-weight:600;color:var(--ink)}
+.demo-head{display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;margin:0 0 14px}
+.demo-head h3{font:600 15px/22px var(--sans);margin:0}
+.demo-head .hint{font:500 13px/18px var(--sans);color:var(--ink3);margin-left:10px}
+.hint.narrow{display:none}
+@media (max-width:760px){.hint.wide{display:none}.hint.narrow{display:inline}}
+.demo-ctl{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap}
+.panel{background:var(--sheet);border-radius:16px;padding:8px}
+.panel>.fieldbox{background:var(--field);border-radius:8px;padding:16px}
+.fieldbox{background:var(--field);border-radius:8px}
+.overflow,.scroll-x{overflow-x:auto;overflow-y:hidden}
+.fit{position:relative;overflow:hidden}
+.fit>.fit-in{transform-origin:0 0;position:absolute;left:0;top:0}
+.fit.actual{overflow-x:auto;height:auto!important}
+.fit.actual>.fit-in{position:static;transform:none!important}
+.btn{font:600 13px/20px var(--sans);color:var(--ink);background:var(--field);border:0;border-radius:8px;padding:6px 12px;cursor:pointer;box-shadow:var(--lift)}
+.btn:hover{background:var(--sheet)}
+.status{font:500 14px/21px var(--sans);color:var(--ink2);margin:12px 2px 0}
+.status b{color:var(--ink);font-weight:600}
+
+/* shared UI primitives of the system */
+.ui{font-family:var(--sans);font-size:13px;line-height:16px;color:var(--ink);font-variant-numeric:tabular-nums lining-nums;text-align:left}
+.ui svg{display:block;overflow:visible}
+.ui svg text{font-family:var(--sans);font-variant-numeric:tabular-nums lining-nums}
+.t-tk{fill:var(--ink3);font-size:11px;font-weight:500}
+.t-lb{fill:var(--ink2);font-size:12px;font-weight:500}
+.t-v{fill:var(--ink);font-size:13px;font-weight:600}
+.t-vs{fill:var(--sig);font-size:13px;font-weight:600}
+.l-g{stroke:var(--line);stroke-width:1}
+.l-a{stroke:var(--line2);stroke-width:1}
+.l-i{stroke:var(--ink);stroke-width:1.5;fill:none}
+.l-s{stroke:var(--sig);stroke-width:1.5;fill:none}
+.f-ink{fill:var(--ink)} .f-sig{fill:var(--sig)} .f-wash{fill:var(--sig-wash)} .f-slate{fill:var(--slate)} .f-field{fill:var(--field)} .f-well{fill:var(--well)} .f-sw{fill:var(--slate-wash)}
+.hx{fill:url(#hx-sig)} .o-sig{fill:none;stroke:var(--sig);stroke-width:1.5}
+.micro{font-size:11px;line-height:16px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;font-stretch:85%;color:var(--ink3)}
+.seg{display:inline-flex;background:var(--well);border-radius:8px;padding:2px;gap:2px;flex-wrap:wrap}
+.seg button{font:600 12.5px/16px var(--sans);color:var(--ink2);background:transparent;border:0;border-radius:6px;padding:6px 12px;cursor:pointer}
+.seg button[aria-checked="true"]{background:var(--field);color:var(--ink);box-shadow:var(--lift)}
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 12px/16px var(--sans);color:var(--ink2);background:var(--sheet);border-radius:8px;padding:6px 10px}
+.sw{display:inline-flex;align-items:center;gap:8px;font:500 13px/18px var(--sans);color:var(--ink);cursor:pointer}
+.sw input{appearance:none;-webkit-appearance:none;width:30px;height:18px;border-radius:9px;background:var(--line2);position:relative;margin:0;cursor:pointer;flex:none;transition:background .15s}
+.sw input::after{content:"";position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:7px;background:var(--field);box-shadow:0 1px 2px rgba(18,25,35,.3);transition:transform .15s}
+.sw input:checked{background:var(--ink)}
+.sw input:checked::after{transform:translateX(12px)}
+.rng{display:grid;grid-template-columns:auto minmax(120px,1fr) auto;gap:10px;align-items:center;font:500 13px/18px var(--sans);color:var(--ink2)}
+.rng output{font-weight:600;color:var(--ink);min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{accent-color:var(--sig);margin:0;height:18px;width:100%}
+
+/* board */
+.board{width:1424px}
+.b-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;height:56px;padding:0 8px 14px}
+.b-head h5{font:600 22px/28px var(--sans);letter-spacing:-.015em;margin:0;display:inline}
+.b-head .scope{color:var(--ink2);margin-left:14px;font-size:13px}
+.b-row{display:grid;grid-template-columns:264px 1136px;gap:8px;background:var(--sheet);border-radius:var(--r-sheet,16px);padding:8px;margin-top:8px}
+.b-field{background:var(--field);border-radius:var(--r-field,8px);position:relative;overflow:hidden}
+.b-title{display:flex;align-items:center;justify-content:space-between;height:44px;padding:0 16px}
+.b-title h6{font:600 14px/20px var(--sans);margin:0;display:inline}
+.b-title .ctx{color:var(--ink3);margin-left:10px;font-size:12px;font-weight:500}
+.inst{padding:10px 12px 12px 12px;display:flex;flex-direction:column}
+.inst .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.inst .top b{font-weight:600;font-size:14px;line-height:20px}
+.inst .top span{color:var(--ink3);font-size:12px;white-space:nowrap}
+.inst .val{margin-top:10px;white-space:nowrap}
+.inst .val b{font-size:34px;line-height:36px;font-weight:600;letter-spacing:-.02em}
+.inst .val span{font-size:13px;color:var(--ink2);margin-left:6px;font-weight:500}
+.rail{position:relative;height:10px;margin-top:12px;border-radius:5px;background:var(--well)}
+.rail i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:var(--sig-wash);box-shadow:inset 0 0 0 1.5px var(--sig)}
+.rail i.hat{background:repeating-linear-gradient(135deg,var(--sig) 0 1.5px,var(--sig-wash) 1.5px 5px)}
+.rail u{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--ink);border-radius:1px}
+.inst .foot{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:12px;line-height:16px}
+.inst .foot b{font-weight:600}
+.inst .foot span{color:var(--ink3);text-align:right}
+.facts{margin-top:auto;padding-top:12px}
+.facts>div{border-top:1px solid var(--line);padding-top:9px}
+.facts p{margin:0;display:flex;justify-content:space-between;gap:8px;font-size:12px;line-height:17px;color:var(--ink2)}
+.facts p b{font-weight:600;color:var(--ink)}
+.facts p i{font-style:normal;color:var(--ink3);margin-left:auto}
+.facts p b{min-width:44px;text-align:right}
+.facts .micro{display:block;margin:0 0 3px}
+.mx{display:grid}
+.mx>div{height:36px;display:flex;align-items:center;position:relative}
+.mx .hd{height:24px;color:var(--ink3);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-stretch:85%;justify-content:center}
+.mx .nm{padding-left:16px;border-top:1px solid var(--line);font-weight:600}
+.mx .cv{border-top:1px solid var(--line)}
+.cell{justify-content:center;border-top:1px solid var(--line);border-left:1px solid var(--field);font-weight:600}
+.cell .n{min-width:36px;text-align:right}
+.cell .rc{position:absolute;left:10px;top:10px;color:var(--sig);font-size:12px;font-weight:600}
+.cell .un{position:absolute;right:10px;top:10px;font-size:12px;font-weight:600}
+.cell.out{background:var(--ink)!important;color:var(--field)}
+[data-w].hot.cell{box-shadow:inset 0 0 0 2px var(--ink);z-index:1}
+rect[data-w]{fill:transparent}
+rect[data-w].hot{fill:var(--well);opacity:.55}
+.b-split{display:grid}
+.b-split>div+div{border-left:1px solid var(--line)}
+.dec{display:grid;grid-template-columns:minmax(0,1fr) 92px 92px 176px;align-items:center;padding:0 16px}
+.dec>div{height:42px;display:flex;flex-direction:column;justify-content:center;border-top:1px solid var(--line)}
+.dec .h{height:20px;border:0;color:var(--ink3);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-stretch:85%}
+.dec b{font-weight:600}
+.dec span{color:var(--ink3);font-size:12px}
+.dec .r{align-items:flex-end;text-align:right}
+.dec .q{padding-left:16px}
+.dec em{font-style:normal;color:var(--sig);font-weight:600}
+.ex{padding:0 16px 12px}
+.ex .ctl{display:grid;grid-template-columns:52px minmax(0,1fr) 44px;gap:8px;align-items:center;margin-top:4px;font-size:12px}
+.ex .ctl label{color:var(--ink2);font-weight:500}
+.ex .ctl output{text-align:right;font-weight:600}
+.ex .out{margin-top:6px;font-size:12px;color:var(--ink2)}
+.ex .out b{color:var(--ink);font-weight:600}
+
+/* demos */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.mini{background:var(--sheet);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;font-family:var(--sans)}
+.mini h4{font:600 14px/20px var(--sans);margin:0}
+.mini p{font:500 13px/19px var(--sans);color:var(--ink2);margin:0}
+.mini .view{background:var(--field);border-radius:8px;padding:14px;min-height:150px;display:flex;align-items:center;justify-content:center;flex:1}
+.grid2.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.grid2.two{grid-template-columns:minmax(0,1fr)}}
+.mini .ctlrow{display:flex;flex-direction:column;gap:8px;margin-top:auto}
+.two-col{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:12px;align-items:stretch}
+.two-col.c300{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.two-col.half{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.two-col,.two-col.c300,.two-col.half{grid-template-columns:minmax(0,1fr)}}
+.checks{display:grid;gap:0;font-family:var(--sans)}
+.checks label{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 12px;align-items:center;padding:11px 4px;border-top:1px solid var(--line);cursor:pointer}
+.checks label:first-child{border-top:0}
+.checks b{font:600 14px/20px var(--sans);color:var(--ink)}
+.checks span{grid-column:2;font:500 13px/18px var(--sans);color:var(--ink3)}
+.two-col>.panel{display:flex;flex-direction:column}
+.two-col>.panel>.fieldbox{flex:1}
+.two-col>.panel>.fieldbox.ui{display:flex;align-items:center}
+.two-col>.panel>.fieldbox.ui>svg{flex:1}
+.checks.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));column-gap:28px;align-content:center}
+.checks.two label:nth-child(2){border-top:0}
+@media (max-width:1010px){.checks.two label:nth-child(2){border-top:1px solid var(--line)}}
+.readout{font:600 15px/22px var(--sans);color:var(--ink)}
+.readout small{font:500 13px/18px var(--sans);color:var(--ink3);margin-left:8px}
+.eq{font:500 14px/22px var(--sans);color:var(--ink2);font-variant-numeric:tabular-nums}
+.eq b{color:var(--sig);font-weight:600}
+table.dt{border-collapse:collapse;font:500 14px/20px var(--sans);font-variant-numeric:tabular-nums lining-nums;width:100%;color:var(--ink)}
+table.dt th,table.dt td{padding:8px 12px;text-align:left;white-space:nowrap}
+table.dt th{font-weight:600}
+table.dt.num-r td.n,table.dt.num-r th.n{text-align:right}
+table.dt:not(.num-r) td.n,table.dt:not(.num-r) th.n{text-align:center;font-variant-numeric:proportional-nums}
+table.dt.furn th,table.dt.furn td{border:1.5px solid var(--ink3)}
+table.dt.furn thead th{background:var(--slate-wash)}
+table.dt:not(.furn) tbody tr{border-top:1px solid var(--line)}
+table.dt:not(.furn) thead th{color:var(--ink3);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-stretch:85%;padding-bottom:6px}
+table.dt td.bar{position:relative}
+table.dt td.bar i{position:absolute;left:12px;top:calc(50% + 11px);height:3px;border-radius:2px;background:var(--slate)}
+.checks.tight label{padding:8px 4px}
+.specimen{position:relative;font-size:clamp(30px,4.4vw,52px);line-height:1.2;height:1.2em;white-space:nowrap}
+.specimen span{position:absolute;left:0;top:0}
+.specimen .b{color:var(--sig);opacity:.55;font-weight:700}
+.ty-head,.ty-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(4,minmax(38px,64px))}
+.ty-head{font:600 11px/16px var(--sans);font-stretch:85%;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);padding:2px 10px 6px}
+.ty-head span+span,.ty-row span+span{text-align:right}
+.ty-row{width:100%;font-size:17px;line-height:36px;font-weight:400;color:var(--ink);background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:0 10px;text-align:left;cursor:pointer}
+.ty-row:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
+.ty-row[aria-checked="true"]{font-weight:700;background:var(--sheet)}
+.nyt{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));height:170px;margin-top:22px;position:relative;border-bottom:1px solid var(--line2)}
+.nyt .col{position:relative;height:100%}
+.nyt .col i{position:absolute;left:22%;width:56%;bottom:0;display:block;border-radius:2px 2px 0 0;background:var(--slate-wash)}
+.nyt .col.on i{background:var(--sig)}
+.nyt .col.over i{background:repeating-linear-gradient(135deg,var(--line2) 0 1.5px,var(--slate-wash) 1.5px 5px)}
+.nyt .col.on.over i{background:repeating-linear-gradient(135deg,var(--sig) 0 1.5px,var(--sig-wash) 1.5px 5px)}
+.nyt .col b{position:absolute;left:50%;transform:translateX(-50%);z-index:1;padding:0 4px;background:var(--field);font:600 12px/14px var(--sans);color:var(--ink3)}
+.nyt .col.on b{color:var(--ink)}
+.nyt-axis{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));font:500 12px/18px var(--sans);color:var(--ink3);text-align:center;margin-top:2px}
+.nyt-range{margin-inline:calc(100%/16 - 8px);width:auto;display:block}
+.nyt-range input{width:100%}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 32px;margin-top:8px;font-family:var(--sans);font-size:14px;line-height:21px}
+.legend div{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--line);color:var(--ink2)}
+.legend b{color:var(--ink);font-weight:600;display:block}
+.legend i{display:block;height:22px;border-radius:2px}
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 32px;font-family:var(--sans);font-size:14px;line-height:21px;margin-top:8px}
+.verdict div{border-top:1px solid var(--line);padding:10px 0;color:var(--ink2)}
+.verdict b{display:block;color:var(--ink);font-weight:600}
+.trad{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 32px;font-family:var(--sans);font-size:14px;line-height:21px;margin:8px 0 0}
+.trad div{border-top:1px solid var(--line);padding:10px 0 12px;color:var(--ink2)}
+.trad b{display:block;color:var(--ink);font-weight:600}
+.trad .to{display:block;margin-top:4px;font-weight:500;color:var(--ink3);font-variant-numeric:tabular-nums}
+.trad .to a{color:var(--ink);text-decoration-color:var(--line2);padding:0 1px}
+.trad .to a:hover{color:var(--sig)}
+#demo-tune{transition:background-color .2s}
+#demo-tune .hx{fill:url(#hx-tune)}
+.tune-ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px 28px;margin:0 0 14px;align-items:center}
+.tokens-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 0;font:500 13px/18px var(--sans);color:var(--ink3)}
+.tokens-bar+pre{margin-top:8px}
+pre{background:var(--sheet);color:var(--ink);border-radius:12px;padding:16px 18px;overflow-x:auto;font:400 12.5px/19px var(--mono);margin:14px 0 0;max-width:100%}
+.refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:0 40px;margin:10px 0 0;padding:0;list-style:none;font:500 14px/21px var(--sans)}
+.refs li{padding:9px 0 11px;border-top:1px solid var(--line);color:var(--ink3)}
+.refs p{margin:3px 0 0;font:400 13.5px/20px var(--sans);color:var(--ink2);max-width:60ch}
+.refs a{color:var(--ink);text-decoration-color:var(--line2)}
+.refs a:hover{color:var(--sig)}
+.refs b{font-weight:600;color:var(--ink)}
+h3.group{font:600 17px/24px var(--sans);margin:34px 0 0}
+footer{margin-top:72px;border-top:1px solid var(--line2);padding-top:18px;font:400 13px/20px var(--sans);color:var(--ink2);max-width:86ch}
+footer p{margin:0 0 8px}
+@media (prefers-reduced-motion:no-preference){.rail i,.cell{transition:width .25s ease,background-color .25s ease}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <pattern id="hx-sig" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" style="fill:var(--sig-wash)"/><line x1="0" y1="0" x2="0" y2="5" style="stroke:var(--sig);stroke-width:2.4"/></pattern>
+  <pattern id="hx-slate" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" style="fill:var(--field)"/><line x1="0" y1="0" x2="0" y2="5" style="stroke:var(--line2);stroke-width:2"/></pattern>
+</defs></svg>
+
+<div class="wrap">
+
+<nav class="crumb" aria-label="Site"><a href="/">Enzo Simier</a><span>/</span><a href="/projects/">Projects</a></nav>
+
+<header>
+  <div class="kicker">Design guide · eleven rules, their sources, and models to play with</div>
+  <h1>A design guide for planning dashboards</h1>
+  <p class="lede">A planning dashboard has to show a chain of arithmetic: what demand asks for, what stock can serve, what is on order, how much budget is left to buy, and what margin results. The craft of drawing such chains is older than the screen. This guide gathers what grid design, relief cartography, control-room engineering, business notation and forecasting research each contribute, explains the sources, and gives a small model to play with for every rule.</p>
+</header>
+
+<!-- ===================== THE EXAMPLE ===================== -->
+<section id="example" style="margin-top:44px">
+  <figure class="fig wide">
+    <div class="stage">
+      <div class="demo-head"><div><h3 style="display:inline">The worked example</h3><span class="hint wide">Switch the plan. Point at a week. Move the markdown sliders.</span><span class="hint narrow">Drawn for a wide screen. Show it at actual size and scroll sideways.</span></div><button class="btn" id="actual" type="button" aria-pressed="false">Show at actual size</button></div>
+      <div class="fit" id="fit-board" data-w="1424"><div class="fit-in ui board" id="board"></div></div>
+    </div>
+    <figcaption class="cap" id="recon"></figcaption>
+  </figure>
+  <div class="t">
+    <p>One example runs through the guide. A retailer plans four weeks of sales for five product categories. Demand for boots outruns stock in week 42, because an order of 240 pairs arrives a week too late. Receiving 80 of those pairs a week early would serve the demand. The sheet above shows that story in four rows that follow the chain: demand, service, buying capacity, margin. Each row pairs one instrument with its evidence, and the weeks sit at the same horizontal position in every row that has them.</p>
+    <aside><ul class="src"><li><b>About the data</b></li><li>Every figure is synthetic and is computed in the page. There is no fitted forecast behind it, so the example shows no forecast interval anywhere.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>The eleven rules below explain where each decision in that sheet comes from. They draw on six bodies of work, each of which has spent decades on one part of the problem.</p>
+  </div>
+  <div class="trad">
+    <div><b>Grid and type programmes</b>Karl Gerstner, Adrian Frutiger and Wim Crouwel treated a layout or a typeface as a system of compatible parts.<span class="to">Rules <a href="#r1">1</a>, <a href="#r8">8</a>, <a href="#r9">9</a></span></div>
+    <div><b>Cartography</b>Eduard Imhof, Arthur Robinson and Jacques Bertin worked out how tone, texture and order carry hierarchy on a crowded sheet.<span class="to">Rules <a href="#r5">5</a>, <a href="#r6">6</a>, <a href="#r7">7</a></span></div>
+    <div><b>Control-room engineering</b>Kim Vicente, Jens Rasmussen, David Woods and the authors of process-display guidance designed for operators who must notice a deviation at once.<span class="to">Rules <a href="#r2">2</a>, <a href="#r4">4</a>, <a href="#r7">7</a></span></div>
+    <div><b>Business reporting and statistics</b>William Playfair, Stephen Few, Rolf Hichert, Donald Wheeler and Andrew Ehrenberg set conventions for comparators, notation and tables.<span class="to">Rules <a href="#r2">2</a>, <a href="#r3">3</a>, <a href="#r4">4</a>, <a href="#r6">6</a>, <a href="#r8">8</a></span></div>
+    <div><b>Perception and uncertainty research</b>Stephen Palmer, William Cleveland, Matthew Kay and Michael Correll measured what readers see in a display and decide from it.<span class="to">Rules <a href="#r5">5</a>, <a href="#r10">10</a></span></div>
+    <div><b>Interactive explanation and forecasting practice</b>Ben Shneiderman, Bret Victor and the New York Times graphics desk put controls beside their effects, and Robert Fildes measured what manual overrides do to a forecast.<span class="to">Rule <a href="#r11">11</a></span></div>
+  </div>
+  <div class="t" style="margin-top:26px">
+    <p>Each rule has a short account of its sources, linked in the margin, and a model to play with. The rules can be read in any order.</p>
+  </div>
+  <ol class="toc">
+    <li><a href="#r1">Start from a grid that divides</a></li>
+    <li><a href="#r2">Give every number an instrument</a></li>
+    <li><a href="#r3">Compare against routine variation</a></li>
+    <li><a href="#r4">Draw the identity</a></li>
+    <li><a href="#r5">Shade for hierarchy, print the quantity</a></li>
+    <li><a href="#r6">Let fill carry status</a></li>
+    <li><a href="#r7">Share one axis</a></li>
+    <li><a href="#r8">Set tables to be read</a></li>
+    <li><a href="#r9">Choose type for figures</a></li>
+    <li><a href="#r10">Show uncertainty only when it is earned</a></li>
+    <li><a href="#r11">Put each control on its consequence</a></li>
+  </ol>
+</section>
+
+<!-- ===================== RULE 1 ===================== -->
+<section id="r1">
+  <div class="rule-h"><span class="n">1</span><h2>Start from a grid that divides</h2></div>
+  <div class="t">
+    <p>Karl Gerstner designed the layout grid of the German business magazine Capital in 1962 and published it in <i>Designing Programmes</i> two years later. The page is 58 units wide and the gutters are 2 units. Those two numbers let the same page carry one, two, three, four, five or six columns, each a whole number of units wide. The reason is their sum. Width plus one gutter is 60, and 60 divides by every count from one to six.</p>
+    <aside><ul class="src"><li><a href="https://commons.wikimedia.org/wiki/File:Karl_Gerstner_Capital_layout_grid.png">Karl Gerstner, <i>Designing Programmes</i></a>, 1964. The Capital grid dates from 1962.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>The rule carries straight into pixels. A field of 1424 px with 16 px gutters adds up to 1440, so one to six columns all land on whole pixels, and on multiples of eight. The example uses that field. Each row keeps a 264 px column for its instrument and gives the remaining 1136 px to evidence, which divides into eight week columns of 142 px.</p>
+  </div>
+  <div class="t">
+    <p>A grid that divides many ways matters because the regions of a dashboard should not be equal. Stephen Few lists the rigid symmetrical grid among the common mistakes of dashboard design. When every panel has the same size, the layout claims that every panel has the same importance. A programme of compatible widths allows a wide region for the main evidence and narrow ones for the rest, and no edge falls off the grid.</p>
+    <aside><ul class="src"><li><a href="https://www.perceptualedge.com/articles/Whitepapers/Formatting_and_Layout_Matter.pdf">Stephen Few, <i>With Dashboards, Formatting and Layout Definitely Matter</i></a>, 2008.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-programme"></div>
+    <figcaption class="cap"><b>The programme, in pixels.</b> A column count gives whole pixels exactly when it divides the width plus one gutter. Drag the width to find fields that divide well, and ones that do not.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 2 ===================== -->
+<section id="r2">
+  <div class="rule-h"><span class="n">2</span><h2>Give every number an instrument</h2></div>
+  <div class="t">
+    <p>A number on a card answers one question: how much. A reader of a plan needs four more answers in the same glance: of what, on what scale, compared with what, and by how much it differs. Stephen Few’s bullet graph, specified in 2006, packs those answers into one small mark, with a bar for the measure, a tick for the comparator and a scale behind both.</p>
+    <aside><ul class="src"><li><a href="https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf">Stephen Few, <i>Bullet Graph Design Specification</i></a>, 2006, revised 2013.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Control rooms reached a similar form for a different reason. Guidance for process-plant operators asks for grey screens, analog indicators with a marked normal range, and saturated colour reserved for abnormal states, so that a deviation is the only thing that stands out. The instrument in the example borrows that restraint. It shows a value with its unit, a rail drawn on a true scale, one ink tick for a named comparator, and the signed gap in figures.</p>
+    <aside><ul class="src"><li><a href="https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ">Hollifield, Oliver, Nimmo and Habibi, <i>The High Performance HMI Handbook</i></a>, 2008. The ISA-101 standard for process displays follows the same discipline.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>The bullet graph has critics worth hearing. Nick Desbarats lists eleven objections, among them that problems do not stand out and that words such as good, satisfactory and poor mean different things to different people. The example therefore leaves the qualitative bands out, and leaves the rail out altogether when no comparator exists. Amazon’s weekly business review shows the value of holding one form across hundreds of measures. Every chart plots the trailing six weeks beside the trailing twelve months, so the form is learned once.</p>
+    <aside><ul class="src"><li><a href="https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/">Nick Desbarats, <i>Why I stopped using bullet graphs</i></a>, 2022.</li><li><a href="https://commoncog.com/the-amazon-weekly-business-review/">Colin Bryar and Bill Carr, <i>Working Backwards</i></a>, 2021, on the weekly business review.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-instrument"></div>
+    <figcaption class="cap"><b>What each part of an instrument answers.</b> Switch the parts off to see which question goes unanswered, and move the value to watch the gap follow.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 3 ===================== -->
+<section id="r3">
+  <div class="rule-h"><span class="n">3</span><h2>Compare against routine variation</h2></div>
+  <div class="t">
+    <p>A weekly figure always differs from the week before, and most of those differences mean nothing. Donald Wheeler’s <i>Understanding Variation</i> gives a test that needs no model. Plot the individual values, take the average distance between neighbours, and draw limits at 2.66 of those average ranges on either side of the mean. A point inside the limits is routine. A point outside is a signal that deserves an explanation.</p>
+    <aside><ul class="src"><li><a href="https://commoncog.com/process-behaviour-charts-more-than-you-need/">Donald Wheeler, <i>Understanding Variation</i></a>, 1993. The chart of individual values and moving ranges descends from Walter Shewhart’s control chart.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>This is the comparator an instrument should graduate to once a measure has some history. Until then a named reference, such as the previous four weeks, is the more candid choice, and the example uses exactly that.</p>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-xmr"></div>
+    <figcaption class="cap"><b>Signal or routine.</b> An illustrative series of weekly sales. The limits come from the first eleven weeks. Move the latest week and see when it becomes worth a question.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 4 ===================== -->
+<section id="r4">
+  <div class="rule-h"><span class="n">4</span><h2>Draw the identity</h2></div>
+  <div class="t">
+    <p>In 1786 William Playfair drew England’s imports and exports as two lines and tinted the area between them. The tint is the balance of trade. Nobody has to subtract, because the quantity that matters is a shape on the page.</p>
+    <aside><ul class="src"><li><a href="https://en.wikipedia.org/wiki/William_Playfair">William Playfair, <i>The Commercial and Political Atlas</i></a>, 1786.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Engineers who design displays for power plants turned the same idea into a method. Ecological interface design, set out by Kim Vicente and Jens Rasmussen in 1992, asks a display to make the constraints of the system directly visible. Kevin Bennett and John Flach describe the result as a configural display. Variables are drawn so that their lawful relationship forms a figure, and a fault deforms the figure.</p>
+    <aside><ul class="src"><li><a href="https://orbit.dtu.dk/en/publications/ecological-interface-design-theoretical-foundations/">Vicente and Rasmussen, <i>Ecological interface design: theoretical foundations</i></a>, 1992.</li><li><a href="https://www.routledge.com/Display-and-Interface-Design-Subtle-Science-Exact-Art/Bennett-Flach/p/book/9780367864682">Bennett and Flach, <i>Display and Interface Design</i></a>, 2011.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Planning is full of such laws, and open-to-buy is one of them. The stock a plan needs is the cost of what it expects to sell plus the stock it wants to end with. The stock it already has is what is on hand plus what is on order. The difference is what may still be bought. Two bars on one scale state the law, and the dashed space between their ends is the answer. A waterfall chart shows the same numbers and leaves the reader to walk the steps.</p>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-bridge"></div>
+    <figcaption class="cap"><b>An identity drawn as geometry.</b> Move any term. The gap follows, and the two bars can never disagree with the arithmetic.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 5 ===================== -->
+<section id="r5">
+  <div class="rule-h"><span class="n">5</span><h2>Shade for hierarchy, print the quantity</h2></div>
+  <div class="t">
+    <p>Eduard Imhof spent a career drawing Swiss mountain maps and wrote down his rules for colour in <i>Cartographic Relief Presentation</i>. The first one, which Edward Tufte later brought to information design, says that strong colours are unbearable over large adjoining areas and effective in small ones set against a muted ground. A dashboard that keeps its large areas quiet can let one saturated hue do real work.</p>
+    <aside><ul class="src"><li><a href="https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/">Eduard Imhof, <i>Cartographic Relief Presentation</i></a>, 1965, quoted in Tufte’s <i>Envisioning Information</i>, 1990.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Two findings from perception explain why quiet surfaces can still organise a screen. Stephen Palmer showed that elements inside a common region are seen as a group, and that enclosure overrides nearness. Every panel boundary is therefore a claim about what belongs together. Josef Albers showed that a colour is read against its surround, so the same grey looks lighter on a dark parent and darker on a light one. A tone can mark a level in a hierarchy. It cannot be trusted to carry a value from one surface to another.</p>
+    <aside><ul class="src"><li><a href="https://eric.ed.gov/?id=EJ450926">Stephen Palmer, <i>Common region: a new principle of perceptual grouping</i></a>, 1992.</li><li>Josef Albers, <i>Interaction of Color</i>, 1963.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Tone is also a poor carrier of amount. William Cleveland and Robert McGill ranked the ways a reader decodes a quantity from a chart. Position on a common scale came first and shading came last. The example uses five opaque tones, each with one job, and prints the number wherever the amount matters. Translucent panels would give a similar softness, and Beverly Harrison and colleagues studied the trade-off they bring: what shows through helps awareness of the background and competes with reading the foreground.</p>
+    <aside><ul class="src"><li><a href="http://vis.stanford.edu/papers/crowdsourcing-graphical-perception">Cleveland and McGill, <i>Graphical perception</i></a>, 1984, replicated by Heer and Bostock in 2010.</li><li><a href="https://www.billbuxton.com/transparency.html">Harrison, Ishii, Vicente and Buxton, <i>Transparent layered user interfaces</i></a>, 1995.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-surfaces"></div>
+    <figcaption class="cap"><b>Four small models of surface.</b> Enclosure regroups the dots. The two chips are the same grey. Nested corners stay parallel only when the inner radius shrinks by the inset. One accent works until it is everywhere.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 6 ===================== -->
+<section id="r6">
+  <div class="rule-h"><span class="n">6</span><h2>Let fill carry status</h2></div>
+  <div class="t">
+    <p>Most dashboards give colour too many jobs. The accent marks the headline figure, the forecast line, the selected tab and the button. Business reporting has a better convention. The International Business Communication Standards, developed by Rolf Hichert and colleagues and set out with Jürgen Faisst in <i>Solid, Outlined, Hatched</i>, separate scenarios by fill. Actual figures are solid, plans are outlined and forecasts are hatched. Hue is left free.</p>
+    <aside><ul class="src"><li><a href="https://www.ibcs.com/">Hichert and Faisst, <i>Solid, Outlined, Hatched</i></a>, 2019, and the IBCS standard.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>The example adapts that notation and makes no claim of compliance. Slate and ink are for what has happened or physically exists. One accent, cobalt, is for everything that lies ahead. Within cobalt the fill says how firm a quantity is. A plan or a commitment is outlined. What the plan’s arithmetic projects is hatched. An amount that exists only as a gap is dashed and empty. Unfilled demand is the empty part of an outlined bar, so a shortfall needs no red. Selection is a raised white pill, so the accent never means clickable.</p>
+  </div>
+  <div class="t">
+    <p>Jacques Bertin named texture as one of the visual variables in 1967. It has a practical advantage over hue. It survives a grey printer, a washed-out projector and a reader who cannot tell two hues apart.</p>
+    <aside><ul class="src"><li><a href="https://en.wikipedia.org/wiki/Visual_variable">Jacques Bertin, <i>Semiology of Graphics</i></a>, 1967. The link summarises his visual variables.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-notation"></div>
+    <figcaption class="cap"><b>The same eight weeks, coded two ways.</b> Remove the colour. The chart coded by hue loses its meaning, and the chart coded by fill keeps it.</figcaption></figure>
+  <div class="legend" id="fig-note"></div>
+</section>
+
+<!-- ===================== RULE 7 ===================== -->
+<section id="r7">
+  <div class="rule-h"><span class="n">7</span><h2>Share one axis</h2></div>
+  <div class="t">
+    <p>In 1885 Étienne-Jules Marey published a railway timetable as a single graph, using a method devised by the engineer Ibry. Stations run down the side by distance, time runs along the bottom, and every train is a line whose slope is its speed. A whole day of departures becomes one picture because every train shares the same two axes.</p>
+    <aside><ul class="src"><li><a href="https://mbostock.github.io/protovis/ex/caltrain.html">Étienne-Jules Marey, <i>La Méthode Graphique</i></a>, 1885. The link is a modern redrawing of the form.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Jacques Bertin made the same point for tables. His reorderable matrix draws each cell as a mark and then moves rows and columns until the structure shows. Richard Becker, William Cleveland and Ming-Jen Shyu formalised panels that share scales as the trellis display, and Waqas Javed and colleagues later found that separate small charts are generally more efficient than one shared chart for comparisons that span many series. Weather services use the form every day. The ensemble meteogram stacks cloud, wind, rain and temperature on one time axis.</p>
+    <aside><ul class="src"><li><a href="https://aviz.fr/bertifier">Bertin’s matrix, revisited by Perin, Dragicevic and Fekete in <i>Bertifier</i></a>, 2014.</li><li><a href="https://www.semanticscholar.org/paper/The-Visual-Design-and-Control-of-Trellis-Display-Becker-Cleveland/319c6098f7f94cf24c5c637b718e721449fd4a70">Becker, Cleveland and Shyu, <i>The visual design and control of Trellis display</i></a>, 1996.</li><li><a href="https://www.semanticscholar.org/paper/Graphical-Perception-of-Multiple-Time-Series-Javed-McDonnel/27493372f4581c3a0ef87a3242ce4ba123d451ff">Javed, McDonnel and Elmqvist, <i>Graphical perception of multiple time series</i></a>, 2010.</li><li><a href="https://confluence.ecmwf.int/display/FUG/Section+8.1.4+Meteograms">ECMWF, ensemble meteograms</a>.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Retail planners have their own version, the weekly sales, stock and intake grid, with weeks across and measures down. The example keeps its week columns at the same horizontal position in every time-based row, so the receipt that arrives too late sits directly under the week it fails. David Woods gave the underlying quality a name, visual momentum: how easily a reader carries what was just seen into the next view.</p>
+    <aside><ul class="src"><li><a href="https://www.stylearcade.com/blog/what-is-a-wssi-the-complete-fashion-retail-guide-to-weekly-sales-stock-and-intake">The weekly sales, stock and intake grid</a>, a standard tool of merchandise planning.</li><li><a href="https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7">David Woods, <i>Visual momentum</i></a>, 1984.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-axis"></div>
+    <figcaption class="cap"><b>One week axis, two rows, and a matrix that reorders.</b> Point at a week to trace it through both rows. Reorder the categories and the ones at risk gather at the top.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 8 ===================== -->
+<section id="r8">
+  <div class="rule-h"><span class="n">8</span><h2>Set tables to be read</h2></div>
+  <div class="t">
+    <p>Planners live in tables, and research has begun to notice. Lyn Bartram, Michael Correll and Melanie Tory found that people who work with data want to see and touch the table at every stage of analysis, and argued that the table is a visualization in its own right. The rules for setting one are old and consistent.</p>
+    <aside><ul class="src"><li><a href="https://www.tableau.com/blog/defense-untidy-data-table">Bartram, Correll and Tory, <i>Untidy data: the unreasonable effectiveness of tables</i></a>, 2022.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Jan Tschichold advised doing without rules where possible, and using vertical ones only when columns are too tight to read without them. Robert Bringhurst asks that a table be edited like text and its furniture kept to a minimum. Andrew Ehrenberg’s <i>Rudiments of Numeracy</i> adds the rules for the figures themselves: round to the two digits that actually vary, order the rows by size, and put the numbers to be compared in a column. Jonathan Schwabish’s checklist says the same in current terms. Align numbers to the right, state units once, lighten the lines.</p>
+    <aside><ul class="src"><li><a href="https://alistapart.com/article/web-typography-tables/">Tschichold and Bringhurst on tables, summarised by Richard Rutter</a>, 2017.</li><li><a href="https://www.jstor.org/stable/2344922">Andrew Ehrenberg, <i>Rudiments of numeracy</i></a>, 1977.</li><li><a href="https://www.cambridge.org/core/journals/journal-of-benefit-cost-analysis/article/abs/ten-guidelines-for-better-tables/74C6FD9FEB12038A52A95B9FBCA05A12">Jonathan Schwabish, <i>Ten guidelines for better tables</i></a>, 2020.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>A table can also carry marks without ceasing to be a table. The Table Lens of Ramana Rao and Stuart Card drew a small bar inside each cell, and LineUp later built whole rankings from such bars. Plain typography goes a long way too. The Dutch telephone directory designed by Wim Crouwel and Jolijn van de Wouw in 1977 set every line in condensed Univers, in lower case, with the number placed before the name so that no leader dots were needed.</p>
+    <aside><ul class="src"><li><a href="https://www.semanticscholar.org/paper/The-table-lens:-merging-graphical-and-symbolic-in-+-Rao-Card/f76f162f6b158b58e5db91280c3740a13111d7dd">Rao and Card, <i>The Table Lens</i></a>, 1994.</li><li><a href="https://jku-vds-lab.at/publications/2013_infovis_lineup/">Gratzl and colleagues, <i>LineUp</i></a>, 2013.</li><li><a href="https://www.martinmajoor.com/2.2_telefont_article_eye.html">Crouwel and van de Wouw, Dutch telephone directory</a>, 1977.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-table"></div>
+    <figcaption class="cap"><b>Five rules, one table.</b> Each switch applies or removes one rule. With all five off, the table is what a spreadsheet produces by default.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 9 ===================== -->
+<section id="r9">
+  <div class="rule-h"><span class="n">9</span><h2>Choose type for figures</h2></div>
+  <div class="t">
+    <p>Dense figures have had typefaces of their own for decades. Matthew Carter drew Bell Centennial in the 1970s for American telephone directories printed fast on poor paper. Tobias Frere-Jones drew Retina in 1999 for the stock tables of the Wall Street Journal. Both are instruments for small numbers, and both are worth a look before choosing a face for a grid.</p>
+    <aside><ul class="src"><li><a href="https://en.wikipedia.org/wiki/Bell_Centennial">Matthew Carter, Bell Centennial</a>, 1975 to 1978.</li><li><a href="https://www.moma.org/collection/works/139302">Tobias Frere-Jones, Retina</a>, 1999, in the collection of the Museum of Modern Art.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>On screen the requirements are few and testable. Figures must be tabular, so every digit has the same width and columns align. They should also be duplexed, meaning a digit keeps its width when the weight changes. A selected row can then turn bold without its columns moving. A width axis helps as well. Adrian Frutiger organised Univers in 1957 as a matrix of weights and widths, and a variable font with a width axis gives the same range from one file: normal width for text and figures, a narrower cut for column heads.</p>
+    <aside><ul class="src"><li><a href="https://en.wikipedia.org/wiki/Adrian_Frutiger">Adrian Frutiger, Univers</a>, 1957. Twenty-one variants named by weight and width.</li><li><a href="https://github.com/Instrument/instrument-sans">Instrument Sans</a>, the face used for every figure on this page.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Seventeen open typefaces were measured for this guide in a browser. Instrument Sans, IBM Plex Sans, Hanken Grotesk and Red Hat Text keep their digit width between regular and bold. Geist, Archivo and Roboto Flex do not. Punctuation is worth measuring too. In Instrument Sans the digits, the minus and the percent sign have one width in both weights, while the comma and the decimal point are about a thirtieth of an em wider in bold, which is under half a pixel at 13 px.</p>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-type"></div>
+    <figcaption class="cap"><b>Bold without a shift.</b> The cobalt layer is the bold weight laid over the regular one. Change the typeface or switch off tabular figures and the two fall out of step. Select a row in the table to see what that does to a column.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 10 ===================== -->
+<section id="r10">
+  <div class="rule-h"><span class="n">10</span><h2>Show uncertainty only when it is earned</h2></div>
+  <div class="t">
+    <p>A forecast drawn as a single line claims more than anyone knows. The Bank of England made the point in February 1996, when it began publishing its inflation forecast as a fan of nested bands, a form chosen to show the spread of likely outcomes without suggesting a spurious precision. Weather services draw the spread of an ensemble forecast as box-and-whisker steps along the time axis.</p>
+    <aside><ul class="src"><li><a href="https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/1998/the-inflation-report-projections-understanding-the-fan-chart.pdf">Britton, Fisher and Whitley, <i>The Inflation Report projections: understanding the fan chart</i></a>, 1998.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Research since then favours forms a reader can count. Matthew Kay and colleagues introduced the quantile dotplot, which turns a distribution into twenty or so dots of equal probability. In a later experiment led by Michael Fernandes, such displays improved decisions about when to leave for a bus. Michael Correll and Michael Gleicher found that a bar with a whisker misleads, because values inside the bar look likelier than values just above it. Susan Joslyn and Jared LeClerc found that showing uncertainty improved decisions and reduced the damage done by a forecast that turned out wrong.</p>
+    <aside><ul class="src"><li><a href="https://mucollective.northwestern.edu/project/when-ish-is-my-bus">Kay, Kola, Hullman and Munson, <i>When (ish) is My Bus?</i></a>, 2016.</li><li><a href="https://dl.acm.org/doi/10.1145/3173574.3173718">Fernandes and colleagues, <i>Uncertainty displays using quantile dotplots or CDFs improve transit decision-making</i></a>, 2018.</li><li><a href="https://graphics.cs.wisc.edu/Papers/2014/CG14/Preprint.pdf">Correll and Gleicher, <i>Error bars considered harmful</i></a>, 2014.</li><li><a href="https://eric.ed.gov/?id=EJ968865">Joslyn and LeClerc, <i>Uncertainty forecasts improve weather-related decisions</i></a>, 2012.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>None of this licenses a band on a chart that has no model behind it. The example is built on synthetic data with no fitted forecast, so it shows no interval anywhere. Its hatched fill marks what the plan’s arithmetic projects, and the same outlined bar can hold a dotplot on the day a forecast with measured error exists.</p>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-uncertainty"></div>
+    <figcaption class="cap"><b>One distribution, three forms.</b> An illustrative demand distribution for one week, unrelated to the example. Ask each form how often demand exceeds the stock on hand. Only one of them can be counted.</figcaption></figure>
+</section>
+
+<!-- ===================== RULE 11 ===================== -->
+<section id="r11">
+  <div class="rule-h"><span class="n">11</span><h2>Put each control on its consequence</h2></div>
+  <div class="t">
+    <p>Ben Shneiderman’s work on dynamic queries set the standard for interactive data in the 1990s. Controls stay visible, every change is small and reversible, and the display answers at once. Bret Victor’s <i>Explorable Explanations</i> carried the idea into prose, with numbers in a sentence that the reader can drag while the conclusion rewrites itself.</p>
+    <aside><ul class="src"><li>Ben Shneiderman, <i>Dynamic queries for visual information seeking</i>, 1994.</li><li><a href="https://worrydream.com/ExplorableExplanations/">Bret Victor, <i>Explorable Explanations</i></a>, 2011.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>The New York Times calculator <i>Is It Better to Rent or Buy?</i>, built in 2014 by Mike Bostock, Shan Carter and Archie Tse, adds the decisive detail. Each slider sits on a small chart of the outcome across the whole range of that input, so the reader sees what a change would do before making it. The markdown control below works this way and needs no demand model. For any depth of discount it computes the units that must sell for gross profit to hold.</p>
+    <aside><ul class="src"><li><a href="https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html">Bostock, Carter and Tse, <i>Is It Better to Rent or Buy?</i></a>, The New York Times, 2014.</li></ul></aside>
+  </div>
+  <div class="t">
+    <p>Changing a forecast by hand deserves the same care as any other control. Robert Fildes and colleagues studied judgmental adjustments in supply-chain companies. Small adjustments tended to reduce accuracy, large reasoned ones helped, and adjustments leaned optimistic. An override should ask for a reason and keep a record, so that its value can be reviewed later.</p>
+    <aside><ul class="src"><li><a href="https://eprints.lancs.ac.uk/id/eprint/45487/">Fildes, Goodwin, Lawrence and Nikolopoulos, <i>Effective forecasting and judgmental adjustments</i></a>, 2009.</li><li><a href="https://forecasters.org/wp-content/uploads/FVA_A-Reality-Check_Foresight29.pdf">Michael Gilliland, <i>Forecast value added: a reality check</i></a>, 2013.</li></ul></aside>
+  </div>
+  <figure class="fig"><div class="stage" id="demo-control"></div>
+    <figcaption class="cap"><b>A slider that shows its own consequences.</b> The bars are the answer at every setting, drawn before the handle moves. Tents sell at 500 and cost 300 in the example, and forty are expected to sell at full price for a gross profit of 8.0.</figcaption></figure>
+</section>
+
+<!-- ===================== SYSTEM ===================== -->
+<section id="system">
+  <h2 class="plain">The system in brief</h2>
+  <div class="t"><p>The example is built from a small set of tokens and rules. They are listed here so the design can be rebuilt or adapted, and the figure below lets three of them move.</p></div>
+  <div class="verdict">
+    <div><b>Grid</b>A 1424 px field with 16 px gutters. Each sheet has an 8 px inset, a 264 px instrument column and a 1136 px evidence field of eight 142 px weeks.</div>
+    <div><b>Surfaces</b>Ground, sheet, field, well and raised. Higher is lighter. An inner radius is the outer radius minus the inset: 16, then 8, then 6.</div>
+    <div><b>Type</b>One family with a width axis. Values 34 px at weight 600, labels and figures 13 px, micro labels 11 px in capitals at width 85. Tabular, duplexed figures.</div>
+    <div><b>Figures</b>Value and unit never separate. One decimal for money in thousands. A real minus sign. Context sits in the title line.</div>
+    <div><b>Colour</b>Slate and ink for what is observed. One accent for what lies ahead. No red: a deficit is ink with a minus sign, and a gap is empty space.</div>
+    <div><b>Interaction</b>Controls sit on the chart they change. Pointing highlights and never filters. Every value is printed, so nothing depends on hover.</div>
+  </div>
+  <figure class="fig" style="margin-top:28px"><div class="stage" id="demo-tune"></div>
+    <figcaption class="cap"><b>Two sheets of the example, restyled live.</b> Change the accent, the depth of the surface tones and the corner radius. The token block below rewrites itself to match.</figcaption></figure>
+  <div class="tokens-bar"><span>Tokens, as set in the figure above</span><button class="btn" type="button" id="copy-tokens">Copy tokens</button></div>
+  <pre id="tokens"></pre>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section id="sources">
+  <h2 class="plain">Sources and further reading</h2>
+  <div class="t"><p>Sources are listed by rule, each with a line on what it contributes. Further reading follows on forecasting practice, on dashboards as a research subject, and on works worth studying whole. An open circle marks a work cited from prior knowledge and not checked again.</p></div>
+  <div id="srclist"></div>
+</section>
+
+<footer>
+  <p><b>How the sources were checked.</b> Bibliographic details were confirmed on 1 October 2026 through publisher, author, library or index pages. For most works, existence, authorship, date and the specific claim attributed here were confirmed, and the full text was not read. Entries marked with an open circle are cited from prior knowledge and were not re-checked. Images of third-party works are linked and not reproduced.</p>
+  <p><b>About the example.</b> The retail plan is synthetic and describes no real company. The typeface measurements were made in headless Chrome on the builds served by Google Fonts on 1 October 2026.</p>
+</footer>
+</div>
+
+<script>
+(()=>{"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const f1=v=>{const a=Math.abs(v)<0.05?0:v;return (a<0?'−':'')+Math.abs(a).toFixed(1)};
+const sg=v=>(v>0.049?'+':v<-0.049?'−':'±')+Math.abs(v).toFixed(1);
+const nn=v=>Math.round(v).toLocaleString('en-CA');
+const R=(x,y,w,h,c,rx=0,ex='')=>`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(0,w).toFixed(1)}" height="${Math.max(0,h).toFixed(1)}" rx="${rx}" class="${c}" ${ex}/>`;
+const L=(x1,y1,x2,y2,c,ex='')=>`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" class="${c}" ${ex}/>`;
+const T=(x,y,s,c,a='start',ex='')=>`<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" class="${c}" text-anchor="${a}" ${ex}>${s}</text>`;
+const S=(w,h,body,ex='')=>`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" ${ex.replace('data-fluid',`style="width:100%;height:auto;min-width:${Math.round(w*0.7)}px"`)}>${body}</svg>`;
+const fluid='data-fluid';   /* scale with the container, down to 70% of the drawn size; narrower containers scroll */
+const seg=(name,opts,cur,label)=>`<div class="seg" role="radiogroup" aria-label="${label}">${opts.map(([v,t])=>`<button type="button" role="radio" data-${name}="${v}" aria-checked="${String(v)===String(cur)}">${t}</button>`).join('')}</div>`;
+const setSeg=(root,name,cur)=>$$(`[data-${name}]`,root).forEach(b=>b.setAttribute('aria-checked',String(b.dataset[name]===String(cur))));
+
+/* ---------- the synthetic example: five categories, four plan weeks ---------- */
+const D={name:['Jackets','Boots','Base layers','Packs','Tents'],
+  price:[300,220,120,200,500],cost:[180,120,60,120,300],open:[540,160,450,360,180],prev:[250,160,320,200,80],
+  wk:[[80,85,95,100],[80,80,80,80],[120,140,160,180],[35,30,30,25],[13,11,9,7]],
+  rc:[[0,0,120,0],[0,0,0,240],[0,0,150,0],[0,0,200,0],[0,0,0,0]],
+  actual:[55.7,57.6,56.7,58.6],target:225.0,horizon:4,
+  weeks:['W36','W37','W38','W39','W40','W41','W42','W43'],dates:['31 Aug','7 Sep','14 Sep','21 Sep','28 Sep','5 Oct','12 Oct','19 Oct']};
+
+/* Recompute a plan from the dataset. early = 80 of the 240 boots due in W43 are received in W42. */
+function plan(early){
+  const rc=D.rc.map(r=>r.slice()); if(early) rc[1]=[0,0,80,160];
+  const close=[],sold=[],unf=[],cover=[],dW=[0,0,0,0],sW=[0,0,0,0];
+  let cogs=0,rcCost=0,openCost=0,unfUnits=0;
+  for(let i=0;i<5;i++){
+    let s=D.open[i]; close[i]=[s]; sold[i]=[]; unf[i]=[];
+    const mean=D.wk[i].reduce((a,b)=>a+b)/4; openCost+=s*D.cost[i];
+    for(let w=0;w<4;w++){
+      s+=rc[i][w]; rcCost+=rc[i][w]*D.cost[i];
+      const q=Math.min(s,D.wk[i][w]); sold[i][w]=q; unf[i][w]=D.wk[i][w]-q; s-=q; close[i].push(s);
+      dW[w]+=D.wk[i][w]*D.price[i]; sW[w]+=q*D.price[i]; cogs+=q*D.cost[i]; unfUnits+=unf[i][w];
+    }
+    cover[i]=close[i].map(c=>c/mean);
+  }
+  const k=v=>v/1000, demand=k(dW.reduce((a,b)=>a+b)), served=k(sW.reduce((a,b)=>a+b));
+  return {early,rc,close,sold,unf,cover,dW:dW.map(k),sW:sW.map(k),demand,served,unfilled:demand-served,unfUnits,
+    cogs:k(cogs),gp:served-k(cogs),openCost:k(openCost),rcCost:k(rcCost),
+    otb:D.target+k(cogs)-k(openCost)-k(rcCost),need:D.target+k(cogs),have:k(openCost)+k(rcCost)};
+}
+const P0=plan(false),P1=plan(true);
+const PREV=D.actual.reduce((a,b)=>a+b);
+
+/* Tint of a matrix cell: the share of the plan horizon that the closing stock would not cover.
+   A neutral default that needs no stock policy. Replace it with a real one where a policy exists. */
+function coverTint(coverWeeks,horizonWeeks){
+  return Math.max(0,Math.min(1,1-coverWeeks/horizonWeeks));
+}
+
+/* ---------- parts of the system ---------- */
+const pct=(v,max)=>(100*Math.max(0,Math.min(1,v/max))).toFixed(2)+'%';
+const facts=groups=>`<div class="facts"><div>${groups.map(([h,rows])=>(h?`<span class="micro">${h}</span>`:'')+rows.map(r=>`<p><span>${r[0]}</span>${r.length===3?`<i>${r[1]}</i>`:''}<b>${r[r.length-1]}</b></p>`).join('')).join('<div style="height:7px"></div>')}</div></div>`;
+const inst=o=>`<div class="inst"><div class="top"><b>${o.label}</b><span>${o.ctx}</span></div>
+  <div class="val"><b>${o.val}</b><span>${o.unit}</span></div>${o.rail?`<div class="rail">${o.rail}</div>`:''}
+  <div class="foot"><b>${o.gap}</b><span>${o.ref}</span></div>${o.facts?facts(o.facts):''}</div>`;
+
+function strip(P,o={}){
+  const cw=o.cw||142,H=o.H||190,y0=H-44,yt=24,sc=v=>y0-v/100*(y0-yt),bw=o.bw||64,W=8*cw; let s='';
+  for(let k=0;k<8;k++) s+=R(k*cw,0,cw,H,'',0,`data-w="${k}"`);
+  [0,50,100].forEach(v=>{s+=L(0,sc(v),W,sc(v),v?'l-g':'l-a')+T(8,sc(v)-5,v,'t-tk')});
+  s+=L(4*cw,6,4*cw,y0,'l-a','stroke-dasharray="3 4"')+T(4*cw+8,14,o.short?'snapshot':'28 Sep snapshot','t-tk');
+  for(let k=0;k<8;k++){
+    const cx=k*cw+cw/2,x=cx-bw/2;
+    if(k<4){const v=D.actual[k]; s+=R(x,sc(v),bw,y0-sc(v),'f-slate',2)+T(cx,sc(v)-7,f1(v),'t-v','middle');}
+    else{const d=P.dW[k-4],sv=P.sW[k-4];
+      s+=R(x,sc(sv),bw,y0-sc(sv),'hx',2)+R(x,sc(d),bw,y0-sc(d),'o-sig',2)+T(cx,sc(d)-7,f1(d),'t-vs','middle');
+      if(d-sv>0.05){const gh=sc(sv)-sc(d);
+        if(gh>=16) s+=T(cx,sc(d)+gh/2+4.5,f1(sv-d),'t-v','middle');
+        else s+=T(x+bw+6,sc(d)+10,f1(sv-d),'t-v');
+        if(!o.short) s+=T(cx,sc(sv)+15,f1(sv)+' served','t-tk','middle','style="fill:var(--ink);paint-order:stroke;stroke:var(--sig-wash);stroke-width:4px"');}
+    }
+    s+=T(cx,y0+19,D.weeks[k],'t-lb','middle','style="font-weight:600"')+T(cx,y0+34,D.dates[k],'t-tk','middle');
+  }
+  return S(W,H,s,o.fluid?fluid:'');
+}
+
+function matrix(P,o={}){
+  const cw=o.cw||142,nameW=o.nameW||150,cvW=3*cw-nameW,order=o.order||[0,1,2,3,4],xs=v=>12+v*(cvW-52)/20;
+  let h=`<div class="mx" style="grid-template-columns:${nameW}px ${cvW}px repeat(5,${cw}px)">`;
+  let tk=''; [0,5,10,15,20].forEach(v=>tk+=T(xs(v),16,v,'t-tk','middle'));
+  h+=`<div class="hd" style="justify-content:flex-start;padding-left:16px">Cover on hand</div><div class="hd">${S(cvW,24,tk+T(xs(20)+11,16,'wk','t-tk'))}</div>`;
+  ['28 Sep','W40','W41','W42','W43'].forEach((l,j)=>h+=`<div class="hd" data-w="${j+3}" tabindex="0">${l}</div>`);
+  for(const i of order){
+    const c0=P.cover[i][0]; let g=''; [5,10,15,20].forEach(v=>g+=L(xs(v),0,xs(v),36,'l-g'));
+    const left=c0>15;
+    g+=L(xs(0),18,xs(c0),18,'l-a')+`<circle cx="${xs(c0)}" cy="18" r="4.5" class="f-ink"/>`+(left?R(xs(c0)-30,10,22,16,'f-field')+T(xs(c0)-10,22,c0,'t-v','end'):T(xs(c0)+10,22,c0,'t-v','start','style="paint-order:stroke;stroke:var(--field);stroke-width:4px"'));
+    h+=`<div class="nm">${D.name[i]}</div><div class="cv">${S(cvW,36,g)}</div>`;
+    for(let j=0;j<5;j++){
+      const cl=P.close[i][j],u=j?P.unf[i][j-1]:0,r=j?P.rc[i][j-1]:0,t=coverTint(P.cover[i][j],D.horizon);
+      h+=`<div class="cell${u>0?' out':''}" data-w="${j+3}" style="background:color-mix(in oklab,var(--slate) ${(t*40).toFixed(1)}%,var(--field))">${r?`<span class="rc">+${r}</span>`:''}<span class="n">${nn(cl)}</span>${u>0?`<span class="un">−${u}</span>`:''}</div>`;
+    }
+  }
+  return h+`</div>`;
+}
+
+/* The bridge: needed = cost of sales + target closing stock; covered = opening stock + receipts; the gap is open-to-buy. */
+function bridge(v,W,o={}){
+  const x0=o.x0??104,rm=o.rm??44,max=o.max??400,px=(W-x0-rm)/max,X=x=>x0+x*px,yN=30,yC=96,bh=26;
+  const need=v.cogs+v.target,have=v.open+v.rc,otb=need-have; let s='';
+  const lab=(cx,y,t,w)=>w>t.length*5.6?T(cx,y,t,'t-lb','middle'):'';
+  s+=T(o.lx??16,yN+12,'Needed','t-v')+T(o.lx??16,yN+27,f1(need),'t-tk')+T(o.lx??16,yC+12,'Covered','t-v')+T(o.lx??16,yC+27,f1(have),'t-tk');
+  s+=R(X(0),yN,v.cogs*px,bh,'hx',2)+R(X(0),yN,v.cogs*px,bh,'o-sig',2)+R(X(v.cogs)+2,yN,v.target*px-2,bh,'f-wash',2)+R(X(v.cogs)+2,yN,v.target*px-2,bh,'o-sig',2);
+  s+=lab(X(v.cogs/2),yN-8,'Cost of sales '+f1(v.cogs),v.cogs*px)+lab(X(v.cogs+v.target/2),yN-8,'Target closing stock '+f1(v.target),v.target*px);
+  s+=R(X(0),yC,v.open*px,bh,'f-slate',2);
+  if(v.rc>0.05) s+=R(X(v.open)+2,yC,v.rc*px-2,bh,'f-wash',2)+R(X(v.open)+2,yC,v.rc*px-2,bh,'o-sig',2);
+  s+=lab(X(v.open/2),yC+bh+16,'Opening stock '+f1(v.open),v.open*px)+lab(X(v.open+v.rc/2),yC+bh+16,'On order '+f1(v.rc),v.rc*px);
+  if(otb>=0.05){
+    const gx=X(have)+3,gw=X(need)-gx;
+    s+=R(gx,yN+bh+8,gw,yC-yN-8,'f-wash',2,'style="opacity:.45"')
+      +`<path d="M${gx.toFixed(1)},${yN+bh+2} V${yC+bh} H${X(need).toFixed(1)} V${yN+bh+2}" class="l-s" stroke-dasharray="4 3"/>`;
+    s+=(gw>34?T(gx+gw/2,yC+4,f1(otb),'t-vs','middle','style="font-size:17px"'):'')+(o.label===false?'':T(X(need)+10,yC+3,'Open-to-buy'+(gw>34?'':' '+f1(otb)),'t-vs','start','style="font-size:12px"'));
+  }else if(otb<=-0.05){
+    const gx=X(need)+3,gw=X(have)-gx;
+    s+=`<path d="M${gx.toFixed(1)},${yC-2} V${yN} H${X(have).toFixed(1)} V${yC-2}" class="l-i" stroke-dasharray="4 3"/>`;
+    s+=(gw>34?T(gx+gw/2,yN+18,f1(otb),'t-v','middle','style="font-size:15px"'):'')+(o.label===false?'':T(X(have)+10,yN+17,'Over plan'+(gw>34?'':' '+f1(otb)),'t-v','start','style="font-size:12px"'));
+  }
+  return S(W,150,s,o.fluid?fluid:'');
+}
+const bridgeOf=P=>({cogs:P.cogs,target:D.target,open:P.openCost,rc:P.rcCost});
+
+function stockBars(P){
+  const x0=124,px=1.56; let s='';
+  for(let i=0;i<5;i++){const y=6+i*27,oh=D.open[i]*D.cost[i]/1000,cm=P.rc[i].reduce((a,b)=>a+b)*D.cost[i]/1000;
+    s+=T(16,y+14,D.name[i],'t-lb')+R(x0,y+2,oh*px,16,'f-slate',2);
+    if(cm>0) s+=R(x0+oh*px+2,y+2,cm*px-2,16,'f-wash',2)+R(x0+oh*px+2,y+2,cm*px-2,16,'o-sig',2);
+    s+=T(x0+(oh+cm)*px+8,y+14,f1(oh+cm),'t-v');
+  }
+  return S(426,146,s);
+}
+
+/* Tents: price 500, cost 300, forty expected at full price. Units needed to hold that gross profit at a given markdown depth. */
+const parity=d=>8000/(200-5*d);
+const MD={d:20,u:60};
+function mdPlot(){
+  const x=d=>40+d/35*330,y=u=>98-u/200*88; let s='';
+  [0,100,200].forEach(v=>s+=L(40,y(v),370,y(v),v?'l-g':'l-a')+(v?T(34,y(v)+4,v,'t-tk','end'):''));
+  [0,10,20,30].forEach(v=>s+=T(x(v),113,v+'%','t-tk','middle'));
+  s+=L(40,y(180),370,y(180),'l-a','stroke-dasharray="3 4"')+T(46,y(180)+13,'180 on hand','t-tk');
+  let p=''; for(let d=0;d<=32;d+=1) p+=(d?'L':'M')+x(d).toFixed(1)+','+y(parity(d)).toFixed(1);
+  s+=`<path d="${p}" class="l-i"/>`+T(x(26)-8,y(parity(26))-6,'holds 8.0','t-tk','end');
+  s+=`<circle cx="${x(MD.d)}" cy="${y(MD.u)}" r="6" class="f-sig"/><circle cx="${x(MD.d)}" cy="${y(MD.u)}" r="9.5" class="o-sig" style="stroke-width:1"/>`;
+  return S(394,118,s);
+}
+function mdOut(){
+  const c=500*(1-MD.d/100)-300,gp=MD.u*c/1000,pu=c>0?8000/c:Infinity;
+  return `Gross profit <b>${f1(gp)}</b> C$k · <b>${sg(gp-8)}</b> against 40 units at full price · ${pu>180?`parity needs <b>${nn(pu)}</b>, more than is on hand`:`parity at <b>${nn(pu)}</b> units`}`;
+}
+
+function decisions(P){
+  const rows=[
+    [`Receive 80 boots a week early${P.early?' <em>· in this plan</em>':''}`,'from the 240-pair order due in W43','9.6','moved to W42','+8.0','before fees','fee, timing, size mix'],
+    ['Buy 300 more base layers','six-week target','18.0','new intake','—','not modelled','demand in W44–45'],
+    ['Defer 200 packs','the W42 receipt','24.0','moved later','0.0','timing only','supplier feasibility, new date'],
+    ['Test 20% off tents','60 units assumed','—','','−2.0','8.0 to 6.0','volume response, stock age']];
+  let h=`<div class="dec"><div class="h"></div><div class="h r">At cost</div><div class="h r">Gross profit</div><div class="h q">Unconfirmed</div>`;
+  rows.forEach(r=>h+=`<div><b>${r[0]}</b><span>${r[1]}</span></div><div class="r"><b>${r[2]}</b><span>${r[3]}</span></div><div class="r"><b>${r[4]}</b><span>${r[5]}</span></div><div class="q"><span>${r[6]}</span></div>`);
+  return h+`</div>`;
+}
+
+/* The four instruments of a plan: demand, unfilled, open-to-buy, gross profit. */
+function instruments(P){
+  const Q=P.early?P0:P1,qn=P.early?'unchanged orders':'early boots order';
+  const nxt=D.wk.map(w=>w.reduce((a,b)=>a+b)),pc=(a,b)=>(b>a?'+':'−')+Math.abs(100*(b/a-1)).toFixed(0)+'%';
+  const i1=inst({label:'Demand',ctx:'unconstrained · W40–43',val:f1(P.demand),unit:'C$k · 1,440 units',
+    rail:`<i style="width:${pct(P.demand,320)}"></i><u style="left:${pct(PREV,320)}"></u>`,
+    gap:`${sg(P.demand-PREV)} · +${(100*(P.demand/PREV-1)).toFixed(1)}%`,ref:`W36–39 sold ${f1(PREV)}`,
+    facts:[['Units, W36–39 to W40–43',D.name.map((n,i)=>[n,`${D.prev[i]} → ${nxt[i]}`,pc(D.prev[i],nxt[i])])]]});
+  const i2=inst({label:'Unfilled',ctx:P.early?'early boots order':'unchanged orders',val:f1(P.unfilled),unit:'C$k',
+    rail:`<i style="width:100%;background:transparent"></i><i class="hat" style="width:${pct(P.served,P.demand)}"></i>`,
+    gap:P.unfUnits?`${P.unfUnits} boots · W42`:'none in W40–43',ref:`${(100*P.unfilled/P.demand).toFixed(1)}% of demand`,
+    facts:[['',[['Demand',f1(P.demand)],['Served sales',f1(P.served)]]],['Zero stock at week end',[['Boots · W41','served'],['Boots · W42',P.early?'served':'−80'],['Base layers · W43','served']]]]});
+  const i3=inst({label:'Open-to-buy',ctx:'at cost',val:f1(P.otb),unit:'C$k',
+    rail:`<i style="width:${pct(P.otb,100)}"></i><u style="left:${pct(Q.otb,100)}"></u>`,
+    gap:sg(P.otb-Q.otb),ref:`${qn} ${f1(Q.otb)}`,
+    facts:[['',[['Target closing stock',f1(D.target)],['Closing without buying',f1(P.have-P.cogs)]]]]});
+  const i4=inst({label:'Gross profit',ctx:'W40–43',val:f1(P.gp),unit:'C$k',
+    rail:`<i class="hat" style="width:${pct(P.gp,150)}"></i><u style="left:${pct(Q.gp,150)}"></u>`,
+    gap:sg(P.gp-Q.gp),ref:`${qn} ${f1(Q.gp)}`,
+    facts:[['',[['Served sales',f1(P.served)],['Cost of sales',f1(P.cogs)],['Margin on served sales',(100*P.gp/P.served).toFixed(1)+'%']].concat(P.early?[['Early receipt fees','unknown']]:[])],['13 weeks to snapshot',[['GMROI, not annualized','1.13×']]]]});
+  return [i1,i2,i3,i4];
+}
+
+function board(P){
+  const [i1,i2,i3,i4]=instruments(P);
+  const key=`<span style="display:flex;gap:14px;align-items:center;color:var(--ink3);font-size:12px;font-weight:500">
+    <span style="display:flex;gap:6px;align-items:center"><i style="width:36px;height:10px;border-radius:2px;background:linear-gradient(90deg,var(--field),color-mix(in oklab,var(--slate) 40%,var(--field)));box-shadow:inset 0 0 0 1px var(--line)"></i>under 4 weeks of cover</span>
+    <span style="display:flex;gap:6px;align-items:center"><i style="width:10px;height:10px;border-radius:2px;background:var(--ink)"></i>demand not served</span>
+    <span style="color:var(--sig);font-weight:600">+120 receipt</span></span>`;
+  return `<div class="b-head"><div><h5>Demand and inventory plan</h5><span class="scope">snapshot 28 Sep · plan W40–43 · five categories · C$ thousands</span></div><span class="chip">Synthetic data · no fitted model</span></div>
+  <div class="b-row">${i1}<div class="b-field"><div class="b-title"><div><h6>Weekly demand and served sales</h6><span class="ctx">sold W36–39 · plan W40–43 · C$k</span></div>${seg('plan',[[0,'Unchanged orders'],[1,'Early boots order']],P.early?1:0,'Plan')}</div>${strip(P)}</div></div>
+  <div class="b-row">${i2}<div class="b-field"><div class="b-title"><div><h6>Closing stock and cover</h6><span class="ctx">units at week end</span></div>${key}</div>${matrix(P)}<div style="height:8px"></div></div></div>
+  <div class="b-row">${i3}<div class="b-field b-split" style="grid-template-columns:710px 426px"><div><div class="b-title"><div><h6>Open-to-buy bridge</h6><span class="ctx">C$k at cost · needed = covered + open</span></div></div>${bridge(bridgeOf(P),710,{rm:110})}</div>
+    <div><div class="b-title"><div><h6>Stock at cost</h6><span class="ctx">C$k · on hand and on order</span></div></div>${stockBars(P)}</div></div></div>
+  <div class="b-row">${i4}<div class="b-field b-split" style="grid-template-columns:710px 426px"><div><div class="b-title"><div><h6>Decisions awaiting an answer</h6><span class="ctx">C$k · outside the plan totals unless marked</span></div></div>${decisions(P)}</div>
+    <div><div class="b-title"><div><h6>Tent markdown</h6><span class="ctx">units needed to hold 8.0 gross profit</span></div></div>
+      <div class="ex"><div id="md-plot">${mdPlot()}</div>
+      <div class="ctl"><label for="md-d">Depth</label><input id="md-d" type="range" min="0" max="35" step="5" value="${MD.d}"><output id="md-do">${MD.d}%</output></div>
+      <div class="ctl"><label for="md-u">Units</label><input id="md-u" type="range" min="40" max="180" step="5" value="${MD.u}"><output id="md-uo">${MD.u}</output></div>
+      <div class="out" id="md-out">${mdOut()}</div></div></div></div></div>`;
+}
+
+/* highlight a week across every element that carries data-w inside a container */
+function trace(root){
+  const hot=k=>{$$('.hot',root).forEach(n=>n.classList.remove('hot')); if(k!=null) $$(`[data-w="${k}"]`,root).forEach(n=>n.classList.add('hot'));};
+  root.addEventListener('pointerover',e=>{const t=e.target.closest('[data-w]'); hot(t?t.dataset.w:null);});
+  root.addEventListener('pointerleave',()=>hot(null));
+  root.addEventListener('focusin',e=>{const t=e.target.closest('[data-w]'); if(t) hot(t.dataset.w);});
+  root.addEventListener('focusout',()=>hot(null));
+}
+
+/* ================= figures ================= */
+
+/* Rule 1: a column count gives whole pixels exactly when it divides the width plus one gutter. */
+function demoProgramme(root){
+  const st={W:1424,g:16,unit:'px'};
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Programme calculator</h3></div>
+    <div class="demo-ctl"><div class="seg" role="group" aria-label="Presets"><button type="button" data-preset="capital">Capital, 1962 · 58 + 2 units</button><button type="button" data-preset="guide">This guide · 1424 + 16 px</button></div></div></div>
+    <div class="demo-ctl" style="margin:0 0 14px"><label class="rng" style="flex:1;min-width:260px"><span>Field width</span><input type="range" id="pg-w" min="960" max="1600" step="8" value="1424" aria-label="Field width in pixels"><output id="pg-wo"></output></label>
+      <span class="rng" style="grid-template-columns:auto auto"><span>Gutter</span>${seg('g',[[8,'8'],[16,'16'],[24,'24'],[32,'32']],16,'Gutter in pixels')}</span></div>
+    <div class="panel"><div class="fieldbox ui scroll-x" id="pg-view" style="padding:14px 14px 10px"></div></div><p class="status" id="pg-status" aria-live="polite"></p>`;
+  const view=$('#pg-view',root),status=$('#pg-status',root),wo=$('#pg-wo',root),rng=$('#pg-w',root);
+  function render(){
+    const {W,g,unit}=st,px=unit==='px',sc=760/W,x0=44; let s='';
+    for(let n=1;n<=8;n++){
+      const y=4+(n-1)*30,cwid=(W-(n-1)*g)/n,whole=Math.abs(cwid-Math.round(cwid))<1e-9,mod=px&&whole&&Math.round(cwid)%8===0;
+      const look=!whole?'style="fill:url(#hx-slate);stroke:var(--line2)"':(px&&!mod)?'style="fill:var(--sheet);stroke:var(--line2)"':'style="fill:var(--slate-wash)"';
+      s+=T(0,y+16,n,'t-v');
+      for(let c=0;c<n;c++){const x=x0+c*(cwid+g)*sc; s+=R(x,y,cwid*sc,22,'',2,look);
+        if(cwid*sc>40) s+=T(x+cwid*sc/2,y+15.5,whole?Math.round(cwid):cwid.toFixed(1),whole?'t-v':'t-tk','middle');}
+      s+=T(x0+772,y+16,!whole?'fractional':px?(mod?'on the 8 px module':'whole pixels'):'whole units',whole?'t-lb':'t-tk');
+    }
+    view.innerHTML=S(960,246,s,fluid);
+    const sum=W+g,div=[];for(let n=1;n<=12;n++) if(sum%n===0) div.push(n);
+    status.innerHTML=`<b>${W} + ${g} = ${sum}.</b> Column counts up to twelve that give whole ${px?'pixels':'units'}: ${div.join(', ')}.`;
+    wo.textContent=W+(px?' px':' units'); rng.disabled=!px; if(px) rng.value=W;
+    setSeg(root,'g',px?g:'');
+  }
+  root.addEventListener('input',e=>{if(e.target.id==='pg-w'){st.W=+e.target.value;st.unit='px';render();}});
+  root.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.g){st.g=+b.dataset.g; if(st.unit!=='px'){st.unit='px';st.W=1424;} render();}
+    if(b.dataset.preset==='capital'){st.W=58;st.g=2;st.unit='units';render();}
+    if(b.dataset.preset==='guide'){st.W=1424;st.g=16;st.unit='px';render();}
+  });
+  render();
+}
+
+/* Rule 2: what each part of an instrument answers. */
+function demoInstrument(root){
+  const st={v:57.0,unit:true,scale:true,comp:true,gap:true},REF=66.6;
+  const parts=[['unit','Unit and basis','Of what?'],['scale','Scale','On what range?'],['comp','Comparator','Compared with what?'],['gap','Signed gap','By how much?']];
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Instrument builder</h3></div>
+    <label class="rng" style="min-width:min(100%,320px)"><span>Value</span><input type="range" id="in-v" min="20" max="100" step="0.2" value="57" aria-label="Value"><output id="in-vo"></output></label></div>
+    <div class="two-col"><div class="panel ui" id="in-card" style="padding:14px"></div>
+    <div class="panel"><div class="fieldbox checks two" style="padding:4px 14px">${parts.map(p=>`<label class="sw" style="display:grid"><input type="checkbox" id="in-${p[0]}" checked><b>${p[1]}</b><span>${p[2]}</span></label>`).join('')}</div></div></div>
+    <p class="status" id="in-status" aria-live="polite"></p>`;
+  const card=$('#in-card',root),status=$('#in-status',root),vo=$('#in-vo',root);
+  function render(){
+    const gapOn=st.gap&&st.comp;
+    card.innerHTML=`<div class="inst" style="padding:4px 4px 6px"><div class="top"><b>Open-to-buy</b><span>${st.unit?'at cost · W40–43':''}</span></div>
+      <div class="val"><b>${f1(st.v)}</b>${st.unit?'<span>C$k</span>':''}</div>
+      ${st.scale?`<div class="rail"><i style="width:${pct(st.v,100)}"></i>${st.comp?`<u style="left:${pct(REF,100)}"></u>`:''}</div><div style="display:flex;justify-content:space-between;margin-top:5px;font-size:11px;color:var(--ink3)"><span>0</span><span>100</span></div>`:''}
+      <div class="foot" style="min-height:16px"><b>${gapOn?sg(st.v-REF):''}</b><span>${st.comp?'early-order plan '+f1(REF):''}</span></div></div>`;
+    const ans=['how much'].concat(parts.filter(p=>p[0]==='gap'?gapOn:st[p[0]]).map(p=>p[2].toLowerCase().replace('?','')));
+    const miss=parts.filter(p=>!(p[0]==='gap'?gapOn:st[p[0]])).map(p=>p[2].toLowerCase().replace('?',''));
+    status.innerHTML=`<b>Answered:</b> ${ans.join(', ')}.`+(miss.length?` <b>Left to the reader:</b> ${miss.join(', ')}.`:'');
+    vo.textContent=f1(st.v);
+    const g=$('#in-gap',root); g.disabled=!st.comp;
+  }
+  root.addEventListener('input',e=>{
+    if(e.target.id==='in-v') st.v=+e.target.value;
+    else if(e.target.type==='checkbox') st[e.target.id.slice(3)]=e.target.checked;
+    render();
+  });
+  render();
+}
+
+/* Rule 3: Wheeler's chart of individual values. Limits = mean ± 2.66 × average moving range of the baseline. */
+function demoXmr(root){
+  const base=[55.2,57.4,56.1,54.8,57.0,58.1,55.9,56.6,55.7,57.6,56.7];
+  const mean=base.reduce((a,b)=>a+b)/base.length,mr=base.slice(1).reduce((a,b,i)=>a+Math.abs(b-base[i]),0)/(base.length-1);
+  const lo=mean-2.66*mr,hi=mean+2.66*mr,st={v:58.6};
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Signal or routine</h3><span class="hint">illustrative weekly sales, C$k</span></div>
+    <label class="rng" style="min-width:min(100%,340px)"><span>Latest week</span><input type="range" id="xm-v" min="48" max="66" step="0.1" value="58.6" aria-label="Latest week"><output id="xm-vo"></output></label></div>
+    <div class="panel"><div class="fieldbox ui scroll-x" id="xm-view" style="padding:12px 12px 6px"></div></div><p class="status" id="xm-status" aria-live="polite"></p>`;
+  const view=$('#xm-view',root),status=$('#xm-status',root),vo=$('#xm-vo',root);
+  function render(){
+    const x=i=>56+i*66,y=v=>214-(v-47)/(67-47)*196,all=base.concat([st.v]),out=st.v>hi||st.v<lo; let s='';
+    [50,55,60,65].forEach(v=>s+=L(40,y(v),800,y(v),'l-g')+T(34,y(v)+4,v,'t-tk','end'));
+    s+=R(40,y(hi),760,y(lo)-y(hi),'f-sw',0,'style="opacity:.35"');
+    s+=L(40,y(hi),800,y(hi),'l-a','stroke-dasharray="5 4"')+L(40,y(lo),800,y(lo),'l-a','stroke-dasharray="5 4"')+L(40,y(mean),800,y(mean),'l-a');
+    s+=T(808,y(hi)+4,'upper limit '+f1(hi),'t-lb')+T(808,y(mean)+4,'mean '+f1(mean),'t-lb')+T(808,y(lo)+4,'lower limit '+f1(lo),'t-lb');
+    s+=`<path d="${all.map((v,i)=>(i?'L':'M')+x(i)+','+y(v).toFixed(1)).join('')}" style="fill:none;stroke:var(--slate);stroke-width:1.5"/>`;
+    base.forEach((v,i)=>s+=`<circle cx="${x(i)}" cy="${y(v).toFixed(1)}" r="3.5" class="f-slate"/>`);
+    s+=`<circle cx="${x(11)}" cy="${y(st.v).toFixed(1)}" r="6" class="f-ink"/>`+(out?`<circle cx="${x(11)}" cy="${y(st.v).toFixed(1)}" r="11" class="l-i"/>`:'')+T(x(11),y(st.v)+(st.v>mean?-16:24),f1(st.v),'t-v','middle');
+    for(let i=0;i<12;i++) s+=T(x(i),234,i===11?'latest':(i+1),'t-tk','middle');
+    view.innerHTML=S(940,240,s,fluid);
+    status.innerHTML=out?`<b>${f1(st.v)} is ${st.v>hi?'above the upper limit of '+f1(hi):'below the lower limit of '+f1(lo)}.</b> A signal: something changed, and it is worth asking what.`
+      :`<b>${f1(st.v)} sits between ${f1(lo)} and ${f1(hi)}.</b> Routine variation: no explanation is owed.`;
+    vo.textContent=f1(st.v);
+  }
+  root.addEventListener('input',e=>{if(e.target.id==='xm-v'){st.v=+e.target.value;render();}});
+  render();
+}
+
+/* Rule 4: the open-to-buy identity with every term movable. */
+function demoBridge(root){
+  const def=bridgeOf(P0),st={...def};
+  const rows=[['cogs','Cost of sales',100,220],['target','Target closing stock',150,300],['open','Opening stock',150,350],['rc','On order',0,160]];
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Open-to-buy bridge</h3><span class="hint">C$k at cost</span></div><button class="btn" type="button" id="br-reset">Reset to the example</button></div>
+    <div class="two-col"><div class="panel"><div class="fieldbox" style="padding:14px;display:grid;gap:12px">${rows.map(r=>`<label class="rng" style="grid-template-columns:minmax(0,1fr) auto;row-gap:4px"><span>${r[1]}</span><output id="br-${r[0]}o"></output><input type="range" id="br-${r[0]}" min="${r[2]}" max="${r[3]}" step="0.2" style="grid-column:1 / -1"></label>`).join('')}</div></div>
+    <div class="panel"><div class="fieldbox ui scroll-x" id="br-view" style="padding:14px 8px 6px"></div></div></div>
+    <p class="status" id="br-status" aria-live="polite"></p>`;
+  const view=$('#br-view',root),status=$('#br-status',root);
+  function render(sync){
+    view.innerHTML=bridge(st,640,{x0:84,rm:96,max:520,lx:8,fluid:true});
+    const need=st.cogs+st.target,have=st.open+st.rc,otb=need-have;
+    status.innerHTML=`<span class="eq">${f1(st.cogs)} + ${f1(st.target)} − ${f1(st.open)} − ${f1(st.rc)} = <b>${f1(otb)}</b></span> &nbsp; ${otb>=0.05?'The plan may still buy <b>'+f1(otb)+'</b>.':otb<=-0.05?'Stock on hand and on order exceed what the plan needs by <b>'+f1(-otb)+'</b>.':'The plan is exactly covered.'}`;
+    rows.forEach(r=>{$('#br-'+r[0]+'o',root).textContent=f1(st[r[0]]); if(sync) $('#br-'+r[0],root).value=st[r[0]];});
+  }
+  root.addEventListener('input',e=>{const k=e.target.id.slice(3); if(k in st){st[k]=+e.target.value;render(false);}});
+  $('#br-reset',root).addEventListener('click',()=>{Object.assign(st,def);render(true);});
+  render(true);
+}
+
+/* Rule 5: four small models of surface. */
+function demoSurfaces(root){
+  const st={region:true,contrast:70,join:false,radius:20,inset:12,accent:2};
+  const mix=(a,b,t)=>'#'+a.map((v,i)=>Math.round(v+(b[i]-v)*t).toString(16).padStart(2,'0')).join('');
+  const G=[185,192,202],DARK=[90,102,118],LIGHT=[255,255,255];
+  const vals=Array.from({length:40},(_,i)=>(Math.sin(i*12.9898)*43758.5453)%1).map(v=>Math.abs(v)),rank=vals.map((v,i)=>[v,i]).sort((a,b)=>b[0]-a[0]).map(a=>a[1]);
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Surface lab</h3></div></div>
+    <div class="grid2 two">
+      <div class="mini"><h4>Common region</h4><div class="view" id="sf-a"></div><div class="ctlrow"><label class="sw"><input type="checkbox" id="sf-region" checked><span>Enclose</span></label><p id="sf-at"></p></div></div>
+      <div class="mini"><h4>One grey, two parents</h4><div class="view" id="sf-b" style="padding:0;overflow:hidden"></div><div class="ctlrow"><label class="rng"><span>Surround</span><input type="range" id="sf-contrast" min="0" max="100" value="70" aria-label="Surround contrast"><output></output></label><label class="sw"><input type="checkbox" id="sf-join"><span>Join the chips</span></label></div></div>
+      <div class="mini"><h4>Concentric corners</h4><div class="view" id="sf-c"></div><div class="ctlrow"><label class="rng"><span>Radius</span><input type="range" id="sf-radius" min="0" max="32" value="20" aria-label="Outer radius"><output id="sf-ro"></output></label><label class="rng"><span>Inset</span><input type="range" id="sf-inset" min="4" max="24" value="12" aria-label="Inset"><output id="sf-io"></output></label></div></div>
+      <div class="mini"><h4>An accent budget</h4><div class="view" id="sf-d"></div><div class="ctlrow"><label class="rng"><span>Accented</span><input type="range" id="sf-accent" min="1" max="40" value="2" aria-label="Marks in the accent colour"><output id="sf-ao"></output></label></div></div>
+    </div>`;
+  function render(){
+    // a) proximity pairs, regrouped by enclosure
+    const xs=[30,58,104,132,178,206,252,280]; let a='';
+    if(st.region) [[1,2],[3,4],[5,6]].forEach(([i,j])=>a+=R(xs[i]-17,22,xs[j]-xs[i]+34,46,'f-sw',23));
+    xs.forEach(x=>a+=`<circle cx="${x}" cy="45" r="9" class="f-ink"/>`);
+    $('#sf-a',root).innerHTML=S(310,90,a,'style="width:100%;max-width:360px;height:auto" role="img" aria-label="Eight dots in four close pairs"');
+    $('#sf-at',root).textContent=st.region?'The eye pairs the dots that share a region, across the wider gaps.':'The eye pairs the dots that sit close together.';
+    // b) the same grey on a darker and a lighter parent
+    const t=st.contrast/100,g=mix(G,G,0),dk=mix(G,DARK,t),lt=mix(G,LIGHT,t);
+    $('#sf-b',root).innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;width:100%;min-height:150px;position:relative"><div style="background:${dk};display:flex;align-items:center;justify-content:center"><i style="width:56px;height:56px;border-radius:8px;background:${g};display:block"></i></div><div style="background:${lt};display:flex;align-items:center;justify-content:center"><i style="width:56px;height:56px;border-radius:8px;background:${g};display:block"></i></div>${st.join?`<i style="position:absolute;left:25%;right:25%;top:calc(50% - 10px);height:20px;background:${g};display:block"></i>`:''}</div>`;
+    // c) nested corners
+    const r=st.radius,ins=st.inset,ri=Math.max(r-ins,0),box=(inner,lab)=>`<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:120px;height:92px;border-radius:${r}px;background:var(--well);padding:${ins}px"><div style="width:100%;height:100%;border-radius:${inner}px;background:var(--field);box-shadow:var(--lift)"></div></div><span style="font:500 12px/16px var(--sans);color:var(--ink3)">${lab}</span></div>`;
+    $('#sf-c',root).innerHTML=`<div style="display:flex;gap:22px;flex-wrap:wrap;justify-content:center">${box(r,'inner '+r+' px')}${box(ri,'inner '+r+' − '+ins+' = '+ri+' px')}</div>`;
+    $('#sf-ro',root).textContent=r+' px'; $('#sf-io',root).textContent=ins+' px';
+    // d) accent budget
+    const on=new Set(rank.slice(0,st.accent)); let d='';
+    for(let i=0;i<40;i++){const cx=(i%8)*30,cy=Math.floor(i/8)*26,h=6+vals[i]*16; d+=R(cx+4,cy+24-h,22,h,on.has(i)?'f-sig':'f-sw',2);}
+    $('#sf-d',root).innerHTML=S(244,132,d,'style="width:100%;max-width:330px;height:auto" role="img" aria-label="Forty small bars"');
+    $('#sf-ao',root).textContent=st.accent+' of 40';
+    $('#sf-contrast',root).nextElementSibling.textContent=st.contrast+'%';
+  }
+  root.addEventListener('input',e=>{
+    const id=e.target.id.slice(3); if(!(id in st)) return;
+    st[id]=e.target.type==='checkbox'?e.target.checked:+e.target.value; render();
+  });
+  render();
+}
+
+/* Rule 6: the same weeks coded by hue and by fill. */
+function demoNotation(root){
+  const st={mode:'fill',grey:false},P=P0;
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Notation switch</h3><span class="hint">weekly sales and plan, C$k</span></div>
+    <div class="demo-ctl">${seg('mode',[['hue','Coded by hue'],['fill','Coded by fill']],'fill','Coding')}<label class="sw"><input type="checkbox" id="nt-grey"><span>Remove colour</span></label></div></div>
+    <div class="panel"><div class="fieldbox ui" style="padding:12px 12px 10px"><div id="nt-view" class="scroll-x"></div><div id="nt-key" style="display:flex;gap:8px 20px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:var(--ink2);font-weight:500"></div></div></div>
+    <p class="status" id="nt-status" aria-live="polite"></p>`;
+  const view=$('#nt-view',root),key=$('#nt-key',root),status=$('#nt-status',root);
+  const sw=(style,t)=>`<span style="display:inline-flex;align-items:center;gap:6px"><i style="display:block;width:22px;height:12px;border-radius:2px;${style}"></i>${t}</span>`;
+  function hue(){
+    const cw=100,H=190,y0=H-44,yt=24,sc=v=>y0-v/100*(y0-yt); let s='';
+    [0,50,100].forEach(v=>{s+=L(0,sc(v),800,sc(v),v?'l-g':'l-a')+T(8,sc(v)-5,v,'t-tk')});
+    for(let k=0;k<8;k++){const cx=k*cw+cw/2;
+      if(k<4){const v=D.actual[k]; s+=R(cx-24,sc(v),48,y0-sc(v),'f-slate',2)+T(cx,sc(v)-7,f1(v),'t-v','middle');}
+      else{const d=P.dW[k-4],sv=P.sW[k-4];
+        s+=R(cx-32,sc(d),30,y0-sc(d),'',2,'style="fill:var(--hue-a)"')+R(cx+2,sc(sv),30,y0-sc(sv),'',2,'style="fill:var(--hue-b)"');
+        s+=T(cx-17,sc(d)-7,f1(d),'t-tk','middle')+T(cx+17,sc(sv)-7,f1(sv),'t-tk','middle');}
+      s+=T(cx,y0+19,D.weeks[k],'t-lb','middle','style="font-weight:600"')+T(cx,y0+34,D.dates[k],'t-tk','middle');
+    }
+    return S(800,H,s,fluid);
+  }
+  function render(){
+    view.innerHTML=st.mode==='hue'?hue():strip(P,{cw:100,bw:48,short:true,fluid:true});
+    view.style.filter=key.style.filter=st.grey?'grayscale(1)':'';
+    key.innerHTML=st.mode==='hue'
+      ?sw('background:var(--slate)','sold')+sw('background:var(--hue-a)','planned demand')+sw('background:var(--hue-b)','projected served sales')
+      :sw('background:var(--slate)','sold')+sw('box-shadow:inset 0 0 0 1.5px var(--sig)','planned demand')+sw('background:repeating-linear-gradient(135deg,var(--sig) 0 1.5px,var(--sig-wash) 1.5px 5px);box-shadow:inset 0 0 0 1.5px var(--sig)','projected served sales')+sw('box-shadow:inset 0 0 0 1.5px var(--sig)','the empty part is demand not served');
+    status.innerHTML=st.mode==='hue'
+      ?(st.grey?'<b>Without colour the two plan series are the same grey.</b> The legend no longer works, and the shortfall in W42 has to be found by comparing bar heights.':'<b>Hue carries the meaning.</b> The reader needs the legend to tell demand from served sales, and has to subtract to find the shortfall.')
+      :(st.grey?'<b>Without colour nothing is lost.</b> Solid, outlined, hatched and empty still read, and the shortfall in W42 is still the empty part of its bar.':'<b>Fill carries the meaning.</b> One bar per week: the outline is demand, the hatching is what the plan serves, and the empty part is the shortfall.');
+    setSeg(root,'mode',st.mode);
+  }
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-mode]'); if(b){st.mode=b.dataset.mode;render();}});
+  root.addEventListener('input',e=>{if(e.target.id==='nt-grey'){st.grey=e.target.checked;render();}});
+  render();
+}
+
+/* Rule 7: two rows on one week axis, and a matrix whose rows reorder. */
+function demoAxis(root){
+  const st={order:'listed'},P=P0;
+  const orders={listed:[0,1,2,3,4],cover:[0,1,2,3,4].sort((a,b)=>P.cover[a][0]-P.cover[b][0]),close:[0,1,2,3,4].sort((a,b)=>P.close[a][4]-P.close[b][4])};
+  const say={listed:'In the order the categories were listed, the two at risk are scattered among the others.',cover:'Ordered by cover on hand, the two categories with under four weeks come first, and their tinted cells form one block.',close:'Ordered by closing stock in W43, base layers lead: they end the plan with nothing left.'};
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">One axis, read down</h3></div>
+    <div class="demo-ctl"><span class="rng" style="grid-template-columns:auto auto"><span>Order rows</span>${seg('order',[['listed','As listed'],['cover','Least cover first'],['close','Lowest closing stock']],'listed','Row order')}</span></div></div>
+    <div class="panel"><div class="fieldbox ui" style="overflow:hidden"><div class="fit" data-w="984" data-min="0.62"><div class="fit-in" id="ax-view"></div></div></div></div>
+    <p class="status" id="ax-status" aria-live="polite"></p>`;
+  const view=$('#ax-view',root),status=$('#ax-status',root);
+  function render(){
+    view.innerHTML=`<div style="width:984px">${strip(P,{cw:123,bw:56,short:true,H:176})}${matrix(P,{cw:123,nameW:124,order:orders[st.order]})}<div style="height:6px"></div></div>`;
+    status.textContent=say[st.order]; setSeg(root,'order',st.order); fitAll();
+  }
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-order]'); if(b){st.order=b.dataset.order;render();}});
+  trace(view); render();
+}
+
+/* Rule 8: five table rules, each on its own switch. */
+function demoTable(root){
+  const st={furn:true,align:true,round:true,order:true,bars:true};
+  const P=P0,rowsData=D.name.map((n,i)=>({n,dem:D.wk[i].reduce((a,b)=>a+b),close:P.close[i][4],cover:P.cover[i][0],stock:(D.open[i]+P.rc[i].reduce((a,b)=>a+b))*D.cost[i]/1000}));
+  const rules=[['furn','Remove the furniture','Tschichold, Bringhurst'],['align','Align right, tabular figures','Schwabish'],['round','Round, and state units once','Ehrenberg'],['order','Order rows by size','Ehrenberg'],['bars','Add a mark in the cell','Rao and Card']];
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Table rules</h3></div><div class="demo-ctl"><button class="btn" type="button" data-all="0">All off</button><button class="btn" type="button" data-all="1">All on</button></div></div>
+    <div class="two-col c300"><div class="panel"><div class="fieldbox checks tight" style="padding:4px 14px">${rules.map(r=>`<label class="sw" style="display:grid"><input type="checkbox" id="tb-${r[0]}" checked><b>${r[1]}</b><span>${r[2]}</span></label>`).join('')}</div></div>
+    <div class="panel"><div class="fieldbox overflow" id="tb-view" style="padding:10px 14px;display:grid"></div></div></div>`;
+  const view=$('#tb-view',root);
+  function render(){
+    const rows=rowsData.slice().sort(st.order?(a,b)=>b.stock-a.stock:(a,b)=>a.n.localeCompare(b.n)),mx=Math.max(...rows.map(r=>r.stock));
+    const head=st.round?['Category','Demand, units','Closing stock, units','Cover, weeks','Stock at cost, C$k']:['Category','Demand','Closing stock','Cover','Stock at cost'];
+    const fmt=st.round?r=>[nn(r.dem),nn(r.close),r.cover.toFixed(0),r.stock.toFixed(1)]:r=>[r.dem.toFixed(2)+' units',r.close.toFixed(2)+' units',r.cover.toFixed(2)+' wk','C$'+r.stock.toFixed(2)+'k'];
+    view.innerHTML=`<table class="dt${st.furn?'':' furn'}${st.align?' num-r':''}"><thead><tr>${head.map((h,i)=>`<th${i?' class="n"':''} scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>{const f=fmt(r);return `<tr><th scope="row" style="font-weight:${st.furn?600:500}">${r.n}</th>${f.map((v,i)=>`<td class="n${i===3&&st.bars?' bar':''}">${v}${i===3&&st.bars?`<i style="width:${(r.stock/mx*72).toFixed(0)}px;${st.align?'left:auto;right:12px':'left:calc(50% - 36px)'}"></i>`:''}</td>`).join('')}</tr>`}).join('')}</tbody></table>`;
+    rules.forEach(r=>$('#tb-'+r[0],root).checked=st[r[0]]);
+  }
+  root.addEventListener('input',e=>{const k=e.target.id.slice(3); if(k in st){st[k]=e.target.checked;render();}});
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-all]'); if(b){rules.forEach(r=>st[r[0]]=b.dataset.all==='1');render();}});
+  render();
+}
+
+/* Rule 9: bold laid over regular. Duplexed figures coincide. The table lets a row turn bold in place. */
+function demoType(root){
+  const st={face:'Instrument Sans',tnum:true,row:1},TXT='0123456789';
+  const rows=D.name.map((n,i)=>[n].concat(D.wk[i]));
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Bold without a shift</h3><span class="hint">weekly demand, units</span></div>
+    <div class="demo-ctl">${seg('face',[['Instrument Sans','Instrument Sans'],['Geist','Geist'],['Archivo','Archivo']],'Instrument Sans','Typeface')}<label class="sw"><input type="checkbox" id="ty-tnum" checked><span>Tabular figures</span></label></div></div>
+    <div class="two-col half"><div class="panel"><div class="fieldbox" style="padding:18px 20px;display:flex;flex-direction:column;justify-content:center"><div class="specimen" id="ty-spec"><span class="r"></span><span class="b"></span></div><p class="status" id="ty-status" aria-live="polite" style="margin:12px 0 0"></p></div></div>
+    <div class="panel"><div class="fieldbox" id="ty-table" style="padding:10px 6px 6px" role="radiogroup" aria-label="Selected row"></div></div></div>`;
+  const spec=$('#ty-spec',root),status=$('#ty-status',root),table=$('#ty-table',root);
+  function render(){
+    const fam=`'${st.face}',sans-serif`,num=st.tnum?'tabular-nums lining-nums':'proportional-nums lining-nums';
+    $$('span',spec).forEach(e=>{e.textContent=TXT;e.style.fontFamily=fam;e.style.fontVariantNumeric=num;});
+    $('.r',spec).style.fontWeight=400;
+    const wr=$('.r',spec).getBoundingClientRect().width,wb=$('.b',spec).getBoundingClientRect().width,d=wb-wr;
+    status.innerHTML=`<b>Ten digits: regular ${wr.toFixed(1)} px, bold ${wb.toFixed(1)} px.</b> `+(Math.abs(d)<0.3?'The two layers coincide, so a row can turn bold and its figures stay where they are.':`Bold runs ${Math.abs(d).toFixed(1)} px ${d>0?'wider':'narrower'}, so a row that turns bold moves its figures.`);
+    table.innerHTML=`<div class="ty-head"><span></span>${D.weeks.slice(4).map(w=>`<span>${w}</span>`).join('')}</div>`+rows.map((r,i)=>`<button type="button" role="radio" class="ty-row" data-row="${i}" aria-checked="${i===st.row}" style="font-family:${fam};font-variant-numeric:${num}">${r.map(v=>`<span>${v}</span>`).join('')}</button>`).join('');
+    setSeg(root,'face',st.face);
+  }
+  root.addEventListener('click',e=>{
+    const f=e.target.closest('[data-face]'),r=e.target.closest('[data-row]');
+    if(f){st.face=f.dataset.face;render();}
+    else if(r){st.row=+r.dataset.row;$$('[data-row]',table).forEach(b=>b.setAttribute('aria-checked',String(+b.dataset.row===st.row)));}
+  });
+  root.addEventListener('input',e=>{if(e.target.id==='ty-tnum'){st.tnum=e.target.checked;render();}});
+  render();
+  if(document.fonts&&document.fonts.load) Promise.all(['Instrument Sans','Geist','Archivo'].flatMap(f=>[document.fonts.load(`400 56px "${f}"`),document.fonts.load(`700 56px "${f}"`)])).then(render).catch(()=>{});
+}
+
+/* Rule 10: one illustrative distribution in three forms. Normal, mean 80 units, standard deviation 14. */
+function demoUncertainty(root){
+  const Z=[-1.95996,-1.43953,-1.15035,-0.93459,-0.75542,-0.59776,-0.45376,-0.31864,-0.18912,-0.06271,0.06271,0.18912,0.31864,0.45376,0.59776,0.75542,0.93459,1.15035,1.43953,1.95996];
+  const M=80,SD=14,Q=Z.map(z=>M+SD*z),st={form:'dots',stock:95};
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Three forms</h3><span class="hint">illustrative demand for one week, units</span></div>
+    <div class="demo-ctl">${seg('form',[['bar','Bar and whisker'],['bands','Nested bands'],['dots','Quantile dots']],'dots','Form')}</div></div>
+    <div class="panel"><div class="fieldbox ui scroll-x" id="un-view" style="padding:10px 12px 6px"></div></div>
+    <label class="rng" style="margin:12px 2px 0;max-width:520px"><span>Stock on hand</span><input type="range" id="un-s" min="50" max="115" step="5" value="95" aria-label="Stock on hand"><output id="un-so"></output></label>
+    <p class="status" id="un-status" aria-live="polite"></p>`;
+  const view=$('#un-view',root),status=$('#un-status',root),so=$('#un-so',root);
+  function render(){
+    const x=u=>44+u*(840/120),base=186; let s='';
+    [0,20,40,60,80,100,120].forEach(v=>s+=L(x(v),base,x(v),base+5,'l-a')+T(x(v),base+19,v,'t-tk','middle'));
+    s+=L(x(0),base,x(120),base,'l-a');
+    const over=Q.filter(q=>q>st.stock).length;
+    if(st.form==='bar'){
+      s+=R(x(0),base-66,x(M)-x(0),40,'hx',2)+R(x(0),base-66,x(M)-x(0),40,'o-sig',2);
+      s+=L(x(M-1.645*SD),base-46,x(M+1.645*SD),base-46,'l-i')+L(x(M-1.645*SD),base-54,x(M-1.645*SD),base-38,'l-i')+L(x(M+1.645*SD),base-54,x(M+1.645*SD),base-38,'l-i');
+      s+=T(x(M),base-74,'expected 80','t-vs','middle');
+    }else if(st.form==='bands'){
+      s+=R(x(M-1.645*SD),base-66,x(M+1.645*SD)-x(M-1.645*SD),40,'f-wash',2)+R(x(M-0.6745*SD),base-66,x(M+0.6745*SD)-x(M-0.6745*SD),40,'f-sig',2,'style="opacity:.45"')+L(x(M),base-70,x(M),base-22,'l-i');
+      s+=T(x(M-1.645*SD),base-74,'9 in 10 between 57 and 103','t-lb')+T(x(M),base-8,'half between 71 and 89','t-lb','middle');
+    }else{
+      const stack={};
+      Q.forEach(q=>{const b=Math.floor(q/5)*5,j=stack[b]=(stack[b]||0)+1,o=q>st.stock;
+        s+=`<circle cx="${x(b+2.5).toFixed(1)}" cy="${base-13-(j-1)*25}" r="11" class="${o?'o-sig':'f-sig'}" ${o?'style="fill:var(--field)"':''}/>`;});
+    }
+    s+=L(x(st.stock),14,x(st.stock),base,'l-i')+T(x(st.stock)+(st.stock>100?-8:8),24,'stock '+st.stock,'t-v',st.stock>100?'end':'start');
+    view.innerHTML=S(900,212,s,fluid);
+    so.textContent=st.stock+' units';
+    status.innerHTML=st.form==='dots'?`<b>Demand exceeds stock in ${over} of 20 outcomes.</b> Each dot is one equally likely week. The hollow ones are the weeks that run short.`
+      :st.form==='bar'?`<b>The whisker runs from 57 to 103.</b> How often demand exceeds ${st.stock} cannot be read from it, and values inside the bar look likelier than values just beyond its end.`
+      :`<b>The stock of ${st.stock} ${st.stock>103?'lies beyond the wider band':st.stock<57?'lies below the wider band':'falls inside the wider band'}.</b> The form says how wide the spread is. It gives nothing to count.`;
+    setSeg(root,'form',st.form);
+  }
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-form]'); if(b){st.form=b.dataset.form;render();}});
+  root.addEventListener('input',e=>{if(e.target.id==='un-s'){st.stock=+e.target.value;render();}});
+  render();
+}
+
+/* Rule 11: a slider drawn on its own consequences. */
+function demoControl(root){
+  const st={d:20},depths=[0,5,10,15,20,25,30,35];
+  root.innerHTML=`<div class="demo-head"><div><h3 style="display:inline">Markdown depth</h3><span class="hint">units that must sell to hold a gross profit of 8.0</span></div></div>
+    <div class="panel"><div class="fieldbox ui" style="padding:18px 16px 12px">
+      <div style="position:relative"><div class="nyt" id="ct-bars"></div><div style="position:absolute;left:0;right:0;bottom:90%;border-top:1px dashed var(--line2);pointer-events:none"><span style="position:absolute;left:0;top:-18px;font-size:11px;font-weight:500;color:var(--ink3)">180 on hand</span></div></div>
+      <div class="nyt-range"><input type="range" id="ct-d" min="0" max="35" step="5" value="20" aria-label="Markdown depth in percent"></div>
+      <div class="nyt-axis">${depths.map(d=>`<span>${d}%</span>`).join('')}</div>
+    </div></div><p class="status" id="ct-status" aria-live="polite"></p>`;
+  const bars=$('#ct-bars',root),status=$('#ct-status',root);
+  function render(){
+    bars.innerHTML=depths.map(d=>{const u=parity(d),over=u>180;const h=Math.min(100,u/200*100).toFixed(1);return `<div class="col${d===st.d?' on':''}${over?' over':''}"><i style="height:${h}%"></i><b style="bottom:calc(${h}% + 4px)">${nn(u)}</b></div>`}).join('');
+    const u=parity(st.d),price=500*(1-st.d/100);
+    status.innerHTML=`<b>${st.d}% off, a price of ${nn(price)}.</b> ${st.d===0?'Forty units at full price make the 8.0 the plan expects.':u>180?`${nn(u)} units would have to sell, more than the 180 on hand. Gross profit cannot hold at this depth.`:`${nn(u)} units must sell for gross profit to hold, ${(u/40).toFixed(1)} times the forty expected at full price.`}`;
+  }
+  root.addEventListener('input',e=>{if(e.target.id==='ct-d'){st.d=+e.target.value;render();}});
+  render();
+}
+
+/* notation legend and tokens */
+function figNote(){
+  const it=[
+   ['background:var(--slate)','Observed','Sold or on hand. It has happened, or it physically exists.'],
+   ['background:var(--sig-wash);box-shadow:inset 0 0 0 1.5px var(--sig)','Plan or commitment','Demand to plan for, target stock, orders not yet received.'],
+   ['background:repeating-linear-gradient(135deg,var(--sig) 0 1.5px,var(--sig-wash) 1.5px 5px);box-shadow:inset 0 0 0 1.5px var(--sig)','Projected','What the plan arithmetic says will be served. A fitted forecast would take this fill.'],
+   ['border:1.5px dashed var(--sig)','Open','An amount that exists only as a gap: unfilled demand, open-to-buy.'],
+   ['background:linear-gradient(90deg,var(--well) 0 64%,var(--ink) 64% 68%,var(--well) 68%);height:10px;border-radius:5px','Comparator','The named reference on an instrument rail, always in ink.'],
+   ['background:linear-gradient(90deg,var(--field),color-mix(in oklab,var(--slate) 40%,var(--field)));box-shadow:inset 0 0 0 1px var(--line)','Cover shortfall','Share of the horizon the stock would not cover. Always printed with its number.'],
+   ['background:var(--ink)','Demand not served','The only use of full ink as a fill.'],
+   ['background:var(--field);box-shadow:var(--lift)','Selection','A raised pill or an ink outline. Never the accent.']];
+  return it.map(a=>`<div><i style="${a[0]}"></i><span><b>${a[1]}</b>${a[2]}</span></div>`).join('');
+}
+/* Tokens are written from the state of the tuner, so the block on the page always matches the figure. */
+const ACCENTS={cobalt:['Cobalt','#2146D6','#DCE4FB','Cobalt accent'],teal:['Teal','#0F6F73','#D5ECEC','Teal accent'],violet:['Violet','#5A3FD0','#E6E1FA','Violet accent'],ink:['Ink only','#121923','#E0E4EA','No accent hue']};
+const hex=c=>'#'+c.map(v=>Math.round(v).toString(16).padStart(2,'0')).join('').toUpperCase();
+const tone=(base,t)=>hex(base.map(v=>Math.max(0,255-(255-v)*t)));
+const tokensOf=st=>{const t=st.depth/100,a=ACCENTS[st.accent];
+  return {ground:tone([227,231,237],t),sheet:tone([241,243,247],t),well:tone([214,220,229],t),sig:a[1],wash:a[2],r:st.radius,ri:Math.max(st.radius-8,0)};};
+const tokensText=k=>`:root {
+  /* surfaces: higher is lighter */
+  --ground: ${k.ground};   /* the interface ground */
+  --sheet:  ${k.sheet};   /* one link of the chain */
+  --field:  #FFFFFF;   /* evidence */
+  --well:   ${k.well};   /* control track */
+  /* ink */
+  --ink:  #121923;  --ink2: #414B59;  --ink3: #5D6776;
+  --line: #CBD2DC;  --line2: #98A2B1;
+  /* observed quantities, and the one accent for what lies ahead */
+  --slate: #5A6676;
+  --sig:   ${k.sig};  --sig-wash: ${k.wash};
+  /* programme: an inner radius is the outer radius minus the inset */
+  --gutter: 16px;  --inset: 8px;  --week: 142px;  --row: 36px;
+  --r-sheet: ${k.r}px;  --r-field: ${k.ri}px;
+  --font: "Instrument Sans", system-ui, sans-serif;
+}
+.sheet  { display: grid; grid-template-columns: 264px 1136px;
+          gap: var(--inset); padding: var(--inset);
+          background: var(--sheet); border-radius: var(--r-sheet); }
+.field  { background: var(--field); border-radius: var(--r-field); }
+.weeks  { display: grid; grid-template-columns: repeat(8, var(--week)); }
+.num    { font-variant-numeric: tabular-nums lining-nums; }
+.micro  { font: 600 11px/16px var(--font); font-stretch: 85%;
+          letter-spacing: .07em; text-transform: uppercase; }`;
+
+/* The system: two sheets of the example restyled by three tokens. */
+function demoTune(root){
+  const def={accent:'cobalt',depth:100,radius:16},st={...def,early:false},pre=$('#tokens');
+  root.innerHTML=`<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="hx-tune" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" style="fill:var(--sig-wash)"/><line x1="0" y1="0" x2="0" y2="5" style="stroke:var(--sig);stroke-width:2.4"/></pattern></defs></svg>
+    <div class="demo-head"><div><h3 style="display:inline">Tune the system</h3><span class="hint">two sheets of the example</span></div><button class="btn" type="button" id="tn-reset">Reset to the example</button></div>
+    <div class="tune-ctl"><span class="rng" style="grid-template-columns:auto auto;justify-content:start"><span>Accent</span>${seg('accent',Object.entries(ACCENTS).map(([k,v])=>[k,v[0]]),'cobalt','Accent')}</span>
+      <label class="rng"><span>Surface depth</span><input type="range" id="tn-depth" min="0" max="160" step="5" value="100" aria-label="Surface depth in percent"><output id="tn-deptho"></output></label>
+      <label class="rng"><span>Sheet radius</span><input type="range" id="tn-radius" min="0" max="24" step="1" value="16" aria-label="Sheet radius in pixels"><output id="tn-radiuso"></output></label></div>
+    <div class="fit" data-w="992" data-min="0.62"><div class="fit-in ui" id="tn-view"></div></div>
+    <p class="status" id="tn-status" aria-live="polite"></p>`;
+  const view=$('#tn-view',root),status=$('#tn-status',root);
+  function sample(){
+    const P=st.early?P1:P0,[i1,,i3]=instruments(P);
+    view.innerHTML=`<div style="width:992px"><div class="b-row" style="grid-template-columns:264px 704px;margin-top:0">${i1}<div class="b-field"><div class="b-title"><div><h6>Weekly demand and served sales</h6><span class="ctx">C$k</span></div>${seg('tplan',[[0,'Unchanged orders'],[1,'Early boots order']],st.early?1:0,'Plan')}</div>${strip(P,{cw:88,bw:40,short:true})}</div></div>
+      <div class="b-row" style="grid-template-columns:264px 704px">${i3}<div class="b-field"><div class="b-title"><div><h6>Open-to-buy bridge</h6><span class="ctx">C$k at cost · needed = covered + open</span></div></div>${bridge(bridgeOf(P),704,{rm:110})}</div></div></div>`;
+  }
+  function apply(){
+    const k=tokensOf(st);
+    Object.entries({'--ground':k.ground,'--sheet':k.sheet,'--well':k.well,'--sig':k.sig,'--sig-wash':k.wash,'--r-sheet':k.r+'px','--r-field':k.ri+'px'}).forEach(([n,v])=>root.style.setProperty(n,v));
+    if(pre) pre.textContent=tokensText(k);
+    $('#tn-deptho',root).textContent=st.depth+'%'; $('#tn-radiuso',root).textContent=st.radius+' px';
+    setSeg(root,'accent',st.accent);
+    const notes=[];
+    if(st.depth<=30) notes.push('With the tones this close to white the sheets lose their edges, and grouping rests on spacing alone.');
+    else if(st.depth>=135) notes.push('Deeper tones separate the layers more firmly and leave the page less calm.');
+    if(st.accent==='ink') notes.push('With no hue at all, outline, hatching and empty space still tell a plan from a projection.');
+    if(st.radius<8) notes.push('Below 8 px the field corner reaches zero, because the inner radius is the outer one minus the inset.');
+    const isDef=Object.keys(def).every(n=>st[n]===def[n]);
+    status.innerHTML=`<b>${ACCENTS[st.accent][3]}, surfaces at ${st.depth}%, sheet radius ${st.radius} px, field radius ${k.ri} px.</b> `+(isDef?'These are the values the example uses.':notes.join(' '));
+  }
+  root.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.accent){st.accent=b.dataset.accent;apply();}
+    else if(b.dataset.tplan!==undefined){st.early=b.dataset.tplan==='1';sample();fitAll();const f=$(`[data-tplan="${b.dataset.tplan}"]`,view); if(f) f.focus();}
+    else if(b.id==='tn-reset'){Object.assign(st,def);$('#tn-depth',root).value=st.depth;$('#tn-radius',root).value=st.radius;apply();}
+  });
+  root.addEventListener('input',e=>{const n=e.target.id.slice(3); if(n==='depth'||n==='radius'){st[n]=+e.target.value;apply();}});
+  sample();apply();
+}
+
+/* sources, injected at build time */
+const SOURCES=[{"g": "1 · A grid that divides", "st": "v", "who": "Gerstner", "work": "Designing Programmes, 1964", "url": "https://commons.wikimedia.org/wiki/File:Karl_Gerstner_Capital_layout_grid.png", "take": "The Capital grid of 1962: a page 58 units wide with 2-unit gutters, which carries one to six columns of whole units."}, {"g": "1 · A grid that divides", "st": "v", "who": "Few", "work": "With Dashboards, Formatting and Layout Definitely Matter, 2008", "url": "https://www.perceptualedge.com/articles/Whitepapers/Formatting_and_Layout_Matter.pdf", "take": "Counts the rigid symmetrical grid among the layout mistakes of dashboard design."}, {"g": "2 · Instruments", "st": "v", "who": "Few", "work": "Bullet Graph Design Specification, 2006, revised 2013", "url": "https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf", "take": "The formal definition: a featured measure, a comparator and optional qualitative ranges."}, {"g": "2 · Instruments", "st": "v", "who": "Brinton", "work": "Graphic Methods for Presenting Facts, 1914", "url": "https://archive.org/details/graphicmethodsfo00brinrich", "take": "An early American manual of charts for business, free on the Internet Archive and still a good source of component-bar forms."}, {"g": "2 · Instruments", "st": "v", "who": "Spear", "work": "Charting Statistics, 1952", "url": "https://en.wikipedia.org/wiki/Mary_Eleanor_Spear", "take": "Her range bar, with an interquartile box, predates the box plot. A compact way to show spread within a row."}, {"g": "2 · Instruments", "st": "v", "who": "Hollifield, Oliver, Nimmo, Habibi", "work": "The High Performance HMI Handbook, 2008", "url": "https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ", "take": "Grey screens, analog indicators with a normal range, and colour only for abnormal states."}, {"g": "2 · Instruments", "st": "v", "who": "ISA", "work": "ISA-101, human-machine interfaces for process automation", "url": "", "take": "The same discipline as a standard. Checked through secondary summaries, which describe normal equipment in grey and colour reserved for deviation."}, {"g": "2 · Instruments", "st": "v", "who": "Braseth and colleagues", "work": "Information Rich Design, Halden", "url": "https://www.sciencedirect.com/science/article/abs/pii/S0141938213000395", "take": "Large-screen process overviews built from aligned mini-trends and Gestalt grouping."}, {"g": "2 · Instruments", "st": "v", "who": "Desbarats", "work": "Why I stopped using bullet graphs, Nightingale, 2022", "url": "https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/", "take": "Eleven objections. Problems do not stand out, and lower-is-better and ideal-range measures need variants. His alternative marks only what crosses an action threshold."}, {"g": "2 · Instruments", "st": "v", "who": "Bryar, Carr", "work": "Working Backwards, 2021", "url": "https://commoncog.com/the-amazon-weekly-business-review/", "take": "Amazon’s weekly business review uses one chart format for hundreds of metrics: the trailing six weeks beside the trailing twelve months."}, {"g": "2 · Instruments", "st": "k", "who": "Powsner, Tufte", "work": "Graphical summary of patient status, The Lancet, 1994", "url": "", "take": "Small aligned histories with normal ranges on one page. A clinical ancestor of the sparkline."}, {"g": "3 · Routine variation", "st": "v", "who": "Wheeler", "work": "Understanding Variation, 1993", "url": "https://commoncog.com/process-behaviour-charts-more-than-you-need/", "take": "Process behaviour charts separate routine weekly variation from a real change. A stronger comparator than last period once history exists."}, {"g": "4 · Drawn identities", "st": "v", "who": "Playfair", "work": "The Commercial and Political Atlas, 1786", "url": "https://en.wikipedia.org/wiki/William_Playfair", "take": "Import and export lines with the area between them tinted as the balance. An early case of an accounting identity drawn as a shape."}, {"g": "4 · Drawn identities", "st": "v", "who": "Vicente, Rasmussen", "work": "Ecological interface design: theoretical foundations, IEEE SMC 1992", "url": "https://orbit.dtu.dk/en/publications/ecological-interface-design-theoretical-foundations/", "take": "Make the constraints of the work domain directly visible. The theory behind drawing an identity as geometry."}, {"g": "4 · Drawn identities", "st": "v", "who": "Bennett, Flach", "work": "Display and Interface Design: Subtle Science, Exact Art, 2011", "url": "https://www.routledge.com/Display-and-Interface-Design-Subtle-Science-Exact-Art/Bennett-Flach/p/book/9780367864682", "take": "Configural displays and emergent features. When variables are drawn so their relationship forms a shape, a fault changes the shape."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Imhof, through Tufte", "work": "Cartographic Relief Presentation, 1965; Envisioning Information, chapter 5", "url": "https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/", "take": "Strong colour in small areas on a muted ground, and large areas kept quiet. The rule behind one accent on tonal surfaces."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Robinson", "work": "The Look of Maps, 1952", "url": "https://en.wikipedia.org/wiki/Figure-ground_(cartography)", "take": "Visual hierarchy and figure and ground in cartography. Maps solved layered surfaces long before interfaces did."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Patterson; Jenny", "work": "Shaded relief practice and research", "url": "https://www.shadedreliefarchive.com/", "take": "How Swiss-style relief generalises terrain and adjusts light locally. Shading as a selective, designed act."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Palmer", "work": "Common region: a new principle of perceptual grouping, Cognitive Psychology, 1992", "url": "https://eric.ed.gov/?id=EJ450926", "take": "Elements inside a shared boundary group strongly and hierarchically. The basis for nested surfaces, and the reason every panel boundary is a claim."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Albers", "work": "Interaction of Color, 1963", "url": "", "take": "A colour is read relative to its surround."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Cleveland, McGill; Heer, Bostock", "work": "Graphical perception, JASA 1984; crowdsourced replication, CHI 2010", "url": "http://vis.stanford.edu/papers/crowdsourcing-graphical-perception", "take": "Position on a common scale is read most accurately; shade and area least."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Szafir; Stone", "work": "Modeling color difference for visualization design, 2018; In color perception, size matters, 2012", "url": "https://dl.acm.org/doi/10.1109/MCG.2012.37", "take": "Small marks need larger colour differences to be told apart. Thin lines and 3 px bars cannot rely on subtle tints."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Harrison, Ishii, Vicente, Buxton", "work": "Transparent layered user interfaces, CHI 1995", "url": "https://www.billbuxton.com/transparency.html", "take": "Measured how translucency trades focus against awareness. The evidence for and against see-through panels."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Colby, Scholl; Cooper", "work": "Transparency and blur as selective cues, 1991; Information Landscapes, 1994", "url": "http://inventinginteractive.com/2010/02/01/information-landscapes/", "take": "The MIT Visible Language Workshop treated translucency, blur and depth as information design. An origin of the soft layered look."}, {"g": "5 · Surfaces and shading", "st": "v", "who": "Google; Radix", "work": "Material 3 colour roles; Radix 12-step scales", "url": "https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale", "take": "Two working role systems. Material names five container tones by emphasis. Radix gives each of twelve steps a job."}, {"g": "6 · Notation", "st": "v", "who": "Hichert, Faisst", "work": "Solid, Outlined, Hatched, 2019, and the IBCS standard", "url": "https://www.ibcs.com/", "take": "A notation for reports: solid for actual, outlined for plan, hatched for forecast, grey for the prior period."}, {"g": "6 · Notation", "st": "v", "who": "Bertin", "work": "Semiology of Graphics, 1967", "url": "https://en.wikipedia.org/wiki/Visual_variable", "take": "Names the visual variables a mark can vary by, texture among them. The link is a summary."}, {"g": "7 · Shared axes", "st": "v", "who": "Marey, after Ibry", "work": "Train graph, La Méthode Graphique, 1885", "url": "https://mbostock.github.io/protovis/ex/caltrain.html", "take": "Distance against time, with speed as slope. A whole timetable on one pair of axes."}, {"g": "7 · Shared axes", "st": "v", "who": "Bertin; Perin, Dragicevic, Fekete", "work": "The reorderable matrix; Bertifier, IEEE VIS 2014", "url": "https://aviz.fr/bertifier", "take": "Encode each cell, then reorder rows and columns until structure appears."}, {"g": "7 · Shared axes", "st": "v", "who": "Becker, Cleveland, Shyu", "work": "The visual design and control of Trellis display, JCGS 1996", "url": "https://www.semanticscholar.org/paper/The-Visual-Design-and-Control-of-Trellis-Display-Becker-Cleveland/319c6098f7f94cf24c5c637b718e721449fd4a70", "take": "Panels conditioned on a variable, laid out in rows and columns with shared scales."}, {"g": "7 · Shared axes", "st": "v", "who": "Javed, McDonnel, Elmqvist", "work": "Graphical perception of multiple time series, IEEE TVCG 2010", "url": "https://www.semanticscholar.org/paper/Graphical-Perception-of-Multiple-Time-Series-Javed-McDonnel/27493372f4581c3a0ef87a3242ce4ba123d451ff", "take": "Separate small charts were generally more efficient than one shared chart for comparisons across many series."}, {"g": "7 · Shared axes", "st": "v", "who": "Stolte, Tang, Hanrahan", "work": "Polaris, IEEE TVCG 2002", "url": "", "take": "A table algebra that nests small charts by dimension. The research behind Tableau."}, {"g": "7 · Shared axes", "st": "v", "who": "ECMWF", "work": "Ensemble meteograms, Forecast User Guide 8.1.4", "url": "https://confluence.ecmwf.int/display/FUG/Section+8.1.4+Meteograms", "take": "Several weather parameters stacked on one time axis, each drawn as box-and-whisker steps."}, {"g": "7 · Shared axes", "st": "v", "who": "Merchandise planning", "work": "WSSI: weekly sales, stock and intake", "url": "https://www.stylearcade.com/blog/what-is-a-wssi-the-complete-fashion-retail-guide-to-weekly-sales-stock-and-intake", "take": "The planner’s native grid. Weeks across; sales, stock and intake down; open-to-buy as its result."}, {"g": "7 · Shared axes", "st": "v", "who": "Woods", "work": "Visual momentum, International Journal of Man-Machine Studies, 1984", "url": "https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7", "take": "How to keep a reader oriented across many displays: an overview, landmarks, overlap and fixed positions."}, {"g": "7 · Shared axes", "st": "v", "who": "Wang Baldonado, Woodruff, Kuchinsky", "work": "Guidelines for using multiple views in information visualization, AVI 2000", "url": "https://www.semanticscholar.org/paper/Guidelines-for-using-multiple-views-in-information-Baldonado-Woodruff/631b8ecb91442fecb78cb12f620cbe38d981eac8", "take": "Eight rules, including parsimony: add a view only when it earns its cost."}, {"g": "7 · Shared axes", "st": "v", "who": "Gleicher and colleagues", "work": "Visual comparison for information visualization, 2011", "url": "https://graphics.cs.wisc.edu/Papers/2011/GAWJHR11/paper.pdf", "take": "Every comparison is built from juxtaposition, superposition or an explicit encoding of the difference."}, {"g": "8 · Tables", "st": "v", "who": "Bartram, Correll, Tory", "work": "Untidy data: the unreasonable effectiveness of tables, IEEE TVCG 2022", "url": "https://www.tableau.com/blog/defense-untidy-data-table", "take": "Data workers want to see and touch the table throughout analysis. Tables are a visualization idiom in their own right."}, {"g": "8 · Tables", "st": "v", "who": "Ehrenberg", "work": "Rudiments of numeracy, Journal of the Royal Statistical Society A, 1977", "url": "https://www.jstor.org/stable/2344922", "take": "The classic paper on numeric tables: round hard, order rows by size, and put figures to be compared in columns."}, {"g": "8 · Tables", "st": "v", "who": "Schwabish", "work": "Ten guidelines for better tables, Journal of Benefit-Cost Analysis, 2020", "url": "https://www.cambridge.org/core/journals/journal-of-benefit-cost-analysis/article/abs/ten-guidelines-for-better-tables/74C6FD9FEB12038A52A95B9FBCA05A12", "take": "A modern checklist: right-align numbers, show units sparingly, lighten the rules."}, {"g": "8 · Tables", "st": "v", "who": "Bringhurst; Tschichold", "work": "Table rules, as summarised by Rutter, 2017", "url": "https://alistapart.com/article/web-typography-tables/", "take": "Set tables as text to be read, keep furniture to a minimum, avoid vertical rules."}, {"g": "8 · Tables", "st": "v", "who": "Rao, Card", "work": "The Table Lens, CHI 1994", "url": "https://www.semanticscholar.org/paper/The-table-lens:-merging-graphical-and-symbolic-in-+-Rao-Card/f76f162f6b158b58e5db91280c3740a13111d7dd", "take": "A table whose cells become small bars, with rows that open to text on focus. The origin of the in-cell bar."}, {"g": "8 · Tables", "st": "v", "who": "Gratzl, Lex, Gehlenborg, Pfister, Streit", "work": "LineUp, IEEE InfoVis 2013", "url": "https://jku-vds-lab.at/publications/2013_infovis_lineup/", "take": "Ranks items on several weighted attributes with stacked bars inside a table."}, {"g": "8 · Tables", "st": "v", "who": "Sutnar, Lönberg-Holm", "work": "Catalog Design Progress, 1950", "url": "https://www.moma.org/collection/works/129023", "take": "Product information designed as function, flow and form. The classic on structuring commercial data for fast lookup."}, {"g": "8 · Tables", "st": "v", "who": "Crouwel, van de Wouw", "work": "Dutch telephone directory, 1977", "url": "https://www.martinmajoor.com/2.2_telefont_article_eye.html", "take": "Condensed Univers, lower case only, numbers placed before names so no leader dots were needed."}, {"g": "8 · Tables", "st": "v", "who": "Twyman", "work": "A schema for the study of graphic language, 1979", "url": "https://link.springer.com/chapter/10.1007/978-1-4684-0994-9_8", "take": "Classifies graphic language by configuration, including list, matrix and branching. Useful vocabulary for deciding what a view is."}, {"g": "9 · Type for figures", "st": "v", "who": "Carter", "work": "Bell Centennial, 1975–78", "url": "https://en.wikipedia.org/wiki/Bell_Centennial", "take": "Drawn for telephone directories printed fast on poor paper."}, {"g": "9 · Type for figures", "st": "v", "who": "Frere-Jones", "work": "Retina, 1999", "url": "https://www.moma.org/collection/works/139302", "take": "Drawn for Wall Street Journal stock listings at very small sizes, now in the MoMA collection. Type as an instrument for dense figures."}, {"g": "9 · Type for figures", "st": "v", "who": "Frutiger", "work": "Univers, 1957", "url": "https://en.wikipedia.org/wiki/Adrian_Frutiger", "take": "Twenty-one variants named by a two-digit code for weight and width. The first family designed as a programme."}, {"g": "9 · Type for figures", "st": "v", "who": "Type Network, Google", "work": "Roboto Flex and the grade axis", "url": "https://fonts.google.com/specimen/Roboto+Flex", "take": "Grade changes apparent weight without changing width. Useful in dark mode, where light text looks heavier."}, {"g": "9 · Type for figures", "st": "v", "who": "Instrument", "work": "Instrument Sans", "url": "https://github.com/Instrument/instrument-sans", "take": "An open variable family with a 75 to 100 width axis and tabular figures. The sans used on this page."}, {"g": "10 · Uncertainty", "st": "v", "who": "Britton, Fisher, Whitley", "work": "The Inflation Report projections: understanding the fan chart, Bank of England, 1998", "url": "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/1998/the-inflation-report-projections-understanding-the-fan-chart.pdf", "take": "The fan chart, first published in February 1996, shows a forecast as nested probability bands in place of a line with bounds."}, {"g": "10 · Uncertainty", "st": "v", "who": "Kay, Kola, Hullman, Munson", "work": "When (ish) is My Bus?, CHI 2016", "url": "https://mucollective.northwestern.edu/project/when-ish-is-my-bus", "take": "Introduced quantile dotplots: a distribution as about twenty countable dots. Readers estimated probabilities more consistently than from density curves."}, {"g": "10 · Uncertainty", "st": "v", "who": "Fernandes, Walls, Munson, Hullman, Kay", "work": "Uncertainty displays using quantile dotplots or CDFs improve transit decision-making, CHI 2018", "url": "https://dl.acm.org/doi/10.1145/3173574.3173718", "take": "Decision quality, measured. Dotplots and cumulative curves beat intervals and point estimates."}, {"g": "10 · Uncertainty", "st": "v", "who": "Hullman, Resnick, Adar", "work": "Hypothetical outcome plots, PLOS ONE 2015", "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0142444", "take": "Animated draws from a distribution outperformed error bars and violins for judging which of two quantities is larger."}, {"g": "10 · Uncertainty", "st": "v", "who": "Correll, Gleicher", "work": "Error bars considered harmful, IEEE TVCG 2014", "url": "https://graphics.cs.wisc.edu/Papers/2014/CG14/Preprint.pdf", "take": "Bars with whiskers make values inside the bar look likelier than values outside it."}, {"g": "10 · Uncertainty", "st": "v", "who": "Joslyn, LeClerc", "work": "Uncertainty forecasts improve weather-related decisions, Journal of Experimental Psychology: Applied, 2012", "url": "https://eric.ed.gov/?id=EJ968865", "take": "Showing uncertainty improved decisions and softened the effect of a forecast that missed."}, {"g": "10 · Uncertainty", "st": "v", "who": "Padilla, Kay, Hullman", "work": "Uncertainty visualization, handbook chapter, 2022", "url": "http://space.ucmerced.edu/Downloads/publications/Uncertainty_Visualization_Padilla_Kay_Hullman_2022.pdf", "take": "The best single review: the techniques, the psychology behind each, and frequency framing."}, {"g": "10 · Uncertainty", "st": "k", "who": "Savage", "work": "The Flaw of Averages, 2009", "url": "", "take": "Plans built on average demand are wrong on average. An argument for planning against a distribution once one exists."}, {"g": "11 · Controls", "st": "k", "who": "Shneiderman", "work": "Dynamic queries for visual information seeking, IEEE Software, 1994", "url": "", "take": "Visible controls, small reversible changes, and a display that answers at once."}, {"g": "11 · Controls", "st": "v", "who": "Victor", "work": "Explorable Explanations, 2011", "url": "https://worrydream.com/ExplorableExplanations/", "take": "Reactive documents: a number in a sentence can be dragged, and the text recomputes."}, {"g": "11 · Controls", "st": "v", "who": "Bostock, Carter, Tse", "work": "Is It Better to Rent or Buy?, The New York Times, 2014", "url": "https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html", "take": "Each slider sits on a small chart of the outcome across the whole range of that input."}, {"g": "11 · Controls", "st": "v", "who": "Sedlmair, Heinzl, Bruckner, Piringer, Möller", "work": "Visual parameter space analysis, IEEE TVCG 2014", "url": "https://vis.uib.no/publications/Sedlmair-2014-VPS/", "take": "A framework for exploring model inputs and outputs: a data flow, four navigation strategies and six tasks."}, {"g": "11 · Controls", "st": "v", "who": "Howard", "work": "Decision analysis: practice and promise, Management Science, 1988", "url": "", "take": "The likely origin of the tornado diagram: one-way sensitivities sorted by swing. A form for ranking assumptions by their effect on a result."}, {"g": "11 · Controls", "st": "v", "who": "Fildes, Goodwin, Lawrence, Nikolopoulos", "work": "Effective forecasting and judgmental adjustments, International Journal of Forecasting, 2009", "url": "https://eprints.lancs.ac.uk/id/eprint/45487/", "take": "Small overrides tended to hurt accuracy, large reasoned ones helped, and adjustments leaned optimistic."}, {"g": "11 · Controls", "st": "v", "who": "Gilliland", "work": "Forecast value added: a reality check, Foresight, 2013", "url": "https://forecasters.org/wp-content/uploads/FVA_A-Reality-Check_Foresight29.pdf", "take": "Compare each step of the process with a naive forecast. The stairstep report shows where review adds or removes value."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Fildes, Ma, Kolassa", "work": "Retail forecasting: research and practice, International Journal of Forecasting, 2022", "url": "https://ideas.repec.org/a/eee/intfor/v38y2022i4p1283-1318.html", "take": "The standard review of retail forecasting, from strategic decisions down to store and item."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Fisher, Hammond, Obermeyer, Raman", "work": "Making supply meet demand in an uncertain world, Harvard Business Review, 1994", "url": "https://hbr.org/1994/05/making-supply-meet-demand-in-an-uncertain-world", "take": "Sport Obermeyer, a skiwear maker, planned its buying around how uncertain each style’s demand was."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Kolassa, Rostami-Tabar, Siemsen", "work": "Demand Forecasting for Executives and Professionals, 2023", "url": "https://dfep.netlify.app/", "take": "A current, readable text with an online edition."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Vandeput", "work": "Demand Forecasting Best Practices, 2023", "url": "https://www.oreilly.com/library/view/demand-forecasting-best/9781633438095/", "take": "Practical guidance on metrics: track bias and absolute error together and avoid MAPE."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Syntetos, Boylan, Croston", "work": "On the categorization of demand patterns, Journal of the Operational Research Society, 2005", "url": "https://eprints.lancs.ac.uk/id/eprint/73095/", "take": "Classes items as smooth, erratic, intermittent or lumpy from two statistics, with cut-offs at 1.32 and 0.49."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Wickramasuriya, Athanasopoulos, Hyndman", "work": "Optimal forecast reconciliation through trace minimization, JASA, 2019", "url": "https://robjhyndman.com/publications/mint/", "take": "Forecasts at item, category and total level can be made to add up."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Makridakis, Spiliotis, Assimakopoulos", "work": "The M5 accuracy competition, International Journal of Forecasting, 2022", "url": "https://www.sciencedirect.com/science/article/pii/S0169207021001874", "take": "42,840 hierarchical Walmart series with many zeros. Evidence on what works for intermittent retail demand."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Ferreira, Lee, Simchi-Levi", "work": "Analytics for an online retailer, Manufacturing and Service Operations Management, 2016", "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=49523", "take": "Demand forecasting and price optimisation at Rue La La, an online fashion retailer, with a measured revenue effect."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Caro, Gallien", "work": "Clearance pricing optimization for a fast-fashion retailer, Operations Research, 2012", "url": "https://pubsonline.informs.org/doi/abs/10.1287/opre.1120.1102", "take": "Zara’s markdown process, tested in a field experiment."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Operations research", "work": "The newsvendor critical ratio", "url": "https://en.wikipedia.org/wiki/Newsvendor_model", "take": "For a single buy before a season, the best service level is the underage cost over the sum of underage and overage cost. A principled source for a cover target."}, {"g": "Further reading · forecasting and retail practice", "st": "v", "who": "Vermorel, Lokad", "work": "Prioritized ordering", "url": "https://www.lokad.com/prioritized-ordering-definition/", "take": "Rank every possible purchase unit by expected economic return and buy down the list until the budget is spent. An alternative to item-by-item alerts."}, {"g": "Further reading · forecasting and retail practice", "st": "k", "who": "Forrester; Sterman", "work": "Industrial Dynamics, 1961; Business Dynamics, 2000", "url": "", "take": "Stock-and-flow notation. Inventory is a stock; sales and receipts are flows."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Sarikaya, Correll, Bartram, Tory, Fisher", "work": "What do we talk about when we talk about dashboards?, IEEE TVCG 2019", "url": "https://alper.datav.is/publications/dashboards/", "take": "A design space and typology of dashboards, built from a survey of the kinds in use."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Bach, Freeman, Abdul-Rahman, Turkay, Khan, Fan, Chen", "work": "Dashboard design patterns, IEEE TVCG 2023", "url": "https://arxiv.org/pdf/2205.00757", "take": "Forty-two patterns for content and composition, with the trade-offs between screen space, paging and abstraction."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Franconeri, Padilla, Shah, Zacks, Hullman", "work": "The science of visual data communication: what works, PSPI 2021", "url": "https://doi.org/10.1177/15291006211051956", "take": "The most complete review of what is known to work, written for practitioners."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Kong, Agrawala", "work": "Graphical overlays, IEEE TVCG 2012", "url": "https://www.semanticscholar.org/paper/Graphical-Overlays:-Using-Layered-Elements-to-Aid-Kong-Agrawala/50fc6e1002d365c21fb6d372f76b332b04e26af3", "take": "Five kinds of layered aid: reference structures, highlights, redundant encodings, summary statistics and annotations."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Stokes, Setlur, Cogley, Satyanarayan, Hearst", "work": "Striking a balance, IEEE TVCG 2022", "url": "https://arxiv.org/abs/2208.01780", "take": "Readers preferred charts with text over charts alone. Put words at the mark."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Heer, Kong, Agrawala", "work": "Sizing the horizon, CHI 2009", "url": "http://vis.stanford.edu/papers/horizon", "take": "Horizon graphs keep a time series readable at small heights, with measured limits on how small."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Ström-Awn", "work": "UI Density, 2024", "url": "https://mattstromawn.com/writing/ui-density/", "take": "Density is the value delivered per unit of space and time, with visual, information and temporal components."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Bateman and colleagues; Inbar, Tractinsky, Meyer", "work": "Useful junk?, CHI 2010; Minimalism in information visualization, 2007", "url": "https://dl.acm.org/doi/10.1145/1753326.1753716", "take": "Counter-evidence to strict minimalism. Embellished charts were recalled better, and people did not prefer the most reduced bar chart."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Kinross", "work": "The rhetoric of neutrality, Design Issues, 1985", "url": "https://www.jstor.org/stable/i267274", "take": "Even a railway timetable persuades. A calm analytical style is a rhetorical choice and should be owned as one."}, {"g": "Further reading · dashboards and evidence", "st": "v", "who": "Setlur, Cogley", "work": "Functional Aesthetics for Data Visualization, 2022", "url": "https://www.wiley.com/en-us/Functional+Aesthetics+for+Data+Visualization-p-9781119810070", "take": "Perception, semantics and intent treated together."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Apple", "work": "Weather, iOS 15, 2021", "url": "https://www.macrumors.com/guide/ios-15-weather-app/", "take": "A page of rounded modules, each a small purpose-built instrument: a UV bar, a pressure dial, a wind compass."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Apple", "work": "Design an effective chart; Design app experiences with charts, WWDC 2022", "url": "https://developer.apple.com/videos/play/wwdc2022/110340/", "take": "Two clear talks on marks, axes, annotation and how charts work together as a system."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Avalanche Canada", "work": "Public avalanche forecast", "url": "https://avalanche.ca/", "take": "Danger ratings for three elevation bands over three days. A compact forecast matrix written for a wide public."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Bayer", "work": "World Geo-Graphic Atlas, 1953", "url": "https://thebayercenter.org/exhibitions/concept-of-a-visualist-herbert-bayers-world-geo-graphic-atlas/", "take": "Maps, sections, charts and symbols composed spread by spread. A landmark of layered, nested information graphics."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Felton", "work": "Feltron Annual Reports, 2005–2014", "url": "https://en.wikipedia.org/wiki/Nicholas_Felton_(graphic_designer)", "take": "Ten years of dense, precise personal data graphics. A study in typographic rigour at small sizes."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Lupi, Accurat", "work": "Visualizations for La Lettura", "url": "https://medium.com/accurat-in-sight/the-architecture-of-a-data-visualization-470b807799b4", "take": "Multi-layered compositions with a main structure and secondary detail lightened behind it."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Wattenberg", "work": "Map of the Market, SmartMoney, 1998", "url": "https://www.bewitched.com/marketmap.html", "take": "An early treemap on the web: nested sectors, area for size, colour for change."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Neurath, Reidemeister, Arntz", "work": "Isotype", "url": "https://isotyperevisited.org/", "take": "Show more by repeating a sign, never by enlarging it."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Causal; Kinaxis", "work": "Scenario tools", "url": "https://www.causal.app/", "take": "Causal lets an input be a range and simulates outcomes. Kinaxis compares sandboxed scenarios side by side. Both are vendor descriptions."}, {"g": "Further reading · works to study whole", "st": "v", "who": "Design Tokens Community Group", "work": "Format specification 2025.10", "url": "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/", "take": "The first stable, vendor-neutral token format, with theming and modern colour spaces."}];
+function srcList(){
+  let h='',g=null;
+  SOURCES.forEach(r=>{
+    if(r.g!==g){ if(g!==null) h+='</ul>'; g=r.g; h+=`<h3 class="group">${g}</h3><ul class="refs">`; }
+    h+=`<li>${r.st==='k'?'<span title="Cited from prior knowledge, not re-checked">○ </span>':''}<b>${r.who}</b> · ${r.url?`<a href="${r.url}">${r.work}</a>`:r.work}${r.take?`<p>${r.take}</p>`:''}</li>`;
+  });
+  return h+'</ul>';
+}
+
+/* scale fixed-size mockups to the width available */
+function fitAll(){$$('.fit').forEach(f=>{const inner=f.firstElementChild,W=+f.dataset.w,min=+f.dataset.min||0; inner.style.width=W+'px';
+  if(f.classList.contains('actual')){f.style.height='';f.style.overflowX='';inner.style.transform='';return;}
+  const s=Math.max(min,Math.min(1,f.clientWidth/W)),scroll=s*W>f.clientWidth+1;
+  inner.style.transform=`scale(${s})`; f.style.height=(inner.offsetHeight*s+(scroll?12:0))+'px'; f.style.overflowX=scroll?'auto':''; f.style.overflowY='hidden';});}
+
+/* ---------- mount ---------- */
+const state={early:false},B=$('#board');
+function renderBoard(){B.innerHTML=board(state.early?P1:P0);fitAll();}
+B.addEventListener('click',e=>{const b=e.target.closest('[data-plan]'); if(!b) return; state.early=b.dataset.plan==='1'; renderBoard(); const f=$(`[data-plan="${b.dataset.plan}"]`,B); if(f) f.focus();});
+B.addEventListener('input',e=>{
+  if(e.target.id==='md-d'){MD.d=+e.target.value;$('#md-do',B).textContent=MD.d+'%';}
+  else if(e.target.id==='md-u'){MD.u=+e.target.value;$('#md-uo',B).textContent=MD.u;}
+  else return;
+  $('#md-plot',B).innerHTML=mdPlot(); $('#md-out',B).innerHTML=mdOut();
+});
+trace(B);
+$('#actual').addEventListener('click',e=>{const f=$('#fit-board'),on=f.classList.toggle('actual'); e.currentTarget.setAttribute('aria-pressed',on); e.currentTarget.textContent=on?'Fit to width':'Show at actual size'; fitAll();});
+
+const ok=(a,b)=>Math.abs(a-b)<0.05,good=ok(P0.served,276.8)&&ok(P0.gp,120.8)&&ok(P0.otb,57.0)&&ok(P1.served,294.4)&&ok(P1.gp,128.8)&&ok(P1.otb,66.6);
+$('#recon').innerHTML=good?`<b>A four-week plan for five categories, on synthetic data.</b> Every figure is computed in the page. The two plans give sales of ${f1(P0.served)} and ${f1(P1.served)}, gross profit of ${f1(P0.gp)} and ${f1(P1.gp)}, and open-to-buy of ${f1(P0.otb)} and ${f1(P1.otb)}.`:`<b>The example failed its own reconciliation.</b>`;
+
+renderBoard();
+[['#demo-programme',demoProgramme],['#demo-instrument',demoInstrument],['#demo-xmr',demoXmr],['#demo-bridge',demoBridge],['#demo-surfaces',demoSurfaces],['#demo-notation',demoNotation],['#demo-axis',demoAxis],['#demo-table',demoTable],['#demo-type',demoType],['#demo-uncertainty',demoUncertainty],['#demo-control',demoControl],['#demo-tune',demoTune]]
+  .forEach(([sel,fn])=>{const el=$(sel); if(!el) return; try{fn(el);}catch(err){el.innerHTML='<p class="status">This figure could not be drawn.</p>';console.error(sel,err);}});
+$('#fig-note').innerHTML=figNote();
+{const cb=$('#copy-tokens'); if(cb) cb.addEventListener('click',()=>{const t=$('#tokens').textContent,done=ok=>{cb.textContent=ok?'Copied':'Select the block to copy';setTimeout(()=>cb.textContent='Copy tokens',1800);};
+  if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(()=>done(true),()=>done(false)); else done(false);});}
+$('#srclist').innerHTML=srcList();
+let raf=0;new ResizeObserver(()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(fitAll);}).observe(document.body);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitAll);
+window.__guide={P0,P1};
+})();
+</script>
+
+</body>
+</html>

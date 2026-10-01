@@ -88,12 +88,12 @@ export const en = {
         cta: 'Read the report',
       },
       {
-        slug: 'altitude-design-guide',
+        slug: 'dashboard-design-guide',
         field: 'Design research',
-        title: 'Planning dashboard design guide',
-        context: 'Independent case study · synthetic data',
-        note: 'A checked literature of about ninety sources and a proposed grid and visual system for a retail demand-planning dashboard.',
-        href: '/projects/altitude-design-guide/',
+        title: 'A design guide for planning dashboards',
+        context: 'Eleven rules · worked example on synthetic data',
+        note: 'How to draw a plan so its arithmetic can be read: eleven rules, the sources behind each one, and a small model to play with for every rule.',
+        href: '/projects/dashboard-design-guide/',
         cta: 'Read the guide',
       },
       {
