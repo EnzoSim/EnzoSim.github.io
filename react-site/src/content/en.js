@@ -88,6 +88,15 @@ export const en = {
         cta: 'Read the report',
       },
       {
+        slug: 'altitude-design-guide',
+        field: 'Design research',
+        title: 'Planning dashboard design guide',
+        context: 'Independent case study · synthetic data',
+        note: 'A checked literature of about ninety sources and a proposed grid and visual system for a retail demand-planning dashboard.',
+        href: '/projects/altitude-design-guide/',
+        cta: 'Read the guide',
+      },
+      {
         slug: 'fda-catalyst',
         field: 'Markets',
         title: 'FDA Catalyst',
