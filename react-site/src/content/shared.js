@@ -11,16 +11,6 @@ export const linkedinUrl = 'https://linkedin.com/in/enzo-simier'
 export const contactEmail = 'enzo.simier@hec.ca'
 export const cvUrl = '/Enzo_Simier_CV.pdf'
 
-// Poseidon network model: an unlisted page (no link from the site, not in the
-// sitemap, noindex), shared by direct link. The dashboard runs on Railway; the
-// note is a static file committed at /poseidon/ in the repository root.
-export const poseidonDashboardUrl = 'https://dashboard-production-f0ed7.up.railway.app'
-// The source repository is private for now: no link until it is public
-// ('https://github.com/EnzoSim/poseidon-network-model').
-export const poseidonRepoUrl = null
-export const poseidonNoteUrl = '/poseidon/Enzo-Simier-Poseidon-market-note.pdf'
-export const poseidonNoteFilename = 'Enzo-Simier-Poseidon-market-note.pdf'
-
 // The Tremblant portrait is exported as a square crop, centred on the subject,
 // at two responsive sizes.
 export const portrait = {

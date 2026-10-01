@@ -30,11 +30,6 @@ export const en = {
       title: 'FDA Catalyst · Enzo Simier',
       description: `A live 90-day biotech catalyst view: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, and ${fdaSnapshot.pdufa} PDUFA decisions.`,
     },
-    poseidon: {
-      title: 'Poseidon network model · Enzo Simier',
-      description:
-        'A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia, with a live dashboard and a market note.',
-    },
   },
   a11y: {
     primaryNavigation: 'Primary navigation',
@@ -281,26 +276,6 @@ export const en = {
   },
   footer: {
     note: '© 2026 Enzo Simier',
-  },
-  poseidon: {
-    title: 'Poseidon network model',
-    lede: 'A route and pricing model for Poseidon Aerospace’s uncrewed cargo aircraft, applied to Nunavik and French Polynesia.',
-    noteCta: 'Download the market note',
-    sourceCta: 'Source on GitHub',
-    model: {
-      title: 'The model',
-      rows: [
-        ['Markets', 'Nunavik from Montréal, and French Polynesia from Tahiti.'],
-        ['Aircraft', 'The Egret land plane and the Heron seaplane.'],
-        ['Outputs', 'Routes, weekly flights, fleet, NPV, IRR, payback, and break-even price.'],
-        ['Inputs', 'Each input is either sourced or labelled as an assumption you can change in the dashboard.'],
-      ],
-    },
-    dashboard: {
-      title: 'Live dashboard',
-      openCta: 'Open full screen',
-      frameTitle: 'Poseidon network model dashboard',
-    },
   },
   project: {
     kicker: 'FDA Catalyst',

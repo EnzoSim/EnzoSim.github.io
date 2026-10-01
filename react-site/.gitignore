@@ -15,9 +15,6 @@ dist-ssr
 # dev-only mirror of /cafes.json (repo root is canonical, served by Pages)
 cafes.json
 
-# dev-only mirror of /poseidon/Enzo-Simier-Poseidon-market-note.pdf (repo root is canonical)
-poseidon/*.pdf
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

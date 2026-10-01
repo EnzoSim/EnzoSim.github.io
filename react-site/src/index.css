@@ -156,8 +156,7 @@ img {
   font-size: 0.91rem;
 }
 
-[data-icon="external"],
-[data-icon="download"] {
+[data-icon="external"] {
   width: 0.78rem;
   height: 0.78rem;
   flex: 0 0 auto;
@@ -405,96 +404,6 @@ p {
   font-weight: 540;
 }
 
-.detail-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.35rem;
-}
-
-.text-action {
-  display: inline-flex;
-  min-height: 2.65rem;
-  align-items: center;
-  gap: 0.28rem;
-  font-size: 0.88rem;
-  font-weight: 540;
-}
-
-/* Wide pages: the rail and the intro share the first row, then one block
-   (an embedded app) spans the full layout width. Both rows stay in <main>. */
-.profile-layout-wide {
-  row-gap: 3rem;
-}
-
-/* Not sticky here: it would slide over the full-width row. Relative keeps it
-   above <main>, whose subgrid box also covers the rail's cell. */
-.profile-layout-wide > .profile-rail {
-  position: relative;
-  top: 0;
-  z-index: 1;
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.wide-main {
-  display: grid;
-  min-width: 0;
-  grid-column: 1 / -1;
-  grid-row: 1 / span 2;
-  grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
-}
-
-.wide-main-intro {
-  min-width: 0;
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.wide-main-intro > :last-child {
-  margin-bottom: 0;
-}
-
-.wide-main-full {
-  min-width: 0;
-  grid-column: 1 / -1;
-  grid-row: 2;
-}
-
-.profile-layout-wide > .site-footer {
-  margin-top: 0.75rem;
-  grid-column: 1 / -1;
-  grid-row: 3;
-}
-
-.dashboard-embed-header {
-  display: flex;
-  margin-bottom: 0.7rem;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0 1rem;
-}
-
-.dashboard-embed-header h2 {
-  margin-bottom: 0;
-}
-
-.dashboard-frame {
-  overflow: hidden;
-  background: #e7ebf1;
-  border: 1px solid var(--line);
-}
-
-/* Until the dashboard reports its height, the frame keeps the board's shape. */
-.dashboard-frame iframe {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1440 / 1656;
-  border: 0;
-}
-
 .data-table-wrap {
   margin-top: 1.25rem;
   overflow-x: auto;
@@ -586,31 +495,6 @@ a:focus-visible {
   .content-column {
     max-width: none;
   }
-
-  .profile-layout-wide {
-    row-gap: 3.5rem;
-  }
-
-  .profile-layout-wide > .profile-rail,
-  .wide-main,
-  .wide-main-intro,
-  .wide-main-full,
-  .profile-layout-wide > .site-footer {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .wide-main {
-    display: block;
-  }
-
-  .wide-main-full {
-    margin-top: 2.4rem;
-  }
-
-  .profile-layout-wide > .site-footer {
-    margin-top: 0.25rem;
-  }
 }
 
 @media (max-width: 35rem) {
@@ -660,19 +544,6 @@ a:focus-visible {
 
   .site-footer {
     margin-top: 3rem;
-  }
-
-  .profile-layout-wide {
-    row-gap: 2.25rem;
-  }
-
-  .profile-layout-wide > .site-footer {
-    margin-top: 0.75rem;
-  }
-
-  .dashboard-frame {
-    margin-inline: -1rem;
-    border-inline: 0;
   }
 }
 
