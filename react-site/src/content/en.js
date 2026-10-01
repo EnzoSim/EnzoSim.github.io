@@ -4,8 +4,6 @@ import {
   fdaLiveUrl,
   fdaSnapshot,
   linkedinUrl,
-  poseidonPath,
-  poseidonRepoUrl,
   wikiLiveUrl,
   wikiRepoUrl,
 } from './shared'
@@ -26,7 +24,7 @@ export const en = {
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'Applied-economics research, an air cargo route and pricing model, comparative equity work, a biotech catalyst calendar, and a public working library.',
+        'Applied-economics research, comparative equity work, a biotech catalyst calendar, and a public working library.',
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
@@ -84,17 +82,6 @@ export const en = {
         note: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
         href: null,
         cta: null,
-      },
-      {
-        slug: 'poseidon',
-        field: 'Air cargo',
-        title: 'Poseidon network model',
-        context: 'Python, JavaScript, Railway',
-        note: 'Routes, prices, and payback for Poseidon Aerospace’s uncrewed cargo aircraft in Nunavik and French Polynesia.',
-        href: poseidonPath,
-        cta: 'Open the model',
-        sourceHref: poseidonRepoUrl,
-        sourceCta: 'Source',
       },
       {
         slug: 'energy-scarcity',
