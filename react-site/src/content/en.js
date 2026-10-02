@@ -60,7 +60,7 @@ export const en = {
       items: [
         { label: 'Studying', text: 'M.Sc. in applied economics at HEC Montréal, finishing in December 2026.' },
         { label: 'Research', text: 'Water pricing and metering for Réseau Environnement, with the cities of Laval and Longueuil.' },
-        { label: 'Open to', text: 'Pricing, demand planning and revenue management roles in Montréal.' },
+        { label: 'Open to', text: 'Pricing, demand planning and revenue management roles in Montréal, from airlines to retail.' },
       ],
     },
     aboutTitle: 'About me',
