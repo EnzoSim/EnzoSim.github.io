@@ -261,11 +261,6 @@ export const en = {
         date: 'Since Jun 2025',
       },
       {
-        role: 'Analyst, Corporate Business Analysis',
-        org: 'Desjardins',
-        date: 'Apr–Jul 2026',
-      },
-      {
         role: 'Intern, Regulated Industries',
         org: 'Competition Bureau',
         date: 'May–Aug 2025',
