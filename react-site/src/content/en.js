@@ -90,9 +90,9 @@ export const en = {
       {
         slug: 'dashboard-design-guide',
         field: 'Design research',
-        title: 'A design guide for planning dashboards',
-        context: 'Eleven rules · worked example on synthetic data',
-        note: 'How to draw a plan so its arithmetic can be read: eleven rules, the sources behind each one, and a small model to play with for every rule.',
+        title: 'Learn dashboard design with me',
+        context: 'A study guide · worked example on sample data',
+        note: 'The people who worked out how to draw a plan and what they did, twelve rules with their sources, works to open, and a small model to play with for every rule.',
         href: '/projects/dashboard-design-guide/',
         cta: 'Read the guide',
       },
