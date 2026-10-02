@@ -195,24 +195,32 @@ function RecordList({ items }) {
   )
 }
 
+function NowList() {
+  return (
+    <dl className="now-list">
+      {t.home.now.items.map((item) => (
+        <div key={item.label}>
+          <dt>{item.label}</dt>
+          <dd>{item.text}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
 function AboutPage() {
+  // Work first: what Enzo does now, then the projects and record; the personal note closes the page.
   return (
     <Shell activeRoute="about">
-      <section className="content-section" aria-labelledby="about-title">
-        <h1 id="about-title">About me</h1>
-        <p>{t.home.personal}</p>
-      </section>
-
       <section className="content-section" aria-labelledby="now-title">
-        <h2 id="now-title">{t.home.now.label}</h2>
-        <p>{t.home.now.text}</p>
-        <p className="now-availability">{t.home.now.availability}</p>
+        <h1 id="now-title">{t.home.now.label}</h1>
+        <NowList />
       </section>
 
       <section className="content-section" aria-labelledby="selected-title">
         <h2 id="selected-title">Selected projects</h2>
         <div className="prose-list">
-          {t.projects.items.map((project) => (
+          {t.projects.items.filter((project) => project.home !== false).map((project) => (
             <ProjectItem key={project.slug} project={project} />
           ))}
         </div>
@@ -226,6 +234,11 @@ function AboutPage() {
       <section className="content-section" id="education" aria-labelledby="education-title">
         <h2 id="education-title">{t.education.title}</h2>
         <RecordList items={t.education.items} />
+      </section>
+
+      <section className="content-section" id="about" aria-labelledby="about-title">
+        <h2 id="about-title">{t.home.aboutTitle}</h2>
+        <p>{t.home.personal}</p>
       </section>
     </Shell>
   )

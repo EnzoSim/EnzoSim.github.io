@@ -14,7 +14,7 @@ export const en = {
     about: {
       title: 'Enzo Simier · Applied Economist',
       description:
-        'Applied economist in Montréal. Thesis on volumetric water pricing in Québec.',
+        'Applied economist in Montréal: pricing, demand and decision tools. M.Sc. at HEC Montréal, research on water pricing with Réseau Environnement.',
     },
     reading: {
       title: 'Reading · Enzo Simier',
@@ -28,7 +28,7 @@ export const en = {
     },
     project: {
       title: 'FDA Catalyst · Enzo Simier',
-      description: `A live 90-day biotech catalyst view: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, and ${fdaSnapshot.pdufa} PDUFA decisions.`,
+      description: `A 90-day biotech catalyst calendar. Snapshot of ${fdaSnapshot.asOf}: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, and ${fdaSnapshot.pdufa} PDUFA decisions.`,
     },
   },
   a11y: {
@@ -54,11 +54,16 @@ export const en = {
       city: 'Montréal',
       coords: '45.50°N 73.57°W',
     },
+    // What Enzo is doing now, one line each. The last line is the availability recruiters look for.
     now: {
       label: 'Now',
-      text: 'Finishing a thesis on volumetric water pricing in Québec, with Réseau Environnement.',
-      availability: 'Open to pricing and revenue management roles in the airline industry.',
+      items: [
+        { label: 'Studying', text: 'M.Sc. in applied economics at HEC Montréal, finishing in December 2026.' },
+        { label: 'Research', text: 'Water pricing and metering for Réseau Environnement, with the cities of Laval and Longueuil.' },
+        { label: 'Open to', text: 'Pricing, demand planning and revenue management roles in Montréal.' },
+      ],
     },
+    aboutTitle: 'About me',
     contacts: [
       { label: 'CV', href: cvUrl, external: false },
       { label: 'LinkedIn', href: linkedinUrl, external: true },
@@ -101,17 +106,18 @@ export const en = {
         field: 'Markets',
         title: 'FDA Catalyst',
         context: 'FastAPI, Railway Postgres, React',
-        note: `Live 90-day view: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, ${fdaSnapshot.pdufa} PDUFA decisions.`,
+        note: `A 90-day calendar of biotech catalysts. Snapshot of ${fdaSnapshot.asOf}: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, ${fdaSnapshot.pdufa} PDUFA decisions.`,
         href: '/fda-catalyst.html',
         cta: 'Case study',
-        liveCta: 'Live calendar',
+        liveCta: 'Open the calendar',
       },
       {
         slug: 'wiki-project',
         field: 'Knowledge',
         title: 'Wiki',
         context: 'Next.js, Railway, Supabase',
-        note: 'A public working library.',
+        note: 'A searchable glossary of terms from economics, geopolitics and reading, sorted by theme.',
+        home: false,
         href: wikiLiveUrl,
         sourceHref: wikiRepoUrl,
         cta: 'Open the wiki',
@@ -250,6 +256,16 @@ export const en = {
     title: 'Experience',
     items: [
       {
+        role: 'Applied Economics Researcher',
+        org: 'Réseau Environnement',
+        date: 'Since Jun 2025',
+      },
+      {
+        role: 'Analyst, Corporate Business Analysis',
+        org: 'Desjardins',
+        date: 'Apr–Jul 2026',
+      },
+      {
         role: 'Intern, Regulated Industries',
         org: 'Competition Bureau',
         date: 'May–Aug 2025',
@@ -272,13 +288,13 @@ export const en = {
       {
         school: 'HEC Montréal',
         degree: 'M.Sc. Applied Economics',
-        date: '2024 to 2026',
+        date: '2024–2026',
         detail: 'Specialization in industrial organization.',
       },
       {
         school: 'HEC Montréal',
         degree: 'B.B.A. Economics and Finance',
-        date: '2020 to 2024',
+        date: '2020–2024',
         detail: 'Mention d’excellence for a top 5% cumulative GPA.',
       },
     ],
@@ -288,21 +304,21 @@ export const en = {
   },
   project: {
     kicker: 'FDA Catalyst',
-    title: 'A biotech catalyst calendar, live on Railway.',
-    lede: `The current 90-day view tracks ${fdaSnapshot.events} dated catalysts across ${fdaSnapshot.companies} biotech companies. It converts BPIQ records into events with filters, source links, and TradingView links. ${fdaSnapshot.pdufa} are PDUFA decisions.`,
-    openCta: 'Open the live calendar',
+    title: 'A biotech catalyst calendar, built on Railway.',
+    lede: `On ${fdaSnapshot.asOf}, the 90-day view tracked ${fdaSnapshot.events} dated catalysts across ${fdaSnapshot.companies} biotech companies. It converts BPIQ records into events with filters, source links, and TradingView links. ${fdaSnapshot.pdufa} were PDUFA decisions.`,
+    openCta: 'Open the calendar',
     openHref: fdaLiveUrl,
     snapshot: {
-      title: 'Production snapshot',
-      description: `Live 90-day API view as of ${fdaSnapshot.asOf}.`,
+      title: 'Snapshot',
+      description: `90-day API view as of ${fdaSnapshot.asOf}.`,
     },
     table: {
       headers: ['Metric', 'Count', 'Source', 'Status'],
       rows: [
-        { ticker: 'Events', event: fdaSnapshot.events, window: 'BPIQ · 90d', status: 'Live' },
-        { ticker: 'Companies', event: fdaSnapshot.companies, window: 'BPIQ · 90d', status: 'Live' },
-        { ticker: 'PDUFA decisions', event: fdaSnapshot.pdufa, window: 'BPIQ · 90d', status: 'Live' },
-        { ticker: 'Readouts', event: fdaSnapshot.readouts, window: 'BPIQ · 90d', status: 'Live' },
+        { ticker: 'Events', event: fdaSnapshot.events, window: 'BPIQ · 90d', status: 'Snapshot' },
+        { ticker: 'Companies', event: fdaSnapshot.companies, window: 'BPIQ · 90d', status: 'Snapshot' },
+        { ticker: 'PDUFA decisions', event: fdaSnapshot.pdufa, window: 'BPIQ · 90d', status: 'Snapshot' },
+        { ticker: 'Readouts', event: fdaSnapshot.readouts, window: 'BPIQ · 90d', status: 'Snapshot' },
       ],
     },
     architecture: {
@@ -311,19 +327,19 @@ export const en = {
       lede: 'Three pieces run the product: a FastAPI service, Railway Postgres, and a React calendar.',
       cards: [
         ['API', 'A FastAPI service exposes calendar, health, source, catalyst, scanner, watchlist, backtest, and IV-study endpoints.'],
-        ['Data', `BPIQ records flow into Railway Postgres. The current 90-day view returns ${fdaSnapshot.events} events.`],
+        ['Data', `BPIQ records flow into Railway Postgres. On ${fdaSnapshot.asOf}, the 90-day view returned ${fdaSnapshot.events} events.`],
         ['UI', 'The calendar page shows dated catalysts with filters, source links, and TradingView links.'],
       ],
     },
     deployment: {
       label: 'Deployment',
       title: 'Production status',
-      lede: 'The calendar and its Railway Postgres data store are live.',
+      lede: 'The calendar and its Railway Postgres data store are online. The BPIQ feed was last refreshed in June 2026, so the dates shown are not current.',
       lines: [
-        ['Web calendar', 'Live'],
+        ['Web calendar', 'Online'],
         ['API', 'FastAPI'],
         ['Data store', 'Railway Postgres'],
-        ['Data feed', 'BPIQ'],
+        ['Data feed', 'BPIQ, last refreshed June 2026'],
       ],
       check: {
         title: 'Verification',
