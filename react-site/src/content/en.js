@@ -96,6 +96,15 @@ export const en = {
         cta: 'Read the guide',
       },
       {
+        slug: 'paper-guide',
+        field: 'Design research',
+        title: 'Learn Paper with me',
+        context: 'A field guide · 52 videos, with a PDF',
+        note: 'Paper, the design tool, learned from all 52 videos on its channel: seven chapters, a reference, a searchable video library, and a plan fitted to how I work with Claude Code.',
+        href: '/projects/paper-guide/',
+        cta: 'Read the guide',
+      },
+      {
         slug: 'fda-catalyst',
         field: 'Markets',
         title: 'FDA Catalyst',
