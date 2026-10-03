@@ -1,8 +1,6 @@
 import {
   contactEmail,
   cvUrl,
-  fdaLiveUrl,
-  fdaSnapshot,
   linkedinUrl,
   wikiLiveUrl,
   wikiRepoUrl,
@@ -25,10 +23,6 @@ export const en = {
       title: 'Projects · Enzo Simier',
       description:
         'Applied-economics research, comparative equity work, a biotech catalyst calendar, and a public working library.',
-    },
-    project: {
-      title: 'FDA Catalyst · Enzo Simier',
-      description: `A 90-day biotech catalyst calendar. Snapshot of ${fdaSnapshot.asOf}: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, and ${fdaSnapshot.pdufa} PDUFA decisions.`,
     },
   },
   a11y: {
@@ -87,10 +81,10 @@ export const en = {
         slug: 'energy-scarcity',
         field: 'Equity research',
         title: 'Two kinds of scarcity',
-        context: 'Vista Energy / Vistra · Preliminary initiation',
-        note: 'A comparative underwrite: high-growth barrels at a country and commodity discount versus scarce power assets with contracted-cash optionality.',
+        context: 'Vista Energy / Vistra · Dashboard',
+        note: 'Shale barrels against scarce power: prices, scenario ranges, value sensitivity and what has to hold for each company.',
         href: '/research/vista-vs-vistra/',
-        cta: 'Read the report',
+        cta: 'Open the dashboard',
       },
       {
         slug: 'dashboard-design-guide',
@@ -105,10 +99,10 @@ export const en = {
         slug: 'fda-catalyst',
         field: 'Markets',
         title: 'FDA Catalyst',
-        context: 'FastAPI, Railway Postgres, React',
-        note: `A 90-day calendar of biotech catalysts. Snapshot of ${fdaSnapshot.asOf}: ${fdaSnapshot.events} events, ${fdaSnapshot.companies} companies, ${fdaSnapshot.pdufa} PDUFA decisions.`,
+        context: 'Dashboard · BPIQ data, FastAPI, Railway',
+        note: 'FDA decisions and trial readouts for the next 90 days: which ones have an exact date, by stage, by company size, with flags.',
         href: '/fda-catalyst.html',
-        cta: 'Case study',
+        cta: 'Open the dashboard',
         liveCta: 'Open the calendar',
       },
       {
@@ -296,50 +290,5 @@ export const en = {
   },
   footer: {
     note: '© 2026 Enzo Simier',
-  },
-  project: {
-    kicker: 'FDA Catalyst',
-    title: 'A biotech catalyst calendar, built on Railway.',
-    lede: `On ${fdaSnapshot.asOf}, the 90-day view tracked ${fdaSnapshot.events} dated catalysts across ${fdaSnapshot.companies} biotech companies. It converts BPIQ records into events with filters, source links, and TradingView links. ${fdaSnapshot.pdufa} were PDUFA decisions.`,
-    openCta: 'Open the calendar',
-    openHref: fdaLiveUrl,
-    snapshot: {
-      title: 'Snapshot',
-      description: `90-day API view as of ${fdaSnapshot.asOf}.`,
-    },
-    table: {
-      headers: ['Metric', 'Count', 'Source', 'Status'],
-      rows: [
-        { ticker: 'Events', event: fdaSnapshot.events, window: 'BPIQ · 90d', status: 'Snapshot' },
-        { ticker: 'Companies', event: fdaSnapshot.companies, window: 'BPIQ · 90d', status: 'Snapshot' },
-        { ticker: 'PDUFA decisions', event: fdaSnapshot.pdufa, window: 'BPIQ · 90d', status: 'Snapshot' },
-        { ticker: 'Readouts', event: fdaSnapshot.readouts, window: 'BPIQ · 90d', status: 'Snapshot' },
-      ],
-    },
-    architecture: {
-      label: 'Architecture',
-      title: 'The stack',
-      lede: 'Three pieces run the product: a FastAPI service, Railway Postgres, and a React calendar.',
-      cards: [
-        ['API', 'A FastAPI service exposes calendar, health, source, catalyst, scanner, watchlist, backtest, and IV-study endpoints.'],
-        ['Data', `BPIQ records flow into Railway Postgres. On ${fdaSnapshot.asOf}, the 90-day view returned ${fdaSnapshot.events} events.`],
-        ['UI', 'The calendar page shows dated catalysts with filters, source links, and TradingView links.'],
-      ],
-    },
-    deployment: {
-      label: 'Deployment',
-      title: 'Production status',
-      lede: 'The calendar and its Railway Postgres data store are online. The BPIQ feed was last refreshed in June 2026, so the dates shown are not current.',
-      lines: [
-        ['Web calendar', 'Online'],
-        ['API', 'FastAPI'],
-        ['Data store', 'Railway Postgres'],
-        ['Data feed', 'BPIQ, last refreshed June 2026'],
-      ],
-      check: {
-        title: 'Verification',
-        description: `The public API returned ${fdaSnapshot.events} events across ${fdaSnapshot.companies} companies on ${fdaSnapshot.asOf}.`,
-      },
-    },
   },
 }

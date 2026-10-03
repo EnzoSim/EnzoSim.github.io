@@ -13,7 +13,6 @@ const externalProps = {
 function routeForPathname(pathname) {
   const normalized = pathname.replace(/\/index\.html$/, '/')
 
-  if (normalized === '/fda-catalyst.html') return 'fda-catalyst'
   if (normalized === '/projects' || normalized === '/projects/') return 'projects'
   if (normalized === '/reading' || normalized === '/reading/') return 'reading'
   return 'about'
@@ -95,7 +94,7 @@ function ProfileRail({ activeRoute }) {
       <nav aria-label={t.a11y.primaryNavigation} className="profile-nav">
         {t.nav.items.map((item) => {
           const itemRoute = routeForPathname(item.href)
-          const isActive = activeRoute === itemRoute || (activeRoute === 'fda-catalyst' && itemRoute === 'projects')
+          const isActive = activeRoute === itemRoute
           return (
             <a aria-current={isActive ? 'page' : undefined} href={item.href} key={item.href}>
               {item.label}
@@ -318,91 +317,13 @@ function ReadingPage() {
   )
 }
 
-function CatalystTable() {
-  return (
-    <div className="data-table-wrap">
-      <table>
-        <thead>
-          <tr>
-            {t.project.table.headers.map((header) => <th key={header}>{header}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {t.project.table.rows.map((row) => (
-            <tr key={row.ticker}>
-              <th scope="row">{row.ticker}</th>
-              <td>{row.event}</td>
-              <td>{row.window}</td>
-              <td>{row.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-function FdaCatalystPage() {
-  return (
-    <Shell activeRoute="fda-catalyst">
-      <PageIntro id="project-title" lede={t.project.lede} title={t.project.title} />
-
-      <p className="detail-action">
-        <a className="blue-glass-button" href={t.project.openHref} {...externalProps}>
-          {t.project.openCta}
-          <ExternalArrow />
-        </a>
-      </p>
-
-      <section className="content-section" aria-labelledby="snapshot-title">
-        <h2 id="snapshot-title">{t.project.snapshot.title}</h2>
-        <p>{t.project.snapshot.description}</p>
-        <CatalystTable />
-      </section>
-
-      <section className="content-section" aria-labelledby="architecture-title">
-        <h2 id="architecture-title">{t.project.architecture.title}</h2>
-        <p>{t.project.architecture.lede}</p>
-        <dl className="definition-list">
-          {t.project.architecture.cards.map(([term, text]) => (
-            <div key={term}>
-              <dt>{term}</dt>
-              <dd>{text}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section className="content-section" aria-labelledby="deployment-title">
-        <h2 id="deployment-title">{t.project.deployment.title}</h2>
-        <p>{t.project.deployment.lede}</p>
-        <dl className="definition-list status-list">
-          {t.project.deployment.lines.map(([label, value], index) => (
-            <div key={label}>
-              <dt>{label}</dt>
-              <dd>
-                {index === 0 ? (
-                  <a href={fdaLiveUrl} {...externalProps}>{value}<ExternalArrow /></a>
-                ) : value}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-    </Shell>
-  )
-}
-
 function AppContent() {
   const pathname = typeof window === 'undefined' ? '/' : window.location.pathname
   const route = routeForPathname(pathname)
   let page = <AboutPage />
   let meta = t.meta.about
 
-  if (route === 'fda-catalyst') {
-    page = <FdaCatalystPage />
-    meta = t.meta.project
-  } else if (route === 'projects') {
+  if (route === 'projects') {
     page = <ProjectsPage />
     meta = t.meta.projects
   } else if (route === 'reading') {
