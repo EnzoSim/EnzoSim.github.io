@@ -1,0 +1,1614 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f4f5f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+<title>Placer 900 000 € · Enzo Simier</title>
+<meta name="description" content="Que faire de 800 000 € à 1 M€ qui dorment sur un compte bancaire : Yomoni Lux, conseillers indépendants, fonds euros Swiss Life « hors Sapin 2 », calculs détaillés, projections et proposition de répartition.">
+<meta property="og:title" content="Que faire de 900 000 € qui dorment sur un compte ?">
+<meta property="og:description" content="Que faire de 800 000 € à 1 M€ qui dorment sur un compte bancaire : Yomoni Lux, conseillers indépendants, fonds euros Swiss Life « hors Sapin 2 », calculs détaillés, projections et proposition de répartition.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://enzosimier.com/placements/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://enzosimier.com/og.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- Hand-written page, not built by Vite. Generated from the report sources (calculs, graphiques, texte) in one file.
+     Unlisted: not linked from the site, not in the sitemap, noindex. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..650;1,8..60,400..650&family=Geist+Mono:wght@400..600&display=swap">
+<style>
+/* Page écrite à la main, sur la typographie des guides du site (Instrument Sans, Source Serif 4, Geist Mono, cobalt).
+   Mise en page : dossier long format, sommaire collant à gauche sur grand écran,
+   blocs de calcul façon relevé bancaire, chiffres clés surlignés. */
+:root {
+  --paper: #f4f5f2;
+  --sheet: #fcfcfb;
+  --ink: #141a22;
+  --ink-2: #4a5160;
+  --ink-3: #7a8090;
+  --rule: #dcdfe3;
+  --rule-strong: #b9bec7;
+  --accent: #2146d6;
+  --accent-soft: #e8edfc;
+  --mark: #ffe9a3;
+  --good: #0a7d0a;
+  --good-bg: #e3f3e1;
+  --warn: #9a6400;
+  --warn-bg: #fdf0d2;
+  --bad: #b42d2d;
+  --bad-bg: #f9e2e0;
+  /* graphiques (palette validée, mode clair) */
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
+  --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
+  --ref: #898781;
+  --viz-surface: #fcfcfb;
+  --viz-grid: #e1e0d9;
+  --viz-base: #c3c2b7;
+  --font-display: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-data: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-ui: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1115; --sheet: #171a20; --ink: #eef0f3; --ink-2: #b8bdc8; --ink-3: #8a909c;
+    --rule: #2a2e36; --rule-strong: #404652; --accent: #8fb3ff; --accent-soft: #1c2840;
+    --mark: rgba(250, 205, 70, 0.26); --good: #4cc24c; --good-bg: #15301a; --warn: #f0b545; --warn-bg: #352812;
+    --bad: #f07a7a; --bad-bg: #3a1a1a;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+    --viz-surface: #171a20; --viz-grid: #2c2c2a; --viz-base: #383835;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1115; --sheet: #171a20; --ink: #eef0f3; --ink-2: #b8bdc8; --ink-3: #8a909c;
+  --rule: #2a2e36; --rule-strong: #404652; --accent: #8fb3ff; --accent-soft: #1c2840;
+  --mark: rgba(250, 205, 70, 0.26); --good: #4cc24c; --good-bg: #15301a; --warn: #f0b545; --warn-bg: #352812;
+  --bad: #f07a7a; --bad-bg: #3a1a1a;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+  --viz-surface: #171a20; --viz-grid: #2c2c2a; --viz-base: #383835;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 18px/1.62 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px;
+}
+h1, h2, h3, h4 { font-family: var(--font-display); text-wrap: balance; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+strong { font-weight: 650; }
+.mk { background: var(--mark); padding: 0 0.2em; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.num { font-family: var(--font-data); font-size: 0.92em; letter-spacing: -0.01em; white-space: nowrap; }
+
+/* ---------- Gabarit ---------- */
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  padding-block: 0 96px;
+}
+@media (min-width: 1040px) {
+  .shell { grid-template-columns: 220px minmax(0, 1fr); gap: 56px; }
+}
+.toc { display: none; }
+@media (min-width: 1040px) {
+  .toc {
+    display: block; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px);
+    align-self: start; font: 14px/1.4 var(--font-ui); max-height: calc(100vh - 48px); overflow: auto; padding-block: 28px;
+  }
+  .toc p { font: 600 11px/1 var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; counter-reset: toc; }
+  .toc a { display: grid; grid-template-columns: 24px 1fr; padding: 6px 8px; border-radius: 6px; color: var(--ink-2); text-decoration: none; }
+  .toc a span:first-child { color: var(--ink-3); font-family: var(--font-data); font-size: 12px; padding-top: 1px; }
+  .toc a:hover { background: var(--accent-soft); color: var(--ink); }
+  .toc a.is-active { color: var(--ink); background: var(--accent-soft); }
+}
+main { min-width: 0; }
+.prose { max-width: 68ch; display: grid; gap: 18px; }
+.wide { max-width: 920px; }
+
+/* ---------- En-tête ---------- */
+.masthead { padding-block: 56px 40px; border-bottom: 1px solid var(--rule); margin-bottom: 8px; display: grid; gap: 22px; }
+.eyebrow { font: 600 12px/1.2 var(--font-ui); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); }
+.masthead h1 { font-size: clamp(36px, 6.4vw, 66px); font-weight: 700; letter-spacing: -0.025em; max-width: 16ch; }
+.masthead h1 em { font-style: normal; background: var(--mark); padding: 0 0.12em; border-radius: 4px; }
+.lede { font-size: clamp(19px, 2.2vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 14px/1.4 var(--font-ui); color: var(--ink-3); }
+
+/* ---------- Sections ---------- */
+section.part { padding-block: 56px 8px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; scroll-margin-top: 16px; }
+section.part > *, .sim > *, .card > *, .verdict > *, figure.fig > *, .viz > * { min-width: 0; }
+.sim, .card, .verdict, figure.fig, .viz { grid-template-columns: minmax(0, 1fr); }
+.part-head { display: grid; gap: 10px; max-width: 68ch; }
+.part-no { font: 500 13px/1 var(--font-data); color: var(--accent); letter-spacing: 0.02em; }
+.part h2 { font-size: clamp(28px, 3.6vw, 38px); font-weight: 650; }
+.part h3 { font-size: 22px; font-weight: 650; margin-top: 14px; }
+.part h4 { font-size: 17px; font-weight: 650; font-family: var(--font-ui); }
+ul.list, ol.list { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+ul.list li::marker { color: var(--ink-3); }
+
+/* ---------- Verdict express ---------- */
+.verdict { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 26px; display: grid; gap: 18px; max-width: 920px; }
+.verdict h2 { font-size: 26px; }
+.verdict ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: v; }
+.verdict ol li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 4px 12px; counter-increment: v; }
+.verdict ol li::before { content: counter(v); font: 600 14px/28px var(--font-data); color: var(--accent); background: var(--accent-soft); border-radius: 50%; width: 28px; height: 28px; text-align: center; }
+
+/* ---------- Tuiles chiffrées ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 12px; max-width: 920px; }
+.tile { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; display: grid; gap: 4px; align-content: start; }
+.tile-label { font: 13px/1.35 var(--font-ui); color: var(--ink-2); }
+.tile-value { font: 650 30px/1.1 var(--font-ui); letter-spacing: -0.02em; }
+.tile-sub { font: 13px/1.35 var(--font-ui); color: var(--ink-3); }
+.tile-value.bad { color: var(--bad); }
+.tile-value.good { color: var(--good); }
+
+/* ---------- Relevé de calcul ---------- */
+.calc { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; max-width: 760px; overflow: hidden; }
+.calc-title { font: 600 13px/1.3 var(--font-ui); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); padding: 12px 18px; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.calc-title span:last-child { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--ink-3); }
+.calc table { width: 100%; border-collapse: collapse; font: 15px/1.45 var(--font-data); font-variant-numeric: tabular-nums; }
+.calc td { padding: 7px 18px; vertical-align: top; border-bottom: 1px dashed var(--rule); }
+.calc td:last-child { text-align: right; white-space: nowrap; }
+.calc td:first-child { font-family: var(--font-ui); font-size: 15px; color: var(--ink-2); }
+.calc tr:last-child td { border-bottom: 0; }
+.calc tr.total td { border-top: 1.5px solid var(--ink); border-bottom: 0; font-weight: 650; color: var(--ink); }
+.calc tr.sub td { color: var(--ink-3); font-size: 13px; padding-top: 0; }
+.calc .calc-note { font: 13.5px/1.5 var(--font-ui); color: var(--ink-3); padding: 10px 18px 14px; border-top: 1px solid var(--rule); }
+.calc-wrap { overflow-x: auto; }
+
+/* ---------- Fiches produit ---------- */
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 24px; display: grid; gap: 16px; max-width: 920px; }
+.card-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 16px; align-items: baseline; }
+.card-head h3 { margin: 0; font-size: 24px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+.fact { background: var(--sheet); padding: 12px 14px; display: grid; gap: 2px; }
+.fact dt { font: 12px/1.3 var(--font-ui); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; }
+.fact dd { margin: 0; font: 600 16px/1.35 var(--font-ui); }
+.proscons { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; }
+.proscons h4 { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.proscons ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 16.5px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; font: 600 13px/1 var(--font-ui); padding: 7px 11px; border-radius: 999px; white-space: nowrap; }
+.badge::before { font-weight: 700; }
+.badge.good { color: var(--good); background: var(--good-bg); }
+.badge.good::before { content: "✓"; }
+.badge.warn { color: var(--warn); background: var(--warn-bg); }
+.badge.warn::before { content: "!"; }
+.badge.bad { color: var(--bad); background: var(--bad-bg); }
+.badge.bad::before { content: "×"; }
+.ico { width: 18px; height: 18px; border-radius: 50%; display: inline-grid; place-items: center; font: 700 12px/1 var(--font-ui); }
+.ico.plus { background: var(--good-bg); color: var(--good); }
+.ico.minus { background: var(--bad-bg); color: var(--bad); }
+
+.callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 14px 18px; border-radius: 0 10px 10px 0; max-width: 68ch; font-size: 17px; }
+.callout.warn { border-left-color: var(--warn); background: var(--warn-bg); }
+.callout strong:first-child { display: block; font-family: var(--font-ui); margin-bottom: 4px; }
+
+/* ---------- Tableaux ---------- */
+.tbl-wrap { overflow-x: auto; max-width: 100%; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); }
+table.tbl { border-collapse: collapse; width: 100%; font: 15px/1.4 var(--font-ui); min-width: 640px; }
+.tbl th, .tbl td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.tbl thead th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); font-weight: 600; background: var(--paper); }
+.tbl tbody th { font-weight: 600; }
+.tbl tr:last-child td, .tbl tr:last-child th { border-bottom: 0; }
+.tbl td.n { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+
+/* ---------- Graphiques ---------- */
+figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 20px 20px 14px; display: grid; gap: 12px; max-width: 920px; min-width: 0; }
+.fig-head { display: grid; gap: 4px; }
+.fig-head h3 { font-size: 19px; margin: 0; font-family: var(--font-ui); font-weight: 650; letter-spacing: -0.005em; }
+.fig-head p { font: 14.5px/1.45 var(--font-ui); color: var(--ink-2); }
+figcaption { font: 13px/1.45 var(--font-ui); color: var(--ink-3); }
+.viz { font-family: var(--font-ui); display: grid; gap: 8px; min-width: 0; }
+.viz-plot { position: relative; min-width: 0; }
+.viz svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+.viz-grid { stroke: var(--viz-grid); stroke-width: 1; shape-rendering: crispEdges; }
+.viz-base { stroke: var(--viz-base); stroke-width: 1; shape-rendering: crispEdges; }
+.viz-tick { fill: var(--ink-3); font: 12px var(--font-ui); font-variant-numeric: tabular-nums; }
+.viz-cat { fill: var(--ink-2); font: 14px var(--font-ui); }
+.viz-cat-strong { fill: var(--ink); font-weight: 650; }
+.viz-end-val { fill: var(--ink); font: 600 13px var(--font-ui); }
+.viz-end-name { fill: var(--ink-2); font: 12px var(--font-ui); }
+.viz-ring { stroke: var(--viz-surface); stroke-width: 2; }
+.viz-cross { stroke: var(--ink-3); stroke-width: 1; }
+.viz-hit { outline: none; cursor: crosshair; }
+.viz-bar { outline: none; cursor: default; }
+.viz-bar.is-hover path, .viz-bar:focus path { opacity: 0.82; }
+.viz-legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font: 13px/1.3 var(--font-ui); color: var(--ink-2); }
+.viz-legend li { display: inline-flex; align-items: center; gap: 7px; }
+.viz-key { display: inline-block; flex: none; }
+.viz-key-line { width: 16px; height: 0; border-top: 2px solid var(--c); border-radius: 2px; }
+.viz-key-dashed { border-top-style: dashed; }
+.viz-key-rect { width: 11px; height: 11px; background: var(--c); border-radius: 3px; }
+.viz-key-band { width: 14px; height: 10px; background: var(--c); opacity: 0.35; border-radius: 2px; }
+.viz-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--sheet); border: 1px solid var(--rule-strong); border-radius: 10px; padding: 10px 12px; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12); min-width: 170px; max-width: 280px; font: 13px/1.35 var(--font-ui); display: grid; gap: 5px; }
+.viz-tip-head { font-weight: 600; color: var(--ink-2); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.viz-tip-row { display: grid; grid-template-columns: 16px auto 1fr; align-items: center; gap: 8px; }
+.viz-tip-row strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+.viz-tip-name { color: var(--ink-2); }
+.viz-tip-note { color: var(--ink-3); font-size: 12px; border-top: 1px solid var(--rule); padding-top: 6px; }
+.viz-table summary { font: 13px var(--font-ui); color: var(--ink-3); cursor: pointer; width: max-content; }
+.viz-table-wrap { overflow-x: auto; margin-top: 8px; }
+.viz-table table { border-collapse: collapse; font: 13px/1.35 var(--font-ui); font-variant-numeric: tabular-nums; width: 100%; }
+.viz-table caption { text-align: left; color: var(--ink-3); padding-bottom: 6px; }
+.viz-table th, .viz-table td { padding: 5px 10px; border-bottom: 1px solid var(--rule); text-align: right; white-space: nowrap; }
+.viz-table th:first-child { text-align: left; }
+
+/* ---------- Simulateurs ---------- */
+.sim { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 22px; display: grid; gap: 18px; max-width: 920px; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px 22px; font-family: var(--font-ui); }
+.ctl { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.ctl label, .ctl .lbl { font: 13px/1.3 var(--font-ui); color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+.ctl output { font-weight: 650; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ctl input[type="range"] { width: 100%; accent-color: var(--accent); }
+.ctl select { font: 15px var(--font-ui); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink); }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { font: 14px var(--font-ui); padding: 7px 12px; border-radius: 8px; border: 1px solid var(--rule-strong); background: var(--paper); color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--sheet); }
+.sim-out { font: 15px/1.55 var(--font-ui); color: var(--ink-2); }
+.sim .tile-value { font-size: 26px; }
+
+/* ---------- Pied ---------- */
+.sources { font: 14px/1.55 var(--font-ui); color: var(--ink-2); }
+.sources ol { padding-left: 1.4em; display: grid; gap: 6px; margin: 0; }
+.sources a { word-break: break-word; }
+.foot { border-top: 1px solid var(--rule); margin-top: 48px; padding-top: 22px; font: 13.5px/1.55 var(--font-ui); color: var(--ink-3); max-width: 80ch; display: grid; gap: 8px; }
+
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .shell { padding-inline: 16px; }
+  .masthead { padding-block: 36px 28px; }
+  .card, .verdict, .sim { padding: 18px; }
+  figure.fig { padding: 16px 14px 12px; }
+  .calc td { padding: 7px 12px; }
+}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="toc" aria-label="Sommaire">
+  <p>Sommaire</p>
+  <ol>
+    <li><a href="#essentiel"><span>—</span><span>L'essentiel</span></a></li>
+    <li><a href="#depart"><span>1</span><span>Le point de départ</span></a></li>
+    <li><a href="#contexte"><span>2</span><span>Les taux en octobre 2026</span></a></li>
+    <li><a href="#enveloppe"><span>3</span><span>L'assurance-vie, France ou Luxembourg</span></a></li>
+    <li><a href="#yomoni"><span>4</span><span>Piste 1 : Yomoni Lux</span></a></li>
+    <li><a href="#cgp"><span>5</span><span>Piste 2 : un CGP</span></a></li>
+    <li><a href="#swisslife"><span>6</span><span>Piste 3 : Swiss Life « 5 % »</span></a></li>
+    <li><a href="#comparatif"><span>7</span><span>Projection sur 15 ans</span></a></li>
+    <li><a href="#fiscalite"><span>8</span><span>Impôts et transmission</span></a></li>
+    <li><a href="#proposition"><span>9</span><span>Proposition de répartition</span></a></li>
+    <li><a href="#questions"><span>10</span><span>Questions à poser</span></a></li>
+    <li><a href="#methode"><span>11</span><span>Méthode et sources</span></a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="masthead">
+  <p class="eyebrow">Note patrimoniale · données au 3 octobre 2026</p>
+  <h1>Que faire de <em>900 000 €</em> qui dorment sur un compte&nbsp;?</h1>
+  <p class="lede">Trois pistes étaient sur la table : le contrat luxembourgeois de Yomoni dès 50 000 €, les conseillers indépendants dès 100 000 €, et un fonds euros Swiss Life « hors loi Sapin 2 » à 5 % dès 250 000 €. Voici ce que chacune vaut vraiment, les calculs détaillés et une proposition de répartition.</p>
+  <div class="meta">
+    <span>Cas central : 900 000 € (fourchette 800 000 – 1 000 000 €)</span>
+    <span>Épargnant résident fiscal français</span>
+    <span>Lecture : 25 minutes</span>
+  </div>
+</header>
+
+<section class="part" id="essentiel" aria-labelledby="h-essentiel">
+  <div class="tiles">
+    <div class="tile"><span class="tile-label">Pouvoir d'achat perdu en un an sur le compte</span><span class="tile-value bad">−27 000 €</span><span class="tile-sub">900 000 € × 3,0 % d'inflation (septembre 2026)</span></div>
+    <div class="tile"><span class="tile-label">Montant garanti si la banque fait faillite</span><span class="tile-value">100 000 €</span><span class="tile-sub">Les 800 000 € restants ne sont pas couverts</span></div>
+    <div class="tile"><span class="tile-label">Coût tout compris de Yomoni Lux à ce montant</span><span class="tile-value">1,40 %/an</span><span class="tile-sub">Soit 12 600 € par an sur 900 000 €</span></div>
+    <div class="tile"><span class="tile-label">Taux réellement servi en 2025 par le fonds euros Swiss Life Premium Lux</span><span class="tile-value">2,77 %</span><span class="tile-sub">Le « 5 % » est un maximum sous conditions</span></div>
+  </div>
+
+  <div class="verdict">
+    <h2 id="h-essentiel">L'essentiel en six points</h2>
+    <ol>
+      <li><div><strong>Laisser l'argent sur le compte est l'option la plus chère.</strong> Il ne rapporte rien, perd environ 27 000 € de pouvoir d'achat par an avec l'inflation actuelle, et seuls 100 000 € sont garantis par banque. Il faut agir, même progressivement.</div></li>
+      <li><div><strong>L'enveloppe principale doit être l'assurance-vie</strong>, française ou luxembourgeoise. Après 8 ans, les gains sont peu taxés et la transmission est très avantageuse (152 500 € par enfant hors droits pour les versements faits avant 70 ans). Ouvrir un contrat maintenant fait démarrer le compteur des 8 ans.</div></li>
+      <li><div><strong>Yomoni Lux est un vrai contrat luxembourgeois, sérieux.</strong> Il convient si vous voulez déléguer la gestion. À 900 000 €, il coûte 1,40 % par an tout compris. En gestion libre, d'autres contrats luxembourgeois reviennent à environ 0,85 %, soit environ 5 000 € de moins par an.</div></li>
+      <li><div><strong>Un conseiller indépendant n'est utile que s'il est payé de façon transparente.</strong> Un placement « classique » vendu à la commission coûte souvent 2,5 % par an. Sur 15 ans, l'écart avec une gestion en ligne dépasse 400 000 € (calcul en partie 5). Un bilan patrimonial payé à l'acte (500 à 3 000 €) est en revanche un bon investissement.</div></li>
+      <li><div><strong>Le « 5 % Swiss Life » est très probablement le fonds euros du contrat SwissLife Premium Lux.</strong> Il a servi 2,77 % en 2025. Le 5 % serait un taux maximal avec bonus, réservé à ceux qui placent plus de 60 % en unités de compte. Il est aussi en partie exposé à la loi Sapin 2. Aujourd'hui, des contrats en ligne offrent 4,5 % sous conditions comparables, sans ticket de 250 000 € et sans frais d'entrée.</div></li>
+      <li><div><strong>Proposition :</strong> une réserve d'environ 70 000 €, environ 380 000 € en fonds euros chez deux assureurs, et environ 450 000 € en placements diversifiés investis progressivement sur 6 à 12 mois. Les proportions dépendent de quatre réponses : l'âge (avant ou après 70 ans), la situation familiale, le besoin de revenus et la tolérance aux baisses.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="part" id="depart" aria-labelledby="h-depart">
+  <div class="part-head">
+    <span class="part-no">Partie 1</span>
+    <h2 id="h-depart">Le point de départ : ce que coûte l'argent qui dort</h2>
+  </div>
+  <div class="prose">
+    <p>Un compte courant ne verse aucun intérêt. Pendant ce temps, les prix montent. En septembre 2026, l'inflation française a atteint <span class="mk">3,0 % sur un an</span> (Insee, estimation provisoire), son plus haut niveau depuis février 2024, tirée par l'énergie (+21 %). Elle était de 2,4 % en août, de 0,9 % en moyenne en 2025 et de 2,0 % en 2024.</p>
+    <p>Concrètement, les 900 000 € gardent le même chiffre sur le relevé, mais achètent chaque année un peu moins.</p>
+  </div>
+  <div class="calc">
+    <div class="calc-title"><span>Le calcul</span><span>Perte de pouvoir d'achat</span></div>
+    <div class="calc-wrap"><table>
+      <tr><td>Capital sur le compte</td><td>900 000 €</td></tr>
+      <tr><td>Inflation sur un an (sept. 2026)</td><td>× 3,0 %</td></tr>
+      <tr class="total"><td>Pouvoir d'achat perdu en un an</td><td>≈ 27 000 €</td></tr>
+      <tr><td>Sur 15 ans, avec une inflation moyenne de 2 %</td><td>900 000 ÷ 1,02<sup>15</sup></td></tr>
+      <tr class="total"><td>Valeur en euros d'aujourd'hui en 2041</td><td>668 713 €</td></tr>
+      <tr class="sub"><td>Soit une perte de 231 287 € de pouvoir d'achat</td><td></td></tr>
+    </table></div>
+  </div>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Ce que valent 900 000 € laissés sur le compte, en euros d'aujourd'hui</h3>
+      <p>Pouvoir d'achat du capital année après année, selon le niveau d'inflation.</p>
+    </div>
+    <div id="fig-erosion"></div>
+    <figcaption>Hypothèses : capital constant de 900 000 €, inflation de 2 % (cible de la BCE) ou de 3 % (niveau de septembre 2026) chaque année.</figcaption>
+  </figure>
+
+  <h3>Le deuxième risque : la garantie des dépôts s'arrête à 100 000 €</h3>
+  <div class="prose">
+    <p>Si la banque faisait faillite, le Fonds de garantie des dépôts et de résolution (FGDR) rembourserait <strong>100 000 € par personne et par banque</strong>, tous comptes confondus. Les marques qui partagent le même agrément comptent pour une seule banque. Au-delà, vous seriez un créancier ordinaire de la banque.</p>
+    <p>Une exception existe : les « dépôts exceptionnels et temporaires » (vente d'une résidence, héritage, donation, indemnité de départ, capital de retraite) sont couverts jusqu'à 500 000 € de plus, mais seulement pendant les <strong>3 mois</strong> qui suivent leur arrivée sur le compte. Si l'argent provient d'une vente immobilière récente, cette protection est temporaire et va bientôt tomber, si ce n'est pas déjà fait.</p>
+    <p>Une faillite bancaire reste très rare en France. Mais 800 000 € sans garantie, c'est un risque que l'on n'a aucune raison de garder.</p>
+  </div>
+</section>
+
+<section class="part" id="contexte" aria-labelledby="h-contexte">
+  <div class="part-head">
+    <span class="part-no">Partie 2</span>
+    <h2 id="h-contexte">Les taux en octobre 2026 : un moment inhabituel</h2>
+  </div>
+  <div class="prose">
+    <p>Le contexte a beaucoup bougé cette année. Face à un choc sur l'énergie, la Banque centrale européenne a <strong>remonté ses taux deux fois</strong> (juin et septembre 2026). Son taux de dépôt est à <span class="mk">2,50 %</span> depuis le 16 septembre. Dans le même temps, le taux de l'emprunt d'État français à 10 ans (OAT) a connu sa plus forte hausse trimestrielle depuis 1987 : il évolue entre <span class="mk">4,4 % et 4,8 %</span> fin septembre, avec un écart record depuis 2012 face à l'Allemagne.</p>
+    <p>Pour un épargnant, cela a deux conséquences. Les placements sans risque rapportent un peu plus qu'avant. Et les assureurs, dont les fonds euros sont remplis d'obligations achetées quand les taux étaient bas, vont mettre plusieurs années à suivre. Ce décalage est précisément la situation que la loi Sapin 2 cherche à encadrer (voir partie 3).</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Ce que rapportent les placements sans risque, avant et après impôts</h3>
+      <p>Rendement annuel brut, découpé en ce qui vous reste et ce qui part en impôts et prélèvements sociaux. Le chiffre affiché est le rendement net.</p>
+    </div>
+    <div id="fig-surs"></div>
+    <figcaption>Fiscalité 2026 : livrets exonérés ; compte-titres, compte à terme et obligations à 31,4 % (12,8 % d'impôt + 18,6 % de prélèvements sociaux) ; fonds euros d'assurance-vie à 17,2 % de prélèvements sociaux chaque année, plus un impôt faible au retrait après 8 ans (non compté ici). Fonds monétaire et compte à terme : estimations de fin septembre 2026. L'OAT ne garantit son rendement que si on la garde jusqu'à l'échéance.</figcaption>
+  </figure>
+  <div class="callout warn">
+    <strong>À retenir</strong>
+    Avec une inflation à 3,0 %, presque aucun placement sans risque ne protège le pouvoir d'achat après impôts cette année. Seule l'OAT à 10 ans gardée jusqu'à l'échéance s'en approche. Pour faire mieux sur 10 à 15 ans, il faut accepter une part de placements qui fluctuent. Toute la question est de savoir combien.
+  </div>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Placement</th><th>Taux actuel</th><th>Plafond</th><th>Fiscalité 2026</th><th>À savoir</th></tr></thead>
+      <tbody>
+        <tr><th>Livret A + LDDS</th><td class="n">1,70 %</td><td>22 950 € + 12 000 € par personne</td><td>Exonéré</td><td>Taux fixé jusqu'au 31 janvier 2027. Disponible à tout moment.</td></tr>
+        <tr><th>LEP</th><td class="n">2,50 %</td><td>10 000 €</td><td>Exonéré</td><td>Réservé aux revenus modestes, sans doute hors de portée ici.</td></tr>
+        <tr><th>Fonds monétaire</th><td class="n">≈ 2,2 – 2,35 %</td><td>Aucun</td><td>31,4 % sur compte-titres</td><td>Suit le taux au jour le jour de la BCE (€STR à 2,44 %).</td></tr>
+        <tr><th>Compte à terme 12 mois</th><td class="n">≈ 2,5 – 2,9 %</td><td>Selon la banque</td><td>31,4 %</td><td>Argent bloqué. Certaines banques sont étrangères : la garantie est celle de leur pays.</td></tr>
+        <tr><th>Fonds euros (moyenne 2025)</th><td class="n">2,63 %</td><td>Aucun</td><td>17,2 % + impôt faible après 8 ans</td><td>Capital garanti. Taux fixé chaque année. Prévision 2026 : environ 2,9 %.</td></tr>
+        <tr><th>Meilleurs fonds euros 2025</th><td class="n">3,5 – 4,1 %</td><td>Parfois</td><td>Idem</td><td>Corum 4,10 %, Placement-direct Euro+ 3,60 %. Bonus de +1,5 point sous conditions.</td></tr>
+        <tr><th>OAT 10 ans en direct</th><td class="n">≈ 4,4 – 4,8 %</td><td>Aucun</td><td>31,4 %</td><td>Le prix varie si on revend avant l'échéance. Taux très volatil en ce moment.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="part" id="enveloppe" aria-labelledby="h-enveloppe">
+  <div class="part-head">
+    <span class="part-no">Partie 3</span>
+    <h2 id="h-enveloppe">L'assurance-vie, française ou luxembourgeoise</h2>
+  </div>
+  <div class="prose">
+    <p>Les trois pistes étudiées sont toutes des contrats d'assurance-vie. Avant de les comparer, il faut comprendre ce que c'est.</p>
+    <p><strong>Une assurance-vie n'est pas un placement, c'est une enveloppe.</strong> On y dépose de l'argent, et à l'intérieur on choisit des supports :</p>
+    <ul class="list">
+      <li><strong>Le fonds euros</strong> : le capital est garanti par l'assureur, qui verse chaque année un intérêt définitif (2,63 % en moyenne en 2025). C'est la partie sûre.</li>
+      <li><strong>Les unités de compte (UC)</strong> : des fonds investis en actions, obligations, immobilier, etc. Elles peuvent monter ou baisser. C'est la partie qui fait progresser le capital à long terme.</li>
+    </ul>
+    <p>On peut retirer son argent à tout moment. L'intérêt de l'enveloppe est fiscal : <strong>après 8 ans</strong>, les gains sont peu imposés, et au décès, les sommes passent aux bénéficiaires avec un régime très favorable (détails en partie 8). Le compteur des 8 ans démarre à l'ouverture du contrat, pas à chaque versement. D'où l'intérêt d'ouvrir rapidement.</p>
+  </div>
+
+  <h3>Ce qui change entre un contrat français et un contrat luxembourgeois</h3>
+  <div class="prose">
+    <p>Pour un résident français, <strong>la fiscalité est exactement la même</strong>. La différence porte sur la protection de l'argent en cas de problème chez l'assureur ou de crise financière.</p>
+  </div>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th></th><th>Contrat français</th><th>Contrat luxembourgeois</th></tr></thead>
+      <tbody>
+        <tr><th>Si l'assureur fait faillite</th><td>Fonds de garantie (FGAP) : <strong>70 000 € par assuré et par assureur</strong></td><td>« Super-privilège » : vous êtes <strong>créancier de premier rang, sans plafond</strong>, sur des actifs déposés à part dans une banque dépositaire</td></tr>
+        <tr><th>Blocage des retraits en cas de crise (Sapin 2)</th><td>Possible : jusqu'à 6 mois sur décision du HCSF</td><td>Non concerné par Sapin 2. Mais une directive européenne prévoit des suspensions de rachats pour tout assureur en résolution d'ici 2027</td></tr>
+        <tr><th>Fonds euros</th><td>Large choix, de 2,6 % à 4 % et plus avec bonus</td><td>Rare et souvent plafonné (40 % chez Yomoni Lux), rendements plus faibles (environ 1,9 à 2,9 %)</td></tr>
+        <tr><th>Frais annuels</th><td>Dès 0,50 % sur les contrats en ligne</td><td>Environ 0,65 à 1,2 %, plus élevés en moyenne</td></tr>
+        <tr><th>Ticket d'entrée</th><td>Dès quelques centaines d'euros</td><td>De 50 000 € (Yomoni Lux) à 250 000 € et plus</td></tr>
+        <tr><th>Fiscalité et succession</th><td colspan="2">Identiques : règle des 8 ans, abattements de 4 600 € / 9 200 €, articles 990 I et 757 B, prélèvements sociaux de 17,2 %</td></tr>
+        <tr><th>Formalités</th><td>Aucune</td><td>Déclarer le contrat chaque année avec l'impôt sur le revenu (formulaire 3916-bis), sous peine d'une amende de 1 500 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>La loi Sapin 2, en clair</h3>
+  <div class="prose">
+    <p>Depuis 2016, en cas de menace grave pour le système financier, le Haut Conseil de stabilité financière (HCSF) peut <strong>bloquer ou limiter les retraits</strong> sur les assurances-vie françaises, par tranches de 3 mois, jusqu'à 6 mois au total. Le but est d'éviter que tout le monde retire son argent en même temps, ce qui forcerait les assureurs à vendre leurs obligations à perte.</p>
+    <p>Ce pouvoir <strong>n'a jamais été utilisé</strong>, ni pendant le Covid, ni pendant la hausse des taux de 2022-2023. Le scénario qu'il vise est cependant celui d'aujourd'hui : des taux qui montent vite rendent les vieux fonds euros moins attractifs que des placements neufs, ce qui peut pousser les épargnants à partir. Ce risque est faible, mais il n'est pas théorique.</p>
+    <p>Il faut aussi relativiser l'argument luxembourgeois. En 2024, l'assureur luxembourgeois <strong>FWU Life</strong> a vu ses contrats gelés par un tribunal pendant 6 mois avant sa liquidation en janvier 2025, avec environ 30 000 contrats français bloqués. Le super-privilège protège les actifs mis à part, pas contre un gel des opérations ni contre la baisse des marchés.</p>
+  </div>
+  <div class="callout">
+    <strong>Pour 900 000 €, le luxembourgeois a du sens pour une partie du capital</strong>
+    Avec un seul assureur français, seuls 70 000 € sont couverts par le fonds de garantie. Mettre une grande partie des unités de compte dans un contrat luxembourgeois apporte une protection plus solide. Garder un contrat français permet d'accéder aux meilleurs fonds euros. Les deux se complètent.
+  </div>
+</section>
+
+<section class="part" id="yomoni" aria-labelledby="h-yomoni">
+  <div class="part-head">
+    <span class="part-no">Partie 4</span>
+    <h2 id="h-yomoni">Piste 1 : Yomoni Lux, dès 50 000 €</h2>
+  </div>
+  <article class="card">
+    <div class="card-head">
+      <h3>Yomoni Lux</h3>
+      <span class="badge good">Intéressant si vous voulez déléguer</span>
+    </div>
+    <dl class="facts">
+      <div class="fact"><dt>Lancement</dt><dd>2 juillet 2026</dd></div>
+      <div class="fact"><dt>Assureur</dt><dd>La Mondiale Europartner (groupe AG2R La Mondiale), Luxembourg</dd></div>
+      <div class="fact"><dt>Ticket d'entrée</dt><dd>50 000 €</dd></div>
+      <div class="fact"><dt>Gestion</dt><dd>Pilotée par Yomoni, avec un conseiller dédié</dd></div>
+      <div class="fact"><dt>Supports</dt><dd>ETF, fonds sans rétrocession, fonds euros multidevise (40 % max)</dd></div>
+      <div class="fact"><dt>Frais d'entrée, d'arbitrage, de sortie</dt><dd>0 %</dd></div>
+    </dl>
+    <div class="prose">
+      <p>C'est un <strong>vrai contrat luxembourgeois</strong> : l'assureur est agréé et contrôlé au Luxembourg, donc le triangle de sécurité et le super-privilège s'appliquent comme pour les contrats vendus par les banques privées. Le ticket de 50 000 € est possible parce que le contrat prend la forme d'un « fonds d'assurance spécialisé », sans seuil réglementaire.</p>
+      <p>Yomoni gère le portefeuille à votre place, principalement avec des ETF (des fonds indiciels peu chers). Les frais baissent par paliers avec le montant investi, et le palier s'applique à tout l'encours.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-title"><span>Le calcul</span><span>Frais annuels pour 900 000 €</span></div>
+      <div class="calc-wrap"><table>
+        <tr><td>Frais du contrat (palier 500 000 – 999 999 €)</td><td>0,40 %</td></tr>
+        <tr><td>Frais de gestion Yomoni</td><td>0,70 %</td></tr>
+        <tr><td>Frais des ETF (moyenne annoncée)</td><td>0,24 %</td></tr>
+        <tr><td>Banque dépositaire</td><td>0,06 %</td></tr>
+        <tr class="total"><td>Total</td><td>1,40 % par an</td></tr>
+        <tr><td>Sur 900 000 € : 900 000 × 1,40 %</td><td>12 600 € par an</td></tr>
+        <tr class="sub"><td>À 800 000 € : 11 200 € (1,40 %). À 1 000 000 € : 13 000 € (le palier passe à 0,30 %, soit 1,30 % au total).</td><td></td></tr>
+      </table></div>
+      <p class="calc-note">À comparer : un contrat luxembourgeois en gestion libre comme BoursoVie Lux (0,65 % sous 1 M€, réservé aux clients BoursoFirst, dès 150 000 €) avec des ETF à 0,20 % revient à environ 0,85 %, soit 7 650 € par an. L'écart est d'environ 5 000 € par an : c'est le prix de la gestion déléguée.</p>
+    </div>
+    <div class="proscons">
+      <div>
+        <h4><span class="ico plus" aria-hidden="true">+</span>Points forts</h4>
+        <ul>
+          <li>Protection luxembourgeoise complète, dès 50 000 €</li>
+          <li>Aucun frais d'entrée, d'arbitrage ou de sortie</li>
+          <li>Frais transparents, dégressifs, sans rétrocessions</li>
+          <li>Gestion prise en charge : pas de décisions à prendre au quotidien</li>
+          <li>Historique de Yomoni sur son contrat français : profil le plus dynamique +11,1 % en 2025, profil équilibré environ +6 %</li>
+        </ul>
+      </div>
+      <div>
+        <h4><span class="ico minus" aria-hidden="true">−</span>Points faibles</h4>
+        <ul>
+          <li>Environ 0,5 point plus cher qu'une gestion libre</li>
+          <li>Fonds euros plafonné à 40 % et rendement pas encore publié</li>
+          <li>Pensé pour des profils plutôt dynamiques (au moins 50 % d'actifs risqués, selon une source)</li>
+          <li>Contrat lancé il y a 3 mois : aucun historique propre</li>
+          <li>Le profil le plus dynamique de Yomoni a perdu 18 % en 2022</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Autres contrats luxembourgeois accessibles</th><th>Ticket</th><th>Frais du contrat</th><th>Gestion</th></tr></thead>
+      <tbody>
+        <tr><th>BoursoVie Lux (Sogelife)</th><td>150 000 €, clients BoursoFirst</td><td class="n">0,65 %</td><td>Libre, environ 4 000 supports</td></tr>
+        <tr><th>Life Mobility Evolution (Meilleurtaux, La Mondiale Europartner)</th><td>100 000 €</td><td class="n">0,75 %</td><td>Libre, fonds euros plafonné à 40 %</td></tr>
+        <tr><th>Life Digital Evolution (Ramify, La Mondiale Europartner)</th><td>100 000 €</td><td class="n">1 % max</td><td>Pilotée</td></tr>
+        <tr><th>Contrats vendus par des CGP (OneLife, Vitis, Wealins…)</th><td>125 000 à 250 000 €</td><td class="n">0,5 à 1,2 %</td><td>Libre ou sous mandat, frais d'entrée négociables</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="part" id="cgp" aria-labelledby="h-cgp">
+  <div class="part-head">
+    <span class="part-no">Partie 5</span>
+    <h2 id="h-cgp">Piste 2 : un conseiller en gestion de patrimoine, dès 100 000 €</h2>
+  </div>
+  <div class="prose">
+    <p>À partir de 100 000 €, les conseillers en gestion de patrimoine (CGP) ouvrent l'accès à des contrats « haut de gamme » : contrats luxembourgeois avec fonds dédiés, fonds euros réservés, produits structurés, private equity, SCPI, mandats de gestion. La vraie question n'est pas la qualité des produits, mais <strong>comment le conseiller est payé</strong>.</p>
+    <ul class="list">
+      <li><strong>À la commission (81 % des cabinets)</strong> : des frais d'entrée de 0 à 5 %, puis une part des frais annuels des fonds reversée au conseiller (0,3 à 1 % par an). Le conseil semble gratuit, mais il est payé chaque année, sur tout le capital.</li>
+      <li><strong>À l'honoraire (statut « conseil indépendant »)</strong> : le conseiller ne garde aucune commission et facture son travail. Comptez 500 à 3 000 € pour un bilan patrimonial, ou 0,5 à 1,5 % par an pour un suivi.</li>
+    </ul>
+    <p>Selon la Banque de France (observatoire des frais publié en juin 2026), un support en unités de compte classique coûte en moyenne <strong>0,80 à 1,08 % de frais de contrat, plus 1,60 % de frais du fonds</strong>, soit environ 2,4 à 2,7 % par an. Pour les produits structurés, une étude de l'ACPR et de l'AMF (juin 2026, 51 produits) montre des coûts d'entrée moyens de <strong>5,83 %</strong>, dont 3,95 % en moyenne pour les CGP, et un rendement inférieur de 2,4 points à des fonds indiciels sur les mêmes marchés entre 2022 et 2024.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Le même placement, quatre niveaux de frais : 900 000 € sur 15 ans</h3>
+      <p>Portefeuille diversifié identique (70 % actions, 30 % obligations, 5,6 % par an avant frais). Seul le coût change. La partie orange est ce que les frais ont coûté, rendement perdu compris.</p>
+    </div>
+    <div id="fig-frais"></div>
+    <figcaption>Calcul : capital final = 900 000 × (1 − frais d'entrée) × [(1 + 5,6 %) × (1 − frais annuels)]<sup>15</sup>. Sans aucun frais, le capital atteindrait 2 037 986 €. Valeurs dans le contrat, avant impôts au retrait.</figcaption>
+  </figure>
+  <div class="calc">
+    <div class="calc-title"><span>Le calcul</span><span>Écart entre les deux extrêmes</span></div>
+    <div class="calc-wrap"><table>
+      <tr><td>Gestion libre en ligne, ETF (0,85 %/an) : rendement net 1,056 × 0,9915 − 1</td><td>4,70 %/an</td></tr>
+      <tr><td>Capital après 15 ans : 900 000 × 1,0470<sup>15</sup></td><td>1 793 049 €</td></tr>
+      <tr><td>CGP à la commission (2 % d'entrée, 2,5 %/an) : rendement net 1,056 × 0,975 − 1</td><td>2,96 %/an</td></tr>
+      <tr><td>Capital après 15 ans : 900 000 × 0,98 × 1,0296<sup>15</sup></td><td>1 366 144 €</td></tr>
+      <tr class="total"><td>Différence</td><td>426 905 €</td></tr>
+    </table></div>
+    <p class="calc-note">Pour que le conseiller « classique » fasse aussi bien, il faudrait qu'il batte le marché de près de 1,9 point par an pendant 15 ans. Très peu de gérants y parviennent durablement.</p>
+  </div>
+  <div class="proscons">
+    <div>
+      <h4><span class="ico plus" aria-hidden="true">+</span>Ce qu'un bon CGP apporte vraiment</h4>
+      <ul>
+        <li>La stratégie de transmission : clause bénéficiaire, démembrement, donations, utilisation des abattements</li>
+        <li>Une vision d'ensemble (immobilier, retraite, impôts) qu'aucune plateforme ne donne</li>
+        <li>Un garde-fou contre les décisions prises sous le coup de la peur : selon Morningstar, les épargnants gagnent en moyenne 1,2 point de moins par an que leurs propres fonds, faute d'avoir tenu</li>
+      </ul>
+    </div>
+    <div>
+      <h4><span class="ico minus" aria-hidden="true">−</span>Les signaux d'alerte</h4>
+      <ul>
+        <li>Refus de dire, en euros, ce qu'il touche sur chaque produit</li>
+        <li>Produits structurés, SCPI ou fonds non cotés proposés en premier</li>
+        <li>« Rendement élevé sans risque »</li>
+        <li>Frais d'entrée non négociés : à ce montant, ils doivent être de 0 à 1 %</li>
+        <li>SCPI : 4,91 % distribués en 2025, mais les parts ont baissé de 3,45 %. Performance réelle : 1,46 %</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Verdict</strong>
+    Payer un CGP indépendant à l'acte pour un bilan patrimonial et une stratégie de transmission, oui. Lui confier 900 000 € rémunérés par commissions sur des produits maison, non. Avant de signer, vérifiez son immatriculation ORIAS, son statut de CIF et son association (ANACOFI-CIF, CNCGP, CNCEF Patrimoine ou La Compagnie CIF).
+  </div>
+</section>
+
+<section class="part" id="swisslife" aria-labelledby="h-swisslife">
+  <div class="part-head">
+    <span class="part-no">Partie 6</span>
+    <h2 id="h-swisslife">Piste 3 : le fonds euros Swiss Life « hors Sapin 2 » à 5 %, dès 250 000 €</h2>
+  </div>
+  <article class="card">
+    <div class="card-head">
+      <h3>SwissLife Premium Lux (identification très probable)</h3>
+      <span class="badge warn">À vérifier par écrit avant tout</span>
+    </div>
+    <dl class="facts">
+      <div class="fact"><dt>Assureur</dt><dd>Swiss Life (Luxembourg), géré via une succursale en France</dd></div>
+      <div class="fact"><dt>Ticket d'entrée</dt><dd>250 000 €</dd></div>
+      <div class="fact"><dt>Distribution</dt><dd>CGP, banques privées</dd></div>
+      <div class="fact"><dt>Fonds euros servi</dt><dd>3,20 % en 2024, 2,77 % en 2025</dd></div>
+      <div class="fact"><dt>Frais d'entrée (conditions générales)</dt><dd>Jusqu'à 4,5 %</dd></div>
+      <div class="fact"><dt>Frais annuels max.</dt><dd>0,80 % fonds euros, 2 % UC</dd></div>
+    </dl>
+    <div class="prose">
+      <p>Aucune source publique de Swiss Life n'annonce un fonds euros à 5 %. Le produit qui correspond au ticket de 250 000 € et à l'argument « hors Sapin 2 » est le contrat luxembourgeois <strong>SwissLife Premium Lux</strong>. Un courtier y mentionne un <strong>« bonus de fidélité jusqu'à 5 % »</strong> sur le fonds euros, lié à une allocation en unités de compte <strong>supérieure à 60 %</strong>. Ce bonus n'est pas confirmé par Swiss Life.</p>
+      <p>Il faut donc lire « 5 % » comme un <strong>maximum, conditionnel et sans doute temporaire</strong>. Le taux d'un fonds euros est fixé chaque année, après coup. Un bonus ne vaut en général que pour un ou deux ans et seulement sur les nouveaux versements.</p>
+    </div>
+    <h4>« Hors Sapin 2 » : vrai en partie seulement</h4>
+    <ul class="list">
+      <li><strong>Vrai :</strong> un assureur agréé au Luxembourg n'est pas soumis au pouvoir de blocage du HCSF français.</li>
+      <li><strong>Mais :</strong> plusieurs sources indiquent que ce fonds euros est adossé à l'actif de Swiss Life France (réassurance). Si c'est le cas, il reste indirectement exposé à Sapin 2.</li>
+      <li><strong>Mais :</strong> la directive européenne sur la résolution des assureurs, à transposer avant le 29 janvier 2027, permettra de suspendre les rachats chez tout assureur en difficulté, y compris au Luxembourg.</li>
+      <li><strong>Solidité :</strong> Swiss Life Luxembourg affiche un ratio de solvabilité de 196 % fin 2025, ce qui est confortable.</li>
+    </ul>
+    <div class="calc">
+      <div class="calc-title"><span>Le calcul</span><span>Ce que « 5 % » rapporterait vraiment sur 900 000 €</span></div>
+      <div class="calc-wrap"><table>
+        <tr><td>Condition supposée : plus de 60 % en UC</td><td>540 000 € en UC</td></tr>
+        <tr><td>Part qui reçoit le taux bonifié (40 %)</td><td>360 000 €</td></tr>
+        <tr><td>Bonus : 360 000 × (5,00 % − 2,77 %)</td><td>+8 028 €/an</td></tr>
+        <tr><td>Surcoût des UC : 540 000 × (2,00 % − 0,85 %)</td><td>−6 210 €/an</td></tr>
+        <tr class="total"><td>Avantage net par an, tant que le bonus dure</td><td>≈ +1 818 €/an</td></tr>
+        <tr><td>Frais d'entrée à 2 % sur 900 000 €</td><td>−18 000 €</td></tr>
+        <tr class="sub"><td>Au maximum contractuel de 4,5 % : −40 500 €</td><td></td></tr>
+      </table></div>
+      <p class="calc-note">Avec des frais d'entrée de 2 %, il faudrait environ 10 ans de bonus pour simplement les rembourser. Le surcoût des UC est calculé avec le plafond des conditions générales (2 %) : à négocier, il peut être plus bas.</p>
+    </div>
+  </article>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Le « 5 % » face aux autres fonds euros</h3>
+      <p>Taux servi en 2025 (bleu) et bonus maximal annoncé pour 2026, toujours sous conditions (orange).</p>
+    </div>
+    <div id="fig-fe"></div>
+    <figcaption>Taux nets de frais de gestion, avant prélèvements sociaux. Conditions des bonus : Premium Lux, plus de 60 % d'UC (source courtier, non confirmée) ; Netissima, au moins 30 % d'UC pour des versements faits d'ici fin 2026 ; Linxea Spirit 2, au moins 100 000 € dont 30 % d'UC d'ici le 31 décembre 2026 (paliers à vérifier) ; Swiss Life Gestion Privée, plus de 60 % d'UC et plus de 250 000 € d'encours. Placement-direct Euro+ (Swiss Life) accepte 100 % en fonds euros jusqu'à 200 000 € depuis août 2026.</figcaption>
+  </figure>
+  <div class="callout warn">
+    <strong>Verdict</strong>
+    Ne choisissez pas ce contrat pour le chiffre de 5 %. En 2026, plusieurs contrats en ligne offrent 4,5 % sur leur fonds euros sous conditions comparables, sans ticket de 250 000 € ni frais d'entrée. Si l'offre Swiss Life vous intéresse, demandez par écrit les points listés en partie 10. L'offre ne mérite d'être étudiée que si les frais d'entrée sont à 0 % et le bonus garanti plusieurs années.
+  </div>
+</section>
+
+<section class="part" id="comparatif" aria-labelledby="h-comparatif">
+  <div class="part-head">
+    <span class="part-no">Partie 7</span>
+    <h2 id="h-comparatif">Projection sur 15 ans : toutes les options côte à côte</h2>
+  </div>
+  <div class="prose">
+    <p>Pour comparer, on place les 900 000 € d'un seul coup en octobre 2026 et on regarde la valeur en 2041. Le portefeuille diversifié est le même dans les trois cas (70 % actions mondiales, 30 % obligations). Seuls les frais changent.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Valeur des 900 000 € année après année, selon le placement</h3>
+      <p>Survolez ou parcourez au clavier pour lire chaque année. La ligne grise pointillée montre ce qu'il faudrait pour garder le pouvoir d'achat avec 2 % d'inflation.</p>
+    </div>
+    <div id="fig-proj"></div>
+    <figcaption>Hypothèses : actions 6,5 %/an et obligations 3,5 %/an sur longue période, soit 5,6 %/an avant frais pour le portefeuille 70/30 (le MSCI World en euros a fait environ 6,6 %/an de fin 2000 à août 2026, deux krachs compris). Fonds euros : 3,0 % avant les 17,2 % de prélèvements sociaux retenus chaque année. Valeurs dans le contrat, avant impôts au retrait (voir partie 8). Ce sont des trajectoires moyennes : la réalité sera irrégulière, voir le graphique suivant.</figcaption>
+  </figure>
+
+  <h3>Le prix du rendement : les mauvaises années</h3>
+  <div class="prose">
+    <p>Un portefeuille à 70 % en actions ne monte pas en ligne droite. Les actions mondiales ont perdu environ <strong>48 %</strong> en euros pendant la crise de 2008, environ 30 % en mars 2020, et 12,8 % en 2022, année où les obligations d'État européennes ont aussi perdu 18,4 %. Le graphique ci-dessous montre la fourchette des résultats possibles pour le portefeuille piloté par Yomoni Lux.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Fourchette des résultats possibles : 900 000 € dans un portefeuille 70/30 (Yomoni Lux)</h3>
+      <p>La zone claire contient 8 trajectoires sur 10, la zone foncée 5 sur 10. La ligne bleue est le scénario médian.</p>
+    </div>
+    <div id="fig-fan"></div>
+    <figcaption>Modèle : rendement médian 4,12 %/an après 1,40 % de frais, volatilité 12 %/an, loi log-normale. Un modèle simple sous-estime les krachs extrêmes : une baisse de 25 à 30 % sur un an reste possible.</figcaption>
+  </figure>
+  <div class="tiles">
+    <div class="tile"><span class="tile-label">Probabilité d'être sous 900 000 € après 1 an</span><span class="tile-value">37 %</span><span class="tile-sub">1 chance sur 10 d'être sous 803 512 €</span></div>
+    <div class="tile"><span class="tile-label">… après 8 ans</span><span class="tile-value">17 %</span><span class="tile-sub">Le temps réduit le risque, sans l'éliminer</span></div>
+    <div class="tile"><span class="tile-label">… après 15 ans</span><span class="tile-value">10 %</span><span class="tile-sub">Médiane : 1 649 510 €</span></div>
+    <div class="tile"><span class="tile-label">Probabilité de faire moins que le fonds euros à 15 ans</span><span class="tile-value">30 %</span><span class="tile-sub">Fonds euros à 3,0 % : 1 300 420 €</span></div>
+  </div>
+  <div class="prose">
+    <p>C'est pour cela qu'on ne met pas tout en unités de compte. L'argent dont on peut avoir besoin dans les 5 prochaines années doit rester en fonds euros ou en réserve.</p>
+  </div>
+</section>
+
+<section class="part" id="fiscalite" aria-labelledby="h-fiscalite">
+  <div class="part-head">
+    <span class="part-no">Partie 8</span>
+    <h2 id="h-fiscalite">Impôts et transmission : les calculs</h2>
+  </div>
+
+  <h3>Retirer de l'argent après 8 ans</h3>
+  <div class="prose">
+    <p>Quand on retire de l'argent d'une assurance-vie, on ne paie pas d'impôt sur la somme retirée, seulement sur <strong>la part de gains</strong> qu'elle contient. Après 8 ans, un abattement annuel de 4 600 € (9 200 € pour un couple) s'applique, puis un impôt de 7,5 % ou 12,8 %, et les prélèvements sociaux de 17,2 %. Le taux de 7,5 % ne s'applique qu'à la fraction des gains correspondant aux 150 000 premiers euros versés. Avec 900 000 € versés, c'est 1/6 des gains.</p>
+  </div>
+  <div class="calc">
+    <div class="calc-title"><span>Exemple</span><span>Retrait de 40 000 € après 10 ans, personne seule</span></div>
+    <div class="calc-wrap"><table>
+      <tr><td>Valeur du contrat</td><td>1 200 000 €</td></tr>
+      <tr><td>Versements</td><td>900 000 €</td></tr>
+      <tr><td>Part de gains dans le retrait : 40 000 × 300 000 ÷ 1 200 000</td><td>10 000 €</td></tr>
+      <tr><td>Après abattement : 10 000 − 4 600</td><td>5 400 €</td></tr>
+      <tr><td>Taux d'impôt moyen : 1/6 × 7,5 % + 5/6 × 12,8 %</td><td>11,92 %</td></tr>
+      <tr><td>Impôt sur le revenu : 5 400 × 11,92 %</td><td>644 €</td></tr>
+      <tr><td>Prélèvements sociaux : 10 000 × 17,2 % (UC)</td><td>1 720 €</td></tr>
+      <tr class="total"><td>Total prélevé sur un retrait de 40 000 €</td><td>2 364 €</td></tr>
+      <tr class="sub"><td>Soit 5,9 % du retrait. En couple : 1 815 €. Sur un compte-titres, le même gain coûterait 3 140 € (31,4 %).</td><td></td></tr>
+    </table></div>
+    <p class="calc-note">Sur le fonds euros, les prélèvements sociaux ont déjà été retenus chaque année : il ne reste que l'impôt sur le revenu au moment du retrait.</p>
+  </div>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Si tout est retiré en 2041 (personne seule)</th><th>Valeur du contrat</th><th>Impôts au retrait</th><th>Net en poche</th><th>En euros de 2026</th></tr></thead>
+      <tbody>
+        <tr><th>Compte courant</th><td class="n">900 000 €</td><td class="n">0 €</td><td class="n">900 000 €</td><td class="n">668 713 €</td></tr>
+        <tr><th>Fonds euros à 3,0 %</th><td class="n">1 300 420 €</td><td class="n">47 169 €</td><td class="n">1 253 251 €</td><td class="n">931 184 €</td></tr>
+        <tr><th>70/30 en gestion libre (0,85 %)</th><td class="n">1 793 049 €</td><td class="n">259 477 €</td><td class="n">1 533 571 €</td><td class="n">1 139 466 €</td></tr>
+        <tr><th>70/30 Yomoni Lux (1,40 %)</th><td class="n">1 649 510 €</td><td class="n">217 684 €</td><td class="n">1 431 826 €</td><td class="n">1 063 868 €</td></tr>
+        <tr><th>70/30 CGP à la commission</th><td class="n">1 366 144 €</td><td class="n">135 178 €</td><td class="n">1 230 967 €</td><td class="n">914 626 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>En pratique, on ne retire jamais tout d'un coup : des retraits étalés profitent chaque année de l'abattement, et ce qui reste au décès suit les règles de transmission ci-dessous.</p>
+  </div>
+
+  <h3>Transmettre aux enfants</h3>
+  <div class="prose">
+    <p>C'est souvent là que l'assurance-vie fait la plus grande différence. Le conjoint ou partenaire de Pacs ne paie jamais de droits. Pour les enfants, trois cas existent :</p>
+    <ul class="list">
+      <li><strong>L'argent reste sur un compte</strong> : il entre dans la succession. Chaque enfant a un abattement de 100 000 €, partagé avec tous les autres biens (maison, etc.), puis un barème de 5 % à 45 %.</li>
+      <li><strong>Versé en assurance-vie avant 70 ans (article 990 I)</strong> : chaque bénéficiaire reçoit <strong>152 500 € sans droits</strong>, puis paie 20 % jusqu'à 852 500 € et 31,25 % au-delà. Cet abattement s'ajoute aux 100 000 € de la succession.</li>
+      <li><strong>Versé après 70 ans (article 757 B)</strong> : seuls les versements au-delà de 30 500 € (tous bénéficiaires confondus) sont taxés au barème normal, mais <strong>les gains sont totalement exonérés</strong>.</li>
+    </ul>
+  </div>
+  <div class="calc">
+    <div class="calc-title"><span>Exemple</span><span>900 000 € transmis à 2 enfants, maison qui utilise déjà l'abattement de 100 000 €</span></div>
+    <div class="calc-wrap"><table>
+      <tr><td>Part de chaque enfant</td><td>450 000 €</td></tr>
+      <tr><td><strong>Sur un compte</strong> : barème sur 450 000 €</td><td>88 194 € par enfant</td></tr>
+      <tr class="sub"><td>8 072 × 5 % + 4 037 × 10 % + 3 823 × 15 % + 434 068 × 20 %</td><td></td></tr>
+      <tr><td><strong>Assurance-vie avant 70 ans</strong> : (450 000 − 152 500) × 20 %</td><td>59 500 € par enfant</td></tr>
+      <tr><td><strong>Assurance-vie après 70 ans</strong> : barème sur (900 000 − 30 500) ÷ 2</td><td>85 144 € par enfant</td></tr>
+      <tr class="total"><td>Économie avant 70 ans, pour les deux enfants</td><td>57 389 €</td></tr>
+    </table></div>
+    <p class="calc-note">Après 70 ans, l'avantage grandit avec le temps : si le contrat vaut 1 300 000 € au décès pour 900 000 € versés, les 400 000 € de gains ne sont pas taxés. Les droits restent de 170 289 €, contre 199 000 € pour des versements faits avant 70 ans et 275 924 € sur un compte.</p>
+  </div>
+
+  <div class="sim" id="sim-succ">
+    <div class="fig-head">
+      <h3>Simulateur de transmission</h3>
+      <p>Modifiez la situation pour voir les droits de succession dans les trois cas.</p>
+    </div>
+    <div class="controls">
+      <div class="ctl"><label for="succ-v">Somme transmise <output id="succ-v-out" for="succ-v"></output></label><input type="range" id="succ-v" min="800000" max="2000000" step="25000" value="900000"></div>
+      <div class="ctl"><label for="succ-p">Dont versements <output id="succ-p-out" for="succ-p"></output></label><input type="range" id="succ-p" min="800000" max="1000000" step="25000" value="900000"></div>
+      <div class="ctl"><span class="lbl" id="succ-n-lbl">Nombre d'enfants</span><div class="seg" role="group" aria-labelledby="succ-n-lbl" id="succ-n"><button type="button" data-v="1" aria-pressed="false">1</button><button type="button" data-v="2" aria-pressed="true">2</button><button type="button" data-v="3" aria-pressed="false">3</button><button type="button" data-v="4" aria-pressed="false">4</button></div></div>
+      <div class="ctl"><span class="lbl" id="succ-a-lbl">Abattement de 100 000 € par enfant</span><div class="seg" role="group" aria-labelledby="succ-a-lbl" id="succ-a"><button type="button" data-v="0" aria-pressed="true">Déjà utilisé (maison…)</button><button type="button" data-v="1" aria-pressed="false">Disponible</button></div></div>
+    </div>
+    <div id="fig-succ"></div>
+    <p class="sim-out" id="succ-out"></p>
+  </div>
+
+  <div class="callout">
+    <strong>Deux leviers à ne pas oublier</strong>
+    Les donations : chaque parent peut donner 100 000 € par enfant tous les 15 ans, plus 31 865 € en argent si le donateur a moins de 80 ans. Jusqu'au <strong>31 décembre 2026</strong>, un don supplémentaire exonéré de 100 000 € par donateur est possible s'il sert à acheter un logement neuf ou à rénover énergétiquement la résidence principale de l'enfant. La clause bénéficiaire du contrat est aussi décisive : à rédiger avec soin, éventuellement avec un notaire.
+  </div>
+</section>
+
+<section class="part" id="proposition" aria-labelledby="h-proposition">
+  <div class="part-head">
+    <span class="part-no">Partie 9</span>
+    <h2 id="h-proposition">Proposition de répartition</h2>
+  </div>
+  <div class="prose">
+    <p>La bonne répartition dépend surtout de la capacité à supporter une baisse temporaire sans tout vendre. Voici trois profils pour 900 000 €, construits en trois étages : une <strong>réserve</strong> disponible immédiatement, une part <strong>sécurisée</strong> en fonds euros, et une part de <strong>croissance</strong> en unités de compte diversifiées.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-head">
+      <h3>Trois profils pour 900 000 €</h3>
+      <p>Répartition entre réserve, fonds euros et unités de compte.</p>
+    </div>
+    <div id="fig-profils"></div>
+    <figcaption>Résultats médians à 15 ans (hypothèses de la partie 7, UC à 1,0 % de frais moyens) : prudent 1 403 448 € (3,0 %/an), équilibré 1 515 599 € (3,5 %/an), dynamique 1 607 644 € (3,9 %/an). Une année sur dix, la baisse après un an peut atteindre environ 8 000 €, 36 000 € ou 59 000 € selon le profil.</figcaption>
+  </figure>
+
+  <h3>Le profil équilibré, concrètement</h3>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Étage</th><th>Montant</th><th>Où</th><th>Pourquoi</th></tr></thead>
+      <tbody>
+        <tr><th>Réserve</th><td class="n">70 000 €</td><td>Livret A (22 950 €) + LDDS (12 000 €), le reste sur un fonds monétaire ou un livret</td><td>Imprévus et projets proches. Disponible en 48 h.</td></tr>
+        <tr><th>Contrat français en ligne</th><td class="n">430 000 €</td><td>Par exemple Linxea Spirit 2, Lucya Cardif ou un contrat avec Netissima : 300 000 € en fonds euros, 130 000 € en ETF</td><td>Meilleurs fonds euros et bonus 2026 (au moins 30 % d'UC exigés). 0 % de frais d'entrée.</td></tr>
+        <tr><th>Contrat luxembourgeois</th><td class="n">400 000 €</td><td>Yomoni Lux (gestion pilotée) ou BoursoVie Lux / Life Mobility Evolution (gestion libre) : 80 000 € en fonds euros, 320 000 € en UC</td><td>Protection du super-privilège sur la plus grosse part des UC.</td></tr>
+        <tr><th>Total</th><td class="n">900 000 €</td><td colspan="2">Dont 380 000 € en fonds euros et 450 000 € en unités de compte, chez deux assureurs différents</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sim" id="sim-alloc">
+    <div class="fig-head">
+      <h3>Simulateur de répartition</h3>
+      <p>Choisissez la répartition et le niveau de frais : la courbe montre le scénario médian et la fourchette de 8 trajectoires sur 10.</p>
+    </div>
+    <div class="controls">
+      <div class="ctl"><label for="al-c">Capital <output id="al-c-out" for="al-c"></output></label><input type="range" id="al-c" min="800000" max="1000000" step="10000" value="900000"></div>
+      <div class="ctl"><label for="al-r">Réserve <output id="al-r-out" for="al-r"></output></label><input type="range" id="al-r" min="0" max="20" step="1" value="8"></div>
+      <div class="ctl"><label for="al-uc">Part des placements en UC <output id="al-uc-out" for="al-uc"></output></label><input type="range" id="al-uc" min="0" max="100" step="5" value="55"></div>
+      <div class="ctl"><label for="al-fe">Taux du fonds euros <output id="al-fe-out" for="al-fe"></output></label><input type="range" id="al-fe" min="2" max="5" step="0.1" value="3"></div>
+      <div class="ctl"><label for="al-h">Horizon <output id="al-h-out" for="al-h"></output></label><input type="range" id="al-h" min="5" max="25" step="1" value="15"></div>
+      <div class="ctl"><span class="lbl" id="al-f-lbl">Frais sur les UC</span><div class="seg" role="group" aria-labelledby="al-f-lbl" id="al-f"><button type="button" data-v="0.0085" aria-pressed="false">En ligne 0,85 %</button><button type="button" data-v="0.014" aria-pressed="true">Yomoni Lux 1,40 %</button><button type="button" data-v="0.025" aria-pressed="false">CGP 2,5 %</button></div></div>
+    </div>
+    <div class="tiles" id="al-tiles"></div>
+    <div id="fig-alloc"></div>
+  </div>
+
+  <h3>Le plan d'action, dans l'ordre</h3>
+  <ol class="list">
+    <li><strong>Répondre aux quatre questions qui changent tout</strong> : l'âge (avant ou après 70 ans), la situation familiale (marié, nombre d'enfants), le besoin de revenus réguliers, et la réaction face à une baisse (si 900 000 € devenaient 800 000 € pendant un an, resteriez-vous investi ?).</li>
+    <li><strong>Sécuriser tout de suite</strong> : ne pas garder plus de 100 000 € par banque, remplir Livret A et LDDS.</li>
+    <li><strong>Ouvrir deux contrats avant le 31 décembre 2026</strong> : un contrat français en ligne (pour les bonus sur fonds euros de 2026) et un contrat luxembourgeois. Le compteur des 8 ans démarre dès l'ouverture.</li>
+    <li><strong>Placer la part fonds euros immédiatement</strong>, et investir la part en UC progressivement, par exemple 50 000 € par mois pendant 9 mois. Cela évite de tout investir juste avant une baisse.</li>
+    <li><strong>Rédiger les clauses bénéficiaires</strong> avec soin, et étudier les donations, notamment le don exonéré pour un logement neuf avant fin 2026.</li>
+    <li><strong>Si besoin, payer un bilan patrimonial à l'acte</strong> chez un CGP indépendant, sans lui confier la gestion à la commission.</li>
+    <li><strong>Une revue par an</strong> : rééquilibrer, vérifier les taux servis, déclarer le contrat luxembourgeois (formulaire 3916-bis).</li>
+  </ol>
+</section>
+
+<section class="part" id="questions" aria-labelledby="h-questions">
+  <div class="part-head">
+    <span class="part-no">Partie 10</span>
+    <h2 id="h-questions">Les questions à poser avant de signer</h2>
+  </div>
+  <div class="proscons">
+    <div>
+      <h4>À Swiss Life ou au CGP qui propose le « 5 % »</h4>
+      <ul>
+        <li>Quel est le nom exact du contrat et du fonds euros ?</li>
+        <li>Le 5 % est-il brut ou net de frais, pour quelle année, et garanti combien d'années ?</li>
+        <li>Quel pourcentage d'unités de compte est exigé, et lesquelles ?</li>
+        <li>Le bonus porte-t-il sur les versements ou sur tout l'encours ?</li>
+        <li>Le fonds euros est-il réassuré par Swiss Life France ?</li>
+        <li>Quels frais d'entrée (objectif : 0 %) et quels frais annuels sur les UC ?</li>
+        <li>Quelle rétrocession touche le conseiller, en euros par an ?</li>
+      </ul>
+    </div>
+    <div>
+      <h4>À Yomoni</h4>
+      <ul>
+        <li>Quels profils de gestion sont disponibles dans Yomoni Lux ?</li>
+        <li>Quel est le taux du fonds euros multidevise pour 2026 ?</li>
+        <li>Quel montant minimum pour les versements suivants et les retraits ?</li>
+        <li>Peut-on passer en gestion libre plus tard ?</li>
+      </ul>
+      <h4>À tout conseiller</h4>
+      <ul>
+        <li>Numéro ORIAS, statut CIF et association professionnelle ?</li>
+        <li>Conseil indépendant ou non ? Payé comment ?</li>
+        <li>Coût total la première année, en euros, tout compris ?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="part" id="methode" aria-labelledby="h-methode">
+  <div class="part-head">
+    <span class="part-no">Partie 11</span>
+    <h2 id="h-methode">Méthode, hypothèses et sources</h2>
+  </div>
+  <div class="prose">
+    <p>Les chiffres ont été relevés le 3 octobre 2026 dans des sources publiques (Insee, Banque de France, ACPR, AMF, assureurs, presse spécialisée, courtiers). Certaines pages n'ont pu être consultées qu'à travers des extraits de moteur de recherche : <strong>vérifiez chaque taux et chaque frais dans le document d'informations clés et les conditions générales avant de signer</strong>. Les taux de fonds euros futurs ne sont jamais garantis.</p>
+    <ul class="list">
+      <li>Portefeuille diversifié : actions 6,5 %/an, obligations 3,5 %/an, soit 5,6 %/an avant frais en 70/30 ; volatilité 12 %/an.</li>
+      <li>Fonds euros : 3,0 %/an, prélèvements sociaux de 17,2 % retenus chaque année.</li>
+      <li>Inflation : 2 %/an sur 15 ans.</li>
+      <li>Fiscalité 2026 : prélèvements sociaux 17,2 % sur l'assurance-vie, 18,6 % sur les autres revenus du capital (flat tax à 31,4 %).</li>
+      <li>Les calculs de succession ne tiennent pas compte du conjoint survivant ni des autres biens, sauf via l'option « abattement déjà utilisé ».</li>
+    </ul>
+  </div>
+  <details class="sources">
+    <summary>Afficher les sources (34)</summary>
+    <ol>
+      <li><a href="https://www.insee.fr/fr/statistiques/9051406" rel="noopener">Insee, indice des prix à la consommation</a> ; <a href="https://www.boursorama.com/actualite-economique/actualites/france-l-inflation-grimpe-a-3-sur-un-an-en-septembre-selon-l-insee-a2c8950bbbb65d6ed4e3f29132ff41f6" rel="noopener">inflation de septembre 2026 à 3,0 %</a></li>
+      <li><a href="https://www.garantiedesdepots.fr/sites/default/files/2026-01/06-FGDR-Plaquette_Explicative-2025_FR_WEB.pdf" rel="noopener">FGDR, plaquette explicative de la garantie des dépôts</a></li>
+      <li><a href="https://presse.economie.gouv.fr/?p=181486" rel="noopener">Ministère de l'Économie, taux du Livret A au 1er août 2026</a></li>
+      <li><a href="https://www.euronews.com/2026/09/10/ecb-hikes-rates-to-25-as-energy-shock-pushes-eurozone-inflation-higher" rel="noopener">Euronews, la BCE remonte son taux à 2,5 % (10 septembre 2026)</a></li>
+      <li><a href="https://www.boursorama.com/bourse/actualites/le-rendement-de-l-oat-a-dix-ans-en-passe-d-enregistrer-sa-plus-forte-hausse-trimestrielle-depuis-1987-cb558a0cf8b096105e1482fcabe88cae" rel="noopener">Boursorama, OAT 10 ans : plus forte hausse trimestrielle depuis 1987</a></li>
+      <li><a href="https://www.moneyvox.fr/placement/taux-compte-a-terme.php" rel="noopener">Moneyvox, taux des comptes à terme</a></li>
+      <li><a href="https://acpr.banque-france.fr/system/files/2026-06/20260630_AS180_revalorisation_2025.pdf" rel="noopener">ACPR, revalorisation des contrats d'assurance-vie en 2025</a></li>
+      <li><a href="https://placement.meilleurtaux.com/assurance-vie/actualites/2026-mars/assurance-vie-2025-fonds-euros-a-2-6-selon-france-assureurs.html" rel="noopener">France Assureurs via Meilleurtaux, fonds euros à 2,6 % en 2025</a></li>
+      <li><a href="https://www.goodvest.fr/blog/assurance-vie/meilleurs-fonds-euros" rel="noopener">Goodvest, meilleurs fonds euros 2025</a></li>
+      <li><a href="https://www.francetransactions.com/actus/assurancevie/nouveau-bonus-fonds-euros-netissima-generali.html" rel="noopener">France Transactions, bonus Netissima 2026</a> ; <a href="https://www.linxea.com/les-offres-bonus-du-moment/" rel="noopener">Linxea, offres bonus du moment</a></li>
+      <li><a href="https://www.linxea.com/assurance-vie/linxea-spirit-2/" rel="noopener">Linxea Spirit 2</a></li>
+      <li><a href="https://www.placement-direct.fr/actualites/placement-direct-euro-retour-du-100percent-fonds-en-euros-jusqua-200-000-euro" rel="noopener">Placement-direct, Euro+ jusqu'à 100 % et 200 000 €</a></li>
+      <li><a href="https://www.yomoni.fr/investir/assurance-vie-luxembourgeoise" rel="noopener">Yomoni, assurance-vie luxembourgeoise (frais)</a></li>
+      <li><a href="https://presse.ag2rlamondiale.fr/" rel="noopener">AG2R La Mondiale, communiqué de lancement de Yomoni Lux</a></li>
+      <li><a href="https://blog.yomoni.fr/le-bilan-2025-de-la-gestion" rel="noopener">Yomoni, bilan 2025 de la gestion</a></li>
+      <li><a href="https://www.boursobank-group.com/" rel="noopener">BoursoBank, lancement de BoursoVie Lux (avril 2025)</a></li>
+      <li><a href="https://placement.meilleurtaux.com/" rel="noopener">Meilleurtaux, Life Mobility Evolution</a></li>
+      <li><a href="https://www.caa.lu/" rel="noopener">Commissariat aux assurances (Luxembourg), lettre circulaire 26/1</a></li>
+      <li><a href="https://www.aca.lu/" rel="noopener">Association des compagnies d'assurances du Luxembourg, triangle de sécurité</a></li>
+      <li><a href="https://www.hagnere-patrimoine.fr/guides-patrimoine/assurance-vie-luxembourgeoise/loi-sapin-2-assurance-vie-luxembourgeoise" rel="noopener">Hagnéré Patrimoine, Sapin 2 et assurance-vie luxembourgeoise</a></li>
+      <li><a href="https://www.hagnere-patrimoine.fr/guides-patrimoine/assurance-vie-luxembourgeoise/frais-assurance-vie-luxembourgeoise" rel="noopener">Hagnéré Patrimoine, frais de l'assurance-vie luxembourgeoise</a></li>
+      <li><a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034386882" rel="noopener">Légifrance, article L.631-2-1 du Code monétaire et financier (Sapin 2)</a></li>
+      <li><a href="https://www.cliffordchance.com/content/dam/cliffordchance/briefings/2025/01/the-new-eu-insurance-recovery-and-resolution-directive-january-2025.pdf" rel="noopener">Clifford Chance, directive européenne de résolution des assureurs (IRRD)</a></li>
+      <li><a href="https://www.molitorlegal.lu/" rel="noopener">Molitor, faillite de FWU Life Insurance Lux</a></li>
+      <li><a href="https://www.swisslife.fr/swiss-life-en-france/espace-presse/taux-de-rendement-net-2025-fonds-euros-swiss-life.html" rel="noopener">Swiss Life, taux 2025 de ses fonds euros</a></li>
+      <li><a href="https://assurancevieluxembourgeoise.eu/en/swisslife/" rel="noopener">Courtier, SwissLife Premium Lux et bonus « jusqu'à 5 % »</a></li>
+      <li><a href="https://www.swisslife-global.com/content/dam/international_rel/id-global/documents/download/SFCR-SLLU_2025.pdf" rel="noopener">Swiss Life (Luxembourg), rapport de solvabilité 2025</a></li>
+      <li><a href="https://www.banque-france.fr/system/files/2026-06/OPEF2026.pdf" rel="noopener">Banque de France, Observatoire des frais (OPEF 2026)</a></li>
+      <li><a href="https://acpr.banque-france.fr/system/files/2026-06/20260622_Etude_ACPR-AMF_Produits_structures.pdf" rel="noopener">ACPR-AMF, étude sur les produits structurés (juin 2026)</a></li>
+      <li><a href="https://www.amf-france.org/sites/institutionnel/files/private/2025-12/chiffres-cles-cif-2024.pdf" rel="noopener">AMF, chiffres clés des conseillers en investissements financiers</a></li>
+      <li><a href="https://www.aspim.fr/actualites/collecte-et-performance-des-fonds-immobiliers-grand-public-au-premier-semestre-2026/" rel="noopener">ASPIM, performance des SCPI</a></li>
+      <li><a href="https://www.morningstar.com/business/insights/research/mind-the-gap" rel="noopener">Morningstar, Mind the Gap</a></li>
+      <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F34913/1_7" rel="noopener">Service-public, prélèvements sociaux 2026</a> ; <a href="https://www.hagnere-patrimoine.fr/guides-patrimoine/comment-payer-moins-impots/lfss-2026-article-12-prelevements-sociaux" rel="noopener">LFSS 2026, article 12</a></li>
+      <li><a href="https://www.nbe-avocats.fr/articles/fiscal/assurance-vie-succession-comprendre-articles-990-i-757-b-cgi-exemples/" rel="noopener">Articles 990 I et 757 B du CGI, exemples</a> ; <a href="https://syage.notaires.fr/don-familial-de-100-000-e-exonere-ce-que-prevoit-larticle-790-a-bis-du-cgi/" rel="noopener">article 790 A bis (don pour un logement neuf)</a></li>
+    </ol>
+  </details>
+  <footer class="foot">
+    <p>Ce document est une analyse personnelle à visée pédagogique. Ce n'est pas un conseil en investissement réglementé : avant toute décision, faites valider la stratégie par un professionnel immatriculé (CIF) ou un notaire.</p>
+    <p>Rédigé en octobre 2026. Les rendements passés ne préjugent pas des rendements futurs.</p>
+  </footer>
+</section>
+</main>
+</div>
+
+<script>
+/* Moteur de calcul du rapport — mêmes fonctions pour le texte, les graphiques et les simulateurs. */
+(function (root) {
+  const P = {
+    PS: 0.172,            // prélèvements sociaux sur les gains d'assurance-vie
+    IR_LOW: 0.075,        // taux forfaitaire après 8 ans, part des primes ≤ 150 000 €
+    IR_HIGH: 0.128,       // part des primes > 150 000 €
+    SEUIL_150K: 150000,
+    ABAT_SEUL: 4600,
+    ABAT_COUPLE: 9200,
+    ABAT_990I: 152500,
+    ABAT_757B: 30500,
+    ABAT_ENFANT: 100000,
+    BAREME: [[8072, 0.05], [12109, 0.10], [15932, 0.15], [552324, 0.20], [902838, 0.30], [1805677, 0.40], [Infinity, 0.45]],
+  };
+
+  // Capital année par année. r = rendement annuel net appliqué à l'enveloppe.
+  function path(capital, r, years) {
+    const out = [];
+    for (let n = 0; n <= years; n++) out.push(capital * Math.pow(1 + r, n));
+    return out;
+  }
+  // Rendement net d'unités de compte : brut − frais totaux (approximation multiplicative).
+  function ucNet(gross, fees) { return (1 + gross) * (1 - fees) - 1; }
+  // Fonds euros : le taux affiché est net de frais de gestion, les prélèvements sociaux sont retenus chaque année.
+  function feNet(rate) { return rate * (1 - P.PS); }
+
+  // Impôt de sortie (rachat total après 8 ans) sur un gain donné.
+  // psDejaPayes = true pour un fonds euros (PS prélevés au fil de l'eau).
+  function exitTax8y(gain, primes, opts = {}) {
+    const abat = opts.couple ? P.ABAT_COUPLE : P.ABAT_SEUL;
+    const partBasse = Math.min(1, P.SEUIL_150K / primes);
+    const imposable = Math.max(0, gain - abat);
+    const ir = imposable * (partBasse * P.IR_LOW + (1 - partBasse) * P.IR_HIGH);
+    const ps = opts.psDejaPayes ? 0 : gain * P.PS;
+    return { ir, ps, total: ir + ps, partBasse, imposable };
+  }
+
+  // Droits de succession en ligne directe sur une part taxable (après abattement).
+  function bareme(taxable) {
+    let prev = 0, tax = 0;
+    for (const [cap, r] of P.BAREME) {
+      if (taxable > prev) tax += (Math.min(taxable, cap) - prev) * r;
+      prev = cap;
+    }
+    return tax;
+  }
+  // Art. 990 I : primes versées avant 70 ans, par bénéficiaire.
+  function tax990I(partBenef) {
+    const x = Math.max(0, partBenef - P.ABAT_990I);
+    return 0.20 * Math.min(x, 700000) + 0.3125 * Math.max(0, x - 700000);
+  }
+
+  // Trois façons de transmettre la même somme à n enfants.
+  //  - "hors" : l'argent reste sur un compte, il entre dans la succession.
+  //  - "av70moins" : assurance-vie alimentée avant 70 ans (990 I).
+  //  - "av70plus" : assurance-vie alimentée après 70 ans (757 B) — seules les primes au-delà de 30 500 € sont taxées.
+  // abatDispo : part de l'abattement de 100 000 € par enfant encore disponible (0 si déjà consommé par d'autres biens).
+  function succession(montant, enfants, opts = {}) {
+    const abat = opts.abatDispo != null ? opts.abatDispo : P.ABAT_ENFANT;
+    const primes = opts.primes != null ? opts.primes : montant; // pour 757 B
+    const part = montant / enfants;
+    const hors = bareme(Math.max(0, part - abat)) * enfants;
+    const av70moins = tax990I(part) * enfants;
+    const taxable757 = Math.max(0, primes - P.ABAT_757B) / enfants;
+    const av70plus = bareme(Math.max(0, taxable757 - abat)) * enfants;
+    return { part, hors, av70moins, av70plus };
+  }
+
+  // Projection probabiliste d'un portefeuille (loi log-normale) : percentiles par année.
+  // mu est un rendement annualisé (géométrique), comme les performances historiques publiées :
+  // la médiane suit donc exactement la projection « rendement moyen » des autres graphiques.
+  function fan(capital, mu, sigma, years, zs = { p10: -1.2816, p25: -0.6745, p50: 0, p75: 0.6745, p90: 1.2816 }) {
+    const out = {};
+    for (const k in zs) out[k] = [];
+    const m = Math.log(1 + mu);
+    for (let n = 0; n <= years; n++) {
+      for (const k in zs) out[k].push(capital * Math.exp(m * n + zs[k] * sigma * Math.sqrt(n)));
+    }
+    return out;
+  }
+
+  root.Fin = { P, path, ucNet, feNet, exitTax8y, bareme, tax990I, succession, fan };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+/* Mini-bibliothèque de graphiques SVG — sans dépendance.
+   Lignes (avec bandes et réticule), barres horizontales (simples ou empilées). */
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+  const nfEUR0 = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  const fmt = {
+    eur: (v) => nfEUR0.format(Math.round(v)),
+    keur: (v) => {
+      const a = Math.abs(v);
+      if (a >= 1e6) return (v / 1e6).toLocaleString('fr-FR', { maximumFractionDigits: 2 }) + ' M€';
+      if (a >= 1e3) return Math.round(v / 1e3).toLocaleString('fr-FR') + ' k€';
+      return Math.round(v).toLocaleString('fr-FR') + ' €';
+    },
+    pct: (v, d = 1) => (v * 100).toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d }) + ' %',
+  };
+
+  function svgEl(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function h(tag, cls, parent, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function niceStep(range, count) {
+    const raw = range / Math.max(1, count);
+    const p = Math.pow(10, Math.floor(Math.log10(raw)));
+    const m = raw / p;
+    const nice = m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10;
+    return nice * p;
+  }
+  function ticks(min, max, count) {
+    const step = niceStep(max - min, count);
+    const lo = Math.floor(min / step) * step;
+    const hi = Math.ceil(max / step) * step;
+    const out = [];
+    for (let v = lo; v <= hi + step / 2; v += step) out.push(Math.round(v * 1e6) / 1e6);
+    return out;
+  }
+
+  const measureCtx = document.createElement('canvas').getContext('2d');
+  function textW(t, font) { measureCtx.font = font; return measureCtx.measureText(t).width; }
+  function wrap(text, maxW, font) {
+    if (maxW <= 0 || textW(text, font) <= maxW) return [text];
+    const words = text.split(' '), lines = [];
+    let cur = '';
+    words.forEach((w) => {
+      const t = cur ? cur + ' ' + w : w;
+      if (cur && textW(t, font) > maxW) { lines.push(cur); cur = w; } else cur = t;
+    });
+    if (cur) lines.push(cur);
+    return lines;
+  }
+
+  function legend(parent, items, kind) {
+    if (items.length < 2) return;
+    const ul = h('ul', 'viz-legend', parent);
+    items.forEach((it) => {
+      const li = h('li', null, ul);
+      const key = h('span', 'viz-key viz-key-' + (it.kind || kind), li);
+      key.style.setProperty('--c', it.color);
+      if (it.dashed) key.classList.add('viz-key-dashed');
+      if (it.opacity) key.style.opacity = Math.min(1, it.opacity * 2.4);
+      h('span', null, li, it.name);
+    });
+  }
+
+  function tableView(parent, caption, head, rows) {
+    const d = h('details', 'viz-table', parent);
+    h('summary', null, d, 'Voir les données');
+    const wrap = h('div', 'viz-table-wrap', d);
+    const t = h('table', null, wrap);
+    h('caption', null, t, caption);
+    const tr = h('tr', null, h('thead', null, t));
+    head.forEach((c) => h('th', null, tr, c));
+    const tb = h('tbody', null, t);
+    rows.forEach((r) => {
+      const row = h('tr', null, tb);
+      r.forEach((c, i) => h(i === 0 ? 'th' : 'td', null, row, c));
+    });
+  }
+
+  function placeTip(tip, root, x, y) {
+    const rw = root.clientWidth;
+    const tw = tip.offsetWidth;
+    let left = x + 14;
+    if (left + tw > rw) left = x - tw - 14;
+    if (left < 0) left = Math.max(0, Math.min(rw - tw, x - tw / 2));
+    tip.style.left = left + 'px';
+    tip.style.top = Math.max(0, y - 10) + 'px';
+  }
+
+  /* ---------- Courbes ---------- */
+  function lineChart(root, cfg) {
+    root.classList.add('viz');
+    root.innerHTML = '';
+    const yf = cfg.yFmt || fmt.keur;
+    const xf = cfg.xFmt || ((x) => String(x));
+    const leg = (cfg.series || []).map((s) => ({ name: s.name, color: s.color, kind: 'line', dashed: s.dashed }))
+      .concat((cfg.bands || []).filter((b) => b.legend).map((b) => ({ name: b.legend, color: b.color, kind: 'band', opacity: b.opacity || 0.12 })));
+    legend(root, leg, 'line');
+    const box = h('div', 'viz-plot', root);
+    const tip = h('div', 'viz-tip', box);
+    tip.hidden = true;
+    const H = cfg.height || 300;
+    let state = { i: null };
+
+    function render() {
+      const W = Math.max(280, box.clientWidth);
+      const narrow = W < 560;
+      const labelIds = narrow ? [] : (cfg.endLabels || []);
+      const m = { t: 14, r: labelIds.length ? 150 : 14, b: 30, l: 58 };
+      const pw = W - m.l - m.r, ph = H - m.t - m.b;
+      const xs = cfg.x;
+      const all = [];
+      cfg.series.forEach((s) => s.values.forEach((v) => all.push(v)));
+      (cfg.bands || []).forEach((b) => { b.lo.forEach((v) => all.push(v)); b.hi.forEach((v) => all.push(v)); });
+      let ymin = cfg.yMin != null ? cfg.yMin : Math.min(...all);
+      let ymax = Math.max(...all);
+      const yt = ticks(ymin, ymax, narrow ? 4 : 5);
+      ymin = yt[0]; ymax = yt[yt.length - 1];
+      const X = (i) => m.l + (pw * i) / (xs.length - 1);
+      const Y = (v) => m.t + ph - ((v - ymin) / (ymax - ymin)) * ph;
+
+      box.querySelectorAll('svg').forEach((n) => n.remove());
+      const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': cfg.aria || '' });
+      box.insertBefore(svg, tip);
+      const g = svgEl('g', {}, svg);
+      yt.forEach((v) => {
+        svgEl('line', { x1: m.l, x2: m.l + pw, y1: Y(v), y2: Y(v), class: v === ymin ? 'viz-base' : 'viz-grid' }, g);
+        const t = svgEl('text', { x: m.l - 8, y: Y(v) + 4, 'text-anchor': 'end', class: 'viz-tick' }, g);
+        t.textContent = yf(v);
+      });
+      const every = cfg.xEvery || Math.ceil(xs.length / (narrow ? 5 : 10));
+      xs.forEach((x, i) => {
+        if (i % every !== 0 && i !== xs.length - 1) return;
+        if (i !== xs.length - 1 && xs.length - 1 - i < every / 2) return;
+        const t = svgEl('text', { x: X(i), y: H - 8, 'text-anchor': 'middle', class: 'viz-tick' }, g);
+        t.textContent = xf(x);
+      });
+      (cfg.bands || []).forEach((b) => {
+        let d = '';
+        b.hi.forEach((v, i) => { d += (i ? 'L' : 'M') + X(i) + ',' + Y(v); });
+        for (let i = b.lo.length - 1; i >= 0; i--) d += 'L' + X(i) + ',' + Y(b.lo[i]);
+        svgEl('path', { d: d + 'Z', fill: b.color, 'fill-opacity': b.opacity || 0.12, stroke: 'none' }, g);
+      });
+      cfg.series.forEach((s) => {
+        let d = '';
+        s.values.forEach((v, i) => { d += (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1); });
+        svgEl('path', {
+          d, fill: 'none', stroke: s.color, 'stroke-width': s.width || 2, 'stroke-linejoin': 'round', 'stroke-linecap': 'round',
+          'stroke-dasharray': s.dashed ? '5 5' : 'none',
+        }, g);
+      });
+      // Étiquettes de fin : uniquement si elles ne se chevauchent pas
+      const last = xs.length - 1;
+      const labs = labelIds.map((id) => cfg.series.find((s) => s.id === id)).filter(Boolean)
+        .map((s) => ({ s, y: Y(s.values[last]) })).sort((a, b) => a.y - b.y);
+      const placed = [];
+      labs.forEach((l) => {
+        if (placed.some((p) => Math.abs(p.y - l.y) < 30)) return;
+        placed.push(l);
+        svgEl('circle', { cx: X(last), cy: l.y, r: 4, fill: l.s.color, class: 'viz-ring' }, g);
+        const t1 = svgEl('text', { x: X(last) + 10, y: l.y - 2, class: 'viz-end-val' }, g);
+        t1.textContent = yf(l.s.values[last]);
+        const t2 = svgEl('text', { x: X(last) + 10, y: l.y + 12, class: 'viz-end-name' }, g);
+        t2.textContent = l.s.short || l.s.name;
+      });
+      // Réticule
+      const cross = svgEl('line', { y1: m.t, y2: m.t + ph, class: 'viz-cross', visibility: 'hidden' }, g);
+      const dots = cfg.series.map((s) => svgEl('circle', { r: 4, fill: s.color, class: 'viz-ring', visibility: 'hidden' }, g));
+      const hit = svgEl('rect', { x: m.l, y: m.t, width: pw, height: ph, fill: 'transparent', tabindex: 0, class: 'viz-hit' }, svg);
+      hit.setAttribute('aria-label', 'Explorer les valeurs avec les flèches gauche et droite');
+      function show(i) {
+        state.i = i;
+        if (i == null) {
+          cross.setAttribute('visibility', 'hidden');
+          dots.forEach((d) => d.setAttribute('visibility', 'hidden'));
+          tip.hidden = true;
+          return;
+        }
+        cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i));
+        cross.setAttribute('visibility', 'visible');
+        cfg.series.forEach((s, k) => {
+          dots[k].setAttribute('cx', X(i)); dots[k].setAttribute('cy', Y(s.values[i]));
+          dots[k].setAttribute('visibility', 'visible');
+        });
+        tip.innerHTML = '';
+        h('div', 'viz-tip-head', tip, cfg.tipHead ? cfg.tipHead(xs[i], i) : xf(xs[i]));
+        const rows = cfg.series.map((s) => ({ s, v: s.values[i] }))
+          .concat((cfg.bands || []).filter((b) => b.tip).map((b) => ({ s: { name: b.tip, color: b.color, band: true }, v: null, lo: b.lo[i], hi: b.hi[i] })));
+        rows.sort((a, b) => (b.v ?? b.hi) - (a.v ?? a.hi));
+        rows.forEach((r) => {
+          const row = h('div', 'viz-tip-row', tip);
+          const k = h('span', 'viz-key viz-key-' + (r.s.band ? 'band' : 'line'), row);
+          k.style.setProperty('--c', r.s.color);
+          h('strong', null, row, r.v != null ? yf(r.v) : yf(r.lo) + ' – ' + yf(r.hi));
+          h('span', 'viz-tip-name', row, r.s.name);
+        });
+        tip.hidden = false;
+        const top = Math.min(...cfg.series.map((s) => Y(s.values[i])));
+        placeTip(tip, box, X(i), top);
+      }
+      hit.addEventListener('pointermove', (e) => {
+        const r = svg.getBoundingClientRect();
+        const px = ((e.clientX - r.left) / r.width) * W;
+        const i = Math.max(0, Math.min(last, Math.round(((px - m.l) / pw) * last)));
+        show(i);
+      });
+      hit.addEventListener('pointerleave', () => show(null));
+      hit.addEventListener('blur', () => show(null));
+      hit.addEventListener('focus', () => show(state.i ?? last));
+      hit.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { show(Math.min(last, (state.i ?? -1) + 1)); e.preventDefault(); }
+        if (e.key === 'ArrowLeft') { show(Math.max(0, (state.i ?? last + 1) - 1)); e.preventDefault(); }
+      });
+    }
+    render();
+    if (cfg.table !== false) {
+      const head = [cfg.xName || 'Année'].concat(cfg.series.map((s) => s.name));
+      const tf = cfg.tableFmt || fmt.eur;
+      const rows = cfg.x.map((x, i) => [xf(x)].concat(cfg.series.map((s) => tf(s.values[i]))));
+      tableView(root, cfg.aria || '', head, rows);
+    }
+    let lastW = box.clientWidth;
+    const ro = new ResizeObserver(() => { if (Math.abs(box.clientWidth - lastW) > 4) { lastW = box.clientWidth; render(); } });
+    ro.observe(box);
+    return { destroy: () => ro.disconnect() };
+  }
+
+  /* ---------- Barres horizontales (simples ou empilées) ---------- */
+  function barChart(root, cfg) {
+    root.classList.add('viz');
+    root.innerHTML = '';
+    const vf = cfg.fmt || fmt.keur;
+    const segs = cfg.segments || [{ key: 'value', name: cfg.valueName || 'Valeur', color: cfg.color || 'var(--s1)' }];
+    legend(root, segs.map((s) => ({ name: s.name, color: s.color, kind: 'rect' })), 'rect');
+    const box = h('div', 'viz-plot', root);
+    const tip = h('div', 'viz-tip', box);
+    tip.hidden = true;
+    function render() {
+      const W = Math.max(280, box.clientWidth);
+      const ff = getComputedStyle(root).fontFamily;
+      const catFont = '14px ' + ff, valFont = '600 13px ' + ff, tickFont = '12px ' + ff;
+      const totals = cfg.items.map((it) => segs.reduce((a, s) => a + (it[s.key] || 0), 0));
+      const labels = cfg.items.map((it, k) => (it.label != null ? it.label : vf(totals[k])));
+      const catMax = Math.max(...cfg.items.map((it) => textW(it.name, catFont)));
+      const valMax = Math.max(...labels.map((l) => textW(l, valFont)));
+      // Étiquettes à gauche des barres si elles tiennent, sinon au-dessus.
+      const above = W < 560 || catMax > W * 0.42;
+      const labelW = above ? 0 : Math.ceil(catMax);
+      const xmaxData = cfg.max || Math.max(...totals);
+      const m = { t: 6, r: Math.ceil(valMax) + 14, b: 26, l: above ? 1 : labelW + 14 };
+      const pw = W - m.l - m.r;
+      const lineH = 18, bh = 20;
+      const rows = cfg.items.map((it) => {
+        const lines = wrap(it.name, above ? W - 4 : labelW, catFont);
+        const hgt = above ? lines.length * lineH + bh + 16 : Math.max(40, lines.length * lineH + 12);
+        return { lines, hgt };
+      });
+      const H = m.t + m.b + rows.reduce((a, r) => a + r.hgt, 0);
+      const xt = ticks(0, xmaxData, above ? 3 : 5).filter((v) => v <= xmaxData * 1.0001);
+      const xmax = xmaxData || 1;
+      const X = (v) => m.l + (v / xmax) * pw;
+      box.querySelectorAll('svg').forEach((n) => n.remove());
+      const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: 'img', 'aria-label': cfg.aria || '' });
+      box.insertBefore(svg, tip);
+      let lastTickRight = -Infinity;
+      xt.forEach((v) => {
+        svgEl('line', { x1: X(v), x2: X(v), y1: m.t, y2: H - m.b, class: v === 0 ? 'viz-base' : 'viz-grid' }, svg);
+        const txt = vf(v), tw = textW(txt, tickFont);
+        if (X(v) - tw / 2 < lastTickRight + 8) return;
+        lastTickRight = X(v) + tw / 2;
+        const t = svgEl('text', { x: X(v), y: H - 8, 'text-anchor': 'middle', class: 'viz-tick' }, svg);
+        t.textContent = txt;
+      });
+      let yTop = m.t;
+      cfg.items.forEach((it, k) => {
+        const { lines, hgt } = rows[k];
+        const by = above ? yTop + lines.length * lineH + 6 : yTop + (hgt - bh) / 2;
+        const lab = svgEl('text', {
+          x: above ? m.l : m.l - 12, 'text-anchor': above ? 'start' : 'end', class: it.strong ? 'viz-cat viz-cat-strong' : 'viz-cat',
+        }, svg);
+        const y0 = above ? yTop + 14 : by + bh / 2 + 4 - ((lines.length - 1) * lineH) / 2;
+        lines.forEach((ln, i) => {
+          const ts = svgEl('tspan', { x: above ? m.l : m.l - 12, y: y0 + i * lineH }, lab);
+          ts.textContent = ln;
+        });
+        yTop += hgt;
+        const rowTop = yTop - hgt, rowH = hgt;
+        let x0 = 0;
+        const gRow = svgEl('g', { class: 'viz-bar', tabindex: 0 }, svg);
+        const nSeg = segs.filter((s) => (it[s.key] || 0) > 0).length;
+        let drawn = 0;
+        segs.forEach((s) => {
+          const v = it[s.key] || 0;
+          if (v <= 0) return;
+          drawn++;
+          const isLast = drawn === nSeg;
+          const xa = X(x0) + (x0 > 0 ? 2 : 0);
+          const xb = X(x0 + v);
+          const w = Math.max(1, xb - xa);
+          const r = isLast ? Math.min(4, w / 2) : 0;
+          const d = `M${xa},${by}H${xa + w - r}${r ? `Q${xa + w},${by} ${xa + w},${by + r}` : ''}V${by + bh - r}${r ? `Q${xa + w},${by + bh} ${xa + w - r},${by + bh}` : ''}H${xa}Z`;
+          svgEl('path', { d, fill: it.color && segs.length === 1 ? it.color : s.color }, gRow);
+          x0 += v;
+        });
+        svgEl('rect', { x: 0, y: rowTop, width: W, height: rowH, fill: 'transparent' }, gRow);
+        const vt = svgEl('text', { x: X(totals[k]) + 8, y: by + bh / 2 + 4, class: 'viz-end-val' }, svg);
+        vt.textContent = labels[k];
+        const showTip = () => {
+          tip.innerHTML = '';
+          h('div', 'viz-tip-head', tip, it.name);
+          segs.forEach((s) => {
+            if (it[s.key] == null) return;
+            const row = h('div', 'viz-tip-row', tip);
+            const kk = h('span', 'viz-key viz-key-rect', row);
+            kk.style.setProperty('--c', it.color && segs.length === 1 ? it.color : s.color);
+            h('strong', null, row, vf(it[s.key]));
+            h('span', 'viz-tip-name', row, s.name);
+          });
+          if (it.note) h('div', 'viz-tip-note', tip, it.note);
+          tip.hidden = false;
+          placeTip(tip, box, Math.min(X(totals[k]), W - 40), by);
+          gRow.classList.add('is-hover');
+        };
+        const hide = () => { tip.hidden = true; gRow.classList.remove('is-hover'); };
+        gRow.addEventListener('pointerenter', showTip);
+        gRow.addEventListener('pointerleave', hide);
+        gRow.addEventListener('focus', showTip);
+        gRow.addEventListener('blur', hide);
+      });
+    }
+    render();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (box.isConnected) render(); });
+    if (cfg.table !== false) {
+      const head = [cfg.catName || ''].concat(segs.map((s) => s.name));
+      if (segs.length > 1) head.push('Total');
+      const tf = cfg.tableFmt || fmt.eur;
+      const rows = cfg.items.map((it) => {
+        const r = [it.name].concat(segs.map((s) => tf(it[s.key] || 0)));
+        if (segs.length > 1) r.push(tf(segs.reduce((a, s) => a + (it[s.key] || 0), 0)));
+        return r;
+      });
+      tableView(root, cfg.aria || '', head, rows);
+    }
+    let lastW = box.clientWidth;
+    const ro = new ResizeObserver(() => { if (Math.abs(box.clientWidth - lastW) > 4) { lastW = box.clientWidth; render(); } });
+    ro.observe(box);
+    return { destroy: () => ro.disconnect() };
+  }
+
+  window.Viz = { lineChart, barChart, fmt };
+})();
+
+/* Graphiques et simulateurs du rapport. Toutes les valeurs viennent de Fin (moteur de calcul). */
+(function () {
+  const F = window.Fin, V = window.Viz, f = V.fmt;
+  const C = 900000, N = 15, G = 0.056, VOL = 0.12, FE = 0.03, START = 2026;
+  const idx = (n) => Array.from({ length: n + 1 }, (_, i) => i);
+  const yearOf = (i) => String(START + i);
+  const tipYear = (x, i) => (i === 0 ? 'Octobre ' + START + ' · départ' : START + i + ' · après ' + i + (i > 1 ? ' ans' : ' an'));
+  const pct1 = (v) => f.pct(v, 1);
+  const pct2 = (v) => f.pct(v, 2);
+
+  // 1. Érosion monétaire
+  V.lineChart(document.getElementById('fig-erosion'), {
+    x: idx(N), xFmt: yearOf, tipHead: tipYear, height: 260,
+    aria: 'Pouvoir d’achat de 900 000 € laissés sur un compte, en euros de 2026',
+    series: [
+      { id: 'i2', name: 'Inflation 2 %/an', short: 'Inflation 2 %', color: 'var(--s1)', values: idx(N).map((n) => C / Math.pow(1.02, n)) },
+      { id: 'i3', name: 'Inflation 3 %/an', short: 'Inflation 3 %', color: 'var(--s2)', values: idx(N).map((n) => C / Math.pow(1.03, n)) },
+    ],
+    endLabels: ['i2', 'i3'],
+  });
+
+  // 2. Placements sans risque : brut, net, impôts
+  const surs = [
+    ['Compte courant', 0, 0],
+    ['Livret A / LDDS (34 950 € max.)', 0.017, 0],
+    ['Fonds monétaire (compte-titres)', 0.023, 0.314],
+    ['Compte à terme 12 mois', 0.027, 0.314],
+    ['Fonds euros, moyenne 2025', 0.0263, 0.172],
+    ['Bon fonds euros 2025', 0.033, 0.172],
+    ['OAT 10 ans gardée à l’échéance', 0.045, 0.314],
+  ].map(([name, gross, tax]) => ({ name, net: gross * (1 - tax), tax: gross * tax, label: pct2(gross * (1 - tax)) }));
+  V.barChart(document.getElementById('fig-surs'), {
+    items: surs, fmt: pct1, tableFmt: pct2, catName: 'Placement',
+    aria: 'Rendement annuel des placements sans risque, net d’impôts',
+    segments: [
+      { key: 'net', name: 'Rendement net', color: 'var(--s1)' },
+      { key: 'tax', name: 'Impôts et prélèvements', color: 'var(--s2)' },
+    ],
+  });
+
+  // 5. Impact des frais
+  const zero = C * Math.pow(1 + G, N);
+  const frais = [
+    ['Gestion libre en ligne, ETF (0,85 %/an)', 0.0085, 0],
+    ['Yomoni Lux (1,40 %/an)', 0.014, 0],
+    ['CGP à la commission (2 % d’entrée, 2,5 %/an)', 0.025, 0.02],
+    ['Haut de fourchette (3 % d’entrée, 3 %/an)', 0.03, 0.03],
+  ].map(([name, fee, entry]) => {
+    const v = C * (1 - entry) * Math.pow(1 + F.ucNet(G, fee), N);
+    return { name, net: v, frais: zero - v, label: f.keur(v) };
+  });
+  V.barChart(document.getElementById('fig-frais'), {
+    items: frais, max: zero, catName: 'Mode de gestion',
+    aria: 'Capital après 15 ans selon le niveau de frais',
+    segments: [
+      { key: 'net', name: 'Capital après 15 ans', color: 'var(--s1)' },
+      { key: 'frais', name: 'Coût des frais', color: 'var(--s2)' },
+    ],
+  });
+
+  // 6. Fonds euros : taux 2025 et bonus annoncés
+  const fe = [
+    ['Moyenne du marché', 0.0263, 0],
+    ['SwissLife Premium Lux', 0.0277, 0.0223, 'Bonus « jusqu’à 5 % » avec plus de 60 % d’UC, selon un courtier'],
+    ['Swiss Life Gestion Privée (≥ 60 % UC)', 0.0325, 0],
+    ['Generali Netissima', 0.03, 0.015, 'Bonus 2026-2027 avec au moins 30 % d’UC'],
+    ['Spirica Objectif Climat (Linxea Spirit 2)', 0.0326, 0.015, 'Bonus jusqu’à 1,5 point, dès 100 000 € et 30 % d’UC'],
+    ['Placement-direct Euro+ (Swiss Life)', 0.036, 0, 'Jusqu’à 100 % en fonds euros, 200 000 € max.'],
+    ['Corum Eurolife', 0.041, 0],
+  ].map(([name, base, bonus, note]) => ({
+    name, base, bonus, note, strong: name.startsWith('SwissLife'),
+    label: bonus ? pct2(base) + ' → ' + pct2(base + bonus) : pct2(base),
+  }));
+  V.barChart(document.getElementById('fig-fe'), {
+    items: fe, fmt: pct1, tableFmt: pct2, catName: 'Fonds euros',
+    aria: 'Taux des fonds euros en 2025 et bonus annoncés pour 2026',
+    segments: [
+      { key: 'base', name: 'Taux servi en 2025', color: 'var(--s1)' },
+      { key: 'bonus', name: 'Bonus maximal sous conditions', color: 'var(--s2)' },
+    ],
+  });
+
+  // 7. Projection comparée
+  const path = (r, entry = 0) => idx(N).map((n) => C * (1 - entry) * Math.pow(1 + r, n));
+  V.lineChart(document.getElementById('fig-proj'), {
+    x: idx(N), xFmt: yearOf, tipHead: tipYear, height: 340,
+    aria: 'Valeur de 900 000 € sur 15 ans selon le placement',
+    series: [
+      { id: 'yo', name: '70/30 Yomoni Lux (1,40 %)', short: 'Yomoni Lux', color: 'var(--s1)', values: path(F.ucNet(G, 0.014)) },
+      { id: 'cgp', name: '70/30 CGP à la commission (2,5 % + 2 % d’entrée)', short: 'CGP commission', color: 'var(--s2)', values: path(F.ucNet(G, 0.025), 0.02) },
+      { id: 'lib', name: '70/30 gestion libre en ligne (0,85 %)', short: 'Gestion libre', color: 'var(--s3)', values: path(F.ucNet(G, 0.0085)) },
+      { id: 'fe', name: 'Fonds euros à 3,0 %', short: 'Fonds euros', color: 'var(--s4)', values: path(F.feNet(FE)) },
+      { id: 'cc', name: 'Compte courant', short: 'Compte courant', color: 'var(--s5)', values: path(0) },
+      { id: 'ref', name: 'Pouvoir d’achat constant (inflation 2 %)', color: 'var(--ref)', dashed: true, width: 1.5, values: path(0.02) },
+    ],
+    endLabels: ['lib', 'yo', 'cgp', 'cc'],
+  });
+
+  // 7 bis. Éventail de résultats
+  const fanY = F.fan(C, F.ucNet(G, 0.014), VOL, N);
+  V.lineChart(document.getElementById('fig-fan'), {
+    x: idx(N), xFmt: yearOf, tipHead: tipYear, height: 340,
+    aria: 'Fourchette des résultats possibles pour 900 000 € investis en 70/30 chez Yomoni Lux',
+    bands: [
+      { lo: fanY.p10, hi: fanY.p90, color: 'var(--s1)', opacity: 0.12, legend: '8 trajectoires sur 10', tip: '8 sur 10 entre' },
+      { lo: fanY.p25, hi: fanY.p75, color: 'var(--s1)', opacity: 0.24, legend: '5 trajectoires sur 10', tip: '5 sur 10 entre' },
+    ],
+    series: [
+      { id: 'med', name: 'Scénario médian', short: 'Médiane', color: 'var(--s1)', values: fanY.p50 },
+      { id: 'fe', name: 'Fonds euros à 3,0 %', short: 'Fonds euros', color: 'var(--s4)', values: path(F.feNet(FE)) },
+      { id: 'cap', name: 'Capital de départ', color: 'var(--ref)', dashed: true, width: 1.5, values: path(0) },
+    ],
+    endLabels: ['med'],
+  });
+
+  // 8. Simulateur de transmission
+  const succ = { v: 900000, p: 900000, n: 2, a: 0, chart: null };
+  const $ = (id) => document.getElementById(id);
+  function segGroup(id, onPick) {
+    const g = $(id);
+    g.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      g.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      onPick(b.dataset.v);
+    });
+  }
+  function renderSucc() {
+    succ.p = Math.min(succ.p, succ.v);
+    $('succ-v-out').textContent = f.eur(succ.v);
+    $('succ-p-out').textContent = f.eur(succ.p);
+    const abat = succ.a ? 100000 : 0;
+    const s = F.succession(succ.v, succ.n, { primes: succ.p, abatDispo: abat });
+    if (succ.chart) succ.chart.destroy();
+    succ.chart = V.barChart($('fig-succ'), {
+      fmt: f.keur, catName: 'Situation', valueName: 'Droits de succession',
+      aria: 'Droits de succession totaux selon le mode de transmission',
+      items: [
+        { name: 'Argent laissé sur un compte', value: s.hors, label: f.eur(s.hors) },
+        { name: 'Assurance-vie, versé avant 70 ans', value: s.av70moins, label: f.eur(s.av70moins), strong: true },
+        { name: 'Assurance-vie, versé après 70 ans', value: s.av70plus, label: f.eur(s.av70plus) },
+      ],
+    });
+    const best = Math.min(s.av70moins, s.av70plus);
+    $('succ-out').textContent =
+      'Chaque enfant reçoit ' + f.eur(s.part) + '. Droits par enfant : ' + f.eur(s.hors / succ.n) + ' sur un compte, ' +
+      f.eur(s.av70moins / succ.n) + ' en assurance-vie versée avant 70 ans, ' + f.eur(s.av70plus / succ.n) +
+      ' après 70 ans. Économie maximale par rapport au compte : ' + f.eur(s.hors - best) + ' pour l’ensemble des enfants.';
+  }
+  $('succ-v').addEventListener('input', (e) => { succ.v = +e.target.value; renderSucc(); });
+  $('succ-p').addEventListener('input', (e) => { succ.p = +e.target.value; if (succ.p > succ.v) { succ.v = succ.p; $('succ-v').value = succ.v; } renderSucc(); });
+  segGroup('succ-n', (v) => { succ.n = +v; renderSucc(); });
+  segGroup('succ-a', (v) => { succ.a = +v; renderSucc(); });
+  renderSucc();
+
+  // 9. Profils
+  const prof = [
+    ['Prudent', 80000, 590000, 230000],
+    ['Équilibré', 70000, 380000, 450000],
+    ['Dynamique', 60000, 210000, 630000],
+  ].map(([name, r, e, u]) => ({ name, r, e, u, strong: name === 'Équilibré', label: Math.round((u / C) * 100) + ' % en UC' }));
+  V.barChart(document.getElementById('fig-profils'), {
+    items: prof, catName: 'Profil', aria: 'Répartition de 900 000 € selon trois profils',
+    segments: [
+      { key: 'r', name: 'Réserve (livrets, monétaire)', color: 'var(--s3)' },
+      { key: 'e', name: 'Fonds euros', color: 'var(--s1)' },
+      { key: 'u', name: 'Unités de compte', color: 'var(--s2)' },
+    ],
+  });
+
+  // 9 bis. Simulateur de répartition
+  const al = { c: 900000, r: 8, uc: 55, fe: 3, h: 15, fee: 0.014, chart: null };
+  function renderAlloc() {
+    $('al-c-out').textContent = f.eur(al.c);
+    $('al-r-out').textContent = al.r + ' % · ' + f.keur(al.c * al.r / 100);
+    const inv = al.c * (1 - al.r / 100);
+    $('al-uc-out').textContent = al.uc + ' % · ' + f.keur(inv * al.uc / 100);
+    $('al-fe-out').textContent = f.pct(al.fe / 100, 1);
+    $('al-h-out').textContent = al.h + ' ans';
+    const res = al.c * al.r / 100, uc = inv * al.uc / 100, eu = inv - uc;
+    const ucNet = F.ucNet(G, al.fee);
+    const fan = F.fan(uc, ucNet, VOL, al.h);
+    const det = idx(al.h).map((n) => res * Math.pow(1.017, n) + eu * Math.pow(1 + F.feNet(al.fe / 100), n));
+    const add = (k) => det.map((d, n) => d + fan[k][n]);
+    const med = add('p50'), lo = add('p10'), hi = add('p90');
+    let fees = 0;
+    for (let n = 0; n < al.h; n++) fees += fan.p50[n] * (1 + G) * al.fee;
+    const end = al.h;
+    const tiles = $('al-tiles');
+    tiles.innerHTML = '';
+    [
+      ['Valeur médiane en ' + (START + al.h), f.keur(med[end]), f.eur(med[end]) + ', soit ' + f.pct(Math.pow(med[end] / al.c, 1 / al.h) - 1, 1) + ' par an'],
+      ['Scénario défavorable (1 sur 10)', f.keur(lo[end]), 'Après 1 an, 1 fois sur 10 : moins de ' + f.eur(lo[1])],
+      ['Scénario favorable (1 sur 10)', f.keur(hi[end]), f.eur(hi[end]) + ' ou plus, 1 fois sur 10'],
+      ['Frais payés sur les UC', f.keur(fees), 'Cumul sur ' + al.h + ' ans, scénario médian'],
+    ].forEach(([l, v, s]) => {
+      const t = document.createElement('div'); t.className = 'tile';
+      const a = document.createElement('span'); a.className = 'tile-label'; a.textContent = l;
+      const b = document.createElement('span'); b.className = 'tile-value'; b.textContent = v;
+      const c = document.createElement('span'); c.className = 'tile-sub'; c.textContent = s;
+      t.append(a, b, c); tiles.appendChild(t);
+    });
+    if (al.chart) al.chart.destroy();
+    al.chart = V.lineChart($('fig-alloc'), {
+      x: idx(al.h), xFmt: yearOf, tipHead: tipYear, height: 300,
+      aria: 'Projection de la répartition choisie',
+      bands: [{ lo, hi, color: 'var(--s1)', opacity: 0.14, legend: '8 trajectoires sur 10', tip: '8 sur 10 entre' }],
+      series: [
+        { id: 'med', name: 'Scénario médian', short: 'Médiane', color: 'var(--s1)', values: med },
+        { id: 'cap', name: 'Capital de départ', color: 'var(--ref)', dashed: true, width: 1.5, values: idx(al.h).map(() => al.c) },
+      ],
+      endLabels: ['med'],
+    });
+  }
+  [['al-c', 'c'], ['al-r', 'r'], ['al-uc', 'uc'], ['al-fe', 'fe'], ['al-h', 'h']].forEach(([id, k]) => {
+    $(id).addEventListener('input', (e) => { al[k] = +e.target.value; renderAlloc(); });
+  });
+  segGroup('al-f', (v) => { al.fee = +v; renderAlloc(); });
+  renderAlloc();
+
+  // Sommaire : section courante
+  const links = Array.from(document.querySelectorAll('.toc a'));
+  if ('IntersectionObserver' in window && links.length) {
+    const map = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        links.forEach((a) => a.classList.remove('is-active'));
+        const a = map.get(en.target.id);
+        if (a) a.classList.add('is-active');
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  }
+})();
+
+</script>
+</body>
+</html>
