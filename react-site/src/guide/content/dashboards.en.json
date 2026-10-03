@@ -1,0 +1,486 @@
+{
+ "standfirst": "Seven dashboards we built with the rules in this guide, opened up. Each one answers one question for one reader, and every note on its screen points to the rule it follows. Five are private cases, described without the client’s name.",
+ "cases": [
+  {
+   "slug": "demand-plan",
+   "title": "Demand and inventory plan",
+   "kind": "Retail planning · four weeks · sample data",
+   "question": "Which product lines will run short or hold too much stock in the next four weeks, and how much can still be bought?",
+   "reader": "A demand planner at an outdoor retailer, once a week, before orders are confirmed.",
+   "decision": "Which orders to bring forward, add, defer or mark down within the buying budget that is left.",
+   "built_with": "Plain JavaScript and SVG served by a small Starlette app on Railway; five product lines of sample data, with every figure computed in the page.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "demand-plan.jpg",
+   "image2x": "demand-plan@2x.jpg",
+   "width": 1440,
+   "height": 1800,
+   "image_note": "Product lines are named by category. The sample data names no real company.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.1958,
+     "y": 0.14,
+     "rule": 2,
+     "title": "Four instruments, one form",
+     "text": "Each card gives a value and its unit, a rail drawn to scale and the gap to a named comparator: demand is +29% on the last four weeks. Where no comparator exists, the rail shows a part of a whole, such as open-to-buy at 15% of need."
+    },
+    {
+     "n": 2,
+     "x": 0.6681,
+     "y": 0.1056,
+     "rule": 12,
+     "title": "Terms glossed in the title",
+     "text": "Each card title pairs the planner’s term with plain words: open-to-buy reads “left to buy” and lost sales reads “out of stock”. A chip in the header says the figures are sample data."
+    },
+    {
+     "n": 3,
+     "x": 0.8278,
+     "y": 0.2733,
+     "rule": 6,
+     "title": "Ink for what is lost",
+     "text": "Weeks already sold are slate and expected weeks are cobalt. The 17.6 $K of sales lost in the week of 12 October is an ink cap on its bar, so the shortfall needs no red."
+    },
+    {
+     "n": 4,
+     "x": 0.7861,
+     "y": 0.44,
+     "rule": 7,
+     "title": "Stock rows on the sales weeks",
+     "text": "Each product line’s stock is drawn on the same week columns as the sales above it. The 80 boots short sit directly under the week whose sales they cost."
+    },
+    {
+     "n": 5,
+     "x": 0.5368,
+     "y": 0.7206,
+     "rule": 4,
+     "title": "The budget as an identity",
+     "text": "Need is what will sell plus the stock to keep, and have is stock in hand plus stock on order. The dashed box between the two bar ends is the 57.0 left to buy, so the drawing cannot disagree with the arithmetic."
+    },
+    {
+     "n": 6,
+     "x": 0.0694,
+     "y": 0.8317,
+     "rule": 11,
+     "title": "Decisions as labelled switches",
+     "text": "Each decision is a switch with its effect on profit and open-to-buy printed beside it, and every figure on the page is recomputed when one is on. The tent markdown is tested by dragging a point on its own chart."
+    }
+   ],
+   "next": [
+    "Every card compares against the last four weeks. Once a year of weekly history exists, limits of routine variation (rule 3) should take over, so that a +29% can be told apart from noise.",
+    "Expected sales are one arithmetic plan with no error attached. When a fitted forecast exists, the cobalt bars can become quantile dotplots (rule 10)."
+   ]
+  },
+  {
+   "slug": "verticals-review",
+   "title": "New verticals weekly review",
+   "kind": "Delivery operations · weekly · sample data",
+   "question": "Will the new verticals reach plan over the next four weeks, and where will courier hours fall short in Thanksgiving week?",
+   "reader": "A strategy and operations associate for the new verticals, every Monday, and the leads they report to.",
+   "decision": "Where to add courier pay, which quality fixes to roll out, and which promotions to stop.",
+   "built_with": "Plain JavaScript and SVG on a small Starlette server on Railway; sample data for five markets and five verticals, with a simulated store-level test.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "verticals-review.jpg",
+   "image2x": "verticals-review@2x.jpg",
+   "width": 1440,
+   "height": 1468,
+   "image_note": "The platform is not named. The levers and the test sit below this view.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.7639,
+     "y": 0.0804,
+     "rule": 12,
+     "title": "The week and the horizon",
+     "text": "The header names the week under review and how far the plan runs, and a chip says the figures are sample data."
+    },
+    {
+     "n": 2,
+     "x": 0.4035,
+     "y": 0.1703,
+     "rule": 2,
+     "title": "A target drawn as a tick",
+     "text": "Missing or incorrect orders run at 3.0% against a target of 3.0, marked by a tick on the rail. The card also names the worst vertical: grocery, at 4.2%."
+    },
+    {
+     "n": 3,
+     "x": 0.7188,
+     "y": 0.2984,
+     "rule": 6,
+     "title": "Ink for orders at risk",
+     "text": "Delivered weeks are slate and forecast weeks are cobalt. The 8.6K orders at risk in Thanksgiving week are an ink cap on the forecast bar, so the shortfall needs no red."
+    },
+    {
+     "n": 4,
+     "x": 0.7278,
+     "y": 0.4864,
+     "rule": 7,
+     "title": "Markets on the same weeks",
+     "text": "Each market’s courier hours, as a share of need, sit on the week columns of the chart above. Toronto’s 4.0K orders at risk fall under the Thanksgiving column."
+    },
+    {
+     "n": 5,
+     "x": 0.509,
+     "y": 0.9591,
+     "rule": 5,
+     "title": "Shortfalls printed by day",
+     "text": "Hours needed are printed above each day’s bar, and the shortfall under Friday, Saturday and Sunday. The three printed shortfalls add up to the 3.4K hours short in the card at the top."
+    },
+    {
+     "n": 6,
+     "x": 0.8681,
+     "y": 0.8774,
+     "rule": 8,
+     "title": "A ranked list with its figures",
+     "text": "Verticals are sorted by size, each bar split into repeat and first orders, with the total printed at the end of the bar."
+    }
+   ],
+   "next": [
+    "Found rate in each market is read against a fixed tick. With a few months of weekly data, limits of routine variation (rule 3) would show which drops deserve a question.",
+    "The levers and the substitution test sit below this view, so on a laptop the decisions are out of sight until the reader scrolls."
+   ]
+  },
+  {
+   "slug": "ballottage",
+   "title": "Ballottage",
+   "kind": "Election forecasting game · phone first · live polls, simulation and markets",
+   "question": "Who is most likely to win the second round of the 2027 French presidential election, and how sure can anyone be?",
+   "reader": "Friends in a prediction league, on their phones, a few times a week and after each new poll.",
+   "decision": "How to split their own 100% across the candidates before the next round of predictions closes.",
+   "built_with": "React and Vite with an Express server and Postgres on Railway; polls from the Mieux Voter feed, Polymarket and Kalshi prices, and a Monte Carlo simulation of 100,000 draws.",
+   "link": null,
+   "listed": false,
+   "phone": true,
+   "image": "ballottage-mobile.jpg",
+   "image2x": "ballottage-mobile@2x.jpg",
+   "width": 390,
+   "height": 1290,
+   "image_note": "The interface is in French. The simulation view, as a phone shows it; on a laptop the same column is centred.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.5513,
+     "y": 0.3504,
+     "rule": 10,
+     "title": "Chances a reader can count",
+     "text": "Each second-round pairing is a row of dots from 100,000 simulated elections, and the key says one dot is one election in a hundred. A reader counts the 64 of the leading pairing, as in a quantile dotplot."
+    },
+    {
+     "n": 2,
+     "x": 0.7692,
+     "y": 0.1519,
+     "rule": 5,
+     "title": "One saturated row",
+     "text": "Only the most likely pairing is drawn in full blue, and the others are a light tint. Every count is printed at the end of its row."
+    },
+    {
+     "n": 3,
+     "x": 0.5256,
+     "y": 0.407,
+     "rule": 11,
+     "title": "One switch, two questions",
+     "text": "A two-way switch, Élu and Qualifié, turns the same list from the chance of being elected to the chance of reaching the second round, inside the card it changes."
+    },
+    {
+     "n": 4,
+     "x": 0.4487,
+     "y": 0.4388,
+     "rule": 6,
+     "title": "Party colour kept to a dot",
+     "text": "Each candidate’s party colour appears only as a small dot before the name. The bars stay one blue, so colour never competes with length."
+    },
+    {
+     "n": 5,
+     "x": 0.7282,
+     "y": 0.5101,
+     "rule": 12,
+     "title": "A condition in words",
+     "text": "One candidate’s line carries a chip saying he counts only if another is ineligible, so his share reads as conditional. The source of the polls is printed under the list."
+    }
+   ],
+   "next": [
+    "The what-if sliders sit below the results they change, so on a phone the dots are off screen when the draws are run again. Moving the sliders into the second-round card would put each control on its consequence (rule 11).",
+    "On a laptop the app stays one phone-width column. A wider layout could set the simulation beside the what-if sliders."
+   ]
+  },
+  {
+   "slug": "fda-catalyst",
+   "title": "FDA Catalyst",
+   "kind": "Biotech event calendar · next 90 days · public data",
+   "question": "Which FDA decisions and trial readouts fall in the next 90 days, and which of their dates can be trusted to the day?",
+   "reader": "An investor who follows small and mid-sized biotech companies, checking the calendar each week.",
+   "decision": "Which events to watch and prepare for, and which dates to treat as firm.",
+   "built_with": "React and Vite in the site’s static build; a dated copy of the BPIQ calendar taken from the FDA Catalyst API, which runs on FastAPI and Railway.",
+   "link": "https://enzosimier.com/fda-catalyst.html",
+   "listed": true,
+   "phone": false,
+   "image": "fda-catalyst.jpg",
+   "image2x": "fda-catalyst@2x.jpg",
+   "width": 1440,
+   "height": 1800,
+   "image_note": "Days are counted from the day of capture, 3 October 2026.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.1417,
+     "y": 0.14,
+     "rule": 2,
+     "title": "A count with its parts",
+     "text": "365 catalysts sit over a rail split into 31 FDA decisions in blue and 322 trial readouts in slate, with both counts printed at its ends."
+    },
+    {
+     "n": 2,
+     "x": 0.6181,
+     "y": 0.14,
+     "rule": 12,
+     "title": "How many dates are exact",
+     "text": "A card counts the events dated to the day, 38 of 365, before any chart uses a date. A chip in the header dates the copy of the data the page reads: 19 June 2026."
+    },
+    {
+     "n": 3,
+     "x": 0.3903,
+     "y": 0.3556,
+     "rule": 6,
+     "title": "Blue means an FDA decision",
+     "text": "Blue marks FDA decisions everywhere on the page: the dots, the rails, the stage list and the timeline. Every other catalyst is slate, so decisions can be counted across the page."
+    },
+    {
+     "n": 4,
+     "x": 0.5903,
+     "y": 0.4178,
+     "rule": 10,
+     "title": "Vague dates kept off the axis",
+     "text": "The source places events with no exact date on 31 December. The chart leaves those 327 events off the week axis and counts them in a column of their own, so no false date is drawn."
+    },
+    {
+     "n": 5,
+     "x": 0.2903,
+     "y": 0.5744,
+     "rule": 7,
+     "title": "One axis for every decision",
+     "text": "Each FDA decision is a line from today to its date on one shared axis of days, with the date and the days to go printed at its end. Dot size gives company size, and a ring marks an expected mover."
+    },
+    {
+     "n": 6,
+     "x": 0.8333,
+     "y": 0.4111,
+     "rule": 5,
+     "title": "One accent in a quiet list",
+     "text": "In the stage list every bar is slate except FDA decision, and each count is printed at the right. The bars give the order and the numbers give the amounts."
+    }
+   ],
+   "next": [
+    "The page reads a copy of the calendar taken on 19 June and counts days from the reader’s date, so a date that has moved since then still shows its old value. The chip should warn once the copy is more than a month old.",
+    "Long indications are cut with an ellipsis. A second line in the label column would keep them readable."
+   ]
+  },
+  {
+   "slug": "cargo-network",
+   "title": "Route and pricing model",
+   "kind": "Airline network economics · 20-year case · public data and stated assumptions",
+   "question": "Can a fleet of uncrewed cargo aircraft serve the fourteen villages of Nunavik below today’s air rate and still pay back its cost?",
+   "reader": "The founders of an uncrewed cargo airline and their investors, when they choose a launch market and a price.",
+   "decision": "Which market to launch in, at what price, and with which aircraft and how many.",
+   "built_with": "A Python server on Railway draws each view from the model’s inputs, and a small script makes every value draggable; public freight rates and subsidy data, with stated assumptions.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "cargo-network.jpg",
+   "image2x": "cargo-network@2x.jpg",
+   "width": 1440,
+   "height": 1680,
+   "image_note": "The company is not named, its logo is removed, and its two aircraft types are labelled Plane and Seaplane.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.1056,
+     "y": 0.1446,
+     "rule": 11,
+     "title": "Assumptions set in the card",
+     "text": "The NPV card states its horizon and discount rate, 20 years at 10%, as menus in its own header, so each assumption sits on the number it changes."
+    },
+    {
+     "n": 2,
+     "x": 0.1778,
+     "y": 0.1786,
+     "rule": 4,
+     "title": "NPV as an identity",
+     "text": "The rail splits what the network earns, in today’s money, into the cost of the aircraft, 63.4 M$, and the surplus, +16.5 M$. The headline figure is the cobalt part, drawn to scale."
+    },
+    {
+     "n": 3,
+     "x": 0.8833,
+     "y": 0.1786,
+     "rule": 2,
+     "title": "Margin against cost",
+     "text": "Cost and revenue per kilogram share one rail, and the margin is its short cobalt end: 9.52 against 10.37 $/kg, printed at either side."
+    },
+    {
+     "n": 4,
+     "x": 0.2667,
+     "y": 0.3095,
+     "rule": 1,
+     "title": "Twelve columns, unequal regions",
+     "text": "The board is set on twelve columns with 24 px gutters. The cards take three columns each, the body splits three, six and three, and the lanes table takes nine, so the map and the table get the widest regions."
+    },
+    {
+     "n": 5,
+     "x": 0.3542,
+     "y": 0.6429,
+     "rule": 8,
+     "title": "A table set to be read",
+     "text": "Figures align right in tabular numerals, rules are hairlines, and a bar column for contribution turns the table into a ranking without leaving it."
+    },
+    {
+     "n": 6,
+     "x": 0.1944,
+     "y": 0.9821,
+     "rule": 12,
+     "title": "What the figures are",
+     "text": "The footer says the figures are illustrative scenarios built from public information and stated assumptions, and that none of them is a company forecast."
+    }
+   ],
+   "next": [
+    "The lanes table is ordered by round trips and the cargo list by tonnage, so Inukjuak and Puvirnituq swap places between them. One order for both would let a reader carry a village from one to the other.",
+    "Payback and NPV are single figures. The inputs are uncertain enough that a range from the sensitivity view would be earned on the cards (rule 10)."
+   ]
+  },
+  {
+   "slug": "energy-scarcity",
+   "title": "Two kinds of scarcity",
+   "kind": "Equity research · two companies · public filings",
+   "question": "Which of two energy companies, a shale oil producer and a power generator, offers more from today’s price, and what has to hold for each?",
+   "reader": "An investor comparing Vista Energy and Vistra, after each quarter’s results.",
+   "decision": "Which of the two to prefer, and which conditions to keep watching.",
+   "built_with": "React and Vite in the site’s static build; figures from the companies’ results, filings and guidance, a market data feed and earnings history.",
+   "link": "https://enzosimier.com/research/vista-vs-vistra/",
+   "listed": true,
+   "phone": false,
+   "image": "energy-scarcity.jpg",
+   "image2x": "energy-scarcity@2x.jpg",
+   "width": 1440,
+   "height": 1444,
+   "image_note": null,
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.3993,
+     "y": 0.1108,
+     "rule": 6,
+     "title": "One colour per company",
+     "text": "Blue is Vistra and slate is Vista Energy in every card and chart. The switch at the top dims whichever company is out of focus."
+    },
+    {
+     "n": 2,
+     "x": 0.2014,
+     "y": 0.2078,
+     "rule": 2,
+     "title": "Price against the base case",
+     "text": "Each price card sets today’s price against the base-case value on one rail and prints the gap: +26% to base for Vista Energy, +13% for Vistra."
+    },
+    {
+     "n": 3,
+     "x": 0.4167,
+     "y": 0.4127,
+     "rule": 10,
+     "title": "Ranges that say what they are",
+     "text": "Both companies share one axis of change from today’s price. The chart names its three cases, bear, base and bull, so the band claims no probability it does not have."
+    },
+    {
+     "n": 4,
+     "x": 0.8194,
+     "y": 0.3823,
+     "rule": 8,
+     "title": "A table read by its marks",
+     "text": "Exposure is a filled dot, an open dot or a dash for direct, some or none, set in two columns that read down. The key sits under the table."
+    },
+    {
+     "n": 5,
+     "x": 0.2861,
+     "y": 0.741,
+     "rule": 12,
+     "title": "Plan marked as plan",
+     "text": "Reported quarters are solid slate. After a dashed line labelled Plan, the company’s targets are a light tint, and the axis says E and F for estimate and forecast."
+    },
+    {
+     "n": 6,
+     "x": 0.8111,
+     "y": 0.7978,
+     "rule": 5,
+     "title": "Labels at the marks",
+     "text": "The segments are named at the bars, Retail 773 and Generation 994, and each total is printed above its bar, so no legend has to be matched by colour."
+    }
+   ],
+   "next": [
+    "Prices are fixed at 25 August 2026. A reader weeks later sees an upside computed from an old price, and the chip could say how many days old it is.",
+    "The +100% tick at the right end of the scenario axis is clipped by the edge of the chart."
+   ]
+  },
+  {
+   "slug": "water-pricing",
+   "title": "Water pricing and meters",
+   "kind": "Municipal finance · annual budget · French interface",
+   "question": "What price per cubic metre balances a municipality’s water budget, and what does it do to the charge on each dwelling?",
+   "reader": "Finance and water-service staff in Québec municipalities, and the association that works with them, when they review tariffs and a meter programme.",
+   "decision": "Whether to charge one price or three tiers, at what price, and whether a meter programme pays for itself.",
+   "built_with": "React and TypeScript on a Python model server on Railway; public municipal water data with stated assumptions, simulated household profiles, constant 2023 dollars.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "water-pricing.jpg",
+   "image2x": "water-pricing@2x.jpg",
+   "width": 1440,
+   "height": 1268,
+   "image_note": "The municipality is not named, and every figure in the image is masked.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.2118,
+     "y": 0.3707,
+     "rule": 7,
+     "title": "Two tariffs, one axis",
+     "text": "The single price and the tiered tariff are drawn on the same axis of litres per person per day, so the reader sees where each tier starts before choosing between them."
+    },
+    {
+     "n": 2,
+     "x": 0.9618,
+     "y": 0.1987,
+     "rule": 12,
+     "title": "An odd result in a sentence",
+     "text": "When the price raises more than the budget needs, a sentence says what follows: the flat charge becomes a credit deducted from each bill."
+    },
+    {
+     "n": 3,
+     "x": 0.4514,
+     "y": 0.3155,
+     "rule": 4,
+     "title": "The budget as an identity",
+     "text": "The rail under the budget sets what the price per cubic metre raises against the flat charge, which becomes a credit handing back the excess when that revenue runs past the budget. The parts always sum to the budget."
+    },
+    {
+     "n": 4,
+     "x": 0.8333,
+     "y": 0.3233,
+     "rule": 2,
+     "title": "Distance from the reference",
+     "text": "Every card prints its gap to the reference scenario and marks the reference with a tick on its rail, so a change of price shows how far the plan has moved."
+    },
+    {
+     "n": 5,
+     "x": 0.3785,
+     "y": 0.8375,
+     "rule": 11,
+     "title": "The price chosen on its curve",
+     "text": "Each curve is also the control: dragging along it chooses the price, and the whole page is recomputed. The reader sees the charge per dwelling and total consumption across the whole range of prices before choosing one."
+    }
+   ],
+   "next": [
+    "The card for the annual credit prints a hyphen where the chart prints a true minus sign. One minus sign throughout would keep the figures consistent, as the rule on type for figures asks.",
+    "The consumption curve rests on an assumed price response. The page already runs Monte Carlo draws in another view, and a band from those draws on this curve would be uncertainty that is earned."
+   ]
+  }
+ ]
+}

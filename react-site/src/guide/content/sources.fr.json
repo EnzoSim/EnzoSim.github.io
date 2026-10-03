@@ -1,0 +1,432 @@
+{
+ "groups": {
+  "1 · A grid that divides": "1 · Une grille qui se divise",
+  "2 · Instruments": "2 · Instruments",
+  "3 · Routine variation": "3 · Variation ordinaire",
+  "4 · Drawn identities": "4 · Identités dessinées",
+  "5 · Surfaces and shading": "5 · Surfaces et ombrage",
+  "6 · Notation": "6 · Notation",
+  "7 · Shared axes": "7 · Axes partagés",
+  "8 · Tables": "8 · Tableaux",
+  "9 · Type for figures": "9 · Typographie des chiffres",
+  "10 · Uncertainty": "10 · Incertitude",
+  "11 · Controls": "11 · Commandes",
+  "12 · Plain words": "12 · Mots simples",
+  "Further reading · forecasting and retail practice": "Pour aller plus loin · prévision et pratique du commerce de détail",
+  "Further reading · dashboards and evidence": "Pour aller plus loin · tableaux de bord et preuves"
+ },
+ "items": [
+  {
+   "work": "Designing Programmes, 1964",
+   "take": "La grille de Capital de 1962 : une page de 58 unités de large avec des gouttières de 2 unités, qui porte d’une à six colonnes d’unités entières."
+  },
+  {
+   "work": "With Dashboards, Formatting and Layout Definitely Matter, 2008",
+   "take": "Range la grille symétrique rigide parmi les erreurs de mise en page de la conception des tableaux de bord."
+  },
+  {
+   "work": "Grid Systems in Graphic Design, 1981",
+   "take": "Le manuel de référence de la construction des grilles. Il qualifie la grille d’aide et non de garantie."
+  },
+  {
+   "work": "The Typographic Grid, 2000",
+   "take": "Environ deux douzaines de travaux de l’auteur avec les grilles qui les sous-tendent, et aucune recette unique."
+  },
+  {
+   "work": "Unigrid, 1977",
+   "take": "Un seul système de feuilles pour les brochures de plus de 400 parcs. La première brochure à l’employer a paru en 1978."
+  },
+  {
+   "work": "Sparkline theory and practice, tiré de Beautiful Evidence, 2006",
+   "take": "Des graphiques de la taille d’un mot qui placent une valeur à côté de son historique, avec une bande grise pour la plage normale dans les exemples médicaux."
+  },
+  {
+   "work": "Bullet Graph Design Specification, 2006, révisée en 2013",
+   "take": "La définition formelle : une mesure principale, un comparateur et des plages qualitatives facultatives."
+  },
+  {
+   "work": "Graphic Methods for Presenting Facts, 1914",
+   "take": "Un des premiers manuels américains de graphiques pour les affaires, gratuit sur l’Internet Archive et toujours une bonne source de formes en barres empilées."
+  },
+  {
+   "work": "Charting Statistics, 1952",
+   "take": "Sa barre d’étendue, avec une boîte interquartile, précède la boîte à moustaches. Une manière compacte de montrer la dispersion dans une ligne."
+  },
+  {
+   "work": "The High Performance HMI Handbook, 2008",
+   "take": "Des écrans gris, des indicateurs analogiques avec une plage normale, et la couleur seulement pour les états anormaux."
+  },
+  {
+   "work": "ANSI/ISA-101.01-2015, human-machine interfaces for process automation systems",
+   "take": "Définit un cycle de vie des affichages de procédé, organisé autour de la philosophie IHM et du guide de style écrits de chaque site. La norme ne prescrit pas elle-même d’écrans gris : ils viennent de la pratique des IHM haute performance."
+  },
+  {
+   "work": "Information Rich Design, Halden",
+   "take": "Des vues d’ensemble de procédé pour grands écrans, construites à partir de mini-tendances alignées et du regroupement gestaltiste."
+  },
+  {
+   "work": "Why I stopped using bullet graphs, Nightingale, 2022",
+   "take": "Onze objections. Les problèmes ne ressortent pas, et les mesures pour lesquelles moins vaut mieux ou qui ont une plage idéale demandent des variantes. Son alternative ne signale que ce qui franchit un seuil d’action."
+  },
+  {
+   "work": "The Amazon Weekly Business Review, Commoncog, 2024",
+   "take": "La revue hebdomadaire d’Amazon, de 400 à 500 indicateurs, la plupart dessinés selon un même graphique : les six dernières semaines à côté des douze derniers mois."
+  },
+  {
+   "work": "Graphical summary of patient status, The Lancet, 1994",
+   "take": "De petits historiques alignés, avec leurs plages normales, sur une seule page. Un ancêtre clinique de la sparkline."
+  },
+  {
+   "work": "Understanding Variation, 1993",
+   "take": "Les cartes de comportement du processus séparent la variation hebdomadaire ordinaire d’un vrai changement. Un comparateur plus solide que la période précédente, dès qu’un historique existe."
+  },
+  {
+   "work": "The Commercial and Political Atlas, 1786",
+   "take": "Les courbes des importations et des exportations, avec la surface qui les sépare teintée comme la balance. Un des premiers cas d’identité comptable dessinée comme une forme."
+  },
+  {
+   "work": "Ecological interface design: theoretical foundations, IEEE SMC 1992",
+   "take": "Rendre directement visibles les contraintes du domaine de travail. La théorie derrière le dessin d’une identité comme une géométrie."
+  },
+  {
+   "work": "Display and Interface Design: Subtle Science, Exact Art, 2011",
+   "take": "Affichages configuraux et propriétés émergentes. Quand les variables sont dessinées pour que leur relation forme une figure, une panne change la figure."
+  },
+  {
+   "work": "Cartographic Relief Presentation, 1965 ; Envisioning Information, chapitre 5",
+   "take": "Une couleur forte sur de petites surfaces posées sur un fond sourd, et les grandes surfaces gardées calmes. La règle derrière un seul accent sur des surfaces tonales."
+  },
+  {
+   "work": "The Look of Maps, 1952",
+   "take": "Hiérarchie visuelle, figure et fond en cartographie. Les cartes ont résolu les surfaces superposées bien avant les interfaces."
+  },
+  {
+   "work": "Pratique et recherche sur l’estompage du relief",
+   "take": "Comment le relief à la suisse généralise le terrain et ajuste la lumière localement. L’ombrage comme un acte sélectif et conçu."
+  },
+  {
+   "work": "Common region: a new principle of perceptual grouping, Cognitive Psychology, 1992",
+   "take": "Les éléments situés dans une même bordure se groupent fortement, et de façon hiérarchique. Le fondement des surfaces imbriquées, et la raison pour laquelle chaque bordure de panneau est une affirmation."
+  },
+  {
+   "work": "Interaction of Color, 1963",
+   "take": "Une couleur se lit par rapport à ce qui l’entoure."
+  },
+  {
+   "work": "Graphical perception, JASA 1984 ; réplication participative en ligne, CHI 2010",
+   "take": "La position sur une échelle commune se lit avec le plus de précision ; l’ombrage et l’aire, avec le moins."
+  },
+  {
+   "work": "Modeling color difference for visualization design, 2018 ; In color perception, size matters, 2012",
+   "take": "Les petites marques ont besoin de différences de couleur plus grandes pour être distinguées. Les traits fins et les barres de 3 px ne peuvent pas compter sur des teintes subtiles."
+  },
+  {
+   "work": "Transparent layered user interfaces, CHI 1995",
+   "take": "A mesuré comment la translucidité arbitre entre la concentration et la conscience du contexte. Les éléments pour et contre les panneaux transparents."
+  },
+  {
+   "work": "Transparency and blur as selective cues, 1991 ; Information Landscapes, 1994",
+   "take": "Le Visible Language Workshop du MIT traitait la translucidité, le flou et la profondeur comme du design d’information. Une origine de l’aspect doux et superposé."
+  },
+  {
+   "work": "Rôles de couleur de Material 3 ; échelles en 12 paliers de Radix",
+   "take": "Deux systèmes de rôles en usage. Material nomme cinq tons de conteneur selon leur degré d’emphase. Radix donne un rôle à chacun de ses douze paliers."
+  },
+  {
+   "work": "Carbon Design System, couleur et couches",
+   "take": "Les rôles de surface sous forme de tokens nommés. Dans les thèmes clairs, les couches alternent entre le blanc et un gris pâle."
+  },
+  {
+   "work": "WCAG 2.2, contraste du contenu non textuel",
+   "take": "Les parties d’une commande ou d’un graphique qu’un lecteur doit voir demandent un contraste d’au moins trois pour un avec ce qui les jouxte."
+  },
+  {
+   "work": "Solid, Outlined, Hatched, 2019, et le standard IBCS",
+   "take": "Une notation pour les rapports : plein pour le réalisé, contour pour le plan, hachures pour la prévision, gris pour la période précédente."
+  },
+  {
+   "work": "Sémiologie graphique, 1967",
+   "take": "Nomme les variables visuelles selon lesquelles une marque peut varier, dont le grain. Le lien est un résumé."
+  },
+  {
+   "work": "Graphique des trains, La Méthode graphique, 1878",
+   "take": "La distance en fonction du temps, avec la vitesse comme pente. Tout un horaire sur une seule paire d’axes."
+  },
+  {
+   "work": "La matrice réordonnable ; Bertifier, IEEE VIS 2014",
+   "take": "Coder chaque cellule, puis réordonner les lignes et les colonnes jusqu’à ce que la structure apparaisse."
+  },
+  {
+   "work": "The visual design and control of Trellis display, JCGS 1996",
+   "take": "Des panneaux conditionnés par une variable, disposés en lignes et en colonnes avec des échelles partagées."
+  },
+  {
+   "work": "Graphical perception of multiple time series, IEEE TVCG 2010",
+   "take": "De petits graphiques séparés étaient en général plus efficaces pour les comparaisons portant sur de nombreuses séries, et un seul graphique partagé pour les comparaisons rapprochées."
+  },
+  {
+   "work": "Polaris, IEEE TVCG 2002",
+   "take": "Une algèbre de tableaux qui imbrique de petits graphiques selon les dimensions. La recherche derrière Tableau."
+  },
+  {
+   "work": "Météogrammes d’ensemble, Forecast User Guide 8.1.4",
+   "take": "Plusieurs paramètres météorologiques empilés sur un même axe du temps, chacun dessiné en boîtes à moustaches échelonnées."
+  },
+  {
+   "work": "WSSI : ventes, stock et réceptions hebdomadaires",
+   "take": "La grille native du planificateur. Les semaines en colonnes ; les ventes, le stock et les réceptions en lignes ; le budget d’achat restant pour résultat."
+  },
+  {
+   "work": "Visual momentum, International Journal of Man-Machine Studies, 1984",
+   "take": "Comment garder un lecteur orienté à travers de nombreux affichages : une vue d’ensemble, des points de repère, un recouvrement et des positions fixes."
+  },
+  {
+   "work": "Guidelines for using multiple views in information visualization, AVI 2000",
+   "take": "Huit règles, dont la parcimonie : n’ajouter une vue que lorsqu’elle vaut ce qu’elle coûte."
+  },
+  {
+   "work": "Visual comparison for information visualization, 2011",
+   "take": "Toute comparaison se construit par juxtaposition, par superposition ou par un codage explicite de la différence."
+  },
+  {
+   "work": "Calendrier de toutes les disciplines sportives, Munich 1972",
+   "take": "Les dates, les épreuves et les pictogrammes croisés sur une seule feuille, imprimée recto verso en sept couleurs."
+  },
+  {
+   "work": "Visualization Analysis and Design, 2014",
+   "take": "Un cadre fondé sur le quoi, le pourquoi et le comment, avec des règles empiriques. L’œil l’emporte sur la mémoire : comparer côte à côte, et non de mémoire."
+  },
+  {
+   "work": "Brushing scatterplots, Technometrics, 1987",
+   "take": "A nommé le brossage (« brushing ») : une sélection faite dans une vue marque les mêmes éléments dans toutes les autres. Le lien est un résumé."
+  },
+  {
+   "work": "Cross-view brushing",
+   "take": "Un modèle de conception pour mettre en évidence les éléments sélectionnés à travers plusieurs représentations."
+  },
+  {
+   "work": "Untidy data: the unreasonable effectiveness of tables, IEEE TVCG 2022",
+   "take": "Ceux qui travaillent avec des données veulent voir et toucher le tableau tout au long de l’analyse. Le tableau est une forme de visualisation à part entière."
+  },
+  {
+   "work": "Rudiments of numeracy, Journal of the Royal Statistical Society A, 1977",
+   "take": "L’article classique sur les tableaux de nombres : arrondir franchement, classer les lignes par grandeur, et placer en colonnes les chiffres à comparer."
+  },
+  {
+   "work": "Ten guidelines for better tables, Journal of Benefit-Cost Analysis, 2020",
+   "take": "Une liste de contrôle moderne : aligner les nombres à droite, indiquer les unités avec parcimonie, alléger les filets."
+  },
+  {
+   "work": "Les règles de Tschichold pour les tableaux, citées par Rutter, 2017",
+   "take": "Composer les tableaux comme un texte à lire, réduire les éléments de structure au minimum, éviter les filets verticaux."
+  },
+  {
+   "work": "The Table Lens, CHI 1994",
+   "take": "Un tableau dont les cellules deviennent de petites barres, avec des lignes qui s’ouvrent sur le texte quand on s’y arrête. Les barres dans les cellules de Bertin, portées à l’écran."
+  },
+  {
+   "work": "LineUp, IEEE InfoVis 2013",
+   "take": "Classe des éléments selon plusieurs attributs pondérés, avec des barres empilées à l’intérieur d’un tableau."
+  },
+  {
+   "work": "Catalog Design Progress, 1950",
+   "take": "L’information produit conçue comme fonction, flux et forme. Le classique de la structuration des données commerciales pour une consultation rapide."
+  },
+  {
+   "work": "Annuaire téléphonique néerlandais, 1977",
+   "take": "Univers condensé, uniquement en bas de casse, numéros placés avant les noms pour qu’aucun point de conduite ne soit nécessaire."
+  },
+  {
+   "work": "A schema for the study of graphic language, 1979",
+   "take": "Classe le langage graphique selon sa configuration, dont la liste, la matrice et l’arborescence. Un vocabulaire utile pour décider de ce qu’est une vue."
+  },
+  {
+   "work": "Bell Centennial, 1975–78",
+   "take": "Dessiné pour des annuaires téléphoniques imprimés vite sur du mauvais papier."
+  },
+  {
+   "work": "Retina, 1999",
+   "take": "Dessiné pour les cotations boursières du Wall Street Journal en très petite taille, aujourd’hui dans la collection du MoMA. La typographie comme instrument pour les chiffres denses."
+  },
+  {
+   "work": "Univers, 1957",
+   "take": "Vingt et une variantes désignées par un code à deux chiffres pour la graisse et la chasse, conçues dès le départ comme une seule famille."
+  },
+  {
+   "work": "Roboto Flex et l’axe de grade",
+   "take": "Le grade change la graisse apparente sans changer la chasse. Utile en mode sombre, où le texte clair paraît plus gras."
+  },
+  {
+   "work": "Instrument Sans",
+   "take": "Une famille variable libre, avec un axe de chasse de 75 à 100 et des chiffres tabulaires. La linéale employée sur cette page."
+  },
+  {
+   "work": "Typographie, 1967",
+   "take": "Un manuel sur le rythme, la proportion et l’espace à l’intérieur et autour des lettres, issu de l’école de Bâle."
+  },
+  {
+   "work": "Detail in Typography, 1987",
+   "take": "Les lettres, l’interlettrage, les mots, l’espacement des mots, les lignes et l’interlignage en soixante-quatre pages."
+  },
+  {
+   "work": "The Inflation Report projections: understanding the fan chart, Banque d’Angleterre, 1998",
+   "take": "Le graphique en éventail, publié pour la première fois en février 1996, montre une prévision comme des bandes de probabilité imbriquées au lieu d’une ligne bornée."
+  },
+  {
+   "work": "When (ish) is My Bus?, CHI 2016",
+   "take": "A introduit les diagrammes en points de quantiles : une distribution sous forme d’une vingtaine de points que l’on peut compter. Les lecteurs estimaient les probabilités de façon plus cohérente qu’à partir de courbes de densité."
+  },
+  {
+   "work": "Uncertainty displays using quantile dotplots or CDFs improve transit decision-making, CHI 2018",
+   "take": "La qualité des décisions, mesurée. Les diagrammes en points et les courbes cumulatives battent les intervalles et les estimations ponctuelles."
+  },
+  {
+   "work": "Hypothetical outcome plots, PLOS ONE 2015",
+   "take": "Des tirages animés d’une distribution ont fait mieux que les barres d’erreur et les diagrammes en violon pour juger laquelle de deux quantités est la plus grande."
+  },
+  {
+   "work": "Error bars considered harmful, IEEE TVCG 2014",
+   "take": "Les barres munies de moustaches font paraître les valeurs à l’intérieur de la barre plus probables que celles qui sont à l’extérieur."
+  },
+  {
+   "work": "Uncertainty forecasts improve weather-related decisions, Journal of Experimental Psychology: Applied, 2012",
+   "take": "Montrer l’incertitude a amélioré les décisions et atténué l’effet d’une prévision manquée."
+  },
+  {
+   "work": "Uncertainty visualization, Wiley StatsRef, 2021",
+   "take": "La meilleure synthèse à elle seule : les techniques, la psychologie derrière chacune, et la présentation en fréquences."
+  },
+  {
+   "work": "The Flaw of Averages, 2009",
+   "take": "Les plans fondés sur la demande moyenne sont faux en moyenne. Un argument pour planifier face à une distribution dès qu’il en existe une."
+  },
+  {
+   "work": "Dynamic queries for visual information seeking, IEEE Software, 1994",
+   "take": "Les résultats se mettent à jour en un dixième de seconde à mesure que les curseurs bougent, si bien qu’une requête devient quelque chose que l’on pilote."
+  },
+  {
+   "work": "Interactive dynamics for visual analysis, Communications of the ACM, 2012",
+   "take": "Douze tâches en trois groupes : spécifier les données et les vues, manipuler les vues, et enregistrer et partager l’analyse."
+  },
+  {
+   "work": "Up and Down the Ladder of Abstraction, 2011",
+   "take": "Un essai interactif qui passe d’un cas concret à toute la plage d’un paramètre."
+  },
+  {
+   "work": "Explorable Explanations, 2011",
+   "take": "Des documents réactifs : un nombre dans une phrase peut être déplacé, et le texte se recalcule."
+  },
+  {
+   "work": "Is It Better to Rent or Buy?, The New York Times, 2014",
+   "take": "Chaque curseur est posé sur un petit graphique du résultat sur toute la plage de cette entrée."
+  },
+  {
+   "work": "Visual parameter space analysis, IEEE TVCG 2014",
+   "take": "Un cadre pour explorer les entrées et les sorties d’un modèle : un flux de données, quatre stratégies de navigation et six tâches."
+  },
+  {
+   "work": "Decision analysis: practice and promise, Management Science, 1988",
+   "take": "Généralement cité pour le diagramme en tornade : des sensibilités à un facteur classées par amplitude, chaque entrée variant entre des valeurs basse et haute estimées. Une forme pour classer les hypothèses selon leur effet sur un résultat."
+  },
+  {
+   "work": "Effective forecasting and judgmental adjustments, International Journal of Forecasting, 2009",
+   "take": "Les petits ajustements manuels tendaient à nuire à la précision, les grands ajustements motivés à l’améliorer, et les ajustements penchaient vers l’optimisme."
+  },
+  {
+   "work": "Forecast value added: a reality check, Foresight, 2013",
+   "take": "Comparer chaque étape du processus à une prévision naïve. Le rapport en escalier montre où la révision ajoute ou retire de la valeur."
+  },
+  {
+   "work": "Plain Words, 1948",
+   "take": "Écrit à la demande du Trésor britannique pour aider les fonctionnaires à remplacer le jargon par un style bref et clair. Le lien décrit ses éditions."
+  },
+  {
+   "work": "The rhetoric of neutrality, Design Issues, 1985",
+   "take": "Même un horaire de chemin de fer est persuasif. Un style analytique et calme est un choix rhétorique, et doit être assumé comme tel."
+  },
+  {
+   "work": "Retail forecasting: research and practice, International Journal of Forecasting, 2022",
+   "take": "La synthèse de référence sur la prévision dans le commerce de détail, des décisions stratégiques jusqu’au magasin et à l’article."
+  },
+  {
+   "work": "Making supply meet demand in an uncertain world, Harvard Business Review, 1994",
+   "take": "Sport Obermeyer, un fabricant de vêtements de ski, organisait ses achats selon l’incertitude de la demande pour chaque modèle."
+  },
+  {
+   "work": "Demand Forecasting for Executives and Professionals, 2023",
+   "take": "Un texte actuel et lisible, avec une édition en ligne."
+  },
+  {
+   "work": "Demand Forecasting Best Practices, 2023",
+   "take": "Des conseils pratiques sur les indicateurs : suivre ensemble le biais et l’erreur absolue, et éviter le MAPE."
+  },
+  {
+   "work": "On the categorization of demand patterns, Journal of the Operational Research Society, 2005",
+   "take": "Classe les articles en réguliers, erratiques, intermittents ou sporadiques à partir de deux statistiques, avec des seuils à 1,32 et 0,49."
+  },
+  {
+   "work": "Optimal forecast reconciliation through trace minimization, JASA, 2019",
+   "take": "Les prévisions par article, par catégorie et au total peuvent être rendues cohérentes, de sorte qu’elles s’additionnent."
+  },
+  {
+   "work": "The M5 accuracy competition, International Journal of Forecasting, 2022",
+   "take": "42 840 séries hiérarchiques de Walmart, avec de nombreux zéros. Des preuves de ce qui fonctionne pour la demande intermittente du commerce de détail."
+  },
+  {
+   "work": "Analytics for an online retailer, Manufacturing and Service Operations Management, 2016",
+   "take": "Prévision de la demande et optimisation des prix chez Rue La La, un distributeur de mode en ligne, avec un effet mesuré sur le chiffre d’affaires."
+  },
+  {
+   "work": "Clearance pricing optimization for a fast-fashion retailer, Operations Research, 2012",
+   "take": "Le processus de démarque de Zara, testé par une expérience sur le terrain."
+  },
+  {
+   "work": "Le ratio critique du vendeur de journaux",
+   "take": "Pour un achat unique avant une saison, le meilleur taux de service est le coût de rupture divisé par la somme du coût de rupture et du coût de surstock. Une source rigoureuse pour un objectif de stock."
+  },
+  {
+   "work": "Commandes priorisées",
+   "take": "Classer chaque unité d’achat possible selon son rendement économique attendu et acheter en descendant la liste jusqu’à épuisement du budget. Une alternative aux alertes article par article."
+  },
+  {
+   "work": "Industrial Dynamics, 1961 ; Business Dynamics, 2000",
+   "take": "La notation en stocks et en flux. Les marchandises en stock forment un stock ; les ventes et les réceptions sont des flux."
+  },
+  {
+   "work": "What do we talk about when we talk about dashboards?, IEEE TVCG 2019",
+   "take": "Un espace de conception et une typologie des tableaux de bord, construits à partir d’un examen des types en usage."
+  },
+  {
+   "work": "Dashboard design patterns, IEEE TVCG 2023",
+   "take": "Quarante et un modèles pour le contenu et la composition, avec les compromis entre l’espace à l’écran, la pagination et l’abstraction."
+  },
+  {
+   "work": "The science of visual data communication: what works, PSPI 2021",
+   "take": "La synthèse la plus complète de ce qui fonctionne, écrite pour les praticiens."
+  },
+  {
+   "work": "Graphical overlays, IEEE TVCG 2012",
+   "take": "Cinq types d’aides superposées : structures de référence, mises en évidence, codages redondants, statistiques de synthèse et annotations."
+  },
+  {
+   "work": "Striking a balance, IEEE TVCG 2023",
+   "take": "Les lecteurs préféraient les graphiques accompagnés de texte aux graphiques seuls. Mettre les mots sur la marque."
+  },
+  {
+   "work": "Sizing the horizon, CHI 2009",
+   "take": "Les graphiques en horizon gardent une série chronologique lisible à faible hauteur, avec des limites mesurées sur la petitesse possible."
+  },
+  {
+   "work": "UI Density, 2024",
+   "take": "La densité est la valeur délivrée par unité d’espace et de temps, avec des composantes visuelle, informationnelle et temporelle."
+  },
+  {
+   "work": "Useful junk?, CHI 2010 ; Minimalism in information visualization, 2007",
+   "take": "Des contre-preuves au minimalisme strict. Les graphiques ornés étaient mieux mémorisés, et les gens ne préféraient pas le graphique en barres le plus dépouillé."
+  },
+  {
+   "work": "Functional Aesthetics for Data Visualization, 2022",
+   "take": "La perception, la sémantique et l’intention traitées ensemble."
+  }
+ ]
+}

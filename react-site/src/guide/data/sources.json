@@ -1,0 +1,826 @@
+[
+ {
+  "g": "1 · A grid that divides",
+  "st": "v",
+  "who": "Gerstner",
+  "work": "Designing Programmes, 1964",
+  "url": "https://commons.wikimedia.org/wiki/File:Karl_Gerstner_Capital_layout_grid.png",
+  "take": "The Capital grid of 1962: a page 58 units wide with 2-unit gutters, which carries one to six columns of whole units."
+ },
+ {
+  "g": "1 · A grid that divides",
+  "st": "v",
+  "who": "Few",
+  "work": "With Dashboards, Formatting and Layout Definitely Matter, 2008",
+  "url": "https://www.perceptualedge.com/articles/Whitepapers/Formatting_and_Layout_Matter.pdf",
+  "take": "Counts the rigid symmetrical grid among the layout mistakes of dashboard design."
+ },
+ {
+  "g": "1 · A grid that divides",
+  "st": "v",
+  "who": "Müller-Brockmann",
+  "work": "Grid Systems in Graphic Design, 1981",
+  "url": "https://niggli.ch/en/products/rastersysteme-fur-die-visuelle-gestaltung",
+  "take": "The standard manual of grid construction. It calls the grid an aid, not a guarantee."
+ },
+ {
+  "g": "1 · A grid that divides",
+  "st": "v",
+  "who": "Bosshard",
+  "work": "The Typographic Grid, 2000",
+  "url": "https://niggli.ch/products/der-typografische-raster",
+  "take": "About two dozen of the author’s own works with the grids behind them, and no single recipe."
+ },
+ {
+  "g": "1 · A grid that divides",
+  "st": "v",
+  "who": "Vignelli, National Park Service",
+  "work": "Unigrid, 1977",
+  "url": "https://www.nps.gov/subjects/hfc/a-brief-history-of-the-unigrid.htm",
+  "take": "One sheet system for the brochures of more than 400 parks. The first brochure to use it appeared in 1978."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Tufte",
+  "work": "Sparkline theory and practice, from Beautiful Evidence, 2006",
+  "url": "https://www.edwardtufte.com/notebook/sparkline-theory-and-practice-edward-tufte/",
+  "take": "Word-sized graphics that set a value beside its history, with a grey band for the normal range in the medical examples."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Few",
+  "work": "Bullet Graph Design Specification, 2006, revised 2013",
+  "url": "https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf",
+  "take": "The formal definition: a featured measure, a comparator and optional qualitative ranges."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Brinton",
+  "work": "Graphic Methods for Presenting Facts, 1914",
+  "url": "https://archive.org/details/cu31924032626792",
+  "take": "An early American manual of charts for business, free on the Internet Archive and still a good source of component-bar forms."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Spear",
+  "work": "Charting Statistics, 1952",
+  "url": "https://en.wikipedia.org/wiki/Mary_Eleanor_Spear",
+  "take": "Her range bar, with an interquartile box, predates the box plot. A compact way to show spread within a row."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Hollifield, Oliver, Nimmo, Habibi",
+  "work": "The High Performance HMI Handbook, 2008",
+  "url": "https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ",
+  "take": "Grey screens, analog indicators with a normal range, and colour only for abnormal states."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "ISA",
+  "work": "ANSI/ISA-101.01-2015, human-machine interfaces for process automation systems",
+  "url": "https://www.isa.org/products/isa-101-01-2015-human-machine-interfaces-for",
+  "take": "Sets out a life cycle for process displays around each site’s written HMI philosophy and style guide. It does not itself prescribe grey screens; that comes from high-performance HMI practice."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Braseth and colleagues",
+  "work": "Information Rich Design, Halden",
+  "url": "https://www.sciencedirect.com/science/article/abs/pii/S0141938213000395",
+  "take": "Large-screen process overviews built from aligned mini-trends and Gestalt grouping."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Desbarats",
+  "work": "Why I stopped using bullet graphs, Nightingale, 2022",
+  "url": "https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/",
+  "take": "Eleven objections. Problems do not stand out, and lower-is-better and ideal-range measures need variants. His alternative marks only what crosses an action threshold."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "v",
+  "who": "Chin, with Bryar",
+  "work": "The Amazon Weekly Business Review, Commoncog, 2024",
+  "url": "https://commoncog.com/the-amazon-weekly-business-review/",
+  "take": "Amazon’s weekly review of 400 to 500 metrics, most drawn as one chart: the trailing six weeks beside the trailing twelve months."
+ },
+ {
+  "g": "2 · Instruments",
+  "st": "k",
+  "who": "Powsner, Tufte",
+  "work": "Graphical summary of patient status, The Lancet, 1994",
+  "url": "https://doi.org/10.1016/S0140-6736(94)91406-0",
+  "take": "Small aligned histories with normal ranges on one page. A clinical ancestor of the sparkline."
+ },
+ {
+  "g": "3 · Routine variation",
+  "st": "v",
+  "who": "Wheeler",
+  "work": "Understanding Variation, 1993",
+  "url": "https://commoncog.com/process-behaviour-charts-more-than-you-need/",
+  "take": "Process behaviour charts separate routine weekly variation from a real change. A stronger comparator than last period once history exists."
+ },
+ {
+  "g": "4 · Drawn identities",
+  "st": "v",
+  "who": "Playfair",
+  "work": "The Commercial and Political Atlas, 1786",
+  "url": "https://en.wikipedia.org/wiki/William_Playfair",
+  "take": "Import and export lines with the area between them tinted as the balance. An early case of an accounting identity drawn as a shape."
+ },
+ {
+  "g": "4 · Drawn identities",
+  "st": "v",
+  "who": "Vicente, Rasmussen",
+  "work": "Ecological interface design: theoretical foundations, IEEE SMC 1992",
+  "url": "https://orbit.dtu.dk/en/publications/ecological-interface-design-theoretical-foundations/",
+  "take": "Make the constraints of the work domain directly visible. The theory behind drawing an identity as geometry."
+ },
+ {
+  "g": "4 · Drawn identities",
+  "st": "v",
+  "who": "Bennett, Flach",
+  "work": "Display and Interface Design: Subtle Science, Exact Art, 2011",
+  "url": "https://www.routledge.com/Display-and-Interface-Design-Subtle-Science-Exact-Art/Bennett-Flach/p/book/9780367864682",
+  "take": "Configural displays and emergent features. When variables are drawn so their relationship forms a shape, a fault changes the shape."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Imhof, through Tufte",
+  "work": "Cartographic Relief Presentation, 1965; Envisioning Information, chapter 5",
+  "url": "https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/",
+  "take": "Strong colour in small areas on a muted ground, and large areas kept quiet. The rule behind one accent on tonal surfaces."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Robinson",
+  "work": "The Look of Maps, 1952",
+  "url": "https://en.wikipedia.org/wiki/Figure-ground_(cartography)",
+  "take": "Visual hierarchy and figure and ground in cartography. Maps solved layered surfaces long before interfaces did."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Patterson; Jenny",
+  "work": "Shaded relief practice and research",
+  "url": "https://www.shadedreliefarchive.com/",
+  "take": "How Swiss-style relief generalises terrain and adjusts light locally. Shading as a selective, designed act."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Palmer",
+  "work": "Common region: a new principle of perceptual grouping, Cognitive Psychology, 1992",
+  "url": "https://eric.ed.gov/?id=EJ450926",
+  "take": "Elements inside a shared boundary group strongly and hierarchically. The basis for nested surfaces, and the reason every panel boundary is a claim."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Albers",
+  "work": "Interaction of Color, 1963",
+  "url": "https://yalebooks.yale.edu/book/9780300179354/interaction-of-color/",
+  "take": "A colour is read relative to its surround."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Cleveland, McGill; Heer, Bostock",
+  "work": "Graphical perception, JASA 1984; crowdsourced replication, CHI 2010",
+  "url": "http://vis.stanford.edu/papers/crowdsourcing-graphical-perception",
+  "take": "Position on a common scale is read most accurately; shade and area least."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Szafir; Stone",
+  "work": "Modeling color difference for visualization design, 2018; In color perception, size matters, 2012",
+  "url": "https://dl.acm.org/doi/10.1109/MCG.2012.37",
+  "take": "Small marks need larger colour differences to be told apart. Thin lines and 3 px bars cannot rely on subtle tints."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Harrison, Ishii, Vicente, Buxton",
+  "work": "Transparent layered user interfaces, CHI 1995",
+  "url": "https://www.billbuxton.com/transparency.html",
+  "take": "Measured how translucency trades focus against awareness. The evidence for and against see-through panels."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Colby, Scholl; Cooper",
+  "work": "Transparency and blur as selective cues, 1991; Information Landscapes, 1994",
+  "url": "http://inventinginteractive.com/2010/02/01/information-landscapes/",
+  "take": "The MIT Visible Language Workshop treated translucency, blur and depth as information design. An origin of the soft layered look."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "Google; Radix",
+  "work": "Material 3 colour roles; Radix 12-step scales",
+  "url": "https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale",
+  "take": "Two working role systems. Material names five container tones by emphasis. Radix gives each of twelve steps a job."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "IBM",
+  "work": "Carbon Design System, colour and layering",
+  "url": "https://www.carbondesignsystem.com/elements/color/overview/",
+  "take": "Surface roles as named tokens. In the light themes, layers alternate between white and a pale grey."
+ },
+ {
+  "g": "5 · Surfaces and shading",
+  "st": "v",
+  "who": "W3C",
+  "work": "WCAG 2.2, non-text contrast",
+  "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html",
+  "take": "The parts of a control or a graphic that a reader must see need a contrast of at least three to one against what is next to them."
+ },
+ {
+  "g": "6 · Notation",
+  "st": "v",
+  "who": "Hichert, Faisst",
+  "work": "Solid, Outlined, Hatched, 2019, and the IBCS standard",
+  "url": "https://www.ibcs.com/",
+  "take": "A notation for reports: solid for actual, outlined for plan, hatched for forecast, grey for the prior period."
+ },
+ {
+  "g": "6 · Notation",
+  "st": "v",
+  "who": "Bertin",
+  "work": "Semiology of Graphics, 1967",
+  "url": "https://en.wikipedia.org/wiki/Visual_variable",
+  "take": "Names the visual variables a mark can vary by, texture among them. The link is a summary."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Marey, after Ibry",
+  "work": "Train graph, La Méthode graphique, 1878",
+  "url": "https://mbostock.github.io/protovis/ex/caltrain.html",
+  "take": "Distance against time, with speed as slope. A whole timetable on one pair of axes."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Bertin; Perin, Dragicevic, Fekete",
+  "work": "The reorderable matrix; Bertifier, IEEE VIS 2014",
+  "url": "https://aviz.fr/bertifier",
+  "take": "Encode each cell, then reorder rows and columns until structure appears."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Becker, Cleveland, Shyu",
+  "work": "The visual design and control of Trellis display, JCGS 1996",
+  "url": "https://www.semanticscholar.org/paper/The-Visual-Design-and-Control-of-Trellis-Display-Becker-Cleveland/319c6098f7f94cf24c5c637b718e721449fd4a70",
+  "take": "Panels conditioned on a variable, laid out in rows and columns with shared scales."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Javed, McDonnel, Elmqvist",
+  "work": "Graphical perception of multiple time series, IEEE TVCG 2010",
+  "url": "https://www.semanticscholar.org/paper/Graphical-Perception-of-Multiple-Time-Series-Javed-McDonnel/27493372f4581c3a0ef87a3242ce4ba123d451ff",
+  "take": "Separate small charts were generally more efficient for comparisons across many series, and one shared chart for comparisons close together."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Stolte, Tang, Hanrahan",
+  "work": "Polaris, IEEE TVCG 2002",
+  "url": "https://doi.org/10.1109/2945.981851",
+  "take": "A table algebra that nests small charts by dimension. The research behind Tableau."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "ECMWF",
+  "work": "Ensemble meteograms, Forecast User Guide 8.1.4",
+  "url": "https://confluence.ecmwf.int/display/FUG/Section+8.1.4+Meteograms",
+  "take": "Several weather parameters stacked on one time axis, each drawn as box-and-whisker steps."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Merchandise planning",
+  "work": "WSSI: weekly sales, stock and intake",
+  "url": "https://www.stylearcade.com/blog/what-is-a-wssi-the-complete-fashion-retail-guide-to-weekly-sales-stock-and-intake",
+  "take": "The planner’s native grid. Weeks across; sales, stock and intake down; open-to-buy as its result."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Woods",
+  "work": "Visual momentum, International Journal of Man-Machine Studies, 1984",
+  "url": "https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7",
+  "take": "How to keep a reader oriented across many displays: an overview, landmarks, overlap and fixed positions."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Wang Baldonado, Woodruff, Kuchinsky",
+  "work": "Guidelines for using multiple views in information visualization, AVI 2000",
+  "url": "https://www.semanticscholar.org/paper/Guidelines-for-using-multiple-views-in-information-Baldonado-Woodruff/631b8ecb91442fecb78cb12f620cbe38d981eac8",
+  "take": "Eight rules, including parsimony: add a view only when it earns its cost."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Gleicher and colleagues",
+  "work": "Visual comparison for information visualization, 2011",
+  "url": "https://graphics.cs.wisc.edu/Papers/2011/GAWJHR11/paper.pdf",
+  "take": "Every comparison is built from juxtaposition, superposition or an explicit encoding of the difference."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Burke, in Aicher’s department",
+  "work": "Schedule for all sports disciplines, Munich 1972",
+  "url": "https://www.otlaicher.de/en/articles/the-rainbow-games/",
+  "take": "Dates, events and pictograms cross-indexed on one sheet, printed on both sides in seven colours."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Munzner",
+  "work": "Visualization Analysis and Design, 2014",
+  "url": "https://www.cs.ubc.ca/~tmm/vadbook/",
+  "take": "A framework of what, why and how, with rules of thumb. Eyes beat memory: compare side by side, not from recollection."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Becker, Cleveland",
+  "work": "Brushing scatterplots, Technometrics, 1987",
+  "url": "https://en.wikipedia.org/wiki/Brushing_and_linking",
+  "take": "Named brushing: a selection made in one view marks the same items in every other view. The link is a summary."
+ },
+ {
+  "g": "7 · Shared axes",
+  "st": "v",
+  "who": "Ware",
+  "work": "Cross-view brushing",
+  "url": "https://vislab-ccom.unh.edu/VTDP_web_pages/VTDP_CrossViewBrushing.html",
+  "take": "A design pattern for highlighting selected items across several representations."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Bartram, Correll, Tory",
+  "work": "Untidy data: the unreasonable effectiveness of tables, IEEE TVCG 2022",
+  "url": "https://www.tableau.com/blog/defense-untidy-data-table",
+  "take": "Data workers want to see and touch the table throughout analysis. Tables are a visualization idiom in their own right."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Ehrenberg",
+  "work": "Rudiments of numeracy, Journal of the Royal Statistical Society A, 1977",
+  "url": "https://www.jstor.org/stable/2344922",
+  "take": "The classic paper on numeric tables: round hard, order rows by size, and put figures to be compared in columns."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Schwabish",
+  "work": "Ten guidelines for better tables, Journal of Benefit-Cost Analysis, 2020",
+  "url": "https://www.cambridge.org/core/journals/journal-of-benefit-cost-analysis/article/abs/ten-guidelines-for-better-tables/74C6FD9FEB12038A52A95B9FBCA05A12",
+  "take": "A modern checklist: right-align numbers, show units sparingly, lighten the rules."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Tschichold; Rutter",
+  "work": "Tschichold’s table rules, quoted by Rutter, 2017",
+  "url": "https://alistapart.com/article/web-typography-tables/",
+  "take": "Set tables as text to be read, keep furniture to a minimum, avoid vertical rules."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Rao, Card",
+  "work": "The Table Lens, CHI 1994",
+  "url": "https://www.semanticscholar.org/paper/The-table-lens:-merging-graphical-and-symbolic-in-+-Rao-Card/f76f162f6b158b58e5db91280c3740a13111d7dd",
+  "take": "A table whose cells become small bars, with rows that open to text on focus. Bertin’s in-cell bars, brought to the screen."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Gratzl, Lex, Gehlenborg, Pfister, Streit",
+  "work": "LineUp, IEEE InfoVis 2013",
+  "url": "https://jku-vds-lab.at/publications/2013_infovis_lineup/",
+  "take": "Ranks items on several weighted attributes with stacked bars inside a table."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Sutnar, Lönberg-Holm",
+  "work": "Catalog Design Progress, 1950",
+  "url": "https://www.artic.edu/artworks/199319/catalog-design-progress",
+  "take": "Product information designed as function, flow and form. The classic on structuring commercial data for fast lookup."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Crouwel, van de Wouw",
+  "work": "Dutch telephone directory, 1977",
+  "url": "https://www.martinmajoor.com/2.2_telefont_article_eye.html",
+  "take": "Condensed Univers, lower case only, numbers placed before names so no leader dots were needed."
+ },
+ {
+  "g": "8 · Tables",
+  "st": "v",
+  "who": "Twyman",
+  "work": "A schema for the study of graphic language, 1979",
+  "url": "https://link.springer.com/chapter/10.1007/978-1-4684-0994-9_8",
+  "take": "Classifies graphic language by configuration, including list, matrix and branching. Useful vocabulary for deciding what a view is."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Carter",
+  "work": "Bell Centennial, 1975–78",
+  "url": "https://en.wikipedia.org/wiki/Bell_Centennial",
+  "take": "Drawn for telephone directories printed fast on poor paper."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Frere-Jones",
+  "work": "Retina, 1999",
+  "url": "https://www.moma.org/collection/works/139302",
+  "take": "Drawn for Wall Street Journal stock listings at very small sizes, now in the MoMA collection. Type as an instrument for dense figures."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Frutiger",
+  "work": "Univers, 1957",
+  "url": "https://en.wikipedia.org/wiki/Adrian_Frutiger",
+  "take": "Twenty-one variants named by a two-digit code for weight and width, planned as one family from the start."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Type Network, Google",
+  "work": "Roboto Flex and the grade axis",
+  "url": "https://fonts.google.com/specimen/Roboto+Flex",
+  "take": "Grade changes apparent weight without changing width. Useful in dark mode, where light text looks heavier."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Instrument",
+  "work": "Instrument Sans",
+  "url": "https://github.com/Instrument/instrument-sans",
+  "take": "An open variable family with a 75 to 100 width axis and tabular figures. The sans used on this page."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Ruder",
+  "work": "Typographie, 1967",
+  "url": "https://niggli.ch/products/typographie",
+  "take": "A manual on rhythm, proportion and the space inside and around letters, from the Basel school."
+ },
+ {
+  "g": "9 · Type for figures",
+  "st": "v",
+  "who": "Hochuli",
+  "work": "Detail in Typography, 1987",
+  "url": "https://editions-b42.com/en/produit/detail-in-typography/",
+  "take": "Letters, letterspacing, words, wordspacing, lines and linespacing in sixty-four pages."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Britton, Fisher, Whitley",
+  "work": "The Inflation Report projections: understanding the fan chart, Bank of England, 1998",
+  "url": "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/1998/the-inflation-report-projections-understanding-the-fan-chart.pdf",
+  "take": "The fan chart, first published in February 1996, shows a forecast as nested probability bands in place of a line with bounds."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Kay, Kola, Hullman, Munson",
+  "work": "When (ish) is My Bus?, CHI 2016",
+  "url": "https://mucollective.northwestern.edu/project/when-ish-is-my-bus",
+  "take": "Introduced quantile dotplots: a distribution as about twenty countable dots. Readers estimated probabilities more consistently than from density curves."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Fernandes, Walls, Munson, Hullman, Kay",
+  "work": "Uncertainty displays using quantile dotplots or CDFs improve transit decision-making, CHI 2018",
+  "url": "https://dl.acm.org/doi/10.1145/3173574.3173718",
+  "take": "Decision quality, measured. Dotplots and cumulative curves beat intervals and point estimates."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Hullman, Resnick, Adar",
+  "work": "Hypothetical outcome plots, PLOS ONE 2015",
+  "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0142444",
+  "take": "Animated draws from a distribution outperformed error bars and violins for judging which of two quantities is larger."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Correll, Gleicher",
+  "work": "Error bars considered harmful, IEEE TVCG 2014",
+  "url": "https://graphics.cs.wisc.edu/Papers/2014/CG14/Preprint.pdf",
+  "take": "Bars with whiskers make values inside the bar look likelier than values outside it."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Joslyn, LeClerc",
+  "work": "Uncertainty forecasts improve weather-related decisions, Journal of Experimental Psychology: Applied, 2012",
+  "url": "https://eric.ed.gov/?id=EJ968865",
+  "take": "Showing uncertainty improved decisions and softened the effect of a forecast that missed."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "v",
+  "who": "Padilla, Kay, Hullman",
+  "work": "Uncertainty visualization, Wiley StatsRef, 2021",
+  "url": "http://space.ucmerced.edu/Downloads/publications/Uncertainty_Visualization_Padilla_Kay_Hullman_2022.pdf",
+  "take": "The best single review: the techniques, the psychology behind each, and frequency framing."
+ },
+ {
+  "g": "10 · Uncertainty",
+  "st": "k",
+  "who": "Savage",
+  "work": "The Flaw of Averages, 2009",
+  "url": "https://www.wiley.com/en-us/The+Flaw+of+Averages%3A+Why+We+Underestimate+Risk+in+the+Face+of+Uncertainty-p-9781118073759",
+  "take": "Plans built on average demand are wrong on average. An argument for planning against a distribution once one exists."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Shneiderman",
+  "work": "Dynamic queries for visual information seeking, IEEE Software, 1994",
+  "url": "https://www.cs.umd.edu/~ben/papers/Shneiderman1994Dynamic.pdf",
+  "take": "Results update within a tenth of a second as sliders move, so a query becomes something to steer."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Heer, Shneiderman",
+  "work": "Interactive dynamics for visual analysis, Communications of the ACM, 2012",
+  "url": "https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf",
+  "take": "Twelve tasks in three groups: specifying data and views, manipulating views, and recording and sharing the analysis."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Victor",
+  "work": "Up and Down the Ladder of Abstraction, 2011",
+  "url": "https://worrydream.com/LadderOfAbstraction/",
+  "take": "An interactive essay that moves between one concrete case and the whole range of a parameter."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Victor",
+  "work": "Explorable Explanations, 2011",
+  "url": "https://worrydream.com/ExplorableExplanations/",
+  "take": "Reactive documents: a number in a sentence can be dragged, and the text recomputes."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Bostock, Carter, Tse",
+  "work": "Is It Better to Rent or Buy?, The New York Times, 2014",
+  "url": "https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html",
+  "take": "Each slider sits on a small chart of the outcome across the whole range of that input."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Sedlmair, Heinzl, Bruckner, Piringer, Möller",
+  "work": "Visual parameter space analysis, IEEE TVCG 2014",
+  "url": "https://vis.uib.no/publications/Sedlmair-2014-VPS/",
+  "take": "A framework for exploring model inputs and outputs: a data flow, four navigation strategies and six tasks."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Howard",
+  "work": "Decision analysis: practice and promise, Management Science, 1988",
+  "url": "https://doi.org/10.1287/mnsc.34.6.679",
+  "take": "Usually cited for the tornado diagram: one-way sensitivities sorted by swing, each input moved between assessed low and high values. A form for ranking assumptions by their effect on a result."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Fildes, Goodwin, Lawrence, Nikolopoulos",
+  "work": "Effective forecasting and judgmental adjustments, International Journal of Forecasting, 2009",
+  "url": "https://eprints.lancs.ac.uk/id/eprint/45487/",
+  "take": "Small overrides tended to hurt accuracy, large reasoned ones helped, and adjustments leaned optimistic."
+ },
+ {
+  "g": "11 · Controls",
+  "st": "v",
+  "who": "Gilliland",
+  "work": "Forecast value added: a reality check, Foresight, 2013",
+  "url": "https://forecasters.org/wp-content/uploads/FVA_A-Reality-Check_Foresight29.pdf",
+  "take": "Compare each step of the process with a naive forecast. The stairstep report shows where review adds or removes value."
+ },
+ {
+  "g": "12 · Plain words",
+  "st": "v",
+  "who": "Gowers",
+  "work": "Plain Words, 1948",
+  "url": "https://en.wikipedia.org/wiki/The_Complete_Plain_Words",
+  "take": "Written at the request of the British Treasury to help officials replace jargon with a short, clear style. The link describes its editions."
+ },
+ {
+  "g": "12 · Plain words",
+  "st": "v",
+  "who": "Kinross",
+  "work": "The rhetoric of neutrality, Design Issues, 1985",
+  "url": "https://www.jstor.org/stable/i267274",
+  "take": "Even a railway timetable persuades. A calm analytical style is a rhetorical choice and should be owned as one."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Fildes, Ma, Kolassa",
+  "work": "Retail forecasting: research and practice, International Journal of Forecasting, 2022",
+  "url": "https://ideas.repec.org/a/eee/intfor/v38y2022i4p1283-1318.html",
+  "take": "The standard review of retail forecasting, from strategic decisions down to store and item."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Fisher, Hammond, Obermeyer, Raman",
+  "work": "Making supply meet demand in an uncertain world, Harvard Business Review, 1994",
+  "url": "https://hbr.org/1994/05/making-supply-meet-demand-in-an-uncertain-world",
+  "take": "Sport Obermeyer, a skiwear maker, planned its buying around how uncertain each style’s demand was."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Kolassa, Rostami-Tabar, Siemsen",
+  "work": "Demand Forecasting for Executives and Professionals, 2023",
+  "url": "https://dfep.netlify.app/",
+  "take": "A current, readable text with an online edition."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Vandeput",
+  "work": "Demand Forecasting Best Practices, 2023",
+  "url": "https://www.oreilly.com/library/view/demand-forecasting-best/9781633438095/",
+  "take": "Practical guidance on metrics: track bias and absolute error together and avoid MAPE."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Syntetos, Boylan, Croston",
+  "work": "On the categorization of demand patterns, Journal of the Operational Research Society, 2005",
+  "url": "https://eprints.lancs.ac.uk/id/eprint/73095/",
+  "take": "Classes items as smooth, erratic, intermittent or lumpy from two statistics, with cut-offs at 1.32 and 0.49."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Wickramasuriya, Athanasopoulos, Hyndman",
+  "work": "Optimal forecast reconciliation through trace minimization, JASA, 2019",
+  "url": "https://robjhyndman.com/publications/mint/",
+  "take": "Forecasts at item, category and total level can be made to add up."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Makridakis, Spiliotis, Assimakopoulos",
+  "work": "The M5 accuracy competition, International Journal of Forecasting, 2022",
+  "url": "https://www.sciencedirect.com/science/article/pii/S0169207021001874",
+  "take": "42,840 hierarchical Walmart series with many zeros. Evidence on what works for intermittent retail demand."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Ferreira, Lee, Simchi-Levi",
+  "work": "Analytics for an online retailer, Manufacturing and Service Operations Management, 2016",
+  "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=49523",
+  "take": "Demand forecasting and price optimisation at Rue La La, an online fashion retailer, with a measured revenue effect."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Caro, Gallien",
+  "work": "Clearance pricing optimization for a fast-fashion retailer, Operations Research, 2012",
+  "url": "https://pubsonline.informs.org/doi/abs/10.1287/opre.1120.1102",
+  "take": "Zara’s markdown process, tested in a field experiment."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Operations research",
+  "work": "The newsvendor critical ratio",
+  "url": "https://en.wikipedia.org/wiki/Newsvendor_model",
+  "take": "For a single buy before a season, the best service level is the underage cost over the sum of underage and overage cost. A principled source for a stock target."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "v",
+  "who": "Vermorel, Lokad",
+  "work": "Prioritized ordering",
+  "url": "https://www.lokad.com/prioritized-ordering-definition/",
+  "take": "Rank every possible purchase unit by expected economic return and buy down the list until the budget is spent. An alternative to item-by-item alerts."
+ },
+ {
+  "g": "Further reading · forecasting and retail practice",
+  "st": "k",
+  "who": "Forrester; Sterman",
+  "work": "Industrial Dynamics, 1961; Business Dynamics, 2000",
+  "url": "https://lccn.loc.gov/61017871",
+  "take": "Stock-and-flow notation. Inventory is a stock; sales and receipts are flows."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Sarikaya, Correll, Bartram, Tory, Fisher",
+  "work": "What do we talk about when we talk about dashboards?, IEEE TVCG 2019",
+  "url": "https://alper.datav.is/publications/dashboards/",
+  "take": "A design space and typology of dashboards, built from a survey of the kinds in use."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Bach, Freeman, Abdul-Rahman, Turkay, Khan, Fan, Chen",
+  "work": "Dashboard design patterns, IEEE TVCG 2023",
+  "url": "https://arxiv.org/pdf/2205.00757",
+  "take": "Forty-one patterns for content and composition, with the trade-offs between screen space, paging and abstraction."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Franconeri, Padilla, Shah, Zacks, Hullman",
+  "work": "The science of visual data communication: what works, PSPI 2021",
+  "url": "https://doi.org/10.1177/15291006211051956",
+  "take": "The most complete review of what is known to work, written for practitioners."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Kong, Agrawala",
+  "work": "Graphical overlays, IEEE TVCG 2012",
+  "url": "https://www.semanticscholar.org/paper/Graphical-Overlays:-Using-Layered-Elements-to-Aid-Kong-Agrawala/50fc6e1002d365c21fb6d372f76b332b04e26af3",
+  "take": "Five kinds of layered aid: reference structures, highlights, redundant encodings, summary statistics and annotations."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Stokes, Setlur, Cogley, Satyanarayan, Hearst",
+  "work": "Striking a balance, IEEE TVCG 2023",
+  "url": "https://arxiv.org/abs/2208.01780",
+  "take": "Readers preferred charts with text over charts alone. Put words at the mark."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Heer, Kong, Agrawala",
+  "work": "Sizing the horizon, CHI 2009",
+  "url": "http://vis.stanford.edu/papers/horizon",
+  "take": "Horizon graphs keep a time series readable at small heights, with measured limits on how small."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Ström-Awn",
+  "work": "UI Density, 2024",
+  "url": "https://mattstromawn.com/writing/ui-density/",
+  "take": "Density is the value delivered per unit of space and time, with visual, information and temporal components."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Bateman and colleagues; Inbar, Tractinsky, Meyer",
+  "work": "Useful junk?, CHI 2010; Minimalism in information visualization, 2007",
+  "url": "https://dl.acm.org/doi/10.1145/1753326.1753716",
+  "take": "Counter-evidence to strict minimalism. Embellished charts were recalled better, and people did not prefer the most reduced bar chart."
+ },
+ {
+  "g": "Further reading · dashboards and evidence",
+  "st": "v",
+  "who": "Setlur, Cogley",
+  "work": "Functional Aesthetics for Data Visualization, 2022",
+  "url": "https://www.wiley.com/en-us/Functional+Aesthetics+for+Data+Visualization-p-9781119810070",
+  "take": "Perception, semantics and intent treated together."
+ }
+]

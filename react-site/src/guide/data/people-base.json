@@ -1,0 +1,511 @@
+[
+ {
+  "id": "frutiger",
+  "g": 0,
+  "y": 1957,
+  "n": "Adrian Frutiger",
+  "l": "1928–2015 · Swiss type designer",
+  "w": "Univers, 1957",
+  "u": "https://en.wikipedia.org/wiki/Adrian_Frutiger",
+  "r": [
+   9
+  ],
+  "d": "Planned Univers as twenty-one variants drawn together and numbered by weight and width. Later drew the airport signage face released as Frutiger in 1976."
+ },
+ {
+  "id": "gerstner",
+  "g": 0,
+  "y": 1964,
+  "n": "Karl Gerstner",
+  "l": "1930–2017 · Swiss designer",
+  "w": "Designing Programmes, 1964",
+  "u": "https://www.lars-mueller-publishers.com/designing-programmes-0",
+  "r": [
+   1
+  ],
+  "d": "Treated design as writing a programme that generates a family of solutions. His 1962 grid for the magazine Capital carries one to six columns on the same page."
+ },
+ {
+  "id": "ruder",
+  "g": 0,
+  "y": 1967,
+  "n": "Emil Ruder",
+  "l": "1914–1970 · Swiss typographer",
+  "w": "Typographie, 1967",
+  "u": "https://niggli.ch/products/typographie",
+  "r": [
+   9
+  ],
+  "d": "Taught typography in Basel from 1942. His manual treats type as rhythm, proportion and the space inside and around letters."
+ },
+ {
+  "id": "aicher",
+  "g": 0,
+  "y": 1972,
+  "n": "Otl Aicher",
+  "l": "1922–1991 · German designer",
+  "w": "Munich Olympics, 1972",
+  "u": "https://www.otlaicher.de/en/articles/the-rainbow-games/",
+  "r": [
+   7
+  ],
+  "d": "Co-founded the Ulm School of Design in 1953 and led the design of the 1972 Munich Olympics, where his department produced the pictograms and a schedule of all sports on one sheet."
+ },
+ {
+  "id": "crouwel",
+  "g": 0,
+  "y": 1977,
+  "n": "Wim Crouwel",
+  "l": "1928–2019 · Dutch designer",
+  "w": "Dutch telephone directory, 1977",
+  "u": "https://www.martinmajoor.com/2.2_telefont_article_eye.html",
+  "r": [
+   8
+  ],
+  "d": "A founder of Total Design in 1963, and designer for the Stedelijk Museum from 1964. With Jolijn van de Wouw he set the telephone directory in lower case, with numbers before names."
+ },
+ {
+  "id": "vignelli",
+  "g": 0,
+  "y": 1977,
+  "n": "Massimo Vignelli",
+  "l": "1931–2014 · Italian designer",
+  "w": "Unigrid, 1977",
+  "u": "https://www.nps.gov/subjects/hfc/a-brief-history-of-the-unigrid.htm",
+  "r": [
+   1
+  ],
+  "d": "Designed the 1972 New York subway diagram. His Unigrid gave the United States National Park Service one sheet system for the brochures of all its parks."
+ },
+ {
+  "id": "carter",
+  "g": 0,
+  "y": 1978,
+  "n": "Matthew Carter",
+  "l": "born 1937 · British-born type designer",
+  "w": "Bell Centennial, 1975 to 1978",
+  "u": "https://en.wikipedia.org/wiki/Bell_Centennial",
+  "r": [
+   9
+  ],
+  "d": "Drew Bell Centennial for telephone directories printed fast on poor paper, and in the 1990s Verdana and Georgia for screens."
+ },
+ {
+  "id": "mb",
+  "g": 0,
+  "y": 1981,
+  "n": "Josef Müller-Brockmann",
+  "l": "1914–1996 · Swiss designer",
+  "w": "Grid Systems in Graphic Design, 1981",
+  "u": "https://niggli.ch/en/products/rastersysteme-fur-die-visuelle-gestaltung",
+  "r": [
+   1
+  ],
+  "d": "Designed the Zurich Tonhalle concert posters from 1950 and was a founding editor of Neue Grafik in 1958. His manual of the grid calls it an aid, not a guarantee."
+ },
+ {
+  "id": "kinross",
+  "g": 0,
+  "y": 1985,
+  "n": "Robin Kinross",
+  "l": "British typographer and writer",
+  "w": "The rhetoric of neutrality, 1985",
+  "u": "https://www.jstor.org/stable/i267274",
+  "r": [
+   12
+  ],
+  "d": "Showed that even a railway timetable persuades. A calm, exact style is a rhetorical choice and should be owned as one."
+ },
+ {
+  "id": "hochuli",
+  "g": 0,
+  "y": 1987,
+  "n": "Jost Hochuli",
+  "l": "born 1933 · Swiss book designer",
+  "w": "Detail in Typography, 1987",
+  "u": "https://editions-b42.com/en/produit/detail-in-typography/",
+  "r": [
+   9
+  ],
+  "d": "Covers what a grid cannot: letters, words, lines and the spaces between them."
+ },
+ {
+  "id": "robinson",
+  "g": 1,
+  "y": 1952,
+  "n": "Arthur Robinson",
+  "l": "1915–2004 · American cartographer",
+  "w": "The Look of Maps, 1952",
+  "u": "https://en.wikipedia.org/wiki/Arthur_H._Robinson",
+  "r": [
+   5
+  ],
+  "d": "Urged cartographers to treat the function of a map as part of its design. Taught at the University of Wisconsin from 1947."
+ },
+ {
+  "id": "imhof",
+  "g": 1,
+  "y": 1965,
+  "n": "Eduard Imhof",
+  "l": "1895–1986 · Swiss cartographer",
+  "w": "Cartographic Relief Presentation, 1965",
+  "u": "https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/",
+  "r": [
+   5
+  ],
+  "d": "Professor of cartography at ETH Zurich from 1925, known for the relief shading of Swiss school maps. His rules for colour keep large areas quiet and strong colour small."
+ },
+ {
+  "id": "bertin",
+  "g": 1,
+  "y": 1967,
+  "n": "Jacques Bertin",
+  "l": "1918–2010 · French cartographer",
+  "w": "Semiology of Graphics, 1967",
+  "u": "https://www.esri.com/en-us/esri-press/browse/semiology-of-graphics-diagrams-networks-maps",
+  "r": [
+   6,
+   7
+  ],
+  "d": "Founded a cartography laboratory in Paris in 1954. Named the visual variables a mark can vary by, and reordered the rows and columns of a matrix until its structure showed."
+ },
+ {
+  "id": "woods",
+  "g": 2,
+  "y": 1984,
+  "n": "David Woods",
+  "l": "American researcher, Ohio State University",
+  "w": "Visual momentum, 1984",
+  "u": "https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7",
+  "r": [
+   7
+  ],
+  "d": "A founder of cognitive systems engineering. Named visual momentum: how easily a reader carries what was just seen into the next view."
+ },
+ {
+  "id": "rasmussen",
+  "g": 2,
+  "y": 1992,
+  "n": "Jens Rasmussen and Kim Vicente",
+  "l": "Danish engineer, 1926–2018 · Canadian engineer",
+  "w": "Ecological interface design, 1992",
+  "u": "https://orbit.dtu.dk/en/publications/ecological-interface-design-theoretical-foundations/",
+  "r": [
+   4
+  ],
+  "d": "Rasmussen worked on system safety at Risø National Laboratory, and Vicente taught at the University of Toronto. Their method asks a display to make the constraints of the work visible."
+ },
+ {
+  "id": "hollifield",
+  "g": 2,
+  "y": 2008,
+  "n": "Bill Hollifield and co-authors",
+  "l": "Process-control engineers",
+  "w": "The High Performance HMI Handbook, 2008",
+  "u": "https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ",
+  "r": [
+   2
+  ],
+  "d": "Argued for grey process screens, analog indicators with a marked normal range, and colour kept for abnormal states."
+ },
+ {
+  "id": "playfair",
+  "g": 3,
+  "y": 1786,
+  "n": "William Playfair",
+  "l": "1759–1823 · Scottish engineer and political economist",
+  "w": "The Commercial and Political Atlas, 1786",
+  "u": "https://en.wikipedia.org/wiki/William_Playfair",
+  "r": [
+   4
+  ],
+  "d": "Introduced the line, area and bar chart, and in 1801 the pie chart. His chart of imports and exports tints the balance of trade between the two lines."
+ },
+ {
+  "id": "marey",
+  "g": 3,
+  "y": 1878,
+  "n": "Étienne-Jules Marey",
+  "l": "1830–1904 · French physiologist",
+  "w": "La Méthode graphique, 1878 and 1885",
+  "u": "https://en.wikipedia.org/wiki/%C3%89tienne-Jules_Marey",
+  "r": [
+   7
+  ],
+  "d": "Made the case for recording by graph, and reproduced the train timetable drawn as one picture. Went on to develop chronophotography."
+ },
+ {
+  "id": "brinton",
+  "g": 3,
+  "y": 1914,
+  "n": "Willard Brinton",
+  "l": "1880–1957 · American engineer",
+  "w": "Graphic Methods for Presenting Facts, 1914",
+  "u": "https://archive.org/details/cu31924032626792",
+  "r": [
+   2
+  ],
+  "d": "Wrote an early American handbook of charts for a general audience, without mathematics or jargon."
+ },
+ {
+  "id": "shewhart",
+  "g": 3,
+  "y": 1924,
+  "n": "Walter Shewhart and Donald Wheeler",
+  "l": "American statisticians",
+  "w": "The control chart, 1924",
+  "u": "https://commoncog.com/process-behaviour-charts-more-than-you-need/",
+  "r": [
+   3
+  ],
+  "d": "Shewhart drew the first control chart at Western Electric in 1924, to separate chance variation from assignable causes. Wheeler’s Understanding Variation brought the method to managers in 1993."
+ },
+ {
+  "id": "neurath",
+  "g": 3,
+  "y": 1925,
+  "n": "Otto Neurath, Marie Reidemeister and Gerd Arntz",
+  "l": "Vienna, from 1925",
+  "w": "Isotype",
+  "u": "https://isotyperevisited.org/",
+  "r": [],
+  "d": "Developed a picture language for statistics at the Social and Economic Museum in Vienna. A larger quantity is shown by more signs of the same size, never by a larger sign."
+ },
+ {
+  "id": "gowers",
+  "g": 3,
+  "y": 1948,
+  "n": "Ernest Gowers",
+  "l": "1880–1966 · British civil servant",
+  "w": "Plain Words, 1948",
+  "u": "https://en.wikipedia.org/wiki/The_Complete_Plain_Words",
+  "r": [
+   12
+  ],
+  "d": "Wrote a guide to clear official English at the request of the Treasury, to replace jargon with a short, plain style."
+ },
+ {
+  "id": "spear",
+  "g": 3,
+  "y": 1952,
+  "n": "Mary Eleanor Spear",
+  "l": "1897–1986 · American graphic analyst",
+  "w": "Charting Statistics, 1952",
+  "u": "https://en.wikipedia.org/wiki/Mary_Eleanor_Spear",
+  "r": [
+   10
+  ],
+  "d": "Worked as a graphic analyst for United States federal agencies. Her range bar with an interquartile box is regarded as a forerunner of the box plot."
+ },
+ {
+  "id": "ehrenberg",
+  "g": 3,
+  "y": 1977,
+  "n": "Andrew Ehrenberg",
+  "l": "1926–2010 · British statistician",
+  "w": "Rudiments of numeracy, 1977",
+  "u": "https://www.jstor.org/stable/2344922",
+  "r": [
+   8
+  ],
+  "d": "A marketing scientist known for laws of buyer behaviour. His rules for tables: round to two varying digits, order rows by size, compare down a column."
+ },
+ {
+  "id": "tufte",
+  "g": 3,
+  "y": 1983,
+  "n": "Edward Tufte",
+  "l": "born 1942 · American statistician",
+  "w": "The Visual Display of Quantitative Information, 1983",
+  "u": "https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/",
+  "r": [
+   2,
+   5
+  ],
+  "d": "Professor emeritus at Yale. His books made small multiples, layering and the ratio of data to ink common vocabulary, and he named the sparkline."
+ },
+ {
+  "id": "few",
+  "g": 3,
+  "y": 2006,
+  "n": "Stephen Few",
+  "l": "American consultant and author",
+  "w": "Bullet Graph Design Specification, 2006",
+  "u": "https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf",
+  "r": [
+   1,
+   2
+  ],
+  "d": "Founded the consultancy Perceptual Edge in 2003. Designed the bullet graph to replace dashboard gauges, and listed the common mistakes of dashboard layout."
+ },
+ {
+  "id": "hichert",
+  "g": 3,
+  "y": 2015,
+  "n": "Rolf Hichert",
+  "l": "German consultant",
+  "w": "International Business Communication Standards, 2015",
+  "u": "https://www.ibcs.com/",
+  "r": [
+   6
+  ],
+  "d": "Initiated a notation for business reports that grew out of his consulting since the 1980s, and was president of the association that publishes it until 2026. Scenarios are told apart by fill, and hue is left free."
+ },
+ {
+  "id": "albers",
+  "g": 4,
+  "y": 1963,
+  "n": "Josef Albers",
+  "l": "1888–1976 · German-American artist and teacher",
+  "w": "Interaction of Color, 1963",
+  "u": "https://en.wikipedia.org/wiki/Josef_Albers",
+  "r": [
+   5
+  ],
+  "d": "Taught at the Bauhaus, Black Mountain College and Yale. Showed that a colour is always read against its surround."
+ },
+ {
+  "id": "cleveland",
+  "g": 4,
+  "y": 1984,
+  "n": "William Cleveland",
+  "l": "1943–2026 · American statistician",
+  "w": "Graphical perception, 1984",
+  "u": "https://en.wikipedia.org/wiki/William_S._Cleveland",
+  "r": [
+   5,
+   7
+  ],
+  "d": "At Bell Labs, with Robert McGill, ranked how accurately readers decode position, length, angle, area and shading. Also behind loess smoothing, brushing and the trellis display."
+ },
+ {
+  "id": "palmer",
+  "g": 4,
+  "y": 1992,
+  "n": "Stephen Palmer",
+  "l": "1948–2023 · American psychologist",
+  "w": "Common region, 1992",
+  "u": "https://eric.ed.gov/?id=EJ450926",
+  "r": [
+   5
+  ],
+  "d": "Professor at the University of California, Berkeley. Added common region and connectedness to the classic principles of grouping."
+ },
+ {
+  "id": "ware",
+  "g": 4,
+  "y": 2000,
+  "n": "Colin Ware",
+  "l": "Canadian researcher, University of New Hampshire",
+  "w": "Information Visualization: Perception for Design, 2000",
+  "u": "https://vislab-ccom.unh.edu/VTDP_web_pages/VTDP_CrossViewBrushing.html",
+  "r": [
+   7
+  ],
+  "d": "Connected what is known about vision to design choices, among them brushing a selection across linked views."
+ },
+ {
+  "id": "munzner",
+  "g": 4,
+  "y": 2014,
+  "n": "Tamara Munzner",
+  "l": "Computer scientist, University of British Columbia",
+  "w": "Visualization Analysis and Design, 2014",
+  "u": "https://www.cs.ubc.ca/~tmm/vadbook/",
+  "r": [
+   7
+  ],
+  "d": "Wrote a framework for analysing a visualization: what is shown, why, and how. Her rules of thumb include eyes beat memory."
+ },
+ {
+  "id": "kay",
+  "g": 4,
+  "y": 2016,
+  "n": "Matthew Kay and Jessica Hullman",
+  "l": "Researchers in uncertainty visualization",
+  "w": "When (ish) is My Bus?, 2016",
+  "u": "https://mucollective.northwestern.edu/project/when-ish-is-my-bus",
+  "r": [
+   10
+  ],
+  "d": "Kay and colleagues introduced the quantile dotplot, a distribution as countable dots. Hullman’s hypothetical outcome plots show it as a sequence of draws."
+ },
+ {
+  "id": "shneiderman",
+  "g": 5,
+  "y": 1994,
+  "n": "Ben Shneiderman",
+  "l": "born 1947 · American computer scientist",
+  "w": "Dynamic queries, 1994",
+  "u": "https://www.cs.umd.edu/~ben/papers/Shneiderman1994Dynamic.pdf",
+  "r": [
+   11
+  ],
+  "d": "Founded the Human-Computer Interaction Lab at the University of Maryland in 1983. Set out direct manipulation, and built dynamic queries, where a display follows its sliders as they move."
+ },
+ {
+  "id": "fisher",
+  "g": 5,
+  "y": 1994,
+  "n": "Marshall Fisher",
+  "l": "Operations researcher, the Wharton School",
+  "w": "Making supply meet demand in an uncertain world, 1994",
+  "u": "https://hbr.org/1994/05/making-supply-meet-demand-in-an-uncertain-world",
+  "r": [
+   10
+  ],
+  "d": "With Hammond, Obermeyer and Raman, showed how a skiwear maker planned its buying around how uncertain the demand for each style was."
+ },
+ {
+  "id": "fildes",
+  "g": 5,
+  "y": 2009,
+  "n": "Robert Fildes",
+  "l": "Forecaster, Lancaster University",
+  "w": "Effective forecasting and judgmental adjustments, 2009",
+  "u": "https://eprints.lancs.ac.uk/id/eprint/45487/",
+  "r": [
+   11
+  ],
+  "d": "Founding editor of the Journal of Forecasting and the International Journal of Forecasting. Measured what manual adjustments do to forecasts in supply-chain companies."
+ },
+ {
+  "id": "victor",
+  "g": 5,
+  "y": 2011,
+  "n": "Bret Victor",
+  "l": "American interface designer",
+  "w": "Explorable Explanations, 2011",
+  "u": "https://worrydream.com/ExplorableExplanations/",
+  "r": [
+   11
+  ],
+  "d": "Worked on interfaces at Apple from 2007 to 2011. Put adjustable numbers inside the prose that discusses them, so a reader can test an argument."
+ },
+ {
+  "id": "heer",
+  "g": 5,
+  "y": 2012,
+  "n": "Jeffrey Heer",
+  "l": "American computer scientist, University of Washington",
+  "w": "Interactive Dynamics for Visual Analysis, 2012",
+  "u": "https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf",
+  "r": [
+   11
+  ],
+  "d": "Co-created Protovis and D3 with Mike Bostock, then Vega and Vega-Lite. With Shneiderman, sorted the interactions of visual analysis into twelve tasks."
+ },
+ {
+  "id": "bostock",
+  "g": 5,
+  "y": 2014,
+  "n": "Mike Bostock, Shan Carter and Archie Tse",
+  "l": "Graphics editors, The New York Times",
+  "w": "Is It Better to Rent or Buy?, 2014",
+  "u": "https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html",
+  "r": [
+   11
+  ],
+  "d": "Drew each slider of a calculator on a chart of its own consequences. Bostock also wrote D3, with Heer and Vadim Ogievetsky, in 2011."
+ }
+]

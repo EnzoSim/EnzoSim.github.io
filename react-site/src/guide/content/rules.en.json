@@ -1,0 +1,486 @@
+{
+ "1": {
+  "blocks": [
+   {
+    "p": [
+     "Karl Gerstner designed the layout grid of the German business magazine Capital in 1962 and published it in <i>Designing Programmes</i> two years later. The page is 58 units wide and the gutters are 2 units. Those two numbers let the same page carry one, two, three, four, five or six columns, each a whole number of units wide. The reason is their sum. Width plus one gutter is 60, and 60 divides by every count from one to six."
+    ],
+    "notes": [
+     "<a href=\"https://commons.wikimedia.org/wiki/File:Karl_Gerstner_Capital_layout_grid.png\">Karl Gerstner, <i>Designing Programmes</i></a>, 1964. The Capital grid dates from 1962."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The rule carries straight into pixels, and this page is set on it. At full width its programme is twelve columns of 64 px with 32 px gutters, 1120 px in all. With one more gutter the sum is 1152, which divides by two, three, four, six, eight and twelve. Prose takes seven columns and the notes beside it the last four. Lists take four columns each, so their third column falls exactly under the notes, and every figure takes all twelve."
+    ],
+    "notes": [],
+    "gridopt": true
+   },
+   {
+    "p": [
+     "The plan has a programme of its own inside its figure. Each sheet is then 1088 px wide with 8 px gutters. Its four instrument cards are 266 px each, and the rows split three to two are 648 and 432 px. The week columns have no gutters between them, so the same 1088 px gives eight weeks of 136 px."
+    ],
+    "notes": [],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "A grid that divides many ways matters because the regions of a dashboard should not be equal. Stephen Few lists the rigid symmetrical grid among the common mistakes of dashboard design. When every panel has the same size, the layout claims that every panel has the same importance. A programme of compatible widths allows a wide region for the main evidence and narrow ones for the rest, and no edge falls off the grid."
+    ],
+    "notes": [
+     "<a href=\"https://www.perceptualedge.com/articles/Whitepapers/Formatting_and_Layout_Matter.pdf\">Stephen Few, <i>With Dashboards, Formatting and Layout Definitely Matter</i></a>, 2008."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The designers who taught the grid never treated it as a formula. Josef Müller-Brockmann, whose <i>Grid Systems in Graphic Design</i> of 1981 is the best-known manual of the method, called it an aid, not a guarantee. Hans Rudolf Bosshard’s <i>The Typographic Grid</i> shows about two dozen of his own works with the grids behind them, and no single recipe. Massimo Vignelli’s Unigrid, designed in 1977 for the United States National Park Service, is the same idea as a production system: one sheet structure and one set of rules behind the brochures of more than four hundred parks."
+    ],
+    "notes": [
+     "<a href=\"https://niggli.ch/en/products/rastersysteme-fur-die-visuelle-gestaltung\">Josef Müller-Brockmann, <i>Grid Systems in Graphic Design</i></a>, 1981.",
+     "<a href=\"https://niggli.ch/products/der-typografische-raster\">Hans Rudolf Bosshard, <i>The Typographic Grid</i></a>, 2000.",
+     "<a href=\"https://www.nps.gov/subjects/hfc/a-brief-history-of-the-unigrid.htm\">National Park Service, <i>A brief history of the Unigrid</i></a>."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>The programme, in pixels.</b> A column count gives whole pixels exactly when it divides the width plus one gutter. Drag the width to find fields that divide well, and ones that do not.",
+  "stage": "demo-programme",
+  "after": "",
+  "title": "Start from a grid that divides"
+ },
+ "2": {
+  "blocks": [
+   {
+    "p": [
+     "A number on a card answers one question: how much. A reader of a plan needs four more answers in the same glance: of what, on what scale, compared with what, and by how much it differs. Stephen Few’s bullet graph, specified in 2006, packs those answers into one small mark, with a bar for the measure, a tick for the comparator and a scale behind both. Edward Tufte’s sparkline goes smaller still. It is a word-sized graphic that sets a value beside its recent history, and in his medical examples beside a grey band for the normal range."
+    ],
+    "notes": [
+     "<a href=\"https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf\">Stephen Few, <i>Bullet Graph Design Specification</i></a>, 2006, revised 2013.",
+     "<a href=\"https://www.edwardtufte.com/notebook/sparkline-theory-and-practice-edward-tufte/\">Edward Tufte, <i>Sparkline theory and practice</i></a>, from <i>Beautiful Evidence</i>, 2006."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Control rooms reached a similar form for a different reason. Guidance for process-plant operators asks for grey screens, analog indicators with a marked normal range, and saturated colour reserved for abnormal states, so that a deviation is the only thing that stands out. The instrument in the plan borrows that restraint. It shows a large value with its unit, a rail drawn to scale, one ink tick where a comparator exists, and the gap in figures beside the name of what it is measured against."
+    ],
+    "notes": [
+     "<a href=\"https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ\">Hollifield, Oliver, Nimmo and Habibi, <i>The High Performance HMI Handbook</i></a>, 2008."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The bullet graph has critics worth hearing. Nick Desbarats lists eleven objections, among them that problems do not stand out and that words such as good, satisfactory and poor mean different things to different people. The plan therefore leaves the qualitative bands out. Where no comparator exists, the rail shows a part of a whole instead: sales made against sales lost, stock held against what is left to buy. Amazon’s weekly business review, as Cedric Chin describes it from Colin Bryar’s practice, holds one form across hundreds of measures. Most charts plot the trailing six weeks beside the trailing twelve months, so the form is learned once."
+    ],
+    "notes": [
+     "<a href=\"https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/\">Nick Desbarats, <i>Why I stopped using bullet graphs</i></a>, 2022.",
+     "<a href=\"https://commoncog.com/the-amazon-weekly-business-review/\">Cedric Chin, <i>The Amazon Weekly Business Review</i></a>, Commoncog, 2024, written from Colin Bryar’s practice."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>What each part of an instrument answers.</b> Switch the parts off to see which question goes unanswered, and move the value to watch the gap follow.",
+  "stage": "demo-instrument",
+  "after": "",
+  "title": "Give every number an instrument"
+ },
+ "3": {
+  "blocks": [
+   {
+    "p": [
+     "A weekly figure always differs from the week before, and most of those differences mean nothing. Donald Wheeler’s <i>Understanding Variation</i> gives a test that needs no model. Plot the individual values, take the average distance between neighbours, and draw limits at 2.66 of those average ranges on either side of the mean. A point inside the limits is routine. A point outside is a signal that deserves an explanation."
+    ],
+    "notes": [
+     "<a href=\"https://commoncog.com/process-behaviour-charts-more-than-you-need/\">Donald Wheeler, <i>Understanding Variation</i></a>, 1993. The chart of individual values and moving ranges descends from Walter Shewhart’s control chart."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "This is the comparator an instrument should graduate to once a measure has some history. Until then a named reference, such as the last four weeks, is the more candid choice, and the plan uses exactly that."
+    ],
+    "notes": [],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>Signal or routine.</b> An illustrative series of weekly sales. The limits come from the first eleven weeks. Move the latest week and see when it becomes worth a question.",
+  "stage": "demo-xmr",
+  "after": "",
+  "title": "Compare against routine variation"
+ },
+ "4": {
+  "blocks": [
+   {
+    "p": [
+     "In 1786 William Playfair drew England’s imports and exports as two lines and tinted the area between them. The tint is the balance of trade. Nobody has to subtract, because the quantity that matters is a shape on the page."
+    ],
+    "notes": [
+     "<a href=\"https://en.wikipedia.org/wiki/William_Playfair\">William Playfair, <i>The Commercial and Political Atlas</i></a>, 1786."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Engineers who design displays for power plants turned the same idea into a method. Ecological interface design, set out by Kim Vicente and Jens Rasmussen in 1992, asks a display to make the constraints of the system directly visible. Kevin Bennett and John Flach describe the result as a configural display. Variables are drawn so that their lawful relationship forms a figure, and a fault deforms the figure."
+    ],
+    "notes": [
+     "<a href=\"https://orbit.dtu.dk/en/publications/ecological-interface-design-theoretical-foundations/\">Vicente and Rasmussen, <i>Ecological interface design: theoretical foundations</i></a>, 1992.",
+     "<a href=\"https://www.routledge.com/Display-and-Interface-Design-Subtle-Science-Exact-Art/Bennett-Flach/p/book/9780367864682\">Bennett and Flach, <i>Display and Interface Design</i></a>, 2011."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Planning is full of such laws, and open-to-buy is one of them. What a plan needs is the cost of what it expects to sell plus the stock it wants to keep at the end. What it has is the stock on hand plus the stock on order. The difference is what is left to buy. Two bars on one scale state the law, and the dashed space between their ends is the answer. A waterfall chart shows the same numbers and leaves the reader to walk the steps."
+    ],
+    "notes": [],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>An identity drawn as geometry.</b> Move any term. The gap follows, and the two bars can never disagree with the arithmetic.",
+  "stage": "demo-bridge",
+  "after": "",
+  "title": "Draw the identity"
+ },
+ "5": {
+  "blocks": [
+   {
+    "p": [
+     "Eduard Imhof spent a career drawing Swiss mountain maps and wrote down his rules for colour in <i>Cartographic Relief Presentation</i>. The first one, which Edward Tufte later brought to information design, says that strong colours are unbearable over large adjoining areas and effective in small ones set against a muted ground. A dashboard that keeps its large areas quiet can let one saturated hue do real work."
+    ],
+    "notes": [
+     "<a href=\"https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/\">Eduard Imhof, <i>Cartographic Relief Presentation</i></a>, 1965 in German and 1982 in English, quoted in Tufte’s <i>Envisioning Information</i>, 1990."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Two findings from perception explain why quiet surfaces can still organise a screen. Stephen Palmer showed that elements inside a common region are seen as a group, and that enclosure overrides nearness. Every panel boundary is therefore a claim about what belongs together. Josef Albers showed that a colour is read against its surround, so the same grey looks lighter on a dark parent and darker on a light one. A tone can mark a level in a hierarchy. It cannot be trusted to carry a value from one surface to another."
+    ],
+    "notes": [
+     "<a href=\"https://eric.ed.gov/?id=EJ450926\">Stephen Palmer, <i>Common region: a new principle of perceptual grouping</i></a>, 1992.",
+     "Josef Albers, <i>Interaction of Color</i>, 1963."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Tone is also a poor carrier of amount. William Cleveland and Robert McGill ranked the ways a reader decodes a quantity from a chart. In their ranking position on a common scale came first and shading came last. Their experiments, and the replication by Jeffrey Heer and Michael Bostock, measured the upper part of that order: position, length, angle and area. The plan uses four opaque surface tones, each with one job, and prints the number wherever the amount matters. Translucent panels would give a similar softness, and Beverly Harrison and colleagues studied the trade-off they bring: what shows through helps awareness of the background and competes with reading the foreground."
+    ],
+    "notes": [
+     "<a href=\"http://vis.stanford.edu/papers/crowdsourcing-graphical-perception\">Cleveland and McGill, <i>Graphical perception</i></a>, 1984, replicated by Heer and Bostock in 2010.",
+     "<a href=\"https://www.billbuxton.com/transparency.html\">Harrison, Ishii, Vicente and Buxton, <i>Transparent layered user interfaces</i></a>, 1995."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Design systems now state the same idea as roles. IBM’s Carbon names background, layer and field as separate tokens, and in its light themes the layers alternate between white and a pale grey. Accessibility guidance sets the limit of what tone can do. The parts of a control that a reader must see have to reach a contrast of three to one against what is next to them. Quiet surfaces sit far below that, so they can group things but cannot be the only sign of a control or a state."
+    ],
+    "notes": [
+     "<a href=\"https://www.carbondesignsystem.com/elements/color/overview/\">IBM, Carbon Design System, colour and layering</a>.",
+     "<a href=\"https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html\">W3C, WCAG 2.2, non-text contrast</a>."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>Four small models of surface.</b> Enclosure regroups the dots. The two chips are the same grey. Nested corners stay parallel only when the inner radius shrinks by the inset. One accent works until it is everywhere.",
+  "stage": "demo-surfaces",
+  "after": "",
+  "title": "Shade for hierarchy, print the quantity"
+ },
+ "6": {
+  "blocks": [
+   {
+    "p": [
+     "Most dashboards give colour too many jobs. The accent marks the headline figure, the forecast line, the selected tab and the button. Business reporting has a better convention. The International Business Communication Standards, developed by Rolf Hichert and colleagues and set out with Jürgen Faisst in <i>Solid, Outlined, Hatched</i>, separate scenarios by fill. Actual figures are solid, plans are outlined and forecasts are hatched. Hue is left free."
+    ],
+    "notes": [
+     "<a href=\"https://www.ibcs.com/\">Hichert and Faisst, <i>Solid, Outlined, Hatched</i></a>, 2019, and the IBCS standard."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The plan keeps the principle and changes the means. It makes no claim of compliance, and it uses no hatching, which turns to texture on marks as small as a twelve-pixel rail. Slate is for what has happened or physically exists: sales made, stock on hand. Cobalt is for what lies ahead, and its strength says how firm the quantity is. Solid cobalt is what the plan expects to sell. A lighter tint is what is planned or on its way: stock to keep, orders arriving. An amount that exists only as a gap, such as what is left to buy, is a dashed outline. Lost sales are ink, so a shortfall needs no red. Selection is a raised white pill, so the accent never means clickable."
+    ],
+    "notes": [],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Jacques Bertin listed value, the lightness of a mark, among his visual variables in 1967, and classed it as ordered: a darker mark reads as more. Strength of fill can therefore carry a ranking that hue cannot. It also survives a grey printer, a washed-out projector and a reader who cannot tell two hues apart."
+    ],
+    "notes": [
+     "<a href=\"https://en.wikipedia.org/wiki/Visual_variable\">Jacques Bertin, <i>Semiology of Graphics</i></a>, 1967. The link summarises his visual variables."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>The same eight weeks, coded two ways.</b> Remove the colour. The chart coded by hue loses its meaning, and the chart coded by fill keeps the part that matters.",
+  "stage": "demo-notation",
+  "after": "<div class=\"legend\" id=\"fig-note\"></div>",
+  "title": "Give each fill one job"
+ },
+ "7": {
+  "blocks": [
+   {
+    "p": [
+     "In <i>La Méthode graphique</i>, first published in 1878, Étienne-Jules Marey reproduced a railway timetable drawn as a single graph, a method he credited to the engineer Ibry. Stations run down the side by distance, time runs along the bottom, and every train is a line whose slope is its speed. A whole day of departures becomes one picture because every train shares the same two axes."
+    ],
+    "notes": [
+     "<a href=\"https://mbostock.github.io/protovis/ex/caltrain.html\">Étienne-Jules Marey, <i>La Méthode Graphique</i></a>, 1878, reprinted in 1885. The link is a modern redrawing of the form."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Jacques Bertin made the same point for tables. His reorderable matrix draws each cell as a mark and then moves rows and columns until the structure shows. Richard Becker, William Cleveland and Ming-Jen Shyu formalised panels that share scales as the trellis display, and Waqas Javed and colleagues later found that separate small charts are generally more efficient for comparisons that span many series, and one shared chart for comparisons close together. Weather services use the form every day. The ensemble meteogram stacks cloud, wind, rain and temperature on one time axis."
+    ],
+    "notes": [
+     "<a href=\"https://aviz.fr/bertifier\">Bertin’s matrix, revisited by Perin, Dragicevic and Fekete in <i>Bertifier</i></a>, 2014.",
+     "<a href=\"https://www.semanticscholar.org/paper/The-Visual-Design-and-Control-of-Trellis-Display-Becker-Cleveland/319c6098f7f94cf24c5c637b718e721449fd4a70\">Becker, Cleveland and Shyu, <i>The visual design and control of Trellis display</i></a>, 1996.",
+     "<a href=\"https://www.semanticscholar.org/paper/Graphical-Perception-of-Multiple-Time-Series-Javed-McDonnel/27493372f4581c3a0ef87a3242ce4ba123d451ff\">Javed, McDonnel and Elmqvist, <i>Graphical perception of multiple time series</i></a>, 2010.",
+     "<a href=\"https://confluence.ecmwf.int/display/FUG/Section+8.1.4+Meteograms\">ECMWF, ensemble meteograms</a>."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Retail planners have their own version, the weekly sales, stock and intake grid, with weeks across and measures down. The plan keeps its week columns at the same horizontal position in the sales bars and in every stock row, so the order that arrives too late sits directly under the week it fails. David Woods gave the underlying quality a name, visual momentum: how easily a reader carries what was just seen into the next view."
+    ],
+    "notes": [
+     "<a href=\"https://www.stylearcade.com/blog/what-is-a-wssi-the-complete-fashion-retail-guide-to-weekly-sales-stock-and-intake\">The weekly sales, stock and intake grid</a>, a standard tool of merchandise planning.",
+     "<a href=\"https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7\">David Woods, <i>Visual momentum</i></a>, 1984."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The axis need not be time. The schedule of all sports for the 1972 Munich Olympics, designed by Michael Burke in Otl Aicher’s department, cross-indexes dates, events and pictograms on a single sheet printed in seven colours. Tamara Munzner’s <i>Visualization Analysis and Design</i> gives the reason such sheets work in three words: eyes beat memory. Two views that share an axis can be compared by looking. Two views shown one after the other have to be compared from recollection."
+    ],
+    "notes": [
+     "<a href=\"https://www.otlaicher.de/en/articles/the-rainbow-games/\">The schedule for all sports disciplines, Munich 1972</a>, in <i>The Rainbow Games</i>.",
+     "<a href=\"https://www.cs.ubc.ca/~tmm/vadbook/\">Tamara Munzner, <i>Visualization Analysis and Design</i></a>, 2014."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "A shared axis also makes it possible to point. Richard Becker and William Cleveland named the technique in 1987. Brushing marks a selection in one view and shows the same items in every other view. The plan does a modest version. Pointing at a week or a product line highlights it wherever it appears, and nothing is filtered away, so the context stays on the screen."
+    ],
+    "notes": [
+     "<a href=\"https://en.wikipedia.org/wiki/Brushing_and_linking\">Becker and Cleveland, <i>Brushing scatterplots</i></a>, 1987. The link is a summary.",
+     "<a href=\"https://vega.github.io/vega-lite/examples/interactive_crossfilter.html\">A brush that filters, for comparison</a>, in the Vega-Lite examples."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>One set of week columns, read down.</b> Point at a week to trace it through the sales and every stock row. Reorder the product lines and the ones at risk gather at the top.",
+  "stage": "demo-axis",
+  "after": "",
+  "title": "Share one axis"
+ },
+ "8": {
+  "blocks": [
+   {
+    "p": [
+     "Planners live in tables, and research has begun to notice. Lyn Bartram, Michael Correll and Melanie Tory found that people who work with data want to see and touch the table at every stage of analysis, and argued that the table is a visualization in its own right. The rules for setting one are old and consistent."
+    ],
+    "notes": [
+     "<a href=\"https://www.tableau.com/blog/defense-untidy-data-table\">Bartram, Correll and Tory, <i>Untidy data: the unreasonable effectiveness of tables</i></a>, 2022."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Jan Tschichold advised doing without rules where possible, and using vertical ones only when columns are too tight to read without them. Andrew Ehrenberg’s <i>Rudiments of Numeracy</i> adds the rules for the figures themselves: round to the two digits that actually vary, order the rows by size, and put the numbers to be compared in a column. Jonathan Schwabish’s checklist says the same in current terms. Align numbers to the right, state units once, lighten the lines."
+    ],
+    "notes": [
+     "<a href=\"https://alistapart.com/article/web-typography-tables/\">Jan Tschichold on tables, quoted by Richard Rutter</a>, 2017.",
+     "<a href=\"https://www.jstor.org/stable/2344922\">Andrew Ehrenberg, <i>Rudiments of numeracy</i></a>, 1977.",
+     "<a href=\"https://www.cambridge.org/core/journals/journal-of-benefit-cost-analysis/article/abs/ten-guidelines-for-better-tables/74C6FD9FEB12038A52A95B9FBCA05A12\">Jonathan Schwabish, <i>Ten guidelines for better tables</i></a>, 2020."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "A table can also carry marks without ceasing to be a table. Bertin’s matrices already drew a bar inside each cell on paper. The Table Lens of Ramana Rao and Stuart Card did it on screen, and LineUp later built whole rankings from such bars. Plain typography goes a long way too. The Dutch telephone directory designed by Wim Crouwel and Jolijn van de Wouw in 1977 set every line in condensed Univers, in lower case, with the number placed before the name so that no leader dots were needed."
+    ],
+    "notes": [
+     "<a href=\"https://www.semanticscholar.org/paper/The-table-lens:-merging-graphical-and-symbolic-in-+-Rao-Card/f76f162f6b158b58e5db91280c3740a13111d7dd\">Rao and Card, <i>The Table Lens</i></a>, 1994.",
+     "<a href=\"https://jku-vds-lab.at/publications/2013_infovis_lineup/\">Gratzl and colleagues, <i>LineUp</i></a>, 2013.",
+     "<a href=\"https://www.martinmajoor.com/2.2_telefont_article_eye.html\">Crouwel and van de Wouw, Dutch telephone directory</a>, 1977, as described by Robin Kinross in <i>Eye</i>, 1995."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>Five rules, one table.</b> Each switch applies or removes one rule. With all five off, the table is what a spreadsheet produces by default.",
+  "stage": "demo-table",
+  "after": "",
+  "title": "Set tables to be read"
+ },
+ "9": {
+  "blocks": [
+   {
+    "p": [
+     "Dense figures have had typefaces of their own for decades. Matthew Carter drew Bell Centennial in the 1970s for American telephone directories printed fast on poor paper. Tobias Frere-Jones drew Retina in 1999 for the stock tables of the Wall Street Journal. Both are instruments for small numbers, and both are worth a look before choosing a face for a grid."
+    ],
+    "notes": [
+     "<a href=\"https://en.wikipedia.org/wiki/Bell_Centennial\">Matthew Carter, Bell Centennial</a>, 1975 to 1978.",
+     "<a href=\"https://www.moma.org/collection/works/139302\">Tobias Frere-Jones, Retina</a>, 1999, in the collection of the Museum of Modern Art."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "On screen the requirements are few and testable. Figures must be tabular, so every digit has the same width and columns align. They should also be duplexed, meaning a digit keeps its width when the weight changes. A selected row can then turn bold without its columns moving. A family drawn as a system helps as well. Adrian Frutiger organised Univers in 1957 as a matrix of weights and widths, and a variable font gives the same range from one file."
+    ],
+    "notes": [
+     "<a href=\"https://en.wikipedia.org/wiki/Adrian_Frutiger\">Adrian Frutiger, Univers</a>, 1957. Twenty-one variants named by weight and width.",
+     "<a href=\"https://github.com/Instrument/instrument-sans\">Instrument Sans</a>, the face used for every figure on this page."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Seventeen open typefaces were measured for this guide in a browser. Instrument Sans, IBM Plex Sans and Hanken Grotesk keep every digit’s width between regular and bold. Red Hat Text keeps its zero but widens its bold nine, and Geist and Archivo widen every digit. Punctuation is worth measuring too. In Instrument Sans the digits, the minus and the percent sign have one width in both weights, while the comma and the decimal point are about a thirtieth of an em wider in bold, which is half a pixel at 15 px."
+    ],
+    "notes": [],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The Swiss typographers add the close view. Emil Ruder’s <i>Typographie</i> of 1967 is a manual on rhythm, proportion and the space inside and around letters. Jost Hochuli’s <i>Detail in Typography</i> works through letters, words, lines and the spaces between them in sixty-four pages. On a dashboard that care goes into the things that repeat: a value and its unit, the minus sign, the longest label in a column."
+    ],
+    "notes": [
+     "<a href=\"https://niggli.ch/products/typographie\">Emil Ruder, <i>Typographie</i></a>, 1967.",
+     "<a href=\"https://editions-b42.com/en/produit/detail-in-typography/\">Jost Hochuli, <i>Detail in Typography</i></a>, 1987."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>Bold without a shift.</b> The cobalt layer is the bold weight laid over the regular one. Change the typeface or switch off tabular figures and the two fall out of step. Select a row in the table to see what that does to a column.",
+  "stage": "demo-type",
+  "after": "",
+  "title": "Choose type for figures"
+ },
+ "10": {
+  "blocks": [
+   {
+    "p": [
+     "A forecast drawn as a single line claims more than anyone knows. The Bank of England made the point in February 1996, when it began publishing its inflation forecast as a fan of nested bands, a form chosen to show the spread of likely outcomes without suggesting a spurious precision. Weather services draw the spread of an ensemble forecast as box-and-whisker steps along the time axis."
+    ],
+    "notes": [
+     "<a href=\"https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/1998/the-inflation-report-projections-understanding-the-fan-chart.pdf\">Britton, Fisher and Whitley, <i>The Inflation Report projections: understanding the fan chart</i></a>, 1998."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Research since then favours forms a reader can count. Matthew Kay and colleagues introduced the quantile dotplot, which turns a distribution into twenty or so dots of equal probability. In a later experiment led by Michael Fernandes, such displays improved decisions about when to leave for a bus. Michael Correll and Michael Gleicher found that a bar with a whisker misleads, because values inside the bar look likelier than values just above it. Susan Joslyn and Jared LeClerc found that showing uncertainty improved decisions and reduced the damage done by a forecast that turned out wrong."
+    ],
+    "notes": [
+     "<a href=\"https://mucollective.northwestern.edu/project/when-ish-is-my-bus\">Kay, Kola, Hullman and Munson, <i>When (ish) is My Bus?</i></a>, 2016.",
+     "<a href=\"https://dl.acm.org/doi/10.1145/3173574.3173718\">Fernandes and colleagues, <i>Uncertainty displays using quantile dotplots or CDFs improve transit decision-making</i></a>, 2018.",
+     "<a href=\"https://graphics.cs.wisc.edu/Papers/2014/CG14/Preprint.pdf\">Correll and Gleicher, <i>Error bars considered harmful</i></a>, 2014.",
+     "<a href=\"https://eric.ed.gov/?id=EJ968865\">Joslyn and LeClerc, <i>Uncertainty forecasts improve weather-related decisions</i></a>, 2012."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "None of this licenses a band on a chart that has no model behind it. The plan is built on sample data with no fitted forecast, so it shows no interval anywhere. Its solid cobalt bars are what the plan’s arithmetic expects, and a dotplot can take their place on the day a forecast with measured error exists."
+    ],
+    "notes": [],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>One distribution, three forms.</b> An illustrative demand distribution for one week, unrelated to the plan. Ask each form how often demand exceeds the units in stock. Only one of them can be counted.",
+  "stage": "demo-uncertainty",
+  "after": "",
+  "title": "Show uncertainty only when it is earned"
+ },
+ "11": {
+  "blocks": [
+   {
+    "p": [
+     "Ben Shneiderman’s work on dynamic queries set the standard for interactive data in the 1990s. Controls stay visible, every change is small and reversible, and the display answers at once. Bret Victor’s <i>Explorable Explanations</i> carried the idea into prose, with numbers in a sentence that the reader can drag while the conclusion rewrites itself."
+    ],
+    "notes": [
+     "<a href=\"https://www.cs.umd.edu/~ben/papers/Shneiderman1994Dynamic.pdf\">Ben Shneiderman, <i>Dynamic queries for visual information seeking</i></a>, 1994.",
+     "<a href=\"https://worrydream.com/ExplorableExplanations/\">Bret Victor, <i>Explorable Explanations</i></a>, 2011."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "The New York Times calculator <i>Is It Better to Rent or Buy?</i>, built in 2014 by Mike Bostock, Shan Carter and Archie Tse, adds the decisive detail. Each slider sits on a small chart of the outcome across the whole range of that input, so the reader sees what a change would do before making it. The markdown plot below goes one step further and needs no demand model. Its curve is the number of tents that must sell at each discount to match the profit at full price. The test is a point on that plot, and it is dragged where it stands, so the control and its consequence are one object."
+    ],
+    "notes": [
+     "<a href=\"https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html\">Bostock, Carter and Tse, <i>Is It Better to Rent or Buy?</i></a>, The New York Times, 2014."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Changing a forecast by hand deserves the same care as any other control. Robert Fildes and colleagues studied judgmental adjustments in supply-chain companies. Small adjustments tended to reduce accuracy, larger ones tended to improve it, and adjustments leaned optimistic. In an earlier experiment Paul Goodwin found that asking for a reason before an override improved accuracy, so an override should ask for one and keep a record that can be reviewed later."
+    ],
+    "notes": [
+     "<a href=\"https://eprints.lancs.ac.uk/id/eprint/45487/\">Fildes, Goodwin, Lawrence and Nikolopoulos, <i>Effective forecasting and judgmental adjustments</i></a>, 2009.",
+     "<a href=\"https://forecasters.org/wp-content/uploads/FVA_A-Reality-Check_Foresight29.pdf\">Michael Gilliland, <i>Forecast value added: a reality check</i></a>, 2013."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "A control also needs a memory. Jeffrey Heer and Ben Shneiderman sorted the interactions of visual analysis into twelve tasks in three groups: specifying data and views, manipulating views, and keeping a record of the analysis. The third group is the one dashboards forget. A scenario is only useful if what was changed can be seen, named and undone. In the plan each decision is a labelled switch, a chip counts how many are on, and one button returns to current orders."
+    ],
+    "notes": [
+     "<a href=\"https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf\">Heer and Shneiderman, <i>Interactive dynamics for visual analysis</i></a>, 2012."
+    ],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>A control that is its own chart.</b> Drag the point, or focus it and use the arrow keys. Above the curve the discount beats full price, below it it does not. Tents sell at 500 and cost 300 in the plan, and forty are expected to sell at full price for a gross profit of 8.0.",
+  "stage": "demo-control",
+  "after": "",
+  "title": "Put each control on its consequence"
+ },
+ "12": {
+  "blocks": [
+   {
+    "p": [
+     "In 1948 the British Treasury asked Ernest Gowers for a short book to help civil servants write so that the public could follow them. <i>Plain Words</i> set out to replace official jargon with a short, clear style. A dashboard has the same duty and less room. The plan says lost sales where a planning system says unfilled demand, weeks of stock where it says cover, and dates where it says week numbers. It keeps the terms a planner will look for, such as open-to-buy and sell-through, and it defines them."
+    ],
+    "notes": [
+     "<a href=\"https://en.wikipedia.org/wiki/The_Complete_Plain_Words\">Ernest Gowers, <i>Plain Words</i></a>, 1948. The link describes the book and its later editions."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Plain words are half of it. The other half is saying what kind of number the reader is looking at. Robin Kinross argued in 1985 that even a railway timetable persuades. A calm, exact style claims authority whether or not the figures have earned it. The plan therefore says what it is. Its figures are labelled sample data, its model is plain arithmetic with no forecast behind it, and it leaves out returns, promotions, weather and supplier terms."
+    ],
+    "notes": [
+     "<a href=\"https://www.jstor.org/stable/i267274\">Robin Kinross, <i>The rhetoric of neutrality</i></a>, Design Issues, 1985."
+    ],
+    "gridopt": false
+   },
+   {
+    "p": [
+     "Definitions belong where the numbers are. A reader should be able to ask of any figure what it counts, over what period and in what unit, and find the answer without leaving the screen. The figure below does that for the eight terms the plan uses."
+    ],
+    "notes": [],
+    "gridopt": false
+   }
+  ],
+  "caption": "<b>The words of the plan.</b> Select a term to see what it counts, how it is computed from the plan’s own numbers, and the jargon it replaces.",
+  "stage": "demo-terms",
+  "after": "",
+  "title": "Use plain words, and say what the numbers are"
+ }
+}

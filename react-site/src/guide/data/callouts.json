@@ -1,0 +1,110 @@
+{
+ "1": {
+  "slug": "cargo-network",
+  "n": 4,
+  "img": "crops/r1-cargo-network.jpg",
+  "pin": [
+   48.01,
+   50.0
+  ]
+ },
+ "2": {
+  "slug": "fda-catalyst",
+  "n": 1,
+  "img": "crops/r2-fda-catalyst.jpg",
+  "pin": [
+   25.51,
+   50.0
+  ]
+ },
+ "3": {
+  "slug": "energy-scarcity",
+  "n": 2,
+  "img": "crops/r3-energy-scarcity.jpg",
+  "pin": [
+   36.25,
+   50.0
+  ]
+ },
+ "4": {
+  "slug": "cargo-network",
+  "n": 2,
+  "img": "crops/r4-cargo-network.jpg",
+  "pin": [
+   32.0,
+   50.0
+  ]
+ },
+ "5": {
+  "slug": "fda-catalyst",
+  "n": 6,
+  "img": "crops/r5-fda-catalyst.jpg",
+  "pin": [
+   69.99,
+   50.0
+  ]
+ },
+ "6": {
+  "slug": "verticals-review",
+  "n": 3,
+  "img": "crops/r6-verticals-review.jpg",
+  "pin": [
+   50.0,
+   50.0
+  ]
+ },
+ "7": {
+  "slug": "fda-catalyst",
+  "n": 5,
+  "img": "crops/r7-fda-catalyst.jpg",
+  "pin": [
+   50.0,
+   50.0
+  ]
+ },
+ "8": {
+  "slug": "cargo-network",
+  "n": 5,
+  "img": "crops/r8-cargo-network.jpg",
+  "pin": [
+   50.0,
+   50.0
+  ]
+ },
+ "9": {
+  "slug": "demand-plan",
+  "n": 1,
+  "img": "crops/r9-demand-plan.jpg",
+  "pin": [
+   35.24,
+   50.0
+  ]
+ },
+ "10": {
+  "slug": "ballottage",
+  "n": 1,
+  "img": "crops/r10-ballottage.jpg",
+  "pin": [
+   52.5,
+   50.0
+  ]
+ },
+ "11": {
+  "slug": "demand-plan",
+  "n": 6,
+  "img": "crops/r11-demand-plan.jpg",
+  "pin": [
+   12.49,
+   50.0
+  ]
+ },
+ "12": {
+  "slug": "energy-scarcity",
+  "n": 5,
+  "img": "crops/r12-energy-scarcity.jpg",
+  "pin": [
+   50.0,
+   50.0
+  ]
+ }
+}

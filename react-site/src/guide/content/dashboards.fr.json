@@ -1,0 +1,486 @@
+{
+ "standfirst": "Sept tableaux de bord que nous avons construits avec les règles de ce guide, examinés de près. Chacun répond à une question pour un lecteur, et chaque note posée sur son écran renvoie à la règle qu’il suit. Cinq sont des cas privés, décrits sans le nom du client.",
+ "cases": [
+  {
+   "slug": "demand-plan",
+   "title": "Plan de demande et de stock",
+   "kind": "Planification commerciale · quatre semaines · données d’exemple",
+   "question": "Quelles lignes de produits vont manquer de stock ou en avoir trop au cours des quatre prochaines semaines, et combien peut-on encore acheter ?",
+   "reader": "Un planificateur de la demande dans une enseigne de plein air, une fois par semaine, avant la confirmation des commandes.",
+   "decision": "Quelles commandes avancer, ajouter ou reporter, et quels articles démarquer, dans les limites du budget d’achat restant.",
+   "built_with": "JavaScript et SVG natifs, servis par une petite application Starlette sur Railway ; cinq lignes de produits en données d’exemple, chaque chiffre étant calculé dans la page.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "demand-plan.jpg",
+   "image2x": "demand-plan@2x.jpg",
+   "width": 1440,
+   "height": 1800,
+   "image_note": "Les lignes de produits sont nommées par catégorie. Les données d’exemple ne nomment aucune entreprise réelle.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.1958,
+     "y": 0.14,
+     "rule": 2,
+     "title": "Quatre instruments, une seule forme",
+     "text": "Chaque carte donne une valeur et son unité, un rail dessiné à l’échelle et l’écart avec un comparateur nommé : la demande est à +29 % par rapport aux quatre dernières semaines. Là où aucun comparateur n’existe, le rail montre une partie d’un tout, comme le budget d’achat restant, à 15 % du besoin."
+    },
+    {
+     "n": 2,
+     "x": 0.6681,
+     "y": 0.1056,
+     "rule": 12,
+     "title": "Les termes glosés dans le titre",
+     "text": "Chaque titre de carte associe le terme du métier à des mots simples : « Open-to-buy » y est suivi de « left to buy », et « Lost sales » de « out of stock ». Une pastille dans l’en-tête indique que les chiffres sont des données d’exemple."
+    },
+    {
+     "n": 3,
+     "x": 0.8278,
+     "y": 0.2733,
+     "rule": 6,
+     "title": "L’encre pour ce qui est perdu",
+     "text": "Les semaines déjà vendues sont en ardoise et les semaines prévues en cobalt. Les 17,6 k$ de ventes perdues la semaine du 12 octobre forment un chapeau à l’encre sur leur barre, si bien que le manque se passe de rouge."
+    },
+    {
+     "n": 4,
+     "x": 0.7861,
+     "y": 0.44,
+     "rule": 7,
+     "title": "Les rangées de stock sur les semaines de ventes",
+     "text": "Le stock de chaque ligne de produits est dessiné sur les mêmes colonnes de semaines que les ventes au-dessus. Les 80 bottes manquantes se trouvent juste sous la semaine dont elles ont coûté les ventes."
+    },
+    {
+     "n": 5,
+     "x": 0.5368,
+     "y": 0.7206,
+     "rule": 4,
+     "title": "Le budget comme une identité",
+     "text": "Le besoin est ce qui se vendra plus le stock à garder, et l’acquis est le stock en main plus le stock en commande. Le rectangle en pointillé entre les extrémités des deux barres est le reste à acheter de 57,0, si bien que le dessin ne peut pas contredire l’arithmétique."
+    },
+    {
+     "n": 6,
+     "x": 0.0694,
+     "y": 0.8317,
+     "rule": 11,
+     "title": "Les décisions comme des interrupteurs étiquetés",
+     "text": "Chaque décision est un interrupteur dont l’effet sur la marge et sur le budget d’achat restant est imprimé à côté, et chaque chiffre de la page est recalculé quand l’un d’eux est activé. La démarque des tentes se teste en faisant glisser un point sur son propre graphique."
+    }
+   ],
+   "next": [
+    "Chaque carte se compare aux quatre dernières semaines. Dès qu’une année d’historique hebdomadaire existera, les limites de la variation ordinaire (règle 3) devraient prendre le relais, pour qu’un +29 % puisse être distingué du bruit.",
+    "Les ventes prévues sont un plan arithmétique, sans erreur associée. Quand une prévision ajustée existera, les barres cobalt pourront devenir des diagrammes en points de quantiles (règle 10)."
+   ]
+  },
+  {
+   "slug": "verticals-review",
+   "title": "Revue hebdomadaire des nouvelles verticales",
+   "kind": "Opérations de livraison · hebdomadaire · données d’exemple",
+   "question": "Les nouvelles verticales atteindront-elles le plan au cours des quatre prochaines semaines, et où les heures de livreurs manqueront-elles la semaine de Thanksgiving ?",
+   "reader": "Un chargé de stratégie et d’opérations pour les nouvelles verticales, chaque lundi, et les responsables à qui il rend compte.",
+   "decision": "Où augmenter la rémunération des livreurs, quelles corrections de qualité déployer, et quelles promotions arrêter.",
+   "built_with": "JavaScript et SVG natifs sur un petit serveur Starlette sur Railway ; données d’exemple pour cinq marchés et cinq verticales, avec un test simulé au niveau des magasins.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "verticals-review.jpg",
+   "image2x": "verticals-review@2x.jpg",
+   "width": 1440,
+   "height": 1468,
+   "image_note": "La plateforme n’est pas nommée. Les leviers et le test se trouvent sous cette vue.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.7639,
+     "y": 0.0804,
+     "rule": 12,
+     "title": "La semaine et l’horizon",
+     "text": "L’en-tête nomme la semaine passée en revue et la durée couverte par le plan, et une pastille indique que les chiffres sont des données d’exemple."
+    },
+    {
+     "n": 2,
+     "x": 0.4035,
+     "y": 0.1703,
+     "rule": 2,
+     "title": "Un objectif dessiné comme un repère",
+     "text": "Les commandes manquantes ou erronées sont à 3,0 % pour un objectif de 3,0, marqué par un repère sur le rail. La carte nomme aussi la pire verticale : l’épicerie, à 4,2 %."
+    },
+    {
+     "n": 3,
+     "x": 0.7188,
+     "y": 0.2984,
+     "rule": 6,
+     "title": "L’encre pour les commandes à risque",
+     "text": "Les semaines livrées sont en ardoise et les semaines prévues en cobalt. Les 8,6 milliers de commandes à risque de la semaine de Thanksgiving forment un chapeau à l’encre sur la barre de prévision, si bien que le manque se passe de rouge."
+    },
+    {
+     "n": 4,
+     "x": 0.7278,
+     "y": 0.4864,
+     "rule": 7,
+     "title": "Les marchés sur les mêmes semaines",
+     "text": "Les heures de livreurs de chaque marché, en part du besoin, se placent sur les colonnes de semaines du graphique du dessus. Les 4,0 milliers de commandes à risque de Toronto tombent sous la colonne de Thanksgiving."
+    },
+    {
+     "n": 5,
+     "x": 0.509,
+     "y": 0.9591,
+     "rule": 5,
+     "title": "Les manques imprimés jour par jour",
+     "text": "Les heures nécessaires sont imprimées au-dessus de la barre de chaque jour, et le manque sous le vendredi, le samedi et le dimanche. Les trois manques imprimés totalisent les 3,4 milliers d’heures manquantes de la carte du haut."
+    },
+    {
+     "n": 6,
+     "x": 0.8681,
+     "y": 0.8774,
+     "rule": 8,
+     "title": "Une liste classée avec ses chiffres",
+     "text": "Les verticales sont triées par taille, chaque barre étant partagée entre commandes répétées et premières commandes, avec le total imprimé au bout de la barre."
+    }
+   ],
+   "next": [
+    "Le taux d’articles trouvés sur chaque marché se lit par rapport à un repère fixe. Avec quelques mois de données hebdomadaires, les limites de la variation ordinaire (règle 3) montreraient quelles baisses méritent une question.",
+    "Les leviers et le test de substitution se trouvent sous cette vue, si bien que sur un ordinateur portable les décisions restent hors de vue tant que le lecteur ne fait pas défiler la page."
+   ]
+  },
+  {
+   "slug": "ballottage",
+   "title": "Ballottage",
+   "kind": "Jeu de prévision électorale · conçu d’abord pour le téléphone · sondages en direct, simulation et marchés",
+   "question": "Qui a le plus de chances de remporter le second tour de l’élection présidentielle française de 2027, et quelle certitude peut-on en avoir ?",
+   "reader": "Des amis réunis dans une ligue de pronostics, sur leur téléphone, quelques fois par semaine et après chaque nouveau sondage.",
+   "decision": "Comment répartir leurs propres 100 % entre les candidats avant la clôture de la prochaine série de pronostics.",
+   "built_with": "React et Vite avec un serveur Express et Postgres sur Railway ; sondages du flux Mieux Voter, cours de Polymarket et de Kalshi, et une simulation de Monte-Carlo de 100 000 tirages.",
+   "link": null,
+   "listed": false,
+   "phone": true,
+   "image": "ballottage-mobile.jpg",
+   "image2x": "ballottage-mobile@2x.jpg",
+   "width": 390,
+   "height": 1290,
+   "image_note": "L’interface est en français. La vue de simulation, telle que l’affiche un téléphone ; sur un ordinateur portable, la même colonne est centrée.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.5513,
+     "y": 0.3504,
+     "rule": 10,
+     "title": "Des chances qu’un lecteur peut compter",
+     "text": "Chaque duel de second tour est une rangée de points issue de 100 000 élections simulées, et la légende indique qu’un point vaut une élection sur cent. Un lecteur compte les 64 points du duel en tête, comme dans un diagramme en points de quantiles."
+    },
+    {
+     "n": 2,
+     "x": 0.7692,
+     "y": 0.1519,
+     "rule": 5,
+     "title": "Une seule rangée saturée",
+     "text": "Seul le duel le plus probable est dessiné en bleu plein, et les autres en teinte claire. Chaque décompte est imprimé au bout de sa rangée."
+    },
+    {
+     "n": 3,
+     "x": 0.5256,
+     "y": 0.407,
+     "rule": 11,
+     "title": "Un interrupteur, deux questions",
+     "text": "Un interrupteur à deux positions, Élu et Qualifié, fait passer la même liste de la probabilité d’être élu à celle d’accéder au second tour, à l’intérieur de la carte qu’il modifie."
+    },
+    {
+     "n": 4,
+     "x": 0.4487,
+     "y": 0.4388,
+     "rule": 6,
+     "title": "La couleur des partis réduite à un point",
+     "text": "La couleur du parti de chaque candidat n’apparaît que sous la forme d’un petit point devant le nom. Les barres restent d’un seul bleu, si bien que la couleur n’entre jamais en concurrence avec la longueur."
+    },
+    {
+     "n": 5,
+     "x": 0.7282,
+     "y": 0.5101,
+     "rule": 12,
+     "title": "Une condition en mots",
+     "text": "La ligne d’un candidat porte une pastille indiquant qu’il ne compte que si un autre est inéligible, si bien que sa part se lit comme conditionnelle. La source des sondages est imprimée sous la liste."
+    }
+   ],
+   "next": [
+    "Les curseurs d’hypothèses se trouvent sous les résultats qu’ils modifient, si bien que sur un téléphone les points sont hors de l’écran quand les tirages sont relancés. Déplacer les curseurs dans la carte du second tour placerait chaque commande sur sa conséquence (règle 11).",
+    "Sur un ordinateur portable, l’application reste une colonne de la largeur d’un téléphone. Une mise en page plus large pourrait placer la simulation à côté des curseurs d’hypothèses."
+   ]
+  },
+  {
+   "slug": "fda-catalyst",
+   "title": "FDA Catalyst",
+   "kind": "Calendrier d’événements biotech · 90 prochains jours · données publiques",
+   "question": "Quelles décisions de la FDA et quels résultats d’essais tombent dans les 90 prochains jours, et lesquelles de leurs dates sont fiables au jour près ?",
+   "reader": "Un investisseur qui suit les petites et moyennes entreprises de biotechnologie et consulte le calendrier chaque semaine.",
+   "decision": "Quels événements surveiller et préparer, et quelles dates tenir pour fermes.",
+   "built_with": "React et Vite dans le build statique du site ; une copie datée du calendrier BPIQ, tirée de l’API FDA Catalyst, qui tourne sur FastAPI et Railway.",
+   "link": "https://enzosimier.com/fda-catalyst.html",
+   "listed": true,
+   "phone": false,
+   "image": "fda-catalyst.jpg",
+   "image2x": "fda-catalyst@2x.jpg",
+   "width": 1440,
+   "height": 1800,
+   "image_note": "Les jours sont comptés à partir du jour de la capture, le 3 octobre 2026.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.1417,
+     "y": 0.14,
+     "rule": 2,
+     "title": "Un décompte avec ses parties",
+     "text": "365 catalyseurs se lisent au-dessus d’un rail partagé entre 31 décisions de la FDA en bleu et 322 résultats d’essais en ardoise, les deux décomptes étant imprimés à ses extrémités."
+    },
+    {
+     "n": 2,
+     "x": 0.6181,
+     "y": 0.14,
+     "rule": 12,
+     "title": "Combien de dates sont exactes",
+     "text": "Une carte compte les événements datés au jour près, 38 sur 365, avant qu’aucun graphique n’utilise une date. Une pastille dans l’en-tête date la copie des données que lit la page : le 19 juin 2026."
+    },
+    {
+     "n": 3,
+     "x": 0.3903,
+     "y": 0.3556,
+     "rule": 6,
+     "title": "Le bleu signifie une décision de la FDA",
+     "text": "Le bleu marque les décisions de la FDA partout sur la page : les points, les rails, la liste des phases et la frise chronologique. Tous les autres catalyseurs sont en ardoise, si bien que les décisions peuvent être comptées d’un bout à l’autre de la page."
+    },
+    {
+     "n": 4,
+     "x": 0.5903,
+     "y": 0.4178,
+     "rule": 10,
+     "title": "Les dates vagues tenues hors de l’axe",
+     "text": "La source place au 31 décembre les événements sans date exacte. Le graphique laisse ces 327 événements hors de l’axe des semaines et les compte dans une colonne à part, si bien qu’aucune fausse date n’est dessinée."
+    },
+    {
+     "n": 5,
+     "x": 0.2903,
+     "y": 0.5744,
+     "rule": 7,
+     "title": "Un seul axe pour toutes les décisions",
+     "text": "Chaque décision de la FDA est une ligne allant d’aujourd’hui à sa date sur un même axe des jours, avec la date et le nombre de jours restants imprimés à son extrémité. La taille du point donne celle de l’entreprise, et un anneau marque un titre dont on attend un fort mouvement."
+    },
+    {
+     "n": 6,
+     "x": 0.8333,
+     "y": 0.4111,
+     "rule": 5,
+     "title": "Un seul accent dans une liste calme",
+     "text": "Dans la liste des phases, chaque barre est en ardoise sauf celle des décisions de la FDA, et chaque décompte est imprimé à droite. Les barres donnent l’ordre et les nombres donnent les quantités."
+    }
+   ],
+   "next": [
+    "La page lit une copie du calendrier prise le 19 juin et compte les jours à partir de la date du lecteur, si bien qu’une date qui a bougé depuis montre encore son ancienne valeur. La pastille devrait alerter dès que la copie a plus d’un mois.",
+    "Les indications longues sont coupées par des points de suspension. Une seconde ligne dans la colonne des libellés les garderait lisibles."
+   ]
+  },
+  {
+   "slug": "cargo-network",
+   "title": "Modèle de liaisons et de tarifs",
+   "kind": "Économie d’un réseau aérien · cas sur 20 ans · données publiques et hypothèses explicites",
+   "question": "Une flotte d’avions-cargos sans équipage peut-elle desservir les quatorze villages du Nunavik en dessous du tarif aérien actuel tout en remboursant son coût ?",
+   "reader": "Les fondateurs d’une compagnie de fret aérien sans équipage et leurs investisseurs, quand ils choisissent un marché de lancement et un prix.",
+   "decision": "Sur quel marché se lancer, à quel prix, avec quels appareils et combien.",
+   "built_with": "Un serveur Python sur Railway dessine chaque vue à partir des entrées du modèle, et un petit script rend chaque valeur déplaçable ; tarifs de fret et données de subventions publics, avec des hypothèses explicites.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "cargo-network.jpg",
+   "image2x": "cargo-network@2x.jpg",
+   "width": 1440,
+   "height": 1680,
+   "image_note": "L’entreprise n’est pas nommée, son logo est retiré, et ses deux types d’appareil sont étiquetés Plane et Seaplane.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.1056,
+     "y": 0.1446,
+     "rule": 11,
+     "title": "Les hypothèses réglées dans la carte",
+     "text": "La carte de VAN indique son horizon et son taux d’actualisation, 20 ans à 10 %, sous forme de menus dans son propre en-tête, si bien que chaque hypothèse est posée sur le nombre qu’elle modifie."
+    },
+    {
+     "n": 2,
+     "x": 0.1778,
+     "y": 0.1786,
+     "rule": 4,
+     "title": "La VAN comme une identité",
+     "text": "Le rail partage ce que rapporte le réseau, en valeur d’aujourd’hui, entre le coût des appareils, 63,4 M$, et l’excédent, +16,5 M$. Le chiffre principal est la partie cobalt, dessinée à l’échelle."
+    },
+    {
+     "n": 3,
+     "x": 0.8833,
+     "y": 0.1786,
+     "rule": 2,
+     "title": "La marge face au coût",
+     "text": "Le coût et le revenu par kilogramme partagent un même rail, et la marge en est la courte extrémité cobalt : 9,52 contre 10,37 $/kg, imprimés de part et d’autre."
+    },
+    {
+     "n": 4,
+     "x": 0.2667,
+     "y": 0.3095,
+     "rule": 1,
+     "title": "Douze colonnes, des régions inégales",
+     "text": "Le tableau de bord est composé sur douze colonnes avec des gouttières de 24 px. Les cartes occupent trois colonnes chacune, le corps se partage en trois, six et trois, et le tableau des liaisons en occupe neuf, si bien que la carte du réseau et le tableau reçoivent les régions les plus larges."
+    },
+    {
+     "n": 5,
+     "x": 0.3542,
+     "y": 0.6429,
+     "rule": 8,
+     "title": "Un tableau composé pour être lu",
+     "text": "Les nombres s’alignent à droite en chiffres tabulaires, les filets sont maigres, et une colonne de barres pour la contribution fait du tableau un classement sans en sortir."
+    },
+    {
+     "n": 6,
+     "x": 0.1944,
+     "y": 0.9821,
+     "rule": 12,
+     "title": "Ce que sont les chiffres",
+     "text": "Le pied de page indique que les chiffres sont des scénarios illustratifs construits à partir d’informations publiques et d’hypothèses explicites, et qu’aucun d’eux n’est une prévision de l’entreprise."
+    }
+   ],
+   "next": [
+    "Le tableau des liaisons est classé par allers-retours et la liste du fret par tonnage, si bien qu’Inukjuak et Puvirnituq échangent leurs places de l’un à l’autre. Un même ordre pour les deux permettrait au lecteur de suivre un village de l’un à l’autre.",
+    "Le délai de récupération et la VAN sont des chiffres uniques. Les entrées sont assez incertaines pour qu’une fourchette tirée de la vue de sensibilité soit méritée sur les cartes (règle 10)."
+   ]
+  },
+  {
+   "slug": "energy-scarcity",
+   "title": "Two kinds of scarcity",
+   "kind": "Analyse boursière · deux entreprises · documents publics",
+   "question": "Laquelle de deux entreprises de l’énergie, un producteur de pétrole de schiste et un producteur d’électricité, offre le plus au cours actuel, et quelles conditions doivent tenir pour chacune ?",
+   "reader": "Un investisseur qui compare Vista Energy et Vistra, après les résultats de chaque trimestre.",
+   "decision": "Laquelle des deux préférer, et quelles conditions continuer à surveiller.",
+   "built_with": "React et Vite dans le build statique du site ; chiffres tirés des résultats, des documents réglementaires et des objectifs publiés des entreprises, d’un flux de données de marché et de l’historique des résultats.",
+   "link": "https://enzosimier.com/research/vista-vs-vistra/",
+   "listed": true,
+   "phone": false,
+   "image": "energy-scarcity.jpg",
+   "image2x": "energy-scarcity@2x.jpg",
+   "width": 1440,
+   "height": 1444,
+   "image_note": null,
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.3993,
+     "y": 0.1108,
+     "rule": 6,
+     "title": "Une couleur par entreprise",
+     "text": "Le bleu est Vistra et l’ardoise Vista Energy, dans chaque carte et chaque graphique. L’interrupteur du haut atténue l’entreprise qui n’est pas au premier plan."
+    },
+    {
+     "n": 2,
+     "x": 0.2014,
+     "y": 0.2078,
+     "rule": 2,
+     "title": "Le cours face au scénario central",
+     "text": "Chaque carte de cours place le cours actuel face à la valeur du scénario central sur un même rail et imprime l’écart : +26 % jusqu’au scénario central pour Vista Energy, +13 % pour Vistra."
+    },
+    {
+     "n": 3,
+     "x": 0.4167,
+     "y": 0.4127,
+     "rule": 10,
+     "title": "Des fourchettes qui disent ce qu’elles sont",
+     "text": "Les deux entreprises partagent un même axe de variation par rapport au cours actuel. Le graphique nomme ses trois scénarios, baissier, central et haussier, si bien que la bande ne revendique aucune probabilité qu’elle n’a pas."
+    },
+    {
+     "n": 4,
+     "x": 0.8194,
+     "y": 0.3823,
+     "rule": 8,
+     "title": "Un tableau qui se lit par ses marques",
+     "text": "L’exposition est un point plein, un point creux ou un tiret, pour directe, partielle ou nulle, disposés en deux colonnes qui se lisent de haut en bas. La légende est placée sous le tableau."
+    },
+    {
+     "n": 5,
+     "x": 0.2861,
+     "y": 0.741,
+     "rule": 12,
+     "title": "Le plan marqué comme plan",
+     "text": "Les trimestres publiés sont en ardoise pleine. Après une ligne pointillée étiquetée Plan, les objectifs de l’entreprise sont en teinte claire, et l’axe porte les lettres E et F, qui signalent une estimation et une prévision."
+    },
+    {
+     "n": 6,
+     "x": 0.8111,
+     "y": 0.7978,
+     "rule": 5,
+     "title": "Les libellés sur les marques",
+     "text": "Les segments sont nommés sur les barres, Retail 773 et Generation 994, et chaque total est imprimé au-dessus de sa barre, si bien qu’aucune légende n’est à rapprocher par la couleur."
+    }
+   ],
+   "next": [
+    "Les cours sont figés au 25 août 2026. Un lecteur qui arrive des semaines plus tard voit un potentiel de hausse calculé à partir d’un ancien cours, et la pastille pourrait indiquer son ancienneté en jours.",
+    "Le repère de +100 % à l’extrémité droite de l’axe des scénarios est rogné par le bord du graphique."
+   ]
+  },
+  {
+   "slug": "water-pricing",
+   "title": "Tarification de l’eau et compteurs",
+   "kind": "Finances municipales · budget annuel · interface en français",
+   "question": "Quel prix au mètre cube équilibre le budget de l’eau d’une municipalité, et quel effet a-t-il sur la charge de chaque logement ?",
+   "reader": "Le personnel des finances et du service de l’eau des municipalités du Québec, et l’association qui travaille avec elles, lorsqu’ils révisent les tarifs et un programme de compteurs.",
+   "decision": "S’il faut facturer un prix unique ou trois paliers, à quel prix, et si un programme de compteurs se rentabilise.",
+   "built_with": "React et TypeScript sur un serveur de modèle Python sur Railway ; données municipales publiques sur l’eau avec des hypothèses explicites, profils de ménages simulés, dollars constants de 2023.",
+   "link": null,
+   "listed": false,
+   "phone": false,
+   "image": "water-pricing.jpg",
+   "image2x": "water-pricing@2x.jpg",
+   "width": 1440,
+   "height": 1268,
+   "image_note": "La municipalité n’est pas nommée, et chaque chiffre de l’image est masqué.",
+   "annotations": [
+    {
+     "n": 1,
+     "x": 0.2118,
+     "y": 0.3707,
+     "rule": 7,
+     "title": "Deux tarifs, un seul axe",
+     "text": "Le prix unique et le tarif par paliers sont dessinés sur le même axe de litres par personne et par jour, si bien que le lecteur voit où commence chaque palier avant de choisir entre les deux."
+    },
+    {
+     "n": 2,
+     "x": 0.9618,
+     "y": 0.1987,
+     "rule": 12,
+     "title": "Un résultat inattendu dit en une phrase",
+     "text": "Quand le prix rapporte plus que le budget n’en demande, une phrase dit ce qui s’ensuit : la charge fixe devient un crédit déduit de chaque facture."
+    },
+    {
+     "n": 3,
+     "x": 0.4514,
+     "y": 0.3155,
+     "rule": 4,
+     "title": "Le budget comme une identité",
+     "text": "Le rail sous le budget met en regard ce que rapporte le prix au mètre cube et la charge fixe, qui devient un crédit rendant l’excédent lorsque ces recettes dépassent le budget. Les parties font toujours la somme du budget."
+    },
+    {
+     "n": 4,
+     "x": 0.8333,
+     "y": 0.3233,
+     "rule": 2,
+     "title": "La distance à la référence",
+     "text": "Chaque carte imprime son écart au scénario de référence et marque la référence d’un repère sur son rail, si bien qu’un changement de prix montre de combien le plan s’est déplacé."
+    },
+    {
+     "n": 5,
+     "x": 0.3785,
+     "y": 0.8375,
+     "rule": 11,
+     "title": "Le prix choisi sur sa courbe",
+     "text": "Chaque courbe est aussi la commande : la parcourir choisit le prix, et toute la page est recalculée. Le lecteur voit la charge par logement et la consommation totale sur toute la plage de prix avant d’en choisir un."
+    }
+   ],
+   "next": [
+    "La carte du crédit annuel imprime un trait d’union là où le graphique imprime un vrai signe moins. Un même signe moins partout garderait les chiffres cohérents, comme le demande la règle sur la typographie des chiffres.",
+    "La courbe de consommation repose sur une réaction supposée au prix. La page effectue déjà des tirages de Monte-Carlo dans une autre vue, et une bande tirée de ces tirages sur cette courbe serait une incertitude méritée."
+   ]
+  }
+ ]
+}

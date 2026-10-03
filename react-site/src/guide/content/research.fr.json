@@ -1,0 +1,2030 @@
+{
+ "title": "Huit domaines voisins",
+ "kicker": "Recherche élargie",
+ "intro": [
+  "Les règles de ce guide viennent surtout du design graphique, de la cartographie et de la recherche en visualisation. Un tableau de bord de planification dépend aussi de travaux menés dans des domaines qui se citent rarement les uns les autres : la prévision, les rapports de gestion, la recherche opérationnelle appliquée au commerce de détail, la conception des tableaux, la science de la perception, l’ingénierie des salles de contrôle, la recherche sur les tableaux de bord eux-mêmes, et la création de caractères. Chacun a passé des décennies sur une partie du problème.",
+  "Ce chapitre lit chaque domaine pour quatre choses : ce qu’il a découvert, la solidité des preuves, les points où ses résultats divergent, et ce qu’il change pour un tableau de bord de planification. Les exemples viennent du plan d’exemple du guide, dans lequel une enseigne planifie quatre semaines de ventes et de stock pour cinq lignes de produits (vestes, bottes, sous-couches, sacs à dos et tentes), calcule ce qui reste à acheter, et teste une démarque sur les tentes.",
+  "Les preuves sont de forces très différentes. Certains résultats reposent sur des expériences contrôlées avec des centaines de participants, d’autres sur les données de quelques entreprises, d’autres encore sur une longue pratique que personne n’a testée. Chaque essai dit ce qu’il en est. Ses références le suivent, chacune avec une ligne sur ce qu’elle apporte, et leurs détails et leurs liens ont été vérifiés le 3 octobre 2026. Les figures utilisent le plan d’exemple ou une distribution illustrative, sauf lorsqu’une figure redessine des résultats publiés, et chacune dit ce qu’il en est."
+ ],
+ "fields": [
+  {
+   "id": "forecasts",
+   "title": "Les prévisions et leur incertitude",
+   "standfirst": "Les lecteurs jugent le mieux une prévision quand ils peuvent en compter les issues, et un tableau de bord ne devrait montrer cette dispersion que lorsqu’un modèle dont l’erreur est mesurée la fournit.",
+   "paragraphs": [
+    "En février 1996, la Banque d’Angleterre a commencé à publier sa prévision d’inflation sous la forme d’un éventail de bandes de probabilité. Erik Britton, Paul Fisher et John Whitley en ont expliqué la raison en 1998. Le graphique précédent, une ligne centrale dans une seule bande ombrée, avait souvent été lu comme donnant des bornes haute et basse. Il attirait aussi l’attention sur de petits mouvements de la projection centrale. L’éventail montre la dispersion des résultats probables sans fausse précision. Le météogramme de l’ECMWF traite d’une manière voisine une prévision météorologique d’ensemble, avec une boîte à moustaches pour chaque variable à chaque échéance.",
+    "Les expériences menées depuis vont dans le même sens. Matthew Kay et ses collègues ont introduit en 2016 le diagramme en points de quantiles : une distribution dessinée sous la forme d’une vingtaine de points de probabilité égale. Les estimations de probabilité lues sur ce diagramme variaient moins que celles lues sur une courbe de densité. En 2018, Michael Fernandes et ses collègues ont mesuré des décisions. Les participants choisissaient quand partir prendre un bus, et ceux qui disposaient d’un diagramme de cinquante points obtenaient environ 97 % du meilleur gain possible. Les diagrammes en points et les courbes cumulatives l’emportaient sur les intervalles, les courbes de densité et le texte d’un à cinq points de pourcentage. Susan Joslyn et Jared LeClerc ont constaté en 2012 que l’incertitude jointe à une prévision améliorait les décisions de salage des routes. Elle accroissait aussi la confiance et réduisait les dégâts causés par les erreurs de prévision.",
+    "Les preuves sont cohérentes et de portée étroite. Les études sont des expériences contrôlées, menées surtout auprès du grand public pour des choix de la vie courante, et aucune n’a testé des acheteurs décidant de leur stock. Les résultats se nuancent aussi les uns les autres. Dans l’expérience de Fernandes, cinquante points ont fait mieux que vingt, et les courbes cumulatives, souvent jugées trop techniques pour le grand public, suivaient de près. Jessica Hullman, Paul Resnick et Eytan Adar ont constaté en 2015 que des tirages animés l’emportaient sur les barres d’erreur et les diagrammes en violon pour juger laquelle de deux quantités est la plus grande. Pour la plupart des questions portant sur une seule quantité, les trois formes donnaient une précision semblable. Les barres d’erreur posées sur des barres portent un biais qui leur est propre. George Newman et Brian Scholl ont montré en 2012 que les valeurs à l’intérieur d’une barre paraissent plus probables que celles qui sont à l’extérieur, et Michael Correll et Michael Gleicher ont retrouvé ce biais en 2014.",
+    "L’arithmétique d’un plan traite généralement la demande comme un seul nombre. Dans le plan d’exemple, les sous-couches entrent dans la semaine du 19 octobre avec 180 unités, soit exactement la demande prévue pour cette semaine. Si 180 est le milieu de la prévision, la probabilité de rupture est d’une sur deux. Sam Savage appelle cela le piège des moyennes (flaw of averages) : les plans fondés sur des hypothèses moyennes sont faux en moyenne. Un tableau de bord de planification devrait réserver une place à la dispersion de la demande. Il ne devrait la remplir que lorsqu’existe une prévision dont l’erreur est mesurée, car une bande dessinée sans modèle prétend à un savoir que personne n’a."
+   ],
+   "takeaways": [
+    "Réservez une place à la dispersion de la demande, et laissez-la vide jusqu’à ce qu’une prévision dont l’erreur est mesurée vienne la remplir.",
+    "Dessinez une prévision sous forme d’issues que l’on peut compter ou de courbe cumulative, pour que la probabilité de rupture se lise directement.",
+    "N’ajoutez pas de barres d’erreur sur des barres : les valeurs à l’intérieur de la barre y paraissent plus probables que celles qui sont à l’extérieur."
+   ],
+   "figures": [
+    {
+     "id": "F1",
+     "title": "Une prévision, quatre dessins",
+     "caption": "La même prévision illustrative de la demande de sous-couches pour la semaine du 19 octobre, dessinée sous forme d’intervalle à 90 %, de courbe de densité, de diagramme en points de quantiles à vingt points et de courbe cumulative. Déplacez le niveau de stock et demandez à chaque dessin quelle est la probabilité d’une rupture. L’intervalle peut seulement dire si le stock se trouve entre ses bornes, la densité demande de juger une aire, le diagramme en points répond par un décompte, et la courbe donne directement la probabilité. À 180 unités, le chiffre du plan lui-même, la réponse est une sur deux. Employez un diagramme en points ou une courbe cumulative chaque fois que la question porte sur un seuil.",
+     "data_needed": "Computed in the page; no external data. Demand is lognormal with median 180 units (the plan’s base-layer demand for the week of 19 October, which is also the stock the plan leaves for that week) and log standard deviation 0.20, so the 5th and 95th percentiles are 130 and 250 units. Stock control: 120 to 260 units in steps of 5, default 180. Interval: 5th to 95th percentile with a tick at the median. Density: the lognormal density with the area above the stock level filled. Dotplot: twenty dots at the quantiles (i − 0.5)/20 for i = 1 to 20, stacked in 10-unit bins, dots above the stock level in ink; an optional switch to fifty dots, which Fernandes and colleagues found slightly better for decisions. Cumulative curve: the chance that demand exceeds x, 1 − F(x), from 100 to 280 units, with a rule at the stock level (Fernandes and colleagues used this complementary form). Readout under each drawing: P(demand > stock) = 1 − Φ(ln(stock/180)/0.20), which is 50% at 180, 30% at 200, 16% at 220 and 5% at 250; the dotplot reports its own count (10 of 20 at 180, 6 of 20 at 200, 3 of 20 at 220)."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Britton, Fisher, Whitley",
+     "work": "The Inflation Report projections: understanding the fan chart",
+     "venue": "Bank of England Quarterly Bulletin",
+     "year": 1998,
+     "url": "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/1998/the-inflation-report-projections-understanding-the-fan-chart.pdf",
+     "take": "Explique le graphique en éventail que la Banque publie depuis février 1996 : la bande ombrée précédente était lue comme des bornes, et l’éventail montre des probabilités sans fausse précision.",
+     "verified": true
+    },
+    {
+     "who": "ECMWF",
+     "work": "Section 8.1.4 Meteograms, Forecast User Guide",
+     "venue": "European Centre for Medium-Range Weather Forecasts (page last updated 24 May 2026)",
+     "year": 2026,
+     "url": "https://confluence.ecmwf.int/spaces/FUG/pages/673551076/Section+8.1.4+Meteograms",
+     "take": "La nébulosité, les précipitations, le vent et la température en un lieu, sur un axe du temps partagé, chaque échéance étant une boîte à moustaches de l’ensemble, du minimum au maximum.",
+     "verified": true
+    },
+    {
+     "who": "Kay, Kola, Hullman, Munson",
+     "work": "When (ish) is My Bus? User-centered Visualizations of Uncertainty in Everyday, Mobile Predictive Systems",
+     "venue": "CHI 2016, ACM",
+     "year": 2016,
+     "url": "https://doi.org/10.1145/2858036.2858558",
+     "take": "A introduit le diagramme en points de quantiles ; les estimations de probabilité variaient moins avec lui qu’avec un graphique de densité.",
+     "verified": true
+    },
+    {
+     "who": "Fernandes, Walls, Munson, Hullman, Kay",
+     "work": "Uncertainty Displays Using Quantile Dotplots or CDFs Improve Transit Decision-Making",
+     "venue": "CHI 2018, ACM",
+     "year": 2018,
+     "url": "https://doi.org/10.1145/3173574.3173718",
+     "take": "Dans une expérience où les gains dépendaient des choix, les diagrammes en points et les courbes cumulatives ont conduit à des décisions meilleures et plus constantes que les intervalles, les densités, le texte ou l’absence d’incertitude.",
+     "verified": true
+    },
+    {
+     "who": "Hullman, Resnick, Adar",
+     "work": "Hypothetical Outcome Plots Outperform Error Bars and Violin Plots for Inferences about Reliability of Variable Ordering",
+     "venue": "PLOS ONE 10(11)",
+     "year": 2015,
+     "url": "https://doi.org/10.1371/journal.pone.0142444",
+     "take": "Des tirages animés ont donné des jugements bien plus justes sur deux ou trois quantités, et une précision semblable pour la plupart des questions portant sur une seule.",
+     "verified": true
+    },
+    {
+     "who": "Newman, Scholl",
+     "work": "Bar graphs depicting averages are perceptually misinterpreted: the within-the-bar bias",
+     "venue": "Psychonomic Bulletin & Review 19(4)",
+     "year": 2012,
+     "url": "https://doi.org/10.3758/s13423-012-0247-5",
+     "take": "Les lecteurs jugeaient les valeurs à l’intérieur d’une barre plus probables que celles situées à la même distance à l’extérieur.",
+     "verified": true
+    },
+    {
+     "who": "Correll, Gleicher",
+     "work": "Error Bars Considered Harmful: Exploring Alternate Encodings for Mean and Error",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 20(12)",
+     "year": 2014,
+     "url": "https://doi.org/10.1109/TVCG.2014.2346298",
+     "take": "A retrouvé le biais de l’intérieur de la barre dans les inférences tirées de barres munies de barres d’erreur, et a proposé à leur place des dégradés et des diagrammes en violon.",
+     "verified": true
+    },
+    {
+     "who": "Joslyn, LeClerc",
+     "work": "Uncertainty forecasts improve weather-related decisions and attenuate the effects of forecast error",
+     "venue": "Journal of Experimental Psychology: Applied 18(1)",
+     "year": 2012,
+     "url": "https://doi.org/10.1037/a0025185",
+     "take": "Les participants qui décidaient de saler ou non les routes faisaient mieux et se fiaient davantage à la prévision quand elle comportait une incertitude, et les erreurs de prévision les pénalisaient moins.",
+     "verified": true
+    },
+    {
+     "who": "Spiegelhalter, Pearson, Short",
+     "work": "Visualizing Uncertainty About the Future",
+     "venue": "Science 333(6048)",
+     "year": 2011,
+     "url": "https://doi.org/10.1126/science.1191181",
+     "take": "Une revue des formes visuelles de l’incertitude dans le sport, la météo, le climat, la santé, l’économie et la politique, qui a trouvé peu de preuves expérimentales sur la manière dont elles sont comprises.",
+     "verified": true
+    },
+    {
+     "who": "Padilla, Kay, Hullman",
+     "work": "Uncertainty Visualization",
+     "venue": "Wiley StatsRef: Statistics Reference Online",
+     "year": 2021,
+     "url": "https://doi.org/10.1002/9781118445112.stat08296",
+     "take": "Une revue des affichages de l’incertitude et des théories cognitives qui expliquent comment chacun soutient le jugement du lecteur.",
+     "verified": true
+    },
+    {
+     "who": "Savage",
+     "work": "The Flaw of Averages: Why We Underestimate Risk in the Face of Uncertainty",
+     "venue": "Wiley",
+     "year": 2009,
+     "url": "https://www.wiley.com/en-us/The+Flaw+of+Averages%3A+Why+We+Underestimate+Risk+in+the+Face+of+Uncertainty-p-9781118073759",
+     "take": "Énonce le piège des moyennes : les plans fondés sur des hypothèses moyennes sont faux en moyenne.",
+     "verified": true,
+     "note": "The linked page is the 2012 paperback of the 2009 book."
+    }
+   ],
+   "word_count": 447
+  },
+  {
+   "id": "notation",
+   "title": "Notation de gestion et graphiques comptables",
+   "standfirst": "Les rapports de gestion ont leurs propres conventions pour distinguer le réel du plan, choisir un comparateur et classer les hypothèses, et la plupart reposent davantage sur la pratique que sur l’expérimentation.",
+   "paragraphs": [
+    "Certains des tout premiers graphiques statistiques ont été dessinés pour le commerce et les comptes. En 1786, The Commercial and Political Atlas de William Playfair traçait les importations et les exportations de l’Angleterre en deux courbes et teintait la surface qui les sépare pour figurer la balance commerciale. En 1914, Graphic Methods for Presenting Facts de Willard Brinton réunissait les formes de graphiques de son époque à l’intention des gens d’affaires. La barre d’étendue de Mary Eleanor Spear, en 1952, est considérée comme un précurseur de la boîte à moustaches. Ces formes se sont répandues par l’usage, et aucune n’a été testée comme les études de perception testent les codages.",
+    "Les rapports de gestion ont aussi une norme de notation. Les International Business Communication Standards, élaborés par Rolf Hichert et ses collègues et exposés avec Jürgen Faisst dans Solid, Outlined, Hatched, distinguent les scénarios par le remplissage. Le réel est en gris foncé plein, l’année précédente en gris clair plein, le plan en contour et la prévision hachurée, et la teinte reste disponible pour d’autres rôles. La version 2.0 a paru en juin 2026, alignée sur ISO 24896, une notation pour les rapports de gestion. Le standard repose sur la cohérence et la pratique, et il a été bien moins étudié que les codages de la littérature sur la perception.",
+    "Les praticiens ne s’accordent pas sur les comparateurs. Le graphique à puces (bullet graph) de Stephen Few, spécifié en 2006 et révisé en 2013, place dans une seule barre une mesure face à un ou deux comparateurs et jusqu’à cinq plages qualitatives. Nick Desbarats en a relevé onze inconvénients en 2022 : les problèmes ne ressortent pas, les mesures pour lesquelles moins vaut mieux, ou pour lesquelles une plage intermédiaire est la meilleure, demandent des variantes, et des mots comme bon et médiocre ne veulent pas dire la même chose pour tous les lecteurs. Il colore désormais un point unique selon quatre seuils d’action. Understanding Variation de Donald Wheeler, en 1993, donne un comparateur qui a une base statistique : des limites à 2,66 étendues mobiles moyennes de part et d’autre de la moyenne. La revue hebdomadaire d’activité d’Amazon, telle que la décrit Cedric Chin d’après la pratique de Colin Bryar, dessine la plupart de ses 400 à 500 indicateurs selon une même forme : les six dernières semaines à côté des douze derniers mois.",
+    "Les spécialistes de l’analyse de décision ajoutent une manière de classer les hypothèses. Un diagramme en tornade fait varier une entrée à la fois entre une valeur basse et une valeur haute, dessine la variation du résultat sous forme de barre, et trie les barres de la plus longue à la plus courte. Les spécialistes de la recherche opérationnelle le rattachent généralement à la revue publiée par Ronald Howard en 1988. Les praticiens tirent les valeurs basse et haute d’une estimation de chaque entrée, souvent ses 10e et 90e centiles, au lieu d’un pourcentage fixe. Ted Eschenbach a constaté en 1992 que ce diagramme complète le diagramme en araignée (spiderplot), qui montre moins de variables mais plus en détail. Ensemble, ces conventions donnent à un tableau de bord de planification trois disciplines : un remplissage par scénario, un comparateur nommé pour chaque chiffre, et des hypothèses classées selon leur effet sur la marge."
+   ],
+   "takeaways": [
+    "Distinguez le réel, le plan, la prévision et l’année précédente par le remplissage, et réservez la teinte à un seul autre sens.",
+    "Nommez le comparateur de chaque chiffre, et passez aux limites du processus dès qu’une mesure a un historique.",
+    "Classez les hypothèses selon l’ampleur de leur effet sur le résultat, sur des plages qui correspondent à ce qui est réellement incertain."
+   ],
+   "figures": [
+    {
+     "id": "F2a",
+     "title": "Quatre scénarios, quatre remplissages",
+     "caption": "Les ventes hebdomadaires de l’exemple dans la notation des scénarios des International Business Communication Standards : les quatre semaines vendues en plein, la prévision des quatre semaines à venir hachurée, le budget en contour et l’année précédente en gris clair. Retirez la couleur et les scénarios restent distincts, car c’est le remplissage qui les porte. Donnez à chaque scénario un seul remplissage dans tout un tableau de bord, pour que le lecteur n’apprenne le code qu’une fois.",
+     "data_needed": "Weeks of 31 August to 19 October, sales in $K, computed in the page. Actual (solid): 55.7, 57.6, 56.7, 58.6, the sample’s four sold weeks. Forecast (hatched): the plan’s expected sales for the weeks of 28 September to 19 October, 69.5, 71.4, 58.2, 77.7 (demand is 69.5, 71.4, 75.8, 77.7; the gap in the week of 12 October is lost boot sales). Budget (outlined, all eight weeks) and previous year (light grey, all eight weeks) are not in the sample and must be labelled illustrative, for example budget 56, 56, 57, 58, 68, 70, 73, 75 and previous year 52.4, 54.1, 53.6, 55.0, 64.2, 66.5, 70.1, 72.0. A switch removes hue to show that fill alone carries the scenarios."
+    },
+    {
+     "id": "F2b",
+     "title": "Ce qui fait bouger la marge brute",
+     "caption": "Un diagramme en tornade de la marge brute du plan d’exemple, 120,8 k$ sur quatre semaines. Chaque barre fait varier un facteur d’une ligne de produits, son prix, son coût unitaire ou sa demande, pendant que les autres restent fixes, et les barres sont triées par amplitude. Avec ±10 % pour chaque facteur, les prix et les coûts dominent. Les spécialistes de l’analyse de décision placent plutôt chaque barre entre les valeurs basse et haute estimées d’une entrée ; avec des plages plus proches de ce qui est réellement incertain, la demande de vestes passe en tête, et la demande de sous-couches ne peut que réduire la marge, car le plan vend déjà toutes les unités en stock. Choisissez les plages avant de lire l’ordre.",
+     "data_needed": "Computed in the page with the guide’s plan() model: each of 15 drivers (price, unit cost and weekly demand of each of the five lines) is scaled down and up while the others stay at base, and gross profit is served sales minus the cost of goods served. Setting 1, every driver ±10% (change in $K from 120.8, down/up): jackets price −10.80/+10.80; base layers price −7.20/+7.20; jackets cost +6.48/−6.48; boots price −5.28/+5.28; jackets demand −4.32/+4.32; base layers cost +3.60/−3.60; boots cost +2.88/−2.88; packs price −2.40/+2.40; tents price −2.00/+2.00; base layers demand −3.60/0.00; packs cost +1.44/−1.44; tents cost +1.20/−1.20; packs demand −0.96/+0.96; boots demand −0.80/+0.80; tents demand −0.80/+0.80. Setting 2, illustrative ranges of demand ±30%, price ±5% and unit cost ±3%: jackets demand −12.96/+12.96; jackets price −5.40/+5.40; base layers demand −10.80/0.00; base layers price −3.60/+3.60; packs demand −2.88/+2.88; boots price −2.64/+2.64; boots demand −2.40/+2.40; tents demand −2.40/+2.40; jackets cost +1.94/−1.94; packs price −1.20/+1.20; base layers cost +1.08/−1.08; tents price −1.00/+1.00; boots cost +0.86/−0.86; packs cost +0.43/−0.43; tents cost +0.36/−0.36. A two-way switch chooses the setting."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Playfair",
+     "work": "The Commercial and Political Atlas",
+     "venue": "London: Debrett, Robinson, Sewell and others",
+     "year": 1786,
+     "url": "https://archive.org/details/bim_eighteenth-century_the-commercial-and-polit_corry-james_1786",
+     "take": "Des graphiques chronologiques du commerce où la surface entre importations et exportations est teintée pour figurer la balance, et un graphique en barres du commerce de l’Écosse en 1780–1781 ; un des premiers cas d’identité comptable dessinée comme une forme.",
+     "verified": true,
+     "note": "The 1786 scan is monochrome; the 1801 third edition on the Internet Archive shows the tints."
+    },
+    {
+     "who": "Brinton",
+     "work": "Graphic Methods for Presenting Facts",
+     "venue": "The Engineering Magazine Company, New York",
+     "year": 1914,
+     "url": "https://archive.org/details/cu31924032626792",
+     "take": "Un des premiers manuels américains de graphiques, écrit pour les gens d’affaires, avec les barres empilées parmi ses premières formes ; la numérisation liée est celle de l’édition de 1914.",
+     "verified": true
+    },
+    {
+     "who": "Spear",
+     "work": "Charting Statistics",
+     "venue": "McGraw-Hill",
+     "year": 1952,
+     "url": "https://archive.org/details/ChartingStatistics",
+     "take": "Sa barre d’étendue va de la plus petite à la plus grande valeur et peut marquer la médiane et la moitié centrale des données ; elle est considérée comme un précurseur de la boîte à moustaches.",
+     "verified": true
+    },
+    {
+     "who": "Hichert, Faisst",
+     "work": "Solid, Outlined, Hatched: How Visual Consistency Helps Better Understand Reports, Presentations and Dashboards",
+     "venue": "IBCS Media (German edition: Gefüllt, gerahmt, schraffiert, Vahlen)",
+     "year": 2019,
+     "url": "https://www.ibcs.com/resource/solid-outlined-hatched/",
+     "take": "Le plaidoyer pour la notation IBCS : le réel en plein, l’année précédente en gris clair, le plan en contour, la prévision hachurée.",
+     "verified": true
+    },
+    {
+     "who": "IBCS Association",
+     "work": "International Business Communication Standards, version 2.0",
+     "venue": "IBCS Association; aligned with ISO 24896:2026, Notation for business reporting",
+     "year": 2026,
+     "url": "https://www.ibcs.com/ibcs-version-2-0/",
+     "take": "La version actuelle du standard de notation, publiée en juin 2026 en même temps que la norme ISO.",
+     "verified": true
+    },
+    {
+     "who": "Few",
+     "work": "Bullet Graph Design Specification",
+     "venue": "Perceptual Edge (first published 2006, last revised 10 October 2013)",
+     "year": 2006,
+     "url": "https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf",
+     "take": "Définit le graphique à puces, conçu pour remplacer les jauges : un libellé, une échelle, la mesure principale, un ou deux comparateurs et de deux à cinq plages qualitatives.",
+     "verified": true
+    },
+    {
+     "who": "Desbarats",
+     "work": "Why I Stopped Using Bullet Graphs (and What I Now Use Instead)",
+     "venue": "Nightingale",
+     "year": 2022,
+     "url": "https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/",
+     "take": "Onze inconvénients des graphiques à puces, et une alternative : des points colorés selon quatre seuils d’action.",
+     "verified": true
+    },
+    {
+     "who": "Chin, with Bryar",
+     "work": "The Amazon Weekly Business Review",
+     "venue": "Commoncog",
+     "year": 2024,
+     "url": "https://commoncog.com/the-amazon-weekly-business-review/",
+     "take": "La revue hebdomadaire d’Amazon, de 400 à 500 indicateurs, la plupart dessinés selon un même graphique « 6-12 » : les six dernières semaines à côté des douze derniers mois.",
+     "verified": true
+    },
+    {
+     "who": "Bryar, Carr",
+     "work": "Working Backwards: Insights, Stories, and Secrets from Inside Amazon",
+     "venue": "St. Martin’s Press",
+     "year": 2021,
+     "url": "https://us.macmillan.com/books/9781250267597/workingbackwards/",
+     "take": "Deux anciens dirigeants d’Amazon décrivent les pratiques de l’entreprise, dont la revue hebdomadaire d’activité, où les six dernières semaines et les douze derniers mois d’un indicateur partagent un même graphique.",
+     "verified": true,
+     "note": "The publisher’s page answers scripts with a bot check (403); it opens in a browser. The name 6-12 chart and the count of 400 to 500 metrics come from Chin’s essay, not the book."
+    },
+    {
+     "who": "Wheeler",
+     "work": "Understanding Variation: The Key to Managing Chaos",
+     "venue": "SPC Press (2nd edition 2000)",
+     "year": 1993,
+     "url": "https://www.spcpress.com/book_understanding_variation.php",
+     "take": "Les cartes de comportement du processus à l’usage des managers : des limites à 2,66 étendues mobiles moyennes autour de la moyenne séparent la variation ordinaire des signaux.",
+     "verified": true
+    },
+    {
+     "who": "Howard",
+     "work": "Decision Analysis: Practice and Promise",
+     "venue": "Management Science 34(6)",
+     "year": 1988,
+     "url": "https://doi.org/10.1287/mnsc.34.6.679",
+     "take": "Une revue de l’analyse de décision que la littérature de recherche opérationnelle cite généralement pour le diagramme en tornade, bien que son résumé ne le mentionne pas.",
+     "verified": true,
+     "note": "The publisher’s page answers scripts with a bot check (403)."
+    },
+    {
+     "who": "Abbas, Budescu, Yu, Haggerty",
+     "work": "A Comparison of Two Probability Encoding Methods: Fixed Probability vs. Fixed Variable Values",
+     "venue": "Decision Analysis 5(4)",
+     "year": 2008,
+     "url": "https://doi.org/10.1287/deca.1080.0126",
+     "take": "Note que les praticiens recueillent des valeurs basse, centrale et haute aux 10e, 50e et 90e centiles pour l’analyse de sensibilité en tornade.",
+     "verified": true,
+     "note": "The publisher’s page answers scripts with a bot check (403)."
+    },
+    {
+     "who": "Eschenbach",
+     "work": "Spiderplots versus Tornado Diagrams for Sensitivity Analysis",
+     "venue": "Interfaces 22(6)",
+     "year": 1992,
+     "url": "https://doi.org/10.1287/inte.22.6.40",
+     "take": "Compare les deux graphiques de sensibilité et les juge complémentaires : la tornade résume de nombreuses variables, le diagramme en araignée en montre quelques-unes plus en détail, avec les points d’équilibre.",
+     "verified": true
+    }
+   ],
+   "word_count": 441
+  },
+  {
+   "id": "retail",
+   "title": "Planification commerciale et pratique de la prévision",
+   "standfirst": "La recherche opérationnelle a mesuré ce que deviennent les prévisions et les décisions d’achat dans de vraies entreprises, et plusieurs de ses résultats se traduisent directement en commandes sur un écran de planification.",
+   "paragraphs": [
+    "Les planificateurs de l’offre travaillent dans une grille hebdomadaire des ventes, du stock et des réceptions, dont découle le budget d’achat restant (open-to-buy). Robert Fildes, Shaohui Ma et Stephan Kolassa ont passé en revue en 2022 la recherche sur la prévision dans le commerce de détail, et ont trouvé peu de preuves en faveur de nombreuses méthodes complexes proposées. La compétition M5 a demandé à des milliers d’équipes de prévoir 42 840 séries de ventes en unités de Walmart, dont beaucoup étaient sporadiques. Les méthodes d’apprentissage automatique l’ont emporté. Spyros Makridakis et ses coorganisateurs ont constaté que les gains se situaient surtout aux niveaux supérieurs de la hiérarchie et restaient faibles pour un produit dans un magasin, le niveau où se décide le stock.",
+    "Les planificateurs acceptent rarement une prévision telle quelle. Fildes, Paul Goodwin, Michael Lawrence et Konstantinos Nikolopoulos ont examiné en 2009 plus de 60 000 prévisions issues de quatre entreprises de la chaîne logistique. Dans trois d’entre elles, les ajustements amélioraient la précision en moyenne. Les ajustements importants tendaient à aider, et les petits nuisaient souvent. Les ajustements à la hausse aidaient moins souvent que les ajustements à la baisse et allaient plus souvent dans le mauvais sens, signe d’optimisme. Dans une expérience antérieure, Goodwin a trouvé deux dispositifs qui amélioraient la précision : faire de la prévision statistique la valeur par défaut, et demander une raison avant de la modifier. La valeur ajoutée de la prévision (forecast value added) de Michael Gilliland mesure chaque étape d’un processus par rapport à une prévision naïve, si bien qu’une révision qui dégrade la prévision apparaît comme une perte.",
+    "D’autres résultats portent sur ce qu’il faut acheter. Marshall Fisher et ses collègues ont décrit en 1994 comment Sport Obermeyer, un fabricant de vêtements de ski, lisait l’incertitude de chaque modèle dans la dispersion des prévisions indépendantes de ses acheteurs, fabriquait d’abord les modèles prévisibles, et a réduit de moitié le coût des ruptures et des démarques. Pour un achat unique avant une saison, le modèle du vendeur de journaux (newsvendor) constitue un stock égal au quantile de la demande donné par le ratio critique : le coût d’une vente perdue divisé par la somme de ce coût et du coût d’une unité invendue. Aris Syntetos, John Boylan et John Croston ont réparti la demande en quatre classes en 2005, avec des seuils à 1,32 pour l’intervalle moyen entre deux ventes et à 0,49 pour la variabilité de leur taille ; Andrey Kostenko et Rob Hyndman ont répondu en 2006 que seules deux classes comptent. Des expériences sur le terrain chez Zara et chez Rue La La ont montré que des liquidations et des prix fondés sur un modèle augmentaient le chiffre d’affaires, d’environ 6 % et 10 % respectivement.",
+    "Ces preuves viennent de vraies entreprises, ce qui les rend pertinentes et de portée étroite. Leurs leçons pour un écran de planification sont concrètes. Un ajustement manuel de la prévision devrait partir du chiffre statistique, demander une raison et garder une trace, pour que sa valeur puisse être mesurée plus tard. La classe de demande d’une ligne a sa place à côté de sa prévision. Un objectif de stock peut découler du coût d’une vente perdue et du coût d’une unité invendue, au lieu d’un nombre fixe de semaines."
+   ],
+   "takeaways": [
+    "Faites partir tout ajustement manuel de la prévision statistique, demandez une raison et consignez le changement.",
+    "Montrez la classe de demande de chaque ligne à côté de sa prévision.",
+    "Fixez un objectif de stock en mettant en balance le coût d’une vente perdue et celui d’une unité invendue."
+   ],
+   "figures": [
+    {
+     "id": "F3a",
+     "title": "Quatre types de demande",
+     "caption": "Les classes de demande d’après Syntetos, Boylan et Croston (2005). L’axe horizontal est le nombre moyen de semaines entre deux ventes, l’axe vertical le carré du coefficient de variation de la taille des ventes, et les seuils à 1,32 et 0,49 séparent la demande régulière, erratique, intermittente et sporadique ; chaque classe est accompagnée d’une série illustrative de 26 semaines. Un interrupteur dessine la diagonale de Kostenko et Hyndman à la place des seuils. Les cinq lignes du plan d’exemple se vendent toutes chaque semaine et se placent dans le coin de la demande régulière ; les classes comptent pour un modèle ou une taille dans un magasin, alors montrez la classe partout où une prévision est affichée à ce niveau.",
+     "data_needed": "Computed in the page. Axes: ADI, the average inter-demand interval (number of weeks divided by the number of weeks with a sale), from 1 to 5; CV², the squared coefficient of variation of the non-zero weekly quantities, from 0 to 2. Cut-offs: ADI = 1.32 and CV² = 0.49 (Syntetos, Boylan and Croston 2005). Optional overlay: Kostenko and Hyndman’s (2006) simpler rule, the diagonal CV² = 2 − 1.5 × ADI, above which one method (SBA) is preferred; their exact boundary meets the axes at ADI = 4/3 and CV² = 0.5. Four illustrative 26-week series from a fixed seed, each with its ADI and CV² computed and plotted: smooth (a sale every week, about 20 ± 4 units), erratic (a sale every week, 2 to 60 units), intermittent (a sale about one week in three, 4 to 6 units), lumpy (a sale about one week in three, 1 to 40 units). The sample’s five lines (ADI 1.0, CV² from 0 for boots to 0.05 for tents, over four weeks) as small labelled points."
+    },
+    {
+     "id": "F3b",
+     "title": "Ce que les ajustements ont fait à la précision",
+     "caption": "Résultats de Fildes, Goodwin, Lawrence et Nikolopoulos (2009), qui ont comparé les prévisions statistiques de quatre entreprises de la chaîne logistique aux prévisions ajustées qu’elles utilisaient. Les barres montrent le gain médian de précision des ajustements à la hausse et à la baisse, par quart de taille d’ajustement, pour les trois fabricants et pour le distributeur. Les plus petits ajustements à la hausse n’ont pas aidé, et chez le distributeur les ajustements à la hausse de toutes tailles ont dégradé les prévisions. Dotez la commande d’ajustement manuel d’un champ de raison, et examinez ce que chaque type d’ajustement a apporté.",
+     "data_needed": "Published values, supplied separately (figure-data.json, section B): Fildes et al. (2009), Figure 2, the median improvement in absolute percentage error (system forecast APE minus final forecast APE, in percentage points) for positive and negative adjustments in each quartile of relative adjustment size, for companies A to C pooled and for the retailer D. Values are read from the published figure to within about ±0.5 to ±1 point; say so in the figure note."
+    },
+    {
+     "id": "F3c",
+     "title": "Un achat, un ratio",
+     "caption": "La règle du vendeur de journaux pour un achat unique avant une saison, sur une demande illustrative de vestes d’une moyenne de 400 unités. Une vente perdue coûte la marge, 120 $ par veste dans l’exemple ; une veste invendue coûte son coût unitaire de 180 $, moins ce qu’elle rapporte en liquidation. Déplacez la valeur de liquidation et la dispersion de la demande. Le ratio critique, reporté horizontalement jusqu’à la courbe cumulative puis verticalement jusqu’à l’axe des quantités, donne la commande qui maximise le profit espéré. Servez-vous-en pour fixer un objectif de stock à partir de coûts qu’un acheteur peut énoncer.",
+     "data_needed": "Computed in the page. Price $300 and unit cost $180, the sample’s jackets, so the cost of a lost sale is cu = $120. Clearance value control s from $0 to $170 in steps of $10, default $120; the cost of an unsold unit is co = 180 − s. Critical ratio CR = cu/(cu + co): 0.40 at s = 0, 0.67 at s = 120, 0.92 at s = 170. Demand normal with mean 400 units; spread control σ from 40 to 200 in steps of 10, default 120. Order quantity Q* = 400 + σ·Φ⁻¹(CR), 452 units at the defaults. Draw the cumulative curve of demand with a horizontal rule at CR and a vertical rule at Q*; optionally the expected-profit curve against order quantity, peaking at Q*."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Boardman, Parker-Strak, Henninger",
+     "work": "Monitoring Retail Sales, in Fashion Buying and Merchandising: The Fashion Buyer in a Digital Society, 2nd edition",
+     "venue": "Routledge",
+     "year": 2026,
+     "url": "https://doi.org/10.4324/9781003566960-13",
+     "take": "Un chapitre de manuel sur le suivi des ventes au moyen du plan hebdomadaire des ventes, du stock et des réceptions, et sur les budgets d’achat restants pour les achats réactifs.",
+     "verified": true,
+     "note": "The DOI answers HEAD requests with 503 and GET with 200."
+    },
+    {
+     "who": "Fildes, Ma, Kolassa",
+     "work": "Retail forecasting: Research and practice",
+     "venue": "International Journal of Forecasting 38(4)",
+     "year": 2022,
+     "url": "https://doi.org/10.1016/j.ijforecast.2019.06.004",
+     "take": "La synthèse de référence sur la prévision dans le commerce de détail, d’un marché entier à un article dans un magasin ; beaucoup de méthodes complexes ont peu de preuves derrière elles.",
+     "verified": true
+    },
+    {
+     "who": "Makridakis, Spiliotis, Assimakopoulos",
+     "work": "M5 accuracy competition: Results, findings, and conclusions",
+     "venue": "International Journal of Forecasting 38(4)",
+     "year": 2022,
+     "url": "https://doi.org/10.1016/j.ijforecast.2021.11.013",
+     "take": "42 840 séries hiérarchiques de ventes en unités de Walmart, beaucoup intermittentes ; les méthodes d’apprentissage automatique l’ont emporté, avec des gains concentrés aux niveaux supérieurs de la hiérarchie.",
+     "verified": true
+    },
+    {
+     "who": "Fildes, Goodwin, Lawrence, Nikolopoulos",
+     "work": "Effective forecasting and judgmental adjustments: an empirical evaluation and strategies for improvement in supply-chain planning",
+     "venue": "International Journal of Forecasting 25(1)",
+     "year": 2009,
+     "url": "https://doi.org/10.1016/j.ijforecast.2008.11.010",
+     "take": "Plus de 60 000 prévisions issues de quatre entreprises : les ajustements importants tendaient à aider, les petits nuisaient souvent, et les ajustements à la hausse traduisaient de l’optimisme.",
+     "verified": true
+    },
+    {
+     "who": "Goodwin",
+     "work": "Improving the voluntary integration of statistical forecasts and judgment",
+     "venue": "International Journal of Forecasting 16(1)",
+     "year": 2000,
+     "url": "https://doi.org/10.1016/S0169-2070(99)00026-6",
+     "take": "Dans une expérience, faire de la prévision statistique la valeur par défaut et demander une raison pour chaque changement ont tous deux amélioré la précision.",
+     "verified": true
+    },
+    {
+     "who": "Gilliland",
+     "work": "FVA: A Reality Check on Forecasting Practices",
+     "venue": "Foresight: The International Journal of Applied Forecasting 29",
+     "year": 2013,
+     "url": "https://forecasters.org/wp-content/uploads/FVA_A-Reality-Check_Foresight29.pdf",
+     "take": "La valeur ajoutée de la prévision : chaque étape d’un processus de prévision est comparée à une prévision naïve et à l’étape précédente, dans un rapport en escalier.",
+     "verified": true,
+     "note": "The PDF answers plain scripts with a bot check and opens in a browser; a record is at https://ideas.repec.org/a/for/ijafaa/y2013i29p14-18.html."
+    },
+    {
+     "who": "Syntetos, Boylan, Croston",
+     "work": "On the categorization of demand patterns",
+     "venue": "Journal of the Operational Research Society 56(5)",
+     "year": 2005,
+     "url": "https://doi.org/10.1057/palgrave.jors.2601841",
+     "take": "Quatre classes de demande tirées de l’intervalle moyen entre deux demandes et du carré de la variation de leur taille, avec des seuils à 1,32 et 0,49, vérifiées sur 3 000 séries de l’automobile.",
+     "verified": true
+    },
+    {
+     "who": "Kostenko, Hyndman",
+     "work": "A note on the categorization of demand patterns",
+     "venue": "Journal of the Operational Research Society 57(10)",
+     "year": 2006,
+     "url": "https://doi.org/10.1057/palgrave.jors.2602211",
+     "take": "La frontière exacte derrière les classes coupe les axes à 4/3 et 0,5, seules deux classes comptent, et une règle diagonale approche bien cette frontière.",
+     "verified": true
+    },
+    {
+     "who": "Wickramasuriya, Athanasopoulos, Hyndman",
+     "work": "Optimal Forecast Reconciliation for Hierarchical and Grouped Time Series Through Trace Minimization",
+     "venue": "Journal of the American Statistical Association 114(526)",
+     "year": 2019,
+     "url": "https://doi.org/10.1080/01621459.2018.1448825",
+     "take": "Une méthode qui fait s’additionner les prévisions par article, par groupe et au total, tout en réduisant leur erreur combinée.",
+     "verified": true
+    },
+    {
+     "who": "Khouja",
+     "work": "The single-period (news-vendor) problem: literature review and suggestions for future research",
+     "venue": "Omega 27(5)",
+     "year": 1999,
+     "url": "https://doi.org/10.1016/S0305-0483(99)00017-1",
+     "take": "Une revue du problème du vendeur de journaux, dont la solution consiste à stocker jusqu’au quantile de la demande donné par le ratio critique.",
+     "verified": true
+    },
+    {
+     "who": "Fisher, Hammond, Obermeyer, Raman",
+     "work": "Making Supply Meet Demand in an Uncertain World",
+     "venue": "Harvard Business Review 72(3)",
+     "year": 1994,
+     "url": "https://hbr.org/1994/05/making-supply-meet-demand-in-an-uncertain-world",
+     "take": "Sport Obermeyer lisait l’incertitude de chaque modèle dans la dispersion des prévisions indépendantes de ses acheteurs, fabriquait d’abord les modèles prévisibles, et a réduit de moitié le coût des ruptures et des démarques.",
+     "verified": true
+    },
+    {
+     "who": "Caro, Gallien",
+     "work": "Clearance Pricing Optimization for a Fast-Fashion Retailer",
+     "venue": "Operations Research 60(6)",
+     "year": 2012,
+     "url": "https://doi.org/10.1287/opre.1120.1102",
+     "take": "Le processus de démarque de Zara, reconstruit sur un modèle de prévision et de prix ; une expérience sur le terrain en Belgique et en Irlande a augmenté d’environ 6 % le chiffre d’affaires des liquidations.",
+     "verified": true
+    },
+    {
+     "who": "Ferreira, Lee, Simchi-Levi",
+     "work": "Analytics for an Online Retailer: Demand Forecasting and Price Optimization",
+     "venue": "Manufacturing & Service Operations Management 18(1)",
+     "year": 2016,
+     "url": "https://doi.org/10.1287/msom.2015.0561",
+     "take": "Prévision de la demande et optimisation des prix pour les nouveaux produits chez Rue La La ; une expérience sur le terrain a estimé une hausse du chiffre d’affaires d’environ 9,7 %.",
+     "verified": true
+    },
+    {
+     "who": "Vandeput",
+     "work": "Demand Forecasting Best Practices",
+     "venue": "Manning",
+     "year": 2023,
+     "url": "https://www.manning.com/books/demand-forecasting-best-practices",
+     "take": "Un guide de praticien qui plaide contre le MAPE et pour juger les prévisions par une mesure de l’erreur absolue accompagnée du biais.",
+     "verified": true
+    },
+    {
+     "who": "Kolassa, Rostami-Tabar, Siemsen",
+     "work": "Demand Forecasting for Executives and Professionals",
+     "venue": "Chapman & Hall/CRC",
+     "year": 2023,
+     "url": "https://dfep.netlify.app/",
+     "take": "Un texte actuel et lisible, dont une édition en ligne gratuite se trouve au lien ; édition imprimée doi:10.1201/9781003399599.",
+     "verified": true
+    },
+    {
+     "who": "Vermorel, Lokad",
+     "work": "Prioritized ordering",
+     "venue": "lokad.com (vendor)",
+     "year": 2015,
+     "url": "https://www.lokad.com/prioritized-ordering-definition/",
+     "take": "Documentation d’éditeur : classer chaque unité candidate selon son rendement attendu et acheter en descendant la liste jusqu’à atteindre un plafond de capital ou un rendement minimal.",
+     "verified": true
+    },
+    {
+     "who": "Forrester",
+     "work": "Industrial Dynamics",
+     "venue": "MIT Press, with John Wiley & Sons",
+     "year": 1961,
+     "url": "https://lccn.loc.gov/61017871",
+     "take": "Modélise une entreprise en niveaux et en taux, la notation en stocks et en flux qui sous-tend les graphiques de stock et de commandes.",
+     "verified": true
+    },
+    {
+     "who": "Sterman",
+     "work": "Business Dynamics: Systems Thinking and Modeling for a Complex World",
+     "venue": "Irwin/McGraw-Hill",
+     "year": 2000,
+     "url": "https://www.mheducation.com/highered/product/business-dynamics-systems-thinking-modeling-complex-world-sterman/M9780072311358.html",
+     "take": "Le texte de référence sur les modèles en stocks et en flux des systèmes d’entreprise, dont les chaînes logistiques.",
+     "verified": true
+    }
+   ],
+   "word_count": 442
+  },
+  {
+   "id": "tables",
+   "title": "Tableaux, matrices et petits multiples",
+   "standfirst": "Les planificateurs lisent des tableaux, les vieux conseils pour les composer sont d’une cohérence inhabituelle, et les expériences sur les petits multiples montrent quand il est utile de diviser un graphique.",
+   "paragraphs": [
+    "Les outils de visualisation traitent généralement le tableau comme une étape préparatoire, une manière de mettre les données en état pour un graphique. Lyn Bartram, Michael Correll et Melanie Tory ont interrogé douze personnes qui travaillent avec des données dans leur métier. Selon leur article de 2022, ces personnes veulent voir et manipuler le tableau à chaque étape d’une analyse. Elles le remodèlent, l’annotent et y construisent des variantes. Les auteurs soutiennent que le tableau interactif est une forme de visualisation à part entière. Leurs preuves sont qualitatives et leur échantillon est petit.",
+    "Les règles de composition d’un tableau ont peu changé en un siècle. Rudiments of Numeracy d’Andrew Ehrenberg, paru en 1977, demande des nombres arrondis à deux chiffres effectifs, ceux qui varient, des lignes et des colonnes classées par grandeur, et les nombres à comparer placés dans une même colonne. Le guide de Richard Rutter, en 2017, cite le conseil de Jan Tschichold de se passer de filets autant que possible, et demande des nombres alignés à droite en chiffres tabulaires. Les dix recommandations de Jonathan Schwabish, en 2020, reprennent les mêmes points pour les logiciels actuels. Ces règles viennent de la pratique des statisticiens et des typographes plus que de l’expérimentation, et elles se contredisent rarement.",
+    "Un tableau peut aussi devenir un graphique sans perdre ses nombres. La matrice réordonnable de Jacques Bertin, exposée en 1977 dans La Graphique et le traitement graphique de l’information, dessine chaque cellule comme une marque, puis déplace les lignes et les colonnes jusqu’à ce que des groupes apparaissent. Charles Perin, Pierre Dragicevic et Jean-Daniel Fekete ont reconstruit la méthode en 2014 sous la forme d’un outil web, Bertifier. La Table Lens de Ramana Rao et Stuart Card, en 1994, dessinait des barres dans les cellules et ouvrait une ligne sur ses nombres quand on s’y arrêtait. LineUp, de Samuel Gratzl et ses collègues en 2013, construit des classements à partir de barres pondérées dans un tableau. Polaris, de Chris Stolte, Diane Tang et Pat Hanrahan en 2002, a étendu le tableau croisé dynamique en une algèbre de petits graphiques, et c’est la recherche dont est issu Tableau.",
+    "Pour les séries chronologiques, les preuves sont expérimentales, et elles dépendent de la tâche. Waqas Javed, Bryan McDonnel et Niklas Elmqvist ont constaté en 2010 que des graphiques séparés, comme les petits multiples, sont en général plus efficaces pour les comparaisons qui portent sur de nombreuses séries. Un seul graphique partagé est plus efficace pour les comparaisons rapprochées. Jeffrey Heer, Nicholas Kong et Maneesh Agrawala ont constaté en 2009 que replier en miroir les valeurs négatives ne coûte aucune précision. Sous 24 pixels de hauteur, un graphique en horizon à deux bandes se lisait plus précisément qu’un graphique linéaire, et quatre bandes ou plus ralentissaient les lecteurs. Sur un écran de planification, la grille reste donc un tableau, classé selon ce qui compte et arrondi aux chiffres qui varient. Chaque ligne de produits reçoit son propre petit graphique quand les lignes sont comparées sur toute la saison."
+   ],
+   "takeaways": [
+    "Gardez à la grille de planification sa forme de tableau, avec des lignes classées selon ce qui compte et des nombres arrondis aux chiffres qui varient.",
+    "Placez une marque dans chaque cellule là où un motif compte, et gardez le nombre imprimé à côté.",
+    "Donnez à chaque ligne de produits son propre petit graphique pour les comparaisons entre de nombreuses lignes, et partagez un seul graphique pour les comparaisons rapprochées."
+   ],
+   "figures": [
+    {
+     "id": "F4a",
+     "title": "La matrice, réordonnée",
+     "caption": "La matrice réordonnable de Bertin appliquée au plan d’exemple : cinq lignes de produits sur cinq dates, chaque cellule portant une barre des semaines de stock, foncée là où le stock couvre moins que l’horizon de quatre semaines. Réordonnez les lignes par stock actuel ou par stock en fin de semaine du 12 octobre, et les lignes à risque se rassemblent en haut ; triées par nom, elles tombent là où l’alphabet les place. Laissez l’ordre des lignes porter le message, et gardez le nombre dans chaque cellule.",
+     "data_needed": "Computed in the page from the guide’s plan() model. Rows: Jackets, Boots, Base layers, Packs, Tents. Columns: on hand on 28 September, then the end of the weeks of 28 September, 5, 12 and 19 October. Cell value: closing units divided by average weekly demand over the four weeks ahead. Jackets 6.0, 5.1, 4.2, 4.4, 3.3; Boots 2.0, 1.0, 0.0, 0.0, 2.0; Base layers 3.0, 2.2, 1.3, 1.2, 0.0; Packs 12.0, 10.8, 9.8, 15.5, 14.7; Tents 18.0, 16.7, 15.6, 14.7, 14.0. Bars scaled to a common maximum of 8 weeks, longer values clipped with the figure printed; cells under 4 weeks dark, after Bertin’s practice of shading values on one side of a threshold. Row orders: as listed, alphabetical, by stock on 28 September, by stock at the end of the week of 12 October, and a seriated order. Optional switch: receive 80 boots a week early (boots become 2.0, 1.0, 0.0, 0.0, 1.0)."
+    },
+    {
+     "id": "F4b",
+     "title": "Les règles d’Ehrenberg, avant et après",
+     "caption": "Les cinq mêmes lignes de produits telles qu’un tableur les exporte, et telles qu’Andrew Ehrenberg les composerait : lignes classées par marge brute, montants arrondis à deux chiffres effectifs, une ligne de total comme point d’appui, et les nombres à comparer en colonnes. Dans le second tableau, le motif se lit sans calcul : les lignes d’hiver progressent, celles d’été reculent, et les taux de marge sont de 40 %, sauf pour les sous-couches et les bottes. Arrondissez et ordonnez un tableau avant de le publier.",
+     "data_needed": "Computed in the page from the plan() model. Columns: units sold in the last four weeks; demand for the next four weeks, units; change; expected sales, $K; gross profit, $K; margin; weeks of stock on 28 September. Values: Jackets 250, 360, +44%, 108.0, 43.2, 40.0%, 6.0; Boots 160, 320, +100%, 52.8, 24.0, 45.5%, 2.0; Base layers 320, 600, +88%, 72.0, 36.0, 50.0%, 3.0; Packs 200, 120, −40%, 24.0, 9.6, 40.0%, 12.0; Tents 80, 40, −50%, 20.0, 8.0, 40.0%, 18.0; Total 1,010, 1,440, +43%, 276.8, 120.8, 43.6%. Before: alphabetical rows, dollars with cents (108000.00), ratios as long decimals (0.454545), centred cells, a full grid. After: rows by gross profit (Jackets, Base layers, Boots, Packs, Tents), $K to two effective digits (sales 110, 72, 53, 24, 20; gross profit 43, 36, 24, 9.6, 8.0), whole percentages, right-aligned tabular figures, a total row, horizontal rules only."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Bartram, Correll, Tory",
+     "work": "Untidy Data: The Unreasonable Effectiveness of Tables",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 28(1)",
+     "year": 2022,
+     "url": "https://doi.org/10.1109/TVCG.2021.3114830",
+     "take": "Des entretiens avec douze personnes qui travaillent sur des données et voulaient voir et manipuler le tableau tout au long d’une analyse ; soutient que le tableau interactif est une forme à part entière.",
+     "verified": true
+    },
+    {
+     "who": "Ehrenberg",
+     "work": "Rudiments of Numeracy",
+     "venue": "Journal of the Royal Statistical Society, Series A 140(3)",
+     "year": 1977,
+     "url": "https://doi.org/10.2307/2344922",
+     "take": "L’article classique sur les tableaux de nombres : arrondir à deux chiffres effectifs, classer les lignes par grandeur, et placer dans une même colonne les nombres à comparer.",
+     "verified": true
+    },
+    {
+     "who": "Rutter",
+     "work": "Web Typography: Designing Tables to be Read, Not Looked At",
+     "venue": "A List Apart (an extract from his book Web Typography)",
+     "year": 2017,
+     "url": "https://alistapart.com/article/web-typography-tables/",
+     "take": "Cite Tschichold sur l’abandon des filets, applique aux tableaux l’idée de data-ink de Tufte, et demande des nombres alignés à droite en chiffres tabulaires et alignés.",
+     "verified": true
+    },
+    {
+     "who": "Schwabish",
+     "work": "Ten Guidelines for Better Tables",
+     "venue": "Journal of Benefit-Cost Analysis 11(2)",
+     "year": 2020,
+     "url": "https://doi.org/10.1017/bca.2020.11",
+     "take": "Une liste de contrôle actuelle, illustrée par la refonte de six tableaux publiés.",
+     "verified": true
+    },
+    {
+     "who": "Bertin",
+     "work": "La Graphique et le traitement graphique de l’information (English: Graphics and Graphic Information-Processing, 1981)",
+     "venue": "Flammarion; English edition Walter de Gruyter",
+     "year": 1977,
+     "url": "https://doi.org/10.1515/9783110854688",
+     "take": "Expose la matrice réordonnable : chaque cellule dessinée comme une marque, puis les lignes et les colonnes permutées jusqu’à ce que les semblables forment des groupes.",
+     "verified": true
+    },
+    {
+     "who": "Perin, Dragicevic, Fekete",
+     "work": "Revisiting Bertin Matrices: New Interactions for Crafting Tabular Visualizations",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 20(12)",
+     "year": 2014,
+     "url": "https://doi.org/10.1109/TVCG.2014.2346279",
+     "take": "Bertifier, un outil web qui applique la méthode matricielle de Bertin à une feuille de calcul, avec un réordonnancement interactif des lignes et des colonnes.",
+     "verified": true
+    },
+    {
+     "who": "Rao, Card",
+     "work": "The Table Lens: Merging Graphical and Symbolic Representations in an Interactive Focus+Context Visualization for Tabular Information",
+     "venue": "CHI 1994, ACM",
+     "year": 1994,
+     "url": "https://doi.org/10.1145/191666.191776",
+     "take": "Un tableau dont les cellules sont dessinées en petites barres, avec des lignes qui s’ouvrent sur leurs nombres quand on s’y arrête.",
+     "verified": true
+    },
+    {
+     "who": "Gratzl, Lex, Gehlenborg, Pfister, Streit",
+     "work": "LineUp: Visual Analysis of Multi-Attribute Rankings",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 19(12)",
+     "year": 2013,
+     "url": "https://doi.org/10.1109/TVCG.2013.173",
+     "take": "Classe des éléments selon plusieurs attributs pondérés, avec des barres empilées dans un tableau ; un modèle pour une liste de priorités d’achat.",
+     "verified": true
+    },
+    {
+     "who": "Stolte, Tang, Hanrahan",
+     "work": "Polaris: A System for Query, Analysis, and Visualization of Multidimensional Relational Databases",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 8(1)",
+     "year": 2002,
+     "url": "https://doi.org/10.1109/2945.981851",
+     "take": "Étend le tableau croisé dynamique en une spécification visuelle de tableaux de petits graphiques ; la recherche dont est issu Tableau.",
+     "verified": true
+    },
+    {
+     "who": "Becker, Cleveland, Shyu",
+     "work": "The Visual Design and Control of Trellis Display",
+     "venue": "Journal of Computational and Graphical Statistics 5(2)",
+     "year": 1996,
+     "url": "https://doi.org/10.1080/10618600.1996.10474701",
+     "take": "Des panneaux conditionnés par d’autres variables, disposés en lignes, en colonnes et en pages, avec des échelles partagées.",
+     "verified": true
+    },
+    {
+     "who": "Javed, McDonnel, Elmqvist",
+     "work": "Graphical Perception of Multiple Time Series",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 16(6)",
+     "year": 2010,
+     "url": "https://doi.org/10.1109/TVCG.2010.162",
+     "take": "Des graphiques séparés étaient en général plus efficaces pour les comparaisons portant sur de nombreuses séries, des graphiques partagés pour les comparaisons rapprochées.",
+     "verified": true
+    },
+    {
+     "who": "Heer, Kong, Agrawala",
+     "work": "Sizing the Horizon: The Effects of Chart Size and Layering on the Graphical Perception of Time Series Visualizations",
+     "venue": "CHI 2009, ACM",
+     "year": 2009,
+     "url": "https://doi.org/10.1145/1518701.1518897",
+     "take": "Le repli en miroir ne coûtait aucune précision, les graphiques en horizon à deux bandes se lisaient mieux que les graphiques linéaires sous 24 pixels de hauteur, et quatre bandes ou plus ralentissaient les lecteurs.",
+     "verified": true
+    },
+    {
+     "who": "Lönberg-Holm, Sutnar",
+     "work": "Catalog Design Progress: Advancing Standards in Visual Communication",
+     "venue": "Sweet’s Catalog Service, New York; record of the Art Institute of Chicago",
+     "year": 1950,
+     "url": "https://www.artic.edu/artworks/199319/catalog-design-progress",
+     "take": "Un livre sur l’organisation de l’information produit pour une consultation rapide, qui se clôt en résumant sa méthode par la fonction, le flux et la forme.",
+     "verified": true
+    },
+    {
+     "who": "Crouwel, van de Wouw",
+     "work": "Dutch PTT telephone directory",
+     "venue": "Total Design for the PTT; described by Robin Kinross, ‘Critical spirit of a telephone book’, Eye 16, 1995",
+     "year": 1977,
+     "url": "https://www.martinmajoor.com/2.2_telefont_article_eye.html",
+     "take": "Les premiers annuaires néerlandais entièrement automatisés, composés en Univers condensé, tout en bas de casse, avec le numéro avant le nom pour qu’aucun point de conduite ne soit nécessaire.",
+     "verified": true
+    },
+    {
+     "who": "Twyman",
+     "work": "A Schema for the Study of Graphic Language (Tutorial Paper)",
+     "venue": "Processing of Visible Language, vol. 1, Plenum",
+     "year": 1979,
+     "url": "https://doi.org/10.1007/978-1-4684-0994-9_8",
+     "take": "Classe le langage graphique par mode et par configuration, du texte linéaire aux listes, aux matrices et aux structures arborescentes ; un vocabulaire pour décider de ce qu’est une vue.",
+     "verified": true
+    },
+    {
+     "who": "Tukey",
+     "work": "Exploratory Data Analysis",
+     "venue": "Addison-Wesley",
+     "year": 1977,
+     "url": "https://archive.org/details/exploratorydataa00tuke_0",
+     "take": "Le plaidoyer pour examiner les données en quête de l’inattendu, avec les représentations pour le faire à la main, dont la boîte à moustaches.",
+     "verified": true
+    },
+    {
+     "who": "Wainer",
+     "work": "How to Display Data Badly",
+     "venue": "The American Statistician 38(2)",
+     "year": 1984,
+     "url": "https://doi.org/10.1080/00031305.1984.10483186",
+     "take": "Douze manières courantes de mal présenter des données, la « dirty dozen », à prendre comme une liste de ce qu’il faut éviter.",
+     "verified": true
+    }
+   ],
+   "word_count": 440
+  },
+  {
+   "id": "perception",
+   "title": "Perception, ombrage et couleur",
+   "standfirst": "La recherche sur la perception classe les façons dont un lecteur décode une quantité, et ses résultats fixent des limites nettes à ce que le ton et la couleur peuvent porter.",
+   "paragraphs": [
+    "En 1984, William Cleveland et Robert McGill ont classé les tâches élémentaires qu’accomplit un lecteur pour décoder une quantité dans un graphique. La position le long d’une échelle commune venait en premier, puis la position le long d’échelles distinctes, puis la longueur, la direction et l’angle, puis l’aire, puis le volume et la courbure, et enfin l’ombrage et la saturation de la couleur. Leurs expériences ont testé la partie haute de ce classement. Jeffrey Heer et Michael Bostock les ont reproduites en 2010 avec des participants recrutés en ligne, et ont retrouvé le même ordre pour la position et la longueur. Ils ont ajouté l’angle et l’aire. Tous deux se lisaient moins précisément que la position, l’aire moins précisément que l’angle, les rectangles aussi mal que les cercles, et les carrés le plus mal de tous.",
+    "Ce classement a des limites connues. La théorie prédit que l’angle se lit moins précisément que la longueur, et aucune des deux études ne l’a constaté. Dans les deux, la tâche est un jugement de proportion entre deux éléments marqués, ce qui n’est qu’une petite partie de la lecture d’un tableau de bord. La revue de Steven Franconeri et ses collègues, en 2021, ajoute qu’un lecteur extrait rapidement d’un affichage des statistiques globales, alors que comparer des sous-ensembles de valeurs est lent. L’ordre est fiable pour décoder des valeurs isolées, et il en dit moins sur ce qu’un lecteur remarque en premier.",
+    "Deux résultats plus anciens régissent les surfaces. Stephen Palmer a montré en 1992 que des éléments situés dans une région commune sont perçus comme un groupe, assez fortement pour l’emporter sur la proximité et la similarité. Josef Albers a montré dans Interaction of Color, en 1963, qu’une couleur se lit par rapport à ce qui l’entoure, si bien qu’un même gris paraît différent sur deux fonds. La couleur dépend aussi de la taille. Maureen Stone a soutenu en 2012 que les petites marques ont besoin de différences de couleur plus grandes, et Danielle Albers Szafir a mesuré l’effet en 2018 pour les points, les barres et les lignes. Les cartographes sont parvenus à la même retenue par la pratique. Les règles d’Eduard Imhof réservent les couleurs fortes aux petites surfaces posées sur des fonds sourds. L’estompage suisse du relief, dessiné à la main, oriente localement sa lumière pour faire ressortir chaque forme du terrain, et en 2021 Bernhard Jenny et ses collègues ont entraîné un réseau de neurones à l’imiter.",
+    "Pour un tableau de bord de planification, les conséquences sont claires. Les quantités se placent sur des positions alignées, des barres partant d’une même ligne de base ou des points sur une échelle partagée, et le nombre est imprimé partout où le montant compte. Le ton des surfaces marque le regroupement et la hiérarchie, et comme une teinte claire se lit par rapport à son fond, elle ne transporte jamais une valeur d’une surface à une autre. La couleur saturée va à des marques rares et petites, avec des écarts assez grands pour la taille de la marque."
+   ],
+   "takeaways": [
+    "Placez les quantités sur des positions alignées, et imprimez le nombre là où le montant compte.",
+    "Employez le ton pour le regroupement et la hiérarchie, jamais comme une valeur lue d’une surface à l’autre.",
+    "Réservez la couleur forte à des marques rares et petites, et vérifiez les écarts de couleur à la taille où les marques sont dessinées."
+   ],
+   "figures": [
+    {
+     "id": "F5",
+     "title": "Avec quelle précision les lecteurs jugent les proportions",
+     "caption": "Résultats de la réplication participative en ligne de Cleveland et McGill par Heer et Bostock (2010). Chaque ligne est un type de jugement, de la position sur une échelle commune à l’aire dans une carte proportionnelle, et chaque point montre l’erreur logarithmique moyenne avec son intervalle à 95 % ; les résultats de laboratoire d’origine figurent à côté des cinq premiers. La position sur une échelle commune est jugée le mieux et l’aire le plus mal, la longueur et l’angle se plaçant entre les deux. Placez les quantités qu’un planificateur compare sur des positions le long d’une même échelle.",
+     "data_needed": "Published values, supplied separately: Heer and Bostock (2010), Figure 4. Mean log absolute error, log2(|judged percent − true percent| + 1/8), with bootstrapped 95% confidence intervals, for judgement types T1 to T9 in the crowdsourced study (T1 to T3 position on a common scale, T4 and T5 length, T6 angle in a pie, T7 circular area, T8 centre-aligned rectangles, T9 rectangles in a treemap), and Cleveland and McGill’s laboratory values for T1 to T5 from the same figure."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Cleveland, McGill",
+     "work": "Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods",
+     "venue": "Journal of the American Statistical Association 79(387)",
+     "year": 1984,
+     "url": "https://doi.org/10.1080/01621459.1984.10478080",
+     "take": "Classe les tâches perceptives élémentaires, de la position sur une échelle commune jusqu’à l’ombrage et la saturation de la couleur, et teste la partie haute du classement.",
+     "verified": true
+    },
+    {
+     "who": "Heer, Bostock",
+     "work": "Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design",
+     "venue": "CHI 2010, ACM",
+     "year": 2010,
+     "url": "https://doi.org/10.1145/1753326.1753357",
+     "take": "A reproduit Cleveland et McGill en ligne et ajouté des jugements d’angles, de cercles, de rectangles et de cartes proportionnelles ; l’aire est arrivée en dernier et les carrés ont été les plus mal jugés.",
+     "verified": true
+    },
+    {
+     "who": "Franconeri, Padilla, Shah, Zacks, Hullman",
+     "work": "The Science of Visual Data Communication: What Works",
+     "venue": "Psychological Science in the Public Interest 22(3)",
+     "year": 2021,
+     "url": "https://doi.org/10.1177/15291006211051956",
+     "take": "Une synthèse de recommandations fondées sur la recherche pour communiquer des données, écrite pour les praticiens.",
+     "verified": true
+    },
+    {
+     "who": "Palmer",
+     "work": "Common region: A new principle of perceptual grouping",
+     "venue": "Cognitive Psychology 24(3)",
+     "year": 1992,
+     "url": "https://doi.org/10.1016/0010-0285(92)90014-S",
+     "take": "Les éléments situés dans une même bordure se groupent assez fortement pour l’emporter sur la proximité et la similarité.",
+     "verified": true
+    },
+    {
+     "who": "Albers",
+     "work": "Interaction of Color",
+     "venue": "Yale University Press",
+     "year": 1963,
+     "url": "https://yalebooks.yale.edu/book/9780300179354/interaction-of-color/",
+     "take": "Des études de couleur qui montrent qu’une couleur se lit toujours par rapport à ce qui l’entoure ; la page de l’éditeur est celle de l’édition du 50e anniversaire.",
+     "verified": true
+    },
+    {
+     "who": "Stone",
+     "work": "In Color Perception, Size Matters",
+     "venue": "IEEE Computer Graphics and Applications 32(2)",
+     "year": 2012,
+     "url": "https://doi.org/10.1109/MCG.2012.37",
+     "take": "Les petites marques ont besoin de différences de couleur plus grandes pour être distinguées, un point que les conseils de couleur pour la visualisation font rarement.",
+     "verified": true
+    },
+    {
+     "who": "Szafir",
+     "work": "Modeling Color Difference for Visualization Design",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 24(1)",
+     "year": 2018,
+     "url": "https://doi.org/10.1109/TVCG.2017.2744359",
+     "take": "A mesuré comment les différences de couleur perceptibles varient pour les points, les barres et les lignes, et en a tiré des modèles utilisables par les designers.",
+     "verified": true
+    },
+    {
+     "who": "Harrison, Ishii, Vicente, Buxton",
+     "work": "Transparent Layered User Interfaces: An Evaluation of a Display Design to Enhance Focused and Divided Attention",
+     "venue": "CHI 1995, ACM",
+     "year": 1995,
+     "url": "https://doi.org/10.1145/223904.223945",
+     "take": "A mesuré comment des couches translucides arbitrent entre l’attention au premier plan et la conscience de l’arrière-plan.",
+     "verified": true
+    },
+    {
+     "who": "Imhof",
+     "work": "Cartographic Relief Presentation (Kartographische Geländedarstellung, 1965)",
+     "venue": "Walter de Gruyter; English edition 1982, reprinted by Esri Press 2007",
+     "year": 1965,
+     "url": "https://doi.org/10.1515/9783110844016",
+     "take": "Des règles pour la couleur sur les cartes, dont la première est citée par Tufte dans Envisioning Information : les couleurs fortes sont insupportables sur de grandes surfaces et efficaces sur de petites, posées sur des fonds sourds.",
+     "verified": true
+    },
+    {
+     "who": "Robinson",
+     "work": "The Look of Maps: An Examination of Cartographic Design",
+     "venue": "University of Wisconsin Press; reissued by Esri Press 2010",
+     "year": 1952,
+     "url": "https://www.esri.com/news/releases/10_2qtr/lookofmaps.html",
+     "take": "A soutenu que la fonction d’une carte doit en régir la conception, et a examiné le lettrage, la structure, dont la figure et le fond, et la couleur.",
+     "verified": true
+    },
+    {
+     "who": "Jenny, Heitzler, Singh, Farmakis-Serebryakova, Liu, Hurni",
+     "work": "Cartographic Relief Shading with Neural Networks",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 27(2)",
+     "year": 2021,
+     "url": "https://doi.org/10.1109/TVCG.2020.3030456",
+     "take": "Des réseaux entraînés sur l’estompage manuel suisse du relief en ont appris les principes : supprimer le détail, orienter localement la lumière et faire varier la luminosité pour les grandes formes du terrain.",
+     "verified": true
+    },
+    {
+     "who": "Patterson",
+     "work": "Shaded Relief",
+     "venue": "shadedrelief.com, online since at least 2004",
+     "year": 2004,
+     "url": "https://www.shadedrelief.com/",
+     "take": "Des tutoriels sur l’estompage du relief à la main et à la manière suisse, dont l’orientation locale de la lumière pour les formes de terrain difficiles.",
+     "verified": true,
+     "note": "The site answers scripts with a bot check (403); it opens in a browser."
+    },
+    {
+     "who": "Colby, Scholl",
+     "work": "Transparency and blur as selective cues for complex visual information",
+     "venue": "Proceedings of SPIE 1460",
+     "year": 1991,
+     "url": "https://doi.org/10.1117/12.44415",
+     "take": "Des travaux du Visible Language Workshop du MIT sur la translucidité et le flou comme moyens de faire avancer ou reculer l’information.",
+     "verified": true
+    },
+    {
+     "who": "Cooper",
+     "work": "Information Landscapes",
+     "venue": "MIT Media Lab Visible Language Workshop, shown at TED5, Monterey",
+     "year": 1994,
+     "url": "https://www.media.mit.edu/posts/muriel-cooper-lasting-imprint/",
+     "take": "Une typographie dynamique en trois dimensions et des espaces d’information du Visible Language Workshop, présentés quelques mois avant la mort de Cooper.",
+     "verified": true
+    },
+    {
+     "who": "Google",
+     "work": "Material Design 3, colour roles",
+     "venue": "m3.material.io; tone-based surfaces introduced March 2023",
+     "year": 2023,
+     "url": "https://m3.material.io/styles/color/roles",
+     "take": "Cinq rôles de conteneurs de surface nommés selon leur degré d’emphase, du plus bas au plus haut, comme tokens pour des surfaces superposées.",
+     "verified": true,
+     "note": "The page answers HEAD requests with 405 and GET with 200."
+    },
+    {
+     "who": "Radix UI",
+     "work": "Radix Colors: understanding the scale",
+     "venue": "radix-ui.com",
+     "year": 2021,
+     "url": "https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale",
+     "take": "Des échelles de couleur en douze paliers où chaque palier a un rôle, du fond de l’application au palier 1 jusqu’au texte à fort contraste au palier 12.",
+     "verified": true
+    }
+   ],
+   "word_count": 396
+  },
+  {
+   "id": "operators",
+   "title": "Écrans d’opérateurs",
+   "standfirst": "L’ingénierie des salles de contrôle est arrivée aux écrans gris, aux plages normales marquées et à une couleur rare, et elle offre une théorie pour dessiner les contraintes d’un système de sorte qu’une panne change une forme.",
+   "paragraphs": [
+    "Les usines de procédés sont pilotées depuis des écrans qui portent de nombreuses valeurs et doivent rendre un écart évident sur-le-champ. Bill Hollifield, Dana Oliver, Ian Nimmo et Eddie Habibi ont exposé en 2008 l’approche dite haute performance : des fonds gris, des indicateurs analogiques dont la plage normale est marquée, et une couleur réservée aux conditions anormales, si bien que la couleur devient elle-même le signal. La norme ISA-101 de 2015 fait d’une philosophie IHM et d’un guide de style écrits une partie du cycle de vie de chaque affichage, et leur laisse des choix comme celui de la couleur. En 2013, Alf Ove Braseth et Trond Are Øritsland ont énoncé des principes pour les grands écrans de vue d’ensemble, issus du concept Information Rich Design élaboré à Halden.",
+    "Les ingénieurs ont aussi bâti une théorie de ces affichages. La conception d’interfaces écologiques de Kim Vicente et Jens Rasmussen, publiée en 1992, demande à un affichage de rendre visibles les contraintes du domaine de travail. Kevin Bennett et John Flach décrivent le résultat comme un affichage configural : des variables dessinées de sorte que leur relation forme une figure, qu’une panne déforme. David Woods a nommé en 1984 l’élan visuel, la facilité avec laquelle un lecteur emporte ce qu’il vient de voir dans la vue suivante, et en a énuméré les aides, dont les vues d’ensemble, les points de repère et les positions fixes. La médecine connaît la même forme à petite échelle. Le résumé graphique de l’état d’un patient de Seth Powsner et Edward Tufte, en 1994, plaçait sur une seule page les résultats d’un patient, ses signes vitaux et ses traitements, sous la forme d’une matrice de petits graphiques. Chacun montre sa dernière valeur et ses limites normales, sur un axe du temps qui donne des largeurs semblables à aujourd’hui, à la semaine passée et au mois passé.",
+    "Les preuves sont inégales. La revue que Vicente lui-même a publiée en 2002 a constaté que les interfaces écologiques amélioraient la résolution de problèmes en expérience, et qu’aucune n’avait encore été évaluée avec des opérateurs professionnels sur un simulateur pleine échelle. Les recommandations haute performance ont été écrites par des praticiens à partir de leur expérience industrielle. Les praticiens divergent aussi sur ce qu’il faut montrer. Le graphique à puces de Stephen Few dessine chaque mesure avec ses plages qualitatives, alors que l’approche des salles de contrôle, comme les points d’action de Nick Desbarats, laisse les états normaux presque muets et ne met l’accent que sur les exceptions.",
+    "Pour un tableau de bord de planification, la leçon est de rendre le normal silencieux. Une mesure dans sa plage normale peut se réduire à une bande grise et un pointeur, avec de la couleur seulement quand elle sort de la plage, pour que l’œil aille là où est le problème. Les positions restent fixes d’une semaine à l’autre, pour qu’un lecteur apprenne où se trouve chaque mesure. Une relation comme le budget d’achat restant peut être dessinée de sorte que ses termes forment une seule figure, comme le demande la règle du guide sur le dessin de l’identité."
+   ],
+   "takeaways": [
+    "Gardez les états normaux gris et silencieux, et ne laissez la couleur apparaître que hors de la plage.",
+    "Marquez la plage normale sur chaque instrument, pour qu’un écart se voie sans lire de nombre.",
+    "Tenez chaque mesure à une position fixe, pour que l’œil apprenne où elle se trouve."
+   ],
+   "figures": [
+    {
+     "id": "F6a",
+     "title": "Deux instruments pour une valeur",
+     "caption": "Le graphique à puces de Few à côté de l’indicateur analogique des recommandations du contrôle de procédés, tous deux montrant une même valeur : les semaines de stock de sous-couches. Le graphique à puces dessine ses plages qualitatives en permanence. L’indicateur montre une plage normale grise et un pointeur, et ne prend de la couleur que lorsque la valeur sort de la plage. Déplacez la valeur. Sur un écran qui porte de nombreuses mesures, préférez la forme silencieuse, pour que celle qui sort de sa plage soit celle qui ressorte.",
+     "data_needed": "Computed in the page; thresholds are illustrative. One value control: weeks of stock from 0 to 8 in steps of 0.1, default 3.0 (base layers on 28 September in the sample). Bullet graph: a bar for the value, a target tick at 4 weeks (the plan’s horizon), qualitative ranges of 0 to 2 (poor), 2 to 4 (satisfactory) and 4 to 8 (good) in three greys. Analog indicator: a scale of 0 to 8, a grey band for the normal range of 2.5 to 6, a pointer, the value printed; below 2.5 or above 6 the pointer and the value take the accent colour and a short reason is printed (under cover, over cover)."
+    },
+    {
+     "id": "F6b",
+     "title": "Une page de petits historiques",
+     "caption": "La forme du résumé graphique de l’état d’un patient de Powsner et Tufte (1994), dessinée avec des valeurs illustratives : chaque mesure est une petite série sur un même axe du temps, avec sa plage normale en bande grise, sa dernière valeur imprimée, et les valeurs hors de la plage marquées. Un cas entier tient sur une page, et une valeur anormale se trouve à l’œil. La même forme convient à une revue de planification, avec un petit historique par ligne de produits et par mesure, tous alignés sur un même axe des semaines.",
+     "data_needed": "Illustrative, generated in the page from a fixed seed; not clinical data. Twelve panels in a grid of four by three, each with 30 time points on one shared axis: temperature (normal band 36.1 to 37.2 °C), heart rate (60 to 100 per minute), systolic pressure (90 to 140 mmHg), respiratory rate (12 to 20 per minute), oxygen saturation (95 to 100%), haemoglobin (120 to 160 g/L), white cells (4 to 11 × 10⁹/L), platelets (150 to 400 × 10⁹/L), sodium (135 to 145 mmol/L), potassium (3.5 to 5.0 mmol/L), creatinine (60 to 110 µmol/L), glucose (4.0 to 7.8 mmol/L). Two or three measures drift out of range near the end. Each panel: name and unit, grey band, line, latest value in figures, out-of-range points in ink. Time axis after Powsner and Tufte’s design: four epochs of similar width, the current day, the past week, the past month and earlier history. Panels in a column share the time axis, and a header names the case."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Hollifield, Oliver, Nimmo, Habibi",
+     "work": "The High Performance HMI Handbook",
+     "venue": "PAS (Plant Automation Services)",
+     "year": 2008,
+     "url": "https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ",
+     "take": "Des écrans gris et peu contrastés pour le fonctionnement normal, des indicateurs analogiques qui montrent une valeur face à ses plages normale et d’alarme, et une couleur vive seulement pour les conditions anormales.",
+     "verified": true,
+     "note": "The handbook itself was not consulted; its recommendations were confirmed in the lead author’s white paper, Hollifield and Perez, High Performance Graphics to Maximize Operator Effectiveness (PAS, 2012), hosted by ISA."
+    },
+    {
+     "who": "International Society of Automation",
+     "work": "ANSI/ISA-101.01-2015, Human Machine Interfaces for Process Automation Systems",
+     "venue": "ISA",
+     "year": 2015,
+     "url": "https://www.isa.org/products/isa-101-01-2015-human-machine-interfaces-for",
+     "take": "Une norme pour le cycle de vie des affichages de procédé, fondée sur la philosophie IHM et le guide de style de chaque site ; elle ne prescrit pas elle-même d’écrans gris.",
+     "verified": true,
+     "note": "Paywalled; checked through ISA’s InTech articles and the public table of contents."
+    },
+    {
+     "who": "Braseth, Øritsland",
+     "work": "Visualizing complex processes on large screen displays: Design principles based on the Information Rich Design concept",
+     "venue": "Displays 34(3)",
+     "year": 2013,
+     "url": "https://doi.org/10.1016/j.displa.2013.05.002",
+     "take": "Des principes de conception pour les grands écrans de vue d’ensemble, issus du concept Information Rich Design, élaboré à l’Institute for Energy Technology de Halden.",
+     "verified": true
+    },
+    {
+     "who": "Vicente, Rasmussen",
+     "work": "Ecological interface design: theoretical foundations",
+     "venue": "IEEE Transactions on Systems, Man, and Cybernetics 22(4)",
+     "year": 1992,
+     "url": "https://doi.org/10.1109/21.156574",
+     "take": "Un cadre pour des interfaces qui rendent visibles les contraintes du domaine de travail et soutiennent les comportements fondés sur les habiletés, les règles et les connaissances.",
+     "verified": true
+    },
+    {
+     "who": "Vicente",
+     "work": "Ecological Interface Design: Progress and Challenges",
+     "venue": "Human Factors 44(1)",
+     "year": 2002,
+     "url": "https://doi.org/10.1518/0018720024494829",
+     "take": "Une revue : les interfaces écologiques amélioraient la résolution de problèmes en expérience, mais aucune n’avait encore été évaluée avec des professionnels sur un simulateur pleine échelle.",
+     "verified": true
+    },
+    {
+     "who": "Bennett, Flach",
+     "work": "Display and Interface Design: Subtle Science, Exact Art",
+     "venue": "CRC Press",
+     "year": 2011,
+     "url": "https://doi.org/10.1201/b10774",
+     "take": "Des affichages configuraux dont les propriétés émergentes correspondent aux contraintes du domaine de travail, si bien qu’une panne change la forme.",
+     "verified": true,
+     "note": "The DOI answers HEAD requests with 503 and GET with 200."
+    },
+    {
+     "who": "Woods",
+     "work": "Visual momentum: a concept to improve the cognitive coupling of person and computer",
+     "venue": "International Journal of Man-Machine Studies 21(3)",
+     "year": 1984,
+     "url": "https://doi.org/10.1016/S0020-7373(84)80043-7",
+     "take": "Comment garder un lecteur orienté à travers de nombreux affichages, avec des vues d’ensemble, des points de repère, un recouvrement et des positions fixes.",
+     "verified": true
+    },
+    {
+     "who": "Powsner, Tufte",
+     "work": "Graphical summary of patient status",
+     "venue": "The Lancet 344(8919)",
+     "year": 1994,
+     "url": "https://doi.org/10.1016/S0140-6736(94)91406-0",
+     "take": "Les résultats, les signes vitaux et les traitements d’un patient sur une seule page, en petits graphiques avec leurs limites normales, sur un axe du temps qui élargit le passé récent.",
+     "verified": true,
+     "note": "Paywalled; the layout was confirmed from the authors’ patent US 5,640,549 and Tufte’s notebook."
+    }
+   ],
+   "word_count": 420
+  },
+  {
+   "id": "dashboards",
+   "title": "Le tableau de bord comme objet de recherche",
+   "standfirst": "Des études récentes recensent ce que sont les tableaux de bord et comment ils sont construits, et des travaux plus anciens sur les vues et la comparaison expliquent les compromis derrière chaque choix.",
+   "paragraphs": [
+    "Les chercheurs n’étudient les tableaux de bord comme un genre que depuis peu. En 2019, Alper Sarikaya, Michael Correll, Lyn Bartram, Melanie Tory et Danyel Fisher ont codé 83 tableaux de bord selon quinze facteurs, regroupés sous la finalité, le public, les caractéristiques visuelles et interactives, et le sens des données. Les tableaux de bord se répartissaient en sept groupes, de la décision stratégique et opérationnelle aux affichages statiques, au suivi personnel et à la communication publique. Le mot recouvre des objets très différents, et une conception qui convient à un type peut échouer pour un autre.",
+    "Benjamin Bach et ses collègues ont étendu le corpus à 144 tableaux de bord et ont publié en 2023 un ensemble de 41 modèles de conception répartis en huit familles ; une prépublication antérieure en comptait 42. Trois familles, avec 19 modèles, concernent le contenu : les informations sur les données, les métadonnées et la représentation visuelle. Cinq familles, avec 22 modèles, concernent la composition : la mise en page, l’espace à l’écran, la structure, l’interaction et la couleur. Les auteurs ont aussi proposé un modèle de compromis. L’abstraction, l’espace à l’écran, le nombre de pages et l’interaction tirent les uns contre les autres, si bien que réduire l’un en accroît un autre.",
+    "Des travaux plus anciens expliquent les parties. Michelle Wang Baldonado, Allison Woodruff et Allan Kuchinsky ont donné en 2000 huit règles pour les vues multiples, dont la parcimonie : n’ajouter une vue que lorsqu’elle vaut ce qu’elle coûte. Michael Gleicher et ses collègues ont montré en 2011 que les conceptions de comparaison s’assemblent à partir de trois opérations : la juxtaposition, la superposition et un codage explicite de la différence. Nicholas Kong et Maneesh Agrawala ont décrit en 2012 cinq types d’aides superposées, des lignes de grille aux annotations. En 2023, Chase Stokes et ses collègues ont demandé à 302 personnes de classer des graphiques linéaires portant des quantités de texte différentes. Les graphiques les plus annotés ont été préférés, à la fois aux graphiques portant moins de texte et au texte seul.",
+    "La plupart de ces travaux sont descriptifs, construits en codant des exemples. Les rares expériences vont à l’encontre d’un minimalisme strict. Scott Bateman et ses collègues ont constaté en 2010 que des graphiques ornés étaient décrits aussi justement que des graphiques sobres, et mieux retenus deux à trois semaines plus tard. Ohad Inbar, Noam Tractinsky et Joachim Meyer ont constaté en 2007 que des étudiants préféraient un graphique en barres standard à sa version la plus dépouillée. Robin Kinross avait soutenu en 1985 que même un horaire de chemin de fer est persuasif, si bien qu’un style sobre est un choix qui a ses propres effets. Pour un tableau de bord de planification, il reste donc trois décisions à prendre à dessein : de quel type de tableau de bord il s’agit, quelle conception de comparaison emploie chaque vue, et quel texte se place sur les marques."
+   ],
+   "takeaways": [
+    "Décidez quel type de tableau de bord vous construisez avant d’en choisir les modèles.",
+    "Choisissez à dessein une conception de comparaison : côte à côte, superposée, ou la différence dessinée.",
+    "Mettez des mots sur les marques ; les lecteurs préfèrent les graphiques annotés aux graphiques nus."
+   ],
+   "figures": [
+    {
+     "id": "F7",
+     "title": "Deux catalogues de tableaux de bord",
+     "caption": "À gauche, les sept groupes en lesquels Sarikaya et ses collègues ont réparti 83 tableaux de bord en 2019, avec l’effectif de chacun. À droite, les 41 modèles de conception que Bach et ses collègues ont tirés de 144 tableaux de bord dans l’article publié en 2023, comptés par famille. Un tableau de bord de planification appartient aux groupes de la décision, et la plupart de ses choix de conception relèvent des familles de la composition. Nommez le type de tableau de bord avant de choisir parmi les modèles.",
+     "data_needed": "Published counts, supplied separately. Sarikaya et al. (2019), Table 1 and Figure 3: the number of dashboards in each of the seven clusters (Strategic Decision-Making, Quantified Self, Static Operational, Static Organizational, Operational Decision-Making, Communication, Dashboards Evolved), 83 dashboards in all. Bach et al. (2023), published Figure 1: the number of patterns in each of the eight groups (content: Data Information 6, Meta Information 5, Visual Representation 8; composition: Page Layout 5, Screenspace 5, Structure 4, Interaction 4, Color 4), 41 patterns in all (the May 2022 preprint had 42); optionally the share of the 144 dashboards in which each pattern was observed (Section 3 of the paper)."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Sarikaya, Correll, Bartram, Tory, Fisher",
+     "work": "What Do We Talk About When We Talk About Dashboards?",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 25(1)",
+     "year": 2019,
+     "url": "https://doi.org/10.1109/TVCG.2018.2864903",
+     "take": "Un espace de conception de quinze facteurs tiré de 83 tableaux de bord, et sept groupes de types de tableaux de bord.",
+     "verified": true
+    },
+    {
+     "who": "Bach, Freeman, Abdul-Rahman, Turkay, Khan, Fan, Chen",
+     "work": "Dashboard Design Patterns",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 29(1)",
+     "year": 2023,
+     "url": "https://doi.org/10.1109/TVCG.2022.3209448",
+     "take": "41 modèles de conception en huit familles, tirés de 144 tableaux de bord (la prépublication en comptait 42), six genres, et un modèle des compromis entre abstraction, espace à l’écran, pages et interaction.",
+     "verified": true
+    },
+    {
+     "who": "Wang Baldonado, Woodruff, Kuchinsky",
+     "work": "Guidelines for Using Multiple Views in Information Visualization",
+     "venue": "AVI 2000, ACM",
+     "year": 2000,
+     "url": "https://doi.org/10.1145/345513.345271",
+     "take": "Huit recommandations pour les vues multiples, dont la parcimonie : n’ajouter une vue que lorsqu’elle vaut ce qu’elle coûte.",
+     "verified": true
+    },
+    {
+     "who": "Gleicher, Albers, Walker, Jusufi, Hansen, Roberts",
+     "work": "Visual comparison for information visualization",
+     "venue": "Information Visualization 10(4)",
+     "year": 2011,
+     "url": "https://doi.org/10.1177/1473871611416549",
+     "take": "Toute conception de comparaison se construit par juxtaposition, superposition et codage explicite, seuls ou combinés.",
+     "verified": true
+    },
+    {
+     "who": "Kong, Agrawala",
+     "work": "Graphical Overlays: Using Layered Elements to Aid Chart Reading",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 18(12)",
+     "year": 2012,
+     "url": "https://doi.org/10.1109/TVCG.2012.229",
+     "take": "Cinq types d’aides superposées : structures de référence, mises en évidence, codages redondants, statistiques de synthèse et annotations.",
+     "verified": true
+    },
+    {
+     "who": "Stokes, Setlur, Cogley, Satyanarayan, Hearst",
+     "work": "Striking a Balance: Reader Takeaways and Preferences when Integrating Text and Charts",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 29(1)",
+     "year": 2023,
+     "url": "https://doi.org/10.1109/TVCG.2022.3209383",
+     "take": "302 participants ont préféré les graphiques les plus annotés aux graphiques portant moins de texte et au texte seul, et la place du texte changeait ce qu’ils en retenaient.",
+     "verified": true
+    },
+    {
+     "who": "Bateman, Mandryk, Gutwin, Genest, McDine, Brooks",
+     "work": "Useful Junk? The Effects of Visual Embellishment on Comprehension and Memorability of Charts",
+     "venue": "CHI 2010, ACM",
+     "year": 2010,
+     "url": "https://doi.org/10.1145/1753326.1753716",
+     "take": "Les graphiques ornés étaient décrits aussi justement que les graphiques sobres, et mieux mémorisés après deux à trois semaines.",
+     "verified": true
+    },
+    {
+     "who": "Inbar, Tractinsky, Meyer",
+     "work": "Minimalism in Information Visualization: Attitudes towards Maximizing the Data-Ink Ratio",
+     "venue": "ECCE 2007, ACM",
+     "year": 2007,
+     "url": "https://doi.org/10.1145/1362550.1362587",
+     "take": "87 étudiants ont préféré un graphique en barres standard à sa version minimaliste.",
+     "verified": true
+    },
+    {
+     "who": "Kinross",
+     "work": "The Rhetoric of Neutrality",
+     "venue": "Design Issues 2(2)",
+     "year": 1985,
+     "url": "https://doi.org/10.2307/1511415",
+     "take": "Même un horaire de chemin de fer est persuasif ; un style calme et exact est un choix rhétorique.",
+     "verified": true
+    },
+    {
+     "who": "Sedlmair, Heinzl, Bruckner, Piringer, Möller",
+     "work": "Visual Parameter Space Analysis: A Conceptual Framework",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 20(12)",
+     "year": 2014,
+     "url": "https://doi.org/10.1109/TVCG.2014.2346321",
+     "take": "Un cadre pour explorer les entrées et les sorties d’un modèle : un modèle de flux de données, quatre stratégies de navigation et six tâches d’analyse.",
+     "verified": true
+    },
+    {
+     "who": "Shneiderman",
+     "work": "The Eyes Have It: A Task by Data Type Taxonomy for Information Visualizations",
+     "venue": "IEEE Symposium on Visual Languages",
+     "year": 1996,
+     "url": "https://doi.org/10.1109/VL.1996.545307",
+     "take": "D’abord la vue d’ensemble, puis le zoom et le filtre, puis les détails à la demande, avec sept tâches et sept types de données.",
+     "verified": true
+    },
+    {
+     "who": "Segel, Heer",
+     "work": "Narrative Visualization: Telling Stories with Data",
+     "venue": "IEEE Transactions on Visualization and Computer Graphics 16(6)",
+     "year": 2010,
+     "url": "https://doi.org/10.1109/TVCG.2010.179",
+     "take": "Les genres de la visualisation narrative et l’équilibre entre l’ordre voulu par l’auteur et l’exploration du lecteur.",
+     "verified": true
+    },
+    {
+     "who": "Nardi",
+     "work": "A Small Matter of Programming: Perspectives on End User Computing",
+     "venue": "MIT Press",
+     "year": 1993,
+     "url": "https://doi.org/10.7551/mitpress/1020.001.0001",
+     "take": "Pourquoi les tableurs ont réussi en tant que programmation pour des personnes qui ne sont pas programmeurs.",
+     "verified": true
+    },
+    {
+     "who": "Ström-Awn",
+     "work": "UI Density",
+     "venue": "mattstromawn.com",
+     "year": 2024,
+     "url": "https://mattstromawn.com/writing/ui-density/",
+     "take": "Définit la densité d’une interface comme la valeur qu’un utilisateur en tire, divisée par le temps et l’espace qu’elle occupe, et distingue les densités visuelle, informationnelle, de conception, temporelle et de valeur.",
+     "verified": true
+    },
+    {
+     "who": "Setlur, Cogley",
+     "work": "Functional Aesthetics for Data Visualization",
+     "venue": "Wiley",
+     "year": 2022,
+     "url": "https://www.wiley.com/en-us/Functional+Aesthetics+for+Data+Visualization-p-9781119810087",
+     "take": "La perception, la sémantique et l’intention traitées ensemble dans la conception des graphiques.",
+     "verified": true
+    }
+   ],
+   "word_count": 384
+  },
+  {
+   "id": "type",
+   "title": "Typographie des chiffres",
+   "standfirst": "Les caractères dessinés pour les annuaires et les tableaux boursiers montrent ce dont ont besoin les chiffres denses, et la principale exigence à l’écran peut se mesurer dans un navigateur.",
+   "paragraphs": [
+    "Les chiffres denses ont leurs propres caractères depuis des décennies. Matthew Carter a dessiné Bell Centennial à la fin des années 1970 pour les annuaires téléphoniques d’AT&T, composés en petit corps et imprimés vite sur du papier bon marché. Tobias Frere-Jones a dessiné Retina en 1999 pour les cotations boursières du Wall Street Journal, en sept points et moins. Adrian Frutiger a conçu l’Univers en 1957 comme une famille de vingt et une variantes désignées par des nombres à deux chiffres, le premier pour la graisse et le second pour la chasse et l’inclinaison, pour qu’une page puisse en employer plusieurs tout en gardant un seul dessin.",
+    "À l’écran, les exigences sont peu nombreuses. Les chiffres doivent être tabulaires, pour qu’ils aient tous la même chasse et que les colonnes s’alignent ; OpenType appelle cette fonction tnum. Ils devraient aussi garder cette chasse quand la graisse change, pour qu’une ligne sélectionnée puisse passer en gras sans que ses colonnes bougent. Les polices variables offrent d’autres voies. Roboto Flex a un axe de grade, qui change la graisse apparente des lettres sans changer leur chasse. Instrument Sans a un axe de chasse de 75 à 100, qui donne des libellés plus étroits dans la même famille.",
+    "Dix-sept caractères libres ont été mesurés pour ce guide dans un navigateur, et sept sont présentés ici. Instrument Sans, IBM Plex Sans et Hanken Grotesk gardent la chasse de chaque chiffre entre le normal et le gras. Leur signe moins est aussi large qu’un chiffre, si bien que les colonnes de nombres signés s’alignent, et Hanken Grotesk garde aussi la chasse de son séparateur décimal. Geist et Archivo élargissent leurs chiffres en gras. Une nouvelle mesure, le 3 octobre 2026, a nuancé deux résultats. En Red Hat Text, le zéro garde sa chasse, mais le neuf gras est plus large que les autres chiffres. Roboto Flex a un axe de taille optique, si bien que son résultat dépend de la taille. À 1 000 pixels, son zéro gras est environ un quart plus large ; à 15 pixels, la différence est inférieure à 0,5 %.",
+    "Les caractères historiques témoignent de la pratique. Le test de chasse est une mesure que chacun peut refaire, même si son résultat dépend de la version de la police et de la taille à laquelle il est fait. Pour un tableau de bord de planification, choisissez un caractère dont les chiffres et le signe moins gardent une seule chasse dans chaque graisse qu’emploie l’écran. Testez-le dans le navigateur à ces tailles, et employez un vrai signe moins. Là où un caractère échoue, la mise en valeur peut venir du grade ou de la couleur plutôt que de la graisse."
+   ],
+   "takeaways": [
+    "Employez des chiffres tabulaires, et vérifiez que chaque chiffre et le signe moins gardent une seule chasse dans chaque graisse employée.",
+    "Mesurez aux tailles qu’emploie l’écran, car un axe de taille optique change les chasses.",
+    "Employez un vrai signe moins, U+2212, jamais un trait d’union."
+   ],
+   "figures": [
+    {
+     "id": "F8",
+     "title": "Le gras sans décalage, caractère par caractère",
+     "caption": "Sept caractères libres, testés pour savoir si les chiffres gardent leur chasse quand la graisse passe de 400 à 700, chiffres tabulaires activés. Les colonnes sont quatre tests : le zéro, les dix chiffres, le signe moins par rapport aux chiffres, et le séparateur décimal. En dessous, un spécimen en direct compose une colonne de nombres de l’exemple en normal et en gras, l’un sur l’autre. Choisissez un caractère qui passe les trois premiers tests aux tailles qu’emploie l’écran.",
+     "data_needed": "From type_test. The draft’s measurement (headless Chrome, Google Fonts builds, width of the tabular zero in em at 400 and 700): Instrument Sans 0.600/0.600, IBM Plex Sans 0.600/0.600, Hanken Grotesk 0.560/0.560, Red Hat Text 0.600/0.600, Geist 0.600/0.636, Archivo 0.568/0.598, Roboto Flex 0.444/0.546. The recheck of 3 October 2026 (type_test.recheck) supplies the other three columns and the size note for Roboto Flex. The specimen loads the seven faces from Google Fonts with tabular figures and overlays weight 700 on weight 400 for the sample’s weekly demand (80 85 95 100; 80 80 80 80; 120 140 160 180; 35 30 30 25; 13 11 9 7) and signed changes (+44%, +100%, +88%, −40%, −50%), with a selector for the face and a size control of 12 to 48 px."
+    }
+   ],
+   "refs": [
+    {
+     "who": "Carter",
+     "work": "Bell Centennial",
+     "venue": "Commissioned by AT&T; Museum of Modern Art collection",
+     "year": 1978,
+     "url": "https://www.moma.org/collection/works/139307",
+     "take": "Dessiné pour remplacer Bell Gothic dans les annuaires d’AT&T, avec des lettres plus larges et des pièges à encre pour l’impression rapide sur papier journal ; le MoMA le date de 1976 à 1978.",
+     "verified": true,
+     "note": "MoMA answers scripts with a bot check (403); the page opens in a browser."
+    },
+    {
+     "who": "Frere-Jones",
+     "work": "Retina",
+     "venue": "Hoefler & Frere-Jones for The Wall Street Journal; Museum of Modern Art collection",
+     "year": 1999,
+     "url": "https://www.moma.org/collection/works/139302",
+     "take": "Un caractère pour les tableaux boursiers en sept points et moins, avec des pièges à encre profonds.",
+     "verified": true,
+     "note": "MoMA answers scripts with a bot check (403); the page opens in a browser."
+    },
+    {
+     "who": "Frutiger",
+     "work": "Univers",
+     "venue": "Deberny & Peignot; now Monotype",
+     "year": 1957,
+     "url": "https://www.myfonts.com/collections/univers-font-linotype",
+     "take": "Publié comme une famille de vingt et une variantes désignées par des nombres à deux chiffres, le premier donnant la graisse et le second la chasse et l’inclinaison.",
+     "verified": true
+    },
+    {
+     "who": "Microsoft and Adobe",
+     "work": "OpenType feature registry: tnum, tabular figures",
+     "venue": "OpenType specification, Microsoft Learn (page dated 29 May 2024)",
+     "year": 2024,
+     "url": "https://learn.microsoft.com/en-us/typography/opentype/spec/features_pt#tag-tnum",
+     "take": "La fonction qui remplace les chiffres proportionnels par des chiffres d’une seule chasse, pour qu’ils s’alignent en colonnes.",
+     "verified": true
+    },
+    {
+     "who": "Font Bureau, Berlow and colleagues, for Google",
+     "work": "Roboto Flex",
+     "venue": "Google Fonts",
+     "year": 2022,
+     "url": "https://fonts.google.com/specimen/Roboto+Flex",
+     "take": "Un caractère variable à treize axes, dont le grade, qui change l’épaisseur des traits sans changer les chasses, et la taille optique.",
+     "verified": true
+    },
+    {
+     "who": "Fuenzalida, with Egstad, for Instrument",
+     "work": "Instrument Sans",
+     "venue": "GitHub and Google Fonts",
+     "year": 2023,
+     "url": "https://github.com/Instrument/instrument-sans",
+     "take": "Une linéale variable libre, avec des axes de chasse (75 à 100) et de graisse (400 à 700) et des chiffres tabulaires ; le caractère de ce guide.",
+     "verified": true
+    }
+   ],
+   "word_count": 384
+  }
+ ],
+ "overview_points": [
+  {
+   "field": "forecasts",
+   "year": 1998,
+   "label": "Le graphique en éventail de la Banque d’Angleterre expliqué"
+  },
+  {
+   "field": "forecasts",
+   "year": 2026,
+   "label": "Météogramme d’ensemble de l’ECMWF"
+  },
+  {
+   "field": "forecasts",
+   "year": 2016,
+   "label": "Diagramme en points de quantiles"
+  },
+  {
+   "field": "forecasts",
+   "year": 2018,
+   "label": "Points et courbes cumulatives améliorent les décisions"
+  },
+  {
+   "field": "forecasts",
+   "year": 2015,
+   "label": "Graphiques de résultats hypothétiques"
+  },
+  {
+   "field": "forecasts",
+   "year": 2012,
+   "label": "Le biais de l’intérieur de la barre"
+  },
+  {
+   "field": "forecasts",
+   "year": 2014,
+   "label": "Error bars considered harmful"
+  },
+  {
+   "field": "forecasts",
+   "year": 2012,
+   "label": "Les prévisions avec incertitude améliorent les décisions"
+  },
+  {
+   "field": "forecasts",
+   "year": 2011,
+   "label": "Visualizing uncertainty about the future"
+  },
+  {
+   "field": "forecasts",
+   "year": 2021,
+   "label": "Synthèse sur la visualisation de l’incertitude"
+  },
+  {
+   "field": "forecasts",
+   "year": 2009,
+   "label": "The flaw of averages"
+  },
+  {
+   "field": "notation",
+   "year": 1786,
+   "label": "Commercial and Political Atlas"
+  },
+  {
+   "field": "notation",
+   "year": 1914,
+   "label": "Graphic Methods for Presenting Facts"
+  },
+  {
+   "field": "notation",
+   "year": 1952,
+   "label": "Charting Statistics"
+  },
+  {
+   "field": "notation",
+   "year": 2019,
+   "label": "Solid, Outlined, Hatched"
+  },
+  {
+   "field": "notation",
+   "year": 2026,
+   "label": "Le standard IBCS"
+  },
+  {
+   "field": "notation",
+   "year": 2006,
+   "label": "Spécification du graphique à puces"
+  },
+  {
+   "field": "notation",
+   "year": 2022,
+   "label": "Why I stopped using bullet graphs"
+  },
+  {
+   "field": "notation",
+   "year": 2024,
+   "label": "La revue hebdomadaire d’activité d’Amazon"
+  },
+  {
+   "field": "notation",
+   "year": 2021,
+   "label": "Working Backwards"
+  },
+  {
+   "field": "notation",
+   "year": 1993,
+   "label": "Understanding Variation"
+  },
+  {
+   "field": "notation",
+   "year": 1988,
+   "label": "Decision analysis: practice and promise"
+  },
+  {
+   "field": "notation",
+   "year": 2008,
+   "label": "Valeurs basse, centrale et haute des diagrammes en tornade"
+  },
+  {
+   "field": "notation",
+   "year": 1992,
+   "label": "Diagrammes en araignée et en tornade"
+  },
+  {
+   "field": "retail",
+   "year": 2026,
+   "label": "Ventes, stock et réceptions hebdomadaires"
+  },
+  {
+   "field": "retail",
+   "year": 2022,
+   "label": "Synthèse sur la prévision dans le commerce de détail"
+  },
+  {
+   "field": "retail",
+   "year": 2022,
+   "label": "La compétition M5"
+  },
+  {
+   "field": "retail",
+   "year": 2009,
+   "label": "Les ajustements fondés sur le jugement"
+  },
+  {
+   "field": "retail",
+   "year": 2000,
+   "label": "Prévision par défaut et raisons consignées"
+  },
+  {
+   "field": "retail",
+   "year": 2013,
+   "label": "Valeur ajoutée de la prévision"
+  },
+  {
+   "field": "retail",
+   "year": 2005,
+   "label": "Classes de demande"
+  },
+  {
+   "field": "retail",
+   "year": 2006,
+   "label": "Frontière exacte des classes de demande"
+  },
+  {
+   "field": "retail",
+   "year": 2019,
+   "label": "Réconciliation des prévisions"
+  },
+  {
+   "field": "retail",
+   "year": 1999,
+   "label": "Synthèse sur le problème du vendeur de journaux"
+  },
+  {
+   "field": "retail",
+   "year": 1994,
+   "label": "Sport Obermeyer"
+  },
+  {
+   "field": "retail",
+   "year": 2012,
+   "label": "Prix de liquidation chez Zara"
+  },
+  {
+   "field": "retail",
+   "year": 2016,
+   "label": "Prix chez Rue La La"
+  },
+  {
+   "field": "retail",
+   "year": 2023,
+   "label": "Demand Forecasting Best Practices"
+  },
+  {
+   "field": "retail",
+   "year": 2023,
+   "label": "La prévision de la demande pour les dirigeants"
+  },
+  {
+   "field": "retail",
+   "year": 2015,
+   "label": "Commandes priorisées"
+  },
+  {
+   "field": "retail",
+   "year": 1961,
+   "label": "Industrial Dynamics"
+  },
+  {
+   "field": "retail",
+   "year": 2000,
+   "label": "Business Dynamics"
+  },
+  {
+   "field": "tables",
+   "year": 2022,
+   "label": "Untidy data"
+  },
+  {
+   "field": "tables",
+   "year": 1977,
+   "label": "Rudiments of numeracy"
+  },
+  {
+   "field": "tables",
+   "year": 2017,
+   "label": "Des tableaux faits pour être lus"
+  },
+  {
+   "field": "tables",
+   "year": 2020,
+   "label": "Ten guidelines for better tables"
+  },
+  {
+   "field": "tables",
+   "year": 1977,
+   "label": "La Graphique : la matrice réordonnable"
+  },
+  {
+   "field": "tables",
+   "year": 2014,
+   "label": "Bertifier"
+  },
+  {
+   "field": "tables",
+   "year": 1994,
+   "label": "Table Lens"
+  },
+  {
+   "field": "tables",
+   "year": 2013,
+   "label": "LineUp"
+  },
+  {
+   "field": "tables",
+   "year": 2002,
+   "label": "Polaris"
+  },
+  {
+   "field": "tables",
+   "year": 1996,
+   "label": "Affichage en treillis"
+  },
+  {
+   "field": "tables",
+   "year": 2010,
+   "label": "Séries chronologiques multiples"
+  },
+  {
+   "field": "tables",
+   "year": 2009,
+   "label": "Sizing the horizon"
+  },
+  {
+   "field": "tables",
+   "year": 1950,
+   "label": "Catalog Design Progress"
+  },
+  {
+   "field": "tables",
+   "year": 1977,
+   "label": "Annuaire téléphonique néerlandais"
+  },
+  {
+   "field": "tables",
+   "year": 1979,
+   "label": "Un schéma du langage graphique"
+  },
+  {
+   "field": "tables",
+   "year": 1977,
+   "label": "Exploratory Data Analysis"
+  },
+  {
+   "field": "tables",
+   "year": 1984,
+   "label": "How to display data badly"
+  },
+  {
+   "field": "perception",
+   "year": 1984,
+   "label": "Le classement de la perception graphique"
+  },
+  {
+   "field": "perception",
+   "year": 2010,
+   "label": "Réplication participative en ligne"
+  },
+  {
+   "field": "perception",
+   "year": 2021,
+   "label": "La science de la communication visuelle des données"
+  },
+  {
+   "field": "perception",
+   "year": 1992,
+   "label": "Common region"
+  },
+  {
+   "field": "perception",
+   "year": 1963,
+   "label": "Interaction of Color"
+  },
+  {
+   "field": "perception",
+   "year": 2012,
+   "label": "In colour perception, size matters"
+  },
+  {
+   "field": "perception",
+   "year": 2018,
+   "label": "Modéliser la différence de couleur"
+  },
+  {
+   "field": "perception",
+   "year": 1995,
+   "label": "Interfaces transparentes en couches"
+  },
+  {
+   "field": "perception",
+   "year": 1965,
+   "label": "Cartographic relief presentation"
+  },
+  {
+   "field": "perception",
+   "year": 1952,
+   "label": "The Look of Maps"
+  },
+  {
+   "field": "perception",
+   "year": 2021,
+   "label": "Estompage du relief par réseaux de neurones"
+  },
+  {
+   "field": "perception",
+   "year": 2004,
+   "label": "Pratique de l’estompage du relief"
+  },
+  {
+   "field": "perception",
+   "year": 1991,
+   "label": "Transparence et flou comme indices"
+  },
+  {
+   "field": "perception",
+   "year": 1994,
+   "label": "Information Landscapes"
+  },
+  {
+   "field": "perception",
+   "year": 2023,
+   "label": "Rôles de couleur de Material 3"
+  },
+  {
+   "field": "perception",
+   "year": 2021,
+   "label": "Échelle en 12 paliers de Radix"
+  },
+  {
+   "field": "operators",
+   "year": 2008,
+   "label": "High Performance HMI Handbook"
+  },
+  {
+   "field": "operators",
+   "year": 2015,
+   "label": "La norme ISA-101"
+  },
+  {
+   "field": "operators",
+   "year": 2013,
+   "label": "Information Rich Design"
+  },
+  {
+   "field": "operators",
+   "year": 1992,
+   "label": "Ecological interface design"
+  },
+  {
+   "field": "operators",
+   "year": 2002,
+   "label": "EID : progrès et défis"
+  },
+  {
+   "field": "operators",
+   "year": 2011,
+   "label": "Display and Interface Design"
+  },
+  {
+   "field": "operators",
+   "year": 1984,
+   "label": "Visual momentum"
+  },
+  {
+   "field": "operators",
+   "year": 1994,
+   "label": "Graphical summary of patient status"
+  },
+  {
+   "field": "dashboards",
+   "year": 2019,
+   "label": "Espace de conception des tableaux de bord"
+  },
+  {
+   "field": "dashboards",
+   "year": 2023,
+   "label": "Dashboard design patterns"
+  },
+  {
+   "field": "dashboards",
+   "year": 2000,
+   "label": "Recommandations pour les vues multiples"
+  },
+  {
+   "field": "dashboards",
+   "year": 2011,
+   "label": "Comparaison visuelle"
+  },
+  {
+   "field": "dashboards",
+   "year": 2012,
+   "label": "Graphical overlays"
+  },
+  {
+   "field": "dashboards",
+   "year": 2023,
+   "label": "Texte et graphiques"
+  },
+  {
+   "field": "dashboards",
+   "year": 2010,
+   "label": "Useful junk"
+  },
+  {
+   "field": "dashboards",
+   "year": 2007,
+   "label": "Le minimalisme mis à l’épreuve"
+  },
+  {
+   "field": "dashboards",
+   "year": 1985,
+   "label": "The rhetoric of neutrality"
+  },
+  {
+   "field": "dashboards",
+   "year": 2014,
+   "label": "Analyse de l’espace des paramètres"
+  },
+  {
+   "field": "dashboards",
+   "year": 1996,
+   "label": "The eyes have it"
+  },
+  {
+   "field": "dashboards",
+   "year": 2010,
+   "label": "Narrative visualization"
+  },
+  {
+   "field": "dashboards",
+   "year": 1993,
+   "label": "A Small Matter of Programming"
+  },
+  {
+   "field": "dashboards",
+   "year": 2024,
+   "label": "UI density"
+  },
+  {
+   "field": "dashboards",
+   "year": 2022,
+   "label": "Esthétique fonctionnelle"
+  },
+  {
+   "field": "type",
+   "year": 1978,
+   "label": "Bell Centennial"
+  },
+  {
+   "field": "type",
+   "year": 1999,
+   "label": "Retina"
+  },
+  {
+   "field": "type",
+   "year": 1957,
+   "label": "Univers"
+  },
+  {
+   "field": "type",
+   "year": 2024,
+   "label": "La fonction OpenType tnum"
+  },
+  {
+   "field": "type",
+   "year": 2022,
+   "label": "Roboto Flex"
+  },
+  {
+   "field": "type",
+   "year": 2023,
+   "label": "Instrument Sans"
+  }
+ ],
+ "type_test": {
+  "summary": "Le brouillon rapporte un test, mené dans un navigateur, de dix-sept caractères libres pour une propriété de la grille de planification : des chiffres qui gardent leur chasse quand la graisse change, pour qu’une ligne sélectionnée puisse passer en gras sans que ses colonnes bougent. Il consigne les résultats de sept d’entre eux ; les dix autres ne sont nommés ni dans le brouillon ni dans le guide en ligne. Les sept ont été mesurés de nouveau le 3 octobre 2026 pour vérifier les valeurs du brouillon.",
+  "faces": [
+   "Instrument Sans",
+   "IBM Plex Sans",
+   "Hanken Grotesk",
+   "Red Hat Text",
+   "Geist",
+   "Archivo",
+   "Roboto Flex"
+  ],
+  "faces_note": "Dix-sept caractères ont été testés pour le brouillon ; seuls ces sept sont consignés avec leurs valeurs. La figure devrait montrer sept lignes et le dire.",
+  "criterion": "Chasse du zéro, en em, chiffres tabulaires activés, en graisses 400 et 700, mesurée dans Chrome sans interface sur les versions servies par Google Fonts. Un caractère passe le test quand les deux chasses sont égales.",
+  "results": [
+   {
+    "face": "Instrument Sans",
+    "zero_400": 0.6,
+    "zero_700": 0.6,
+    "draft_result": "keeps width",
+    "recheck": "confirmed; all ten digits, the minus sign and the percent sign are 0.600 em in both weights; the decimal point and comma widen from 0.255 to 0.285 em",
+    "pass_zero": true,
+    "pass_digits": true,
+    "pass_minus": true,
+    "pass_point": false
+   },
+   {
+    "face": "IBM Plex Sans",
+    "zero_400": 0.6,
+    "zero_700": 0.6,
+    "draft_result": "keeps width",
+    "recheck": "confirmed; all ten digits and the minus sign 0.600 em in both weights; the decimal point widens from 0.272 to 0.310 em",
+    "pass_zero": true,
+    "pass_digits": true,
+    "pass_minus": true,
+    "pass_point": false
+   },
+   {
+    "face": "Hanken Grotesk",
+    "zero_400": 0.56,
+    "zero_700": 0.56,
+    "draft_result": "keeps width",
+    "recheck": "confirmed; all ten digits, the minus sign and the decimal point keep their widths (0.560 and 0.240 em)",
+    "pass_zero": true,
+    "pass_digits": true,
+    "pass_minus": true,
+    "pass_point": true
+   },
+   {
+    "face": "Red Hat Text",
+    "zero_400": 0.6,
+    "zero_700": 0.6,
+    "draft_result": "keeps width",
+    "recheck": "zero confirmed, but the bold nine is 0.651 em against 0.600 for the other digits, so a bold row containing a 9 shifts; minus sign and decimal point keep their widths",
+    "pass_zero": true,
+    "pass_digits": false,
+    "pass_minus": true,
+    "pass_point": true
+   },
+   {
+    "face": "Geist",
+    "zero_400": 0.6,
+    "zero_700": 0.636,
+    "draft_result": "shifts when bold",
+    "recheck": "confirmed; every digit widens from 0.600 to 0.636 em; the minus sign (0.520 and 0.544 em) is narrower than a digit",
+    "pass_zero": false,
+    "pass_digits": false,
+    "pass_minus": false,
+    "pass_point": false
+   },
+   {
+    "face": "Archivo",
+    "zero_400": 0.568,
+    "zero_700": 0.598,
+    "draft_result": "shifts when bold",
+    "recheck": "confirmed; every digit widens from 0.568 to 0.598 em; the minus sign (0.625 and 0.641 em) is wider than a digit",
+    "pass_zero": false,
+    "pass_digits": false,
+    "pass_minus": false,
+    "pass_point": false
+   },
+   {
+    "face": "Roboto Flex",
+    "zero_400": 0.444,
+    "zero_700": 0.546,
+    "draft_result": "shifts when bold",
+    "recheck": "size-dependent: the face has an optical-size axis, which the browser sets from the font size. At 1,000 px the zero is 0.440 and 0.545 em, close to the draft; at 15 px it is 0.562 and 0.564 em, a difference under 0.5%. The minus sign (0.500 and 0.543 em) is narrower than a digit",
+    "pass_zero": false,
+    "pass_digits": false,
+    "pass_minus": false,
+    "pass_point": false
+   }
+  ],
+  "recheck": {
+   "method": "3 October 2026, headless Chrome 154 on macOS, the Google Fonts variable builds of each face (Instrument Sans with wdth 75–100 and wght 400–700; Roboto Flex with opsz and wght), font-variant-numeric: tabular-nums, font-kerning: none. Each glyph measured alone at 1,000 px and as a run of 200 at 15 px; widths in em. The 15 px and 1,000 px results agree for every face except Roboto Flex.",
+   "rows": [
+    {
+     "face": "Instrument Sans",
+     "digits_400": "0.600",
+     "digits_700": "0.600",
+     "minus": "0.600 / 0.600",
+     "point": "0.255 / 0.285",
+     "percent": "0.600 / 0.600"
+    },
+    {
+     "face": "IBM Plex Sans",
+     "digits_400": "0.600",
+     "digits_700": "0.600",
+     "minus": "0.600 / 0.600",
+     "point": "0.272 / 0.310",
+     "percent": "0.927 / 0.974"
+    },
+    {
+     "face": "Hanken Grotesk",
+     "digits_400": "0.560",
+     "digits_700": "0.560",
+     "minus": "0.560 / 0.560",
+     "point": "0.240 / 0.240",
+     "percent": "0.747 / 0.735"
+    },
+    {
+     "face": "Red Hat Text",
+     "digits_400": "0.600",
+     "digits_700": "0.600, nine 0.651",
+     "minus": "0.600 / 0.600",
+     "point": "0.250 / 0.250",
+     "percent": "0.739 / 0.814"
+    },
+    {
+     "face": "Geist",
+     "digits_400": "0.600",
+     "digits_700": "0.636",
+     "minus": "0.520 / 0.544",
+     "point": "0.201 / 0.236",
+     "percent": "0.802 / 0.825"
+    },
+    {
+     "face": "Archivo",
+     "digits_400": "0.568",
+     "digits_700": "0.598",
+     "minus": "0.625 / 0.641",
+     "point": "0.277 / 0.307",
+     "percent": "0.950 / 0.973"
+    },
+    {
+     "face": "Roboto Flex, 15 px",
+     "digits_400": "0.562",
+     "digits_700": "0.564",
+     "minus": "0.500 / 0.543",
+     "point": "0.282 / 0.318",
+     "percent": "0.897 / 0.932"
+    },
+    {
+     "face": "Roboto Flex, 1,000 px",
+     "digits_400": "0.440",
+     "digits_700": "0.545",
+     "minus": "0.500 / 0.543",
+     "point": "0.238 / 0.286",
+     "percent": "0.663 / 0.787"
+    }
+   ],
+   "notes": [
+    "The draft’s seven values are confirmed for six faces. Roboto Flex matches only at very large sizes, where the optical-size axis narrows the regular digits; at text sizes its digits nearly keep their width.",
+    "Red Hat Text passes the draft’s criterion, which measured only the zero, and fails a test of all ten digits: its bold nine is wider.",
+    "The minus sign matches the digit width in Instrument Sans, IBM Plex Sans, Hanken Grotesk and Red Hat Text, which confirms the draft’s note for the faces that keep width.",
+    "Instrument Sans: the decimal point and comma are 0.030 em wider in bold, about half a pixel at 15 px, as the live guide says."
+   ]
+  },
+  "specimen": "The sample’s weekly demand (80 85 95 100; 80 80 80 80; 120 140 160 180; 35 30 30 25; 13 11 9 7) and changes (+44%, +100%, +88%, −40%, −50%) set right-aligned with tabular figures, weight 700 laid over weight 400 in a second colour, with a face selector and a size control, so any shift shows as a doubled edge."
+ },
+ "works_to_open": [
+  {
+   "who": "Apple",
+   "work": "Weather, redesigned for iOS 15",
+   "year": 2021,
+   "url": "https://www.apple.com/newsroom/2021/09/ios-15-is-available-today/",
+   "take": "Below the forecast sits a grid of small modules, each with its own graphic, among them a coloured bar for the UV index and a compass for the wind."
+  },
+  {
+   "who": "Apple",
+   "work": "Design an effective chart, WWDC22 session 110340",
+   "year": 2022,
+   "url": "https://developer.apple.com/videos/play/wwdc2022/110340/",
+   "take": "How to make one chart focused, approachable and accessible, through its marks, axes, descriptions, interaction and colour."
+  },
+  {
+   "who": "Apple",
+   "work": "Design app experiences with charts, WWDC22 session 110342",
+   "year": 2022,
+   "url": "https://developer.apple.com/videos/play/wwdc2022/110342/",
+   "take": "When to use charts in an app, how to use them, and how a set of charts works together as a system."
+  },
+  {
+   "who": "Avalanche Canada",
+   "work": "Public avalanche forecast",
+   "year": null,
+   "url": "https://avalanche.ca/",
+   "take": "A danger rating for each of three elevation bands, alpine, treeline and below treeline, for today and the next two days: a compact forecast matrix written for a wide public."
+  },
+  {
+   "who": "Herbert Bayer",
+   "work": "World Geo-Graphic Atlas: A Composite of Man’s Environment",
+   "year": 1953,
+   "url": "https://purl.stanford.edu/ww690yj0229",
+   "take": "Maps, sections, charts and pictorial statistics composed spread by spread for the Container Corporation of America; a landmark of layered information graphics."
+  },
+  {
+   "who": "Nicholas Felton",
+   "work": "Feltron Annual Reports, 2005 to 2014",
+   "year": 2005,
+   "url": "http://feltron.com/",
+   "take": "Ten printed reports, each counting one year of the designer’s life in dense, precise graphics; a study in typographic rigour at small sizes."
+  },
+  {
+   "who": "Giorgia Lupi with Accurat",
+   "work": "Visual Data spreads for La Lettura",
+   "year": 2012,
+   "url": "https://giorgialupi.com/lalettura",
+   "take": "More than thirty data spreads for the Sunday cultural supplement of Corriere della Sera, each layering several kinds of data on one page."
+  },
+  {
+   "who": "Étienne-Jules Marey, after Charles Ibry",
+   "work": "Train schedule graph, La Méthode graphique",
+   "year": 1878,
+   "url": "https://archive.org/details/b20411583",
+   "take": "Trains between Paris and Lyon drawn as lines of distance against time, so that speed is a slope; Marey credits the method to the engineer Ibry. The 1885 printing repeats the figure."
+  },
+  {
+   "who": "Martin Wattenberg, with Joon Yu",
+   "work": "Map of the Market, SmartMoney.com",
+   "year": 1998,
+   "url": "https://www.bewitched.com/marketmap.html",
+   "take": "An early and widely seen treemap on the web: nested sectors, area for size, colour for change, laid out so that tiles stay close to square."
+  },
+  {
+   "who": "Otto Neurath, Marie Reidemeister, Gerd Arntz and colleagues",
+   "work": "The Vienna Method of Pictorial Statistics, later Isotype",
+   "year": 1925,
+   "url": "https://isotyperevisited.org/2010/09/isotype-revisited.php",
+   "take": "Each sign stands for a fixed quantity, so a larger amount is shown with more signs of the same size, never with a bigger sign."
+  },
+  {
+   "who": "Lucanet, formerly Causal",
+   "work": "Values with uncertainty and scenario comparison",
+   "year": 2024,
+   "url": "https://support.lucanet.com/en/documentation/xp-a---extended-planning-and-analysis/modeling-your-data/create-andedit-formulas/values-with-uncertainty",
+   "take": "Vendor documentation: an input entered as a range is evaluated by Monte Carlo simulation, and scenarios can be compared side by side in charts and tables."
+  },
+  {
+   "who": "Kinaxis",
+   "work": "Maestro, formerly RapidResponse",
+   "year": 2024,
+   "url": "https://www.kinaxis.com/en/maestro",
+   "take": "Vendor description: what-if scenarios that planners run and compare before acting."
+  },
+  {
+   "who": "Design Tokens Community Group",
+   "work": "Design Tokens Format Module 2025.10",
+   "year": 2025,
+   "url": "https://www.designtokens.org/tr/2025.10/format/",
+   "take": "The first stable version of a vendor-neutral format for design tokens, published as a W3C Community Group report on 28 October 2025; it is not a W3C Standard."
+  }
+ ],
+ "dropped": [
+  "Style Arcade, What is a WSSI? (vendor blog, page dated June 2026): replaced as the source for the weekly sales, stock and intake grid by the Routledge textbook chapter of Boardman, Parker-Strak and Henninger (2026); the vendor page does not describe the grid’s layout.",
+  "The newsvendor critical ratio linked to Wikipedia: replaced by Khouja’s literature review (Omega, 1999).",
+  "Bringhurst, as part of “Bringhurst; Tschichold, table rules, as summarised by Rutter”: Rutter’s article does not mention Bringhurst, so the reference is kept as Rutter’s article alone.",
+  "No reference failed verification outright. Combined entries in the draft (for example Tukey; Wainer, or Google; Radix) are split into one reference per work, and fourteen references were added to support claims in the essays: Newman and Scholl 2012, Spiegelhalter and colleagues 2011, Goodwin 2000, Kostenko and Hyndman 2006, Khouja 1999, Eschenbach 1992, Abbas and colleagues 2008, Chin 2024, Vicente 2002, Jenny and colleagues 2021, Patterson’s Shaded Relief, the OpenType tnum entry, Boardman and colleagues 2026, and IBCS version 2.0 as a separate entry."
+ ],
+ "corrections": [
+  "Type test. Red Hat Text keeps the width of its zero, but its bold nine is 0.651 em against 0.600 for the other digits, so it does not keep every digit’s width; the live guide (rule 9) lists it with the faces that do. Roboto Flex’s 0.444/0.546 holds only at very large sizes, where its optical-size axis narrows the regular digits; at 15 px the widths are 0.562/0.564 em. The draft names only seven of the seventeen faces it says were tested. Rechecked in headless Chrome on 3 October 2026.",
+  "Rutter (2017) does not mention Bringhurst. He quotes Tschichold and applies Tufte’s data-ink idea. Rule 8 of the live guide, which credits Bringhurst’s advice to Rutter’s summary, needs the same change.",
+  "Fildes, Goodwin, Lawrence and Nikolopoulos (2009) found that larger adjustments tended to improve accuracy; they did not report that “reasoned” adjustments helped. The evidence for asking for a reason comes from Goodwin’s experiment of 2000, now cited. Rule 11 of the live guide repeats the draft’s “large reasoned ones helped”.",
+  "The 6-12 chart and the count of 400 to 500 metrics come from Cedric Chin’s Commoncog essay of 2024, written from Colin Bryar’s practice, not from Working Backwards (2021), which describes the weekly business review and the side-by-side six-week and twelve-month chart without that name. Rule 2 of the live guide credits the book.",
+  "ISA-101 (2015) sets out a life cycle around each site’s HMI philosophy and style guide; no reliable source says it requires grey screens or reserves colour for abnormal states. Grey, low-colour screens are high-performance HMI practice (Hollifield and colleagues). Rule 2 of the live guide says the standard “follows the same discipline”, which should be softened.",
+  "Marey’s train graph already appears in the first edition of La Méthode graphique (1878); 1885 is a second printing. Marey credits the method to Ibry, but whether Ibry invented it is disputed (Wainer, Harik and Neter, 2013). Rule 7 of the live guide dates the graph 1885 and says the method was devised by Ibry.",
+  "IBCS is now at version 2.0, released in June 2026 and aligned with ISO 24896:2026, Notation for business reporting. Solid, Outlined, Hatched is the 2019 English edition published by IBCS Media (German: Gefüllt, gerahmt, schraffiert, Vahlen, 2019). In IBCS the forecast is hatched and outlined.",
+  "Bach and colleagues’ published paper (IEEE TVCG 29(1), 2023) has 41 design patterns, 19 for content and 22 for composition; 42 holds only for the May 2022 preprint.",
+  "Cleveland and McGill ranked shading last in their theory but did not test it; their experiments, and Heer and Bostock’s replication with nine judgement types, measured position, length, angle and area. Neither study found angle worse than length.",
+  "Javed, McDonnel and Elmqvist (2010): separate charts were more efficient for comparisons spanning many series, and one shared chart for comparisons close together. The draft gave only the first half.",
+  "The Table Lens (Rao and Card, 1994) is not the origin of the in-cell bar; Bertin’s matrices drew bars in cells earlier.",
+  "The tornado diagram is commonly attributed to Howard (1988), whose abstract does not mention it; the draft’s “likely origin” is softened. Practitioners set each bar at an input’s assessed 10th and 90th percentiles (Abbas and colleagues, 2008), not at a fixed ±10%.",
+  "Syntetos, Boylan and Croston’s cut-offs of 1.32 and 0.49 are confirmed. Kostenko and Hyndman (2006) showed the exact boundary meets the axes at 4/3 and 0.5 and that only two classes matter; the chapter now says so.",
+  "Fernandes and colleagues (2018) found fifty-dot dotplots best and cumulative curves close behind, both ahead of intervals, densities and text by one to five percentage points; the draft’s “beat intervals and point estimates” is replaced with the measured result.",
+  "“Firsts” are softened: Playfair’s chart is an early case, not “the first accounting graphic”; Brinton’s book is an early American manual; Univers was planned as a family, not “the first family designed as a programme”; the Map of the Market is an early and widely seen web treemap, which is all Wattenberg himself claims.",
+  "Dates and venues: Stokes and colleagues’ Striking a Balance is in IEEE TVCG 29(1), 2023, presented at VIS 2022 (the draft said 2022); Padilla, Kay and Hullman’s Uncertainty Visualization is dated 2021 in Wiley StatsRef (the draft’s 2022 handbook chapter could not be confirmed); Bertifier appeared in IEEE TVCG 20(12), 2014; MoMA dates Bell Centennial 1976 to 1978.",
+  "Links: the Internet Archive scan of Brinton linked in the live guide is a 1919 printing (the 1914 scan is now linked); the MoMA object linked for Sutnar and Lönberg-Holm is a folded leaflet, Catalog Design Process, not the book (the Art Institute of Chicago record is now linked); the article on the Dutch telephone directory hosted on Martin Majoor’s site is by Robin Kinross (Eye 16, 1995); the ECMWF meteogram page has moved, and the old address redirects.",
+  "Albers’s “1 + 1 = 3 or more”, which the draft linked to Interaction of Color, comes from his 1969 essay in Search Versus Re-Search.",
+  "Heer, Kong and Agrawala (2009): the draft’s “measured limits on how small” is replaced by the findings: mirroring cost nothing, two-band horizon graphs read better below 24 pixels, and four or more bands slowed readers.",
+  "Ferreira, Lee and Simchi-Levi (2016) and Caro and Gallien (2012): the unspecified “measured revenue effect” is now stated, about 9.7% (90% interval 2.3% to 17.8%) for Rue La La’s test group and about 6% in clearance revenue in Zara’s Belgian and Irish stores.",
+  "Fisher and colleagues (1994): the Sport Obermeyer case is now stated from the article: uncertainty read from the spread of independent forecasts, predictable styles made first, mismatch costs halved.",
+  "Removed or reworded claims that could not be confirmed: Braseth’s “aligned mini-trends and Gestalt grouping”; Robinson on “visual hierarchy” (the confirmed claims are function, lettering, structure, figure and ground, and colour); Nardi on “why end users trust spreadsheets” (the book is about why spreadsheets succeeded as end-user programming); Lokad’s list stops at a capital ceiling or a minimum return, not only a budget.",
+  "Isotype began in 1925 as the Vienna Method of Pictorial Statistics and took the name Isotype after the move to The Hague in 1934. Causal now belongs to Lucanet (October 2024) and its pages redirect; Kinaxis RapidResponse is now Maestro."
+ ],
+ "overview_figure": {
+  "id": "F0",
+  "title": "Les sources, par année et par domaine",
+  "caption": "Chaque point est l’une des 104 références de ce chapitre, placée à son année de publication sur la ligne de son domaine. L’essentiel des preuves mesurées est récent : 89 des références datent de 1984 ou après. Les formes qu’elles mettent à l’épreuve sont plus anciennes, des graphiques commerciaux de Playfair en 1786 et du manuel de Brinton en 1914 aux caractères des annuaires et des tableaux boursiers des années 1970 et 1990. Sélectionnez un point pour lire sa référence, et remarquez quels domaines reposent sur une longue pratique et lesquels sur l’expérimentation récente.",
+  "data_needed": "The overview_points list: one point per reference in this chapter, with its field and year of publication (for living web pages, the year of the version cited). Rows in the order of the chapter; a dot per point, stacked where several share a year; selecting a dot shows the reference. Computed from research.json."
+ },
+ "checked": "3 October 2026"
+}

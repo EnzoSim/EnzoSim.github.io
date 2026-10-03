@@ -1,0 +1,2079 @@
+{
+ "people": [
+  {
+   "id": "frutiger",
+   "g": 0,
+   "y": 1957,
+   "n": "Adrian Frutiger",
+   "l": "1928–2015 · Swiss type designer",
+   "w": "Univers, 1957",
+   "u": "https://en.wikipedia.org/wiki/Adrian_Frutiger",
+   "r": [
+    9
+   ],
+   "d": "Planned Univers as twenty-one variants drawn together and numbered by weight and width. Later drew the airport signage face released as Frutiger in 1976.",
+   "projects": [
+    {
+     "title": "Univers",
+     "year": 1957,
+     "what": "A sans serif family planned from the start as twenty-one variants, each named by a two-digit number for its weight and width."
+    },
+    {
+     "title": "OCR-B",
+     "year": 1968,
+     "what": "A monospaced face for optical character recognition, easier for people to read than OCR-A, accepted as a world standard in 1973."
+    },
+    {
+     "title": "Frutiger",
+     "year": 1976,
+     "what": "The print version of the alphabet he drew for the signs of Charles de Gaulle Airport, legible from a distance and at an angle."
+    },
+    {
+     "title": "Avenir",
+     "year": 1988,
+     "what": "A geometric sans serif with optically corrected shapes, intended for extended text."
+    }
+   ],
+   "brought": "He designed a typeface as one coordinated system, with every weight and width drawn and approved together and named by a code that gives its place in the family. In his signage and recognition faces he judged letters by how reliably they can be told apart in hard conditions: at a distance, at an angle, or by a machine.",
+   "learn": "Build a dashboard’s type from one family arranged as a small matrix of weight and width, and give each role one cell, for example a heavier weight for values and a narrower width for column heads. When a new kind of label appears, assign it an existing cell before adding a style.",
+   "featured": false,
+   "pull": "A type family planned as one system of weights and widths.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Adrian_Frutiger",
+    "https://en.wikipedia.org/wiki/OCR-B",
+    "https://en.wikipedia.org/wiki/Frutiger_(typeface)"
+   ]
+  },
+  {
+   "id": "gerstner",
+   "g": 0,
+   "y": 1964,
+   "n": "Karl Gerstner",
+   "l": "1930–2017 · Swiss designer",
+   "w": "Designing Programmes, 1964",
+   "u": "https://www.lars-mueller-publishers.com/designing-programmes-0",
+   "r": [
+    1
+   ],
+   "d": "Treated design as writing a programme that generates a family of solutions. His 1962 grid for the magazine Capital carries one to six columns on the same page.",
+   "projects": [
+    {
+     "title": "Gerstner + Kutter",
+     "year": 1958,
+     "what": "The Basel advertising agency he founded with Markus Kutter, renamed GGK when Paul Gredinger joined in 1962."
+    },
+    {
+     "title": "Capital grid",
+     "year": 1962,
+     "what": "A layout grid for the business magazine Capital, 58 units wide with 2-unit gutters, that carries one to six columns of whole units."
+    },
+    {
+     "title": "Designing Programmes",
+     "year": 1964,
+     "what": "Essays on design as the writing of a programme of rules from which many solutions follow."
+    },
+    {
+     "title": "Compendium for Literates",
+     "year": 1972,
+     "what": "A systematic analysis of letterforms and the variables a designer can change, published in German as Kompendium für Alphabeten."
+    }
+   ],
+   "brought": "He argued that a designer should first write the rules of a problem as a programme, and let those rules produce the individual solutions. His grid for Capital made the idea concrete: one module chosen so that every column count from one to six falls on whole units.",
+   "learn": "Before choosing column widths, pick a field whose width plus one gutter divides by every column count you need: Capital’s 58 units plus a 2-unit gutter make 60, which divides by one to six. Then give the important regions wider spans of that one grid.",
+   "featured": true,
+   "pull": "Write the rules first, and let the layouts follow from them.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Karl_Gerstner",
+    "https://www.lars-mueller-publishers.com/designing-programmes-0",
+    "https://commons.wikimedia.org/wiki/File:Karl_Gerstner_Capital_layout_grid.png"
+   ]
+  },
+  {
+   "id": "ruder",
+   "g": 0,
+   "y": 1967,
+   "n": "Emil Ruder",
+   "l": "1914–1970 · Swiss typographer",
+   "w": "Typographie, 1967",
+   "u": "https://niggli.ch/products/typographie",
+   "r": [
+    9
+   ],
+   "d": "Taught typography in Basel from 1942. His manual treats type as rhythm, proportion and the space inside and around letters.",
+   "projects": [
+    {
+     "title": "Typography at the Allgemeine Gewerbeschule Basel",
+     "year": 1942,
+     "what": "He taught typography to trade students from 1942, and with Armin Hofmann built a course known internationally by the mid-1950s."
+    },
+    {
+     "title": "Wesentliches",
+     "year": 1957,
+     "what": "Four articles in Typografische Monatsblätter, written from 1957 to 1959, on the plane, the line, the word and rhythm."
+    },
+    {
+     "title": "International Center for the Typographic Arts",
+     "year": 1962,
+     "what": "A centre in New York that he helped to found."
+    },
+    {
+     "title": "Typographie",
+     "year": 1967,
+     "what": "A manual of design in German, English and French that sums up twenty-five years of his teaching."
+    }
+   ],
+   "brought": "He taught that the white space inside and around letters is as much a material as the letters themselves, and that rhythm and contrast come from controlling it. His manual carried the Basel approach of sans serif type, asymmetric layout and the grid into design schools in Europe and North America.",
+   "learn": "Treat the spaces around figures as fixed tokens: one gap between a value and its unit, one between a sign and its digits, one between columns. Check them at the smallest size in use, since uneven gaps make a column look ragged even when its figures align.",
+   "featured": false,
+   "pull": "The space around a letter is part of the design.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Emil_Ruder",
+    "https://niggli.ch/en/products/typographie"
+   ]
+  },
+  {
+   "id": "aicher",
+   "g": 0,
+   "y": 1972,
+   "n": "Otl Aicher",
+   "l": "1922–1991 · German designer",
+   "w": "Munich Olympics, 1972",
+   "u": "https://www.otlaicher.de/en/articles/the-rainbow-games/",
+   "r": [
+    7
+   ],
+   "d": "Co-founded the Ulm School of Design in 1953 and led the design of the 1972 Munich Olympics, where his department produced the pictograms and a schedule of all sports on one sheet.",
+   "projects": [
+    {
+     "title": "Ulm School of Design",
+     "year": 1953,
+     "what": "A school of design he founded with Inge Scholl and Max Bill, open until 1968."
+    },
+    {
+     "title": "Lufthansa",
+     "year": 1962,
+     "what": "A corporate design for the airline, developed with his student group E5 at Ulm and implemented from 1963."
+    },
+    {
+     "title": "Munich Olympics",
+     "year": 1972,
+     "what": "The design of the Games: a set palette, Univers, pictograms drawn on a grid, and a schedule of all sports on one sheet."
+    },
+    {
+     "title": "Rotis",
+     "year": 1988,
+     "what": "A type family named after his home and studio near Leutkirch im Allgäu."
+    }
+   ],
+   "brought": "He treated a visual identity as a system of rules for colour, type, grid and symbols that many people could apply to thousands of items and keep consistent. In Munich his department turned that system into information, from pictograms built on one grid to a schedule that cross-indexes dates, events and pictograms on a single sheet.",
+   "learn": "When a screen lists events across categories, run one shared axis, such as dates, across every row and mark each event in its cell, so a reader finds any item by row and column. Draw all symbols on one construction grid so they read as a set.",
+   "featured": false,
+   "pull": "An identity is a set of rules that many hands can follow.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Otl_Aicher",
+    "https://www.otlaicher.de/en/articles/the-rainbow-games/",
+    "https://www.lars-mueller-publishers.com/a505lufthansa-und-graphic-design"
+   ]
+  },
+  {
+   "id": "crouwel",
+   "g": 0,
+   "y": 1977,
+   "n": "Wim Crouwel",
+   "l": "1928–2019 · Dutch designer",
+   "w": "Dutch telephone directory, 1977",
+   "u": "https://www.martinmajoor.com/2.2_telefont_article_eye.html",
+   "r": [
+    8
+   ],
+   "d": "A founder of Total Design in 1963, and designer for the Stedelijk Museum from 1964. With Jolijn van de Wouw he set the telephone directory in lower case, with numbers before names.",
+   "projects": [
+    {
+     "title": "Total Design",
+     "year": 1963,
+     "what": "A multidisciplinary design studio in Amsterdam that he co-founded, now called Total Identity."
+    },
+    {
+     "title": "Stedelijk Museum",
+     "year": 1964,
+     "what": "Posters, catalogues and exhibitions for the Amsterdam museum, on grid-based layouts, from 1964."
+    },
+    {
+     "title": "New Alphabet",
+     "year": 1967,
+     "what": "An experimental typeface of horizontal and vertical strokes only, drawn for the cathode-ray tubes of early screens and typesetters."
+    },
+    {
+     "title": "Dutch telephone directory",
+     "year": 1977,
+     "what": "With Jolijn van de Wouw, the first fully automated PTT directory, in condensed Univers, lower case only, with each number placed before its name."
+    }
+   ],
+   "brought": "He drew letters and pages from the constraints of production, from cathode-ray screens to computer typesetting, and let a strict grid order the content. His telephone directory showed that the order of fields can remove furniture: with the number next to the name, no dot leaders were needed.",
+   "learn": "In a dense list, place the two fields that are read together side by side, so no leader dots or rules are needed to join them, and test the result with readers. Total Design’s 1983 revision of the directory enlarged the type and cut the columns from four to three after readers complained that the type was too small.",
+   "featured": false,
+   "pull": "Let the limits of the medium shape the letter and the page.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Wim_Crouwel",
+    "https://en.wikipedia.org/wiki/New_Alphabet",
+    "https://www.martinmajoor.com/2.2_telefont_article_eye.html"
+   ]
+  },
+  {
+   "id": "vignelli",
+   "g": 0,
+   "y": 1977,
+   "n": "Massimo Vignelli",
+   "l": "1931–2014 · Italian designer",
+   "w": "Unigrid, 1977",
+   "u": "https://www.nps.gov/subjects/hfc/a-brief-history-of-the-unigrid.htm",
+   "r": [
+    1
+   ],
+   "d": "Designed the 1972 New York subway diagram. His Unigrid gave the United States National Park Service one sheet system for the brochures of all its parks.",
+   "projects": [
+    {
+     "title": "New York City Transit Authority Graphics Standards Manual",
+     "year": 1970,
+     "what": "With Bob Noorda at Unimark International, the manual for the signs and typography of the New York subway."
+    },
+    {
+     "title": "New York subway diagram",
+     "year": 1972,
+     "what": "A map of the network in straight lines at fixed angles, drawn under his direction by Joan Charysyn at Unimark."
+    },
+    {
+     "title": "Unigrid",
+     "year": 1977,
+     "what": "A modular system of folded panels, a black title band and standard type for the brochures of the National Park Service."
+    },
+    {
+     "title": "The Vignelli Canon",
+     "year": 2010,
+     "what": "A short book of his design principles, first released as a free e-book in 2009."
+    }
+   ],
+   "brought": "He showed how a grid, a title band and a few typefaces, fixed once, can carry varied content across hundreds of publications and keep them one family. His subway diagram put the clarity of lines and connections ahead of geography, and the public’s reaction to it showed where that choice reaches its limit.",
+   "learn": "Before designing any single view, write down the frame: the grid, the title band and two or three type sizes. Make each new view by filling that frame, and change the frame only when a view truly cannot fit it.",
+   "featured": false,
+   "pull": "A few fixed parts, well combined, can carry any content.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Massimo_Vignelli",
+    "https://en.wikipedia.org/wiki/New_York_City_Subway_map",
+    "https://www.nps.gov/subjects/hfc/a-brief-history-of-the-unigrid.htm"
+   ],
+   "corrections": "d: “Drew” changed to “Designed”. The 1972 map was drawn at Unimark by Joan Charysyn under Vignelli’s design direction (Wikipedia, New York City Subway map)."
+  },
+  {
+   "id": "carter",
+   "g": 0,
+   "y": 1978,
+   "n": "Matthew Carter",
+   "l": "born 1937 · British-born type designer",
+   "w": "Bell Centennial, 1975 to 1978",
+   "u": "https://en.wikipedia.org/wiki/Bell_Centennial",
+   "r": [
+    9
+   ],
+   "d": "Drew Bell Centennial for telephone directories printed fast on poor paper, and in the 1990s Verdana and Georgia for screens.",
+   "projects": [
+    {
+     "title": "Bell Centennial",
+     "year": 1978,
+     "what": "A typeface for AT&T’s telephone directories, with deep ink traps that keep small letters open when printed fast on newsprint."
+    },
+    {
+     "title": "Bitstream",
+     "year": 1981,
+     "what": "One of the first independent digital type foundries, which he co-founded with Mike Parker and others."
+    },
+    {
+     "title": "Georgia",
+     "year": 1993,
+     "what": "A serif face for Microsoft, designed to stay legible when printed small or shown on low-resolution screens."
+    },
+    {
+     "title": "Verdana",
+     "year": 1996,
+     "what": "A sans serif for Microsoft with a large x-height, wide spacing and clearly distinct similar letters, made for small sizes on screen."
+    }
+   ],
+   "brought": "He designed type around the way a medium fails, from ink spreading into newsprint to coarse pixels on early screens, so that the letters survive it. His faces for Microsoft were planned for the low resolution of 1990s displays and made small text on screen easier to read.",
+   "learn": "Test candidate faces at the smallest size and on the worst display the dashboard will meet, such as a projector or a low-density laptop, and keep the face whose figures 3, 5, 6, 8 and 9 stay distinct there.",
+   "featured": false,
+   "pull": "Draw each letter for the conditions that will damage it.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Matthew_Carter",
+    "https://en.wikipedia.org/wiki/Bell_Centennial",
+    "https://en.wikipedia.org/wiki/Verdana"
+   ]
+  },
+  {
+   "id": "mb",
+   "g": 0,
+   "y": 1981,
+   "n": "Josef Müller-Brockmann",
+   "l": "1914–1996 · Swiss designer",
+   "w": "Grid Systems in Graphic Design, 1981",
+   "u": "https://niggli.ch/en/products/rastersysteme-fur-die-visuelle-gestaltung",
+   "r": [
+    1
+   ],
+   "d": "Designed the Zurich Tonhalle concert posters from 1950 and was a founding editor of Neue Grafik in 1958. His manual of the grid calls it an aid, not a guarantee.",
+   "projects": [
+    {
+     "title": "Tonhalle concert posters",
+     "year": 1950,
+     "what": "A long series of posters for the Zurich concert hall, built from geometric form, scale, rhythm and repetition."
+    },
+    {
+     "title": "Neue Grafik",
+     "year": 1958,
+     "what": "A journal of Swiss design he founded and edited with Richard Paul Lohse, Hans Neuburg and Carlo Vivarelli."
+    },
+    {
+     "title": "Design consultant to IBM Europe",
+     "year": 1967,
+     "what": "An appointment he held while running his own firm, Müller-Brockmann & Co."
+    },
+    {
+     "title": "Grid Systems in Graphic Design",
+     "year": 1981,
+     "what": "A manual that shows how to construct a grid from the type size, the line spacing and the number of fields."
+    }
+   ],
+   "brought": "He turned the grid from studio practice into a method that could be taught, deriving fields and gutters from the type size and line spacing of the text. His concert posters showed that a strict structure can still carry movement and contrast.",
+   "learn": "Derive the grid from the text: fix the body size and line height first, then make row heights and vertical gaps whole multiples of that line height, so charts, cards and text share one baseline rhythm.",
+   "featured": false,
+   "pull": "Build the grid from the lines of the text.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Josef_M%C3%BCller-Brockmann",
+    "https://niggli.ch/en/products/rastersysteme-fur-die-visuelle-gestaltung"
+   ]
+  },
+  {
+   "id": "kinross",
+   "g": 0,
+   "y": 1985,
+   "n": "Robin Kinross",
+   "l": "British typographer and writer",
+   "w": "The rhetoric of neutrality, 1985",
+   "u": "https://www.jstor.org/stable/i267274",
+   "r": [
+    12
+   ],
+   "d": "Showed that even a railway timetable persuades. A calm, exact style is a rhetorical choice and should be owned as one.",
+   "projects": [
+    {
+     "title": "Hyphen Press",
+     "year": 1980,
+     "what": "A London publisher of books on design and typography that he founded and ran until 2017."
+    },
+    {
+     "title": "The rhetoric of neutrality",
+     "year": 1985,
+     "what": "An essay in Design Issues that examines British and Dutch railway timetables and argues that no information design is free of rhetoric."
+    },
+    {
+     "title": "Modern Typography",
+     "year": 1992,
+     "what": "A critical history that traces modern typography to the growing self-awareness of printing from around 1700."
+    },
+    {
+     "title": "The Transformer",
+     "year": 2009,
+     "what": "A book with Marie Neurath on the principles of making Isotype charts."
+    }
+   ],
+   "brought": "He argued that every piece of information design takes a position, so a plain and orderly style is itself a rhetorical choice and should be made knowingly. As historian and publisher he tied modern typography to its arguments and contexts, including the Isotype work he studied for his graduate thesis.",
+   "learn": "Put one line on every board that says what kind of numbers it shows (actual, plan, sample or model output), because a calm and exact layout lends authority to whatever figures it holds.",
+   "featured": false,
+   "pull": "A neutral-looking layout is still an argument.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Robin_Kinross",
+    "https://journals.uc.edu/index.php/vl/article/download/5808/4672/7485",
+    "https://en.wikipedia.org/wiki/Hyphen_Press"
+   ]
+  },
+  {
+   "id": "hochuli",
+   "g": 0,
+   "y": 1987,
+   "n": "Jost Hochuli",
+   "l": "born 1933 · Swiss book designer",
+   "w": "Detail in Typography, 1987",
+   "u": "https://editions-b42.com/en/produit/detail-in-typography/",
+   "r": [
+    9
+   ],
+   "d": "Covers what a grid cannot: letters, words, lines and the spaces between them.",
+   "projects": [
+    {
+     "title": "VGS publishing association",
+     "year": 1979,
+     "what": "A small publisher in St. Gallen that he co-founded, led until 2004 and designed books for until 2011."
+    },
+    {
+     "title": "Edition Typotron",
+     "year": 1983,
+     "what": "A series of books on typography and printing that he edited and designed until 1998."
+    },
+    {
+     "title": "Detail in Typography",
+     "year": 1987,
+     "what": "A short book on letters, words, lines and the spaces between them, since translated into eleven languages."
+    },
+    {
+     "title": "Designing Books",
+     "year": 1996,
+     "what": "A book with Robin Kinross on the practice and theory of book design."
+    }
+   ],
+   "brought": "He treated the spacing of letters, words and lines as the place where reading succeeds or fails. He taught that care for three decades, in Zurich from 1967 and in St. Gallen from 1980 to 1996, and practised it in the books he designed.",
+   "learn": "Set letter-spacing by role instead of accepting defaults: a little positive tracking for small capital labels, none for figures in a table, and check both at the size actually used.",
+   "featured": false,
+   "pull": "Reading is won or lost in the smallest spaces.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jost_Hochuli",
+    "https://editions-b42.com/en/produit/detail-in-typography/"
+   ]
+  },
+  {
+   "id": "robinson",
+   "g": 1,
+   "y": 1952,
+   "n": "Arthur Robinson",
+   "l": "1915–2004 · American cartographer",
+   "w": "The Look of Maps, 1952",
+   "u": "https://en.wikipedia.org/wiki/Arthur_H._Robinson",
+   "r": [
+    5
+   ],
+   "d": "Urged cartographers to treat the function of a map as part of its design. Taught at the University of Wisconsin from 1947.",
+   "projects": [
+    {
+     "title": "OSS map division",
+     "year": 1941,
+     "what": "As its head in the Second World War he oversaw some 5,000 hand-drawn maps and a 50-inch globe for President Roosevelt."
+    },
+    {
+     "title": "The Look of Maps",
+     "year": 1952,
+     "what": "His doctoral research, arguing that a map’s function should be part of its design."
+    },
+    {
+     "title": "Elements of Cartography",
+     "year": 1953,
+     "what": "A textbook that went through six editions to 1995 and became the most widely used in English-speaking countries."
+    },
+    {
+     "title": "Robinson projection",
+     "year": 1963,
+     "what": "A compromise world projection devised for Rand McNally and used by the National Geographic Society from 1988 to 1998."
+    }
+   ],
+   "brought": "He argued that a map’s design should follow from its function, and that conventions such as north at the top need a reason. At Wisconsin from 1947 he built a programme that granted degrees in cartography and trained many who went on to found programmes elsewhere.",
+   "learn": "Before choosing tones, rank every element on the screen into three or four levels of importance, then give each level one weight or tone, so the main figure stands forward and frames, grid lines and labels recede.",
+   "featured": false,
+   "pull": "A map’s appearance should follow from its purpose.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Arthur_H._Robinson",
+    "https://cartographicperspectives.org/index.php/journal/article/view/cp51-tyner",
+    "https://en.wikipedia.org/wiki/Robinson_projection"
+   ]
+  },
+  {
+   "id": "imhof",
+   "g": 1,
+   "y": 1965,
+   "n": "Eduard Imhof",
+   "l": "1895–1986 · Swiss cartographer",
+   "w": "Cartographic Relief Presentation, 1965 (English 1982)",
+   "u": "https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/",
+   "r": [
+    5
+   ],
+   "d": "Professor of cartography at ETH Zurich from 1925, known for the relief shading of Swiss school maps. His rules for colour keep large areas quiet and strong colour small.",
+   "projects": [
+    {
+     "title": "Cartographic Institute, ETH Zurich",
+     "year": 1925,
+     "what": "Founded when he became the first Swiss professor of cartography, a chair he held until 1965."
+    },
+    {
+     "title": "Schweizerischer Mittelschulatlas",
+     "year": 1932,
+     "what": "The Swiss secondary school atlas, every edition of which from 1932 to 1976 appeared under his direction."
+    },
+    {
+     "title": "International Cartographic Association",
+     "year": 1961,
+     "what": "He helped found the association and was its first president, from 1961 to 1964."
+    },
+    {
+     "title": "Kartographische Geländedarstellung",
+     "year": 1965,
+     "what": "His book on showing terrain, published in English in 1982 as Cartographic Relief Presentation."
+    }
+   ],
+   "brought": "He developed a way of shading relief that makes terrain read as form while leaving room for the other content of the map. His rules for colour, a muted ground for large areas and strong colour only in small ones, reached information design through Edward Tufte.",
+   "learn": "Keep large surfaces such as the page, panels and table backgrounds in quiet low-saturation tones, and reserve full saturation for small marks that need attention, such as a value outside its range or the selected item.",
+   "featured": false,
+   "pull": "Keep large areas quiet and strong colour small.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Eduard_Imhof",
+    "https://www.edwardtufte.com/notebook/a-classic-imhofs-cartographic-relief-presentation/"
+   ]
+  },
+  {
+   "id": "bertin",
+   "g": 1,
+   "y": 1967,
+   "n": "Jacques Bertin",
+   "l": "1918–2010 · French cartographer",
+   "w": "Semiology of Graphics, 1967",
+   "u": "https://www.esri.com/en-us/esri-press/browse/semiology-of-graphics-diagrams-networks-maps",
+   "r": [
+    6,
+    7
+   ],
+   "d": "Founded a cartography laboratory in Paris in 1954. Named the visual variables a mark can vary by, and reordered the rows and columns of a matrix until its structure showed.",
+   "projects": [
+    {
+     "title": "Laboratoire de cartographie",
+     "year": 1954,
+     "what": "The cartography laboratory of the École pratique des hautes études in Paris, which he founded and directed."
+    },
+    {
+     "title": "Sémiologie graphique",
+     "year": 1967,
+     "what": "A theory of graphics for diagrams, networks and maps, translated into English in 1983 as Semiology of Graphics."
+    },
+    {
+     "title": "La Graphique et le traitement graphique de l’information",
+     "year": 1977,
+     "what": "A book on graphics as a tool for analysing data, translated into English in 1981."
+    }
+   ],
+   "brought": "He named the visual variables of a mark (position on the plane, size, value, texture, colour, orientation and shape) and stated which kinds of data each can carry. He treated a graphic as a tool for finding structure, permuting the rows and columns of a matrix until groups appear.",
+   "learn": "Match each encoding to the data before drawing: lightness or size for ordered quantities, hue or shape for categories, position for anything that must be compared precisely. Sort rows and columns by a meaningful value so that patterns form blocks.",
+   "featured": true,
+   "pull": "Choose each visual variable for what it can express.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jacques_Bertin",
+    "https://www.esri.com/en-us/esri-press/browse/semiology-of-graphics-diagrams-networks-maps",
+    "https://aviz.fr/bertifier"
+   ]
+  },
+  {
+   "id": "woods",
+   "g": 2,
+   "y": 1984,
+   "n": "David Woods",
+   "l": "American researcher, Ohio State University",
+   "w": "Visual momentum, 1984",
+   "u": "https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7",
+   "r": [
+    7
+   ],
+   "d": "A founder of cognitive systems engineering. Named visual momentum: how easily a reader carries what was just seen into the next view.",
+   "projects": [
+    {
+     "title": "Cognitive systems engineering",
+     "year": 1983,
+     "what": "A paper with Erik Hollnagel that made the joint system of people and machines the unit of design."
+    },
+    {
+     "title": "Visual momentum",
+     "year": 1984,
+     "what": "A paper on keeping operators oriented as they move between many display pages."
+    },
+    {
+     "title": "Joint Cognitive Systems",
+     "year": 2005,
+     "what": "Two books with Erik Hollnagel that set out the foundations and patterns of the field."
+    },
+    {
+     "title": "Resilience Engineering",
+     "year": 2006,
+     "what": "A book edited with Erik Hollnagel and Nancy Leveson on how systems adapt to the unexpected."
+    }
+   ],
+   "brought": "From work on power-plant control rooms at Westinghouse he described how operators lose their way among many displays, and named the remedies: an overview, landmarks, overlap between views and spatial layout. With Erik Hollnagel he made the joint system of people and machines the unit of design.",
+   "learn": "Keep recurring elements such as the date axis, the totals and the filters in fixed positions in every view, and repeat a compact overview on each detail screen, so a reader who moves between views does not have to search again.",
+   "featured": false,
+   "pull": "Help the reader carry what they just saw into the next view.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/David_Woods_(safety_researcher)",
+    "https://en.wikipedia.org/wiki/Cognitive_systems_engineering",
+    "https://dl.acm.org/doi/10.1016/S0020-7373(84)80043-7"
+   ]
+  },
+  {
+   "id": "rasmussen",
+   "g": 2,
+   "y": 1992,
+   "n": "Jens Rasmussen and Kim Vicente",
+   "l": "Danish engineer, 1926–2018 · Canadian engineer",
+   "w": "Ecological interface design, 1992",
+   "u": "https://orbit.dtu.dk/en/publications/ecological-interface-design-theoretical-foundations/",
+   "r": [
+    4
+   ],
+   "d": "Rasmussen worked on system safety at Risø National Laboratory, and Vicente taught at the University of Toronto. Their method asks a display to make the constraints of the work visible.",
+   "individuals": [
+    {
+     "name": "Jens Rasmussen",
+     "life": "1926–2018 · Danish engineer, Risø National Laboratory"
+    },
+    {
+     "name": "Kim Vicente",
+     "life": "Canadian engineer, University of Toronto"
+    }
+   ],
+   "projects": [
+    {
+     "title": "Skills, rules, knowledge",
+     "year": 1983,
+     "what": "Rasmussen’s framework of three levels of behaviour, from automatic skill to reasoning about an unfamiliar problem."
+    },
+    {
+     "title": "Abstraction hierarchy",
+     "year": 1985,
+     "what": "Rasmussen’s description of a work domain at five levels, from its purposes down to its physical equipment."
+    },
+    {
+     "title": "Ecological interface design",
+     "year": 1992,
+     "what": "Vicente and Rasmussen’s method for making the constraints of a work domain visible on the interface."
+    },
+    {
+     "title": "Cognitive Work Analysis",
+     "year": 1999,
+     "what": "Vicente’s textbook on analysing work so that tools support people in events nobody anticipated."
+    }
+   ],
+   "brought": "They argued that an interface should show the physical and functional laws of the system it controls, so operators can reason from them when something unforeseen happens. Their framework matches kinds of display to levels of behaviour, so routine monitoring can run on perception and attention is left for solving problems.",
+   "learn": "List the identities your figures must obey, such as opening stock plus receipts minus sales equals closing stock, and draw the most important one as geometry, so a broken constraint shows as a broken shape.",
+   "featured": false,
+   "pull": "Make the laws of the system visible on the screen.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jens_Rasmussen_(human_factors_expert)",
+    "https://en.wikipedia.org/wiki/Kim_Vicente",
+    "https://en.wikipedia.org/wiki/Ecological_interface_design"
+   ]
+  },
+  {
+   "id": "hollifield",
+   "g": 2,
+   "y": 2008,
+   "n": "Bill Hollifield and co-authors",
+   "l": "Process-control engineers",
+   "w": "The High Performance HMI Handbook, 2008",
+   "u": "https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ",
+   "r": [
+    2
+   ],
+   "d": "Argued for grey process screens, analog indicators with a marked normal range, and colour kept for abnormal states.",
+   "individuals": [
+    {
+     "name": "Bill Hollifield",
+     "life": "Alarm management consultant, PAS"
+    }
+   ],
+   "projects": [
+    {
+     "title": "The Alarm Management Handbook",
+     "year": 2006,
+     "what": "Hollifield and Habibi’s guide to alarm philosophy, the rationalisation of existing alarms and the running of alarm systems in process plants."
+    },
+    {
+     "title": "The High Performance HMI Handbook",
+     "year": 2008,
+     "what": "A guide to process displays with muted grey backgrounds, analog indicators that show the normal range, and colour kept for abnormal conditions."
+    }
+   ],
+   "brought": "They argued that bright, pictorial process screens hide the conditions operators most need to see, and proposed muted screens on which only abnormal states stand out. Their indicators show where a value sits against its normal range, so a deviation can be seen before a number is read.",
+   "learn": "Give each key measure a short scale with its normal range drawn as a grey band, keep everything inside the range in neutral tones, and add colour only when a value leaves the band, so that colour on the screen always means look here.",
+   "featured": false,
+   "pull": "Grey for normal, so that abnormal is the only colour.",
+   "sources": [
+    "https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ",
+    "https://www.chemicalprocessing.com/vendor-news/news/11357280/pas-publishes-second-edition-of-the-alarm-management-handbook",
+    "https://www.controlglobal.com/articles/2006/113/"
+   ]
+  },
+  {
+   "id": "playfair",
+   "g": 3,
+   "y": 1786,
+   "n": "William Playfair",
+   "l": "1759–1823 · Scottish engineer and political economist",
+   "w": "The Commercial and Political Atlas, 1786",
+   "u": "https://en.wikipedia.org/wiki/William_Playfair",
+   "r": [
+    4
+   ],
+   "d": "Introduced the line, area and bar chart, and in 1801 the pie chart. His chart of imports and exports tints the balance of trade between the two lines.",
+   "projects": [
+    {
+     "title": "The Commercial and Political Atlas",
+     "year": 1786,
+     "what": "Forty-three time-series charts of trade and finance, and one bar chart of Scotland’s trade with seventeen countries."
+    },
+    {
+     "title": "The Statistical Breviary",
+     "year": 1801,
+     "what": "A compilation of national statistics, with what are likely the first pie charts and circle graphs."
+    },
+    {
+     "title": "Statistical Account of the United States of America",
+     "year": 1805,
+     "what": "His translation of a book by D. F. Donnant, to which he added a pie chart of land by state."
+    }
+   ],
+   "brought": "He showed economic data as graphs when such figures appeared only in tables, and argued that charts communicate better than tables. He drew the quantity that mattered as a shape, so the balance of trade became the tinted area between two lines.",
+   "learn": "When a key figure is the difference between two series, such as plan and actual, plot both on one scale and fill the space between them with the gap labelled, so its size and sign over time can be read directly.",
+   "featured": true,
+   "pull": "Draw the difference as an area, and nobody has to subtract.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/William_Playfair"
+   ]
+  },
+  {
+   "id": "marey",
+   "g": 3,
+   "y": 1878,
+   "n": "Étienne-Jules Marey",
+   "l": "1830–1904 · French physiologist",
+   "w": "La Méthode graphique, 1878 and 1885",
+   "u": "https://en.wikipedia.org/wiki/%C3%89tienne-Jules_Marey",
+   "r": [
+    7
+   ],
+   "d": "Made the case for recording by graph, and reproduced the train timetable drawn as one picture. Went on to develop chronophotography.",
+   "projects": [
+    {
+     "title": "La Méthode graphique",
+     "year": 1878,
+     "what": "A book on recording experiments as graphs, expanded in 1885 with a supplement on photography; it reproduced a train schedule drawn by a method Marey credited to the engineer Charles Ibry."
+    },
+    {
+     "title": "Chronophotographic gun",
+     "year": 1882,
+     "what": "A camera that recorded twelve frames a second, used to study the movement of animals and people."
+    },
+    {
+     "title": "Le Mouvement",
+     "year": 1894,
+     "what": "A book on human and animal movement drawn from his chronophotographic studies."
+    }
+   ],
+   "brought": "He built instruments that recorded physiological processes directly as curves, and made the case for the graph as the record of an experiment. By collecting graphic methods from other fields, including Ibry’s train schedule, he showed that one pair of axes can hold a whole system of moving parts.",
+   "learn": "When many items move through the same process, orders through stages or deliveries along a route, give them one pair of axes and draw each as a line, so delays show as changes of slope and conflicts as crossings.",
+   "featured": false,
+   "pull": "One pair of axes can hold a whole timetable.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/%C3%89tienne-Jules_Marey",
+    "https://en.wikipedia.org/wiki/Charles_Ibry"
+   ]
+  },
+  {
+   "id": "brinton",
+   "g": 3,
+   "y": 1914,
+   "n": "Willard Brinton",
+   "l": "1880–1957 · American engineer",
+   "w": "Graphic Methods for Presenting Facts, 1914",
+   "u": "https://archive.org/details/cu31924032626792",
+   "r": [
+    2
+   ],
+   "d": "Wrote an early American handbook of charts for a general audience, without mathematics or jargon.",
+   "projects": [
+    {
+     "title": "Graphic Methods for Presenting Facts",
+     "year": 1914,
+     "what": "A handbook of chart examples for business people, social workers and legislators, written without mathematics."
+    },
+    {
+     "title": "Joint Committee on Standards for Graphic Presentation",
+     "year": 1915,
+     "what": "The committee he chaired published seventeen basic rules for charts, among them a preference for lengths over areas and volumes."
+    },
+    {
+     "title": "Graphic Presentation",
+     "year": 1939,
+     "what": "His second book on graphic methods, a renewed version of the first."
+    }
+   ],
+   "brought": "He wrote for business people, social workers and legislators rather than statisticians, and showed by example how to choose and draw a chart for a report. He also pushed for common standards, chairing a joint committee of fifteen national societies that published rules for charts in 1915.",
+   "learn": "Show quantities as lengths on a common scale, and draw the zero or 100 per cent base line more strongly than the other grid lines, two of the rules his committee published in 1915.",
+   "featured": false,
+   "pull": "Show facts so that a busy reader reads them correctly.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Willard_C._Brinton",
+    "https://archive.org/details/cu31924032626792"
+   ]
+  },
+  {
+   "id": "shewhart",
+   "g": 3,
+   "y": 1924,
+   "n": "Walter Shewhart and Donald Wheeler",
+   "l": "American statisticians",
+   "w": "The control chart, 1924",
+   "u": "https://commoncog.com/process-behaviour-charts-more-than-you-need/",
+   "r": [
+    3
+   ],
+   "d": "Shewhart drew the first control chart at Western Electric in 1924, to separate chance variation from assignable causes. Wheeler’s Understanding Variation brought the method to managers in 1993.",
+   "individuals": [
+    {
+     "name": "Walter Shewhart",
+     "life": "1891–1967 · American physicist and statistician, Western Electric and Bell Telephone Laboratories"
+    },
+    {
+     "name": "Donald Wheeler",
+     "life": "American statistician, University of Tennessee until 1982, then consultant"
+    }
+   ],
+   "projects": [
+    {
+     "title": "The control chart memorandum",
+     "year": 1924,
+     "what": "Shewhart’s one-page memo at Western Electric, with the first schematic control chart."
+    },
+    {
+     "title": "Economic Control of Quality of Manufactured Product",
+     "year": 1931,
+     "what": "Shewhart’s book on chance and assignable causes of variation and the state of statistical control."
+    },
+    {
+     "title": "Understanding Variation",
+     "year": 1993,
+     "what": "Wheeler’s short book applying process behaviour charts to the figures managers read every month."
+    }
+   ],
+   "brought": "Shewhart gave industry a test for telling routine variation from a change worth investigating: limits computed from the process’s own data. Wheeler showed managers how to apply it to business figures with the chart of individual values and moving ranges.",
+   "learn": "Before calling a week good or bad, compute natural process limits from a baseline of past values (the average plus and minus 2.66 times the average moving range) and flag only points outside them or long runs on one side of the average.",
+   "featured": true,
+   "pull": "Separate routine variation from signals before reacting.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Walter_A._Shewhart",
+    "https://en.wikipedia.org/wiki/Donald_J._Wheeler",
+    "https://en.wikipedia.org/wiki/Shewhart_individuals_control_chart"
+   ]
+  },
+  {
+   "id": "neurath",
+   "g": 3,
+   "y": 1925,
+   "n": "Otto Neurath, Marie Reidemeister and Gerd Arntz",
+   "l": "Vienna, from 1925",
+   "w": "Isotype",
+   "u": "https://isotyperevisited.org/",
+   "r": [],
+   "d": "Developed a picture language for statistics at the Social and Economic Museum in Vienna. A larger quantity is shown by more signs of the same size, never by a larger sign.",
+   "individuals": [
+    {
+     "name": "Otto Neurath",
+     "life": "1882–1945 · Austrian philosopher and economist"
+    },
+    {
+     "name": "Marie Reidemeister",
+     "life": "1898–1986 · German designer, later Marie Neurath"
+    },
+    {
+     "name": "Gerd Arntz",
+     "life": "1900–1988 · German artist"
+    }
+   ],
+   "projects": [
+    {
+     "title": "Gesellschafts- und Wirtschaftsmuseum",
+     "year": 1925,
+     "what": "Otto Neurath’s social and economic museum in Vienna, where the picture method was developed until 1934."
+    },
+    {
+     "title": "Gesellschaft und Wirtschaft",
+     "year": 1930,
+     "what": "An atlas of 100 statistical charts in what was then called the Vienna method."
+    },
+    {
+     "title": "International Picture Language",
+     "year": 1936,
+     "what": "Otto Neurath’s statement of the first rules of Isotype."
+    },
+    {
+     "title": "Isotype Institute",
+     "year": 1942,
+     "what": "Founded in England by Otto and Marie Neurath; after 1945 Marie continued its work, largely in books for young readers."
+    }
+   ],
+   "brought": "They built a method for showing social and economic statistics to the general public with standard pictograms, each worth a fixed amount and repeated to show more. They also defined the transformer, the person who turns data and expert knowledge into a chart, a role close to that of an information designer today.",
+   "learn": "When a count matters, such as 80 pairs of boots not served, show it as repeated units of fixed value that can be counted, and never enlarge one symbol to mean more. Name one person to decide what the chart must say before anyone draws it.",
+   "featured": false,
+   "pull": "More of something means more signs, never a bigger sign.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Isotype_(picture_language)",
+    "https://en.wikipedia.org/wiki/Marie_Neurath",
+    "https://en.wikipedia.org/wiki/Gerd_Arntz"
+   ]
+  },
+  {
+   "id": "gowers",
+   "g": 3,
+   "y": 1948,
+   "n": "Ernest Gowers",
+   "l": "1880–1966 · British civil servant",
+   "w": "Plain Words, 1948",
+   "u": "https://en.wikipedia.org/wiki/The_Complete_Plain_Words",
+   "r": [
+    12
+   ],
+   "d": "Wrote a guide to clear official English at the request of the Treasury, to replace jargon with a short, plain style.",
+   "projects": [
+    {
+     "title": "Plain Words",
+     "year": 1948,
+     "what": "A 94-page guide for civil servants, written at the Treasury’s request, of which more than 150,000 copies sold by the end of 1948."
+    },
+    {
+     "title": "Royal Commission on Capital Punishment",
+     "year": 1953,
+     "what": "The report of the commission he chaired from 1949."
+    },
+    {
+     "title": "The Complete Plain Words",
+     "year": 1954,
+     "what": "Plain Words and its sequel, ABC of Plain Words, combined into one book that has stayed in print through several revisions."
+    },
+    {
+     "title": "Modern English Usage, second edition",
+     "year": 1965,
+     "what": "The first revision of H. W. Fowler’s dictionary of usage, in print since 1926."
+    }
+   ],
+   "brought": "He showed officials, with examples sent in by government departments, how to replace abstract and padded phrases with short, concrete words that members of the public could follow. His revision of Fowler kept a standard guide to English usage current for another generation.",
+   "learn": "Label each figure the way a colleague would say it aloud, lost sales rather than unfilled demand quantity, and test every label by asking someone outside the team what it counts.",
+   "featured": false,
+   "pull": "Write so the reader understands at the first reading.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ernest_Gowers",
+    "https://en.wikipedia.org/wiki/The_Complete_Plain_Words"
+   ]
+  },
+  {
+   "id": "spear",
+   "g": 3,
+   "y": 1952,
+   "n": "Mary Eleanor Spear",
+   "l": "1897–1986 · American graphic analyst",
+   "w": "Charting Statistics, 1952",
+   "u": "https://en.wikipedia.org/wiki/Mary_Eleanor_Spear",
+   "r": [
+    10
+   ],
+   "d": "Worked as a graphic analyst for United States federal agencies. Her range bar with an interquartile box is regarded as a forerunner of the box plot.",
+   "projects": [
+    {
+     "title": "Charting Statistics",
+     "year": 1952,
+     "what": "A manual of chart types for government and business reports, which introduced the range bar with an interquartile box."
+    },
+    {
+     "title": "Practical Charting Techniques",
+     "year": 1969,
+     "what": "An updated and longer version of the first book, with a chapter on how charts mislead."
+    }
+   ],
+   "brought": "Over some forty years as a graphic analyst for federal agencies, she wrote practical manuals on choosing and drawing charts for official reports, including advice on charts for television. She described charting as work for three roles, an analyst, a draftsman and a communicator, and her range bar anticipated John Tukey’s box plot by almost two decades.",
+   "learn": "Where a row must show the spread of observed values, use a compact range bar: a thin line from lowest to highest, a box for the middle half and a tick for the median, on the same scale as the other rows.",
+   "featured": false,
+   "pull": "Show the spread of a row in one compact bar.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mary_Eleanor_Spear",
+    "https://en.wikipedia.org/wiki/Box_plot"
+   ]
+  },
+  {
+   "id": "ehrenberg",
+   "g": 3,
+   "y": 1977,
+   "n": "Andrew Ehrenberg",
+   "l": "1926–2010 · British statistician",
+   "w": "Rudiments of numeracy, 1977",
+   "u": "https://www.jstor.org/stable/2344922",
+   "r": [
+    8
+   ],
+   "d": "A marketing scientist known for laws of buyer behaviour. His rules for tables: round to two varying digits, order rows by size, compare down a column.",
+   "projects": [
+    {
+     "title": "Repeat-Buying",
+     "year": 1972,
+     "what": "His account of the regular patterns in how consumers buy a brand again and again."
+    },
+    {
+     "title": "Data Reduction",
+     "year": 1975,
+     "what": "A book arguing that patterns in data are found, and shown, through simple tables."
+    },
+    {
+     "title": "Rudiments of numeracy",
+     "year": 1977,
+     "what": "A paper in the Journal of the Royal Statistical Society with his rules for tables of figures."
+    },
+    {
+     "title": "The Dirichlet model",
+     "year": 1984,
+     "what": "With Gerald Goodhardt and Chris Chatfield, a model of brand choice that accounts for regularities such as double jeopardy."
+    }
+   ],
+   "brought": "He tested what makes a table of numbers easy to read and reduced it to a few rules: round hard, order by size, compare down columns, and give averages as a focus. He brought the same habits to marketing data and found regularities in buying behaviour that held across many markets.",
+   "learn": "Round each figure to the two digits that vary, order rows by size, put the numbers to be compared in a column, and add a row or column average as a reference.",
+   "featured": true,
+   "pull": "Round hard, order by size, compare down the column.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Andrew_S._C._Ehrenberg",
+    "https://www.jstor.org/stable/2344922"
+   ]
+  },
+  {
+   "id": "tufte",
+   "g": 3,
+   "y": 1983,
+   "n": "Edward Tufte",
+   "l": "born 1942 · American statistician",
+   "w": "The Visual Display of Quantitative Information, 1983",
+   "u": "https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/",
+   "r": [
+    2,
+    5
+   ],
+   "d": "Professor emeritus at Yale. His books made small multiples, layering and the ratio of data to ink common vocabulary, and he named the sparkline.",
+   "projects": [
+    {
+     "title": "The Visual Display of Quantitative Information",
+     "year": 1983,
+     "what": "A self-published book on the principles and history of statistical graphics, which introduced data-ink and chartjunk."
+    },
+    {
+     "title": "Envisioning Information",
+     "year": 1990,
+     "what": "A book on showing many dimensions on flat paper, with chapters on layering and separation and on small multiples."
+    },
+    {
+     "title": "Visual Explanations",
+     "year": 1997,
+     "what": "A book on showing motion, process, cause and effect."
+    },
+    {
+     "title": "Beautiful Evidence",
+     "year": 2006,
+     "what": "A book on presenting evidence, which named the sparkline."
+    }
+   ],
+   "brought": "He set out principles for statistical graphics with examples from two centuries of practice: show the data, remove ink that carries no information, compare small multiples on shared scales. The terms he coined or popularised, data-ink, chartjunk, small multiples and sparkline, gave practitioners a shared vocabulary for arguing about design.",
+   "learn": "Set a word-sized sparkline of the last 12 to 26 periods beside each headline figure, with a grey band for the normal range where one exists, and delete any border, fill or grid line that carries no data.",
+   "featured": true,
+   "pull": "Spend ink on data, and erase what carries none.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Edward_Tufte",
+    "https://www.edwardtufte.com/book/the-visual-display-of-quantitative-information/",
+    "https://en.wikipedia.org/wiki/Sparkline"
+   ],
+   "corrections": "u: the link pointed to the page for Envisioning Information (1990) while w names The Visual Display of Quantitative Information (1983); changed to the page for the book named."
+  },
+  {
+   "id": "few",
+   "g": 3,
+   "y": 2006,
+   "n": "Stephen Few",
+   "l": "American consultant and author",
+   "w": "Bullet Graph Design Specification, 2006",
+   "u": "https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf",
+   "r": [
+    1,
+    2
+   ],
+   "d": "Founded the consultancy Perceptual Edge in 2003. Designed the bullet graph to replace dashboard gauges, and listed the common mistakes of dashboard layout.",
+   "projects": [
+    {
+     "title": "Show Me the Numbers",
+     "year": 2004,
+     "what": "A book on designing tables and graphs for business communication."
+    },
+    {
+     "title": "Information Dashboard Design",
+     "year": 2006,
+     "what": "A book on the visual design of business dashboards."
+    },
+    {
+     "title": "Bullet Graph Design Specification",
+     "year": 2006,
+     "what": "The definition of the bullet graph: a label, a linear scale, a featured measure, up to two comparative measures and two to five qualitative ranges, revised in 2013."
+    },
+    {
+     "title": "With Dashboards, Formatting and Layout Definitely Matter",
+     "year": 2008,
+     "what": "A paper on dashboard layout that counts the rigid symmetrical grid among common mistakes."
+    }
+   ],
+   "brought": "He translated perception research and Tufte’s principles into practical rules for the tables, graphs and dashboards of business reporting. He designed compact forms for monitoring screens, above all the bullet graph, to replace gauges and meters that take much space and show little.",
+   "learn": "Replace each gauge with a bar on a linear scale and a tick for the comparator, and size dashboard regions by importance, so the main evidence gets a wide region and secondary measures narrow ones.",
+   "featured": true,
+   "pull": "Small linear instruments, read at a glance.",
+   "sources": [
+    "https://www.perceptualedge.com/about.php",
+    "https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf",
+    "https://www.perceptualedge.com/articles/Whitepapers/Formatting_and_Layout_Matter.pdf"
+   ]
+  },
+  {
+   "id": "hichert",
+   "g": 3,
+   "y": 2015,
+   "n": "Rolf Hichert",
+   "l": "German consultant",
+   "w": "International Business Communication Standards, 2015",
+   "u": "https://www.ibcs.com/",
+   "r": [
+    6
+   ],
+   "d": "Initiated a notation for business reports that grew out of his consulting since the 1980s, and was president of the association that publishes it until 2026. Scenarios are told apart by fill, and hue is left free.",
+   "projects": [
+    {
+     "title": "HICHERT+PARTNER",
+     "year": 2004,
+     "what": "The consultancy he founded, today the IBCS Institute, which trains and certifies report designers."
+    },
+    {
+     "title": "IBCS Association",
+     "year": 2013,
+     "what": "The new association to which he transferred most of his work, and which publishes the standards for free use."
+    },
+    {
+     "title": "IBCS version 1.0",
+     "year": 2015,
+     "what": "The first release of the International Business Communication Standards, approved by the association’s members in Amsterdam."
+    },
+    {
+     "title": "Solid, Outlined, Hatched",
+     "year": 2019,
+     "what": "A book with Jürgen Faisst on why reports need a notation and how to apply one to charts and tables."
+    }
+   ],
+   "brought": "He gathered the advice of Playfair, Brinton, Tufte and Few into a standard that companies can adopt, with fixed meanings for fills, scenarios, scales and labels. He argued that business reports need a shared notation in the way music and engineering drawing have one.",
+   "learn": "Fix one fill per scenario across every report (solid for actual, outlined for plan, hatched or lighter for forecast, grey for the previous period), so readers learn it once and hue stays free for highlighting.",
+   "featured": true,
+   "pull": "Reports need a notation as fixed as a musical score.",
+   "sources": [
+    "https://www.ibcs.com/consultant/rolf-hichert/",
+    "https://en.wikipedia.org/wiki/International_Business_Communication_Standards",
+    "https://www.ibcs.com/resource/solid-outlined-hatched/"
+   ],
+   "corrections": "d: “Leads the association” is out of date. The IBCS site says he was President of the IBCS Association until June 2026 and is now Honorary President; Bernie Smith is the current President. He founded HICHERT+PARTNER (now the IBCS Institute) in 2004 and transferred most of his intellectual property to the new IBCS Association in 2013."
+  },
+  {
+   "id": "albers",
+   "g": 4,
+   "y": 1963,
+   "n": "Josef Albers",
+   "l": "1888–1976 · German-American artist and teacher",
+   "w": "Interaction of Color, 1963",
+   "u": "https://en.wikipedia.org/wiki/Josef_Albers",
+   "r": [
+    5
+   ],
+   "d": "Taught at the Bauhaus, Black Mountain College and Yale. Showed that a colour is always read against its surround.",
+   "projects": [
+    {
+     "title": "Black Mountain College",
+     "year": 1933,
+     "what": "He led painting at the experimental college in North Carolina until 1949."
+    },
+    {
+     "title": "Homage to the Square",
+     "year": 1950,
+     "what": "A series of more than 1,000 works of three or four nested squares, made to study how colours act on each other."
+    },
+    {
+     "title": "Interaction of Color",
+     "year": 1963,
+     "what": "A record of his colour course, first issued with 150 silkscreen plates and in print ever since."
+    }
+   ],
+   "brought": "He taught colour through exercises with coloured paper in which one colour can be made to look like two and two like one, so that colour was studied by observation and experiment. He showed that a colour’s appearance depends on its neighbours, its area and its quantity, and cannot be fixed by its specification alone.",
+   "learn": "Test every status colour on each surface it will sit on, such as a white field, a grey panel and dark mode, and adjust it per surface instead of reusing one value and assuming it reads the same everywhere.",
+   "featured": false,
+   "pull": "A colour is never seen alone.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Josef_Albers",
+    "https://en.wikipedia.org/wiki/Homage_to_the_Square",
+    "https://yalebooks.yale.edu/book/9780300179354/interaction-of-color/"
+   ]
+  },
+  {
+   "id": "cleveland",
+   "g": 4,
+   "y": 1984,
+   "n": "William Cleveland",
+   "l": "1943–2026 · American statistician",
+   "w": "Graphical perception, 1984",
+   "u": "https://en.wikipedia.org/wiki/William_S._Cleveland",
+   "r": [
+    5,
+    7
+   ],
+   "d": "At Bell Labs, with Robert McGill, ranked how accurately readers decode position, length, angle, area and shading. Also behind loess smoothing, brushing and the trellis display.",
+   "projects": [
+    {
+     "title": "Loess",
+     "year": 1979,
+     "what": "A method of robust locally weighted regression for smoothing scatterplots."
+    },
+    {
+     "title": "Graphical perception",
+     "year": 1984,
+     "what": "With Robert McGill, experiments that ranked how accurately readers decode position, length, angle, area and shading."
+    },
+    {
+     "title": "The Elements of Graphing Data",
+     "year": 1985,
+     "what": "A book of principles for scientific graphs."
+    },
+    {
+     "title": "Trellis display",
+     "year": 1996,
+     "what": "With Richard Becker and Ming-Jen Shyu, panels conditioned on variables and set out with shared scales."
+    }
+   ],
+   "brought": "He measured how accurately people read quantities from different encodings and ranked them, which gave design choices an experimental basis. At Bell Labs and later at Purdue he also developed loess smoothing and trellis displays, and helped to create the S language.",
+   "learn": "Encode any quantity that must be compared precisely as position along a common scale, as aligned bars or dots, and keep angle, area and colour intensity for secondary or categorical information.",
+   "featured": true,
+   "pull": "Position along a common scale is read most accurately.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/William_S._Cleveland",
+    "http://vis.stanford.edu/papers/crowdsourcing-graphical-perception",
+    "https://www.stat.purdue.edu/~wsc/William.S.Cleveland.pdf"
+   ],
+   "corrections": "l: Cleveland died on 27 March 2026, aged 83 (Wikipedia; obituary notices from the Institute of Mathematical Statistics and Purdue’s Department of Statistics). “born 1943” changed to “1943–2026”."
+  },
+  {
+   "id": "palmer",
+   "g": 4,
+   "y": 1992,
+   "n": "Stephen Palmer",
+   "l": "1948–2023 · American psychologist",
+   "w": "Common region, 1992",
+   "u": "https://eric.ed.gov/?id=EJ450926",
+   "r": [
+    5
+   ],
+   "d": "Professor at the University of California, Berkeley. Added common region and connectedness to the classic principles of grouping.",
+   "projects": [
+    {
+     "title": "Common region",
+     "year": 1992,
+     "what": "A paper showing that elements inside a shared boundary are grouped together, even against proximity."
+    },
+    {
+     "title": "Uniform connectedness",
+     "year": 1994,
+     "what": "With Irvin Rock, a proposal that connected regions of uniform colour or texture are the first units of perceptual organisation."
+    },
+    {
+     "title": "Vision Science: Photons to Phenomenology",
+     "year": 1999,
+     "what": "A textbook that joins the psychology, computation and physiology of vision."
+    },
+    {
+     "title": "Ecological valence theory",
+     "year": 2010,
+     "what": "With Karen Schloss, a theory that people like a colour to the degree that they like the things associated with it."
+    }
+   ],
+   "brought": "He added new principles of grouping to the classic Gestalt list, common region and uniform connectedness, and tested them in experiments. Later, with Karen Schloss, he studied why people prefer some colours and how colours and music are linked through emotion.",
+   "learn": "Draw a boundary or a shared background only around items that belong together in the reader’s task, because enclosure groups more strongly than nearness; two charts meant to be compared should sit on one surface.",
+   "featured": false,
+   "pull": "A shared boundary tells the reader these things belong together.",
+   "sources": [
+    "https://senate.universityofcalifornia.edu/in-memoriam/files/stephen-palmer.html",
+    "https://eric.ed.gov/?id=EJ450926"
+   ]
+  },
+  {
+   "id": "ware",
+   "g": 4,
+   "y": 2000,
+   "n": "Colin Ware",
+   "l": "Canadian researcher, University of New Hampshire",
+   "w": "Information Visualization: Perception for Design, 2000",
+   "u": "https://vislab-ccom.unh.edu/VTDP_web_pages/VTDP_CrossViewBrushing.html",
+   "r": [
+    7
+   ],
+   "d": "Connected what is known about vision to design choices, among them brushing a selection across linked views.",
+   "projects": [
+    {
+     "title": "Color sequences for univariate maps",
+     "year": 1988,
+     "what": "Experiments showing that simultaneous contrast can be a major source of error when values are read from colour-coded maps."
+    },
+    {
+     "title": "Fish tank virtual reality",
+     "year": 1993,
+     "what": "With Kevin Arthur and Kellogg Booth, a non-immersive form of virtual reality on a desktop screen."
+    },
+    {
+     "title": "Information Visualization: Perception for Design",
+     "year": 2000,
+     "what": "A book that derives design guidance from the science of vision, now in its fourth edition."
+    },
+    {
+     "title": "Visual Thinking for Design",
+     "year": 2008,
+     "what": "A shorter book on how people think with graphics."
+    }
+   ],
+   "brought": "He proposed studying visualization as applied perception, and turned findings on colour, texture, motion and pattern into design guidance with stated reasons. His experiments on colour scales showed that a colour’s surround can be a major source of error when values are read from it.",
+   "learn": "Link the views on a screen by brushing: when a reader selects an item in one chart, highlight the same item in every other chart without filtering the rest away.",
+   "featured": false,
+   "pull": "Design for what the visual system does well.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Colin_Ware",
+    "https://scholars.unh.edu/ccom/905/",
+    "https://vislab-ccom.unh.edu/VTDP_web_pages/VTDP_CrossViewBrushing.html"
+   ]
+  },
+  {
+   "id": "munzner",
+   "g": 4,
+   "y": 2014,
+   "n": "Tamara Munzner",
+   "l": "Computer scientist, University of British Columbia",
+   "w": "Visualization Analysis and Design, 2014",
+   "u": "https://www.cs.ubc.ca/~tmm/vadbook/",
+   "r": [
+    7
+   ],
+   "d": "Wrote a framework for analysing a visualization: what is shown, why, and how. Her rules of thumb include eyes beat memory.",
+   "projects": [
+    {
+     "title": "H3",
+     "year": 1997,
+     "what": "A method for laying out large graphs in three-dimensional hyperbolic space, from her doctoral work at Stanford."
+    },
+    {
+     "title": "A Nested Model for Visualization Design and Validation",
+     "year": 2009,
+     "what": "A model that runs from the domain problem to abstraction, encoding and algorithm, with the ways each level can fail."
+    },
+    {
+     "title": "Design Study Methodology",
+     "year": 2012,
+     "what": "With Michael Sedlmair and Miriah Meyer, guidance for design studies done with real users and their data."
+    },
+    {
+     "title": "Visualization Analysis and Design",
+     "year": 2014,
+     "what": "A textbook that analyses any visualization by what is shown, why and how."
+    }
+   ],
+   "brought": "She gave visualization a vocabulary for analysing a design by what data it shows, why the user needs it and how it is encoded, so choices can be justified and compared. Her nested model separates the levels at which a design can fail, from misunderstanding the problem to choosing a slow algorithm.",
+   "learn": "State the user’s task in abstract terms, such as compare, locate or summarise, before choosing a chart; when the task is to compare, put the items side by side on one axis so the comparison is made by eye instead of from memory.",
+   "featured": false,
+   "pull": "Analyse every design by what, why and how.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tamara_Munzner",
+    "https://www.cs.ubc.ca/~tmm/vadbook/"
+   ]
+  },
+  {
+   "id": "kay",
+   "g": 4,
+   "y": 2016,
+   "n": "Matthew Kay and Jessica Hullman",
+   "l": "Researchers in uncertainty visualization",
+   "w": "When (ish) is My Bus?, 2016",
+   "u": "https://mucollective.northwestern.edu/project/when-ish-is-my-bus",
+   "r": [
+    10
+   ],
+   "d": "Kay and colleagues introduced the quantile dotplot, a distribution as countable dots. Hullman’s hypothetical outcome plots show it as a sequence of draws.",
+   "individuals": [
+    {
+     "name": "Matthew Kay",
+     "life": "Computer scientist, Northwestern University"
+    },
+    {
+     "name": "Jessica Hullman",
+     "life": "Computer scientist, Northwestern University"
+    }
+   ],
+   "projects": [
+    {
+     "title": "Hypothetical outcome plots",
+     "year": 2015,
+     "what": "Hullman, Resnick and Adar’s animated draws from a distribution, which beat error bars and violin plots for judging which of two quantities is larger."
+    },
+    {
+     "title": "When (ish) is My Bus?",
+     "year": 2016,
+     "what": "Kay, Kola, Hullman and Munson’s study of bus arrival predictions, which introduced the quantile dotplot."
+    },
+    {
+     "title": "Uncertainty displays using quantile dotplots or CDFs improve transit decision-making",
+     "year": 2018,
+     "what": "An experiment led by Michael Fernandes in which these displays led to better decisions about when to leave for a bus."
+    },
+    {
+     "title": "ggdist",
+     "year": 2020,
+     "what": "Kay’s R package for drawing distributions and uncertainty, quantile dotplots among them."
+    }
+   ],
+   "brought": "They built uncertainty displays that use frequency framing, as countable dots or a sequence of possible outcomes, so that readers without statistical training can judge probabilities. They measured the decisions people made with each display, and Kay put these forms into tools that analysts use every day.",
+   "learn": "When a forecast distribution exists, draw it as about twenty quantile dots so a reader can count the risk: four dots past the stock line means roughly a one-in-five chance of running out.",
+   "featured": false,
+   "pull": "Show uncertainty as outcomes a reader can count.",
+   "sources": [
+    "https://www.mjskay.com/",
+    "https://mucollective.northwestern.edu/project/when-ish-is-my-bus",
+    "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0142444"
+   ]
+  },
+  {
+   "id": "shneiderman",
+   "g": 5,
+   "y": 1994,
+   "n": "Ben Shneiderman",
+   "l": "born 1947 · American computer scientist",
+   "w": "Dynamic queries, 1994",
+   "u": "https://www.cs.umd.edu/~ben/papers/Shneiderman1994Dynamic.pdf",
+   "r": [
+    11
+   ],
+   "d": "Founded the Human-Computer Interaction Lab at the University of Maryland in 1983. Set out direct manipulation, and built dynamic queries, where a display follows its sliders as they move.",
+   "projects": [
+    {
+     "title": "Direct manipulation",
+     "year": 1983,
+     "what": "An article in IEEE Computer describing interfaces of visible objects and rapid, incremental, reversible actions."
+    },
+    {
+     "title": "Treemaps",
+     "year": 1992,
+     "what": "A space-filling layout of nested rectangles whose areas show size, first used for the files on a shared disk."
+    },
+    {
+     "title": "Dynamic queries",
+     "year": 1994,
+     "what": "Sliders and buttons tied to a display that updates as they move, so a query can be steered."
+    },
+    {
+     "title": "The Eyes Have It",
+     "year": 1996,
+     "what": "A taxonomy of visualization by data type and task, with the advice to start from an overview and give details on demand."
+    }
+   ],
+   "brought": "He set out direct manipulation as the basis of usable interfaces: visible objects, rapid reversible actions and immediate feedback. With his lab he showed that controls tied to a live display let people explore data without writing queries, and he invented the treemap.",
+   "learn": "Make every filter a visible control whose effect appears within about a tenth of a second and can be undone in one step; when an update takes longer, preview its effect before applying it.",
+   "featured": true,
+   "pull": "Let people steer the data with visible, reversible controls.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ben_Shneiderman",
+    "https://www.cs.umd.edu/~ben/papers/Shneiderman1994Dynamic.pdf",
+    "https://www.cs.umd.edu/users/ben/papers/Shneiderman1992Tree.pdf"
+   ]
+  },
+  {
+   "id": "fisher",
+   "g": 5,
+   "y": 1994,
+   "n": "Marshall Fisher",
+   "l": "Operations researcher, the Wharton School",
+   "w": "Making supply meet demand in an uncertain world, 1994",
+   "u": "https://hbr.org/1994/05/making-supply-meet-demand-in-an-uncertain-world",
+   "r": [
+    10
+   ],
+   "d": "With Hammond, Obermeyer and Raman, showed how a skiwear maker planned its buying around how uncertain the demand for each style was.",
+   "projects": [
+    {
+     "title": "The Lagrangian relaxation method",
+     "year": 1981,
+     "what": "A paper on solving integer programming problems, voted in 2004 one of the ten most influential in Management Science."
+    },
+    {
+     "title": "Making supply meet demand in an uncertain world",
+     "year": 1994,
+     "what": "With Hammond, Obermeyer and Raman, the case of the skiwear maker Sport Obermeyer."
+    },
+    {
+     "title": "What is the right supply chain for your product?",
+     "year": 1997,
+     "what": "An article that matches predictable products to efficient supply chains and unpredictable ones to responsive chains."
+    },
+    {
+     "title": "The New Science of Retailing",
+     "year": 2010,
+     "what": "A book with Ananth Raman on using data in retail planning."
+    }
+   ],
+   "brought": "With his co-authors he showed at Sport Obermeyer that the spread of independent forecasts measures how uncertain demand is, so buying can be sequenced: early for predictable styles, later for uncertain ones once early sales arrive. He also gave a simple rule for matching a supply chain to a product, efficient for steady demand and responsive for new or fashion goods.",
+   "learn": "Where several people forecast the same items, show the spread of their forecasts for each item and sort by it; commit early to the narrow ones and hold back the wide ones until early sales arrive.",
+   "featured": false,
+   "pull": "Buy first what you can predict, and wait on the rest.",
+   "sources": [
+    "https://faculty.wharton.upenn.edu/wp-content/uploads/2016/11/Marshall-Fisher-bio-2020-2.pdf",
+    "https://hbr.org/1994/05/making-supply-meet-demand-in-an-uncertain-world",
+    "https://hbr.org/1997/03/what-is-the-right-supply-chain-for-your-product"
+   ]
+  },
+  {
+   "id": "fildes",
+   "g": 5,
+   "y": 2009,
+   "n": "Robert Fildes",
+   "l": "Forecaster, Lancaster University",
+   "w": "Effective forecasting and judgmental adjustments, 2009",
+   "u": "https://eprints.lancs.ac.uk/id/eprint/45487/",
+   "r": [
+    11
+   ],
+   "d": "Founding editor of the Journal of Forecasting and the International Journal of Forecasting. Measured what manual adjustments do to forecasts in supply-chain companies.",
+   "projects": [
+    {
+     "title": "The M-competition",
+     "year": 1982,
+     "what": "A comparison of forecasting methods on real time series, with Spyros Makridakis and others."
+    },
+    {
+     "title": "Journal of Forecasting",
+     "year": 1982,
+     "what": "A journal he edited from its founding, followed in 1985 by the International Journal of Forecasting."
+    },
+    {
+     "title": "Effective forecasting and judgmental adjustments",
+     "year": 2009,
+     "what": "With Goodwin, Lawrence and Nikolopoulos, a study of more than 60,000 forecasts and outcomes in four supply-chain companies."
+    },
+    {
+     "title": "Retail forecasting: research and practice",
+     "year": 2022,
+     "what": "A review with Shaohui Ma and Stephan Kolassa of forecasting in retail, from strategy down to store and item."
+    }
+   ],
+   "brought": "He helped build forecasting into a research field, with journals and competitions that test methods on real data. His field studies of company forecasts showed how the human layer works: small manual adjustments tended to reduce accuracy, large ones tended to help, and adjustments leaned optimistic.",
+   "learn": "Give the forecast override a required reason and a log, and report after each period whether the change improved accuracy; adjustments of a few per cent deserve a second look before they are saved.",
+   "featured": false,
+   "pull": "Record every override, then check whether it helped.",
+   "sources": [
+    "https://www.lancaster.ac.uk/media/lancaster-university/content-assets/documents/lums/forecasting/ISF16_Fildes.pdf",
+    "https://eprints.lancs.ac.uk/id/eprint/45487/",
+    "https://www.lancaster.ac.uk/lums/people/robert-fildes"
+   ]
+  },
+  {
+   "id": "victor",
+   "g": 5,
+   "y": 2011,
+   "n": "Bret Victor",
+   "l": "American interface designer",
+   "w": "Explorable Explanations, 2011",
+   "u": "https://worrydream.com/ExplorableExplanations/",
+   "r": [
+    11
+   ],
+   "d": "Worked on interfaces at Apple from 2007 to 2011. Put adjustable numbers inside the prose that discusses them, so a reader can test an argument.",
+   "projects": [
+    {
+     "title": "Magic Ink",
+     "year": 2006,
+     "what": "An essay arguing that most software exists to show information, so its design is largely graphic design, and that it should infer context to reduce interaction."
+    },
+    {
+     "title": "Explorable Explanations",
+     "year": 2011,
+     "what": "An essay on reactive documents, in which a reader can change a number in the text and watch the argument recompute."
+    },
+    {
+     "title": "Up and Down the Ladder of Abstraction",
+     "year": 2011,
+     "what": "An interactive essay that moves between one concrete case and the whole range of a parameter."
+    },
+    {
+     "title": "Inventing on Principle",
+     "year": 2012,
+     "what": "A talk arguing that people who make things need an immediate connection to what they are making."
+    }
+   ],
+   "brought": "He argued that most software exists to show information, so its design is mostly graphic design, and that a good display answers the reader’s question with as little interaction as possible. His reactive documents let a reader change a number in a sentence and watch the conclusion recompute.",
+   "learn": "Put the assumption a reader is most likely to question, such as a growth rate or a discount, inside the sentence that states the result as a draggable number, and recompute the sentence as it moves.",
+   "featured": false,
+   "pull": "Let the reader change the assumption and watch the conclusion.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bret_Victor",
+    "https://worrydream.com/ExplorableExplanations/",
+    "https://worrydream.com/MagicInk/"
+   ]
+  },
+  {
+   "id": "heer",
+   "g": 5,
+   "y": 2012,
+   "n": "Jeffrey Heer",
+   "l": "American computer scientist, University of Washington",
+   "w": "Interactive Dynamics for Visual Analysis, 2012",
+   "u": "https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf",
+   "r": [
+    11
+   ],
+   "d": "Co-created Protovis and D3 with Mike Bostock, then Vega and Vega-Lite. With Shneiderman, sorted the interactions of visual analysis into twelve tasks.",
+   "projects": [
+    {
+     "title": "Prefuse",
+     "year": 2005,
+     "what": "A Java toolkit for interactive visualization that he built as a graduate student at Berkeley."
+    },
+    {
+     "title": "Protovis",
+     "year": 2009,
+     "what": "With Mike Bostock, a declarative JavaScript toolkit for visualization, succeeded by D3 in 2011."
+    },
+    {
+     "title": "Data Wrangler",
+     "year": 2011,
+     "what": "With Sean Kandel and others, an interactive tool for cleaning and reshaping data, which led to the company Trifacta in 2012."
+    },
+    {
+     "title": "Vega-Lite",
+     "year": 2017,
+     "what": "With Arvind Satyanarayan and others, a high-level grammar of interactive graphics."
+    }
+   ],
+   "brought": "He built a line of toolkits that turned custom interactive visualization into a matter of declaring data, marks and interactions, from Prefuse and Protovis to D3, Vega and Vega-Lite. With Ben Shneiderman he sorted the interactions of visual analysis into twelve tasks, and with Mike Bostock he showed that perception experiments can be run at scale online.",
+   "learn": "Give an analysis a visible history: record each filter, selection and scenario change as a named step the reader can see, revisit and undo.",
+   "featured": false,
+   "pull": "Interactive graphics as a grammar of data, marks and interactions.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jeffrey_Heer",
+    "https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf",
+    "https://en.wikipedia.org/wiki/D3.js"
+   ]
+  },
+  {
+   "id": "bostock",
+   "g": 5,
+   "y": 2014,
+   "n": "Mike Bostock, Shan Carter and Archie Tse",
+   "l": "Graphics editors, The New York Times",
+   "w": "Is It Better to Rent or Buy?, 2014",
+   "u": "https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html",
+   "r": [
+    11
+   ],
+   "d": "Drew each slider of a calculator on a chart of its own consequences. Bostock also wrote D3, with Heer and Vadim Ogievetsky, in 2011.",
+   "individuals": [
+    {
+     "name": "Mike Bostock",
+     "life": "American computer scientist, creator of D3 and co-founder of Observable"
+    },
+    {
+     "name": "Shan Carter",
+     "life": "Graphics editor at The New York Times, later a co-editor of the journal Distill"
+    },
+    {
+     "name": "Archie Tse",
+     "life": "Graphics editor, later graphics director, The New York Times"
+    }
+   ],
+   "projects": [
+    {
+     "title": "D3",
+     "year": 2011,
+     "what": "Bostock’s JavaScript library, written with Vadim Ogievetsky and Jeffrey Heer, that binds data directly to the elements of a web page."
+    },
+    {
+     "title": "512 Paths to the White House",
+     "year": 2012,
+     "what": "Bostock and Carter’s branching graphic of the ways the swing states could decide the 2012 presidential election."
+    },
+    {
+     "title": "Is It Better to Rent or Buy?",
+     "year": 2014,
+     "what": "A calculator in which each slider sits on a chart of the outcome across that input’s whole range."
+    },
+    {
+     "title": "Distill",
+     "year": 2017,
+     "what": "A journal of interactive articles on machine learning, edited by Carter with Chris Olah and Arvind Satyanarayan."
+    }
+   ],
+   "brought": "They showed in a newsroom that an interactive graphic can make the reader’s own assumptions part of the explanation, with each input drawn on a chart of its effect. Bostock’s open tools, D3 and later Observable, put that way of working within reach of other designers and analysts.",
+   "learn": "Draw each input slider over a small chart of the result across that input’s whole range, with the current setting marked, so a reader sees which assumption matters before moving it.",
+   "featured": false,
+   "pull": "Every slider should show what it would do.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Mike_Bostock",
+    "https://datastori.es/data-stories-22-nyt-graphics-and-d3-with-mike-bostock-and-shan-carter/",
+    "https://en.wikipedia.org/wiki/Distill_(journal)"
+   ]
+  }
+ ],
+ "additions": [
+  {
+   "id": "frerejones",
+   "g": 0,
+   "y": 1999,
+   "n": "Tobias Frere-Jones",
+   "l": "born 1970 · American type designer",
+   "w": "Retina, 1999",
+   "u": "https://www.moma.org/collection/works/139302",
+   "r": [
+    9
+   ],
+   "d": "Drew Retina in 1999 for the stock listings of the Wall Street Journal, to be read at about five and a half points on newsprint. Its characters keep the same width in every weight, so a bold figure takes the space of a regular one.",
+   "projects": [
+    {
+     "title": "Interstate",
+     "year": 1993,
+     "what": "A sans serif family for Font Bureau, drawn from the highway sign alphabets of the United States Federal Highway Administration and completed in 1999."
+    },
+    {
+     "title": "Retina",
+     "year": 1999,
+     "what": "A face for the Wall Street Journal’s stock listings, with ink traps in its smallest version, used by the paper from 2000 to 2007."
+    },
+    {
+     "title": "Gotham",
+     "year": 2000,
+     "what": "A geometric sans commissioned by GQ magazine and based on mid-century architectural lettering in New York."
+    },
+    {
+     "title": "Mallory",
+     "year": 2015,
+     "what": "The first retail family of his own foundry, Frere-Jones Type."
+    }
+   ],
+   "brought": "He drew typefaces for specific reading conditions, from highway signs to stock tables set at five and a half points, and treated the space between and inside letters as part of the drawing. Retina combined two devices for dense figures: one width across all weights, and ink traps that fill as the ink spreads.",
+   "learn": "If a selected or total row in a table will turn bold, choose a face whose bold figures keep the regular width, and check it by overlaying the two weights at the size you will use.",
+   "featured": false,
+   "pull": "Type drawn for the smallest size and the cheapest paper.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Tobias_Frere-Jones",
+    "https://en.wikipedia.org/wiki/Retina_(typeface)",
+    "https://www.moma.org/collection/works/139302"
+   ],
+   "reason": "Rule 9 already cites Retina as the model of a face built for dense figures; a portrait completes that rule."
+  },
+  {
+   "id": "tschichold",
+   "g": 0,
+   "y": 1935,
+   "n": "Jan Tschichold",
+   "l": "1902–1974 · German typographer",
+   "w": "Asymmetric Typography, 1935",
+   "u": "https://en.wikipedia.org/wiki/Jan_Tschichold",
+   "r": [
+    8
+   ],
+   "d": "Set out the rules of the New Typography in 1928, then from 1947 to 1949 standardised the typography of Penguin Books. On tables he advised doing without rules where possible, and using vertical ones only when columns are too close to read safely.",
+   "projects": [
+    {
+     "title": "Die neue Typographie",
+     "year": 1928,
+     "what": "A handbook of modernist typography that favoured sans serif type, asymmetric layout and standard paper sizes."
+    },
+    {
+     "title": "Typographische Gestaltung",
+     "year": 1935,
+     "what": "A practical manual, published in English in 1967 as Asymmetric Typography, that includes his advice on tables."
+    },
+    {
+     "title": "Penguin Composition Rules",
+     "year": 1947,
+     "what": "A four-page booklet of typographic instructions for Penguin’s editors and compositors."
+    },
+    {
+     "title": "Sabon",
+     "year": 1967,
+     "what": "A typeface designed to give the same result on Monotype, Linotype and foundry type."
+    }
+   ],
+   "brought": "He wrote the manifesto of modernist typography and later returned to classical book design, so his work covers both the asymmetric page and the quiet conventional one. His rules for Penguin showed that a short written standard can hold some 500 titles to one level of craft across many compositors.",
+   "learn": "Remove the vertical rules from a table and widen the gaps between columns instead; keep a light horizontal rule only where rows are long enough for the eye to lose its line.",
+   "featured": false,
+   "pull": "Let space separate the columns, and add lines only when it cannot.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jan_Tschichold",
+    "https://alistapart.com/article/web-typography-tables/",
+    "https://en.wikipedia.org/wiki/Penguin_Composition_Rules"
+   ],
+   "reason": "Rule 8 rests on his advice against ruled tables; the page quotes him but has no portrait of him."
+  },
+  {
+   "id": "bringhurst",
+   "g": 0,
+   "y": 1992,
+   "n": "Robert Bringhurst",
+   "l": "born 1946 · Canadian typographer and poet",
+   "w": "The Elements of Typographic Style, 1992",
+   "u": "https://en.wikipedia.org/wiki/The_Elements_of_Typographic_Style",
+   "r": [
+    9
+   ],
+   "d": "Wrote The Elements of Typographic Style in 1992, a reference of numbered, reasoned rules for setting text. Among them: join a number to its unit with a space that cannot break, and compose with a fixed scale of sizes.",
+   "projects": [
+    {
+     "title": "The Form of the Book",
+     "year": 1991,
+     "what": "The English edition of Jan Tschichold’s essays on book design, which he edited."
+    },
+    {
+     "title": "The Elements of Typographic Style",
+     "year": 1992,
+     "what": "A guide to the craft of setting text, organised as numbered rules with their reasons."
+    },
+    {
+     "title": "A Story as Sharp as a Knife",
+     "year": 1999,
+     "what": "A study of the classical Haida mythtellers and their literature."
+    }
+   ],
+   "brought": "He gathered the craft of setting text into numbered rules, each with a reason and a history, covering spacing, proportion, figures, scale and the page. His book became a common reference for typographers, and its rules have been applied directly to typography on screen.",
+   "learn": "Put a non-breaking space between every value and its unit so that no line break separates them, and choose a short scale of type sizes before designing any card, so every size on the screen comes from that list.",
+   "featured": false,
+   "pull": "Every typographic choice can be stated as a rule with a reason.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Robert_Bringhurst",
+    "http://webtypography.net/2.4.6",
+    "http://webtypography.net/3.1.1"
+   ],
+   "reason": "Rule 8 already names him, and his rules on hard spaces, figures and type scale bear directly on rule 9."
+  },
+  {
+   "id": "desbarats",
+   "g": 3,
+   "y": 2022,
+   "n": "Nick Desbarats",
+   "l": "Data visualization educator and author, Ottawa",
+   "w": "Why I stopped using bullet graphs, 2022",
+   "u": "https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/",
+   "r": [
+    2
+   ],
+   "d": "Taught Stephen Few’s courses from 2014 to 2019 before starting his own. In 2022 he listed eleven problems with the bullet graph and proposed action dots, which appear only when a measure crosses a threshold that calls for action.",
+   "projects": [
+    {
+     "title": "Why I stopped using bullet graphs",
+     "year": 2022,
+     "what": "An article in Nightingale listing eleven drawbacks of bullet graphs and proposing action dots in their place."
+    },
+    {
+     "title": "Practical Charts",
+     "year": 2023,
+     "what": "A book of guidelines for choosing and formatting charts for reports and presentations."
+    },
+    {
+     "title": "More Practical Charts",
+     "year": 2024,
+     "what": "A companion book on twenty more advanced chart types, such as scatter plots and histograms."
+    }
+   ],
+   "brought": "He turned years of teaching dashboard design into concrete guidelines for choosing and formatting charts in business reports. His critique of the bullet graph argued that a status display should mark only what needs attention, using thresholds that say what action they call for.",
+   "learn": "For each measure on a status board, write down the values at which someone should act, for example crisis, actionably bad and actionably good, and show a mark only when a value crosses one; measures inside the bands need no colour at all.",
+   "featured": false,
+   "pull": "Mark only the measures that call for action.",
+   "sources": [
+    "https://www.practicalreporting.com/about-nick-desbarats",
+    "https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/",
+    "https://www.practicalreporting.com/books"
+   ],
+   "reason": "Rule 2 adopts his objection and leaves qualitative bands off its instruments; he is the main critic of the form the guide starts from."
+  },
+  {
+   "id": "gleicher",
+   "g": 4,
+   "y": 2011,
+   "n": "Michael Gleicher",
+   "l": "Computer scientist, University of Wisconsin–Madison",
+   "w": "Visual comparison for information visualization, 2011",
+   "u": "https://graphics.cs.wisc.edu/Papers/2011/GAWJHR11/paper.pdf",
+   "r": [
+    7,
+    10
+   ],
+   "d": "With colleagues, sorted visual comparisons into three designs: juxtaposition, superposition and explicit encoding of the difference. With Michael Correll, showed that error bars on a bar chart make values inside the bar look likelier than values outside it.",
+   "projects": [
+    {
+     "title": "Visual comparison for information visualization",
+     "year": 2011,
+     "what": "With Danielle Albers and others, a taxonomy of comparison designs drawn from a survey of visualization systems."
+    },
+    {
+     "title": "Error bars considered harmful",
+     "year": 2014,
+     "what": "With Michael Correll, experiments on how readers misjudge bar charts with error bars, with gradient and violin plots as alternatives."
+    },
+    {
+     "title": "Considerations for visualizing comparison",
+     "year": 2018,
+     "what": "A process for designing comparisons: identify what is compared, the size of the challenge, a strategy for scale and a comparative design."
+    }
+   ],
+   "brought": "He gave designers a small vocabulary for comparison, so a layout can be chosen by deciding whether items sit side by side, are overlaid, or have their difference computed and drawn. With Correll he tested how common encodings of mean and error mislead, and proposed alternatives.",
+   "learn": "When two plans must be compared, choose deliberately between side by side, overlaid on one axis, or the difference drawn directly; if the decision turns on the gap, plot the gap itself. If an interval is needed, draw it around a point or as a graded band, since a whisker on a filled bar makes values inside the bar look likelier.",
+   "featured": false,
+   "pull": "Every comparison is side by side, overlaid, or a drawn difference.",
+   "sources": [
+    "https://graphics.cs.wisc.edu/Papers/2011/GAWJHR11/paper.pdf",
+    "https://graphics.cs.wisc.edu/Papers/2014/CG14/Preprint.pdf",
+    "https://pages.graphics.cs.wisc.edu/VisSnacks/papers/comparison/"
+   ],
+   "reason": "The guide uses his comparison taxonomy for scenario design and his error-bar study in rule 10."
+  },
+  {
+   "id": "tory",
+   "g": 4,
+   "y": 2022,
+   "n": "Melanie Tory",
+   "l": "Computer scientist, Northeastern University",
+   "w": "Untidy data: the unreasonable effectiveness of tables, 2022",
+   "u": "https://arxiv.org/abs/2106.15005",
+   "r": [
+    8
+   ],
+   "d": "Worked at Tableau Software from 2015 to 2021 and now directs non-tenure-track research at Northeastern University’s Khoury College. With Lyn Bartram and Michael Correll, found that people who work with data keep returning to the table, and argued that the table is a visualization in its own right.",
+   "projects": [
+    {
+     "title": "What do we talk about when we talk about dashboards?",
+     "year": 2019,
+     "what": "With Alper Sarikaya and others, a survey of dashboards in use that sorts them by purpose and design."
+    },
+    {
+     "title": "Untidy data: the unreasonable effectiveness of tables",
+     "year": 2022,
+     "what": "With Lyn Bartram and Michael Correll, an interview study of how people who work with data use tables throughout an analysis."
+    }
+   ],
+   "brought": "She brought studies of how people actually work with data into visualization research, including a survey of the many kinds of display that the word dashboard covers. Her study of tables found that the grid of figures is where many people check, reshape and annotate their data throughout an analysis.",
+   "learn": "Decide early whether a board is for deciding, monitoring or communicating, because the dashboard survey she co-wrote found that these purposes lead to different designs. Keep the underlying table one step from every chart, and let readers sort and annotate it in place.",
+   "featured": false,
+   "pull": "Analysts keep returning to the table, so design it well.",
+   "sources": [
+    "https://www.khoury.northeastern.edu/people/melanie-tory/",
+    "https://arxiv.org/abs/2106.15005",
+    "https://alper.datav.is/publications/dashboards/"
+   ],
+   "reason": "Rule 8 opens with her finding on tables, and her dashboard typology belongs to the field the guide calls research on dashboards themselves."
+  },
+  {
+   "id": "stone",
+   "g": 4,
+   "y": 2012,
+   "n": "Maureen Stone",
+   "l": "American computer scientist, specialist in colour",
+   "w": "In Color Perception, Size Matters, 2012",
+   "u": "https://www.tableau.com/research/publications/color-perception-size-matters",
+   "r": [
+    5,
+    6
+   ],
+   "d": "Worked on digital colour at Xerox PARC and later at Tableau Research, where she redesigned the Tableau 10 palettes with Cristy Miller in 2016. With colleagues, measured how much larger a colour difference must be before small marks can be told apart.",
+   "projects": [
+    {
+     "title": "A Field Guide to Digital Color",
+     "year": 2003,
+     "what": "A book on colour in digital imaging, from colour science to displays and printing."
+    },
+    {
+     "title": "In Color Perception, Size Matters",
+     "year": 2012,
+     "what": "An article on how the appearance of a colour changes with the size of the mark that carries it."
+    },
+    {
+     "title": "An engineering model for color difference as a function of size",
+     "year": 2014,
+     "what": "With Danielle Albers Szafir and Vidya Setlur, a model built from crowdsourced experiments that scales colour difference by mark size."
+    },
+    {
+     "title": "Tableau 10 colour palettes",
+     "year": 2016,
+     "what": "New default palettes for Tableau, designed with Cristy Miller using a tool for editing colours in CIELAB."
+    }
+   ],
+   "brought": "She joined colour science to visualization practice, showing how size, surround and display change what a colour looks like and how to design palettes that stay distinct. Her work at Tableau carried that research into a product’s default colours.",
+   "learn": "Check every encoding colour at the smallest mark it will fill: a tint that separates two large areas can vanish on a 2 px line or a 6 px dot, so give small marks stronger lightness steps or a second cue.",
+   "featured": false,
+   "pull": "The smaller the mark, the larger the colour difference it needs.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Maureen_C._Stone",
+    "https://www.tableau.com/research/publications/color-perception-size-matters",
+    "https://www.tableau.com/blog/colors-upgrade-tableau-10-56782"
+   ],
+   "reason": "The guide’s case for strong steps on thin rails and small marks comes from her work, and she covers the colour side of the perception field."
+  },
+  {
+   "id": "forrester",
+   "g": 5,
+   "y": 1961,
+   "n": "Jay Forrester",
+   "l": "1918–2016 · American engineer and systems scientist",
+   "w": "Industrial Dynamics, 1961",
+   "u": "https://en.wikipedia.org/wiki/Jay_Wright_Forrester",
+   "r": [
+    4
+   ],
+   "d": "Led the Whirlwind computer project at MIT, then founded system dynamics at the Sloan School from 1956. Industrial Dynamics modelled firms as stocks and flows with delays, and showed that swings in inventory can come from a firm’s own ordering rules.",
+   "projects": [
+    {
+     "title": "Whirlwind",
+     "year": 1951,
+     "what": "A digital computer built at MIT under his direction, the first to run in real time and to use video displays for output."
+    },
+    {
+     "title": "Industrial Dynamics",
+     "year": 1961,
+     "what": "The first book of system dynamics, which modelled a supply chain and showed orders amplifying as they move upstream."
+    },
+    {
+     "title": "Urban Dynamics",
+     "year": 1969,
+     "what": "A model of how industry, housing and people interact as a city grows and decays."
+    },
+    {
+     "title": "World Dynamics",
+     "year": 1971,
+     "what": "A model of population, resources and pollution that became the starting point for The Limits to Growth."
+    }
+   ],
+   "brought": "He gave planners a notation in which every quantity is either a stock that accumulates or a flow that changes it, with the delays between them made explicit. His supply-chain models showed how orders amplify as they move upstream, the effect first called the Forrester effect and now the bullwhip.",
+   "learn": "Before designing a planning view, write its stock equation (closing stock = opening stock + receipts − sales) and give each term its own mark on one scale, so the reader can see which flow moved the stock.",
+   "featured": false,
+   "pull": "Every stock is the running sum of its flows, with delays.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Jay_Wright_Forrester",
+    "https://en.wikipedia.org/wiki/Bullwhip_effect",
+    "https://en.wikipedia.org/wiki/System_dynamics"
+   ],
+   "reason": "The guide’s planning chain is a stock-and-flow identity; his notation is the formal grammar behind rule 4 and the retail planning field."
+  }
+ ],
+ "featured_ids": [
+  "gerstner",
+  "few",
+  "tufte",
+  "shewhart",
+  "playfair",
+  "bertin",
+  "cleveland",
+  "hichert",
+  "ehrenberg",
+  "shneiderman"
+ ],
+ "notes": "1. Corrections made to existing fields (each explained in the entry’s “corrections”): hichert d (he was President of the IBCS Association until June 2026 and is now Honorary President), cleveland l (died 27 March 2026), tufte u (linked Envisioning Information instead of the book named in w), vignelli d (“Drew” to “Designed”, since Joan Charysyn drew the 1972 map under his direction). The page’s timeline card and people list read l, u and d, so these show there once the data is updated.\n2. Rule 8 prose needs a source check: it attributes “edit a table like text” to Bringhurst via Rutter’s A List Apart article (2017), but that article quotes only Tschichold (from Asymmetric Typography) and does not mention Bringhurst. Cite The Elements of Typographic Style directly, or drop the Bringhurst clause. For that reason the Bringhurst addition is tied to rule 9 only.\n3. Links that return 403 or a bot challenge to automated checks but exist in a browser: dl.acm.org (Woods source and u), nytimes.com (bostock u), moma.org (Frere-Jones u and source), tableau.com (Stone u and two sources; the pages were found by search), jstor.org (kinross u, ehrenberg u and source). Every other source returned 200 on 3 October 2026 (GET with a browser user agent, redirects followed).\n4. Team captions to confirm: Dana Oliver has no role I could verify beyond co-authorship of the HMI handbook. Ian Nimmo’s tie to User Centered Design Services comes from a business listing and from PAS describing the book as written jointly by PAS and UCDS. Archie Tse as graphics director rests on trade-press mentions.\n5. Unverified as written in existing fields, left unchanged: Colin Ware as “Canadian researcher” (his career was in Canada until 2000, but no source states his nationality). Possible additions to l lines: Robin Kinross born 1949 (Wikipedia); Robert Fildes born 14 December 1944 (his CV).\n6. Date conflicts resolved by choice: Robinson projection given as 1963 (Wikipedia gives 1961 in his biography, when Rand McNally asked, and 1963 in the projection article); Homage to the Square from 1950 (the series article; the Albers article says begun 1949). Marey’s sphygmograph left out because sources disagree (1859 or 1863).\n7. Context worth knowing: Perceptual Edge ran from 2003 to 2020 (its own site). The MU Collective site now lists only Matthew Kay as faculty; Jessica Hullman directs the Epistemic Decisions Lab, so no lab roles are claimed. Nick Desbarats announces a Practical Dashboards book for late 2026; More Practical Charts is dated 2024 from his site’s schedule. The Crouwel link on martinmajoor.com is an Eye article by Robin Kinross; it also says the 1983 revision moved numbers to the end of lines. Wikipedia places Ibry’s own chart on the Paris to Le Havre line in the 1840s, so no line is named for Marey’s reproduction. IBCS now has a version 2.0, and an ISO project (ISO/AWI 24896, July 2024) builds on its proposals.\n8. Featured: ten people, one or more for rules 1 to 8 and 11. Rules 9, 10 and 12 have no featured person; the closest calls were Hollifield and co-authors (rule 2, the lineage closest to the instruments) and Kay and Hullman (rule 10).\n9. Additions considered and left out: John Tukey (box plot and exploratory data analysis; the strongest next candidate), Ronald A. Howard (died 6 October 2024; his role in the tornado diagram is uncertain), Michael Twyman (died 26 October 2025), Ladislav Sutnar, Herbert Bayer, Martin Wattenberg, Giorgia Lupi, Nicholas Felton, Howard Wainer, Marti Hearst and Arvind Satyanarayan, whose work bears on the works-to-open list more than on the rules. Forrester is proposed for group 5; group 2 would also fit.\n10. No quotations are used in the new fields; every pull is a paraphrase. Wheeler’s detection rules beyond the limits (three of four points near a limit, eight in a row on one side) come from secondary sources, so the learn line says only “long runs”."
+}

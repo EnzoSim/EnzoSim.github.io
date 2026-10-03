@@ -1,0 +1,3051 @@
+{
+ "A": {
+  "citation": "Heer, J. & Bostock, M. (2010). Crowdsourcing graphical perception: using Mechanical Turk to assess visualization design. Proc. ACM CHI 2010, pp. 203-212. doi:10.1145/1753326.1753357",
+  "url": "https://idl.cs.washington.edu/files/2010-MTurk-CHI.pdf",
+  "where": "PDF p.3 (= proceedings p.205): Exp. 1A method (judgment types T1-T7, N=50 per chart, 10 charts per type). PDF p.4 (= p.206): error measure, Exp. 1B method (T8, T9; N=24 per HIT, 108 HITs), Figure 3 (midmeans per chart) and Figure 4 (means + 95% CIs; top panel = Cleveland & McGill's lab results T1-T5, bottom = MTurk results T1-T9).",
+  "values": {
+   "measure": "log2(|judged percent - true percent| + 1/8)",
+   "statistic_in_fig4": "Mean of log absolute error per judgment type with bootstrapped 95% confidence interval",
+   "x_axis_range_in_figure": [
+    1.0,
+    3.0
+   ],
+   "rows": [
+    {
+     "type": "T1",
+     "encoding": "Position along a common scale",
+     "stimulus": "Grouped bar chart; the two marked bars are adjacent (same group)",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 1.25,
+      "ci95_low": 0.99,
+      "ci95_high": 1.5,
+      "raw_from_vector": [
+       1.246,
+       0.994,
+       1.5
+      ]
+     },
+     "cleveland_mcgill_1984": {
+      "mean_log2_error": 1.39,
+      "ci95_low": 1.25,
+      "ci95_high": 1.54,
+      "raw_from_vector": [
+       1.39,
+       1.253,
+       1.535
+      ]
+     }
+    },
+    {
+     "type": "T2",
+     "encoding": "Position along a common scale",
+     "stimulus": "Two stacked bars; the marked segments are the bottom (baseline-aligned) segments",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 1.4,
+      "ci95_low": 1.22,
+      "ci95_high": 1.57,
+      "raw_from_vector": [
+       1.397,
+       1.224,
+       1.571
+      ]
+     },
+     "cleveland_mcgill_1984": {
+      "mean_log2_error": 1.72,
+      "ci95_low": 1.52,
+      "ci95_high": 1.92,
+      "raw_from_vector": [
+       1.72,
+       1.518,
+       1.924
+      ]
+     }
+    },
+    {
+     "type": "T3",
+     "encoding": "Position along a common scale",
+     "stimulus": "Grouped bar chart; the two marked bars are in different groups (separated)",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 1.56,
+      "ci95_low": 1.31,
+      "ci95_high": 1.82,
+      "raw_from_vector": [
+       1.563,
+       1.312,
+       1.818
+      ]
+     },
+     "cleveland_mcgill_1984": {
+      "mean_log2_error": 1.83,
+      "ci95_low": 1.66,
+      "ci95_high": 2.0,
+      "raw_from_vector": [
+       1.83,
+       1.659,
+       2.0
+      ]
+     }
+    },
+    {
+     "type": "T4",
+     "encoding": "Length",
+     "stimulus": "Two stacked bars; the marked segments are the top segments of different stacks (not aligned)",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 1.98,
+      "ci95_low": 1.76,
+      "ci95_high": 2.21,
+      "raw_from_vector": [
+       1.981,
+       1.759,
+       2.206
+      ]
+     },
+     "cleveland_mcgill_1984": {
+      "mean_log2_error": 2.35,
+      "ci95_low": 2.16,
+      "ci95_high": 2.54,
+      "raw_from_vector": [
+       2.35,
+       2.159,
+       2.541
+      ]
+     }
+    },
+    {
+     "type": "T5",
+     "encoding": "Length",
+     "stimulus": "One stacked bar; the two marked segments are adjacent segments of the same stack",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 2.25,
+      "ci95_low": 2.01,
+      "ci95_high": 2.49,
+      "raw_from_vector": [
+       2.246,
+       2.012,
+       2.488
+      ]
+     },
+     "cleveland_mcgill_1984": {
+      "mean_log2_error": 2.75,
+      "ci95_low": 2.58,
+      "ci95_high": 2.92,
+      "raw_from_vector": [
+       2.75,
+       2.582,
+       2.924
+      ]
+     }
+    },
+    {
+     "type": "T6",
+     "encoding": "Angle",
+     "stimulus": "Pie chart",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 2.19,
+      "ci95_low": 2.05,
+      "ci95_high": 2.33,
+      "raw_from_vector": [
+       2.188,
+       2.047,
+       2.329
+      ]
+     },
+     "cleveland_mcgill_1984": null
+    },
+    {
+     "type": "T7",
+     "encoding": "Area (circular)",
+     "stimulus": "Bubble chart",
+     "experiment": "1A",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 2.64,
+      "ci95_low": 2.41,
+      "ci95_high": 2.87,
+      "raw_from_vector": [
+       2.636,
+       2.406,
+       2.871
+      ]
+     },
+     "cleveland_mcgill_1984": null
+    },
+    {
+     "type": "T8",
+     "encoding": "Area (rectangular)",
+     "stimulus": "Two centre-aligned rectangles",
+     "experiment": "1B",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 2.49,
+      "ci95_low": 2.32,
+      "ci95_high": 2.67,
+      "raw_from_vector": [
+       2.491,
+       2.318,
+       2.671
+      ]
+     },
+     "cleveland_mcgill_1984": null
+    },
+    {
+     "type": "T9",
+     "encoding": "Area (rectangular)",
+     "stimulus": "Treemap (600x400 px, 24 values)",
+     "experiment": "1B",
+     "heer_bostock_mturk": {
+      "mean_log2_error": 2.6,
+      "ci95_low": 2.44,
+      "ci95_high": 2.75,
+      "raw_from_vector": [
+       2.596,
+       2.441,
+       2.753
+      ]
+     },
+     "cleveland_mcgill_1984": null
+    }
+   ]
+  },
+  "notes": [
+   "Read from figure, +/-0.05 (Figure 4). Values were taken from the PDF's vector drawing (dot centres and error-bar cap positions mapped to the 1.0-3.0 axis ticks), so the reading itself is good to about +/-0.01; the 2-decimal values are rounded from 'raw_from_vector'.",
+   "The paper has nine judgment types (T1-T9), not ten. T1-T7 come from Exp. 1A (the replication); T8 and T9 come from Exp. 1B (rectangular area), which follows the same method.",
+   "Figure 4 plots means with bootstrapped 95% CIs per type ('we computed the log absolute error means and 95% confidence intervals for each judgment type using bootstrapping'). Midmeans are used only per chart in Figure 3, against the true percentage. The paper prints no per-type numbers in the text.",
+   "Cleveland & McGill's values are the paper's own re-plot of the 1984 lab study (Figure 4, top). They exist only for T1-T5 (the position-length experiment). The 1984 JASA paper was not checked.",
+   "Encoding classes are as stated in the text: T1-T3 position along a common scale, T4-T5 length, T6 angle, T7 circular area, T8-T9 rectangular area. The finer stimulus descriptions (adjacent, separated, stacked) come from the stimulus icons in Figures 1 and 4.",
+   "Text findings: the ranking T1-T5 is preserved; T4-T5 are more accurate than in the original but position still beats length; angle did not perform worse than length; rectangular area (T8, T9) is about as accurate as circular area (T7). Within Exp. 1B, aspect ratio 1 gave the worst accuracy (Figure 5)."
+  ],
+  "local_files": [
+   "research-pdfs/A_heer_bostock_2010.pdf"
+  ]
+ },
+ "B": {
+  "citation": "Fildes, R., Goodwin, P., Lawrence, M. & Nikolopoulos, K. (2009). Effective forecasting and judgmental adjustments: an empirical evaluation and strategies for improvement in supply-chain planning. International Journal of Forecasting 25(1), 3-23. doi:10.1016/j.ijforecast.2008.11.010",
+  "url": "https://doi.org/10.1016/j.ijforecast.2008.11.010 (paywalled). Full text read from the author-uploaded Article-in-Press copy (academia.edu, uploaded by P. Goodwin), archived at http://web.archive.org/web/20240107181212/https://www.academia.edu/12644236/Effective_forecasting_and_judgmental_adjustments_an_empirical_evaluation_and_strategies_for_improvement_in_supply_chain_planning ; Figure 2 image from Elsevier's CDN: https://ars.els-cdn.com/content/image/1-s2.0-S0169207008001362-gr2.jpg",
+  "where": "Article-in-Press pagination, with the journal page in brackets (journal = in-press + 2, inferred from 21 pages = pp. 3-23): Table 1 p.6 [p.8]; Table 2 p.6 [p.8]; Table 3 p.7 [p.9]; definitions of adjustment size and FCIMP p.7-8 [p.9-10]; Figure 2 p.9 [p.11]; Tables 5a/5b p.9 [p.11]; Table 8 p.15 [p.17].",
+  "values": {
+   "data_by_company_table1": [
+    {
+     "company": "A",
+     "sector": "pharmaceuticals",
+     "frequency": "monthly",
+     "period": "1/2003-12/2005",
+     "complete_triples": 5428,
+     "pct_adjusted": 65,
+     "skus": 213
+    },
+    {
+     "company": "B",
+     "sector": "food",
+     "frequency": "monthly",
+     "period": "5/2004-12/2005",
+     "complete_triples": 2856,
+     "pct_adjusted": 91,
+     "skus": 296
+    },
+    {
+     "company": "C",
+     "sector": "household products",
+     "frequency": "monthly",
+     "period": "3/2004-12/2005",
+     "complete_triples": 3012,
+     "pct_adjusted": 63,
+     "skus": 244
+    },
+    {
+     "company": "D1",
+     "sector": "retailer, product group 1",
+     "frequency": "weekly",
+     "period": "1/2004-52/2005",
+     "complete_triples": 12789,
+     "pct_adjusted": 14,
+     "skus": 191
+    },
+    {
+     "company": "D2",
+     "sector": "retailer, product group 2",
+     "frequency": "weekly",
+     "period": "1/2004-52/2005",
+     "complete_triples": 44899,
+     "pct_adjusted": 10,
+     "skus": 592
+    },
+    {
+     "company": "Total",
+     "complete_triples": 68984,
+     "pct_adjusted": 21,
+     "skus": 1536
+    }
+   ],
+   "relative_adjustment_size_table2_pct": [
+    {
+     "group": "A-C",
+     "direction": "positive",
+     "N": 4013,
+     "mean": 57.2,
+     "trimmed_mean": 46.1,
+     "median": 20.1,
+     "p90": 132
+    },
+    {
+     "group": "A-C",
+     "direction": "negative",
+     "N": 3392,
+     "mean": 19.0,
+     "trimmed_mean": 18.6,
+     "median": 13.1,
+     "p90": 46.9
+    },
+    {
+     "group": "D1&D2",
+     "direction": "positive",
+     "N": 3049,
+     "mean": 60.3,
+     "trimmed_mean": 54.4,
+     "median": 32.5,
+     "p90": 144
+    },
+    {
+     "group": "D1&D2",
+     "direction": "negative",
+     "N": 2409,
+     "mean": 22.6,
+     "trimmed_mean": 22.3,
+     "median": 20.2,
+     "p90": 44.2
+    }
+   ],
+   "accuracy_by_direction_table3": [
+    {
+     "group": "A-C",
+     "direction": "no adjustment",
+     "N": 3174,
+     "N_naive": 3068,
+     "trimmed_MAPE": {
+      "naive": 37.5,
+      "system": 60.5,
+      "final": 60.5
+     },
+     "MdAPE": {
+      "naive": 22.2,
+      "system": 13.6,
+      "final": 13.6
+     }
+    },
+    {
+     "group": "A-C",
+     "direction": "positive",
+     "N": 4013,
+     "N_naive": 3735,
+     "trimmed_MAPE": {
+      "naive": 39.8,
+      "system": 29.1,
+      "final": 39.6
+     },
+     "MdAPE": {
+      "naive": 25.8,
+      "system": 20.2,
+      "final": 17.6
+     },
+     "derived_not_in_paper": {
+      "MdAPE_relative_improvement_pct": 12.9,
+      "trimmed_MAPE_relative_improvement_pct": -36.1
+     }
+    },
+    {
+     "group": "A-C",
+     "direction": "negative",
+     "N": 3392,
+     "N_naive": 3136,
+     "trimmed_MAPE": {
+      "naive": 41.4,
+      "system": 46.9,
+      "final": 26.6
+     },
+     "MdAPE": {
+      "naive": 25.2,
+      "system": 20.7,
+      "final": 15.7
+     },
+     "derived_not_in_paper": {
+      "MdAPE_relative_improvement_pct": 24.2,
+      "trimmed_MAPE_relative_improvement_pct": 43.3
+     }
+    },
+    {
+     "group": "D1&D2",
+     "direction": "no adjustment",
+     "N": 50427,
+     "N_naive": 49794,
+     "trimmed_MAPE": {
+      "naive": 17.5,
+      "system": 19.3,
+      "final": 19.3
+     },
+     "MdAPE": {
+      "naive": 12.7,
+      "system": 13.5,
+      "final": 13.5
+     }
+    },
+    {
+     "group": "D1&D2",
+     "direction": "positive",
+     "N": 3049,
+     "N_naive": null,
+     "trimmed_MAPE": {
+      "naive": 27.6,
+      "system": 32.1,
+      "final": 64.9
+     },
+     "MdAPE": {
+      "naive": 20.9,
+      "system": 21.2,
+      "final": 43.2
+     },
+     "derived_not_in_paper": {
+      "MdAPE_relative_improvement_pct": -103.8,
+      "trimmed_MAPE_relative_improvement_pct": -102.2
+     }
+    },
+    {
+     "group": "D1&D2",
+     "direction": "negative",
+     "N": 2409,
+     "N_naive": null,
+     "trimmed_MAPE": {
+      "naive": 24.5,
+      "system": 40.9,
+      "final": 28.5
+     },
+     "MdAPE": {
+      "naive": 14.7,
+      "system": 25.0,
+      "final": 20.9
+     },
+     "derived_not_in_paper": {
+      "MdAPE_relative_improvement_pct": 16.4,
+      "trimmed_MAPE_relative_improvement_pct": 30.3
+     }
+    }
+   ],
+   "accuracy_by_size_quartile_fig2": {
+    "measure": "Median FCIMP, in percentage points. FCIMP = 100 x (|Actual - System| - |Actual - Final|) / Actual, i.e. the system forecast's APE minus the final forecast's APE. Positive means the adjustment improved accuracy.",
+    "size_definition": "Quartiles of absolute relative adjustment = 100 x |Final - System| / System",
+    "rows": [
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q1 (smallest 25%)",
+      "direction": "positive",
+      "median_FCIMP_pct_points": -0.4
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q1 (smallest 25%)",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 0.6
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q2",
+      "direction": "positive",
+      "median_FCIMP_pct_points": 1.5
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q2",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 1.3
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q3",
+      "direction": "positive",
+      "median_FCIMP_pct_points": 2.9
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q3",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 7.3
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q4 (largest 25%)",
+      "direction": "positive",
+      "median_FCIMP_pct_points": 5.0
+     },
+     {
+      "group": "Companies A-C (manufacturers, monthly)",
+      "size_quartile": "Q4 (largest 25%)",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 31.2
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q1 (smallest 25%)",
+      "direction": "positive",
+      "median_FCIMP_pct_points": -3.9
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q1 (smallest 25%)",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 1.9
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q2",
+      "direction": "positive",
+      "median_FCIMP_pct_points": -12.7
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q2",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 7.0
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q3",
+      "direction": "positive",
+      "median_FCIMP_pct_points": -29.0
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q3",
+      "direction": "negative",
+      "median_FCIMP_pct_points": 7.0
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q4 (largest 25%)",
+      "direction": "positive",
+      "median_FCIMP_pct_points": -56.4
+     },
+     {
+      "group": "Retailer D (D1 & D2, weekly)",
+      "size_quartile": "Q4 (largest 25%)",
+      "direction": "negative",
+      "median_FCIMP_pct_points": -2.7
+     }
+    ]
+   },
+   "optimism_bias_tables_5a_5b_pct": [
+    {
+     "group": "A-C",
+     "direction": "positive",
+     "N": 4013,
+     "too_large": 32.0,
+     "wrong_direction": 34.4,
+     "total_overoptimistic": 66.4
+    },
+    {
+     "group": "D1&D2",
+     "direction": "positive",
+     "N": 3049,
+     "too_large": 32.4,
+     "wrong_direction": 50.6,
+     "total_overoptimistic": 83.0
+    },
+    {
+     "group": "A-C",
+     "direction": "negative",
+     "N": 3392,
+     "too_large": 25.2,
+     "wrong_direction": 28.3,
+     "total_overoptimistic": 46.5
+    },
+    {
+     "group": "D1&D2",
+     "direction": "negative",
+     "N": 2409,
+     "too_large": 33.2,
+     "wrong_direction": 20.5,
+     "total_overoptimistic": 46.3
+    }
+   ]
+  },
+  "notes": [
+   "The Figure 2 values are read from the figure (a 644x249 px raster published by Elsevier). Accuracy is about +/-0.5 percentage points for A-C (0.19 pp per pixel) and +/-1 percentage point for D1&D2 (0.39 pp per pixel). Each value was taken from the bar outline row, measured against the gridlines.",
+   "The paper's text says: 'Fig. 2 shows the median improvement in absolute percentage error for different sizes of relative adjustment'. The y-axis is labelled '% Improvement', so the values are FCIMP in percentage points, not a percentage change in MdAPE.",
+   "No numbers are given for individual companies. Accuracy is reported for two pooled groups, A-C (three manufacturers) and D1&D2 (the retailer's two product groups). Table 1 gives data volumes by company. The abstract says that in three of the four companies adjustments increased accuracy on average.",
+   "Quartile sample sizes are not reported. Each direction's N is in Table 3.",
+   "The 'derived_not_in_paper' fields are my own arithmetic on Table 3, (system - final) / system x 100. The paper prints the system and final errors but not these percentages.",
+   "The paper focuses on MdAPE because trimmed MAPE is skewed by extremes. MAPE uses a 2% trim. Low-volume SKUs (actual or system forecast under 10 units; 3.7% of triples) and SKUs with a zero final forecast were excluded.",
+   "Text findings (p.8 [p.10]): the smallest 25% of positive adjustments reduce accuracy for A-C. For the retailer, positive adjustments reduce accuracy at every size. Negative adjustments pay off for all companies except the retailer's largest ones.",
+   "I used the Article-in-Press version (same text and tables, pages numbered 1-21) because the final typeset PDF is paywalled. The figure and table captions were also checked against the archived ScienceDirect page (2011 capture)."
+  ],
+  "local_files": [
+   "research-pdfs/B_fildes_2009_IJF_articleinpress_text_academia_wayback20240107.txt",
+   "research-pdfs/B_fildes_2009_IJF_articleinpress_text_academia_wayback20240107.html",
+   "research-pdfs/B_fildes_2009_fig2_elsevier_cdn_gr2.jpg",
+   "research-pdfs/B_fildes_2009_fig1_elsevier_cdn_gr1.jpg",
+   "research-pdfs/B_fildes_2009_sciencedirect_wayback20111031.html"
+  ]
+ },
+ "C": {
+  "citation": "Sarikaya, A., Correll, M., Bartram, L., Tory, M. & Fisher, D. (2019). What do we talk about when we talk about dashboards? IEEE TVCG 25(1), 682-692 (VIS 2018). doi:10.1109/TVCG.2018.2864903",
+  "url": "https://alper.datav.is/assets/publications/dashboards/dashboards-preprint.pdf (author preprint); supplementary data https://alper.datav.is/assets/publications/dashboards/dashboards-suppl.zip",
+  "where": "Preprint p.2 (section 3: corpus of 83 dashboards); p.4 (Fig. 3: hierarchical clustering into 7 clusters; section 4); p.5 (Table 1: clusters, '# Examples', dominant characteristics). Published pp. 682-692; preprint p.5 is probably p.686 (not verified).",
+  "values": {
+   "sample_size": 83,
+   "clusters": [
+    {
+     "id": 1,
+     "name": "Strategic Decision-Making",
+     "goal_group": "Decision-Making",
+     "n": 16,
+     "definition": "Interactive, often multi-page dashboards for organizational audiences that support strategic (longer-term) and tactical decisions."
+    },
+    {
+     "id": 5,
+     "name": "Operational Decision-Making",
+     "goal_group": "Decision-Making",
+     "n": 14,
+     "definition": "Interactive dashboards for organizational audiences that support tactical and operational (near-real-time) decisions, typically with benchmarks and regularly updated data."
+    },
+    {
+     "id": 3,
+     "name": "Static Operational",
+     "goal_group": "Awareness",
+     "n": 10,
+     "definition": "Static (no interaction, single page) dashboards of real-time operational metrics in simple charts, which still need domain knowledge to read."
+    },
+    {
+     "id": 4,
+     "name": "Static Organizational",
+     "goal_group": "Awareness",
+     "n": 8,
+     "definition": "Static, at-a-glance dashboards for an organizational audience, such as those e-mailed to executives or shown on office displays."
+    },
+    {
+     "id": 2,
+     "name": "Quantified Self",
+     "goal_group": "Motivation and Learning",
+     "n": 7,
+     "definition": "Dashboards for individuals' personal matters (finance, exercise, diet, smart home), with interaction and alerting."
+    },
+    {
+     "id": 6,
+     "name": "Communication",
+     "goal_group": "Motivation and Learning",
+     "n": 13,
+     "definition": "Dashboards for the general public that communicate and educate (public health, crime, civic data), usually without alerts or benchmarks."
+    },
+    {
+     "id": 7,
+     "name": "Dashboards Evolved",
+     "goal_group": "(catch-all)",
+     "n": 15,
+     "definition": "A catch-all of displays that look like dashboards but may not meet the strict functional definition."
+    }
+   ],
+   "check_sum": 83
+  },
+  "notes": [
+   "The counts come from Table 1 ('# Examples') and were checked against the authors' supplementary data (data/survey.csv and figures/data.csv: 83 rows, the same 16/7/10/8/14/13/15 split). The supplement calls cluster 7 'Dashboards++'.",
+   "The one-line definitions are my condensation of section 4 and Table 1 (dominant factors: those occurring at least 50% above the prior probability). The text adds that over three-quarters of the dashboards in clusters 1 and 5 contained benchmarks.",
+   "Source is the author preprint, not the IEEE typeset version."
+  ],
+  "local_files": [
+   "research-pdfs/C_sarikaya_2019_preprint.pdf",
+   "research-pdfs/C_sarikaya_suppl.zip"
+  ]
+ },
+ "D": {
+  "citation": "Bach, B., Freeman, E., Abdul-Rahman, A., Turkay, C., Khan, S., Fan, Y. & Chen, M. (2023). Dashboard design patterns. IEEE TVCG 29(1), 342-352 (VIS 2022). doi:10.1109/TVCG.2022.3209448",
+  "url": "https://arxiv.org/abs/2205.00757 (v2, 24 Aug 2022; v1, 2 May 2022); accepted version: https://eprints.gla.ac.uk/281864/",
+  "where": "arXiv v2 p.1 (Fig. 1: summary of the eight pattern groups); p.2 (corpus of 144, '42 design patterns'); pp.2-5 (section 3: each pattern with % of dashboards); p.5 (section 4: genres).",
+  "values": {
+   "dashboards_analysed": 144,
+   "corpus_composition": {
+    "from_sarikaya_et_al": 80,
+    "sarikaya_discarded": 3,
+    "new": 64,
+    "of_which_covid19": 36,
+    "coded_in_interactive_version_pct": 61
+   },
+   "patterns_stated_in_text": 42,
+   "patterns_enumerated_in_final_fig1": 41,
+   "groups_final_version": [
+    {
+     "level": "Content",
+     "group": "Data information",
+     "patterns": [
+      {
+       "name": "Detailed data(sets)",
+       "pct_of_dashboards": 94
+      },
+      {
+       "name": "Aggregated",
+       "pct_of_dashboards": 67
+      },
+      {
+       "name": "Filtered",
+       "pct_of_dashboards": 42
+      },
+      {
+       "name": "Derived values",
+       "pct_of_dashboards": 69
+      },
+      {
+       "name": "Thresholds",
+       "pct_of_dashboards": 21
+      },
+      {
+       "name": "Single value",
+       "pct_of_dashboards": 88
+      }
+     ],
+     "n_patterns_final_fig1": 6
+    },
+    {
+     "level": "Content",
+     "group": "Meta information",
+     "patterns": [
+      {
+       "name": "Data source",
+       "pct_of_dashboards": "41/69"
+      },
+      {
+       "name": "Disclaimer",
+       "pct_of_dashboards": 38
+      },
+      {
+       "name": "Data description",
+       "pct_of_dashboards": "44/57"
+      },
+      {
+       "name": "Update information",
+       "pct_of_dashboards": "64/73"
+      },
+      {
+       "name": "Annotations",
+       "pct_of_dashboards": 10
+      }
+     ],
+     "n_patterns_final_fig1": 5
+    },
+    {
+     "level": "Content",
+     "group": "Visual representation",
+     "patterns": [
+      {
+       "name": "Table",
+       "pct_of_dashboards": 42
+      },
+      {
+       "name": "List",
+       "pct_of_dashboards": 9
+      },
+      {
+       "name": "Detailed visualization",
+       "pct_of_dashboards": 88
+      },
+      {
+       "name": "Miniature chart",
+       "pct_of_dashboards": 21
+      },
+      {
+       "name": "Gauges & progress bars",
+       "pct_of_dashboards": 17
+      },
+      {
+       "name": "Pictogram",
+       "pct_of_dashboards": 19
+      },
+      {
+       "name": "Trend arrow",
+       "pct_of_dashboards": 13
+      },
+      {
+       "name": "Number",
+       "pct_of_dashboards": 62
+      }
+     ],
+     "n_patterns_final_fig1": 8
+    },
+    {
+     "level": "Composition",
+     "group": "Page layout",
+     "patterns": [
+      {
+       "name": "Open",
+       "pct_of_dashboards": 22
+      },
+      {
+       "name": "Stratified",
+       "pct_of_dashboards": 49
+      },
+      {
+       "name": "Table",
+       "pct_of_dashboards": 19
+      },
+      {
+       "name": "Grouped",
+       "pct_of_dashboards": 33
+      },
+      {
+       "name": "Schematic",
+       "pct_of_dashboards": 1
+      }
+     ],
+     "n_patterns_final_fig1": 5
+    },
+    {
+     "level": "Composition",
+     "group": "Screenspace",
+     "patterns": [
+      {
+       "name": "Screenfit",
+       "pct_of_dashboards": 44
+      },
+      {
+       "name": "Overflow",
+       "pct_of_dashboards": 22
+      },
+      {
+       "name": "Detail on demand",
+       "pct_of_dashboards": 47
+      },
+      {
+       "name": "Parameterization",
+       "pct_of_dashboards": 52
+      },
+      {
+       "name": "Multiple pages",
+       "pct_of_dashboards": 42
+      }
+     ],
+     "n_patterns_final_fig1": 5
+    },
+    {
+     "level": "Composition",
+     "group": "Structure",
+     "patterns": [
+      {
+       "name": "Single page",
+       "pct_of_dashboards": 61
+      },
+      {
+       "name": "Parallel",
+       "pct_of_dashboards": 16
+      },
+      {
+       "name": "Hierarchical",
+       "pct_of_dashboards": 19
+      },
+      {
+       "name": "Open",
+       "pct_of_dashboards": 8
+      }
+     ],
+     "n_patterns_final_fig1": 4
+    },
+    {
+     "level": "Composition",
+     "group": "Interaction",
+     "patterns": [
+      {
+       "name": "Exploration",
+       "pct_of_dashboards": 89
+      },
+      {
+       "name": "Drilldown",
+       "pct_of_dashboards": 55
+      },
+      {
+       "name": "Navigation",
+       "pct_of_dashboards": 76
+      },
+      {
+       "name": "Personalization",
+       "pct_of_dashboards": 23
+      }
+     ],
+     "n_patterns_final_fig1": 4
+    },
+    {
+     "level": "Composition",
+     "group": "Color",
+     "patterns": [
+      {
+       "name": "Shared (Fig. 1: 'Distinct')",
+       "pct_of_dashboards": 35
+      },
+      {
+       "name": "Data encoding",
+       "pct_of_dashboards": 80
+      },
+      {
+       "name": "Semantic",
+       "pct_of_dashboards": 26
+      },
+      {
+       "name": "Emotive",
+       "pct_of_dashboards": 6
+      }
+     ],
+     "n_patterns_final_fig1": 4
+    }
+   ],
+   "totals_final_version": {
+    "content": 19,
+    "composition": 22,
+    "total": 41
+   },
+   "arxiv_v1_fig1": {
+    "visual_representation": 9,
+    "extra_pattern": "Indicators",
+    "interaction_pattern_named": "Filter & Focus (v2: Drilldown)",
+    "content": 20,
+    "composition": 22,
+    "total": 42
+   },
+   "genres_pct_of_dashboards": {
+    "Static": 21,
+    "Analytic": 73,
+    "Magazine": 2,
+    "Infographic": 6,
+    "Repository": 17,
+    "Embedded mini": 4
+   }
+  },
+  "notes": [
+   "The total of 42 is NOT confirmed for the final paper. The text says '42 design patterns' twice, but Figure 1 of the final version (arXiv v2, the same figure in the Glasgow accepted manuscript) shows 41: content 6+5+8, composition 5+5+4+4+4. The section 3 text also describes 41.",
+   "The 42 matches arXiv v1 (May 2022), whose Figure 1 has a ninth visual-representation pattern, 'Indicators' (6+5+9+5+5+4+4+4 = 42). In v1 'Filter & Focus' sits where v2 has 'Drilldown'.",
+   "Percentages are the share of the 144 dashboards in which each pattern was observed. Patterns are not exclusive, so they do not sum to 100. Two numbers (e.g. 41/69) mean explicit only / including implicit meta information.",
+   "The pattern website (dashboarddesignpatterns.github.io/patterns.html) lists a different, older-looking set (e.g. 5 structure and 5 colour patterns, 'Signature Charts'), so it should not be used for the counts.",
+   "Genre percentages overlap (sum 123%)."
+  ],
+  "local_files": [
+   "research-pdfs/D_bach_2022_arxiv_v2.pdf",
+   "research-pdfs/D_bach_2022_arxiv_v1.pdf",
+   "research-pdfs/D_bach_2023_glasgow_eprint_281864.pdf"
+  ]
+ },
+ "E": {
+  "citation": "Fernandes, M., Walls, L., Munson, S., Hullman, J. & Kay, M. (2018). Uncertainty displays using quantile dotplots or CDFs improve transit decision-making. Proc. ACM CHI 2018, paper 144, pp. 1-12. doi:10.1145/3173574.3173718",
+  "url": "https://mucollective.northwestern.edu/files/2018-UncertainBusDecisions-CHI.pdf ; supplement https://github.com/michael-fernandes/uncertainty-displays-for-transit (final_analysis.md)",
+  "where": "p.1 (abstract: headline numbers); p.4-5 (conditions); p.6 (design: between-subjects repeated measures); p.7 (decision metric: expected/optimal payoff; N=408); p.9 (Figure 4: fitted mean and SD per trial by condition); p.10 (Figure 5: last-trial differences vs control and vs dot50). Supplement final_analysis.md: 'Performance on last trial' tables (pairwise differences, posterior median and 95% quantile interval).",
+  "values": {
+   "metric": "Expected payoff / optimal expected payoff per trial (1 = optimal decision); Bayesian beta regression; 'last trial' = trial 40 for a typical participant and scenario",
+   "headline_abstract": {
+    "dot50_mean_pct_of_optimal": 97,
+    "dot50_ci95": [
+     95,
+     98
+    ],
+    "dot50_vs_control_pp": 5,
+    "dot50_vs_control_ci95": [
+     2,
+     8
+    ],
+    "dot50_within_subject_sd_pp": 3,
+    "dot50_sd_ci95": [
+     2,
+     4
+    ],
+    "dot50_sd_vs_control_pp": -4,
+    "dot50_sd_vs_control_ci95": [
+     -6,
+     -2
+    ]
+   },
+   "conditions": [
+    {
+     "condition": "dot50",
+     "description": "Quantile dotplot, 50 dots",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.971,
+      "ci95": [
+       0.947,
+       0.984
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.944,
+     "last_trial_sd": {
+      "median": 0.031,
+      "ci95": [
+       0.023,
+       0.043
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 4.4,
+      "ci95": [
+       2.1,
+       8.3
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": -3.9,
+      "ci95": [
+       -5.7,
+       -2.4
+      ]
+     }
+    },
+    {
+     "condition": "cdf",
+     "description": "Cumulative distribution plot (complementary CDF)",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.958,
+      "ci95": [
+       0.926,
+       0.977
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.925,
+     "last_trial_sd": {
+      "median": 0.043,
+      "ci95": [
+       0.032,
+       0.058
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 3.1,
+      "ci95": [
+       0.7,
+       6.8
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": -2.7,
+      "ci95": [
+       -4.4,
+       -1.2
+      ]
+     }
+    },
+    {
+     "condition": "dot20",
+     "description": "Quantile dotplot, 20 dots",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.951,
+      "ci95": [
+       0.91,
+       0.973
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.921,
+     "last_trial_sd": {
+      "median": 0.044,
+      "ci95": [
+       0.033,
+       0.059
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 2.4,
+      "ci95": [
+       -0.1,
+       6.0
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": -2.6,
+      "ci95": [
+       -4.4,
+       -1.1
+      ]
+     }
+    },
+    {
+     "condition": "text99",
+     "description": "Text: 99% one-sided predictive interval",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.95,
+      "ci95": [
+       0.911,
+       0.971
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.908,
+     "last_trial_sd": {
+      "median": 0.057,
+      "ci95": [
+       0.043,
+       0.075
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 2.3,
+      "ci95": [
+       -0.1,
+       5.9
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": -1.3,
+      "ci95": [
+       -3.0,
+       0.2
+      ]
+     }
+    },
+    {
+     "condition": "text60",
+     "description": "Text: 60% one-sided predictive interval",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.946,
+      "ci95": [
+       0.904,
+       0.97
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.923,
+     "last_trial_sd": {
+      "median": 0.056,
+      "ci95": [
+       0.042,
+       0.075
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 2.0,
+      "ci95": [
+       -0.6,
+       5.6
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": -1.4,
+      "ci95": [
+       -3.2,
+       0.2
+      ]
+     }
+    },
+    {
+     "condition": "pdfinterval",
+     "description": "Density plot with central 50% interval",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.944,
+      "ci95": [
+       0.903,
+       0.968
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.898,
+     "last_trial_sd": {
+      "median": 0.056,
+      "ci95": [
+       0.041,
+       0.073
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 1.8,
+      "ci95": [
+       -1.0,
+       5.3
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": -1.5,
+      "ci95": [
+       -3.3,
+       0.2
+      ]
+     }
+    },
+    {
+     "condition": "pdf",
+     "description": "Probability density plot",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.938,
+      "ci95": [
+       0.894,
+       0.963
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.922,
+     "last_trial_sd": {
+      "median": 0.073,
+      "ci95": [
+       0.057,
+       0.095
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 1.2,
+      "ci95": [
+       -1.2,
+       4.6
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": 0.3,
+      "ci95": [
+       -1.4,
+       1.9
+      ]
+     }
+    },
+    {
+     "condition": "interval",
+     "description": "Interval plot",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.928,
+      "ci95": [
+       0.87,
+       0.96
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.886,
+     "last_trial_sd": {
+      "median": 0.076,
+      "ci95": [
+       0.056,
+       0.101
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": 0.2,
+      "ci95": [
+       -3.7,
+       3.7
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": 0.6,
+      "ci95": [
+       -1.4,
+       2.9
+      ]
+     }
+    },
+    {
+     "condition": "text85",
+     "description": "Text: 85% one-sided predictive interval",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.916,
+      "ci95": [
+       0.849,
+       0.953
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.919,
+     "last_trial_sd": {
+      "median": 0.091,
+      "ci95": [
+       0.068,
+       0.12
+      ]
+     },
+     "diff_vs_control_mean_pp": {
+      "median": -1.0,
+      "ci95": [
+       -5.1,
+       2.6
+      ]
+     },
+     "diff_vs_control_sd_pp": {
+      "median": 2.0,
+      "ci95": [
+       -0.1,
+       4.4
+      ]
+     }
+    },
+    {
+     "condition": "none",
+     "description": "No uncertainty (point estimate only; control)",
+     "last_trial_mean_expected_over_optimal": {
+      "median": 0.926,
+      "ci95": [
+       0.873,
+       0.957
+      ]
+     },
+     "first_trial_mean_expected_over_optimal_median": 0.908,
+     "last_trial_sd": {
+      "median": 0.07,
+      "ci95": [
+       0.052,
+       0.093
+      ]
+     }
+    }
+   ],
+   "participants_analysed": 408,
+   "design": "Between-subjects (one display per participant), 40 trials each; MTurk Masters; arrival/no-arrival variants pooled"
+  },
+  "notes": [
+   "'last_trial_mean_expected_over_optimal' and 'last_trial_sd' were read from Figure 4 (panels 2 and 3, the right end of each red median line and of the light-grey 95% band). They come from the PDF's vector drawing, good to about +/-0.003. Mark as read from figure.",
+   "'diff_vs_control_*' are exact. They are the authors' supplement values (posterior median and 95% quantile interval of the difference at the last trial), converted to percentage points. The supplement labels text85 as 'text'.",
+   "The abstract gives dot50 as '5 percentage points more than control (95% CI: [2,8])'. The supplement's posterior median of that difference is 4.4 pp [2.1, 8.3]. The paper does not say which point estimate the abstract uses, so the abstract figure is kept as published.",
+   "Headline finding: frequency-based displays (quantile dotplots) gave the best decisions. dot50 was best, and cdf and dot20 were close behind. All three beat the text, interval and density displays and the point-estimate control by a few percentage points in the mean and were more consistent (lower SD). Text displays depended on the probability level: text99 and text60 did nearly as well as dot20, while text85 did about as badly as control."
+  ],
+  "local_files": [
+   "research-pdfs/E_fernandes_2018.pdf",
+   "research-pdfs/E_fernandes_2018_supplement_final_analysis.md"
+  ]
+ },
+ "F": {
+  "citation": "Stone, M., Szafir, D. A. & Setlur, V. (2014). An engineering model for color difference as a function of size. Proc. IS&T 22nd Color and Imaging Conference, pp. 253-258. doi:10.2352/CIC.2014.22.1.art00045 ; and Szafir, D. A. (2018). Modeling color difference for visualization design. IEEE TVCG 24(1), 392-401. doi:10.1109/TVCG.2017.2744359",
+  "url": "https://library.imaging.org/cic/articles/22/1/art00045 (PDF via IS&T download API) ; https://danielleszafir.com/colordiff_vis2017.pdf",
+  "where": "Stone et al. 2014: p.253 (introduction: ND(50,2) close to 6, close to 11 at 0.33 deg); p.255 (624 participants; method); p.256 (Table 2: ND(50) per axis for 11 sizes; Table 3: C and K; Table 4: A and B); p.258 (conclusion: 5-6 dE for marks of 2 deg or more). Szafir 2018 (author PDF): p.5 (Table 1: points; Eqs. 5-7); p.8 (Table 2: lines; Eqs. 14-16).",
+  "values": {
+   "threshold_definition": "ND(50): the CIELAB step along one axis (L*, a* or b*) at which 50% of observers report a difference (a 50% JND), crowdsourced on MTurk under uncontrolled viewing",
+   "stone2014_table2_isolated_squares": [
+    {
+     "size_deg": 0.333,
+     "L": 7.321,
+     "a": 9.901,
+     "b": 14.837
+    },
+    {
+     "size_deg": 0.4,
+     "L": 7.267,
+     "a": 9.268,
+     "b": 12.019
+    },
+    {
+     "size_deg": 0.5,
+     "L": 6.435,
+     "a": 8.052,
+     "b": 10.101
+    },
+    {
+     "size_deg": 0.667,
+     "L": 6.18,
+     "a": 7.429,
+     "b": 9.747
+    },
+    {
+     "size_deg": 0.8,
+     "L": 5.531,
+     "a": 7.837,
+     "b": 9.091
+    },
+    {
+     "size_deg": 1,
+     "L": 6.017,
+     "a": 6.897,
+     "b": 8.197
+    },
+    {
+     "size_deg": 1.25,
+     "L": 5.643,
+     "a": 6.821,
+     "b": 7.764
+    },
+    {
+     "size_deg": 1.625,
+     "L": 5.903,
+     "a": 6.906,
+     "b": 7.587
+    },
+    {
+     "size_deg": 2,
+     "L": 5.01,
+     "a": 5.917,
+     "b": 6.831
+    },
+    {
+     "size_deg": 4,
+     "L": 5.187,
+     "a": 5.488,
+     "b": 5.841
+    },
+    {
+     "size_deg": 6,
+     "L": 5.574,
+     "a": 5.149,
+     "b": 5.834
+    }
+   ],
+   "stone2014_model": {
+    "ND50": "ND(50,s) = C + K/s (s in degrees)",
+    "C": {
+     "L": 5.079,
+     "a": 5.339,
+     "b": 5.349
+    },
+    "K": {
+     "L": 0.751,
+     "a": 1.541,
+     "b": 2.871
+    },
+    "general": "ND(p,s) = p(A + B/s), p in [0,1]",
+    "A": {
+     "L": 10.16,
+     "a": 10.68,
+     "b": 10.7
+    },
+    "B": {
+     "L": 1.5,
+     "a": 3.08,
+     "b": 5.74
+    }
+   },
+   "szafir2018_table1_scatterplot_points": [
+    {
+     "diameter_deg": 0.25,
+     "diameter_px": 6,
+     "L": 8.37,
+     "a": 16.11,
+     "b": 19.46
+    },
+    {
+     "diameter_deg": 0.5,
+     "diameter_px": 12,
+     "L": 6.74,
+     "a": 9.98,
+     "b": 13.34
+    },
+    {
+     "diameter_deg": 0.75,
+     "diameter_px": 18,
+     "L": 5.75,
+     "a": 8.52,
+     "b": 11.35
+    },
+    {
+     "diameter_deg": 1,
+     "diameter_px": 25,
+     "L": 5.75,
+     "a": 7.81,
+     "b": 10.03
+    },
+    {
+     "diameter_deg": 1.5,
+     "diameter_px": 37,
+     "L": 6.08,
+     "a": 6.87,
+     "b": 8.97
+    },
+    {
+     "diameter_deg": 2,
+     "diameter_px": 50,
+     "L": 5.47,
+     "a": 6.84,
+     "b": 7.99
+    }
+   ],
+   "szafir2018_table2_line_marks": [
+    {
+     "thickness_deg": 0.05,
+     "thickness_px": 2,
+     "L": 15.35,
+     "a": 13.92,
+     "b": 19.47
+    },
+    {
+     "thickness_deg": 0.1,
+     "thickness_px": 3,
+     "L": 11.98,
+     "a": 11.57,
+     "b": 16.15
+    },
+    {
+     "thickness_deg": 0.15,
+     "thickness_px": 4,
+     "L": 8.69,
+     "a": 10.28,
+     "b": 15.17
+    },
+    {
+     "thickness_deg": 0.25,
+     "thickness_px": 6,
+     "L": 7.74,
+     "a": 9.39,
+     "b": 13.75
+    },
+    {
+     "thickness_deg": 0.3,
+     "thickness_px": 7,
+     "L": 7.23,
+     "a": 8.15,
+     "b": 12.43
+    },
+    {
+     "thickness_deg": 0.35,
+     "thickness_px": 9,
+     "L": 6.92,
+     "a": 7.79,
+     "b": 11.05
+    }
+   ],
+   "szafir2018_models": {
+    "points": "ND_L(p,s)=p/(0.0937-0.0085/d); ND_a(p,s)=p/(0.0775-0.0121/d); ND_b(p,s)=p/(0.0611-0.0096/d); d = diameter in degrees",
+    "lines": "ND_L(p,s)=p/(0.0742-0.0023/t); ND_a(p,s)=p/(0.0623-0.0015/t); ND_b(p,s)=p/(0.0425-0.0009/t); t = thickness in degrees"
+   }
+  },
+  "notes": [
+   "All threshold values are typed tables in the sources, not readings from figures.",
+   "Viewing assumptions differ. Stone et al. assume 24 in and 96 dpi. Szafir assumes 30 in and 96 dpi, so 1 deg = about 25 px, as in her 'Size in Px' column. Stone's table has no pixel column, and I have not added one.",
+   "Stone et al.: 624 participants and 52 sample colours. Each size was tested separately for L*, a* and b*. The text summarises ND(50,2) as 'closer to 6' (Table 2 at 2 deg: 5.0, 5.9, 6.8) and 'closer to 11' at 0.33 deg.",
+   "Szafir 2018: scatterplot points (72 participants analysed) need larger differences than Stone's isolated squares. Lines are more discriminable than points of the same thickness. Bars are modelled by thickness and length (Eqs. 8-13) and have no single size table.",
+   "For a line chart: plot size (deg) on x and ND(50) on y, one series per axis. Thresholds grow sharply below about 0.5 deg, and b* (blue-yellow) needs the largest steps."
+  ],
+  "local_files": [
+   "research-pdfs/F_stone_szafir_setlur_2014_CIC.pdf",
+   "research-pdfs/F_szafir_2018_tvcg.pdf"
+  ]
+ },
+ "G": {
+  "citation": "Stokes, C., Setlur, V., Cogley, B., Satyanarayan, A. & Hearst, M. A. (2023). Striking a balance: reader takeaways and preferences when integrating text and charts. IEEE TVCG 29(1) (VIS 2022). doi:10.1109/TVCG.2022.3209383",
+  "url": "https://arxiv.org/abs/2208.01780 (author version)",
+  "where": "p.1 (abstract: 302 participants); p.3 (512 recruited); p.4 (302 after exclusions); p.5 (stimulus sets A and B); p.6 (section 4.1, Figure 6: average rankings; text on first-choice counts).",
+  "values": {
+   "participants": 302,
+   "recruited": 512,
+   "ranking_set_A_extremes_avg_rank_1best_4worst": [
+    {
+     "variant": "annotation+ (chart with narrative annotations)",
+     "overall": 1.6,
+     "visual_group": 1.37,
+     "textual_group": 1.96
+    },
+    {
+     "variant": "title-annotation1 (title + one annotation)",
+     "overall": 2.27,
+     "visual_group": 2.19,
+     "textual_group": 2.41
+    },
+    {
+     "variant": "all-text (paragraph, no chart)",
+     "overall": 2.84,
+     "visual_group": 3.21,
+     "textual_group": 2.42
+    },
+    {
+     "variant": "no-text (axes and ticks only)",
+     "overall": 3.28,
+     "visual_group": 3.23,
+     "textual_group": 3.24
+    }
+   ],
+   "ranking_set_B_fine_grained_avg_rank_1best_3worst": [
+    {
+     "variant": "title-annotation2 (title + two annotations)",
+     "overall": 1.59,
+     "visual_group": 1.49,
+     "textual_group": 1.72
+    },
+    {
+     "variant": "title-annotation1",
+     "overall": 1.9,
+     "visual_group": 1.86,
+     "textual_group": 1.91
+    },
+    {
+     "variant": "title-only",
+     "overall": 2.51,
+     "visual_group": 2.66,
+     "textual_group": 2.36
+    }
+   ],
+   "first_choice_set_A": {
+    "all_text_ranked_first": 42,
+    "all_text_ranked_first_pct": 14,
+    "of_which_textual": 25,
+    "of_which_visual": 5,
+    "no_text_chart_ranked_first": 15
+   },
+   "friedman_tests": {
+    "H1a_visual_setA_chi2": 151.15,
+    "H1b_setA_chi2": 50.962,
+    "H1c_visual_setB_chi2": 75.25,
+    "H1d_textual_setB_chi2": 21.24
+   }
+  },
+  "notes": [
+   "Average ranks are the printed labels in Figure 6. Lower is better.",
+   "VISUAL and TEXTUAL are the top and bottom 25% of a visual/textual preference score. Their sizes are not reported.",
+   "Headline: the most heavily annotated chart was ranked first in both sets, by everyone and by both preference groups. Charts with little or no text ranked last. A minority (42, 14%) put the text-only version first.",
+   "For TEXTUAL readers, all-text (2.42) was not significantly different from title-annotation1 (2.41); Nemenyi p = 1."
+  ],
+  "local_files": [
+   "research-pdfs/G_stokes_2022_arxiv.pdf"
+  ]
+ },
+ "H": {
+  "citation": "Syntetos, A. A., Boylan, J. E. & Croston, J. D. (2005). On the categorization of demand patterns. Journal of the Operational Research Society 56(5), 495-503. doi:10.1057/palgrave.jors.2601841",
+  "url": "https://www.tandfonline.com/doi/full/10.1057/palgrave.jors.2601841 (free to read but blocked to automated access). Read from the Internet Archive capture of that page: http://web.archive.org/web/20240706202233/https://www.tandfonline.com/doi/full/10.1057/palgrave.jors.2601841",
+  "where": "Section 'The MSE of intermittent demand estimation procedures' (definitions of p, mu, sigma^2); subsection 'Comparison results (MSE Croston's method-MSE Syntetos and Boylan method)' (cut-offs 1.32 and 0.49, Table 1, Figure 3 with the four areas and their names); 'Overall comparison results' (rule restated); 'Simulation exercise' (3000 series and class counts). The HTML has no page numbers, so only the article range pp. 495-503 can be given.",
+  "values": {
+   "variables": {
+    "p": "Average inter-demand interval, in forecast review periods, including the period in which demand occurs (the quantity later called ADI)",
+    "CV2": "Squared coefficient of variation of demand sizes when demand occurs (sigma^2/mu^2, where mu and sigma^2 are the mean and variance of the demand sizes)"
+   },
+   "cutoffs": {
+    "p": 1.32,
+    "CV2": 0.49
+   },
+   "quadrants": [
+    {
+     "area": 1,
+     "condition": "p <= 1.32 and CV2 > 0.49",
+     "class": "erratic (but not very intermittent)",
+     "preferred_method": "Syntetos & Boylan (SBA)"
+    },
+    {
+     "area": 2,
+     "condition": "p > 1.32 and CV2 > 0.49",
+     "class": "lumpy",
+     "preferred_method": "Syntetos & Boylan (SBA)"
+    },
+    {
+     "area": 3,
+     "condition": "p <= 1.32 and CV2 <= 0.49",
+     "class": "smooth",
+     "preferred_method": "Croston"
+    },
+    {
+     "area": 4,
+     "condition": "p > 1.32 and CV2 <= 0.49",
+     "class": "intermittent (but not very erratic)",
+     "preferred_method": "Syntetos & Boylan (SBA)"
+    }
+   ],
+   "empirical_sample": {
+    "series": 3000,
+    "industry": "automotive",
+    "periods_per_series": 24,
+    "counts": {
+     "erratic": 441,
+     "lumpy": 314,
+     "smooth": 1271,
+     "intermittent": 974
+    }
+   }
+  },
+  "notes": [
+   "Cut-offs confirmed: p = 1.32 and CV^2 = 0.49 (Figure 3 labels and text). For alpha = 0.15 the text gives CV^2 > 0.48. The 0.49 cut-off covers 'all smoothing constant values that are likely to be applied in practice' (Table 1).",
+   "The paper never uses the abbreviation 'ADI'. It writes p for the average inter-demand interval.",
+   "Figure 3 places p on the horizontal axis and CV^2 on the vertical axis, with area 1 top-left, 2 top-right, 3 bottom-left and 4 bottom-right.",
+   "For the EWMA vs SBA comparison the p cut-off is 1.20, not 1.32.",
+   "The archived HTML is the publisher's full text (captured 2024-07-06). Figure 3 was fetched from the same capture."
+  ],
+  "local_files": [
+   "research-pdfs/H_syntetos_boylan_croston_2005_TandF_fulltext_wayback20240706.html",
+   "research-pdfs/H_syntetos_2005_fig3_wayback.gif"
+  ]
+ },
+ "I": {
+  "citation": "Makridakis, S., Spiliotis, E. & Assimakopoulos, V. (2022). M5 accuracy competition: results, findings, and conclusions. International Journal of Forecasting 38(4), 1346-1364. doi:10.1016/j.ijforecast.2021.11.013",
+  "url": "https://doi.org/10.1016/j.ijforecast.2021.11.013 (open access, but blocked to automated access). Read from the authors' final manuscript of 12 Jan 2022 (ResearchGate upload, Internet Archive capture of 2026-07-28); organisers' scores: https://github.com/Mcompetitions/M5-methods (Scores and Ranks.xlsx)",
+  "where": "Manuscript p.1 (abstract: 42,840 series; 30,490 bottom-level); p.3 (3,049 products; 12 aggregation levels); p.4-5 (WRMSSE; intermittency; 883 zero-weight series); p.8 (teams; 415 beat ES_bu); p.9 (improvement bands); p.11 (22.4%); p.12 (Table 2: WRMSSE of the top 50 and ES_bu; level-wise gains). The manuscript has its own page numbers; journal pages are 1346-1364.",
+  "values": {
+   "series_total": 42840,
+   "products": 3049,
+   "series_by_level": {
+    "L1 total": 1,
+    "L2 state": 3,
+    "L3 store": 10,
+    "L4 category": 3,
+    "L5 department": 7,
+    "L6 state-category": 9,
+    "L7 state-department": 21,
+    "L8 store-category": 30,
+    "L9 store-department": 70,
+    "L10 product": 3049,
+    "L11 product-state": 9147,
+    "L12 product-store": 30490
+   },
+   "share_of_zeros": null,
+   "zero_weight_series": {
+    "count": 883,
+    "pct_of_series": 2,
+    "pct_of_revenue_in_test": "<1.3"
+   },
+   "measure": "WRMSSE (weighted root mean squared scaled error; lower is better)",
+   "winner": {
+    "team": "YJ_STU",
+    "wrmsse": 0.52
+   },
+   "best_benchmark": {
+    "name": "ES_bu (bottom-up exponential smoothing)",
+    "wrmsse": 0.671
+   },
+   "winner_improvement_over_best_benchmark_pct": 22.4,
+   "top5": [
+    [
+     "YJ_STU",
+     0.52,
+     22.4
+    ],
+    [
+     "Matthias",
+     0.528,
+     21.3
+    ],
+    [
+     "mf",
+     0.536,
+     20.2
+    ],
+    [
+     "monsaraida",
+     0.536,
+     20.1
+    ],
+    [
+     "Alan Lahoud",
+     0.536,
+     20.1
+    ]
+   ],
+   "top50_min_improvement_pct": 14,
+   "teams": {
+    "participants": 7092,
+    "teams": 5507,
+    "beat_naive": 2666,
+    "beat_snaive": 1972,
+    "beat_es_bu": 415,
+    "beat_es_bu_pct": 7.5
+   },
+   "teams_beating_es_bu_by_improvement": {
+    ">20%": 5,
+    ">15%": 42,
+    ">10%": 106,
+    ">5%": 249
+   },
+   "avg_improvement_top50_by_level_pct": {
+    "level 1": 40,
+    "levels 5-7": 23,
+    "levels 10-12": 3
+   }
+  },
+  "notes": [
+   "The paper gives no numeric share of zero values or of intermittent series. It only says many series are intermittent, 'with many zeros'. The data are described further in the companion paper (Makridakis et al., 2022, 'The M5 competition: background, organization, and implementation'), which was not checked.",
+   "Organiser data confirm the headline: Scores and Ranks.xlsx gives YJ_STU 0.52044 and ES_bu 0.67098, so 1 - 0.52044/0.67098 = 22.4%.",
+   "Series counts by level are from the organisers' workbook ('Info' sheet). They sum to 42,840 and match the paper's description.",
+   "Source text is the authors' accepted manuscript (Jan 2022), not the typeset journal PDF, which is open access but could not be fetched automatically. The journal abstract (Internet Archive capture of ScienceDirect, 2022-01-12) matches."
+  ],
+  "local_files": [
+   "research-pdfs/I_m5_accuracy_IJF2022_published.pdf",
+   "research-pdfs/I_m5_scores_and_ranks_github.xlsx"
+  ]
+ },
+ "J": {
+  "citation": "Kay, M., Kola, T., Hullman, J. R. & Munson, S. A. (2016). When (ish) is my bus? User-centered visualizations of uncertainty in everyday, mobile predictive systems. Proc. ACM CHI 2016, pp. 5092-5103. doi:10.1145/2858036.2858558",
+  "url": "https://mucollective.northwestern.edu/files/2016-WhenIsMyBus-CHI.pdf",
+  "where": "PDF p.1 (abstract: ~1.15x); p.2 (contribution 3: 1-3 percentage points more precise); p.8 (N = 320 + 221); p.9 (Figure 6B: SD of estimated p at p = 0.5; Figure 7: ratios of SDs; confidence, appeal and ease-of-use estimates). Proceedings pages 5092-5103, so PDF p.9 is probably p.5100.",
+  "values": {
+   "participants": {
+    "bus_timeline": 320,
+    "route_timeline": 221,
+    "total": 541
+   },
+   "design": "Within-subjects: each participant used each of 4 displays once (density, stripeplot-50, dotplot-20, dotplot-100) to estimate probabilities",
+   "headline": "Dotplot-20 had the lowest variance (SD about 11 percentage points), about 1.15x more precise than density (95% CI 1.04-1.26). Dotplot-100 was similar to density (0.97x).",
+   "sd_of_estimated_p_at_p05_fig6b": {
+    "dotplot-20": {
+     "point": 0.113,
+     "ci95": [
+      0.088,
+      0.145
+     ]
+    },
+    "dotplot-100": {
+     "point": 0.134,
+     "ci95": [
+      0.105,
+      0.169
+     ]
+    },
+    "density": {
+     "point": 0.13,
+     "ci95": [
+      0.101,
+      0.165
+     ]
+    },
+    "stripeplot": {
+     "point": 0.163,
+     "ci95": [
+      0.128,
+      0.204
+     ]
+    }
+   },
+   "printed_labels_fig6b": {
+    "dotplot-20": 0.11,
+    "dotplot-100": 0.13,
+    "density": 0.13,
+    "stripeplot": 0.16
+   },
+   "sd_ratios_fig7": {
+    "stripeplot/density": {
+     "point": 1.253,
+     "ci95": [
+      1.144,
+      1.373
+     ]
+    },
+    "stripeplot/dotplot-100": {
+     "point": 1.215,
+     "ci95": [
+      1.11,
+      1.331
+     ]
+    },
+    "density/dotplot-100": {
+     "point": 0.97,
+     "ci95": [
+      0.883,
+      1.062
+     ]
+    },
+    "stripeplot/dotplot-20": {
+     "point": 1.436,
+     "ci95": [
+      1.308,
+      1.577
+     ]
+    },
+    "density/dotplot-20": {
+     "point": 1.145,
+     "ci95": [
+      1.042,
+      1.26
+     ]
+    },
+    "dotplot-100/dotplot-20": {
+     "point": 1.181,
+     "ci95": [
+      1.076,
+      1.297
+     ]
+    }
+   },
+   "printed_labels_fig7": {
+    "stripeplot/density": 1.25,
+    "stripeplot/dotplot-100": 1.22,
+    "density/dotplot-100": 0.97,
+    "stripeplot/dotplot-20": 1.44,
+    "density/dotplot-20": 1.15,
+    "dotplot-100/dotplot-20": 1.18
+   },
+   "confidence_0_100": {
+    "dotplot-20": {
+     "mean": 81,
+     "ci95": [
+      77,
+      83
+     ]
+    },
+    "dotplot-100": {
+     "mean": 73,
+     "ci95": [
+      71,
+      76
+     ]
+    }
+   },
+   "visual_appeal_0_100": {
+    "density": {
+     "mean": 66,
+     "ci95": [
+      64,
+      67
+     ]
+    },
+    "dotplot-20": {
+     "mean": 43,
+     "ci95": [
+      42,
+      45
+     ]
+    }
+   },
+   "ease_of_use_0_100": {
+    "all_except_stripeplot": "~60",
+    "stripeplot": {
+     "mean": 35,
+     "ci95": [
+      33,
+      36
+     ]
+    }
+   }
+  },
+  "notes": [
+   "Only the printed labels in Figures 6B and 7 and the text values (SD about 11 pp, 1.15x, 1.04-1.26, stripeplot 13-20 pp) are stated by the paper. The 3-decimal points and CIs were read from the PDF's vector drawing (dots and CI bars against the axis ticks), good to about +/-0.003. Mark as read from figure.",
+   "The paper reports precision as SD of the estimated probability at p = 0.5 (Bayesian beta regression), and compares displays by ratios of SDs. The abstract calls it 'reduce the variance ... by ~1.15 times', but the ratio is of SDs.",
+   "The experiment had no dotplot-50 condition. 'Stripeplot' showed 50 stripes."
+  ],
+  "local_files": [
+   "research-pdfs/J_kay_2016.pdf"
+  ]
+ },
+ "K": {
+  "citation": "Draft of 'Learn dashboard design with me' (E. Simier), Part 5 'The proposed system', typography section (SP/data/ed2-5-proposed-system.txt); the claim of seventeen faces is in Part 3 'Type for figures' (SP/data/ed2-3-wider-research.txt, line 268).",
+  "url": "Fonts: https://github.com/google/fonts (main branch, commit 9710da1eacb3be272583c3224dcb70f9da6eadbb, 2026-09-30); Chrome cross-check used https://fonts.googleapis.com/css2",
+  "where": "ed2-5-proposed-system.txt lines 55-58; ed2-3-wider-research.txt line 268.",
+  "values": {
+   "draft_as_stated": {
+    "method_as_stated": "Measured in headless Chrome, Google Fonts builds, tabular figures: width of “0” in em at 400 and 700",
+    "rows": [
+     {
+      "face": "Instrument Sans",
+      "group": "Keep width",
+      "w400_em": 0.6,
+      "w700_em": 0.6
+     },
+     {
+      "face": "IBM Plex Sans",
+      "group": "Keep width",
+      "w400_em": 0.6,
+      "w700_em": 0.6
+     },
+     {
+      "face": "Hanken Grotesk",
+      "group": "Keep width",
+      "w400_em": 0.56,
+      "w700_em": 0.56
+     },
+     {
+      "face": "Red Hat Text",
+      "group": "Keep width",
+      "w400_em": 0.6,
+      "w700_em": 0.6
+     },
+     {
+      "face": "Geist",
+      "group": "Shift when bold",
+      "w400_em": 0.6,
+      "w700_em": 0.636
+     },
+     {
+      "face": "Archivo",
+      "group": "Shift when bold",
+      "w400_em": 0.568,
+      "w700_em": 0.598
+     },
+     {
+      "face": "Roboto Flex",
+      "group": "Shift when bold",
+      "w400_em": 0.444,
+      "w700_em": 0.546
+     }
+    ],
+    "minus_claim": "In the faces that keep width the minus sign also matches the digit width, so signed columns align.",
+    "faces_tested_claimed": 17,
+    "faces_with_results_in_draft": 7
+   },
+   "reproduction_fonttools": [
+    {
+     "face": "Instrument Sans",
+     "named_in_draft": true,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.6,
+     "digit_width_700_em": 0.6,
+     "zero_width_400_em": 0.6,
+     "zero_width_700_em": 0.6,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6
+     ],
+     "digit_widths_0to9_700_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "IBM Plex Sans",
+     "named_in_draft": true,
+     "tabular_by_default": true,
+     "tnum_available": false,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.6,
+     "digit_width_700_em": 0.6,
+     "zero_width_400_em": 0.6,
+     "zero_width_700_em": 0.6,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6
+     ],
+     "digit_widths_0to9_700_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Hanken Grotesk",
+     "named_in_draft": true,
+     "tabular_by_default": true,
+     "tnum_available": false,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.56,
+     "digit_width_700_em": 0.56,
+     "zero_width_400_em": 0.56,
+     "zero_width_700_em": 0.56,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.56,
+      0.56
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56
+     ],
+     "digit_widths_0to9_700_em": [
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56,
+      0.56
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.56,
+      0.56
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.56,
+      0.56
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Red Hat Text",
+     "named_in_draft": true,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.6,
+     "digit_width_700_em": null,
+     "zero_width_400_em": 0.6,
+     "zero_width_700_em": 0.6,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6
+     ],
+     "digit_widths_0to9_700_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.651
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.6,
+      0.6
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      false
+     ]
+    },
+    {
+     "face": "Geist",
+     "named_in_draft": true,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.6,
+     "digit_width_700_em": 0.636,
+     "zero_width_400_em": 0.6,
+     "zero_width_700_em": 0.636,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.52,
+      0.544
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6,
+      0.6
+     ],
+     "digit_widths_0to9_700_em": [
+      0.636,
+      0.636,
+      0.636,
+      0.636,
+      0.636,
+      0.636,
+      0.636,
+      0.636,
+      0.636,
+      0.636
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6,
+      0.636
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.6,
+      0.636
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Archivo",
+     "named_in_draft": true,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.568,
+     "digit_width_700_em": 0.598,
+     "zero_width_400_em": 0.568,
+     "zero_width_700_em": 0.598,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.625,
+      0.641
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.568,
+      0.568,
+      0.568,
+      0.568,
+      0.568,
+      0.568,
+      0.568,
+      0.568,
+      0.568,
+      0.568
+     ],
+     "digit_widths_0to9_700_em": [
+      0.598,
+      0.598,
+      0.598,
+      0.598,
+      0.598,
+      0.598,
+      0.598,
+      0.598,
+      0.598,
+      0.598
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.5685,
+      0.5982
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.5684,
+      0.5981
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Roboto Flex",
+     "named_in_draft": true,
+     "tabular_by_default": true,
+     "tnum_available": false,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.5645,
+     "digit_width_700_em": 0.5645,
+     "zero_width_400_em": 0.5645,
+     "zero_width_700_em": 0.5645,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.5,
+      0.543
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645
+     ],
+     "digit_widths_0to9_700_em": [
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645,
+      0.5645
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.5645,
+      0.5645
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.4444,
+      0.5459
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Inter",
+     "named_in_draft": false,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.6484,
+     "digit_width_700_em": 0.6465,
+     "zero_width_400_em": 0.6484,
+     "zero_width_700_em": 0.6465,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.6484,
+      0.6465
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484,
+      0.6484
+     ],
+     "digit_widths_0to9_700_em": [
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465,
+      0.6465
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6484,
+      0.6464
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.6445,
+      0.6445
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Roboto",
+     "named_in_draft": false,
+     "tabular_by_default": true,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.562,
+     "digit_width_700_em": 0.5737,
+     "zero_width_400_em": 0.562,
+     "zero_width_700_em": 0.5737,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.5718,
+      0.5547
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.562,
+      0.562,
+      0.562,
+      0.562,
+      0.562,
+      0.562,
+      0.562,
+      0.562,
+      0.562,
+      0.562
+     ],
+     "digit_widths_0to9_700_em": [
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737,
+      0.5737
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.5621,
+      0.574
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.562,
+      0.5739
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Source Sans 3",
+     "named_in_draft": false,
+     "tabular_by_default": true,
+     "tnum_available": false,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.497,
+     "digit_width_700_em": 0.528,
+     "zero_width_400_em": 0.497,
+     "zero_width_700_em": 0.528,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.497,
+      0.528
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.497,
+      0.497,
+      0.497,
+      0.497,
+      0.497,
+      0.497,
+      0.497,
+      0.497,
+      0.497,
+      0.497
+     ],
+     "digit_widths_0to9_700_em": [
+      0.528,
+      0.528,
+      0.528,
+      0.528,
+      0.528,
+      0.528,
+      0.528,
+      0.528,
+      0.528,
+      0.528
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.4971,
+      0.5281
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.497,
+      0.528
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Public Sans",
+     "named_in_draft": false,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.7,
+     "digit_width_700_em": 0.7,
+     "zero_width_400_em": 0.7,
+     "zero_width_700_em": 0.7,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.5545,
+      0.5885
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7
+     ],
+     "digit_widths_0to9_700_em": [
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.7,
+      0.7
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.7,
+      0.7
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Work Sans",
+     "named_in_draft": false,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.604,
+     "digit_width_700_em": 0.604,
+     "zero_width_400_em": 0.604,
+     "zero_width_700_em": 0.604,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.604,
+      0.604
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604
+     ],
+     "digit_widths_0to9_700_em": [
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604,
+      0.604
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.604,
+      0.604
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.604,
+      0.604
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "DM Sans",
+     "named_in_draft": false,
+     "tabular_by_default": false,
+     "tnum_available": false,
+     "tabular_figures_obtainable": false,
+     "digit_width_400_em": null,
+     "digit_width_700_em": null,
+     "zero_width_400_em": 0.656,
+     "zero_width_700_em": 0.678,
+     "all_digits_same_width_at_400_and_700": false,
+     "minus_u2212_width_400_700_em": [
+      0.55,
+      0.579
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.656,
+      0.342,
+      0.589,
+      0.598,
+      0.614,
+      0.606,
+      0.624,
+      0.538,
+      0.604,
+      0.624
+     ],
+     "digit_widths_0to9_700_em": [
+      0.678,
+      0.401,
+      0.595,
+      0.618,
+      0.66,
+      0.623,
+      0.635,
+      0.544,
+      0.633,
+      0.636
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6838,
+      0.7039
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.669,
+      0.693
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      false,
+      false
+     ]
+    },
+    {
+     "face": "Manrope",
+     "named_in_draft": false,
+     "tabular_by_default": false,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.62,
+     "digit_width_700_em": 0.62,
+     "zero_width_400_em": 0.62,
+     "zero_width_700_em": 0.62,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.54,
+      0.54
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62
+     ],
+     "digit_widths_0to9_700_em": [
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62,
+      0.62
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.6201,
+      0.6201
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.62,
+      0.62
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Noto Sans",
+     "named_in_draft": false,
+     "tabular_by_default": true,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.572,
+     "digit_width_700_em": 0.572,
+     "zero_width_400_em": 0.572,
+     "zero_width_700_em": 0.572,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.572,
+      0.581
+     ],
+     "minus_matches_digit_at_both_weights": false,
+     "minus_matches_zero_width_at_both_weights": false,
+     "digit_widths_0to9_400_em": [
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572
+     ],
+     "digit_widths_0to9_700_em": [
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572,
+      0.572
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.5721,
+      0.5721
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.572,
+      0.572
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Open Sans",
+     "named_in_draft": false,
+     "tabular_by_default": true,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.5718,
+     "digit_width_700_em": 0.5718,
+     "zero_width_400_em": 0.5718,
+     "zero_width_700_em": 0.5718,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.5718,
+      0.5718
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718
+     ],
+     "digit_widths_0to9_700_em": [
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718,
+      0.5718
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.5719,
+      0.5719
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.5718,
+      0.5718
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    },
+    {
+     "face": "Lato",
+     "named_in_draft": false,
+     "tabular_by_default": true,
+     "tnum_available": true,
+     "tabular_figures_obtainable": true,
+     "digit_width_400_em": 0.58,
+     "digit_width_700_em": 0.58,
+     "zero_width_400_em": 0.58,
+     "zero_width_700_em": 0.58,
+     "all_digits_same_width_at_400_and_700": true,
+     "minus_u2212_width_400_700_em": [
+      0.58,
+      0.58
+     ],
+     "minus_matches_digit_at_both_weights": true,
+     "minus_matches_zero_width_at_both_weights": true,
+     "digit_widths_0to9_400_em": [
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58
+     ],
+     "digit_widths_0to9_700_em": [
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58,
+      0.58
+     ],
+     "chrome_14px_zero_400_700_em": [
+      0.58,
+      0.58
+     ],
+     "chrome_100px_zero_400_700_em": [
+      0.58,
+      0.58
+     ],
+     "chrome_14px_all_digits_uniform_400_700": [
+      true,
+      true
+     ]
+    }
+   ],
+   "opsz_sensitivity": {
+    "Roboto Flex": {
+     "opsz_axis": [
+      8.0,
+      14.0,
+      144.0
+     ],
+     "rows": [
+      {
+       "opsz": 8.0,
+       "400": {
+        "zero_em": 0.5825,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.5825,
+        "all_digits_equal": true
+       },
+       "equal_400_700": true
+      },
+      {
+       "opsz": 14.0,
+       "400": {
+        "zero_em": 0.5645,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.5645,
+        "all_digits_equal": true
+       },
+       "equal_400_700": true
+      },
+      {
+       "opsz": 20.0,
+       "400": {
+        "zero_em": 0.5479,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.562,
+        "all_digits_equal": true
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 40.0,
+       "400": {
+        "zero_em": 0.498,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.5542,
+        "all_digits_equal": true
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 144.0,
+       "400": {
+        "zero_em": 0.4395,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.5454,
+        "all_digits_equal": true
+       },
+       "equal_400_700": false
+      }
+     ]
+    },
+    "Inter": {
+     "opsz_axis": [
+      14.0,
+      14.0,
+      32.0
+     ],
+     "rows": [
+      {
+       "opsz": 14.0,
+       "400": {
+        "zero_em": 0.6484,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.6465,
+        "all_digits_equal": true
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 20.0,
+       "400": {
+        "zero_em": 0.647,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.6455,
+        "all_digits_equal": true
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 32.0,
+       "400": {
+        "zero_em": 0.6445,
+        "all_digits_equal": true
+       },
+       "700": {
+        "zero_em": 0.6445,
+        "all_digits_equal": true
+       },
+       "equal_400_700": true
+      }
+     ]
+    },
+    "DM Sans": {
+     "opsz_axis": [
+      9.0,
+      9.0,
+      40.0
+     ],
+     "rows": [
+      {
+       "opsz": 9.0,
+       "400": {
+        "zero_em": 0.656,
+        "all_digits_equal": false
+       },
+       "700": {
+        "zero_em": 0.678,
+        "all_digits_equal": false
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 14.0,
+       "400": {
+        "zero_em": 0.684,
+        "all_digits_equal": false
+       },
+       "700": {
+        "zero_em": 0.704,
+        "all_digits_equal": false
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 20.0,
+       "400": {
+        "zero_em": 0.689,
+        "all_digits_equal": false
+       },
+       "700": {
+        "zero_em": 0.709,
+        "all_digits_equal": false
+       },
+       "equal_400_700": false
+      },
+      {
+       "opsz": 40.0,
+       "400": {
+        "zero_em": 0.669,
+        "all_digits_equal": false
+       },
+       "700": {
+        "zero_em": 0.693,
+        "all_digits_equal": false
+       },
+       "equal_400_700": false
+      }
+     ]
+    }
+   }
+  },
+  "notes": [
+   "The draft names and gives results for only 7 of the 17 faces it says were tested. The other 10 are not named anywhere in the drafts. My 10 extra faces (Inter, Roboto, Source Sans 3, Public Sans, Work Sans, DM Sans, Manrope, Noto Sans, Open Sans, Lato) are my own choice of widely used open UI faces, not the draft's.",
+   "Method (fontTools 4.61.1). For each face I downloaded the upright TTF from google/fonts at the commit above (variable fonts; Lato as static Regular and Bold). Each variable font was fully instanced at wght 400 and 700 with every other axis at its default (opsz 14 for Roboto Flex and Inter, 9 for DM Sans; wdth 100 where present). Digits 0-9 and U+2212 were mapped through the cmap, the GSUB 'tnum' lookups were applied when the font has them, and hmtx advances were divided by unitsPerEm. Script: SP/work/type_test.py; opsz sweep: SP/work/type_test_opsz.py.",
+   "Cross-check: headless Chromium 151 (Playwright headless shell) loaded the same 17 families from the Google Fonts CSS API with font-variant-numeric: tabular-nums and measured each digit and the minus at 14, 40 and 100 px (SP/work/k_chrome_check.html, results in SP/work/K_chrome_results.json). It agrees with fontTools for every face.",
+   "Reproduced: all 7 draft numbers match exactly in Chrome with Google Fonts at 100 px. The draft does not state its font size, and only Roboto Flex depends on it. Its 0.444/0.546 arises only at large sizes, because Chrome sets opsz to the font size (opsz 100 at 100 px). At 14 px (opsz 14) Roboto Flex keeps width, 0.565/0.565.",
+   "New finding: Red Hat Text does NOT keep width for every digit. Its '0' stays 0.600 em, but the tabular '9' (nine.tf) grows to 0.613 at 500, 0.630 at 600 and 0.651 at 700. The draft measured only '0'.",
+   "Minus-sign claim: it holds for Instrument Sans, IBM Plex Sans, Hanken Grotesk and Red Hat Text (U+2212 = 0.600/0.600/0.560/0.600 em at both weights). Of the extra faces, Work Sans, Open Sans and Lato also keep digit width with a minus that matches. Public Sans, Manrope and Noto Sans keep digit width, but their minus differs from the digit.",
+   "Faces that keep all digits the same width at 400 and 700 (default axes): Instrument Sans 0.600, IBM Plex Sans 0.600, Hanken Grotesk 0.560, Roboto Flex 0.565 (at opsz 14 only), Public Sans 0.700, Work Sans 0.604, Manrope 0.620, Noto Sans 0.572, Open Sans 0.572, Lato 0.580. Shift when bold: Red Hat Text ('9' only), Geist, Archivo, Inter (0.648 to 0.646 at opsz 14; equal at opsz 32), Roboto, Source Sans 3. DM Sans: no tabular figures available (no 'tnum'; default digits are proportional)."
+  ],
+  "local_files": [
+   "work/type_test.py",
+   "work/type_test_opsz.py",
+   "work/k_chrome_check.html",
+   "work/K_type_test_results.json",
+   "work/K_type_test_opsz.json",
+   "work/K_chrome_results.json",
+   "work/fonts/"
+  ]
+ }
+}

@@ -1,0 +1,83 @@
+/* Learn dashboard design with me: what the figures of "What neighbouring fields know" add to figures.css.
+   Only what the existing classes do not cover, in the same custom properties. research.js writes the markup. */
+
+/* a plot inside a field, drawn at the width it has */
+.rx-plot{padding:4px 20px 0}
+.rx-mini{display:flex;flex-direction:column}
+.rx-mini .rx-plot{flex:1}
+/* a heading that may wrap on a narrow screen */
+.stage .rx-wrap h4{white-space:normal}
+
+/* F0: the lane names stay in view when the axis scrolls sideways, and form a radio group */
+.rx-tl{display:grid}
+.rx-tl>*{grid-area:1 / 1}
+.rx-lab{position:sticky;left:0;z-index:1;justify-self:start;background:var(--field)}
+.stage .rx-lab button{position:absolute;left:8px;right:0;display:flex;align-items:center;padding:0 10px 0 14px;border:0;border-radius:10px 0 0 10px;background:none;font-size:14px;line-height:17px;font-weight:500;color:var(--ink2);text-align:left;cursor:pointer}
+.stage .rx-lab button:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
+.stage .rx-lab button[aria-checked="true"]{background:var(--sheet);color:var(--ink);font-weight:600}
+.stage .rx-lab button[data-fld=""]{border-radius:10px;right:8px;font-size:13px;color:var(--ink3)}
+.stage .rx-lab button[data-fld=""][aria-checked="true"]{color:var(--ink)}
+.pm.rx-hi .dot{fill:var(--cobalt)}
+.pm.rx-lo .dot{fill:var(--slate2)}
+.pm.rx-lo:hover .dot{fill:var(--ink)}
+.pm.on.rx-hi .dot,.pm.on.rx-lo .dot{fill:var(--cobalt)}
+
+/* F1: the answer each drawing gives, under it, and for the dotplot the switch that changes it */
+.rx-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:4px 16px;flex-wrap:wrap;padding-right:16px}
+.rx-foot .opt.inline{margin-bottom:14px}
+.rx-read{display:flex;flex-direction:column;gap:2px;padding:2px 24px 18px}
+.rx-read b{font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+.rx-read span{font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
+
+/* F2a: the scenario fills of the business notation */
+.rx-hatch{stroke:var(--cobalt);stroke-width:1.5}
+.rx-out{fill:var(--field);stroke:var(--ink2);stroke-width:1.5}
+
+/* F2b, F4a: rows slide to their new order; a clipped bar ends in a break */
+.rx-row{transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+.rx-break{stroke:var(--field);stroke-width:2.5;fill:none}
+
+/* F3a, F7: marks and rows that can be selected */
+.rx-pick{cursor:pointer;outline:none}
+.rx-hitbox{fill:transparent}
+.rx-pick:hover .rx-hitbox{fill:color-mix(in oklab,var(--sheet) 55%,var(--field))}
+.rx-pick:focus-visible .rx-hitbox{stroke:var(--cobalt);stroke-width:2}
+
+/* F3c: slider labels stay on one line, so the sliders wrap to rows instead; on a phone the labels wrap */
+.rx-nw .rng>span:first-child{white-space:nowrap}
+
+/* F4b: the spreadsheet export and the set table */
+table.dt.rx-raw td{font-variant-numeric:proportional-nums lining-nums}
+table.dt tr.rx-total th,table.dt tr.rx-total td{font-weight:600}
+table.dt:not(.furn) tbody tr.rx-total{border-top:1.5px solid var(--ink2)}
+table.dt tr.rx-hot>*{background:color-mix(in oklab,var(--sheet) 70%,var(--field))}
+table.dt.furn tr.rx-hot>*{background:var(--sheet)}
+
+/* F6b: one small history per measure */
+.rx-panel{fill:var(--field);stroke:var(--line);stroke-width:1}
+
+/* F8: the type test, one row per face, and the live specimen */
+.rx-tt{min-width:700px;padding:6px 8px 4px}
+.rx-tt-h,.stage .rx-tt-r{display:grid;grid-template-columns:minmax(150px,1.15fr) repeat(4,minmax(0,1fr));column-gap:16px;align-items:center}
+.rx-tt-h{padding:6px 14px 8px;font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
+.stage .rx-tt-r{width:100%;min-height:58px;padding:8px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;text-align:left;cursor:pointer}
+.stage .rx-tt-r:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
+.stage .rx-tt-r[aria-checked="true"]{background:var(--sheet);border-radius:10px}
+.rx-tt-r>b{font-size:17px;line-height:24px;font-weight:600}
+.rx-c{display:flex;flex-direction:column;align-items:flex-start;font-size:14px;line-height:20px}
+.rx-c .v{font-weight:500;color:var(--ink)}
+.rx-c .k{font-size:13px;font-weight:500;color:var(--ink3)}
+.rx-c .k em{font-style:normal}
+.rx-c.bad .k em{display:inline-block;margin-top:2px;padding:0 7px;border-radius:5px;background:var(--ink);color:var(--field);font-weight:600}
+.rx-tt-n{margin:0;padding:10px 14px 6px;border-top:1px solid var(--line);font-size:13px;line-height:20px;font-weight:500;color:var(--ink3)}
+.rx-spec{position:relative;padding:16px 24px 22px;overflow-x:auto}
+.rx-spec .lay{display:grid;grid-template-columns:repeat(4,2.6em) 3.9em;column-gap:.7em;row-gap:.1em;line-height:1.3;font-variant-numeric:tabular-nums lining-nums;font-kerning:none;white-space:nowrap;color:var(--ink)}
+.rx-spec .lay span{justify-self:end;text-align:right}   /* each figure keeps its own width, so the two layers can be measured */
+.rx-spec .lay.b{position:absolute;left:24px;top:16px;font-weight:700;color:var(--cobalt);opacity:.55}
+.rx-spec .lay.r{font-weight:400}
+
+@container (max-width:520px){
+  .rx-plot{padding:4px 12px 0}
+  .rx-read{padding:2px 16px 16px}
+  .rx-nw .rng>span:first-child{white-space:normal}
+}

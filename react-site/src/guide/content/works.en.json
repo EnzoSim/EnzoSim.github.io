@@ -1,0 +1,263 @@
+{
+ "intro": "A rule is easier to believe after seeing it at work. These are things to open and study for ten minutes each: printed sheets, public screens and working tools. The product pages are vendors’ own descriptions. They are listed for how they arrange a screen, and nothing here vouches for their claims.",
+ "groups": [
+  {
+   "title": "On paper",
+   "items": [
+    {
+     "url": "https://www.otlaicher.de/en/articles/the-rainbow-games/",
+     "title": "Schedule for all sports disciplines",
+     "by": "Michael Burke, in Otl Aicher’s department, Munich 1972",
+     "take": "Dates, events and pictograms cross-indexed on one sheet, printed on both sides in seven colours.",
+     "mark": "1972",
+     "rules": [
+      7
+     ]
+    },
+    {
+     "url": "https://www.nps.gov/subjects/hfc/a-brief-history-of-the-unigrid.htm",
+     "title": "Unigrid",
+     "by": "Massimo Vignelli for the United States National Park Service, 1977",
+     "take": "One sheet system behind the brochures of more than four hundred parks. The content varies and the structure holds.",
+     "mark": "1977",
+     "rules": [
+      1
+     ]
+    },
+    {
+     "url": "https://thebayercenter.org/exhibitions/concept-of-a-visualist-herbert-bayers-world-geo-graphic-atlas/",
+     "title": "World Geo-Graphic Atlas",
+     "by": "Herbert Bayer, 1953",
+     "take": "Maps, sections, charts and symbols composed spread by spread. A landmark of layered, nested information graphics.",
+     "mark": "1953",
+     "rules": [
+      5,
+      7
+     ]
+    },
+    {
+     "url": "https://isotyperevisited.org/",
+     "title": "Isotype",
+     "by": "Otto Neurath, Marie Reidemeister and Gerd Arntz, from 1925",
+     "take": "A larger quantity is shown by more signs of the same size, never by a larger sign.",
+     "mark": "1925",
+     "rules": [
+      6,
+      12
+     ]
+    },
+    {
+     "url": "https://www.edwardtufte.com/notebook/sparkline-theory-and-practice-edward-tufte/",
+     "title": "Sparklines",
+     "by": "Edward Tufte, 2006",
+     "take": "Word-sized graphics set beside the figures they explain, with a grey band where a normal range exists.",
+     "mark": "2006",
+     "rules": [
+      2
+     ]
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Nicholas_Felton_(graphic_designer)",
+     "title": "Feltron Annual Reports",
+     "by": "Nicholas Felton, 2005 to 2014",
+     "take": "Ten years of dense, precise personal data graphics. A study in typographic rigour at small sizes.",
+     "mark": "2005",
+     "rules": [
+      9
+     ]
+    },
+    {
+     "url": "https://medium.com/accurat-in-sight/the-architecture-of-a-data-visualization-470b807799b4",
+     "title": "Visualizations for La Lettura",
+     "by": "Giorgia Lupi and Accurat",
+     "take": "Compositions in layers, with a main structure and the secondary detail lightened behind it.",
+     "mark": "2011",
+     "rules": [
+      5
+     ]
+    }
+   ],
+   "note": "Printed sheets that solved a dashboard’s problem before screens"
+  },
+  {
+   "title": "On screen",
+   "items": [
+    {
+     "url": "https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html",
+     "title": "Is It Better to Rent or Buy?",
+     "by": "Mike Bostock, Shan Carter and Archie Tse, The New York Times, 2014",
+     "take": "Each slider sits on a small chart of the outcome across the whole range of that input.",
+     "mark": "2014",
+     "rules": [
+      11
+     ]
+    },
+    {
+     "url": "https://worrydream.com/LadderOfAbstraction/",
+     "title": "Up and Down the Ladder of Abstraction",
+     "by": "Bret Victor, 2011",
+     "take": "An interactive essay that moves between one concrete case and the whole range of a parameter.",
+     "mark": "2011",
+     "rules": [
+      11
+     ]
+    },
+    {
+     "url": "https://vega.github.io/vega-lite/examples/interactive_crossfilter.html",
+     "title": "Crossfilter",
+     "by": "Vega-Lite example",
+     "take": "Three histograms of flight data. Brushing an interval on one filters the other two.",
+     "mark": "Vega-Lite",
+     "rules": [
+      7,
+      11
+     ]
+    },
+    {
+     "url": "https://confluence.ecmwf.int/display/FUG/Section+8.1.4+Meteograms",
+     "title": "Ensemble meteograms",
+     "by": "ECMWF",
+     "take": "Several weather parameters stacked on one time axis, each drawn as box-and-whisker steps.",
+     "mark": "ECMWF",
+     "rules": [
+      7,
+      10
+     ]
+    },
+    {
+     "url": "https://avalanche.ca/",
+     "title": "Public avalanche forecast",
+     "by": "Avalanche Canada",
+     "take": "Danger ratings for three elevation bands over three days. A compact forecast matrix written for a wide public.",
+     "mark": "Daily",
+     "rules": [
+      10,
+      12
+     ]
+    },
+    {
+     "url": "https://www.macrumors.com/guide/ios-15-weather-app/",
+     "title": "Weather, iOS 15",
+     "by": "Apple, 2021",
+     "take": "A page of rounded modules, each a small purpose-built instrument: a UV bar, a pressure dial, a wind compass.",
+     "mark": "2021",
+     "rules": [
+      2
+     ]
+    },
+    {
+     "url": "https://www.bewitched.com/marketmap.html",
+     "title": "Map of the Market",
+     "by": "Martin Wattenberg, SmartMoney, 1998",
+     "take": "An early treemap on the web: nested sectors, area for size, colour for change.",
+     "mark": "1998",
+     "rules": [
+      5,
+      6
+     ]
+    },
+    {
+     "url": "https://developer.apple.com/videos/play/wwdc2022/110340/",
+     "title": "Design an effective chart",
+     "by": "Apple, WWDC 2022",
+     "take": "Two clear talks on marks, axes, annotation and how charts work together as a system.",
+     "mark": "2022",
+     "rules": [
+      2,
+      5
+     ]
+    }
+   ],
+   "note": "Public screens that put a control, a spread or a stack of measures in the right place"
+  },
+  {
+   "title": "In working tools",
+   "items": [
+    {
+     "url": "https://www.jmp.com/support/help/en/19.2/jmp/profiler.shtml",
+     "title": "Prediction Profiler",
+     "by": "JMP documentation",
+     "take": "One small plot for each input, each a cross-section of the model’s response while the other inputs stay where they are.",
+     "mark": "JMP",
+     "rules": [
+      11
+     ]
+    },
+    {
+     "url": "https://www.mathworks.com/help/sldo/ug/interact-with-plots-in-the-tool.html",
+     "title": "Sensitivity Analyzer",
+     "by": "MathWorks documentation",
+     "take": "Parameter sets, requirements and evaluated results side by side, with the details of a selected design beside the plot.",
+     "mark": "MathWorks",
+     "rules": [
+      11
+     ]
+    },
+    {
+     "url": "https://www.sap.com/design-system/fiori-design-web/v1-108/page-types/floorplans/analytical-list-page",
+     "title": "Analytical list page",
+     "by": "SAP Fiori design guidelines",
+     "take": "A chart and its table in one view under a visual filter, for moving between the pattern and the exact rows.",
+     "mark": "SAP",
+     "rules": [
+      7,
+      8
+     ]
+    },
+    {
+     "url": "https://www.carbondesignsystem.com/elements/color/overview/",
+     "title": "Colour and layering",
+     "by": "IBM Carbon Design System",
+     "take": "Surface roles as named tokens. In the light themes, layers alternate between white and a pale grey.",
+     "mark": "IBM",
+     "rules": [
+      5
+     ]
+    },
+    {
+     "url": "https://www.palantir.com/docs/foundry/ontology/temporary-scenario",
+     "title": "Temporary scenarios",
+     "by": "Palantir Foundry documentation",
+     "take": "Edits live inside a scenario and leave the underlying data untouched, with a summary of what changed.",
+     "mark": "Palantir",
+     "rules": [
+      11
+     ]
+    },
+    {
+     "url": "https://www.toolio.com/merchandise-planning",
+     "title": "Merchandise planning",
+     "by": "Toolio, vendor page",
+     "take": "A planning tool built around weekly open-to-buy, with scenarios and saved snapshots of a plan.",
+     "mark": "Toolio",
+     "rules": [
+      4
+     ]
+    },
+    {
+     "url": "https://www.causal.app/",
+     "title": "Scenario tools",
+     "by": "Causal (now Lucanet) and Kinaxis, vendor descriptions",
+     "take": "Causal let an input be a range and simulated the outcomes, and Kinaxis compares sandboxed scenarios side by side.",
+     "mark": "Causal",
+     "rules": [
+      10,
+      11
+     ]
+    },
+    {
+     "url": "https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/",
+     "title": "Design tokens format",
+     "by": "Design Tokens Community Group, 2025",
+     "take": "The first stable, vendor-neutral token format, with theming and modern colour spaces.",
+     "mark": "2025",
+     "rules": [
+      1,
+      5
+     ]
+    }
+   ],
+   "note": "Listed for how they arrange a screen; vendors’ own descriptions, not endorsements"
+  }
+ ]
+}
