@@ -72,18 +72,42 @@ function CompanySizes({ v }) {
   )
 }
 
-function DecisionRow({ r }) {
-  const capShare = r.cap ? Math.max(0, Math.min(1, (Math.log10(r.cap / 1e9) + 2) / 5)) : 0
+// One countdown line per FDA decision: from today to its date, dot sized by company value, ring on expected movers.
+function Runway({ rows, days, today }) {
+  const W = 1272, L = 344, rowH = 52, top = 44
+  const xr = (d) => L + 16 + (d / days) * (W - L - 156)
+  const step = days <= 30 ? 7 : 14
+  const ticks = []
+  for (let k = 0; k <= days; k += step) ticks.push(k)
+  const clip = (s, n) => (s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s)
+  const H = top + rows.length * rowH + 4
   return (
-    <div className="tr">
-      <b>{r.exact ? dayMonth(r.ms) : r.date.slice(0, 4)}</b>
-      <span className="r muted">{r.exact ? `${r.days} d` : '–'}</span>
-      <span className="co"><b title={r.company}>{shortCompany(r.company)}</b><span className="muted">{r.ticker}</span></span>
-      <span className="ell" title={r.drug}>{shortDrug(r.drug)}</span>
-      <span className="ell muted" title={r.indication}>{shortIndication(r.indication)}</span>
-      <span className="cap"><span className="track"><i style={{ width: `${Math.max(6, 100 * capShare)}%` }} /></span>{money(r.cap)}</span>
-      <span className="r">{isMover(r) ? <span className="chip blue" style={{ height: 28, fontWeight: 400 }}>Mover</span> : null}</span>
-    </div>
+    <svg className="chart runway" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Days to each FDA decision">
+      <line x1={xr(0)} y1="36" x2={xr(days)} y2="36" stroke={C.axis} strokeWidth="1.2" />
+      {ticks.map((k) => (
+        <g key={k}>
+          <line x1={xr(k)} y1="28" x2={xr(k)} y2="36" stroke={C.axis} strokeWidth="1.2" />
+          <text x={xr(k) - (k ? 0 : 2)} y="18" textAnchor={k ? 'middle' : 'start'} fontSize="16" fontWeight={k ? 400 : 700} fill={k ? C.muted : C.ink}>{k ? dayMonth(today + k * DAY) : 'Today'}</text>
+        </g>
+      ))}
+      {rows.map((r, i) => {
+        const y = top + i * rowH, cy = y + 26
+        const share = r.cap ? Math.max(0, Math.min(1, (Math.log10(r.cap / 1e9) + 2) / 5)) : 0
+        const rad = 5 + 7 * share
+        const x = xr(r.days)
+        return (
+          <g key={`${r.ticker}-${r.date}-${r.drug}`}>
+            <title>{`${r.company}: ${r.drug}, ${r.indication}`}</title>
+            <text x="0" y={y + 20} fontSize="16" fontWeight="700" fill={C.ink}>{clip(shortCompany(r.company), 32)}</text>
+            <text x="0" y={y + 40} fontSize="14" fill={C.muted}>{clip(`${shortDrug(r.drug)} · ${shortIndication(r.indication)}`, 44)}</text>
+            <line x1={xr(0)} y1={cy} x2={x} y2={cy} stroke={C.rail} strokeWidth="6" strokeLinecap="round" strokeDasharray={r.exact ? undefined : '2 10'} />
+            <circle cx={x} cy={cy} r={rad} fill={r.exact ? C.blue : '#fff'} stroke={r.exact ? 'none' : C.blue} strokeWidth="2" />
+            {isMover(r) ? <circle cx={x} cy={cy} r={rad + 4} fill="none" stroke={C.ink} strokeWidth="2" /> : null}
+            <text x={x + rad + 12} y={cy + 6} fontSize="16" fontWeight="700" fill={C.ink}>{r.exact ? `${dayMonth(r.ms)} · ${r.days} d` : '2026, no exact date'}</text>
+          </g>
+        )
+      })}
+    </svg>
   )
 }
 
@@ -94,8 +118,9 @@ export default function Dashboard() {
   const active = useActiveSection(useMemo(() => SECTIONS.map(([id]) => id), []))
   const n = v.rows.length
   const pct = (a) => (n ? `${Math.round((100 * a) / n)}%` : '–')
-  const ordered = [...v.decisions.filter((r) => r.exact), ...v.decisions.filter((r) => !r.exact)]
-  const shown = all ? ordered : ordered.slice(0, 12)
+  const datedDecisions = v.decisions.filter((r) => r.exact)
+  const ordered = [...datedDecisions, ...v.decisions.filter((r) => !r.exact)]
+  const shown = all ? ordered : datedDecisions.slice(0, 12)
 
   const download = () => {
     const a = document.createElement('a')
@@ -156,17 +181,14 @@ export default function Dashboard() {
         </section>
 
         <section className="card s12" id="decisions" style={{ gap: 8 }}>
-          <Head title="FDA decisions" context={`${v.decisionsExact} of ${v.decisions.length} dated to the day`} />
+          <Head title="FDA decisions" context="days to each decision, dot sized by company" />
           <div className="scroll-x">
-            <div className="table">
-              <div className="tr th"><span>Date</span><span className="r">In</span><span style={{ paddingLeft: 24 }}>Company</span><span>Drug</span><span>Indication</span><span>Market cap</span><span className="r">Watch</span></div>
-              {shown.map((r) => <DecisionRow key={`${r.ticker}-${r.date}-${r.drug}`} r={r} />)}
-              {v.decisions.length === 0 ? <div className="empty">No FDA decision in this window</div> : null}
-            </div>
+            {shown.length ? <Runway rows={shown} days={days} today={v.today} /> : <div className="empty">No FDA decision in this window</div>}
           </div>
           <div className="more">
-            {ordered.length > 12 ? <button type="button" className="chip blue" onClick={() => setAll(!all)}>{all ? 'Show the first 12' : `${ordered.length - 12} more`}</button> : null}
+            {ordered.length > shown.length || all ? <button type="button" className="chip blue" onClick={() => setAll(!all)}>{all ? 'Show the first 12' : `Show all ${ordered.length}`}</button> : null}
             {v.yearEnd.decisions ? <span className="chip muted">{v.yearEnd.decisions} dated only to 2026</span> : null}
+            <span className="legend"><span><span className="mark ring" style={{ color: C.ink }} />Expected to move the stock</span></span>
           </div>
         </section>
 

@@ -121,6 +121,37 @@ function Heat({ sens, price, company, base }) {
   )
 }
 
+// Revenue against the analysts' consensus, quarter by quarter: bars centred on zero, values beyond ±40% are clipped and labelled.
+function Surprise({ focus }) {
+  const W = 600, rowH = 30, x0 = W / 2, k = (W / 2 - 70) / 40
+  const quarters = D.delivery.vista.revenue.map((q) => q.period.replace("'", '’'))
+  const pctOf = (q) => 100 * (q.reported / q.consensus - 1)
+  let y = 4
+  const marks = []
+  quarters.forEach((label, qi) => {
+    marks.push(<text key={`q${qi}`} x="0" y={y + rowH + 4} fontSize="16" fill={C.muted}>{label}</text>)
+    ;[['vista', C.slate], ['vistra', C.blue]].forEach(([id, col]) => {
+      const v = pctOf(D.delivery[id].revenue[qi])
+      const w = Math.min(Math.abs(v), 40) * k, x = v >= 0 ? x0 : x0 - w
+      marks.push(
+        <g key={`${id}${qi}`} className={focus !== 'both' && focus !== id ? 'dim' : ''}>
+          <rect x={x} y={y + 4} width={Math.max(w, 3)} height={rowH - 10} rx="6" fill={col} />
+          <text x={v >= 0 ? x + w + 8 : x - 8} y={y + rowH - 9} textAnchor={v >= 0 ? 'start' : 'end'} fontSize="15" fontWeight="700" fill={C.ink}>{pct(v)}</text>
+        </g>,
+      )
+      y += rowH
+    })
+    y += 4
+  })
+  return (
+    <svg className="chart" viewBox={`0 0 ${W} ${y + 8}`} role="img" aria-label="Reported revenue against consensus, per cent, each quarter; Vista in slate, Vistra in blue">
+      <line x1={x0} y1="0" x2={x0} y2={y} stroke={C.axis} strokeWidth="1.6" />
+      {marks}
+    </svg>
+  )
+}
+
+const SOURCE_GROUPS = [['Filed and primary', (m) => /^(Primary|Filed)/.test(m)], ['Company claims', (m) => /^Company/.test(m)], ['Market and secondary', (m) => /^(Secondary|Market)/.test(m)]]
 const MARKS = { direct: 'Direct', secondary: 'Some', none: 'None' }
 function Mk({ level, color }) {
   if (level === 'none') return <span className="mark none" aria-label="None" />
@@ -135,10 +166,10 @@ export default function Dashboard() {
   const [vb, vbase, vbull] = VISTA.prices.map(num), [xb, xbase, xbull] = VISTRA.prices.map(num)
   const prod = D.vistaProduction, plan = Object.fromEntries(D.vistaPlan.map((p) => [p.year, p.production]))
   const hedge = Object.fromEntries(D.vistraHedge.map((h) => [h.year, h.coverage]))
-  const beat = (series) => series.map((q) => q.reported >= q.consensus)
-  const quarters = D.delivery.vista.eps.map((q) => q.period.replace("'", '’'))
-  const watch = [['vista', 'Output', '158k boe/d in 2026'], ['vista', 'Leverage', '1.0× by end of 2026'], ['vista', 'Exports', 'Access and repatriation'],
-    ['vistra', '2026 EBITDA', '6.8 to 7.6 B$'], ['vistra', 'Large loads', 'Meta, AWS, Helix'], ['vistra', 'Cogentrix', '5.5 GW, 4.0 B$']]
+  const watch = [['vista', '158k', 'boe/d', 'Output, 2026'], ['vista', '1.0×', 'leverage', 'By end of 2026'], ['vista', 'Open', 'exports', 'Access and repatriation'],
+    ['vistra', '6.8–7.6', 'B$', 'EBITDA, 2026'], ['vistra', '3', 'large loads', 'Meta, AWS, Helix'], ['vistra', '5.5', 'GW', 'Cogentrix, 4.0 B$']]
+  const rev = Object.fromEntries(['vista', 'vistra'].map((id) => [id, D.delivery[id].revenue.map((q) => 100 * (q.reported / q.consensus - 1))]))
+  const beatCount = (id) => rev[id].filter((v) => v >= 0).length
 
   return (
     <div className="board">
@@ -215,40 +246,48 @@ export default function Dashboard() {
           <div className="more" style={{ minHeight: 32 }}><span className="chip bold">Today {XP.toFixed(2)}</span><span className="chip muted">Outlined: base case</span></div>
         </section>
 
-        <section className="card s6" id="risk" style={{ minHeight: 420 }}>
-          <Head title="Results against forecasts" context="filled: beat the consensus" />
-          <div className="beats scroll-x grow">
-            <div className="br bh"><span />{quarters.map((q) => <span key={q} className="c">{q}</span>)}</div>
-            {[['vista', 'Vista', C.slate], ['vistra', 'Vistra', C.blue]].flatMap(([id, name, col]) => [['eps', 'EPS'], ['revenue', 'Revenue']].map(([m, label]) => (
-              <div className={`br ${dim(id)}`} key={id + m}>
-                <span><b style={{ color: id === 'vistra' ? C.blue : C.ink }}>{name}</b> <span className="muted">{label}</span></span>
-                {beat(D.delivery[id][m]).map((hit, i) => <span key={i} className="c"><span className={`dot${hit ? '' : ' miss'}`} style={hit ? { background: col } : undefined} aria-label={hit ? 'Beat' : 'Missed'} /></span>)}
-              </div>
-            )))}
-          </div>
+        <section className="card s6" id="risk">
+          <Head title="Revenue against forecasts" context="reported vs consensus" />
+          <div className="grow" style={{ justifyContent: 'center' }}><Surprise focus={focus} /></div>
           <div className="pairs left">
-            <span className={dim('vista')}><Pair value={`${beat(D.delivery.vista.revenue).filter(Boolean).length} of 5`} label="Vista revenue beats" /></span>
-            <span className={dim('vistra')}><Pair value={`${beat(D.delivery.vistra.revenue).filter(Boolean).length} of 5`} label="Vistra revenue beats" color={C.blue} /></span>
+            <span className={dim('vista')}><Pair value={`${pct(Math.min(...rev.vista))} to ${pct(Math.max(...rev.vista))}`} label={`Vista, ${beatCount('vista')} beats of 5`} /></span>
+            <span className={dim('vistra')}><Pair value={`${pct(Math.min(...rev.vistra))} to ${pct(Math.max(...rev.vistra))}`} label={`Vistra, ${beatCount('vistra')} beat${beatCount('vistra') === 1 ? '' : 's'} of 5`} color={C.blue} /></span>
           </div>
         </section>
-        <section className="card s6" style={{ minHeight: 420 }}>
+        <section className="card s6">
           <Head title="What has to hold" context="next four quarters" />
-          <div className="watch grow" style={{ justifyContent: 'center' }}>
-            {watch.map(([id, k, v]) => (
-              <div className={`wr ${dim(id)}`} key={k}>
-                <div><span className="sw" style={{ background: id === 'vistra' ? C.blue : C.slate }} /><b>{k}</b></div>
-                <span className={`chip${id === 'vistra' ? ' blue' : ''}`} style={id === 'vistra' ? { fontWeight: 400 } : undefined}>{v}</span>
+          <div className="tiles grow">
+            {watch.map(([id, value, unit, label]) => (
+              <div className={`tile${id === 'vistra' ? ' blue' : ''} ${dim(id)}`} key={label}>
+                <div>
+                  <span className="who">{id === 'vistra' ? 'Vistra' : 'Vista Energy'}</span>
+                  <div className="big"><b>{value}</b><span>{unit}</span></div>
+                </div>
+                <span className="muted">{label}</span>
               </div>
             ))}
           </div>
         </section>
 
         <section className="card s12" id="sources">
-          <Head title="Sources" context={`${D.sources.length} documents`} />
-          <div className="sources">
-            {D.sources.map((s) => {
-              const inner = <><b>{s.id}. {s.title}</b><span className="chip muted" style={{ flex: 'none' }}>{s.meta}</span></>
-              return s.href ? <a key={s.id} href={s.href} target="_blank" rel="noopener noreferrer">{inner}</a> : <div key={s.id} className="src">{inner}</div>
+          <Head title="Sources" context={`${D.sources.length} documents, by kind`} />
+          <div className="source-groups">
+            {SOURCE_GROUPS.map(([title, test]) => {
+              const items = D.sources.filter((x) => test(x.meta))
+              return (
+                <div key={title}>
+                  <div className="group-head"><b>{title}</b><b className="blue">{items.length}</b></div>
+                  {items.map((x) => {
+                    const text = x.title.replace(/ · /g, ', ')
+                    return (
+                      <div className="source" key={x.id}>
+                        <span className="n">{x.id}</span>
+                        {x.href ? <a href={x.href} target="_blank" rel="noopener noreferrer">{text}</a> : <span>{text}</span>}
+                      </div>
+                    )
+                  })}
+                </div>
+              )
             })}
           </div>
         </section>
