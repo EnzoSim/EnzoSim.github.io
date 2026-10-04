@@ -72,6 +72,9 @@ const face = (i, L, cls = '') =>
     ? `<img src="${i.photo}" alt="${esc(L.ui.portraitOf(i.name))}" loading="lazy" decoding="async" width="160" height="160"${cls ? ` class="${cls}"` : ''}>`
     : `<span class="ini" aria-label="${esc(L.ui.initialsOf(i.name))}">${esc(i.ini)}</span>`;
 
+// Strings of the second design pass, read from the language's ui block.
+const v2 = (L, k) => L.ui[k];
+
 // ---------- page shell ----------
 function urlFor(L, ch) {
   const base = L.lang === 'en' ? ROOT_URL : ROOT_URL + 'fr/';
@@ -150,6 +153,7 @@ ${header(L, ch, LANGS)}
 ${body}
 </main>
 <script>window.GUIDE_DATA=${JSON.stringify(data || {})};${figureLinks(L)}</script>${anchors ? `<script>window.GUIDE_ANCHORS=${JSON.stringify(anchors)};</script>` : ''}
+<script src="${ASSETS}fig2.js?v=${BUILD}" defer></script>
 <script src="${ASSETS}figures.js?v=${BUILD}" defer></script>
 <script src="${ASSETS}page.js?v=${BUILD}" defer></script>${extraScripts}
 </body>
@@ -172,15 +176,13 @@ function chapterFoot(L, ch) {
 
 // ---------- chapter opener ----------
 function opener(L, ch, { indexLabel, index, facesLabel, faces, facesNames, swatches }) {
-  const kicker = [L.ui.chapterN(ch.n), ch.rules ? L.ui.rulesRange(ch.rules[0], ch.rules[ch.rules.length - 1]) : ch.kickerExtra, L.ui.minutes(ch.minutes)].filter(Boolean).join(' · ');
   const list = index.map((x) => `<li><a href="${x.href}"><span>${esc(x.n)}</span>${esc(x.title)}</a></li>`).join('');
   const right = swatches
     ? `<div class="swatches">${swatches.map((c) => `<i style="background:${c}${c === 'var(--page)' ? ';box-shadow:inset 0 0 0 1px var(--rule)' : ''}"></i>`).join('')}</div>`
-    : `<div class="minis">${faces.map((n) => { const i = byName(n); return `<span class="m" title="${esc(i.name)}">${face(i, L)}</span>`; }).join('')}</div>`;
+    : `<div class="minis">${faces.map(byName).filter((i) => i.photo).slice(0, 8).map((i) => `<span class="m" title="${esc(i.name)}">${face(i, L)}</span>`).join('')}</div>`;
   return `<section class="opener">
   <div class="numeral" aria-hidden="true">${ch.n}</div>
   <div class="op-text">
-    <div class="kicker">${esc(kicker)}</div>
     <h1>${esc(ch.title)}</h1>
     <p class="standfirst">${esc(ch.standfirst || '')}</p>
     <div class="op-index">
@@ -198,16 +200,17 @@ function cover(L, LANGS) {
   const nDash = (readJSON(`content/dashboards.${L.lang}.json`, { cases: [] }).cases || []).length || 7;
   const statN = (s) => (s.n === 'people' ? nPeople : s.n === 'dashboards' ? nDash : s.n);
   const stats = C.stats
-    .map((s) => `<a class="stat${s.accent ? ' accent' : ''}" href="${urlFor(L, L.chapters.find((c) => c.n === s.ch))}"><b>${statN(s)}</b><span><strong>${esc(s.title)}</strong><span>${esc(s.text)}</span></span></a>`)
+    .map((s) => `<a class="stat" href="${urlFor(L, L.chapters.find((c) => c.n === s.ch))}"><b>${statN(s)}</b><span><strong>${esc(s.title)}</strong><span>${esc(s.text)}</span></span></a>`)
     .join('');
   const peopleCh = L.chapters.find((c) => c.key === 'people');
-  // Phones show the first eighteen photographs only, under the link to the chapter, as in the Paper mobile cover.
-  const mob = new Set(INDIV.filter((i) => i.photo).slice(0, 18).map((i) => i.name));
   // The tooltip names the work in the page language.
   const PL = readJSON(`content/people.${L.lang}.json`);
   const workOf = Object.fromEntries(PL ? [...PL.people, ...(PL.additions || [])].map((p) => [p.id, p.w]) : []);
-  const faces = INDIV.map((i) => `<li${mob.has(i.name) ? ' class="mob"' : ''}><a href="${urlFor(L, peopleCh)}#p-${i.id}">${face(i, L)}</a><span class="tip" aria-hidden="true">${esc(i.name)}<small>${i.year} · ${esc(workOf[i.id] || i.work)}</small></span></li>`).join('');
-  const years = INDIV.map((i) => i.year);
+  // The strip: everyone a rule cites who has a free photograph, in order of the work this guide draws on.
+  const cited = new Set(Object.values(L.ruleExtras).flatMap((x) => x.faces || []));
+  const strip = INDIV.filter((i) => i.photo && cited.has(i.name));
+  const stripItem = (i, dup) => `<li${dup ? ' aria-hidden="true"' : ''}><a href="${urlFor(L, peopleCh)}#p-${i.id}"${dup ? ' tabindex="-1"' : ''}><img src="${i.photo}" alt="${dup ? '' : esc(L.ui.portraitOf(i.name))}" loading="lazy" decoding="async" width="160" height="160"><span class="nm">${esc(i.name)}</span><span class="yr">${i.year} · ${esc(String(workOf[i.id] || i.work).replace(/,\s*(?:c\.\s*)?\d{4}.*$/, ''))}</span></a></li>`;
+  const faces = strip.map((i) => stripItem(i, false)).join('') + strip.map((i) => stripItem(i, true)).join('');
   const contents = L.chapters
     .map((c) => {
       const inside = c.rules ? L.ui.rules(c.rules) : c.inside ? c.inside(nPeople, 0) : '';
@@ -215,7 +218,6 @@ function cover(L, LANGS) {
     })
     .join('');
   const body = `<section class="hero">
-  <div class="kicker">${esc(C.kicker)}</div>
   <h1 class="display">${esc(C.title)}</h1>
   <div class="hero-row">
     <div><p class="lede">${esc(C.lede[0])}</p><p class="lede2">${esc(C.lede[1])}</p></div>
@@ -223,13 +225,13 @@ function cover(L, LANGS) {
   </div>
 </section>
 <section class="sec cast" aria-labelledby="cast-h">
-  <div class="sec-head"><div><h2 id="cast-h">${esc(C.castTitle)}</h2><span class="note">${esc(C.castNote(Math.min(...years), Math.max(...years)))}</span></div><a class="act" href="${urlFor(L, peopleCh)}">${esc(C.castCta)}</a></div>
-  <ul class="faces">${faces}<li class="cta"><a href="${urlFor(L, peopleCh)}"><span class="kicker">${esc(C.castTileKicker)}</span><b>${esc(C.castTile(nPeople))}</b></a></li></ul>
+  <div class="sec-head"><div><h2 id="cast-h">${esc(C.castTitle)}</h2><span class="note">${esc(v2(L, 'castNote'))}</span></div><a class="act" href="${urlFor(L, peopleCh)}">${esc(v2(L, 'castCta')(nPeople))}</a></div>
+  <div class="strip" role="region" aria-label="${esc(v2(L, 'stripLabel'))}"><ul class="strip-track">${faces}</ul></div>
 </section>
 <section class="sec" id="example" aria-labelledby="ex-h">
   <div class="sec-head"><div><h2 id="ex-h">${esc(C.exampleTitle)}</h2><span class="note">${esc(C.exampleNote)}</span></div></div>
   <div class="tb"><div class="prose"><p>${esc(C.example)}</p></div><aside class="notes"><ul><li class="about"><b>${esc(C.aboutTitle)}</b>${esc(C.about)}</li></ul></aside></div>
-  <figure class="fig" style="margin-top:28px"><div class="stage" id="board"></div><figcaption class="cap" id="recon"></figcaption></figure>
+  <figure class="fig" style="margin-top:28px"><div class="stage" id="board"></div><figcaption class="cap">${C.boardCaption || ''}</figcaption></figure>
 </section>
 <section class="sec" aria-labelledby="contents-h">
   <div class="sec-head"><div><h2 id="contents-h">${esc(L.ui.contents)}</h2><span class="note">${esc(C.contentsNote)}</span></div></div>
@@ -249,6 +251,7 @@ ${chapterFoot(L, null)}`;
 function ruleSection(L, n, R, X0, chapterKey) {
   let X = X0;
   const from = X.faces.map(byName);
+  const fromPh = from.filter((i) => i.photo);
   const names = from.map((i) => i.name.split(' ').slice(-1)[0]).join(', ');
   const blocks = R.blocks
     .map((b, bi) => {
@@ -264,19 +267,22 @@ function ruleSection(L, n, R, X0, chapterKey) {
   if (pick && D) {
     const c = D.cases.find((x) => x.slug === pick.slug);
     const a = c && c.annotations.find((x) => x.n === pick.n);
-    if (a) X = { ...X, callout: { kicker: c.title, title: (X.calloutNote && X.calloutNote.title) || a.title, text: (X.calloutNote && X.calloutNote.text) || a.text, href: urlFor(L, dashCh) + '#' + c.slug + '-n' + a.n, img: ASSETS + 'img/dashboards/' + pick.img, pin: pick.pin, pinN: a.n } };
+    if (a) X = { ...X, seen: { title: c.title, n: a.n, notYet: !!pick.notYet, href: urlFor(L, dashCh) + '#' + c.slug + '-n' + a.n }, callout: { kicker: c.title, title: (X.calloutNote && X.calloutNote.title) || a.title, text: (X.calloutNote && X.calloutNote.text) || a.text, href: urlFor(L, dashCh) + '#' + c.slug + '-n' + a.n, img: ASSETS + 'img/dashboards/' + pick.img, pin: pick.pin, pinN: a.n } };
   }
-  const callout = X.callout
+  // Rules are general; our own dashboards stay in chapter 7, one line away.
+  const seenLine = X.seen ? v2(L, X.seen.notYet ? 'notYetIn' : 'seenIn')('\u0000', X.seen.n).split('\u0000') : null;
+  const seen = seenLine ? `<p class="seen-in">${esc(seenLine[0])}<a href="${X.seen.href}">${esc(X.seen.title)}</a>${esc(seenLine[1] || '')}</p>` : '';
+  const callout = false && X.callout
     ? `<div class="callout"><div class="co-text"><div><span class="kicker">${esc(L.ui.inOurDashboards)}${X.callout.kicker ? ' · ' + esc(X.callout.kicker) : ''}</span><h3>${esc(X.callout.title)}</h3><p>${esc(X.callout.text)}</p></div><a href="${X.callout.href}">${esc(L.ui.openCase)}</a></div><a class="co-img" href="${X.callout.href}" tabindex="-1" aria-hidden="true"><img src="${X.callout.img}" alt="" loading="lazy" decoding="async" width="800" height="450">${X.callout.pin ? `<span class="pin" style="left:${X.callout.pin[0]}%;top:${X.callout.pin[1]}%">${X.callout.pinN}</span>` : ''}</a></div>`
     : '';
   return `<section class="rule" id="r${n}" aria-labelledby="r${n}-h">
   <div class="rule-head">
     <div><div class="rh-meta"><span class="badge">${n}</span><span class="kicker">${esc(L.ui.ruleOf(n))}</span></div><h2 id="r${n}-h">${R.title}</h2></div>
-    <div class="rh-from"><span class="kicker">${esc(L.ui.from)}</span><div class="from-faces">${from.map((i) => `<span class="m" title="${esc(i.name)}">${face(i, L)}</span>`).join('')}</div><p>${esc(names)}</p></div>
+    <div class="rh-from"><span class="kicker">${esc(L.ui.from)}</span>${fromPh.length ? `<div class="from-faces">${fromPh.map((i) => `<span class="m" title="${esc(i.name)}">${face(i, L)}</span>`).join('')}</div>` : ''}<p>${esc(names)}</p></div>
   </div>
   <div class="body">${blocks}</div>
   <figure class="fig"><div class="stage" id="${R.stage}"></div><figcaption class="cap">${R.caption}</figcaption></figure>${R.after ? '\n  ' + R.after : ''}
-  ${callout}
+  ${seen}
   <div class="oneline"><div class="ol-main"><span class="kicker">${esc(L.ui.oneLine)}</span><p>${esc(X.oneLine)}</p></div><div class="ol-try"><span class="kicker">${esc(L.ui.tryIt)}</span><p>${esc(X.tryIt)}</p></div></div>
 </section>`;
 }
@@ -290,7 +296,7 @@ function ruleChapter(L, LANGS, ch) {
     indexLabel: L.ui.inThisChapter,
     index: ch.rules.map((n) => ({ n, title: RULES[n].title, href: '#r' + n })),
     facesLabel: L.ui.drawnFrom,
-    faces: faces.slice(0, 8),
+    faces,
     facesNames: names,
   });
   const sections = ch.rules.map((n) => ruleSection(L, n, RULES[n], L.ruleExtras[n], ch.key)).join('\n');
@@ -317,7 +323,7 @@ function worksChapter(L, LANGS, ch) {
     indexLabel: L.ui.shelves || 'Three shelves',
     index: W.groups.map((g, i) => ({ n: g.items.length, title: g.title, href: '#shelf-' + (i + 1) })),
     facesLabel: L.ui.madeBy || 'Made by',
-    faces: ['Otl Aicher', 'Massimo Vignelli', 'Otto Neurath', 'Edward Tufte', 'Mike Bostock', 'Bret Victor', 'Gerd Arntz', 'Shan Carter'],
+    faces: ['Otl Aicher', 'Massimo Vignelli', 'Otto Neurath', 'Gerd Arntz', 'Edward Tufte', 'Mike Bostock', 'Shan Carter', 'Bret Victor'],
     facesNames: L.ui.madeByNames || '',
   });
   const chips = ['all', ...Array.from({ length: 12 }, (_, i) => String(i + 1))]
@@ -371,8 +377,8 @@ function systemChapter(L, LANGS, ch) {
     surfaces: `<div class="spec surf" aria-hidden="true"><i><b></b><u></u></i></div>`,
     type: `<div class="spec type" aria-hidden="true"><b>${L.lang === 'fr' ? '294,4' : '294.4'}</b><span>${L.lang === 'fr' ? 'k$' : '$K'}</span></div>`,
     figures: `<div class="spec fig" aria-hidden="true"><div><b>${L.lang === 'fr' ? '−17,6' : '−17.6'}</b><span>${esc(S.lostSales)}</span></div><div><b>${L.lang === 'fr' ? '57,0' : '57.0'}</b><span>${esc(S.leftToBuy)}</span></div></div>`,
-    colour: `<div class="spec col" aria-hidden="true"><i style="height:30px;background:var(--slate)"></i><i style="height:44px;background:var(--cobalt)"></i><i style="height:36px;background:var(--tint)"></i><i style="height:22px;border:1.5px dashed var(--cobalt)"></i><i style="height:14px;background:var(--ink)"></i></div>`,
-    interaction: `<div class="spec int" aria-hidden="true"><svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none"><path d="M6 52 C 90 50, 160 44, 210 26 S 262 6, 274 4" fill="none" stroke="#5A6676" stroke-width="2"/><line x1="6" y1="30" x2="274" y2="30" stroke="#CBD2DC" stroke-dasharray="3 3"/><circle cx="196" cy="31" r="9" fill="#E8EDFC" stroke="#2146D6" stroke-width="2.5"/><circle cx="196" cy="31" r="3" fill="#2146D6"/></svg></div>`,
+    colour: `<div class="spec col" aria-hidden="true"><i style="height:30px;background:var(--slate)"></i><i style="height:44px;background:var(--ink)"></i><i style="height:36px;background:var(--slate2)"></i><i style="height:22px;border:1.5px dashed var(--slate)"></i><i style="height:14px;background:repeating-linear-gradient(45deg,var(--slate) 0 1.5px,#fff 1.5px 5px)"></i></div>`,
+    interaction: `<div class="spec int" aria-hidden="true"><svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none"><path d="M6 52 C 90 50, 160 44, 210 26 S 262 6, 274 4" fill="none" stroke="#5A6676" stroke-width="2"/><line x1="6" y1="30" x2="274" y2="30" stroke="#CBD2DC" stroke-dasharray="3 3"/><circle cx="196" cy="31" r="9" fill="#FFFFFF" stroke="#121923" stroke-width="2"/><circle cx="196" cy="31" r="3.5" fill="#121923"/></svg></div>`,
   };
   const decisions = S.decisions.map((d) => `<div class="decision"><span class="kicker">${esc(d.label)}</span>${spec[d.key]}<p>${esc(d.text)}</p></div>`).join('');
   // Sources, grouped as in the rules.
@@ -455,7 +461,12 @@ for (const L of Object.values(LANGS)) {
 // Styles and scripts.
 const cat = (...files) => files.map((f) => { const p = path.join(SRC, 'runtime', f); return fs.existsSync(p) ? fs.readFileSync(p, 'utf8') : ''; }).join('\n');
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
-fs.writeFileSync(path.join(OUT, 'assets/guide.css'), cat('figures.css', 'page.css', 'research.css'));
+// The second edition's figures: the core, then each figure file in name order, then start.
+const fig2Dir = path.join(SRC, 'runtime', 'fig2');
+const fig2Files = (ext) => (fs.existsSync(fig2Dir) ? fs.readdirSync(fig2Dir).filter((f) => f.endsWith(ext) && f !== 'core' + ext).sort() : []);
+const catFig2 = (ext) => ['core' + ext, ...fig2Files(ext)].map((f) => { const p = path.join(fig2Dir, f); return fs.existsSync(p) ? fs.readFileSync(p, 'utf8') : ''; }).join('\n');
+fs.writeFileSync(path.join(OUT, 'assets/guide.css'), cat('figures.css', 'page.css', 'research.css') + '\n' + catFig2('.css'));
+fs.writeFileSync(path.join(OUT, 'assets/fig2.js'), catFig2('.js') + '\nFIG.start();\n');
 fs.writeFileSync(path.join(OUT, 'assets/research.js'), cat('research.js'));
 fs.writeFileSync(path.join(OUT, 'assets/figures.js'), cat('guide.js'));
 fs.writeFileSync(path.join(OUT, 'assets/page.js'), cat('page.js'));

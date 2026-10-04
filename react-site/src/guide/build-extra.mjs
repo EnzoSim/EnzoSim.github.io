@@ -36,12 +36,19 @@ export function people(ctx) {
     p.individuals && p.individuals.length
       ? p.individuals.map((x) => ({ ...byName(x.name), life: x.life }))
       : [{ ...byName(p.n), life: p.l }];
+  // Photographs only. A spread whose people have none shows the year and title of the work instead; a card shows nothing.
   const photoBlock = (p, size) => {
-    const ind = individualsOf(p);
+    const ind = individualsOf(p).filter((i) => i.photo);
+    if (!ind.length) {
+      if (size < 400) return '';
+      const year = (String(p.w || '').match(/\b(1[5-9]\d\d|20\d\d)\b/) || [])[1] || p.y;
+      const work = String(p.w || '').replace(/,\s*(?:c\.\s*)?\d{4}.*$/, '');
+      return `<div class="ph work" role="img" aria-label="${esc(L.ui.noPhoto)}"><b>${esc(year)}</b><span>${esc(work)}</span></div>`;
+    }
     const cls = ind.length > 1 ? ` team t${Math.min(ind.length, 4)}` : '';
     return `<div class="ph${cls}">${ind
       .slice(0, 4)
-      .map((i) => (i.photo ? `<img src="${i.photo}" alt="${esc(L.ui.portraitOf(i.name))}" loading="lazy" decoding="async" width="${size}" height="${size}">` : `<span class="ini" role="img" aria-label="${esc(L.ui.initialsOf(i.name))}">${esc(i.ini)}<small>${esc(L.ui.noPhoto)}</small></span>`))
+      .map((i) => `<img src="${i.photo}" alt="${esc(L.ui.portraitOf(i.name))}" loading="lazy" decoding="async" width="${size}" height="${size}">`)
       .join('')}</div>`;
   };
   const projects = (p) =>
@@ -63,14 +70,14 @@ export function people(ctx) {
     <div class="in-guide"><span class="kicker">${esc(L.ui.inThisGuide)}</span>${ruleLinks(ctx, p.r)}${p.u ? `<a class="ext" href="${esc(p.u)}" rel="noopener">${esc(p.w)} ↗</a>` : ''}</div>
   </div>
 </article>`;
-  const card = (p) => `<li class="pcard" id="p-${p.id}">
+  const card = (p) => `<li class="pcard${photoBlock(p, 160) ? '' : ' nophoto'}" id="p-${p.id}">
   ${photoBlock(p, 160)}
   <div class="pc-text"><h3>${esc(nm(p.n))}</h3><p class="life">${esc(p.l)}</p>
     <p class="made"><b class="tnum">${esc((p.projects && p.projects[0] && p.projects[0].year) || p.y)}</b> ${esc((p.projects && p.projects[0] && p.projects[0].title) || p.w)}</p>
     <p class="brought">${esc(p.brought || p.d)}</p>
-    ${p.learn ? `<p class="learn-s"><span class="kicker">${esc(L.ui.learnLabel)}</span>${esc(p.learn)}</p>` : ''}
-    <div class="in-guide">${ruleLinks(ctx, p.r)}</div>
   </div>
+  ${p.learn ? `<p class="learn-s"><span class="kicker">${esc(L.ui.learnLabel)}</span>${esc(p.learn)}</p>` : ''}
+  <div class="in-guide">${ruleLinks(ctx, p.r)}</div>
 </li>`;
   const fieldSections = groups
     .map((g, gi) => {
@@ -86,7 +93,7 @@ export function people(ctx) {
     indexLabel: L.ui.sixFields,
     index: groups.map((g, gi) => ({ n: all.filter((p) => p.g === gi).length, title: g[0], href: '#f-' + gi })),
     facesLabel: L.ui.featuredLabel,
-    faces: featured.slice(0, 8).map((p) => individualsOf(p)[0].name),
+    faces: featured.map((p) => individualsOf(p)[0].name),
     facesNames: featured.map((p) => p.n.split(' and ')[0].split(' ').slice(-1)[0]).join(', '),
   });
   // Only what the timeline draws and its card shows; the profiles stay in the page itself.
@@ -143,7 +150,7 @@ export function dashboards(ctx) {
   ${c.next && c.next.length ? `<div class="case-next"><span class="kicker">${esc(L.ui.stillChange)}</span><ul>${c.next.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>` : ''}
 </section>`;
   };
-  const head = opener(L, ch, {
+  const head = opener(L, { ...ch, standfirst: ch.standfirst || D.standfirst }, {
     indexLabel: L.ui.inThisChapter,
     index: cases.map((c, i) => ({ n: i + 1, title: c.title, href: '#' + c.slug })),
     facesLabel: L.ui.atAGlance,

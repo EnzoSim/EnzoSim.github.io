@@ -1,0 +1,60 @@
+/* Rule 9 · Type for figures (f-r09-type.js). Paper "Fig · 9 · Type for figures": specimen 4 columns, faces 8. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-type .f2-title h3{white-space:normal}
+#demo-type .f2-head{min-height:54px}   /* Paper fixes the controls row at 38 px: 12 + 38 + 4 */
+.r9 .f2-ctl{column-gap:24px}
+.r9 .f2-body{grid-template-columns:var(--r9-sw,356px) minmax(0,1fr)}
+.r9-probe{position:fixed;left:-10000px;top:0;visibility:hidden;white-space:pre;font-size:100px;line-height:1;font-kerning:normal;pointer-events:none}
+
+/* the specimen: the selected row in the selected face at 56 px, and its two widths */
+.r9-spec{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:20px 24px;position:relative}
+.r9-sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.r9-sface{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.r9-snote{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);text-align:right}
+.r9-sbox{position:relative;height:68px;font-size:56px;line-height:68px;font-weight:400;color:var(--f2-ink);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+.r9-sghost{position:absolute;margin:0;pointer-events:none}
+.r9-sg{display:inline-block;transition:color .2s}
+.r9-sb{position:absolute;right:0;top:0;font-weight:700;color:var(--f2-ink);opacity:0;transition:opacity .2s}
+.r9-bold .r9-sg{color:var(--f2-slate2)}
+.r9-bold .r9-sb{opacity:1}
+.r9-sm{border-top:1px solid var(--f2-relief);padding-top:10px}
+.r9-sm>div{display:flex;align-items:center;justify-content:space-between;height:24px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r9-v{color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.r9-vd{font-weight:600}
+
+/* the matrix: label 132 + five faces of 112 (of 692), figures right-aligned 12 px from the column edge */
+.r9-mfield{padding:20px 24px 16px}
+.r9-mx{position:relative;--r9-cols:minmax(0,132fr) repeat(5,minmax(0,112fr))}
+.r9-band{position:absolute;left:0;top:-8px;width:112px;height:0;border-radius:8px;background:var(--f2-sheet);transition:transform .25s cubic-bezier(.33,1,.68,1);z-index:0}
+.r9-still .r9-band{transition:none}
+.r9-hd,.r9-row,.r9-ms{display:grid;grid-template-columns:var(--r9-cols);position:relative;z-index:1}
+.r9-hd{min-height:30px;align-items:end;padding-bottom:6px;border-bottom:1px solid var(--f2-relief)}
+#demo-type .r9-fn{appearance:none;background:none;border:0;margin:0;padding:0 12px 0 0;text-align:right;font-size:12px;line-height:16px;font-weight:500;color:var(--f2-ink2);cursor:pointer;white-space:nowrap;border-radius:4px}
+#demo-type .r9-fn.is-face{font-weight:600;color:var(--f2-ink)}
+.r9-row{height:32px;align-items:center;cursor:pointer;border-radius:4px}
+.r9-row.r9-ruled{border-top:1px solid var(--f2-relief)}
+.r9-lab{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+.r9-bold .r9-row.is-sel .r9-lab{font-weight:600;color:var(--f2-ink)}
+.r9-row .r9-lab.r9-two{white-space:normal;font-size:13px;line-height:15px;overflow:visible;text-overflow:clip}
+.r9-c{position:relative;display:block;text-align:right;padding-right:12px;font-size:18px;line-height:24px;font-weight:400;color:var(--f2-ink);white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+.r9-prop .r9-c,.r9-prop .r9-sbox{font-variant-numeric:proportional-nums lining-nums}
+.r9-g{display:inline-block;transition:color .2s}
+.r9-b{position:absolute;right:12px;top:0;font-weight:700;opacity:0;transition:opacity .2s}
+.r9-bold .r9-row.is-sel .r9-g{color:var(--f2-slate2)}
+.r9-bold .r9-row.is-sel .r9-b{opacity:1}
+.r9-ms{height:36px;align-items:center;border-top:1px solid var(--f2-rule)}
+.r9-ms .r9-lab{font-size:12px;line-height:16px;color:var(--f2-ink3)}
+.r9-m{display:block;text-align:right;padding-right:12px;font:400 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums;cursor:pointer}
+.r9-m.is-on{font-weight:600;color:var(--f2-ink)}
+
+/* before the entrance */
+.r9-pre .r9-spec,.r9-pre .r9-mx [data-face]{opacity:0}
+
+/* one column: the specimen above the matrix; the matrix keeps its widths and scrolls sideways in its field */
+@media (max-width:1079px){
+  .r9 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r9-spec{padding:16px;gap:16px}
+  .r9-mfield{padding:16px}
+  .r9-scroll{overflow-x:auto;padding-top:8px;margin-top:-8px;overscroll-behavior-x:contain}
+  .r9-mx{min-width:692px}
+}

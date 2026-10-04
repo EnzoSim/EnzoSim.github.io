@@ -1,5 +1,9 @@
 /* Learn dashboard design with me: what the figures of "What neighbouring fields know" add to figures.css.
-   Only what the existing classes do not cover, in the same custom properties. research.js writes the markup. */
+   Only what the existing classes do not cover, in the same custom properties. research.js writes the markup.
+   Greys only (REDESIGN-BRIEF.md, decision F): ink for the one thing that matters or the selected state, slate for
+   data, slate-light for secondary data, well and relief for bands and backgrounds. Cobalt is left to the keyboard
+   focus ring. A rule that restyles a shared class is scoped to .rx-fig, the class research.js gives each of its figure
+   roots, so the figures of the other chapters are untouched. */
 
 /* a plot inside a field, drawn at the width it has */
 .rx-plot{padding:4px 20px 0}
@@ -8,19 +12,52 @@
 /* a heading that may wrap on a narrow screen */
 .stage .rx-wrap h4{white-space:normal}
 
-/* F0: the lane names stay in view when the axis scrolls sideways, and form a radio group */
+/* the controls, as in the brief's component kit: grey, with ink for the on or selected state. The segmented control
+   keeps the well for its track, because these headers sit on the stage's ground, which is the relief grey itself. */
+.rx-fig .seg{gap:2px;padding:3px;border-radius:10px;background:var(--well)}
+.rx-fig .seg button{height:auto;min-height:32px;padding:6px 12px;border-radius:7px;font-size:14px;line-height:20px;font-weight:500;color:var(--ink2);transition:background-color .2s ease,color .2s ease,box-shadow .2s ease}
+.rx-fig .seg button:hover{color:var(--ink)}
+.rx-fig .seg button[aria-checked="true"]{background:var(--field);color:var(--ink);box-shadow:0 1px 2px rgba(18,25,35,.12)}
+.rx-fig .sw{width:36px;height:20px;border-radius:10px;background:#CBD2DC}
+.rx-fig .sw::after{width:16px;height:16px;border-radius:8px;box-shadow:0 1px 2px rgba(18,25,35,.2)}
+.rx-fig .sw[aria-checked="true"],.rx-fig [aria-checked="true"]>.sw{background:var(--ink)}
+.rx-fig .sw[aria-checked="true"]::after,.rx-fig [aria-checked="true"]>.sw::after{transform:translateX(16px)}
+.rx-fig .opt.inline{gap:8px;font-size:14px;line-height:20px;color:var(--ink2)}
+.rx-fig .opt.inline[aria-checked="true"]{color:var(--ink)}
+.rx-fig .btn{height:auto;padding:6px 12px;border:1px solid #CBD2DC;border-radius:8px;background:var(--field);box-shadow:none;font:600 14px/20px var(--sans);color:var(--ink);transition:border-color .2s ease}
+.rx-fig .btn:hover{border-color:var(--ink)}
+/* the slider: a 4 px track filled in slate up to a white thumb ringed in ink; research.js keeps --k at the thumb.
+   On the ground of a header the unfilled track takes the rule grey, which the well would not show. */
+.rx-fig .rng{font-size:14px;line-height:20px}
+.rx-fig input[type=range]{-webkit-appearance:none;appearance:none;height:20px;background:transparent;cursor:pointer;--k:50%;--rx-track:var(--well)}
+.rx-fig .demo-head input[type=range]{--rx-track:#CBD2DC}
+.rx-fig input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--slate) 0 var(--k),var(--rx-track) var(--k) 100%)}
+.rx-fig input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--rx-track)}
+.rx-fig input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--slate)}
+.rx-fig input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px var(--ink),0 1px 2px rgba(18,25,35,.2)}
+.rx-fig input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px var(--ink),0 1px 2px rgba(18,25,35,.2)}
+
+/* F0: the lane names stay in view when the axis scrolls sideways, and form a radio group. The selected mark is ink;
+   a selected field turns its marks ink and the others slate-light, and its lane band slides there. */
 .rx-tl{display:grid}
 .rx-tl>*{grid-area:1 / 1}
 .rx-lab{position:sticky;left:0;z-index:1;justify-self:start;background:var(--field)}
-.stage .rx-lab button{position:absolute;left:8px;right:0;display:flex;align-items:center;padding:0 10px 0 14px;border:0;border-radius:10px 0 0 10px;background:none;font-size:14px;line-height:17px;font-weight:500;color:var(--ink2);text-align:left;cursor:pointer}
+.stage .rx-lab button{position:absolute;left:8px;right:0;display:flex;align-items:center;padding:0 10px 0 14px;border:0;border-radius:10px 0 0 10px;background:none;font-size:14px;line-height:17px;font-weight:500;color:var(--ink2);text-align:left;cursor:pointer;transition:background-color .2s ease}
 .stage .rx-lab button:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
 .stage .rx-lab button[aria-checked="true"]{background:var(--sheet);color:var(--ink);font-weight:600}
 .stage .rx-lab button[data-fld=""]{border-radius:10px;right:8px;font-size:13px;color:var(--ink3)}
 .stage .rx-lab button[data-fld=""][aria-checked="true"]{color:var(--ink)}
-.pm.rx-hi .dot{fill:var(--cobalt)}
+.rx-fig .pm .dot{transition:fill .25s ease,r .2s ease}
+.rx-fig .pm.on .dot{fill:var(--ink)}
+.rx-fig .pm.on .hit{fill:var(--ink);opacity:.12}
+.rx-fig .pm:focus-visible .hit{fill:none;stroke:var(--cobalt);stroke-width:2;opacity:1}
+.pm.rx-hi .dot{fill:var(--ink)}
 .pm.rx-lo .dot{fill:var(--slate2)}
-.pm.rx-lo:hover .dot{fill:var(--ink)}
-.pm.on.rx-hi .dot,.pm.on.rx-lo .dot{fill:var(--cobalt)}
+.pm.rx-hi:hover .dot,.pm.rx-lo:hover .dot{fill:var(--ink)}
+.pm.on.rx-hi .dot,.pm.on.rx-lo .dot{fill:var(--ink)}
+.rx-band{transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .25s ease}
+.rx-tag>*{animation:rx-tag .18s ease-out}
+@keyframes rx-tag{from{opacity:0}}
 
 /* F1: the answer each drawing gives, under it, and for the dotplot the switch that changes it */
 .rx-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:4px 16px;flex-wrap:wrap;padding-right:16px}
@@ -29,13 +66,28 @@
 .rx-read b{font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 .rx-read span{font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
 
-/* F2a: the scenario fills of the business notation */
-.rx-hatch{stroke:var(--cobalt);stroke-width:1.5}
-.rx-out{fill:var(--field);stroke:var(--ink2);stroke-width:1.5}
+/* F2a: the scenario fills of the business notation, hatched in slate for the forecast, a dashed slate outline for the
+   budget, a plan; and the solid fills, two pairs of close greys, that the switch fades in over them */
+.rx-hatch{stroke:var(--slate);stroke-width:1.5}
+.rx-out{fill:var(--field);stroke:var(--slate);stroke-width:1.5;stroke-dasharray:4 3}
+.rx-ink3{fill:var(--ink3)}
+.rx-rule2{fill:var(--line2)}
+.rx-solid{opacity:0;transition:opacity .3s ease}
+.rx-plain .rx-solid{opacity:1}
+.rx-bu{transition:fill .3s ease}
+.rx-plain .rx-bu{fill:var(--ink2)}
 
-/* F2b, F4a: rows slide to their new order; a clipped bar ends in a break */
-.rx-row{transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+/* F2b, F4a: a clipped bar ends in a break; the directions are named under the axis; labels in two lighter weights */
 .rx-break{stroke:var(--field);stroke-width:2.5;fill:none}
+.rx-dir{fill:var(--ink2);font-size:12px;font-weight:500}
+.rx-w5{font-weight:500}
+.rx-w4{font-weight:400}
+
+/* F3a, F6a: the relief grey for a selected quadrant, panel or band; F3a: Kostenko and Hyndman's diagonal; F3c: the
+   expected-profit curve, secondary, in slate-light */
+.rx-relief{fill:#E3E7ED}
+.rx-l-ink{stroke:var(--ink);stroke-width:2;fill:none}
+.rx-l-light{stroke:var(--slate2);stroke-width:2;fill:none;stroke-linejoin:round}
 
 /* F3a, F7: marks and rows that can be selected */
 .rx-pick{cursor:pointer;outline:none}
@@ -50,20 +102,25 @@
 table.dt.rx-raw td{font-variant-numeric:proportional-nums lining-nums}
 table.dt tr.rx-total th,table.dt tr.rx-total td{font-weight:600}
 table.dt:not(.furn) tbody tr.rx-total{border-top:1.5px solid var(--ink2)}
-table.dt tr.rx-hot>*{background:color-mix(in oklab,var(--sheet) 70%,var(--field))}
-table.dt.furn tr.rx-hot>*{background:var(--sheet)}
+.rx-fig table.dt tr>*{transition:background-color .15s ease}
+table.dt tr.rx-hot>*{background:#E3E7ED}
+
+/* F6a: inside its normal range the indicator's value stays quiet */
+.t-v.rx-quiet{fill:var(--slate)}
 
 /* F6b: one small history per measure */
 .rx-panel{fill:var(--field);stroke:var(--line);stroke-width:1}
 
-/* F8: the type test, one row per face, and the live specimen */
+/* F8: the type test, one row per face, the selected face in ink and the others ink-2; and the live specimen, regular in
+   ink over a slate-light ghost of the bold */
 .rx-tt{min-width:700px;padding:6px 8px 4px}
 .rx-tt-h,.stage .rx-tt-r{display:grid;grid-template-columns:minmax(150px,1.15fr) repeat(4,minmax(0,1fr));column-gap:16px;align-items:center}
 .rx-tt-h{padding:6px 14px 8px;font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
-.stage .rx-tt-r{width:100%;min-height:58px;padding:8px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;text-align:left;cursor:pointer}
+.stage .rx-tt-r{width:100%;min-height:58px;padding:8px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;text-align:left;cursor:pointer;transition:background-color .2s ease}
 .stage .rx-tt-r:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
 .stage .rx-tt-r[aria-checked="true"]{background:var(--sheet);border-radius:10px}
-.rx-tt-r>b{font-size:17px;line-height:24px;font-weight:600}
+.rx-tt-r>b{font-size:17px;line-height:24px;font-weight:600;color:var(--ink2);transition:color .2s ease}
+.stage .rx-tt-r[aria-checked="true"]>b{color:var(--ink)}
 .rx-c{display:flex;flex-direction:column;align-items:flex-start;font-size:14px;line-height:20px}
 .rx-c .v{font-weight:500;color:var(--ink)}
 .rx-c .k{font-size:13px;font-weight:500;color:var(--ink3)}
@@ -73,8 +130,21 @@ table.dt.furn tr.rx-hot>*{background:var(--sheet)}
 .rx-spec{position:relative;padding:16px 24px 22px;overflow-x:auto}
 .rx-spec .lay{display:grid;grid-template-columns:repeat(4,2.6em) 3.9em;column-gap:.7em;row-gap:.1em;line-height:1.3;font-variant-numeric:tabular-nums lining-nums;font-kerning:none;white-space:nowrap;color:var(--ink)}
 .rx-spec .lay span{justify-self:end;text-align:right}   /* each figure keeps its own width, so the two layers can be measured */
-.rx-spec .lay.b{position:absolute;left:24px;top:16px;font-weight:700;color:var(--cobalt);opacity:.55}
-.rx-spec .lay.r{font-weight:400}
+.rx-spec .lay.b{position:absolute;left:24px;top:16px;z-index:0;font-weight:700;color:var(--slate2)}
+.rx-spec .lay.r{position:relative;z-index:1;font-weight:400}
+
+/* motion (research.js, "motion"): a mark tagged data-a grows from its own box, from the origin its kind names, and is
+   hidden (its field carries rx-pre) until its chart is first seen; nothing moves under reduced motion, and print
+   shows every mark */
+.rx-fig [data-a]{transform-box:fill-box}
+.rx-fig [data-a="gy"]{transform-origin:50% 100%}
+.rx-fig [data-a="gyd"]{transform-origin:50% 0}
+.rx-fig [data-a="gx"]{transform-origin:0 50%}
+.rx-fig [data-a="gxl"]{transform-origin:100% 50%}
+.rx-fig [data-a="gxc"],.rx-fig [data-a="pop"]{transform-origin:50% 50%}
+.rx-fig .rx-pre [data-a]{opacity:0}
+@media print{.rx-fig .rx-pre [data-a]{opacity:1}}
+@media (prefers-reduced-motion:reduce){.rx-fig *,.rx-fig *::after{transition:none!important;animation:none!important}}
 
 @container (max-width:520px){
   .rx-plot{padding:4px 12px 0}

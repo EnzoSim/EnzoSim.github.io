@@ -188,17 +188,17 @@ input[type=range]{accent-color:var(--cobalt);margin:0;height:20px;width:100%}
 .pm .hit{fill:transparent}
 .pm .dot{fill:var(--slate);transition:fill .15s ease}
 .pm:hover .dot{fill:var(--ink)}
-.pm.on .dot{fill:var(--cobalt)}
-.pm.on .hit{fill:var(--cobalt);opacity:.16}
+.pm.on .dot{fill:var(--ink)}
+.pm.on .hit{fill:var(--ink);opacity:.1}
 .pm:focus-visible .hit{fill:none;stroke:var(--cobalt);stroke-width:2;opacity:1}
-/* faces on the time axis: a field-coloured ring keeps neighbours apart, ink on hover, accent when selected */
+/* faces on the time axis: a field-coloured ring keeps neighbours apart, ink on hover, a heavier ink ring when selected */
 .pm .ring{fill:none;stroke:var(--field);stroke-width:2;transition:stroke .15s ease}
 .pm:hover .ring{stroke:var(--ink)}
-.pm.on .ring{stroke:var(--cobalt);stroke-width:3}
+.pm.on .ring{stroke:var(--ink);stroke-width:3}
 .pm .nf{fill:var(--well)}
-.pm.on .nf{fill:var(--wash)}
+.pm.on .nf{fill:var(--relief)}
 .t-ini{font-size:11px;font-weight:600;font-stretch:75%;letter-spacing:.02em;fill:var(--ink2);pointer-events:none}
-.pm.on .t-ini{font-size:14px;fill:var(--cobalt)}
+.pm.on .t-ini{font-size:14px;fill:var(--ink)}
 .who-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:start}
 .who-id{display:flex;align-items:flex-start;gap:24px}
 .who-ph{position:relative;flex:0 0 96px;width:96px;height:96px;border-radius:8px;overflow:hidden;background:var(--well);display:flex;align-items:flex-end;padding:0 0 8px 10px}
@@ -209,7 +209,7 @@ input[type=range]{accent-color:var(--cobalt);margin:0;height:20px;width:100%}
 .who-pr>span{font-size:15px;line-height:22px;font-weight:500;color:var(--ink3);font-variant-numeric:tabular-nums}
 .who-pr b{font-size:15px;line-height:22px;font-weight:600;color:var(--ink)}
 .who .who-pr p{margin:2px 0 0;font-size:15px;line-height:22px;color:var(--ink2)}
-.who-learn{border-left:3px solid var(--cobalt);padding:2px 0 2px 18px}
+.who-learn{background:var(--wash);border-radius:12px;padding:16px 20px 18px}
 .who-learn .kicker{color:var(--cobalt)}
 .who .who-learn p{margin:8px 0 0;font-size:18px;line-height:26px;font-weight:600;color:var(--ink);max-width:none}
 .who-learn a{display:inline-block;margin-top:12px;font-weight:600}

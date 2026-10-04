@@ -1,0 +1,56 @@
+/* Rule 12 · Plain words (f-r12-terms.js). Paper "Fig · 12 · Plain words": the list 4 columns, the card 8. */
+/* figures.css styles .stage button, h3 and h4 (nowrap, inherited fonts), hence the ids below. */
+#demo-terms .f2-title h3{white-space:normal}
+#demo-terms .f2-head{min-height:54px}   /* Paper keeps the header at the 54 px of the figures with controls */
+.r12 .f2-body{grid-template-columns:var(--r12-lw,356px) minmax(0,1fr)}
+
+/* the list: a radio group; the selection band slides between rows */
+.r12-lfield{position:relative;padding:16px}
+.r12-list{position:relative;display:flex;flex-direction:column;gap:2px;z-index:1}
+#demo-terms .r12-row{appearance:none;display:flex;align-items:center;justify-content:space-between;gap:12px;height:36px;margin:0;padding:0 12px;border:0;border-radius:8px;background:transparent;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);text-align:left;cursor:pointer;transition:background .15s,color .15s}
+@media (hover:hover){#demo-terms .r12-row:hover:not([aria-checked="true"]){background:var(--f2-sheet)}}
+#demo-terms .r12-row[aria-checked="true"]{color:var(--f2-ink);font-weight:600}
+.r12-nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.r12-vl{flex:none;font-weight:400;color:var(--f2-ink3);font-variant-numeric:tabular-nums;white-space:nowrap}
+#demo-terms .r12-row[aria-checked="true"] .r12-vl{color:var(--f2-ink)}
+.r12-sel{position:absolute;left:0;top:0;width:0;height:36px;border-radius:8px;background:var(--f2-relief);transition:transform .2s cubic-bezier(.33,1,.68,1),width .2s cubic-bezier(.33,1,.68,1);z-index:0;pointer-events:none}
+.r12-sel.r12-still{transition:none}
+
+/* the card */
+.r12-cfield{display:flex;flex-direction:column;padding:20px 24px}
+.r12-card{display:flex;flex-direction:column;flex:1;min-width:0}
+.r12-ch{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 16px}
+#demo-terms .r12-name{display:block;margin:0;font:600 20px/28px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:normal}
+.r12-inst{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r12-io{font-size:12px;line-height:16px}
+.r12-inst s{text-decoration:line-through 1px;color:var(--f2-ink3)}
+.r12-big{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 10px;padding-top:4px}
+.r12-value{font:600 44px/52px var(--sans,"Instrument Sans");letter-spacing:-.02em;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r12-unit{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r12-defs{margin-top:auto;padding-top:20px}
+.r12-def{display:flex;gap:24px;padding:12px 0;border-top:1px solid var(--f2-relief)}
+.r12-def:last-child{padding-bottom:0}
+.r12-dl{flex:none;width:104px;font:500 13px/22px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r12-dt{flex:1;min-width:0;font:400 15px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.r12-work .r12-dt{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 7px}
+.r12-n{font-weight:600;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r12-w{color:var(--f2-ink2)}
+.r12-o{color:var(--f2-ink3)}
+#demo-terms .r12-link{appearance:none;margin:0;padding:0;border:0;border-bottom:1px solid var(--f2-rule2);border-radius:0;background:none;font:400 15px/21px var(--sans,"Instrument Sans");color:var(--f2-ink2);cursor:pointer;transition:border-color .15s,color .15s}
+#demo-terms .r12-link:hover{color:var(--f2-ink);border-bottom-color:var(--f2-ink)}
+
+/* before the entrance */
+.r12-pre .r12-row,.r12-pre .r12-sel{opacity:0}
+
+/* one column: the list becomes a row of chips that scrolls sideways above the card */
+@media (max-width:1079px){
+  .r12 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r12-lfield{padding:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+  .r12-lfield::-webkit-scrollbar{display:none}
+  .r12-list{flex-direction:row;gap:4px;width:max-content}
+  #demo-terms .r12-row{flex:none;height:36px;gap:8px}
+  .r12-cfield{padding:16px}
+  .r12-value{font-size:36px;line-height:44px}
+  .r12-def{flex-direction:column;gap:2px;padding:10px 0}
+  .r12-dl{width:auto;line-height:18px}
+}

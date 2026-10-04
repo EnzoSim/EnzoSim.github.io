@@ -1,0 +1,71 @@
+/* Figures, second edition: the grey component kit (REDESIGN-BRIEF.md, "Component kit").
+   Everything is prefixed f2- so it never meets the page's own classes or the first edition's. */
+.f2-root{--f2-sheet:#F1F3F7;--f2-field:#FFFFFF;--f2-relief:#E3E7ED;--f2-well:#DCE1E9;--f2-ink:#121923;--f2-ink2:#414B59;--f2-ink3:#5D6776;--f2-rule:#CBD2DC;--f2-rule2:#98A2B1;--f2-slate:#5A6676;--f2-slate2:#B7BFCA;
+  font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.stage.f2-root{background:none;padding:0;border-radius:0;box-shadow:none}
+.f2-sheet{background:var(--f2-sheet);border-radius:20px;padding:8px;display:flex;flex-direction:column;gap:8px}
+.f2-head{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:12px 16px 4px}
+.f2-title{display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap}
+.f2-root .f2-title h3{margin:0;display:block;white-space:normal;font:600 16px/22px var(--sans,"Instrument Sans");color:var(--f2-ink);letter-spacing:0}
+.f2-hint{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-ctl{display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap}
+.f2-body{display:grid;gap:8px}
+.f2-field{background:var(--f2-field);border-radius:12px;padding:20px 24px;min-width:0}
+.f2-field.dense{padding:16px}
+.f2-row{display:grid;gap:8px}
+.f2-status{margin:0;padding:12px 16px 14px;font:400 14px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-status b{font-weight:600;color:var(--f2-ink)}
+
+/* segmented control */
+.f2-seg{display:inline-flex;background:var(--f2-relief);border-radius:10px;padding:3px;gap:2px}
+.f2-root .f2-seg button{appearance:none;border:0;background:transparent;border-radius:7px;padding:6px 12px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.f2-root .f2-seg button:hover{color:var(--f2-ink)}
+.f2-root .f2-seg button[aria-checked="true"]{background:var(--f2-field);color:var(--f2-ink);box-shadow:0 1px 2px rgba(18,25,35,.12)}
+/* switch */
+.f2-root .f2-switch{appearance:none;border:0;background:none;display:inline-flex;align-items:center;gap:8px;padding:4px 0;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);cursor:pointer;text-align:left}
+.f2-switch i{flex:none;position:relative;width:36px;height:20px;border-radius:10px;background:var(--f2-rule);transition:background .2s}
+.f2-switch i::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(18,25,35,.2);transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.f2-switch[aria-checked="true"]{color:var(--f2-ink)}
+.f2-switch[aria-checked="true"] i{background:var(--f2-ink)}
+.f2-switch[aria-checked="true"] i::after{transform:translateX(16px)}
+/* slider */
+.f2-slider{display:flex;align-items:center;gap:12px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-slider output{min-width:3.5em;text-align:right;font-weight:600;color:var(--f2-ink)}
+.f2-root .f2-range{appearance:none;-webkit-appearance:none;width:200px;height:18px;background:transparent;margin:0;cursor:pointer;--k:50%}
+.f2-range::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--f2-slate) 0 var(--k),var(--f2-well) var(--k) 100%)}
+.f2-range::-moz-range-track{height:4px;border-radius:2px;background:var(--f2-well)}
+.f2-range::-moz-range-progress{height:4px;border-radius:2px;background:var(--f2-slate)}
+.f2-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7px;border-radius:9px;background:#fff;box-shadow:0 0 0 1.5px var(--f2-ink),0 1px 2px rgba(18,25,35,.2)}
+.f2-range::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:9px;background:#fff;box-shadow:0 0 0 1.5px var(--f2-ink),0 1px 2px rgba(18,25,35,.2)}
+/* button */
+.f2-root .f2-btn{appearance:none;background:var(--f2-field);border:1px solid var(--f2-rule);border-radius:8px;padding:6px 12px;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);cursor:pointer;transition:border-color .2s}
+.f2-btn:hover{border-color:var(--f2-ink)}
+.f2-btn:disabled{opacity:.45;cursor:default}
+/* focus stays visible: the one place cobalt appears in a figure */
+.f2-root :focus-visible{outline:2px solid #2146D6;outline-offset:2px;border-radius:6px}
+
+/* svg vocabulary */
+.f2-svg{display:block;overflow:visible}
+.f2-svg text{font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.f2-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-lab{font-size:13px;fill:var(--f2-ink2);font-weight:500}
+.f2-val{font-size:13px;fill:var(--f2-ink);font-weight:600}
+.f2-big{font-size:28px;fill:var(--f2-ink);font-weight:600;letter-spacing:-.01em}
+.f2-grid{stroke:var(--f2-relief);stroke-width:1}
+.f2-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-ink{fill:var(--f2-ink)} .f2-slate{fill:var(--f2-slate)} .f2-light{fill:var(--f2-slate2)} .f2-well{fill:var(--f2-well)} .f2-relief{fill:var(--f2-relief)}
+.f2-sink{stroke:var(--f2-ink);fill:none} .f2-sslate{stroke:var(--f2-slate);fill:none} .f2-slight{stroke:var(--f2-slate2);fill:none}
+.f2-plan{fill:none;stroke:var(--f2-slate);stroke-width:1.5;stroke-dasharray:4 3}
+.f2-hatch-line{stroke:var(--f2-slate);stroke-width:1.5}
+.f2-handle{cursor:grab;outline:none}
+.f2-handle.is-dragging{cursor:grabbing}
+.f2-handle .f2-ring{fill:none;stroke:var(--f2-ink);stroke-width:0;transition:stroke-width .15s}
+.f2-handle:hover .f2-ring,.f2-handle.is-dragging .f2-ring{stroke-width:1.5}
+.f2-root .f2-handle:focus-visible{outline:none}
+.f2-handle:focus-visible .f2-ring{stroke:#2146D6;stroke-width:2}
+.f2-handle{touch-action:none}
+.f2-dim{opacity:.35;transition:opacity .25s}
+
+@media (max-width:1079px){.f2-field{padding:16px}.f2-range{width:150px}}
+@media (prefers-reduced-motion:reduce){.f2-root *{transition:none!important;animation:none!important}}
+.f2-dragging,.f2-dragging *{cursor:grabbing!important;user-select:none}

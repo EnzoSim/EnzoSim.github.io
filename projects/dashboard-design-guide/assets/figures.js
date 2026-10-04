@@ -1145,7 +1145,7 @@ function mount(){
   readData();
   const rc=$('#recon');
   if(first(rc)) rc.innerHTML=good?str.recon(f1(BASELINE.served),f1(BASELINE.grossProfit),f1(BASELINE.openToBuy),f1(EARLY.served),f1(EARLY.grossProfit),f1(EARLY.openToBuy)):str.reconFail;
-  FIGURES.forEach(([sel,fn])=>{const el=$(sel); if(!first(el)) return; try{fn(el);}catch(err){el.innerHTML=`<p class="status">${str.figFail}</p>`;console.error(sel,err);}});
+  FIGURES.forEach(([sel,fn])=>{const el=$(sel); if(el&&el.dataset.fig==='v2') return; if(!first(el)) return; try{fn(el);}catch(err){el.innerHTML=`<p class="status">${str.figFail}</p>`;console.error(sel,err);}});
   const note=$('#fig-note'); if(first(note)) note.innerHTML=figNote();
   const g=$('#grid-toggle'),lay=$('#gridlay'); if(lay&&first(g)) g.addEventListener('click',()=>{const on=g.getAttribute('aria-checked')!=='true'; g.setAttribute('aria-checked',on); lay.hidden=!on;});
   const pl=$('#people-list'); if(first(pl)) pl.innerHTML=peopleList();

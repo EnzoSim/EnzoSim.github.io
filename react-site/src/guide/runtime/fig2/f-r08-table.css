@@ -1,0 +1,71 @@
+/* Rule 8 · Tables to be read (f-r08-table.js). Paper "Fig · 8 · Tables to be read": rules field 4 columns, table 8. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-table .f2-title h3{white-space:normal}
+.r8 .f2-ctl{gap:8px}
+.r8 .f2-body{grid-template-columns:var(--r8-rw,356px) minmax(0,1fr)}
+
+/* the five rules */
+.r8-rules{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:24px}
+.r8 .r8-rules .f2-switch{align-items:flex-start;gap:12px;padding:0;color:var(--f2-ink2)}
+.r8-sl{display:flex;flex-direction:column}
+.r8-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.r8-src{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+
+/* the table: fixed proportional columns (120 · 188 · 116 · 136 · 132 of 692), so no rule changes a width */
+.r8-tfield{padding:20px 24px 16px}
+.r8-scroll{position:relative}
+.r8-table{position:relative;--r8-cols:minmax(0,120fr) minmax(0,188fr) minmax(0,116fr) minmax(0,136fr) minmax(0,132fr)}
+.r8-thead,.r8-tbody{position:relative;z-index:1}
+.r8-hrow,.r8-tr{display:grid;grid-template-columns:var(--r8-cols);position:relative}
+.r8-hrow{min-height:36px;align-items:end}
+.r8-tr{height:44px;align-items:center;border-radius:6px}
+@media (hover:hover){.r8-tr:hover{background:var(--f2-sheet)}}
+.r8-th,.r8-td{display:flex;align-items:center;min-width:0;padding:0}
+.r8-th{padding-bottom:8px;font:500 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r8-td{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap}
+.r8-td.r8-reg{font-weight:500}
+.r8-t{display:block;min-width:0}
+.r8-ghost{position:absolute;white-space:nowrap;pointer-events:none;z-index:3}
+
+/* rule 2 · align: figures and their headers right, tabular; off: left, proportional, 10 px from the cell edge */
+#demo-table .r8-td.r8-n{font-variant-numeric:proportional-nums}
+#demo-table.r8-al .r8-td.r8-n{font-variant-numeric:tabular-nums}
+#demo-table.r8-al .r8-n{justify-content:flex-end;text-align:right}
+#demo-table:not(.r8-al) .r8-n{padding-left:10px}
+
+/* the revenue cell: a bar lane (80 px, flexible only when space is short), 12 px, then the figure (at least 40 px);
+   set left, the figure comes first and its bar follows it */
+.r8-grp{display:flex;align-items:center;min-width:0;max-width:100%}
+.r8-lane{flex:0 1 auto;width:80px;min-width:0;height:8px;margin-right:12px;transition:width .3s cubic-bezier(.33,1,.68,1),margin .3s cubic-bezier(.33,1,.68,1)}
+#demo-table:not(.r8-al) .r8-lane{order:2;margin-right:0;margin-left:12px}
+#demo-table:not(.r8-bars) .r8-lane{width:0;margin-right:0;margin-left:0}
+.r8-bar{display:block;height:8px;border-radius:2px;background:var(--f2-slate);transform-origin:left center}
+.r8-rev .r8-t{flex:none;min-width:var(--r8-figw,40px)}
+#demo-table.r8-al .r8-rev .r8-t{text-align:right}
+
+/* rule 1 · furniture (shown when the rule is off): boxes, header fill, every other row filled, semibold headers */
+.r8-fills,.r8-lines{position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;opacity:0;transition:opacity .2s}
+.r8-fills{z-index:0}
+.r8-lines{z-index:2}
+.r8-fills i{position:absolute;left:0;right:0;background:var(--f2-sheet)}
+.r8-lines b{position:absolute;left:0;top:0;box-sizing:border-box;border:1px solid var(--f2-rule)}
+.r8-lines i{position:absolute;background:var(--f2-rule)}
+#demo-table:not(.r8-furn) .r8-fills,#demo-table:not(.r8-furn) .r8-lines{opacity:1}
+.r8-hrule{position:absolute;left:0;right:0;top:35px;height:1px;background:var(--f2-rule2);transition:opacity .2s;z-index:2}
+#demo-table:not(.r8-furn) .r8-hrule{opacity:0}
+#demo-table:not(.r8-furn) .r8-th,#demo-table:not(.r8-furn) .r8-td{padding-left:10px}
+#demo-table:not(.r8-furn).r8-al .r8-n{padding-right:10px}
+#demo-table:not(.r8-furn) .r8-th{font-weight:600;color:var(--f2-ink2)}
+#demo-table:not(.r8-furn) .r8-td.r8-reg{font-weight:400}
+
+/* before the entrance */
+.r8-pre .r8-tbody .r8-tr{opacity:0}
+
+/* one column: the rules above the table; the table scrolls sideways in its field when narrower than it can be read */
+@media (max-width:1079px){
+  .r8 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r8-rules{padding:16px;gap:14px}
+  .r8-tfield{padding:16px}
+  .r8-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+  .r8-table{min-width:560px}
+}

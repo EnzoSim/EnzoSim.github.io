@@ -1,0 +1,21 @@
+/* The system · Tune the system (f-tune.js). Paper "Fig · 9 · Tune" (7LD-0). The sheet is the cover's dashboard sheet
+   (f-cover.css, cv- classes), so the tokens set on this root restyle it with everything inside. */
+#demo-tune.f2-root{container-type:normal}
+.tn-sheet{display:flex;flex-direction:column;gap:var(--cv-inset,8px)}
+.tn-sheet .cv-grid{margin-top:0}
+.cv-head.tn-head{justify-content:space-between;align-items:center;gap:8px 16px}
+.tn-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 12px;min-width:0}
+.tn-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px;padding:4px 16px 8px}
+.tn-c{display:flex;align-items:center;gap:12px;flex:1 1 220px;max-width:336px;min-width:0}
+.tn-c.tn-dens{flex:0 0 auto;max-width:100%;flex-wrap:wrap;row-gap:6px}
+.tn-c .f2-slider{width:100%;gap:12px}
+.tn-c .f2-sl-label{white-space:nowrap}
+.f2-root .tn-c .f2-range{flex:1 1 auto;width:auto;min-width:64px}
+.tn-c .f2-slider output{flex:none;width:44px;min-width:0;font-variant-numeric:tabular-nums}
+.tn-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);white-space:nowrap}
+.tn-sheet .f2-status{transition:none}
+@media (max-width:639px){
+  .cv-head.tn-head{flex-direction:column;align-items:flex-start}
+  .tn-ctl{padding:4px 12px 8px}
+  .tn-c,.tn-c.tn-dens{flex:1 1 100%;max-width:none}
+}

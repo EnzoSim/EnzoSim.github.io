@@ -19,7 +19,7 @@
    },
    {
     "p": [
-     "Le plan a son propre programme à l’intérieur de sa figure. Chaque feuille y mesure 1 088 px de large, avec des gouttières de 8 px. Ses quatre cartes d’instrument mesurent 266 px chacune, et les rangées partagées dans un rapport de trois à deux mesurent 648 et 432 px. Les colonnes de semaines n’ont pas de gouttière entre elles, si bien que les mêmes 1 088 px donnent huit semaines de 136 px."
+     "À l’intérieur, chaque figure s’en tient au même programme. Ses régions couvrent des colonnes entières : quatre pour les commandes et huit pour le graphique, ou six et six. Quatre colonnes font 352 px et huit en font 736, si bien qu’avec une gouttière entre elles on retrouve 1 120. Sur un écran étroit, les régions s’empilent, les commandes en haut."
     ],
     "notes": [],
     "gridopt": false
@@ -45,7 +45,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Le programme, en pixels.</b> Un nombre de colonnes donne des pixels entiers exactement quand il divise la largeur plus une gouttière. Faites glisser la largeur pour trouver des champs qui se divisent bien, et d’autres qui ne se divisent pas.",
+  "caption": "<b>Le programme, en pixels.</b> Un nombre de colonnes donne des pixels entiers exactement quand il divise la largeur plus une gouttière. Faites glisser la largeur, puis pointez une ligne pour voir quels autres nombres de colonnes partagent ses bords.",
   "stage": "demo-programme",
   "after": "",
   "title": "Partir d’une grille qui se divise"
@@ -54,7 +54,7 @@
   "blocks": [
    {
     "p": [
-     "Un nombre sur une carte répond à une seule question : combien. Le lecteur d’un plan a besoin de quatre autres réponses d’un même coup d’œil : de quoi, sur quelle échelle, comparé à quoi, et de combien il s’en écarte. Le graphique à puces (bullet graph) de Stephen Few, spécifié en 2006, condense ces réponses en une seule petite marque : une barre pour la mesure, un repère pour le comparateur et une échelle derrière les deux. La sparkline d’Edward Tufte va plus loin encore dans la petitesse. C’est un graphique de la taille d’un mot qui place une valeur à côté de son historique récent et, dans ses exemples médicaux, à côté d’une bande grise pour la plage normale."
+     "Un nombre sur une carte répond à une seule question : combien. Le lecteur qui doit agir à partir de ce nombre a besoin de quatre autres réponses d’un même coup d’œil : de quoi, sur quelle échelle, comparé à quoi, et de combien il s’en écarte. Le graphique à puces (bullet graph) de Stephen Few, spécifié en 2006, fait tenir ces réponses dans une seule petite marque : une barre pour la mesure, un repère pour le comparateur et une échelle derrière les deux. La sparkline d’Edward Tufte va plus loin encore dans la petitesse. C’est un graphique de la taille d’un mot qui place une valeur à côté de son historique récent et, dans ses exemples médicaux, à côté d’une bande grise pour la plage normale."
     ],
     "notes": [
      "<a href=\"https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf\">Stephen Few, <i>Bullet Graph Design Specification</i></a>, 2006, révisée en 2013.",
@@ -64,7 +64,7 @@
    },
    {
     "p": [
-     "Les salles de contrôle sont parvenues à une forme semblable pour une autre raison. Les recommandations destinées aux opérateurs de l’industrie de procédés demandent des écrans gris, des indicateurs analogiques dont la plage normale est marquée, et une couleur saturée réservée aux états anormaux, pour qu’un écart soit la seule chose qui ressorte. L’instrument du plan emprunte cette retenue. Il montre une grande valeur avec son unité, un rail dessiné à l’échelle, un repère à l’encre là où un comparateur existe, et l’écart en chiffres à côté du nom de ce à quoi la valeur est comparée."
+     "Les salles de contrôle sont parvenues à une forme semblable pour une autre raison. Les recommandations destinées aux opérateurs de l’industrie de procédés demandent des écrans gris, des indicateurs analogiques dont la plage normale est marquée, et une couleur saturée réservée aux états anormaux, pour qu’un écart soit la seule chose qui ressorte. L’instrument de la figure ci-dessous emprunte cette retenue. Il montre une grande valeur avec son unité, une barre dessinée à l’échelle, un repère à l’encre là où un comparateur existe, et l’écart en chiffres à côté du nom de ce à quoi la valeur est comparée."
     ],
     "notes": [
      "<a href=\"https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ\">Hollifield, Oliver, Nimmo et Habibi, <i>The High Performance HMI Handbook</i></a>, 2008."
@@ -73,7 +73,7 @@
    },
    {
     "p": [
-     "Le graphique à puces a des détracteurs qui méritent d’être entendus. Nick Desbarats formule onze objections, parmi lesquelles le fait que les problèmes ne ressortent pas et que des mots comme bon, satisfaisant et médiocre ne veulent pas dire la même chose pour tout le monde. Le plan laisse donc de côté les bandes qualitatives. Là où aucun comparateur n’existe, le rail montre plutôt une partie d’un tout : les ventes réalisées face aux ventes perdues, le stock détenu face à ce qui reste à acheter. La revue hebdomadaire d’activité d’Amazon, telle que la décrit Cedric Chin d’après la pratique de Colin Bryar, garde une même forme pour des centaines de mesures. La plupart des graphiques tracent les six dernières semaines à côté des douze derniers mois, si bien que la forme ne s’apprend qu’une fois."
+     "Le graphique à puces a des détracteurs qui méritent d’être entendus. Nick Desbarats formule onze objections, parmi lesquelles le fait que les problèmes ne ressortent pas et que des mots comme bon, satisfaisant et médiocre ne veulent pas dire la même chose pour tout le monde. L’instrument ci-dessous laisse donc de côté les bandes qualitatives. Là où aucun comparateur n’existe, une partie d’un tout peut en tenir lieu : les commandes expédiées sur les commandes reçues, ou l’argent dépensé sur un budget. La revue hebdomadaire d’activité d’Amazon, telle que la décrit Cedric Chin d’après la pratique de Colin Bryar, garde une même forme pour des centaines de mesures. La plupart des graphiques tracent les six dernières semaines à côté des douze derniers mois, si bien que la forme ne s’apprend qu’une fois."
     ],
     "notes": [
      "<a href=\"https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/\">Nick Desbarats, <i>Why I stopped using bullet graphs</i></a>, 2022.",
@@ -82,7 +82,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Ce à quoi répond chaque partie d’un instrument.</b> Désactivez les parties pour voir quelle question reste sans réponse, et déplacez la valeur pour voir l’écart la suivre.",
+  "caption": "<b>Ce à quoi répond chaque partie d’un instrument.</b> Un nombre seul dit combien. Désactivez une partie pour voir quelle question reste sans réponse, et faites glisser la valeur pour voir l’écart la suivre.",
   "stage": "demo-instrument",
   "after": "",
   "title": "Donner un instrument à chaque nombre"
@@ -100,13 +100,13 @@
    },
    {
     "p": [
-     "C’est le comparateur vers lequel un instrument devrait évoluer dès qu’une mesure a un peu d’historique. D’ici là, une référence nommée, comme les quatre dernières semaines, est le choix le plus honnête, et c’est exactement celui du plan."
+     "C’est le comparateur vers lequel un instrument devrait évoluer dès qu’une mesure a un peu d’historique. D’ici là, une référence nommée, comme les quatre dernières semaines, est le choix le plus honnête, à condition que l’instrument en imprime le nom."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>Signal ou routine.</b> Une série illustrative de ventes hebdomadaires. Les limites viennent des onze premières semaines. Déplacez la dernière semaine et voyez à partir de quand elle mérite une question.",
+  "caption": "<b>Signal ou routine.</b> Douze semaines illustratives d’inscriptions. La moyenne et les limites viennent des onze premières semaines ; faites glisser la dernière semaine et voyez à partir de quand elle mérite une question.",
   "stage": "demo-xmr",
   "after": "",
   "title": "Comparer à la variation ordinaire"
@@ -134,13 +134,13 @@
    },
    {
     "p": [
-     "La planification regorge de telles lois, et le budget d’achat restant (open-to-buy) en est une. Le besoin d’un plan, c’est le coût de ce qu’il prévoit de vendre plus le stock qu’il veut garder à la fin. Ce qu’il a, c’est le stock en main plus le stock en commande. La différence est ce qui reste à acheter. Deux barres sur une même échelle énoncent la loi, et l’espace en pointillé entre leurs extrémités est la réponse. Un graphique en cascade montre les mêmes nombres et laisse au lecteur le soin d’en parcourir les étapes."
+     "La planification et la comptabilité regorgent de telles lois, et le solde de trésorerie est la plus simple. La trésorerie en début de mois, plus ce qui entre, égale ce qui sort plus la trésorerie qui reste en fin de mois. Deux barres empilées sur une même échelle énoncent la loi : la trésorerie d’ouverture et les encaissements dans l’une, les décaissements et la trésorerie de clôture dans l’autre. Quand les chiffres sont justes, les deux barres finissent au même niveau, si bien que le solde de clôture se lit comme une longueur, et qu’un chiffre faux brise la forme. Un graphique en cascade montre les mêmes nombres et laisse au lecteur le soin d’en parcourir les étapes."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>Une identité dessinée comme une géométrie.</b> Déplacez n’importe quel terme. L’écart suit, et les deux barres ne peuvent jamais contredire l’arithmétique.",
+  "caption": "<b>Une identité dessinée comme une géométrie.</b> Le solde d’ouverture plus les encaissements doit égaler les décaissements plus le solde de clôture, si bien que les deux côtés finissent toujours au même niveau. Faites glisser n’importe quel terme : l’autre côté et le solde de clôture suivent, et une anomalie déforme la figure.",
   "stage": "demo-bridge",
   "after": "",
   "title": "Dessiner l’identité"
@@ -168,7 +168,7 @@
    },
    {
     "p": [
-     "Le ton est aussi un mauvais vecteur de quantité. William Cleveland et Robert McGill ont classé les façons dont un lecteur décode une quantité dans un graphique. Dans leur classement, la position sur une échelle commune venait en premier et l’ombrage en dernier. Leurs expériences, et la réplication menée par Jeffrey Heer et Michael Bostock, ont mesuré la partie haute de cet ordre : la position, la longueur, l’angle et l’aire. Le plan emploie quatre tons de surface opaques, chacun avec un seul rôle, et imprime le nombre partout où le montant compte. Des panneaux translucides donneraient une douceur semblable, et Beverly Harrison et ses collègues ont étudié le compromis qu’ils imposent : ce qui transparaît aide à garder conscience de l’arrière-plan et entre en concurrence avec la lecture du premier plan."
+     "Le ton est aussi un mauvais vecteur de quantité. William Cleveland et Robert McGill ont classé les façons dont un lecteur décode une quantité dans un graphique. Dans leur classement, la position sur une échelle commune venait en premier et l’ombrage en dernier. Leurs expériences, et la réplication menée par Jeffrey Heer et Michael Bostock, ont mesuré la partie haute de cet ordre : la position, la longueur, l’angle et l’aire. Les figures de ce guide emploient quatre tons de surface opaques, chacun avec un seul rôle, et impriment le nombre partout où le montant compte. Des panneaux translucides donneraient une douceur semblable, et Beverly Harrison et ses collègues ont étudié le compromis qu’ils imposent : ce qui transparaît aide à garder conscience de l’arrière-plan et entre en concurrence avec la lecture du premier plan."
     ],
     "notes": [
      "<a href=\"http://vis.stanford.edu/papers/crowdsourcing-graphical-perception\">Cleveland et McGill, <i>Graphical perception</i></a>, 1984, répliqué par Heer et Bostock en 2010.",
@@ -187,7 +187,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Quatre petits modèles de surface.</b> Un contour regroupe autrement les points. Les deux pastilles sont du même gris. Des coins imbriqués ne restent parallèles que si le rayon intérieur diminue de la valeur du retrait. Un accent fonctionne jusqu’à ce qu’il soit partout.",
+  "caption": "<b>Quatre petits modèles de surface.</b> Un contour regroupe autrement les points. Les deux pastilles sont du même gris. Des coins imbriqués ne sont parallèles que si le rayon intérieur diminue de la valeur du retrait. Le ton classe les régions ; seul le nombre imprimé dit combien.",
   "stage": "demo-surfaces",
   "after": "",
   "title": "Ombrer pour hiérarchiser, imprimer la quantité"
@@ -205,7 +205,7 @@
    },
    {
     "p": [
-     "Le plan garde le principe et change les moyens. Il ne prétend à aucune conformité, et il n’emploie pas de hachures, qui tournent à la texture sur des marques aussi petites qu’un rail de douze pixels. L’ardoise désigne ce qui s’est produit ou existe physiquement : les ventes réalisées, le stock en main. Le cobalt désigne ce qui vient, et son intensité dit à quel point la quantité est ferme. Le cobalt plein représente ce que le plan prévoit de vendre. Une teinte claire marque ce qui est planifié ou en route : le stock à garder, les commandes à recevoir. Un montant qui n’existe que comme un écart, comme ce qui reste à acheter, se dessine en contour pointillé. Les ventes perdues sont à l’encre, si bien qu’un manque se passe de rouge. La sélection est une pastille blanche en relief, pour que l’accent ne veuille jamais dire « cliquable »."
+     "La figure ci-dessous garde le principe, en gris, et ne prétend à aucune conformité. Les mois réels sont en ardoise pleine, les valeurs planifiées en contour pointillé, la prévision hachurée, et l’année précédente en ardoise plus pâle, parce qu’elle sert de contexte. Le remplissage dit à quel point une quantité est ferme : plein pour ce qui s’est produit, hachuré pour ce qui est attendu, un contour pour ce qui n’est qu’une intention. Les hachures ont besoin de place. Elles se lisent sur une barre large d’un mois et tournent à la texture sur une marque aussi petite qu’un rail de douze pixels. L’encre est réservée à la seule marque qui compte le plus, comme un manque, si bien que le rouge n’est jamais nécessaire. La sélection est une pastille blanche en relief, pour qu’aucun remplissage ne veuille jamais dire « cliquable »."
     ],
     "notes": [],
     "gridopt": false
@@ -220,9 +220,9 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Les huit mêmes semaines, codées de deux façons.</b> Retirez la couleur. Le graphique codé par la teinte perd son sens, et le graphique codé par le remplissage garde l’essentiel.",
+  "caption": "<b>La même année, codée de deux façons.</b> Par le remplissage, le plein est le réel, le hachuré la prévision, le contour pointillé le plan et la barre claire l’année précédente, et le graphique se lit encore en gris. Codées par la teinte et imprimées en gris, les séries se confondent et la légende ne sert plus.",
   "stage": "demo-notation",
-  "after": "<div class=\"legend\" id=\"fig-note\"></div>",
+  "after": "",
   "title": "Donner un seul rôle à chaque remplissage"
  },
  "7": {
@@ -250,7 +250,7 @@
    },
    {
     "p": [
-     "Les planificateurs du commerce de détail ont leur propre version, la grille hebdomadaire des ventes, du stock et des réceptions, avec les semaines en colonnes et les mesures en lignes. Le plan garde ses colonnes de semaines à la même position horizontale dans les barres de ventes et dans chaque rangée de stock, si bien que la commande qui arrive trop tard se trouve juste sous la semaine qu’elle fait échouer. David Woods a donné un nom à la qualité sous-jacente, l’élan visuel (visual momentum) : la facilité avec laquelle un lecteur emporte ce qu’il vient de voir dans la vue suivante."
+     "Les planificateurs du commerce de détail ont leur propre version, la grille hebdomadaire des ventes, du stock et des réceptions, avec les semaines en colonnes et les mesures en lignes. La figure ci-dessous empile les visiteurs, les inscriptions, les commandes et le chiffre d’affaires sur un même axe des semaines, si bien qu’un changement dans une rangée peut se suivre tout droit vers le bas à travers les autres. David Woods a donné un nom à la qualité sous-jacente, l’élan visuel (visual momentum) : la facilité avec laquelle un lecteur emporte ce qu’il vient de voir dans la vue suivante."
     ],
     "notes": [
      "<a href=\"https://www.stylearcade.com/blog/what-is-a-wssi-the-complete-fashion-retail-guide-to-weekly-sales-stock-and-intake\">La grille hebdomadaire des ventes, du stock et des réceptions</a>, un outil standard de la planification de l’offre.",
@@ -270,7 +270,7 @@
    },
    {
     "p": [
-     "Un axe partagé permet aussi de pointer. Richard Becker et William Cleveland ont nommé la technique en 1987. Le brossage (« brushing ») marque une sélection dans une vue et montre les mêmes éléments dans toutes les autres. Le plan en fait une version modeste. Pointer une semaine ou une ligne de produits la met en évidence partout où elle apparaît, et rien n’est filtré, si bien que le contexte reste à l’écran."
+     "Un axe partagé permet aussi de pointer. Richard Becker et William Cleveland ont nommé la technique en 1987. Le brossage (« brushing ») marque une sélection dans une vue et montre les mêmes éléments dans toutes les autres. La figure ci-dessous en fait une version modeste. Pointer une semaine trace une ligne à travers les quatre mesures et imprime leurs valeurs, et rien n’est filtré, si bien que le contexte reste à l’écran."
     ],
     "notes": [
      "<a href=\"https://en.wikipedia.org/wiki/Brushing_and_linking\">Becker et Cleveland, <i>Brushing scatterplots</i></a>, 1987. Le lien est un résumé.",
@@ -279,7 +279,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Un seul jeu de colonnes de semaines, lu de haut en bas.</b> Pointez une semaine pour la suivre à travers les ventes et chaque rangée de stock. Réordonnez les lignes de produits, et celles qui sont à risque se rassemblent en haut.",
+  "caption": "<b>Quatre mesures, un seul jeu de semaines.</b> Pointez une semaine pour lire les quatre mesures le long d’une même ligne. Les inscriptions ont baissé en semaine 7 et les commandes une semaine plus tard, un décalage qui ne se voit que parce que les semaines sont alignées ; passez aux axes propres et il disparaît.",
   "stage": "demo-axis",
   "after": "",
   "title": "Partager un même axe"
@@ -318,7 +318,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Cinq règles, un tableau.</b> Chaque interrupteur applique ou retire une règle. Quand les cinq sont désactivées, le tableau est ce que produit un tableur par défaut.",
+  "caption": "<b>Cinq règles, un tableau.</b> Chaque interrupteur applique ou retire une règle. Quand les cinq sont désactivées, le tableau est ce que produit un tableur par défaut ; activez-les une à une et regardez la région qui pèse le plus passer au premier plan.",
   "stage": "demo-table",
   "after": "",
   "title": "Composer les tableaux pour être lus"
@@ -363,7 +363,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Le gras sans décalage.</b> Le calque cobalt est le gras superposé au normal. Changez de caractère ou désactivez les chiffres tabulaires, et les deux se désalignent. Sélectionnez une ligne du tableau pour voir ce que cela fait à une colonne.",
+  "caption": "<b>Le gras sans décalage.</b> La même colonne de nombres dans cinq caractères libres. Activez la ligne en gras : là où les chiffres gras gardent la chasse des chiffres normaux, la colonne reste immobile, et là où ils ne la gardent pas, la trace grise de la graisse normale montre de combien la ligne se déplace.",
   "stage": "demo-type",
   "after": "",
   "title": "Choisir une typographie pour les chiffres"
@@ -393,13 +393,13 @@
    },
    {
     "p": [
-     "Rien de tout cela n’autorise une bande sur un graphique qu’aucun modèle ne sous-tend. Le plan repose sur des données d’exemple sans prévision ajustée, si bien qu’il ne montre d’intervalle nulle part. Ses barres cobalt pleines sont ce qu’attend l’arithmétique du plan, et un diagramme en points pourra prendre leur place le jour où existera une prévision dont l’erreur est mesurée."
+     "Rien de tout cela n’autorise une bande sur un graphique qu’aucun modèle ne sous-tend. Un tableau de bord fondé sur une simple arithmétique, sans prévision ajustée, ne devrait montrer d’intervalle nulle part. Ses valeurs attendues restent des chiffres uniques, et un diagramme en points pourra prendre leur place le jour où existera une prévision dont l’erreur est mesurée. La figure ci-dessous a un interrupteur pour une prévision dont l’erreur n’est pas encore mesurée : la dispersion disparaît et la figure dit pourquoi."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>Une distribution, trois formes.</b> Une distribution illustrative de la demande pour une semaine, sans rapport avec le plan. Demandez à chaque forme à quelle fréquence la demande dépasse les unités en stock. Une seule d’entre elles se laisse compter.",
+  "caption": "<b>Une prévision, quatre formes.</b> La demande du mois prochain pour un article, à titre illustratif. Déplacez le stock et demandez à chaque forme quelle est la probabilité d’une rupture : les points et la courbe savent répondre, l’intervalle ne peut que l’encadrer, et la ligne seule ne peut rien dire.",
   "stage": "demo-uncertainty",
   "after": "",
   "title": "Ne montrer l’incertitude que lorsqu’elle est méritée"
@@ -418,7 +418,7 @@
    },
    {
     "p": [
-     "Le calculateur du New York Times <i>Is It Better to Rent or Buy?</i>, réalisé en 2014 par Mike Bostock, Shan Carter et Archie Tse, ajoute le détail décisif. Chaque curseur est posé sur un petit graphique du résultat sur toute la plage de cette entrée, si bien que le lecteur voit ce que ferait un changement avant de le faire. Le graphique de démarque ci-dessous va un pas plus loin et ne demande aucun modèle de demande. Sa courbe est le nombre de tentes à vendre à chaque remise pour égaler la marge au plein tarif. Le test est un point de ce graphique, et on le fait glisser là où il se trouve, si bien que la commande et sa conséquence ne forment qu’un seul objet."
+     "Le calculateur du New York Times <i>Is It Better to Rent or Buy?</i>, réalisé en 2014 par Mike Bostock, Shan Carter et Archie Tse, ajoute le détail décisif. Chaque curseur est posé sur un petit graphique du résultat sur toute la plage de cette entrée, si bien que le lecteur voit ce que ferait un changement avant de le faire. Le graphique de prix ci-dessous va un pas plus loin. Sa courbe est le chiffre d’affaires qu’un produit illustratif rapporte à chaque prix, pour une demande supposée. Le prix est un point de cette courbe, et on le fait glisser là où il se trouve, si bien que la commande et sa conséquence ne forment qu’un seul objet."
     ],
     "notes": [
      "<a href=\"https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html\">Bostock, Carter et Tse, <i>Is It Better to Rent or Buy?</i></a>, The New York Times, 2014."
@@ -437,7 +437,7 @@
    },
    {
     "p": [
-     "Une commande a aussi besoin d’une mémoire. Jeffrey Heer et Ben Shneiderman ont réparti les interactions de l’analyse visuelle en douze tâches et trois groupes : spécifier les données et les vues, manipuler les vues, et garder une trace de l’analyse. Le troisième groupe est celui que les tableaux de bord oublient. Un scénario n’est utile que si ce qui a été changé peut être vu, nommé et annulé. Dans le plan, chaque décision est un interrupteur étiqueté, une pastille indique combien sont activées, et un bouton ramène aux commandes d’achat en cours."
+     "Une commande a aussi besoin d’une mémoire. Jeffrey Heer et Ben Shneiderman ont réparti les interactions de l’analyse visuelle en douze tâches et trois groupes : spécifier les données et les vues, manipuler les vues, et garder une trace de l’analyse. Le troisième groupe est celui que les tableaux de bord oublient. Un scénario n’est utile que si ce qui a été changé peut être vu, nommé et annulé. Dans la figure ci-dessous, chaque déplacement laisse une trace pâle du point, un ajustement manuel demande sa raison, et le lecteur peut revenir sur ses déplacements un à un."
     ],
     "notes": [
      "<a href=\"https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf\">Heer et Shneiderman, <i>Interactive dynamics for visual analysis</i></a>, 2012."
@@ -445,7 +445,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Une commande qui est son propre graphique.</b> Faites glisser le point, ou sélectionnez-le au clavier et utilisez les touches fléchées. Au-dessus de la courbe, la remise bat le plein tarif ; en dessous, elle ne le bat pas. Dans le plan, les tentes se vendent 500 et coûtent 300, et quarante devraient se vendre au plein tarif, pour une marge brute de 8,0.",
+  "caption": "<b>Une commande qui est son propre graphique.</b> Faites glisser le prix le long de la courbe du chiffre d’affaires, ou sélectionnez-le au clavier et utilisez les touches fléchées ; la marge qu’il rapporte se déplace sur la courbe du dessous. Chaque déplacement laisse une trace que l’on peut annuler, et un prix fixé à l’écart de la recommandation demande une raison.",
   "stage": "demo-control",
   "after": "",
   "title": "Placer chaque commande sur sa conséquence"
@@ -454,7 +454,7 @@
   "blocks": [
    {
     "p": [
-     "En 1948, le Trésor britannique a demandé à Ernest Gowers un court ouvrage pour aider les fonctionnaires à écrire de façon que le public puisse les suivre. <i>Plain Words</i> entendait remplacer le jargon administratif par un style bref et clair. Un tableau de bord a le même devoir et moins de place. Le plan dit ventes perdues là où un logiciel de planification dit demande non servie, semaines de stock là où il dit couverture, et donne des dates là où il donne des numéros de semaine. Il garde les termes qu’un planificateur cherchera, comme le budget d’achat restant et le taux d’écoulement, et il les définit."
+     "En 1948, le Trésor britannique a demandé à Ernest Gowers un court ouvrage pour aider les fonctionnaires à écrire de façon que le public puisse les suivre. <i>Plain Words</i> entendait remplacer le jargon administratif par un style bref et clair. Un tableau de bord a le même devoir et moins de place. Il devrait dire ventes perdues là où un logiciel de planification dit demande non servie, semaines de stock là où il dit couverture, et donner des dates là où il donne des numéros de semaine. Il devrait garder les termes que ses lecteurs chercheront, comme la marge brute et le taux de conversion, et les définir."
     ],
     "notes": [
      "<a href=\"https://en.wikipedia.org/wiki/The_Complete_Plain_Words\">Ernest Gowers, <i>Plain Words</i></a>, 1948. Le lien décrit le livre et ses éditions ultérieures."
@@ -463,7 +463,7 @@
    },
    {
     "p": [
-     "Les mots simples n’en sont que la moitié. L’autre moitié consiste à dire quel type de nombre le lecteur a sous les yeux. Robin Kinross a soutenu en 1985 que même un horaire de chemin de fer est persuasif. Un style calme et exact revendique une autorité, que les chiffres l’aient méritée ou non. Le plan dit donc ce qu’il est. Ses chiffres sont présentés comme des données d’exemple, son modèle est une simple arithmétique sans prévision derrière elle, et il laisse de côté les retours, les promotions, la météo et les conditions des fournisseurs."
+     "Les mots simples n’en sont que la moitié. L’autre moitié consiste à dire quel type de nombre le lecteur a sous les yeux. Robin Kinross a soutenu en 1985 que même un horaire de chemin de fer est persuasif. Un style calme et exact revendique une autorité, que les chiffres l’aient méritée ou non. Un tableau de bord devrait donc dire ce qu’il est : quels chiffres sont mesurés et lesquels sont estimés, quel modèle se trouve derrière eux, et ce qu’il laisse de côté. Les figures de ce guide font de même. Leurs nombres sont inventés et présentés comme illustratifs, et ils sont calculés dans la page."
     ],
     "notes": [
      "<a href=\"https://www.jstor.org/stable/i267274\">Robin Kinross, <i>The rhetoric of neutrality</i></a>, Design Issues, 1985."
@@ -472,13 +472,13 @@
    },
    {
     "p": [
-     "Les définitions ont leur place là où sont les nombres. Un lecteur doit pouvoir demander de n’importe quel chiffre ce qu’il compte, sur quelle période et dans quelle unité, et trouver la réponse sans quitter l’écran. La figure ci-dessous le fait pour les huit termes qu’emploie le plan."
+     "Les définitions ont leur place là où sont les nombres. Un lecteur doit pouvoir demander de n’importe quel chiffre ce qu’il compte, sur quelle période et dans quelle unité, et trouver la réponse sans quitter l’écran. La figure ci-dessous le fait pour huit termes courants de la gestion."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>Les mots du plan.</b> Sélectionnez un terme pour voir ce qu’il compte, comment il se calcule à partir des propres nombres du plan, et le jargon qu’il remplace.",
+  "caption": "<b>Des mots simples, chiffres à l’appui.</b> Sélectionnez un terme pour voir ce qu’il compte, sur quelle période et dans quelle unité, comment il se calcule à partir d’un mois illustratif, et le jargon qu’il remplace. Chaque carte dit aussi de quel type de nombre il s’agit.",
   "stage": "demo-terms",
   "after": "",
   "title": "Employer des mots simples et dire ce que sont les nombres"

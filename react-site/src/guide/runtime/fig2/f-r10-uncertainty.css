@@ -1,0 +1,67 @@
+/* Rule 10 · Uncertainty only when earned (f-r10-uncertainty.js). Paper "Fig · 10 · Uncertainty when earned":
+   readout 3 columns, plot 9; rows: slider 44, line 48, interval 48, dots 104, cumulative 120, axis 28. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-uncertainty .f2-title h3{white-space:normal}
+#demo-uncertainty .f2-head{min-height:54px}   /* Paper fixes the controls row at 38 px: 12 + 38 + 4 */
+.r10-field{padding:20px 24px 16px}
+
+.r10-row,.r10-axis{display:grid;grid-template-columns:var(--r10-rw,224px) minmax(0,1fr);column-gap:32px;align-items:center}
+.r10-row[data-form]{border-top:1px solid var(--f2-relief)}
+.r10-plot{position:relative;min-width:0;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.r10-srow .r10-plot{height:44px}
+.r10-line .r10-plot,.r10-interval .r10-plot{height:47px}
+.r10-dots .r10-plot{height:calc(var(--r10-hd,104px) - 1px)}
+.r10-cdf .r10-plot{height:119px}
+.r10-svg{overflow:visible}
+
+/* readouts */
+.r10-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.r10-head span:first-child{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.r10-head span:last-child{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);text-align:right}
+.r10-read{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.r10-nm{min-width:0}
+.r10-nm b{display:block;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.r10-desc{display:block;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.r10-rd{flex:none;font:600 20px/24px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r10-rd.is-na{color:var(--f2-ink3)}
+
+/* marks */
+.r10-track{fill:var(--f2-well)}
+.r10-fill{fill:var(--f2-slate)}
+.r10-knob{fill:#fff;stroke:var(--f2-ink);stroke-width:1.5}
+.r10-val{font-size:14px;font-weight:600;fill:var(--f2-ink)}
+.r10-sline{stroke:var(--f2-ink);stroke-width:1;pointer-events:none}
+.r10-hit{stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:grab}
+.r10-zone{fill:var(--f2-sheet)}
+.r10-lab{font-size:12px;fill:var(--f2-ink3)}
+.r10-zlab.is-off{display:none}
+.r10-band{fill:var(--f2-slate2)}
+.r10-dot{fill:var(--f2-slate);transition:fill .15s}
+.r10-dot.is-out{fill:var(--f2-ink)}
+.r10-curve{fill:none;stroke:var(--f2-slate);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.r10-br{stroke:var(--f2-ink);stroke-width:1.5}
+.r10-xo{fill:#fff}
+.r10-xi{fill:var(--f2-ink)}
+.r10-xl{font-size:12px;font-weight:600;fill:var(--f2-ink)}
+.r10-drag,.r10-drag *{cursor:grabbing!important}
+
+/* demand axis */
+.r10-axis{align-items:start;height:28px}
+.r10-axt{padding-top:7px;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r10-ticks{position:relative;height:28px;border-top:1px solid var(--f2-rule2)}
+.r10-tick{position:absolute;top:7px;width:40px;margin-left:-20px;text-align:center;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+
+/* before the entrance */
+.r10-pre .r10-dot,.r10-pre .r10-curve,.r10-pre .r10-band,.r10-pre .r10-cross{opacity:0}
+
+/* one column: each readout becomes a line above its form; the slider keeps its place above the plot */
+@media (max-width:1079px){
+  .r10-field{padding:16px}
+  .r10-row,.r10-axis{grid-template-columns:minmax(0,1fr)}
+  .r10-row[data-form] .r10-read{padding:8px 0 0}
+  .r10-srow .r10-head{padding-bottom:2px}
+  .r10-nm{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px}
+  .r10-rd{font-size:16px;line-height:20px}
+  .r10-axis{height:auto}
+  .r10-axt{order:2;padding-top:2px}
+}

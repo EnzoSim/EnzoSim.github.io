@@ -385,7 +385,7 @@
     }
    ],
    "brought": "Il soutenait que toute pièce de design d’information prend position, si bien qu’un style sobre et ordonné est lui-même un choix rhétorique et doit être fait en connaissance de cause. Historien et éditeur, il a relié la typographie moderne à ses arguments et à ses contextes, y compris le travail Isotype qu’il avait étudié pour son mémoire de recherche.",
-   "learn": "Placez sur chaque tableau de bord une ligne qui dit quel type de nombres il montre (réalisés, planifiés, d’exemple ou issus d’un modèle), car une mise en page calme et exacte prête de l’autorité à tous les chiffres qu’elle contient.",
+   "learn": "Placez sur chaque tableau de bord une ligne qui dit quel type de nombres il montre (réels, planifiés, d’exemple ou issus d’un modèle), car une mise en page calme et exacte prête de l’autorité à tous les chiffres qu’elle contient.",
    "featured": false,
    "pull": "Une mise en page d’apparence neutre reste un argument.",
    "sources": [
@@ -732,7 +732,7 @@
     }
    ],
    "brought": "Il a montré des données économiques sous forme de graphiques à une époque où ces chiffres n’apparaissaient que dans des tableaux, et a soutenu que les graphiques communiquent mieux que les tableaux. Il dessinait la quantité qui comptait comme une forme, si bien que la balance commerciale devenait la surface teintée entre deux courbes.",
-   "learn": "Quand un chiffre clé est la différence entre deux séries, comme le plan et le réalisé, tracez les deux sur une même échelle et remplissez l’espace entre elles en étiquetant l’écart, pour que sa taille et son signe au fil du temps se lisent directement.",
+   "learn": "Quand un chiffre clé est la différence entre deux séries, comme le plan et le réel, tracez les deux sur une même échelle et remplissez l’espace entre elles en étiquetant l’écart, pour que sa taille et son signe au fil du temps se lisent directement.",
    "featured": true,
    "pull": "Dessiner la différence comme une surface, et personne n’a à soustraire.",
    "sources": [
@@ -911,7 +911,7 @@
     }
    ],
    "brought": "Ils ont construit une méthode pour montrer au grand public des statistiques sociales et économiques avec des pictogrammes normalisés, chacun valant une quantité fixe et répété pour montrer davantage. Ils ont aussi défini le transformateur, la personne qui change les données et le savoir des experts en graphique, un rôle proche de celui du designer d’information d’aujourd’hui.",
-   "learn": "Quand un effectif importe, comme 80 paires de bottes non servies, montrez-le en unités répétées de valeur fixe que l’on peut compter, et n’agrandissez jamais un symbole pour signifier davantage. Désignez une personne qui décide de ce que le graphique doit dire avant que quiconque le dessine.",
+   "learn": "Quand un effectif importe, comme 80 commandes non servies, montrez-le en unités répétées de valeur fixe que l’on peut compter, et n’agrandissez jamais un symbole pour signifier davantage. Désignez une personne qui décide de ce que le graphique doit dire avant que quiconque le dessine.",
    "featured": false,
    "pull": "Davantage de quelque chose, c’est davantage de signes, jamais un signe plus grand.",
    "sources": [
@@ -1164,7 +1164,7 @@
     }
    ],
    "brought": "Il a rassemblé les conseils de Playfair, Brinton, Tufte et Few en un standard que les entreprises peuvent adopter, avec des sens fixes pour les remplissages, les scénarios, les échelles et les libellés. Il soutenait que les rapports de gestion ont besoin d’une notation partagée, comme la musique et le dessin industriel ont la leur.",
-   "learn": "Fixez un remplissage par scénario dans tous les rapports (plein pour le réalisé, en contour pour le plan, hachuré ou plus clair pour la prévision, gris pour la période précédente), pour que les lecteurs l’apprennent une fois et que la teinte reste libre pour la mise en évidence.",
+   "learn": "Fixez un remplissage par scénario dans tous les rapports (plein pour le réel, en contour pour le plan, hachuré ou plus clair pour la prévision, gris pour la période précédente), pour que les lecteurs l’apprennent une fois et que la teinte reste libre pour la mise en évidence.",
    "featured": true,
    "pull": "Les rapports ont besoin d’une notation aussi fixe qu’une partition.",
    "sources": [

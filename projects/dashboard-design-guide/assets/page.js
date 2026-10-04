@@ -98,6 +98,39 @@
     c.addEventListener('mouseleave', function () { set(null); });
   });
 
+  // Motion, once: blocks rise into place the first time they are seen, and the cover's counts count up.
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!still && 'IntersectionObserver' in window) {
+    doc.classList.add('js-motion');
+    var blocks = document.querySelectorAll('main .sec, main .rule, main .fig, main .spread, main .pcard, main .case, main .rfield, main .opener, main .hero');
+    var seenIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        seenIO.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    blocks.forEach(function (b) { b.classList.add('reveal'); seenIO.observe(b); });
+    var counts = document.querySelectorAll('.stat b');
+    var countIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        countIO.unobserve(e.target);
+        var el = e.target, to = parseInt(el.textContent, 10), t0 = null;
+        if (!(to > 0)) return;
+        var step = function (t) {
+          if (t0 === null) t0 = t;
+          var k = Math.min(1, (t - t0) / 900);
+          el.textContent = String(Math.round(to * (1 - Math.pow(1 - k, 3))));
+          if (k < 1) requestAnimationFrame(step);
+        };
+        el.textContent = '0';
+        requestAnimationFrame(step);
+      });
+    });
+    counts.forEach(function (c) { countIO.observe(c); });
+  }
+
   // Old single-page anchors keep working: /#r7 goes to the chapter that now holds rule 7.
   var map = window.GUIDE_ANCHORS;
   if (map && location.hash) {

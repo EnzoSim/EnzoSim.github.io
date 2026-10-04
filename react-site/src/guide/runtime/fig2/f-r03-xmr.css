@@ -1,0 +1,69 @@
+/* Rule 3 · Signal or routine (f-r03-xmr.js). Paper "Fig · 3 · Routine variation": working 4 columns, chart 8 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status; the header switch keeps the kit's
+   type and its ink-2 label. Core candidates. */
+#demo-xmr.f2-root{background:none;padding:0;border-radius:0}
+#demo-xmr .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-xmr .f2-status{padding:12px 16px 14px}
+#demo-xmr .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);gap:10px;padding:0}
+
+.f2-r3-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+
+/* the working: how the limits come out of weeks 1 to 11, and where week 12 stands */
+.f2-r3-work{display:flex;flex-direction:column;gap:20px;padding:24px}
+.f2-r3-sec{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f2-r3-sec2{border-top:1px solid var(--f2-relief);padding-top:20px}
+.f2-r3-cap{font:600 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r3 dl{margin:0}
+.f2-r3-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:4px 0}
+.f2-r3-row dt{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);min-width:0}
+.f2-r3-row dd{margin:0;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* the chart, and the moving-range strip that opens under it */
+.f2-r3-chartf{display:flex;flex-direction:column;justify-content:center;padding:24px}
+.f2-r3-chart{position:relative}
+.f2-r3-plot{position:relative;border-radius:6px}
+.f2-r3-plot:focus-visible{outline-offset:6px}
+.f2-r3-stripw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,.7,.2,1) .2s}
+.f2-r3.is-strip .f2-r3-stripw{grid-template-rows:1fr;transition-delay:0s}
+.f2-r3-stripi{overflow:hidden;min-height:0}
+.f2-r3-strip{padding-top:20px}
+.f2-r3-stitle{margin:0 0 8px;padding-left:40px;font:600 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r3.is-narrow .f2-r3-stitle{padding-left:0}
+.f2-r3-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+.f2-r3-gl{stroke:var(--f2-relief);stroke-width:1}
+.f2-r3-band{fill:var(--f2-relief)}
+.f2-r3-lim,.f2-r3-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r3-avg{stroke:#FFFFFF;stroke-width:1.5}
+.f2-r3-amr{stroke:var(--f2-rule);stroke-width:1}
+.f2-r3-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-r3-track{fill:var(--f2-well)}
+.f2-r3-line{fill:none;stroke:var(--f2-slate);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.f2-r3-pt{fill:var(--f2-slate);stroke:#FFFFFF;stroke-width:1.5;transition:fill .15s}
+.f2-r3-pt.is-pt{fill:var(--f2-ink)}
+.f2-r3-pv{font-size:12px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s;pointer-events:none}
+.f2-r3-pv.on{opacity:1}
+/* the latest week: a 4 px track, a point that turns ink beyond either limit, and a 1.5 px ink ring 6 px outside it */
+.f2-r3 .f2-r3-h:focus-visible{outline:none}
+.f2-r3-h{outline:none}
+.f2-r3-hit{fill:transparent;touch-action:none}
+.f2-r3-ring{fill:none;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r3-dot{fill:var(--f2-slate);stroke:#FFFFFF;stroke-width:2;transition:fill .15s}
+.f2-r3-h.is-out .f2-r3-dot{fill:var(--f2-ink)}
+.f2-r3-h:hover .f2-r3-ring,.f2-r3-h.is-dragging .f2-r3-ring,.f2-r3-h.is-out .f2-r3-ring{opacity:1}
+.f2-r3-h:focus-visible .f2-r3-ring{opacity:1;stroke:#2146D6;stroke-width:2}
+.f2-r3-lv{font-size:14px;font-weight:600;fill:var(--f2-ink);pointer-events:none}
+.f2-r3-mr{fill:var(--f2-slate2)}
+.f2-r3-mrl{fill:var(--f2-slate);transition:fill .15s}
+.f2-r3-mrl.is-out{fill:var(--f2-ink)}
+.f2-r3-mv{font-size:12px;font-weight:600;fill:var(--f2-ink)}
+
+/* one column under 1080 px: the working on top (two short tables side by side where there is room), the chart below */
+@media (max-width:1079px){
+  .f2-r3-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r3-work,.f2-r3-chartf{padding:16px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r3-work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px}
+  .f2-r3-sec2{border-top:0;padding-top:0}
+}

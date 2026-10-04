@@ -1,0 +1,64 @@
+/* Rule 5 · Surface lab (f-r05-surfaces.js). Paper "Fig · 5 · Surfaces": four panels of 6 columns, two by two. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for the header; switches keep the kit's type. Each panel's
+   reading is its status line, so the sheet's own status line is not shown. Core candidates. */
+#demo-surfaces.f2-root{background:none;padding:0;border-radius:0}
+#demo-surfaces .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-surfaces .f2-status{display:none}
+#demo-surfaces .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);gap:10px;padding:0}
+
+.f2-r5{--e:cubic-bezier(.2,.7,.2,1)}
+.f2-r5-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.f2-r5-panel{display:flex;flex-direction:column;gap:16px;padding:20px}
+.f2-r5-ph{display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap}
+.f2-r5-ph h4{margin:0;display:block;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:normal}
+.f2-r5-view{position:relative;height:160px}
+.f2-r5-view>*{position:absolute;display:block}
+.f2-r5-read{display:grid}
+.f2-r5-read p{grid-area:1/1;margin:0;display:flex;flex-wrap:wrap;column-gap:4px;align-content:flex-start;font:400 14px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2);opacity:0;transition:opacity .15s}
+.f2-r5-read p.is-on{opacity:1}
+.f2-r5-read b{font-weight:600;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r5-sr{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* A · dots, and the regions that regroup them (scale 0.9 → 1 with a fade) */
+.f2-r5-dot{border-radius:50%;background:var(--f2-slate)}
+.f2-r5-reg{background:var(--f2-well);opacity:0;transform:scale(.9);transition:opacity .25s var(--e),transform .25s var(--e)}
+.f2-r5-pA.is-on .f2-r5-reg{opacity:1;transform:none}
+/* B · one grey on two grounds; the bridge grows from its middle */
+.f2-r5-gl{background:var(--f2-slate);border-radius:10px 0 0 10px}
+.f2-r5-grr{background:var(--f2-relief);border-radius:0 10px 10px 0}
+.f2-r5-chip{background:#98A2B1;border-radius:8px}
+.f2-r5-bridge{background:#98A2B1;transform:scaleX(0);transition:transform .25s var(--e)}
+.f2-r5-pB.is-on .f2-r5-bridge{transform:none}
+/* C · nested corners: the inner radius tweens 36 ↔ 16, its label cross-fades */
+.f2-r5-spec>*{position:absolute;display:block}
+.f2-r5-outer{inset:0;background:var(--f2-well);border-radius:36px}
+.f2-r5-inner{inset:20px;background:#FFFFFF;border-radius:36px;transition:border-radius .3s var(--e)}
+.f2-r5-pC.is-on .f2-r5-inner{border-radius:16px}
+.f2-r5-cl{left:28px;right:28px;top:50%;transform:translateY(-50%);text-align:center;font:500 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums;transition:opacity .3s}
+.f2-r5-cl1,.f2-r5-pC.is-on .f2-r5-cl0{opacity:0}
+.f2-r5-pC.is-on .f2-r5-cl1{opacity:1}
+/* D · tiles toned by value; the numbers fade in or out */
+.f2-r5-tile{border-radius:8px;background:var(--tone)}
+.f2-r5-tile b{position:absolute;inset:0;display:grid;place-items:center;font:600 16px/24px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .2s}
+.f2-r5-tile.is-dark b{color:#FFFFFF}
+.f2-r5-pD.is-on .f2-r5-tile b{opacity:1}
+.f2-r5-tl{text-align:center;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+
+/* the entrance: views rise 12 px, 80 ms apart; dots one by one; grounds and chips fade in; the specimen grows from
+   96 %; the tiles fill from white to their tones */
+.f2-r5-view{transition:opacity .4s var(--e) var(--d,0ms),transform .4s var(--e) var(--d,0ms)}
+.f2-r5-pre .f2-r5-view{opacity:0;transform:translateY(12px)}
+.f2-r5-dot{transition:opacity .2s var(--d,0ms),transform .3s var(--e) var(--d,0ms)}
+.f2-r5-pre .f2-r5-dot{opacity:0;transform:scale(0)}
+.f2-r5-gr,.f2-r5-chip{transition:opacity .4s var(--e) .18s}
+.f2-r5-pre .f2-r5-gr,.f2-r5-pre .f2-r5-chip{opacity:0}
+.f2-r5-spec{transition:opacity .4s var(--e) .26s,transform .4s var(--e) .26s}
+.f2-r5-pre .f2-r5-spec{opacity:0;transform:scale(.96)}
+.f2-r5-tile{transition:background-color .4s var(--e) var(--d,0ms)}
+.f2-r5-pre .f2-r5-tile{background:#FFFFFF}
+
+/* one column under 1080 px, panels A to D */
+@media (max-width:1079px){
+  .f2-r5-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r5-panel{padding:16px}
+}

@@ -1,0 +1,45 @@
+/* Rule 6 · One job for each fill (f-r06-notation.js). Paper "Fig · 6 · Notation": one field across the 12 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status. Core candidates. */
+#demo-notation.f2-root{background:none;padding:0;border-radius:0}
+#demo-notation .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-notation .f2-status{padding:12px 16px 14px}
+
+.f2-r6-chartf{padding:24px;display:flex;flex-direction:column;gap:20px}
+/* the key: by fill, or the four hue names as printed in grey; the two cross-fade */
+.f2-r6-key{display:grid}
+.f2-r6-kf,.f2-r6-kh{grid-area:1/1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;opacity:0;transition:opacity .2s}
+.f2-r6-kf.is-on,.f2-r6-kh.is-on{opacity:1}
+.f2-r6-ki{display:inline-flex;align-items:center;gap:8px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r6-kn{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r6-sw{flex:none;display:block;width:14px;height:14px;box-sizing:border-box}
+.f2-r6-sw-actual{background:var(--f2-slate);border-radius:2px}
+.f2-r6-sw-plan{background:#FFFFFF;border:1.5px dashed var(--f2-slate)}
+.f2-r6-sw-ly{background:var(--f2-slate2);border-radius:2px}
+.f2-r6-sw-grey{background:#98A2B1;border-radius:2px}
+
+/* the plot; under a 56 px slot it scrolls sideways inside its field */
+.f2-r6-scroll{overflow-x:auto;overflow-y:hidden;border-radius:6px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.f2-r6-scroll:focus-visible{outline-offset:4px}
+.f2-r6-plot{position:relative;height:272px;-webkit-user-select:none;user-select:none}
+.f2-r6-svgw{position:relative}
+.f2-r6-gl{stroke:var(--f2-relief);stroke-width:1}
+.f2-r6-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r6-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-r6-sleeve{fill:#FFFFFF;stroke:var(--f2-slate);stroke-width:1.5}
+.f2-r6-fc{stroke:var(--f2-slate);stroke-width:1.5}
+.f2-r6-ty:not([fill]){fill:var(--f2-slate)}
+/* the pointed month: a band behind its slot, a card beside its bars */
+.f2-r6-band{position:absolute;left:0;top:0;height:248px;border-radius:6px;background:var(--f2-sheet);opacity:0;transition:opacity .12s,transform .15s cubic-bezier(.2,.7,.2,1)}
+.f2-r6-band.on{opacity:1}
+.f2-r6-card{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:4px;padding:10px 12px;background:#FFFFFF;border:1px solid var(--f2-rule);border-radius:8px;box-shadow:0 1px 2px rgba(18,25,35,.12);
+  white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s cubic-bezier(.2,.7,.2,1)}
+.f2-r6-card.on{opacity:1;transform:none}
+.f2-r6-ct{font:600 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r6-cr{display:flex;align-items:center;gap:8px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r6-cr b{font-weight:600;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r6-cr svg,.f2-r6-cm{flex:none;display:block;width:10px;height:10px;box-sizing:border-box}
+.f2-r6-cm.f2-r6-sw-plan{border-width:1.5px}
+
+@media (max-width:1079px){
+  .f2-r6-chartf{padding:16px;gap:16px}
+}

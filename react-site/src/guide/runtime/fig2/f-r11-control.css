@@ -1,0 +1,74 @@
+/* Rule 11 · Control on its consequence (f-r11-control.js). Paper "Fig · 11 · Control on its consequence":
+   plot field 8 columns, consequences 4 (split at the centre of the gutter). */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-control .f2-title h3{white-space:normal}
+#demo-control .f2-head{min-height:54px}   /* Paper fixes the controls row at 38 px: 12 + 38 + 4 */
+#demo-control .f2-btn:disabled{opacity:1;color:var(--f2-rule2);border-color:var(--f2-relief);cursor:default}
+.r11 .f2-body{grid-template-columns:var(--r11-pw,740px) minmax(0,1fr)}
+
+/* the plot: the price is a point on its own revenue curve */
+.r11-pfield{display:flex;flex-direction:column;gap:8px;padding:20px 24px 16px}
+.r11-unit{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-plot{height:344px;min-width:0}
+.r11-svg{overflow:visible}
+.r11-rev{fill:none;stroke:var(--f2-slate);stroke-width:2;stroke-linejoin:round}
+.r11-mar{fill:none;stroke:var(--f2-slate2);stroke-width:2;stroke-linejoin:round}
+.r11-cl{font-size:13px;font-weight:500;fill:var(--f2-ink2)}
+.r11-rl{font-size:12px;fill:var(--f2-ink3)}
+.r11-rec{fill:none;stroke:var(--f2-slate);stroke-width:1.5;stroke-dasharray:3 2.5}
+.r11-gh{fill:var(--f2-slate2)}
+.r11-guide{stroke:var(--f2-rule2);stroke-width:1;stroke-dasharray:3 3}
+.r11-mmc{fill:#fff;stroke:var(--f2-ink);stroke-width:2}
+.r11-pillr{fill:var(--f2-ink)}
+.r11-pillt{font-size:12px;font-weight:600;fill:#fff}
+.r11-xt{transition:opacity .15s}
+.r11-xt.is-hid{opacity:0}
+.r11-hit{fill:transparent}
+.r11-pto{fill:#fff}
+.r11-pti{fill:var(--f2-ink)}
+.r11-ptl{font-size:12px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s;pointer-events:none}
+.r11-pt.is-dragging .r11-ptl{opacity:1}
+.r11-drag,.r11-drag *{cursor:grabbing!important}
+
+/* consequences: four readouts with their change since the start, then the history pinned to the bottom */
+.r11-cfield{display:flex;flex-direction:column;gap:20px;padding:20px 24px}
+/* each readout spans three rows of the readout grid (subgrid), so a label that wraps keeps its neighbour's value in line */
+.r11-ro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}
+.r11-cell{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0;align-content:start;min-width:0}
+.r11-ch{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;column-gap:6px;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-ch .r11-d{margin-left:auto}
+.r11-d{font-weight:500;color:var(--f2-ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r11-v{font:600 24px/30px var(--sans,"Instrument Sans");letter-spacing:-.01em;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r11-u{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-hist{margin-top:auto;border-top:1px solid var(--f2-relief);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.r11-hh{display:flex;justify-content:space-between;align-items:baseline;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-trail{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-height:24px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.r11-step{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.r11-step i{flex:none;width:9px;height:9px;border-radius:5px;background:var(--f2-slate2)}
+.r11-step.is-cur i{background:var(--f2-ink)}
+.r11-step b{font-weight:600;color:var(--f2-ink)}
+.r11-step em{font-style:normal;margin-left:-4px;color:var(--f2-ink3)}
+.r11-step[title]{cursor:help}
+.r11-start{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-arr{color:var(--f2-rule2)}
+.r11-btns{display:flex;flex-wrap:wrap;gap:8px}
+.r11-btns[hidden],.r11-ask[hidden]{display:none}
+/* the reason an override needs */
+.r11-ask{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:10px;background:var(--f2-sheet);overflow:hidden}
+.r11-q{font:600 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+#demo-control .r11-why{display:block;width:100%;height:36px;box-sizing:border-box;margin:0;padding:0 10px;border:1px solid var(--f2-rule);border-radius:8px;background:#fff;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);outline:none}
+#demo-control .r11-why::placeholder{color:var(--f2-ink3);opacity:.8}
+#demo-control .r11-why:focus{border-color:var(--f2-rule2);box-shadow:0 0 0 1px var(--f2-rule2)}
+.r11-askb{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+#demo-control .r11-cancel{appearance:none;background:none;border:0;border-radius:8px;padding:6px 8px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3);cursor:pointer}
+#demo-control .r11-cancel:hover{color:var(--f2-ink)}
+
+/* before the entrance */
+.r11-pre .r11-rev,.r11-pre .r11-mar,.r11-pre .r11-pt,.r11-pre .r11-mm,.r11-pre .r11-rec{opacity:0}
+
+/* one column: the consequences under the plot, the readouts in one row of four when the width allows */
+@media (max-width:1079px){
+  .r11 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r11-pfield,.r11-cfield{padding:16px}
+  .r11-ro{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+}

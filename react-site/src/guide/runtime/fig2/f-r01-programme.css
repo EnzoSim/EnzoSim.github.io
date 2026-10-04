@@ -1,0 +1,72 @@
+/* Rule 1 · Programme calculator (f-r01-programme.js). Paper "Fig · 1 · Programme": controls 4 columns, plot 8 columns. */
+/* The sheet is the figure (Paper): no stage ring around it; header and status take the kit's padding
+   (header 12 16 4, then the sheet's 8 px gap; status 12 16 14 after the same gap). Core candidates. */
+#demo-programme.f2-root{background:none;padding:0;border-radius:0}
+#demo-programme .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-programme .f2-status{padding:12px 16px 14px}
+
+/* Two fields on the page grid: a field spanning n columns is n·column + (n − 1)·gutter + 4 px, so its edge sits on a
+   gutter's centre line. In the sheet's content box C (= figure − 16): 4 columns = (C − 336) / 3 + 100 → 356 at 1120. */
+.f2-r1-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+.f2-r1 .f2-field{padding:24px}
+
+/* controls */
+.f2-r1-ctl{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.f2-r1-top{display:flex;flex-direction:column;gap:28px}
+.f2-r1-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r1 .f2-slider{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;row-gap:8px}
+.f2-r1 .f2-slider .f2-sl-label{grid-area:1/1}
+.f2-r1 .f2-slider output{grid-area:1/2;min-width:0;white-space:nowrap}
+.f2-r1 .f2-slider .f2-range{grid-area:2/1/3/3;width:100%;height:18px}
+.f2-r1 .f2-range:disabled{cursor:default;opacity:.45}
+.f2-r1-gut{display:flex;flex-direction:column;gap:8px}
+.f2-r1 [data-seg="g"]{display:flex;width:100%}
+.f2-r1 [data-seg="g"] button{flex:1 1 0;text-align:center;font-variant-numeric:tabular-nums}
+.f2-r1 [data-seg="preset"] button{font-variant-numeric:tabular-nums;white-space:nowrap}
+.f2-r1-read{display:flex;flex-direction:column;gap:2px}
+.f2-r1-sum{display:block;font:600 40px/44px var(--sans,"Instrument Sans");letter-spacing:-.02em;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r1-note{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r1-formula{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;padding-top:18px}
+.f2-r1-expr{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.f2-r1-expr.is-pointed{font-weight:600}
+
+/* plot */
+.f2-r1-plot{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.f2-r1-plot:focus-visible{outline-offset:13px}
+.f2-r1-dim,.f2-r1-tick{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r1-chip{fill:#FFFFFF}
+.f2-r1-dimt,.f2-r1-vh,.f2-r1-n{font-size:12px;fill:var(--f2-ink3)}
+.f2-r1-vh{transition:opacity .15s}
+.f2-r1-vh.is-off{opacity:0}
+.f2-r1-bar{fill:var(--f2-ink);transition:fill .2s cubic-bezier(.2,.7,.2,1)}
+.f2-r1-row.is-frac .f2-r1-bar{fill:var(--f2-slate2)}
+.f2-r1-row.is-ghost .f2-r1-bar{fill:var(--f2-sheet)}
+[data-tr="point"] .f2-r1-bar{transition-duration:.15s}
+.f2-r1-v{font-size:14px;font-weight:600;fill:var(--f2-ink)}
+.f2-r1-row.is-frac .f2-r1-v{font-weight:400;fill:var(--f2-ink3)}
+.f2-r1-n,.f2-r1-v{transition:opacity .15s,fill .2s}
+.f2-r1-row.is-ghost .f2-r1-n,.f2-r1-row.is-ghost .f2-r1-v{opacity:.35}
+.f2-r1-row.is-pointed .f2-r1-n{fill:var(--f2-ink);font-weight:500}
+.f2-r1-rb{fill:var(--f2-sheet);opacity:0;transition:opacity .15s}
+.f2-r1-gs{opacity:0;transition:opacity .15s}
+.f2-r1-gs rect{fill:var(--f2-relief)}
+.f2-r1-rb.on,.f2-r1-gs.on{opacity:1}
+
+/* one column under 1080 px: the controls on top, the plot keeps its lanes and the track takes what is left */
+@media (max-width:1079px){
+  .f2-r1-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r1 .f2-field{padding:16px}
+  .f2-r1-ctl{gap:24px}
+  .f2-r1-top{gap:20px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r1-ctl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-items:end}
+}
+/* phones: the presets fill the header row, each option on two lines */
+@media (max-width:639px){
+  .f2-r1 .f2-ctl{width:100%}
+  .f2-r1 [data-seg="preset"]{display:flex;width:100%}
+  .f2-r1 [data-seg="preset"] button{flex:1 1 0;display:flex;flex-direction:column;align-items:flex-start;text-align:left;white-space:normal;padding:6px 10px}
+  .f2-r1-dot{display:none}
+  .f2-r1-pb{font-weight:400}
+}

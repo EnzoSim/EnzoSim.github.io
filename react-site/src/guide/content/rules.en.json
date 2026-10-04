@@ -19,7 +19,7 @@
    },
    {
     "p": [
-     "The plan has a programme of its own inside its figure. Each sheet is then 1088 px wide with 8 px gutters. Its four instrument cards are 266 px each, and the rows split three to two are 648 and 432 px. The week columns have no gutters between them, so the same 1088 px gives eight weeks of 136 px."
+     "Inside, each figure keeps to the same programme. Its regions span whole columns: four for the controls and eight for the plot, or six and six. Four columns are 352 px and eight are 736, so with one gutter between them they make 1120 again. On a narrow screen the regions stack, with the controls on top."
     ],
     "notes": [],
     "gridopt": false
@@ -45,7 +45,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>The programme, in pixels.</b> A column count gives whole pixels exactly when it divides the width plus one gutter. Drag the width to find fields that divide well, and ones that do not.",
+  "caption": "<b>The programme, in pixels.</b> A column count gives whole pixels exactly when it divides the width plus one gutter. Drag the width, then point at a row to see which other counts share its edges.",
   "stage": "demo-programme",
   "after": "",
   "title": "Start from a grid that divides"
@@ -54,7 +54,7 @@
   "blocks": [
    {
     "p": [
-     "A number on a card answers one question: how much. A reader of a plan needs four more answers in the same glance: of what, on what scale, compared with what, and by how much it differs. Stephen Few’s bullet graph, specified in 2006, packs those answers into one small mark, with a bar for the measure, a tick for the comparator and a scale behind both. Edward Tufte’s sparkline goes smaller still. It is a word-sized graphic that sets a value beside its recent history, and in his medical examples beside a grey band for the normal range."
+     "A number on a card answers one question: how much. A reader who has to act on it needs four more answers in the same glance: of what, on what scale, compared with what, and by how much it differs. Stephen Few’s bullet graph, specified in 2006, fits those answers into one small mark, with a bar for the measure, a tick for the comparator and a scale behind both. Edward Tufte’s sparkline goes smaller still. It is a word-sized graphic that sets a value beside its recent history, and in his medical examples beside a grey band for the normal range."
     ],
     "notes": [
      "<a href=\"https://www.perceptualedge.com/articles/misc/Bullet_Graph_Design_Spec.pdf\">Stephen Few, <i>Bullet Graph Design Specification</i></a>, 2006, revised 2013.",
@@ -64,7 +64,7 @@
    },
    {
     "p": [
-     "Control rooms reached a similar form for a different reason. Guidance for process-plant operators asks for grey screens, analog indicators with a marked normal range, and saturated colour reserved for abnormal states, so that a deviation is the only thing that stands out. The instrument in the plan borrows that restraint. It shows a large value with its unit, a rail drawn to scale, one ink tick where a comparator exists, and the gap in figures beside the name of what it is measured against."
+     "Control rooms reached a similar form for a different reason. Guidance for process-plant operators asks for grey screens, analog indicators with a marked normal range, and saturated colour reserved for abnormal states, so that a deviation is the only thing that stands out. The instrument in the figure below borrows that restraint. It shows a large value with its unit, a bar drawn to scale, one ink tick where a comparator exists, and the gap in figures beside the name of what it is measured against."
     ],
     "notes": [
      "<a href=\"https://books.google.com/books/about/The_High_Performance_HMI_Handbook.html?id=ecyRPQAACAAJ\">Hollifield, Oliver, Nimmo and Habibi, <i>The High Performance HMI Handbook</i></a>, 2008."
@@ -73,7 +73,7 @@
    },
    {
     "p": [
-     "The bullet graph has critics worth hearing. Nick Desbarats lists eleven objections, among them that problems do not stand out and that words such as good, satisfactory and poor mean different things to different people. The plan therefore leaves the qualitative bands out. Where no comparator exists, the rail shows a part of a whole instead: sales made against sales lost, stock held against what is left to buy. Amazon’s weekly business review, as Cedric Chin describes it from Colin Bryar’s practice, holds one form across hundreds of measures. Most charts plot the trailing six weeks beside the trailing twelve months, so the form is learned once."
+     "The bullet graph has critics worth hearing. Nick Desbarats lists eleven objections, among them that problems do not stand out and that words such as good, satisfactory and poor mean different things to different people. The instrument below therefore leaves the qualitative bands out. Where no comparator exists, a part of a whole can take its place: orders shipped out of orders taken, or money spent out of a budget. Amazon’s weekly business review, as Cedric Chin describes it from Colin Bryar’s practice, holds one form across hundreds of measures. Most charts plot the trailing six weeks beside the trailing twelve months, so the form is learned once."
     ],
     "notes": [
      "<a href=\"https://nightingaledvs.com/why-i-stopped-using-bullet-graphs-and-what-i-now-use-instead/\">Nick Desbarats, <i>Why I stopped using bullet graphs</i></a>, 2022.",
@@ -82,7 +82,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>What each part of an instrument answers.</b> Switch the parts off to see which question goes unanswered, and move the value to watch the gap follow.",
+  "caption": "<b>What each part of an instrument answers.</b> A number alone answers how much. Switch a part off to see which question goes unanswered, and drag the value to watch the gap follow.",
   "stage": "demo-instrument",
   "after": "",
   "title": "Give every number an instrument"
@@ -100,13 +100,13 @@
    },
    {
     "p": [
-     "This is the comparator an instrument should graduate to once a measure has some history. Until then a named reference, such as the last four weeks, is the more candid choice, and the plan uses exactly that."
+     "This is the comparator an instrument should graduate to once a measure has some history. Until then a named reference, such as the last four weeks, is the more candid choice, as long as the instrument prints its name."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>Signal or routine.</b> An illustrative series of weekly sales. The limits come from the first eleven weeks. Move the latest week and see when it becomes worth a question.",
+  "caption": "<b>Signal or routine.</b> Twelve illustrative weeks of sign-ups. The average and the limits come from the first eleven weeks; drag the latest week and see when it becomes worth a question.",
   "stage": "demo-xmr",
   "after": "",
   "title": "Compare against routine variation"
@@ -134,13 +134,13 @@
    },
    {
     "p": [
-     "Planning is full of such laws, and open-to-buy is one of them. What a plan needs is the cost of what it expects to sell plus the stock it wants to keep at the end. What it has is the stock on hand plus the stock on order. The difference is what is left to buy. Two bars on one scale state the law, and the dashed space between their ends is the answer. A waterfall chart shows the same numbers and leaves the reader to walk the steps."
+     "Planning and accounts are full of such laws, and a balance is the simplest. Cash at the start of a month, plus what comes in, equals what goes out plus the cash left at the end. Two stacked bars on one scale state the law: opening cash and receipts in one, payments and closing cash in the other. When the figures are right the bars end level, so the closing balance is read as a length, and a wrong figure breaks the shape. A waterfall chart shows the same numbers and leaves the reader to walk the steps."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>An identity drawn as geometry.</b> Move any term. The gap follows, and the two bars can never disagree with the arithmetic.",
+  "caption": "<b>An identity drawn as geometry.</b> Opening plus receipts must equal payments plus closing, so the two sides always end level. Drag any term: the other side and the closing balance follow, and a fault bends the shape.",
   "stage": "demo-bridge",
   "after": "",
   "title": "Draw the identity"
@@ -168,7 +168,7 @@
    },
    {
     "p": [
-     "Tone is also a poor carrier of amount. William Cleveland and Robert McGill ranked the ways a reader decodes a quantity from a chart. In their ranking position on a common scale came first and shading came last. Their experiments, and the replication by Jeffrey Heer and Michael Bostock, measured the upper part of that order: position, length, angle and area. The plan uses four opaque surface tones, each with one job, and prints the number wherever the amount matters. Translucent panels would give a similar softness, and Beverly Harrison and colleagues studied the trade-off they bring: what shows through helps awareness of the background and competes with reading the foreground."
+     "Tone is also a poor carrier of amount. William Cleveland and Robert McGill ranked the ways a reader decodes a quantity from a chart. In their ranking position on a common scale came first and shading came last. Their experiments, and the replication by Jeffrey Heer and Michael Bostock, measured the upper part of that order: position, length, angle and area. The figures in this guide use four opaque surface tones, each with one job, and print the number wherever the amount matters. Translucent panels would give a similar softness, and Beverly Harrison and colleagues studied the trade-off they bring: what shows through helps awareness of the background and competes with reading the foreground."
     ],
     "notes": [
      "<a href=\"http://vis.stanford.edu/papers/crowdsourcing-graphical-perception\">Cleveland and McGill, <i>Graphical perception</i></a>, 1984, replicated by Heer and Bostock in 2010.",
@@ -187,7 +187,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Four small models of surface.</b> Enclosure regroups the dots. The two chips are the same grey. Nested corners stay parallel only when the inner radius shrinks by the inset. One accent works until it is everywhere.",
+  "caption": "<b>Four small models of surface.</b> Enclosure regroups the dots. The two chips are the same grey. Nested corners run parallel only when the inner radius shrinks by the inset. Tone ranks the regions; only the printed number says how much.",
   "stage": "demo-surfaces",
   "after": "",
   "title": "Shade for hierarchy, print the quantity"
@@ -205,7 +205,7 @@
    },
    {
     "p": [
-     "The plan keeps the principle and changes the means. It makes no claim of compliance, and it uses no hatching, which turns to texture on marks as small as a twelve-pixel rail. Slate is for what has happened or physically exists: sales made, stock on hand. Cobalt is for what lies ahead, and its strength says how firm the quantity is. Solid cobalt is what the plan expects to sell. A lighter tint is what is planned or on its way: stock to keep, orders arriving. An amount that exists only as a gap, such as what is left to buy, is a dashed outline. Lost sales are ink, so a shortfall needs no red. Selection is a raised white pill, so the accent never means clickable."
+     "The figure below keeps the principle, in greys, and makes no claim of compliance. Actual months are solid slate, planned values a dashed outline, the forecast hatched, and last year a paler slate because it is context. The fill says how firm a quantity is: solid for what has happened, hatched for what is expected, an outline for what is only intended. Hatching needs room. It reads on a bar a month wide and turns to texture on a mark as small as a twelve-pixel rail. Ink is kept for the one mark that matters most, such as a shortfall, so nothing needs red. Selection is a raised white pill, so no fill ever means clickable."
     ],
     "notes": [],
     "gridopt": false
@@ -220,9 +220,9 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>The same eight weeks, coded two ways.</b> Remove the colour. The chart coded by hue loses its meaning, and the chart coded by fill keeps the part that matters.",
+  "caption": "<b>The same year, coded two ways.</b> By fill, solid is actual, hatched is forecast, the dashed sleeve is the plan and the light bar is last year, and the chart still reads in grey. Coded by hue and printed in grey, the series merge and the key stops working.",
   "stage": "demo-notation",
-  "after": "<div class=\"legend\" id=\"fig-note\"></div>",
+  "after": "",
   "title": "Give each fill one job"
  },
  "7": {
@@ -250,7 +250,7 @@
    },
    {
     "p": [
-     "Retail planners have their own version, the weekly sales, stock and intake grid, with weeks across and measures down. The plan keeps its week columns at the same horizontal position in the sales bars and in every stock row, so the order that arrives too late sits directly under the week it fails. David Woods gave the underlying quality a name, visual momentum: how easily a reader carries what was just seen into the next view."
+     "Retail planners have their own version, the weekly sales, stock and intake grid, with weeks across and measures down. The figure below stacks visitors, sign-ups, orders and revenue on one week axis, so a change in one row can be followed straight down through the others. David Woods gave the underlying quality a name, visual momentum: how easily a reader carries what was just seen into the next view."
     ],
     "notes": [
      "<a href=\"https://www.stylearcade.com/blog/what-is-a-wssi-the-complete-fashion-retail-guide-to-weekly-sales-stock-and-intake\">The weekly sales, stock and intake grid</a>, a standard tool of merchandise planning.",
@@ -270,7 +270,7 @@
    },
    {
     "p": [
-     "A shared axis also makes it possible to point. Richard Becker and William Cleveland named the technique in 1987. Brushing marks a selection in one view and shows the same items in every other view. The plan does a modest version. Pointing at a week or a product line highlights it wherever it appears, and nothing is filtered away, so the context stays on the screen."
+     "A shared axis also makes it possible to point. Richard Becker and William Cleveland named the technique in 1987. Brushing marks a selection in one view and shows the same items in every other view. The figure below does a modest version. Pointing at a week draws one line through all four measures and prints their values, and nothing is filtered away, so the context stays on the screen."
     ],
     "notes": [
      "<a href=\"https://en.wikipedia.org/wiki/Brushing_and_linking\">Becker and Cleveland, <i>Brushing scatterplots</i></a>, 1987. The link is a summary.",
@@ -279,7 +279,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>One set of week columns, read down.</b> Point at a week to trace it through the sales and every stock row. Reorder the product lines and the ones at risk gather at the top.",
+  "caption": "<b>Four measures, one set of weeks.</b> Point at a week to read all four down one line. Sign-ups fell in week 7 and orders a week later, a lag that shows only because the weeks line up; switch to own axes and it disappears.",
   "stage": "demo-axis",
   "after": "",
   "title": "Share one axis"
@@ -318,7 +318,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Five rules, one table.</b> Each switch applies or removes one rule. With all five off, the table is what a spreadsheet produces by default.",
+  "caption": "<b>Five rules, one table.</b> Each switch applies or removes one rule. With all five off, the table is what a spreadsheet produces by default; turn them on one at a time and watch the largest region come forward.",
   "stage": "demo-table",
   "after": "",
   "title": "Set tables to be read"
@@ -363,7 +363,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>Bold without a shift.</b> The cobalt layer is the bold weight laid over the regular one. Change the typeface or switch off tabular figures and the two fall out of step. Select a row in the table to see what that does to a column.",
+  "caption": "<b>Bold without a shift.</b> The same column of figures in five open typefaces. Turn on the bold row: where bold figures keep the width of the regular ones the column holds still, and where they do not, the grey ghost of the regular weight shows how far the row moves.",
   "stage": "demo-type",
   "after": "",
   "title": "Choose type for figures"
@@ -393,13 +393,13 @@
    },
    {
     "p": [
-     "None of this licenses a band on a chart that has no model behind it. The plan is built on sample data with no fitted forecast, so it shows no interval anywhere. Its solid cobalt bars are what the plan’s arithmetic expects, and a dotplot can take their place on the day a forecast with measured error exists."
+     "None of this licenses a band on a chart that has no model behind it. A dashboard built on plain arithmetic, with no fitted forecast, should show no interval anywhere. Its expected values stay single figures, and a dotplot can take their place on the day a forecast with measured error exists. The figure below has a switch for a forecast whose error is not yet measured: the spread disappears and the figure says why."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>One distribution, three forms.</b> An illustrative demand distribution for one week, unrelated to the plan. Ask each form how often demand exceeds the units in stock. Only one of them can be counted.",
+  "caption": "<b>One forecast, four forms.</b> Next month’s demand for one item, illustrative. Move the stock and ask each form how likely a stock-out is: the dots and the curve can answer, the interval can only bracket it, and the line alone cannot say.",
   "stage": "demo-uncertainty",
   "after": "",
   "title": "Show uncertainty only when it is earned"
@@ -418,7 +418,7 @@
    },
    {
     "p": [
-     "The New York Times calculator <i>Is It Better to Rent or Buy?</i>, built in 2014 by Mike Bostock, Shan Carter and Archie Tse, adds the decisive detail. Each slider sits on a small chart of the outcome across the whole range of that input, so the reader sees what a change would do before making it. The markdown plot below goes one step further and needs no demand model. Its curve is the number of tents that must sell at each discount to match the profit at full price. The test is a point on that plot, and it is dragged where it stands, so the control and its consequence are one object."
+     "The New York Times calculator <i>Is It Better to Rent or Buy?</i>, built in 2014 by Mike Bostock, Shan Carter and Archie Tse, adds the decisive detail. Each slider sits on a small chart of the outcome across the whole range of that input, so the reader sees what a change would do before making it. The price plot below goes one step further. Its curve is the revenue an illustrative product earns at each price, on an assumed demand. The price is a point on that curve, and it is dragged where it stands, so the control and its consequence are one object."
     ],
     "notes": [
      "<a href=\"https://www.nytimes.com/interactive/2014/upshot/buy-rent-calculator.html\">Bostock, Carter and Tse, <i>Is It Better to Rent or Buy?</i></a>, The New York Times, 2014."
@@ -437,7 +437,7 @@
    },
    {
     "p": [
-     "A control also needs a memory. Jeffrey Heer and Ben Shneiderman sorted the interactions of visual analysis into twelve tasks in three groups: specifying data and views, manipulating views, and keeping a record of the analysis. The third group is the one dashboards forget. A scenario is only useful if what was changed can be seen, named and undone. In the plan each decision is a labelled switch, a chip counts how many are on, and one button returns to current orders."
+     "A control also needs a memory. Jeffrey Heer and Ben Shneiderman sorted the interactions of visual analysis into twelve tasks in three groups: specifying data and views, manipulating views, and keeping a record of the analysis. The third group is the one dashboards forget. A scenario is only useful if what was changed can be seen, named and undone. In the figure below every move leaves a faint ghost of the point, an override asks for its reason, and the reader can step back through the moves one at a time."
     ],
     "notes": [
      "<a href=\"https://idl.cs.washington.edu/files/2012-InteractiveDynamics-CACM.pdf\">Heer and Shneiderman, <i>Interactive dynamics for visual analysis</i></a>, 2012."
@@ -445,7 +445,7 @@
     "gridopt": false
    }
   ],
-  "caption": "<b>A control that is its own chart.</b> Drag the point, or focus it and use the arrow keys. Above the curve the discount beats full price, below it it does not. Tents sell at 500 and cost 300 in the plan, and forty are expected to sell at full price for a gross profit of 8.0.",
+  "caption": "<b>A control that is its own chart.</b> Drag the price along the revenue curve, or focus it and use the arrow keys; the margin it earns moves on the curve below. Every move leaves a ghost you can undo, and a price set away from the recommendation asks for a reason.",
   "stage": "demo-control",
   "after": "",
   "title": "Put each control on its consequence"
@@ -454,7 +454,7 @@
   "blocks": [
    {
     "p": [
-     "In 1948 the British Treasury asked Ernest Gowers for a short book to help civil servants write so that the public could follow them. <i>Plain Words</i> set out to replace official jargon with a short, clear style. A dashboard has the same duty and less room. The plan says lost sales where a planning system says unfilled demand, weeks of stock where it says cover, and dates where it says week numbers. It keeps the terms a planner will look for, such as open-to-buy and sell-through, and it defines them."
+     "In 1948 the British Treasury asked Ernest Gowers for a short book to help civil servants write so that the public could follow them. <i>Plain Words</i> set out to replace official jargon with a short, clear style. A dashboard has the same duty and less room. It should say lost sales where a planning system says unfilled demand, weeks of stock where it says cover, and dates where it says week numbers. It should keep the terms its readers will look for, such as gross margin and conversion rate, and define them."
     ],
     "notes": [
      "<a href=\"https://en.wikipedia.org/wiki/The_Complete_Plain_Words\">Ernest Gowers, <i>Plain Words</i></a>, 1948. The link describes the book and its later editions."
@@ -463,7 +463,7 @@
    },
    {
     "p": [
-     "Plain words are half of it. The other half is saying what kind of number the reader is looking at. Robin Kinross argued in 1985 that even a railway timetable persuades. A calm, exact style claims authority whether or not the figures have earned it. The plan therefore says what it is. Its figures are labelled sample data, its model is plain arithmetic with no forecast behind it, and it leaves out returns, promotions, weather and supplier terms."
+     "Plain words are half of it. The other half is saying what kind of number the reader is looking at. Robin Kinross argued in 1985 that even a railway timetable persuades. A calm, exact style claims authority whether or not the figures have earned it. A dashboard should therefore say what it is: which figures are measured and which are estimated, what model lies behind them, and what it leaves out. The figures in this guide do the same. Their numbers are invented and labelled illustrative, and they are computed in the page."
     ],
     "notes": [
      "<a href=\"https://www.jstor.org/stable/i267274\">Robin Kinross, <i>The rhetoric of neutrality</i></a>, Design Issues, 1985."
@@ -472,13 +472,13 @@
    },
    {
     "p": [
-     "Definitions belong where the numbers are. A reader should be able to ask of any figure what it counts, over what period and in what unit, and find the answer without leaving the screen. The figure below does that for the eight terms the plan uses."
+     "Definitions belong where the numbers are. A reader should be able to ask of any figure what it counts, over what period and in what unit, and find the answer without leaving the screen. The figure below does that for eight common business terms."
     ],
     "notes": [],
     "gridopt": false
    }
   ],
-  "caption": "<b>The words of the plan.</b> Select a term to see what it counts, how it is computed from the plan’s own numbers, and the jargon it replaces.",
+  "caption": "<b>Plain words, worked out.</b> Select a term to see what it counts, over what period and in what unit, how it is computed from one illustrative month, and the jargon it replaces. Each card also says what kind of number it is.",
   "stage": "demo-terms",
   "after": "",
   "title": "Use plain words, and say what the numbers are"

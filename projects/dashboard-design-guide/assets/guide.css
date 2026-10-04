@@ -188,17 +188,17 @@ input[type=range]{accent-color:var(--cobalt);margin:0;height:20px;width:100%}
 .pm .hit{fill:transparent}
 .pm .dot{fill:var(--slate);transition:fill .15s ease}
 .pm:hover .dot{fill:var(--ink)}
-.pm.on .dot{fill:var(--cobalt)}
-.pm.on .hit{fill:var(--cobalt);opacity:.16}
+.pm.on .dot{fill:var(--ink)}
+.pm.on .hit{fill:var(--ink);opacity:.1}
 .pm:focus-visible .hit{fill:none;stroke:var(--cobalt);stroke-width:2;opacity:1}
-/* faces on the time axis: a field-coloured ring keeps neighbours apart, ink on hover, accent when selected */
+/* faces on the time axis: a field-coloured ring keeps neighbours apart, ink on hover, a heavier ink ring when selected */
 .pm .ring{fill:none;stroke:var(--field);stroke-width:2;transition:stroke .15s ease}
 .pm:hover .ring{stroke:var(--ink)}
-.pm.on .ring{stroke:var(--cobalt);stroke-width:3}
+.pm.on .ring{stroke:var(--ink);stroke-width:3}
 .pm .nf{fill:var(--well)}
-.pm.on .nf{fill:var(--wash)}
+.pm.on .nf{fill:var(--relief)}
 .t-ini{font-size:11px;font-weight:600;font-stretch:75%;letter-spacing:.02em;fill:var(--ink2);pointer-events:none}
-.pm.on .t-ini{font-size:14px;fill:var(--cobalt)}
+.pm.on .t-ini{font-size:14px;fill:var(--ink)}
 .who-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:start}
 .who-id{display:flex;align-items:flex-start;gap:24px}
 .who-ph{position:relative;flex:0 0 96px;width:96px;height:96px;border-radius:8px;overflow:hidden;background:var(--well);display:flex;align-items:flex-end;padding:0 0 8px 10px}
@@ -209,7 +209,7 @@ input[type=range]{accent-color:var(--cobalt);margin:0;height:20px;width:100%}
 .who-pr>span{font-size:15px;line-height:22px;font-weight:500;color:var(--ink3);font-variant-numeric:tabular-nums}
 .who-pr b{font-size:15px;line-height:22px;font-weight:600;color:var(--ink)}
 .who .who-pr p{margin:2px 0 0;font-size:15px;line-height:22px;color:var(--ink2)}
-.who-learn{border-left:3px solid var(--cobalt);padding:2px 0 2px 18px}
+.who-learn{background:var(--wash);border-radius:12px;padding:16px 20px 18px}
 .who-learn .kicker{color:var(--cobalt)}
 .who .who-learn p{margin:8px 0 0;font-size:18px;line-height:26px;font-weight:600;color:var(--ink);max-width:none}
 .who-learn a{display:inline-block;margin-top:12px;font-weight:600}
@@ -389,8 +389,7 @@ p{margin:0}
 .menu-sheet{display:none}
 
 /* ---------- cover ---------- */
-.hero{padding-top:112px}
-.hero .kicker{margin-bottom:28px}
+.hero{padding-top:156px}
 .display{font:600 120px/108px var(--sans);letter-spacing:-.04em;max-width:var(--span10)}
 .hero-row{display:grid;grid-template-columns:var(--span7) var(--span4);column-gap:var(--skip8);margin-top:48px;align-items:start}
 .hero-row .lede{font-size:22px;line-height:32px;color:var(--ink)}
@@ -399,7 +398,6 @@ p{margin:0}
 .inside .kicker{display:block;padding:12px 0 4px}
 .stat{display:grid;grid-template-columns:80px 1fr;gap:16px;align-items:start;padding:12px 0 14px;border-bottom:1px solid var(--rule);text-decoration:none}
 .stat b{font:600 52px/44px var(--sans);letter-spacing:-.02em;font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink)}
-.stat.accent b{color:var(--cobalt)}
 .stat strong{display:block;font:600 16px/22px var(--sans);color:var(--ink)}
 .stat span span{display:block;font:500 14px/20px var(--sans);color:var(--ink2)}
 .stat:hover strong{color:var(--cobalt)}
@@ -411,20 +409,16 @@ p{margin:0}
 .sec-head .note{font:500 15px/20px var(--sans);color:var(--ink3)}
 .sec-head .act{font:600 15px/20px var(--sans);color:var(--cobalt);text-decoration:none;white-space:nowrap}
 .sec-head .act:hover{text-decoration:underline}
-.faces{display:grid;grid-template-columns:repeat(14,1fr);gap:8px;list-style:none;margin:0;padding:0}
-.faces li{position:relative}
-.faces a{display:block;aspect-ratio:1;border-radius:6px;overflow:hidden;background:var(--relief);position:relative;text-decoration:none}
-.faces img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04);transition:filter .2s,transform .3s}
-.faces a:hover img,.faces a:focus-visible img{filter:grayscale(0.2) contrast(1.02);transform:scale(1.04)}
-.faces .ini{position:absolute;left:8px;bottom:6px;font:600 15px/1 var(--sans);font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink3)}
-.faces .tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translate(-50%,4px);white-space:nowrap;background:var(--ink);color:var(--page);font:600 13px/18px var(--sans);padding:6px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:5}
-.faces .tip small{display:block;font-weight:500;color:var(--slate2)}
-.faces a:hover+.tip,.faces a:focus-visible+.tip{opacity:1;transform:translate(-50%,0)}
-.faces li.cta{grid-column:span 2}
-.faces li.cta a{aspect-ratio:auto;height:100%;background:var(--ink);display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px}
-.faces li.cta .kicker{color:var(--slate2)}
-.faces li.cta b{font:600 17px/22px var(--sans);color:var(--page)}
-.faces li.cta a:hover b{text-decoration:underline}
+.strip{position:relative;margin-inline:calc(50% - 50vw);overflow:hidden;padding:4px 0 6px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 160px,#000 calc(100% - 160px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 160px,#000 calc(100% - 160px),transparent 100%)}
+.strip-track{display:flex;gap:var(--gut);width:max-content;list-style:none;margin:0;padding:0;animation:strip 90s linear infinite}
+.strip:hover .strip-track,.strip:focus-within .strip-track{animation-play-state:paused}
+@keyframes strip{to{transform:translateX(calc(-50% - var(--gut) / 2))}}
+.strip li{flex:none;width:calc(2 * var(--col) + var(--gut))}
+.strip a{display:block;text-decoration:none;color:inherit}
+.strip img{display:block;width:100%;aspect-ratio:1;height:auto;border-radius:6px;object-fit:cover;background:var(--relief);filter:grayscale(1) contrast(1.04);transition:filter .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.strip a:hover img,.strip a:focus-visible img{filter:grayscale(.15) contrast(1.02);transform:translateY(-4px)}
+.strip .nm{display:block;margin-top:12px;font:600 15px/20px var(--sans);color:var(--ink)}
+.strip .yr{display:block;margin-top:2px;font:500 13px/18px var(--sans);color:var(--ink3)}
 
 .tb{display:grid;grid-template-columns:var(--span7) var(--span4);column-gap:var(--skip8);align-items:start}
 .tb+.tb{margin-top:20px}
@@ -452,8 +446,8 @@ p{margin:0}
 .chapters li a:hover .num{color:var(--cobalt)}
 
 /* ---------- chapter opener ---------- */
-.opener{display:grid;grid-template-columns:var(--span2) var(--span10);column-gap:var(--gut);padding-top:104px;align-items:start}
-.numeral{font:600 280px/212px var(--sans);letter-spacing:-.04em;font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink)}
+.opener{display:grid;grid-template-columns:var(--span2) var(--span10);column-gap:var(--gut);padding-top:142px;align-items:start}
+.numeral{padding-top:6px;font:600 280px/212px var(--sans);letter-spacing:-.04em;font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink)}
 .op-text{display:flex;flex-direction:column;gap:22px}
 .op-text h1{font:600 88px/84px var(--sans);letter-spacing:-.035em}
 .standfirst{font:400 22px/32px var(--serif);color:var(--ink);max-width:var(--span8)}
@@ -465,8 +459,8 @@ p{margin:0}
 .op-list a span{width:28px;flex:none;font:600 15px/24px var(--sans);color:var(--ink3)}
 .op-list a:hover{color:var(--cobalt)}
 .op-faces .kicker{padding-bottom:12px}
-.minis{display:flex;flex-wrap:wrap;gap:6px}
-.minis a,.minis span.m{width:38px;height:38px;border-radius:5px;overflow:hidden;background:var(--relief);display:block}
+.minis{display:flex;flex-wrap:wrap;gap:var(--gut)}
+.minis a,.minis span.m{width:var(--col);height:var(--col);border-radius:6px;overflow:hidden;background:var(--relief);display:block}
 .minis img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
 /* initials stand in where no free photograph exists */
 .minis .ini,.from-faces .ini{width:100%;height:100%;display:flex;align-items:flex-end;padding:0 0 4px 5px;font:600 12px/1 var(--sans);font-variation-settings:"wdth" 75;font-stretch:75%;letter-spacing:.02em;color:var(--ink3)}
@@ -498,11 +492,14 @@ p{margin:0}
 .co-img{display:block;border-radius:12px;overflow:hidden;background:var(--field);min-height:300px;position:relative}
 .co-img img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
 .co-img .pin{position:absolute;width:26px;height:26px;border-radius:13px;background:var(--ink);border:3px solid #fff;color:#fff;font:700 12px/20px var(--sans);text-align:center;transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(18,25,35,.25)}
+.seen-in{font:500 16px/24px var(--sans);color:var(--ink2)}
+.seen-in a{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.seen-in a:hover{text-decoration-thickness:2px}
 .oneline{display:grid;grid-template-columns:var(--span7) var(--span4);column-gap:var(--skip8);padding-top:8px;align-items:start}
-.ol-main{border-left:3px solid var(--ink);padding-left:22px}
+.ol-main{border-top:2px solid var(--ink);padding-top:12px}
 .ol-main .kicker,.ol-try .kicker{display:block;margin-bottom:8px}
 .ol-main p{font:600 26px/34px var(--sans);letter-spacing:-.015em;color:var(--ink)}
-.ol-try{padding-top:2px}
+.ol-try{border-top:1px solid var(--rule);padding-top:13px}
 .ol-try p{font:500 15px/22px var(--sans);color:var(--ink2)}
 
 /* checklist */
@@ -563,12 +560,11 @@ p{margin:0}
 .spec.fig{align-items:center;justify-content:space-between;padding:10px 16px;font-family:var(--sans)}.spec.fig b{display:block;font:600 24px/28px var(--sans);font-variant-numeric:tabular-nums}.spec.fig span{display:block;font:500 13px/16px var(--sans);color:var(--ink3)}.spec.fig div:last-child{text-align:right}
 .spec.col{align-items:flex-end;gap:8px;padding:12px 16px}.spec.col i{width:36px;border-radius:3px;display:block}
 .spec.int{padding:6px 12px;align-items:center}
-.tokens-block{background:var(--ink);border-radius:20px;overflow:hidden}
-.tokens-block .tb-head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px 14px 24px;border-bottom:1px solid rgba(255,255,255,.12)}
-.tokens-block .kicker{color:var(--slate2)}
-.tokens-block button{height:32px;padding:0 14px;border-radius:10px;background:rgba(255,255,255,.1);border:0;color:#fff;font:600 14px/1 var(--sans);cursor:pointer}
-.tokens-block button:hover{background:rgba(255,255,255,.18)}
-.tokens-block pre{margin:0;padding:20px 24px 24px;font:400 13px/21px var(--mono);color:#D9DEE6;white-space:pre;overflow:auto}
+.tokens-block .tb-head{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-bottom:16px}
+.tokens-block .kicker{font:600 15px/22px var(--sans);letter-spacing:0;text-transform:none;font-variation-settings:normal;font-stretch:100%;color:var(--ink)}
+.tokens-block button{height:36px;padding:0 12px;border-radius:8px;background:var(--field);border:1px solid var(--rule);color:var(--ink);font:600 14px/1 var(--sans);cursor:pointer;transition:border-color .2s}
+.tokens-block button:hover{border-color:var(--ink)}
+.tokens-block pre{margin:0;padding:20px 24px;background:var(--sheet);border-radius:12px;font:400 13px/20px var(--mono);color:var(--ink);white-space:pre;overflow:auto}
 .srcgroups{display:flex;flex-direction:column;gap:28px}
 .srcgroup{display:grid;grid-template-columns:var(--span3) 1fr;column-gap:var(--gut)}
 .srcgroup h3{font:600 17px/24px var(--sans)}
@@ -620,7 +616,7 @@ p{margin:0}
   .menu-sheet a span{font:600 26px/24px var(--sans);font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink3)}
   .menu-sheet a[aria-current="page"]{color:var(--cobalt)}
   .crumb .mid{display:none}
-  .hero{padding-top:56px}
+  .hero{padding-top:82px}
   .display{font-size:clamp(46px,11vw,120px);line-height:.95}
   .hero-row,.tb,.oneline,.sec-two{grid-template-columns:minmax(0,1fr);row-gap:28px}
   .hero-row .lede{font-size:clamp(19px,2.6vw,22px);line-height:1.48}
@@ -633,11 +629,10 @@ p{margin:0}
   .sec{padding-top:72px}
   .sec-head{flex-wrap:wrap}
   .sec-head .note{display:none}
-  .faces{grid-template-columns:repeat(6,1fr);gap:6px}
-  .faces li:not(.mob){display:none}
-  .faces .tip{display:none}
+  .strip li{width:120px}
+  .strip{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16px,#000 calc(100% - 16px),transparent 100%)}
   .prose,.notes{max-width:640px}
-  .notes{border-left:2px solid var(--rule);padding:2px 0 2px 12px;margin-top:-8px}
+  .notes{border-top:1px solid var(--rule);padding-top:12px}
   .notes ul{gap:10px}.notes li{border-top:0;padding-top:0}
   .chapters li a{grid-template-columns:44px 1fr;column-gap:14px;padding:12px 0}
   .chapters .num{font-size:40px;line-height:34px}
@@ -681,6 +676,10 @@ p{margin:0}
 .ph .ini small{display:none;font:600 12px/16px var(--sans);letter-spacing:.08em;text-transform:uppercase;margin-top:10px;color:var(--ink3)}
 .spread .ph .ini{font-size:132px;letter-spacing:-.03em;padding:24px 26px}
 .spread .ph .ini small{display:block}
+.ph.work{display:flex;flex-direction:column;justify-content:flex-end;padding:28px 30px;background:var(--sheet)}
+.ph.work b{font:600 168px/0.8 var(--sans);letter-spacing:-.04em;font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink)}
+.ph.work span{font:600 20px/26px var(--sans);letter-spacing:-.01em;color:var(--ink2);margin-top:20px;max-width:16ch}
+.pcard.nophoto{grid-template-columns:minmax(0,1fr)}
 .ph.team{gap:4px;background:var(--page)}
 .ph.team img,.ph.team .ini{border-radius:8px;background:var(--relief);aspect-ratio:auto;min-height:0}
 .ph.t2{grid-template-columns:1fr 1fr}
@@ -701,7 +700,7 @@ p{margin:0}
 .projects b{font:600 14px/20px var(--sans);color:var(--ink3)}
 .projects strong{color:var(--ink);font-weight:600}
 .brought{font:400 17px/26px var(--serif);color:var(--ink)}
-.learn{margin-top:24px;border-left:3px solid var(--cobalt);padding-left:18px}
+.learn{margin-top:24px;background:var(--wash);border-radius:12px;padding:20px 24px 22px}
 .learn .kicker{display:block;color:var(--cobalt);margin-bottom:6px}
 .learn p{font:600 20px/28px var(--sans);letter-spacing:-.01em;color:var(--ink)}
 .in-guide{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-top:20px;font:600 14px/20px var(--sans)}
@@ -719,9 +718,9 @@ p{margin:0}
 .pc-text .made{font:600 14px/20px var(--sans);color:var(--ink);margin-top:10px}
 .pc-text .made b{color:var(--ink3);margin-right:4px}
 .pc-text .brought{font:500 14px/21px var(--sans);color:var(--ink2);margin-top:6px}
-.pc-text .learn-s{font:500 14px/21px var(--sans);color:var(--ink);margin-top:10px;border-left:2px solid var(--cobalt);padding-left:10px}
-.pc-text .learn-s .kicker{display:block;color:var(--cobalt);font-size:12px;margin-bottom:2px}
-.pc-text .in-guide{margin-top:10px;font-size:13px;gap:4px 12px}
+.pcard .learn-s{grid-column:1 / -1;font:500 15px/22px var(--sans);color:var(--ink);background:var(--wash);border-radius:12px;padding:20px 24px}
+.pcard .learn-s .kicker{display:block;color:var(--cobalt);font-size:12px;margin-bottom:4px}
+.pcard .in-guide{grid-column:1 / -1;margin-top:0;font-size:13px;gap:4px 12px}
 :target.pcard,:target.spread{animation:hl 2.4s ease-out}
 @keyframes hl{0%{background:var(--wash)}100%{background:transparent}}
 
@@ -796,8 +795,18 @@ p{margin:0}
   .refs ul{grid-template-columns:minmax(0,1fr)}
 }
 
+/* motion: sections and figures rise into place once (page.js adds .js-motion and .in) */
+.js-motion .reveal{opacity:0;transform:translateY(14px)}
+.js-motion .reveal.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.stat b{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.strip{margin-inline:0;overflow-x:auto;-webkit-mask-image:none;mask-image:none}.strip-track{animation:none}.strip li[aria-hidden]{display:none}.js-motion .reveal{opacity:1;transform:none}}
+
 /* Learn dashboard design with me: what the figures of "What neighbouring fields know" add to figures.css.
-   Only what the existing classes do not cover, in the same custom properties. research.js writes the markup. */
+   Only what the existing classes do not cover, in the same custom properties. research.js writes the markup.
+   Greys only (REDESIGN-BRIEF.md, decision F): ink for the one thing that matters or the selected state, slate for
+   data, slate-light for secondary data, well and relief for bands and backgrounds. Cobalt is left to the keyboard
+   focus ring. A rule that restyles a shared class is scoped to .rx-fig, the class research.js gives each of its figure
+   roots, so the figures of the other chapters are untouched. */
 
 /* a plot inside a field, drawn at the width it has */
 .rx-plot{padding:4px 20px 0}
@@ -806,19 +815,52 @@ p{margin:0}
 /* a heading that may wrap on a narrow screen */
 .stage .rx-wrap h4{white-space:normal}
 
-/* F0: the lane names stay in view when the axis scrolls sideways, and form a radio group */
+/* the controls, as in the brief's component kit: grey, with ink for the on or selected state. The segmented control
+   keeps the well for its track, because these headers sit on the stage's ground, which is the relief grey itself. */
+.rx-fig .seg{gap:2px;padding:3px;border-radius:10px;background:var(--well)}
+.rx-fig .seg button{height:auto;min-height:32px;padding:6px 12px;border-radius:7px;font-size:14px;line-height:20px;font-weight:500;color:var(--ink2);transition:background-color .2s ease,color .2s ease,box-shadow .2s ease}
+.rx-fig .seg button:hover{color:var(--ink)}
+.rx-fig .seg button[aria-checked="true"]{background:var(--field);color:var(--ink);box-shadow:0 1px 2px rgba(18,25,35,.12)}
+.rx-fig .sw{width:36px;height:20px;border-radius:10px;background:#CBD2DC}
+.rx-fig .sw::after{width:16px;height:16px;border-radius:8px;box-shadow:0 1px 2px rgba(18,25,35,.2)}
+.rx-fig .sw[aria-checked="true"],.rx-fig [aria-checked="true"]>.sw{background:var(--ink)}
+.rx-fig .sw[aria-checked="true"]::after,.rx-fig [aria-checked="true"]>.sw::after{transform:translateX(16px)}
+.rx-fig .opt.inline{gap:8px;font-size:14px;line-height:20px;color:var(--ink2)}
+.rx-fig .opt.inline[aria-checked="true"]{color:var(--ink)}
+.rx-fig .btn{height:auto;padding:6px 12px;border:1px solid #CBD2DC;border-radius:8px;background:var(--field);box-shadow:none;font:600 14px/20px var(--sans);color:var(--ink);transition:border-color .2s ease}
+.rx-fig .btn:hover{border-color:var(--ink)}
+/* the slider: a 4 px track filled in slate up to a white thumb ringed in ink; research.js keeps --k at the thumb.
+   On the ground of a header the unfilled track takes the rule grey, which the well would not show. */
+.rx-fig .rng{font-size:14px;line-height:20px}
+.rx-fig input[type=range]{-webkit-appearance:none;appearance:none;height:20px;background:transparent;cursor:pointer;--k:50%;--rx-track:var(--well)}
+.rx-fig .demo-head input[type=range]{--rx-track:#CBD2DC}
+.rx-fig input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--slate) 0 var(--k),var(--rx-track) var(--k) 100%)}
+.rx-fig input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--rx-track)}
+.rx-fig input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--slate)}
+.rx-fig input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px var(--ink),0 1px 2px rgba(18,25,35,.2)}
+.rx-fig input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 0 1.5px var(--ink),0 1px 2px rgba(18,25,35,.2)}
+
+/* F0: the lane names stay in view when the axis scrolls sideways, and form a radio group. The selected mark is ink;
+   a selected field turns its marks ink and the others slate-light, and its lane band slides there. */
 .rx-tl{display:grid}
 .rx-tl>*{grid-area:1 / 1}
 .rx-lab{position:sticky;left:0;z-index:1;justify-self:start;background:var(--field)}
-.stage .rx-lab button{position:absolute;left:8px;right:0;display:flex;align-items:center;padding:0 10px 0 14px;border:0;border-radius:10px 0 0 10px;background:none;font-size:14px;line-height:17px;font-weight:500;color:var(--ink2);text-align:left;cursor:pointer}
+.stage .rx-lab button{position:absolute;left:8px;right:0;display:flex;align-items:center;padding:0 10px 0 14px;border:0;border-radius:10px 0 0 10px;background:none;font-size:14px;line-height:17px;font-weight:500;color:var(--ink2);text-align:left;cursor:pointer;transition:background-color .2s ease}
 .stage .rx-lab button:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
 .stage .rx-lab button[aria-checked="true"]{background:var(--sheet);color:var(--ink);font-weight:600}
 .stage .rx-lab button[data-fld=""]{border-radius:10px;right:8px;font-size:13px;color:var(--ink3)}
 .stage .rx-lab button[data-fld=""][aria-checked="true"]{color:var(--ink)}
-.pm.rx-hi .dot{fill:var(--cobalt)}
+.rx-fig .pm .dot{transition:fill .25s ease,r .2s ease}
+.rx-fig .pm.on .dot{fill:var(--ink)}
+.rx-fig .pm.on .hit{fill:var(--ink);opacity:.12}
+.rx-fig .pm:focus-visible .hit{fill:none;stroke:var(--cobalt);stroke-width:2;opacity:1}
+.pm.rx-hi .dot{fill:var(--ink)}
 .pm.rx-lo .dot{fill:var(--slate2)}
-.pm.rx-lo:hover .dot{fill:var(--ink)}
-.pm.on.rx-hi .dot,.pm.on.rx-lo .dot{fill:var(--cobalt)}
+.pm.rx-hi:hover .dot,.pm.rx-lo:hover .dot{fill:var(--ink)}
+.pm.on.rx-hi .dot,.pm.on.rx-lo .dot{fill:var(--ink)}
+.rx-band{transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .25s ease}
+.rx-tag>*{animation:rx-tag .18s ease-out}
+@keyframes rx-tag{from{opacity:0}}
 
 /* F1: the answer each drawing gives, under it, and for the dotplot the switch that changes it */
 .rx-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:4px 16px;flex-wrap:wrap;padding-right:16px}
@@ -827,13 +869,28 @@ p{margin:0}
 .rx-read b{font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 .rx-read span{font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
 
-/* F2a: the scenario fills of the business notation */
-.rx-hatch{stroke:var(--cobalt);stroke-width:1.5}
-.rx-out{fill:var(--field);stroke:var(--ink2);stroke-width:1.5}
+/* F2a: the scenario fills of the business notation, hatched in slate for the forecast, a dashed slate outline for the
+   budget, a plan; and the solid fills, two pairs of close greys, that the switch fades in over them */
+.rx-hatch{stroke:var(--slate);stroke-width:1.5}
+.rx-out{fill:var(--field);stroke:var(--slate);stroke-width:1.5;stroke-dasharray:4 3}
+.rx-ink3{fill:var(--ink3)}
+.rx-rule2{fill:var(--line2)}
+.rx-solid{opacity:0;transition:opacity .3s ease}
+.rx-plain .rx-solid{opacity:1}
+.rx-bu{transition:fill .3s ease}
+.rx-plain .rx-bu{fill:var(--ink2)}
 
-/* F2b, F4a: rows slide to their new order; a clipped bar ends in a break */
-.rx-row{transition:transform .45s cubic-bezier(.3,.7,.2,1)}
+/* F2b, F4a: a clipped bar ends in a break; the directions are named under the axis; labels in two lighter weights */
 .rx-break{stroke:var(--field);stroke-width:2.5;fill:none}
+.rx-dir{fill:var(--ink2);font-size:12px;font-weight:500}
+.rx-w5{font-weight:500}
+.rx-w4{font-weight:400}
+
+/* F3a, F6a: the relief grey for a selected quadrant, panel or band; F3a: Kostenko and Hyndman's diagonal; F3c: the
+   expected-profit curve, secondary, in slate-light */
+.rx-relief{fill:#E3E7ED}
+.rx-l-ink{stroke:var(--ink);stroke-width:2;fill:none}
+.rx-l-light{stroke:var(--slate2);stroke-width:2;fill:none;stroke-linejoin:round}
 
 /* F3a, F7: marks and rows that can be selected */
 .rx-pick{cursor:pointer;outline:none}
@@ -848,20 +905,25 @@ p{margin:0}
 table.dt.rx-raw td{font-variant-numeric:proportional-nums lining-nums}
 table.dt tr.rx-total th,table.dt tr.rx-total td{font-weight:600}
 table.dt:not(.furn) tbody tr.rx-total{border-top:1.5px solid var(--ink2)}
-table.dt tr.rx-hot>*{background:color-mix(in oklab,var(--sheet) 70%,var(--field))}
-table.dt.furn tr.rx-hot>*{background:var(--sheet)}
+.rx-fig table.dt tr>*{transition:background-color .15s ease}
+table.dt tr.rx-hot>*{background:#E3E7ED}
+
+/* F6a: inside its normal range the indicator's value stays quiet */
+.t-v.rx-quiet{fill:var(--slate)}
 
 /* F6b: one small history per measure */
 .rx-panel{fill:var(--field);stroke:var(--line);stroke-width:1}
 
-/* F8: the type test, one row per face, and the live specimen */
+/* F8: the type test, one row per face, the selected face in ink and the others ink-2; and the live specimen, regular in
+   ink over a slate-light ghost of the bold */
 .rx-tt{min-width:700px;padding:6px 8px 4px}
 .rx-tt-h,.stage .rx-tt-r{display:grid;grid-template-columns:minmax(150px,1.15fr) repeat(4,minmax(0,1fr));column-gap:16px;align-items:center}
 .rx-tt-h{padding:6px 14px 8px;font-size:14px;line-height:20px;font-weight:500;color:var(--ink3)}
-.stage .rx-tt-r{width:100%;min-height:58px;padding:8px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;text-align:left;cursor:pointer}
+.stage .rx-tt-r{width:100%;min-height:58px;padding:8px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;text-align:left;cursor:pointer;transition:background-color .2s ease}
 .stage .rx-tt-r:hover{background:color-mix(in oklab,var(--sheet) 55%,var(--field))}
 .stage .rx-tt-r[aria-checked="true"]{background:var(--sheet);border-radius:10px}
-.rx-tt-r>b{font-size:17px;line-height:24px;font-weight:600}
+.rx-tt-r>b{font-size:17px;line-height:24px;font-weight:600;color:var(--ink2);transition:color .2s ease}
+.stage .rx-tt-r[aria-checked="true"]>b{color:var(--ink)}
 .rx-c{display:flex;flex-direction:column;align-items:flex-start;font-size:14px;line-height:20px}
 .rx-c .v{font-weight:500;color:var(--ink)}
 .rx-c .k{font-size:13px;font-weight:500;color:var(--ink3)}
@@ -871,11 +933,1216 @@ table.dt.furn tr.rx-hot>*{background:var(--sheet)}
 .rx-spec{position:relative;padding:16px 24px 22px;overflow-x:auto}
 .rx-spec .lay{display:grid;grid-template-columns:repeat(4,2.6em) 3.9em;column-gap:.7em;row-gap:.1em;line-height:1.3;font-variant-numeric:tabular-nums lining-nums;font-kerning:none;white-space:nowrap;color:var(--ink)}
 .rx-spec .lay span{justify-self:end;text-align:right}   /* each figure keeps its own width, so the two layers can be measured */
-.rx-spec .lay.b{position:absolute;left:24px;top:16px;font-weight:700;color:var(--cobalt);opacity:.55}
-.rx-spec .lay.r{font-weight:400}
+.rx-spec .lay.b{position:absolute;left:24px;top:16px;z-index:0;font-weight:700;color:var(--slate2)}
+.rx-spec .lay.r{position:relative;z-index:1;font-weight:400}
+
+/* motion (research.js, "motion"): a mark tagged data-a grows from its own box, from the origin its kind names, and is
+   hidden (its field carries rx-pre) until its chart is first seen; nothing moves under reduced motion, and print
+   shows every mark */
+.rx-fig [data-a]{transform-box:fill-box}
+.rx-fig [data-a="gy"]{transform-origin:50% 100%}
+.rx-fig [data-a="gyd"]{transform-origin:50% 0}
+.rx-fig [data-a="gx"]{transform-origin:0 50%}
+.rx-fig [data-a="gxl"]{transform-origin:100% 50%}
+.rx-fig [data-a="gxc"],.rx-fig [data-a="pop"]{transform-origin:50% 50%}
+.rx-fig .rx-pre [data-a]{opacity:0}
+@media print{.rx-fig .rx-pre [data-a]{opacity:1}}
+@media (prefers-reduced-motion:reduce){.rx-fig *,.rx-fig *::after{transition:none!important;animation:none!important}}
 
 @container (max-width:520px){
   .rx-plot{padding:4px 12px 0}
   .rx-read{padding:2px 16px 16px}
   .rx-nw .rng>span:first-child{white-space:normal}
+}
+
+/* Figures, second edition: the grey component kit (REDESIGN-BRIEF.md, "Component kit").
+   Everything is prefixed f2- so it never meets the page's own classes or the first edition's. */
+.f2-root{--f2-sheet:#F1F3F7;--f2-field:#FFFFFF;--f2-relief:#E3E7ED;--f2-well:#DCE1E9;--f2-ink:#121923;--f2-ink2:#414B59;--f2-ink3:#5D6776;--f2-rule:#CBD2DC;--f2-rule2:#98A2B1;--f2-slate:#5A6676;--f2-slate2:#B7BFCA;
+  font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.stage.f2-root{background:none;padding:0;border-radius:0;box-shadow:none}
+.f2-sheet{background:var(--f2-sheet);border-radius:20px;padding:8px;display:flex;flex-direction:column;gap:8px}
+.f2-head{display:flex;justify-content:space-between;align-items:center;gap:12px 24px;flex-wrap:wrap;padding:12px 16px 4px}
+.f2-title{display:flex;align-items:baseline;gap:4px 12px;flex-wrap:wrap}
+.f2-root .f2-title h3{margin:0;display:block;white-space:normal;font:600 16px/22px var(--sans,"Instrument Sans");color:var(--f2-ink);letter-spacing:0}
+.f2-hint{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-ctl{display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap}
+.f2-body{display:grid;gap:8px}
+.f2-field{background:var(--f2-field);border-radius:12px;padding:20px 24px;min-width:0}
+.f2-field.dense{padding:16px}
+.f2-row{display:grid;gap:8px}
+.f2-status{margin:0;padding:12px 16px 14px;font:400 14px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-status b{font-weight:600;color:var(--f2-ink)}
+
+/* segmented control */
+.f2-seg{display:inline-flex;background:var(--f2-relief);border-radius:10px;padding:3px;gap:2px}
+.f2-root .f2-seg button{appearance:none;border:0;background:transparent;border-radius:7px;padding:6px 12px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.f2-root .f2-seg button:hover{color:var(--f2-ink)}
+.f2-root .f2-seg button[aria-checked="true"]{background:var(--f2-field);color:var(--f2-ink);box-shadow:0 1px 2px rgba(18,25,35,.12)}
+/* switch */
+.f2-root .f2-switch{appearance:none;border:0;background:none;display:inline-flex;align-items:center;gap:8px;padding:4px 0;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);cursor:pointer;text-align:left}
+.f2-switch i{flex:none;position:relative;width:36px;height:20px;border-radius:10px;background:var(--f2-rule);transition:background .2s}
+.f2-switch i::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:8px;background:#fff;box-shadow:0 1px 2px rgba(18,25,35,.2);transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.f2-switch[aria-checked="true"]{color:var(--f2-ink)}
+.f2-switch[aria-checked="true"] i{background:var(--f2-ink)}
+.f2-switch[aria-checked="true"] i::after{transform:translateX(16px)}
+/* slider */
+.f2-slider{display:flex;align-items:center;gap:12px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-slider output{min-width:3.5em;text-align:right;font-weight:600;color:var(--f2-ink)}
+.f2-root .f2-range{appearance:none;-webkit-appearance:none;width:200px;height:18px;background:transparent;margin:0;cursor:pointer;--k:50%}
+.f2-range::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--f2-slate) 0 var(--k),var(--f2-well) var(--k) 100%)}
+.f2-range::-moz-range-track{height:4px;border-radius:2px;background:var(--f2-well)}
+.f2-range::-moz-range-progress{height:4px;border-radius:2px;background:var(--f2-slate)}
+.f2-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-7px;border-radius:9px;background:#fff;box-shadow:0 0 0 1.5px var(--f2-ink),0 1px 2px rgba(18,25,35,.2)}
+.f2-range::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:9px;background:#fff;box-shadow:0 0 0 1.5px var(--f2-ink),0 1px 2px rgba(18,25,35,.2)}
+/* button */
+.f2-root .f2-btn{appearance:none;background:var(--f2-field);border:1px solid var(--f2-rule);border-radius:8px;padding:6px 12px;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);cursor:pointer;transition:border-color .2s}
+.f2-btn:hover{border-color:var(--f2-ink)}
+.f2-btn:disabled{opacity:.45;cursor:default}
+/* focus stays visible: the one place cobalt appears in a figure */
+.f2-root :focus-visible{outline:2px solid #2146D6;outline-offset:2px;border-radius:6px}
+
+/* svg vocabulary */
+.f2-svg{display:block;overflow:visible}
+.f2-svg text{font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.f2-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-lab{font-size:13px;fill:var(--f2-ink2);font-weight:500}
+.f2-val{font-size:13px;fill:var(--f2-ink);font-weight:600}
+.f2-big{font-size:28px;fill:var(--f2-ink);font-weight:600;letter-spacing:-.01em}
+.f2-grid{stroke:var(--f2-relief);stroke-width:1}
+.f2-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-ink{fill:var(--f2-ink)} .f2-slate{fill:var(--f2-slate)} .f2-light{fill:var(--f2-slate2)} .f2-well{fill:var(--f2-well)} .f2-relief{fill:var(--f2-relief)}
+.f2-sink{stroke:var(--f2-ink);fill:none} .f2-sslate{stroke:var(--f2-slate);fill:none} .f2-slight{stroke:var(--f2-slate2);fill:none}
+.f2-plan{fill:none;stroke:var(--f2-slate);stroke-width:1.5;stroke-dasharray:4 3}
+.f2-hatch-line{stroke:var(--f2-slate);stroke-width:1.5}
+.f2-handle{cursor:grab;outline:none}
+.f2-handle.is-dragging{cursor:grabbing}
+.f2-handle .f2-ring{fill:none;stroke:var(--f2-ink);stroke-width:0;transition:stroke-width .15s}
+.f2-handle:hover .f2-ring,.f2-handle.is-dragging .f2-ring{stroke-width:1.5}
+.f2-root .f2-handle:focus-visible{outline:none}
+.f2-handle:focus-visible .f2-ring{stroke:#2146D6;stroke-width:2}
+.f2-handle{touch-action:none}
+.f2-dim{opacity:.35;transition:opacity .25s}
+
+@media (max-width:1079px){.f2-field{padding:16px}.f2-range{width:150px}}
+@media (prefers-reduced-motion:reduce){.f2-root *{transition:none!important;animation:none!important}}
+.f2-dragging,.f2-dragging *{cursor:grabbing!important;user-select:none}
+
+/* Cover · One dashboard, twelve rules (f-cover.js). Paper "Fig · 0 · One dashboard" (4TN-0), "· interacting" (6E6-0),
+   "· phone" (6UJ-0), "· phone · interacting" (8KV-0). The dashboard classes (cv-) are shared with the tune figure, which
+   restyles them through --cv-sheet, --cv-ground, --cv-well, --cv-rs, --cv-rf, --cv-inset, --cv-pad and --cv-row. */
+#board.f2-root{container-type:normal}
+.cv{position:relative}
+.cv [data-part]{transition:opacity .2s ease}
+.cv [data-part].cv-dim{opacity:.35}
+
+/* ---------- the twelve keys: on the page's columns ---------- */
+.cv-keys{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px}
+.cv-key{appearance:none;-webkit-appearance:none;border:0;background:none;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;color:inherit;-webkit-tap-highlight-color:transparent}
+.cv-kb{display:flex;align-items:center;justify-content:center;width:100%;height:40px;border-radius:8px;background:var(--f2-relief);font:600 16px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);font-variant-numeric:tabular-nums lining-nums;transition:background-color .15s ease,color .15s ease}
+.cv-kw{font:500 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);white-space:nowrap;transition:color .15s ease}
+@media (hover:hover){.cv-key:hover .cv-kb{background:var(--f2-well)}}
+.cv-key.is-on .cv-kb{background:var(--f2-ink);color:#fff}
+.cv-key.is-on .cv-kw{color:var(--f2-ink);font-weight:600}
+.f2-root .cv-key:focus-visible{outline:none}
+.f2-root .cv-key:focus-visible .cv-kb{outline:2px solid #2146D6;outline-offset:2px}
+.cv-strip{display:none}
+
+/* ---------- the status: between the keys and the sheet, four columns + eight ---------- */
+.cv-status{display:grid;grid-template-columns:calc((100% - 352px) / 3 + 96px) minmax(0,1fr);column-gap:32px;align-content:start;padding:24px 0}
+.cv-measure{position:absolute;left:0;right:0;top:0;visibility:hidden;pointer-events:none;z-index:-1}
+.cv-which{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cv-w1,.cv-plab{font:500 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-plab{display:none}
+.cv-w2{font:600 15px/22px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.cv-w3{padding-top:2px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-w3 a{font-weight:500;color:#2146D6;text-decoration:none}
+.cv-w3 a:hover{text-decoration:underline;text-underline-offset:2px}
+.cv-text{padding-top:18px;min-width:0}
+.cv-text p{margin:0;font:400 15px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.cv-text .cv-lead{font-weight:600;color:var(--f2-ink)}
+.cv-text .cv-lead.is-soft{font-weight:500}
+.cv-text .cv-lead.is-mixed{font-weight:400;color:var(--f2-ink2)}
+.cv-text .cv-lead b{font-weight:600;color:var(--f2-ink)}
+.cv-text .cv-hint{color:var(--f2-ink3)}
+.cv-status.cv-x .cv-which,.cv-status.cv-x .cv-text{animation:cv-xf .15s ease-out}
+
+/* ---------- the sheet and its grid of twelve equal columns ---------- */
+.cv-sheet{position:relative;background:var(--cv-sheet,#F1F3F7);border-radius:var(--cv-rs,20px);padding:var(--cv-inset,8px);transition:background-color .25s ease,border-radius .25s ease,padding .25s ease}
+.cv-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 12px;padding:12px 16px 4px}
+.cv-head h3{display:block;margin:0;white-space:normal;font:600 16px/22px var(--sans,"Instrument Sans");letter-spacing:0;color:var(--f2-ink)}
+.cv-head span{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--cv-inset,8px);margin-top:var(--cv-inset,8px);transition:gap .25s ease,margin .25s ease}
+.cv-dash:first-child .cv-grid{margin-top:0}
+.cv-f{position:relative;min-width:0;background:#fff;border-radius:var(--cv-rf,12px);padding:var(--cv-pad,16px 20px);transition:opacity .2s ease,border-radius .25s ease,padding .25s ease}
+.f2-root .cv-f:focus-visible{outline:2px solid #2146D6;outline-offset:2px;border-radius:var(--cv-rf,12px)}
+.cv-f.cv-dim{opacity:.35}
+.cv-f.cv-wait{opacity:0}
+.cv-kpi{grid-column:span 3}
+.cv-weeks{grid-column:span 8;grid-row:span 2}
+.cv-cash,.cv-regions{grid-column:span 4}
+.cv-products{grid-column:span 5}
+.cv-next{grid-column:span 7}
+.cv-words{grid-column:span 12}
+
+/* title bars and keys */
+.cv-tbar{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 16px}
+.cv-tbar+*{margin-top:12px}
+.cv-tt{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:8px;min-width:0}
+.cv-tt b{font:600 15px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.cv-tt span{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-lg{display:flex;align-items:center;flex-wrap:wrap;gap:4px 14px}
+.cv-lg>span{display:inline-flex;align-items:center;gap:6px;font:400 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink3);white-space:nowrap}
+.cv-sw{display:inline-block;flex:none;width:14px;height:10px;border-radius:2px}
+.cv-sw-rng{background:var(--cv-ground,#E3E7ED);transition:background-color .25s ease}
+.cv-sw-sig{width:9px;height:9px;border-radius:50%;background:var(--f2-ink)}
+.cv-sw-camp{background:var(--cv-well,#DCE1E9);transition:background-color .25s ease}
+.cv-lgi{display:block;flex:none;overflow:visible}
+.cv-plan{fill:none;stroke:var(--f2-ink);stroke-width:1.5;stroke-dasharray:4 3}
+
+/* ---------- instruments ---------- */
+.cv-kh{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:8px}
+.cv-kl{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.cv-kc{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-kpi.is-stack .cv-kh{flex-direction:column;align-items:flex-start}
+.cv-kpi.is-stack .cv-kc{font-size:12px;line-height:16px}
+.cv-kv{display:flex;align-items:baseline;gap:6px;padding:4px 0 10px}
+.cv-kn{display:inline-block;font:600 40px/44px var(--sans,"Instrument Sans");letter-spacing:-.02em;color:var(--f2-ink);font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+.cv-ku{font:500 15px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-ks{position:relative;height:16px}
+.cv-ktr,.cv-kbar{position:absolute;left:0;top:4px;height:8px;border-radius:4px}
+.cv-ktr{right:0;background:var(--cv-ground,#E3E7ED);transition:background-color .25s ease}
+.cv-kbar{background:var(--f2-slate)}
+.cv-ktk{position:absolute;top:0;width:2px;height:16px;margin-left:-1px;border-radius:1px;background:var(--f2-ink)}
+.cv-kf{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:8px}
+.cv-kf b{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap}
+.cv-kf span{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3);text-align:right}
+
+/* ---------- week by week ---------- */
+.cv-chart{position:relative;touch-action:pan-y}
+.cv-wsvg{position:absolute;left:0;top:0}
+.cv-rng{fill:var(--cv-ground,#E3E7ED);transition:fill .25s ease}
+.cv-mean{stroke:var(--f2-rule2);stroke-width:1}
+.cv-line{fill:none;stroke:var(--f2-slate);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cv-chart:not(.is-wide) .cv-line{stroke-width:1.75}
+.cv-pt{fill:var(--f2-slate)}
+.cv-sig{fill:var(--f2-ink);stroke:#fff;stroke-width:2}
+.cv-last{fill:var(--f2-slate);stroke:#fff;stroke-width:2}
+.cv-bar{fill:var(--f2-slate)}
+.cv-planl{fill:none;stroke:var(--f2-ink);stroke-width:1.5;stroke-dasharray:4 3}
+.cv-base{stroke:var(--f2-rule2);stroke-width:1}
+.cv-hair{stroke:var(--f2-ink);stroke-width:1;opacity:0;transition:opacity .15s ease}
+.cv-chart.is-pointed .cv-hair{opacity:1}
+.cv-rl{position:absolute;left:0;width:108px;display:flex;flex-direction:column;gap:2px;transform:translateY(-50%)}
+.cv-rl b{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.cv-rl span{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-lim{position:absolute;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);white-space:nowrap}
+.cv-chart .cv-val{position:absolute;width:67px;display:flex;flex-direction:column;align-items:flex-end;transition:top .2s ease}
+.cv-val b{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap}
+.cv-val span{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);white-space:nowrap}
+.cv-val.is-sig span{font-weight:600;color:var(--f2-ink)}
+.cv-rh{position:absolute;left:0;right:0;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.cv-rh-l{display:flex;align-items:baseline;gap:8px;min-width:0}
+.cv-rh-l b{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap}
+.cv-rh-l span{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cv-chart .cv-rh .cv-val{position:static;width:auto;flex:none;flex-direction:row;align-items:baseline;gap:6px}
+.cv-axis{position:absolute;left:0;right:0;height:16px}
+.cv-axt{position:absolute;left:0;top:0;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.cv-tk{position:absolute;top:0;width:30px;text-align:center;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.cv-tk.is-on{font-weight:600;color:var(--f2-ink)}
+.cv-hit{position:absolute;cursor:crosshair}
+.cv-anc{position:absolute;visibility:hidden;pointer-events:none}
+
+/* ---------- cash: the identity on one scale ---------- */
+.cv-id{position:relative;height:54px}
+.cv-idr{position:absolute;left:0;right:0;top:0;height:24px}
+.cv-idr2{top:30px}
+.cv-seg{position:absolute;top:0;height:24px;display:flex;align-items:center;padding-left:8px;overflow:hidden;white-space:nowrap;font:500 12px/16px var(--sans,"Instrument Sans");font-variant-numeric:tabular-nums}
+.cv-seg.cv-l{border-radius:4px 0 0 4px}
+.cv-seg.cv-r{border-radius:0 4px 4px 0}
+.cv-seg em{font-style:normal}
+.cv-seg.is-snug{padding-left:5px}
+.cv-seg.is-tight em{display:none}
+.cv-bal{background:var(--f2-slate2);color:var(--f2-ink)}
+.cv-flow{background:var(--f2-slate);color:#fff}
+.cv-idl{position:absolute;top:-4px;width:1.5px;height:62px;background:var(--f2-ink)}
+.cv-idt{position:absolute;top:19px;font:600 14px/16px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap}
+.cv-cap{margin:12px 0 0;font:400 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+
+/* ---------- sign-ups by region: a plus-shaped tile map ---------- */
+.cv-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,24px);gap:6px}
+.cv-tile{display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0;padding:0 8px;border-radius:6px;background:var(--cv-sheet,#F1F3F7);transition:background-color .25s ease}
+.cv-tile.is-camp{background:var(--cv-well,#DCE1E9)}
+.cv-tile span{font:500 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cv-tile b{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+
+/* ---------- products: a table set to be read ---------- */
+.cv-tab{max-width:560px}
+.cv-tr{display:grid;grid-template-columns:minmax(0,92fr) minmax(0,56fr) minmax(0,86fr) minmax(0,102fr) minmax(0,79fr);align-items:center;height:var(--cv-row,28px);font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums lining-nums;transition:height .25s ease}
+.cv-tr>span{min-width:0;white-space:nowrap}
+.cv-tr>span:first-child{font-weight:500}
+.cv-tr>span:nth-child(2),.cv-tr>span:nth-child(3),.cv-tr>span:nth-child(5){text-align:right}
+.cv-tr>span:nth-child(4){display:flex;align-items:center;padding-left:14px}
+.cv-ib{display:block;height:8px;border-radius:2px;background:var(--f2-slate)}
+.cv-th{height:22px;align-items:end;padding-bottom:6px;border-bottom:1px solid var(--f2-rule);font-size:12px;line-height:16px;color:var(--f2-ink3)}
+.cv-th>span:first-child{font-weight:400}
+.cv-ttl{height:30px;padding-top:2px;border-top:1px solid var(--f2-rule);font-weight:600}
+.cv-ttl>span:first-child{font-weight:600}
+.cv-nw{display:none}
+.cv-products.is-narrow .cv-wd{display:none}
+.cv-products.is-narrow .cv-nw{display:inline}
+.cv-products.is-narrow .cv-tr{grid-template-columns:minmax(0,80fr) minmax(0,52fr) minmax(0,60fr) minmax(0,60fr) minmax(0,58fr)}
+.cv-products.is-narrow .cv-tr>span:nth-child(4){padding-left:10px}
+
+/* ---------- orders next week: twenty outcomes, the staffing line, the readout ---------- */
+.cv-nx{display:flex;flex-direction:column;gap:12px}
+.cv-nx.is-side{flex-direction:row;gap:32px}
+.cv-dp{position:relative;flex:none;height:192px;max-width:100%}
+.cv-nx:not(.is-side) .cv-dp{align-self:center}
+.cv-zone{fill:var(--cv-ground,#E3E7ED);transition:fill .25s ease}
+.cv-dot-b{fill:#fff}
+.cv-dot-h{stroke:var(--f2-slate);stroke-width:1.5;transition:stroke .15s ease}
+.cv-hatch-line{stroke:var(--f2-slate);stroke-width:3.2}
+.cv-hatch-key{stroke:var(--f2-slate);stroke-width:2.8}
+.cv-nx.is-dragging .cv-dot.is-above .cv-dot-h{stroke:var(--f2-ink)}
+.cv-dpax{stroke:var(--f2-rule2);stroke-width:1}
+.cv-dpt{font-size:12px;fill:var(--f2-ink3)}
+.cv-sline{stroke:var(--f2-ink);stroke-width:1.5;stroke-dasharray:4 3}
+.cv-slab{font-size:12px;font-weight:600;fill:var(--f2-ink)}
+.cv-thumb{fill:#fff;stroke:var(--f2-ink);stroke-width:1.5}
+.cv-shit{fill:#fff;fill-opacity:0}
+.cv-ghost{stroke:var(--f2-slate2);stroke-width:1;stroke-dasharray:3 3;animation:cv-fade .2s ease-out}
+.cv-ro{display:flex;flex:1;flex-direction:column;gap:16px;min-width:0}
+.cv-nx.is-side .cv-ro{padding-top:20px}
+.cv-cnt-n{font:600 32px/36px var(--sans,"Instrument Sans");letter-spacing:-.02em;color:var(--f2-ink);font-variant-numeric:tabular-nums lining-nums}
+.cv-cnt-s{margin:4px 0 0;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.cv-notes p{margin:0;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.cv-notes p+p{margin-top:2px}
+.cv-hist{display:flex;gap:6px;margin-top:-4px;visibility:hidden;opacity:0;transition:opacity .2s ease,visibility .2s}
+.f2-root .cv-hist .f2-btn{padding:3px 10px;font-size:13px;line-height:18px}
+.cv-hist.is-on{visibility:visible;opacity:1}
+
+/* ---------- what the numbers are ---------- */
+.cv-tbar+.cv-terms{margin-top:10px}
+.cv-terms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 48px;margin:0}
+.cv-terms div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.cv-terms dt{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.cv-terms dd{margin:0;font:400 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+
+/* ---------- pointing: the page's columns (rule 1), span tags and the sliding outlines ---------- */
+.cv-ov{position:absolute;inset:0;pointer-events:none;z-index:2}
+.cv-cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;opacity:0;transition:opacity .2s ease}
+.cv-cols i{background:rgba(18,25,35,.06)}
+.cv-cols-on .cv-cols{opacity:1}
+.cv-tag{position:absolute;transform:translateX(-100%);padding:1px 7px;border-radius:6px;background:#fff;box-shadow:inset 0 0 0 1px var(--f2-rule);font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);white-space:nowrap;animation:cv-fade .2s ease-out}
+.cv-bx{position:absolute;left:0;top:0;border:2px solid var(--f2-ink);opacity:0;transition:transform .25s cubic-bezier(.2,.7,.2,1),width .25s cubic-bezier(.2,.7,.2,1),height .25s cubic-bezier(.2,.7,.2,1),border-radius .25s ease,opacity .2s ease}
+.cv-bx.is-on{opacity:1}
+.cv-bx.cv-nt{transition:opacity .2s ease}
+
+/* ---------- entrance, once (never under reduced motion: f2-root kills every animation there) ---------- */
+@keyframes cv-fade{from{opacity:0}}
+@keyframes cv-xf{from{opacity:.2}}
+@keyframes cv-rise{from{opacity:0;transform:translateY(12px)}}
+@keyframes cv-wipe{from{clip-path:inset(-12px 100% -12px -12px)}to{clip-path:inset(-12px -12px -12px -12px)}}
+@keyframes cv-growx{from{transform:scaleX(0)}}
+@keyframes cv-growy{from{transform:scaleY(0)}}
+@keyframes cv-pop{from{transform:scale(0)}}
+@keyframes cv-drop{from{opacity:0;transform:translateY(-8px)}}
+@keyframes cv-tone{from{background-color:var(--cv-sheet,#F1F3F7)}}
+.cv-pre .cv-key,.cv-pre .cv-status{opacity:0}
+.cv-in .cv-key{animation:cv-fade .2s ease-out backwards;animation-delay:calc(var(--i) * 30ms)}
+.cv-in .cv-status{animation:cv-fade .3s ease-out backwards;animation-delay:700ms}
+.cv-f.cv-go{animation:cv-rise .4s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:var(--cv-d,0ms)}
+.cv-go .cv-kbar{transform-origin:left center;animation:cv-growx .6s cubic-bezier(.33,1,.68,1) backwards;animation-delay:var(--cv-d,0ms)}
+.cv-go .cv-ktk{animation:cv-fade .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + 400ms)}
+.cv-go .cv-line{animation:cv-wipe .6s linear backwards;animation-delay:var(--cv-d,0ms)}
+.cv-go .cv-pt{animation:cv-fade .12s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + var(--i) * 54ms)}
+.cv-go .cv-rng,.cv-go .cv-mean,.cv-go .cv-lim,.cv-go .cv-val{animation:cv-fade .2s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + 600ms)}
+.cv-go .cv-sig,.cv-go .cv-last{transform-box:fill-box;transform-origin:center;animation:cv-pop .2s cubic-bezier(.33,1,.68,1) backwards;animation-delay:calc(var(--cv-d,0ms) + 800ms)}
+.cv-go .cv-bar{transform-box:fill-box;transform-origin:50% 100%;animation:cv-growy .4s cubic-bezier(.33,1,.68,1) backwards;animation-delay:calc(var(--cv-d,0ms) + var(--i) * 20ms)}
+.cv-go .cv-planl{animation:cv-wipe .4s linear backwards;animation-delay:calc(var(--cv-d,0ms) + 620ms)}
+.cv-go .cv-idr{animation:cv-wipe .5s cubic-bezier(.33,1,.68,1) backwards;animation-delay:var(--cv-d,0ms)}
+.cv-go .cv-idl,.cv-go .cv-idt{animation:cv-fade .2s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + 500ms)}
+.cv-go .cv-tile{animation:cv-fade .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + var(--i) * 40ms)}
+.cv-go .cv-tile.is-camp{animation:cv-fade .3s ease-out backwards,cv-tone .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + var(--i) * 40ms),calc(var(--cv-d,0ms) + 380ms)}
+.cv-go .cv-tr{animation:cv-fade .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + var(--i) * 40ms)}
+.cv-go .cv-ib{transform-origin:left center;animation:cv-growx .5s cubic-bezier(.33,1,.68,1) backwards;animation-delay:calc(var(--cv-d,0ms) + 200ms + var(--i) * 40ms)}
+.cv-go .cv-dot{animation:cv-drop .3s cubic-bezier(.33,1,.68,1) backwards;animation-delay:calc(var(--cv-d,0ms) + var(--i) * 20ms)}
+.cv-go [data-part="nx-zone"],.cv-go .cv-staff{animation:cv-fade .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + 440ms)}
+.cv-go .cv-cnt,.cv-go .cv-notes{animation:cv-fade .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + 300ms)}
+.cv-go .cv-terms div{animation:cv-fade .3s ease-out backwards;animation-delay:calc(var(--cv-d,0ms) + 120ms)}
+
+/* ---------- under 1080 px: one column; the keys become a scroller ---------- */
+@media (max-width:1079px){
+  .cv-keys{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;margin:-4px calc(-1 * clamp(16px,4vw,40px)) 0;padding:4px clamp(16px,4vw,40px) 4px;scroll-padding-inline:clamp(16px,4vw,40px)}
+  .cv-keys::-webkit-scrollbar{display:none}
+  .cv-key{flex:none;width:auto;min-width:56px}
+  .cv-kb{width:56px}
+  .cv-status{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+  .cv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cv-kpi{grid-column:span 1}
+  .cv-weeks,.cv-cash,.cv-regions,.cv-products,.cv-next,.cv-words{grid-column:1 / -1;grid-row:auto}
+  .cv-terms{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+  .cv-cols{column-gap:8px}
+}
+/* ---------- under 640 px: the phone; the keys stick under the site header ---------- */
+@media (max-width:639px){
+  .cv-bar{position:sticky;top:var(--cv-top,0px);z-index:5;margin-inline:calc(-1 * clamp(16px,4vw,40px));padding-top:12px;background:#fff}
+  .cv-keys{margin:-4px 0 0}
+  .cv-strip{position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;gap:2px;padding:0 clamp(16px,4vw,40px) 12px;background:#fff;border-bottom:1px solid var(--f2-relief);opacity:0;visibility:hidden;transition:opacity .15s ease,visibility .15s}
+  .cv-bar.is-stuck{box-shadow:none}
+  .cv-bar.is-stuck .cv-strip{opacity:1;visibility:visible}
+  .cv-strip b{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cv-strip span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font:400 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+  .cv-status{grid-template-columns:minmax(0,1fr);row-gap:4px;padding:20px 0}
+  .cv-text{padding-top:0}
+  .cv-which.has-plab .cv-w1,.cv-which.has-plab .cv-w2{display:none}
+  .cv-which.has-plab .cv-plab{display:block}
+  .cv-head{flex-direction:column;align-items:flex-start;padding:12px 12px 4px}
+  .cv-f{padding:var(--cv-pad-s,16px)}
+  .cv-kpi{padding:var(--cv-pad-sk,14px 16px)}
+  .cv-kv{gap:4px;padding:6px 0 8px}
+  .cv-kn{font-size:30px;line-height:34px}
+  .cv-ks{height:14px}
+  .cv-ktr,.cv-kbar{height:6px;border-radius:3px}
+  .cv-ktk{height:14px}
+  .cv-kf{padding-top:6px}
+  .cv-kf b,.cv-kf span{font-size:13px;line-height:18px}
+  .cv-terms{grid-template-columns:minmax(0,1fr);row-gap:12px}
+  .cv-tbar+.cv-terms{margin-top:12px}
+  .cv-ro{gap:12px}
+  .cv-cnt-n{font-size:28px;line-height:32px}
+}
+
+/* Rule 1 · Programme calculator (f-r01-programme.js). Paper "Fig · 1 · Programme": controls 4 columns, plot 8 columns. */
+/* The sheet is the figure (Paper): no stage ring around it; header and status take the kit's padding
+   (header 12 16 4, then the sheet's 8 px gap; status 12 16 14 after the same gap). Core candidates. */
+#demo-programme.f2-root{background:none;padding:0;border-radius:0}
+#demo-programme .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-programme .f2-status{padding:12px 16px 14px}
+
+/* Two fields on the page grid: a field spanning n columns is n·column + (n − 1)·gutter + 4 px, so its edge sits on a
+   gutter's centre line. In the sheet's content box C (= figure − 16): 4 columns = (C − 336) / 3 + 100 → 356 at 1120. */
+.f2-r1-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+.f2-r1 .f2-field{padding:24px}
+
+/* controls */
+.f2-r1-ctl{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.f2-r1-top{display:flex;flex-direction:column;gap:28px}
+.f2-r1-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r1 .f2-slider{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;row-gap:8px}
+.f2-r1 .f2-slider .f2-sl-label{grid-area:1/1}
+.f2-r1 .f2-slider output{grid-area:1/2;min-width:0;white-space:nowrap}
+.f2-r1 .f2-slider .f2-range{grid-area:2/1/3/3;width:100%;height:18px}
+.f2-r1 .f2-range:disabled{cursor:default;opacity:.45}
+.f2-r1-gut{display:flex;flex-direction:column;gap:8px}
+.f2-r1 [data-seg="g"]{display:flex;width:100%}
+.f2-r1 [data-seg="g"] button{flex:1 1 0;text-align:center;font-variant-numeric:tabular-nums}
+.f2-r1 [data-seg="preset"] button{font-variant-numeric:tabular-nums;white-space:nowrap}
+.f2-r1-read{display:flex;flex-direction:column;gap:2px}
+.f2-r1-sum{display:block;font:600 40px/44px var(--sans,"Instrument Sans");letter-spacing:-.02em;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r1-note{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r1-formula{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;padding-top:18px}
+.f2-r1-expr{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.f2-r1-expr.is-pointed{font-weight:600}
+
+/* plot */
+.f2-r1-plot{position:relative;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.f2-r1-plot:focus-visible{outline-offset:13px}
+.f2-r1-dim,.f2-r1-tick{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r1-chip{fill:#FFFFFF}
+.f2-r1-dimt,.f2-r1-vh,.f2-r1-n{font-size:12px;fill:var(--f2-ink3)}
+.f2-r1-vh{transition:opacity .15s}
+.f2-r1-vh.is-off{opacity:0}
+.f2-r1-bar{fill:var(--f2-ink);transition:fill .2s cubic-bezier(.2,.7,.2,1)}
+.f2-r1-row.is-frac .f2-r1-bar{fill:var(--f2-slate2)}
+.f2-r1-row.is-ghost .f2-r1-bar{fill:var(--f2-sheet)}
+[data-tr="point"] .f2-r1-bar{transition-duration:.15s}
+.f2-r1-v{font-size:14px;font-weight:600;fill:var(--f2-ink)}
+.f2-r1-row.is-frac .f2-r1-v{font-weight:400;fill:var(--f2-ink3)}
+.f2-r1-n,.f2-r1-v{transition:opacity .15s,fill .2s}
+.f2-r1-row.is-ghost .f2-r1-n,.f2-r1-row.is-ghost .f2-r1-v{opacity:.35}
+.f2-r1-row.is-pointed .f2-r1-n{fill:var(--f2-ink);font-weight:500}
+.f2-r1-rb{fill:var(--f2-sheet);opacity:0;transition:opacity .15s}
+.f2-r1-gs{opacity:0;transition:opacity .15s}
+.f2-r1-gs rect{fill:var(--f2-relief)}
+.f2-r1-rb.on,.f2-r1-gs.on{opacity:1}
+
+/* one column under 1080 px: the controls on top, the plot keeps its lanes and the track takes what is left */
+@media (max-width:1079px){
+  .f2-r1-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r1 .f2-field{padding:16px}
+  .f2-r1-ctl{gap:24px}
+  .f2-r1-top{gap:20px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r1-ctl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-items:end}
+}
+/* phones: the presets fill the header row, each option on two lines */
+@media (max-width:639px){
+  .f2-r1 .f2-ctl{width:100%}
+  .f2-r1 [data-seg="preset"]{display:flex;width:100%}
+  .f2-r1 [data-seg="preset"] button{flex:1 1 0;display:flex;flex-direction:column;align-items:flex-start;text-align:left;white-space:normal;padding:6px 10px}
+  .f2-r1-dot{display:none}
+  .f2-r1-pb{font-weight:400}
+}
+
+/* Rule 2 · Instrument builder (f-r02-instrument.js). Paper "Fig · 2 · Instrument": controls 4 columns, card 8 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status; switches keep the kit's type
+   (the first edition's `.stage button` rule would otherwise win). Core candidates. */
+#demo-instrument.f2-root{background:none;padding:0;border-radius:0}
+#demo-instrument .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-instrument .f2-status{padding:12px 16px 14px}
+#demo-instrument .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+
+.f2-r2-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+
+/* controls: four switches, then the value */
+.f2-r2-ctl{display:flex;flex-direction:column;gap:20px;padding:24px}
+.f2-r2-sws{display:flex;flex-direction:column;gap:16px}
+.f2-r2 .f2-switch{display:flex;align-items:flex-start;gap:12px;padding:0;width:100%;transition:opacity .2s}
+.f2-r2 .f2-switch>span{display:flex;flex-direction:column;min-width:0}
+.f2-r2 .f2-switch:disabled{opacity:.4;cursor:default}
+.f2-r2-st{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r2-sq{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-val{border-top:1px solid var(--f2-relief);padding-top:20px}
+.f2-r2 .f2-slider{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;row-gap:8px}
+.f2-r2 .f2-slider .f2-sl-label{grid-area:1/1}
+.f2-r2 .f2-slider output{grid-area:1/2;min-width:0;white-space:nowrap}
+.f2-r2 .f2-slider .f2-range{grid-area:2/1/3/3;width:100%;height:18px}
+
+/* the card: the instrument, vertically centred */
+.f2-r2-cardf{display:flex;flex-direction:column;justify-content:center;padding:40px 48px}
+.f2-r2-head{display:flex;flex-direction:column;gap:8px;padding-bottom:12px}
+.f2-r2-lrow{display:flex;align-items:baseline;gap:10px}
+.f2-r2-name{font:600 16px/24px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.f2-r2-basis{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-vrow{display:flex;align-items:baseline;gap:8px}
+.f2-r2-num{font:600 56px/60px var(--sans,"Instrument Sans");letter-spacing:-.03em;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r2-unit{font:500 16px/24px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-rail{position:relative;height:58px}
+.f2-r2-gapin{padding-top:16px}
+.f2-r2-gaprow{display:flex;align-items:baseline;gap:8px}
+.f2-r2-gap{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r2-words{display:inline-grid;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-words>span{grid-area:1/1;opacity:0;transition:opacity .15s}
+.f2-r2-words>span.on{opacity:1}
+
+/* the rail */
+.f2-r2-track{fill:var(--f2-well)}
+.f2-r2-bar{fill:var(--f2-slate)}
+.f2-r2-tick{fill:var(--f2-ink);stroke:#FFFFFF;stroke-width:4;paint-order:stroke}
+.f2-r2-tl{font-size:12px;font-weight:500;fill:var(--f2-ink2);transition:opacity .15s}
+.f2-r2-tl.is-near{opacity:0}
+.f2-r2-ax{font-size:12px;fill:var(--f2-ink3)}
+/* the end of the bar: a 44 px target; on hover an 18 px handle and a ring 6 px outside it; the value while dragged */
+.f2-r2 .f2-r2-h:focus-visible{outline:none}
+.f2-r2-h{outline:none;touch-action:none}
+.f2-r2-hit{fill:transparent}
+.f2-r2-ring{fill:none;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r2-knob{fill:#FFFFFF;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r2-hv{font-size:14px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s}
+.f2-r2-h:hover .f2-r2-ring,.f2-r2-h:hover .f2-r2-knob,.f2-r2-h.is-dragging .f2-r2-ring,.f2-r2-h.is-dragging .f2-r2-knob,.f2-r2-h:focus-visible .f2-r2-knob{opacity:1}
+.f2-r2-h:focus-visible .f2-r2-ring{opacity:1;stroke:#2146D6;stroke-width:2}
+.f2-r2-h.is-showing .f2-r2-hv{opacity:1}
+
+/* switched-off parts fade out where they stand; nothing reflows */
+.f2-r2-p-unit,.f2-r2-p-scale,.f2-r2-p-comp,.f2-r2-p-gap{transition:opacity .2s cubic-bezier(.2,.7,.2,1)}
+.f2-r2.no-unit .f2-r2-p-unit,.f2-r2.no-scale .f2-r2-p-scale,.f2-r2.no-comp .f2-r2-p-comp,.f2-r2.no-gap .f2-r2-p-gap{opacity:0}
+.f2-r2.no-scale .f2-r2-h{visibility:hidden;pointer-events:none}
+
+/* one column under 1080 px: controls on top (switches two by two where there is room), the card below */
+@media (max-width:1079px){
+  .f2-r2-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r2-ctl{padding:16px}
+  .f2-r2-cardf{padding:28px 20px 24px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r2-sws{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 32px}
+}
+@media (max-width:639px){
+  .f2-r2-num{font-size:48px;line-height:52px}
+}
+
+/* Rule 3 · Signal or routine (f-r03-xmr.js). Paper "Fig · 3 · Routine variation": working 4 columns, chart 8 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status; the header switch keeps the kit's
+   type and its ink-2 label. Core candidates. */
+#demo-xmr.f2-root{background:none;padding:0;border-radius:0}
+#demo-xmr .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-xmr .f2-status{padding:12px 16px 14px}
+#demo-xmr .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);gap:10px;padding:0}
+
+.f2-r3-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+
+/* the working: how the limits come out of weeks 1 to 11, and where week 12 stands */
+.f2-r3-work{display:flex;flex-direction:column;gap:20px;padding:24px}
+.f2-r3-sec{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f2-r3-sec2{border-top:1px solid var(--f2-relief);padding-top:20px}
+.f2-r3-cap{font:600 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r3 dl{margin:0}
+.f2-r3-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:4px 0}
+.f2-r3-row dt{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);min-width:0}
+.f2-r3-row dd{margin:0;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* the chart, and the moving-range strip that opens under it */
+.f2-r3-chartf{display:flex;flex-direction:column;justify-content:center;padding:24px}
+.f2-r3-chart{position:relative}
+.f2-r3-plot{position:relative;border-radius:6px}
+.f2-r3-plot:focus-visible{outline-offset:6px}
+.f2-r3-stripw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,.7,.2,1) .2s}
+.f2-r3.is-strip .f2-r3-stripw{grid-template-rows:1fr;transition-delay:0s}
+.f2-r3-stripi{overflow:hidden;min-height:0}
+.f2-r3-strip{padding-top:20px}
+.f2-r3-stitle{margin:0 0 8px;padding-left:40px;font:600 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r3.is-narrow .f2-r3-stitle{padding-left:0}
+.f2-r3-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+.f2-r3-gl{stroke:var(--f2-relief);stroke-width:1}
+.f2-r3-band{fill:var(--f2-relief)}
+.f2-r3-lim,.f2-r3-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r3-avg{stroke:#FFFFFF;stroke-width:1.5}
+.f2-r3-amr{stroke:var(--f2-rule);stroke-width:1}
+.f2-r3-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-r3-track{fill:var(--f2-well)}
+.f2-r3-line{fill:none;stroke:var(--f2-slate);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.f2-r3-pt{fill:var(--f2-slate);stroke:#FFFFFF;stroke-width:1.5;transition:fill .15s}
+.f2-r3-pt.is-pt{fill:var(--f2-ink)}
+.f2-r3-pv{font-size:12px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s;pointer-events:none}
+.f2-r3-pv.on{opacity:1}
+/* the latest week: a 4 px track, a point that turns ink beyond either limit, and a 1.5 px ink ring 6 px outside it */
+.f2-r3 .f2-r3-h:focus-visible{outline:none}
+.f2-r3-h{outline:none}
+.f2-r3-hit{fill:transparent;touch-action:none}
+.f2-r3-ring{fill:none;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r3-dot{fill:var(--f2-slate);stroke:#FFFFFF;stroke-width:2;transition:fill .15s}
+.f2-r3-h.is-out .f2-r3-dot{fill:var(--f2-ink)}
+.f2-r3-h:hover .f2-r3-ring,.f2-r3-h.is-dragging .f2-r3-ring,.f2-r3-h.is-out .f2-r3-ring{opacity:1}
+.f2-r3-h:focus-visible .f2-r3-ring{opacity:1;stroke:#2146D6;stroke-width:2}
+.f2-r3-lv{font-size:14px;font-weight:600;fill:var(--f2-ink);pointer-events:none}
+.f2-r3-mr{fill:var(--f2-slate2)}
+.f2-r3-mrl{fill:var(--f2-slate);transition:fill .15s}
+.f2-r3-mrl.is-out{fill:var(--f2-ink)}
+.f2-r3-mv{font-size:12px;font-weight:600;fill:var(--f2-ink)}
+
+/* one column under 1080 px: the working on top (two short tables side by side where there is room), the chart below */
+@media (max-width:1079px){
+  .f2-r3-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r3-work,.f2-r3-chartf{padding:16px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r3-work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px}
+  .f2-r3-sec2{border-top:0;padding-top:0}
+}
+
+/* Rule 4 · A balance that must hold (f-r04-identity.js). Paper "Fig · 4 · Identity": ledger 4 columns, plot 8 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status; the header switch keeps the kit's
+   type and its ink-2 label. Core candidates. */
+#demo-bridge.f2-root{background:none;padding:0;border-radius:0}
+#demo-bridge .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-bridge .f2-status{padding:12px 16px 14px}
+#demo-bridge .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);gap:10px;padding:0}
+
+.f2-r4-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+
+/* the ledger: three terms, then the closing balance under an ink rule */
+.f2-r4-led{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:24px}
+.f2-r4-terms{display:flex;flex-direction:column;gap:20px}
+.f2-r4 .f2-slider{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;row-gap:8px}
+.f2-r4 .f2-slider .f2-sl-label{grid-area:1/1}
+.f2-r4 .f2-slider output{grid-area:1/2;min-width:0;white-space:nowrap}
+.f2-r4 .f2-slider .f2-range{grid-area:2/1/3/3;width:100%;height:18px}
+.f2-r4-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1.5px solid var(--f2-ink);padding-top:12px}
+.f2-r4-total span{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.f2-r4-cv{font:600 20px/28px var(--sans,"Instrument Sans");letter-spacing:-.01em;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r4-lrow,.f2-r4-total{transition:opacity .15s}
+
+/* the plot */
+.f2-r4-plotf{display:flex;flex-direction:column;justify-content:center;padding:24px}
+.f2-r4-plot{position:relative;-webkit-user-select:none;user-select:none}
+.f2-r4-gl,.f2-r4-div{stroke:var(--f2-relief);stroke-width:1}
+.f2-r4-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r4-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-r4-tt{font-size:12px;font-weight:600;fill:var(--f2-ink3)}
+.f2-r4-o,.f2-r4-s-o{fill:var(--f2-slate)}
+.f2-r4-r,.f2-r4-p,.f2-r4-s-r,.f2-r4-s-p{fill:var(--f2-slate2)}
+.f2-r4-c,.f2-r4-x,.f2-r4-s-c{fill:var(--f2-ink)}
+.f2-r4-ln{font-size:12px;font-weight:500}
+.f2-r4-lv{font-size:14px;font-weight:600}
+.f2-r4-lab text{fill:var(--f2-ink)}
+.f2-r4-lab-o:is(.is-in,.is-in1) text,.f2-r4-lab-c:is(.is-in,.is-in1) text{fill:#FFFFFF}
+.f2-r4-lab-o.is-in .f2-r4-ln,.f2-r4-lab-c.is-in .f2-r4-ln{opacity:.8}
+.f2-r4-lab-x .f2-r4-ln{font-weight:600}
+.f2-r4-lab{pointer-events:none}
+.f2-r4-bal{stroke:var(--f2-ink3);stroke-width:1}
+.f2-r4-bl{font-size:12px;fill:var(--f2-ink3);transition:opacity .15s}
+.f2-r4-bl.is-near{opacity:0}
+.f2-r4-sv{font-size:12px;font-weight:600;fill:var(--f2-ink2)}
+.f2-r4-sv.is-c{fill:var(--f2-ink)}
+.f2-r4-con{stroke:var(--f2-rule2);stroke-width:1}
+/* the handles: a white knob with a 1.5 px ink ring 6 px outside it on hover and drag; the value above while dragged */
+.f2-r4 .f2-r4-h:focus-visible{outline:none}
+.f2-r4-h{outline:none}
+.f2-r4-hit{fill:transparent}
+.f2-r4-ring{fill:none;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r4-knob{fill:#FFFFFF;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r4-hv{font-size:14px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s;pointer-events:none}
+.f2-r4-h:hover .f2-r4-ring,.f2-r4-h:hover .f2-r4-knob,.f2-r4-h.is-dragging .f2-r4-ring,.f2-r4-h.is-dragging .f2-r4-knob,.f2-r4-h:focus-visible .f2-r4-knob{opacity:1}
+.f2-r4-h:focus-visible .f2-r4-ring{opacity:1;stroke:#2146D6;stroke-width:2}
+.f2-r4-h.is-showing .f2-r4-hv{opacity:1}
+/* pointing at a term: it stays, the rest fade to half */
+.f2-r4-seg,.f2-r4-step{transition:opacity .15s}
+.f2-r4.is-pt :is(.f2-r4-seg,.f2-r4-lab,.f2-r4-step,.f2-r4-lrow,.f2-r4-total):not(.is-lit){opacity:.5}
+
+/* narrow plots: the waterfall opens in its own block under the columns */
+.f2-r4-wfw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,.7,.2,1) .25s}
+.f2-r4.is-wf.is-narrow .f2-r4-wfw{grid-template-rows:1fr;transition-delay:0s}
+.f2-r4:not(.is-narrow) .f2-r4-wfw{display:none}
+.f2-r4-wfi{overflow:hidden;min-height:0}
+.f2-r4-wfp{padding-top:20px}
+
+/* one column under 1080 px: the ledger on top (its three terms side by side where there is room), the plot below */
+@media (max-width:1079px){
+  .f2-r4-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r4-led,.f2-r4-plotf{padding:16px}
+  .f2-r4-led{gap:20px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r4-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px}
+}
+
+/* Rule 5 · Surface lab (f-r05-surfaces.js). Paper "Fig · 5 · Surfaces": four panels of 6 columns, two by two. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for the header; switches keep the kit's type. Each panel's
+   reading is its status line, so the sheet's own status line is not shown. Core candidates. */
+#demo-surfaces.f2-root{background:none;padding:0;border-radius:0}
+#demo-surfaces .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-surfaces .f2-status{display:none}
+#demo-surfaces .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);gap:10px;padding:0}
+
+.f2-r5{--e:cubic-bezier(.2,.7,.2,1)}
+.f2-r5-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px}
+.f2-r5-panel{display:flex;flex-direction:column;gap:16px;padding:20px}
+.f2-r5-ph{display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap}
+.f2-r5-ph h4{margin:0;display:block;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:normal}
+.f2-r5-view{position:relative;height:160px}
+.f2-r5-view>*{position:absolute;display:block}
+.f2-r5-read{display:grid}
+.f2-r5-read p{grid-area:1/1;margin:0;display:flex;flex-wrap:wrap;column-gap:4px;align-content:flex-start;font:400 14px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2);opacity:0;transition:opacity .15s}
+.f2-r5-read p.is-on{opacity:1}
+.f2-r5-read b{font-weight:600;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r5-sr{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* A · dots, and the regions that regroup them (scale 0.9 → 1 with a fade) */
+.f2-r5-dot{border-radius:50%;background:var(--f2-slate)}
+.f2-r5-reg{background:var(--f2-well);opacity:0;transform:scale(.9);transition:opacity .25s var(--e),transform .25s var(--e)}
+.f2-r5-pA.is-on .f2-r5-reg{opacity:1;transform:none}
+/* B · one grey on two grounds; the bridge grows from its middle */
+.f2-r5-gl{background:var(--f2-slate);border-radius:10px 0 0 10px}
+.f2-r5-grr{background:var(--f2-relief);border-radius:0 10px 10px 0}
+.f2-r5-chip{background:#98A2B1;border-radius:8px}
+.f2-r5-bridge{background:#98A2B1;transform:scaleX(0);transition:transform .25s var(--e)}
+.f2-r5-pB.is-on .f2-r5-bridge{transform:none}
+/* C · nested corners: the inner radius tweens 36 ↔ 16, its label cross-fades */
+.f2-r5-spec>*{position:absolute;display:block}
+.f2-r5-outer{inset:0;background:var(--f2-well);border-radius:36px}
+.f2-r5-inner{inset:20px;background:#FFFFFF;border-radius:36px;transition:border-radius .3s var(--e)}
+.f2-r5-pC.is-on .f2-r5-inner{border-radius:16px}
+.f2-r5-cl{left:28px;right:28px;top:50%;transform:translateY(-50%);text-align:center;font:500 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums;transition:opacity .3s}
+.f2-r5-cl1,.f2-r5-pC.is-on .f2-r5-cl0{opacity:0}
+.f2-r5-pC.is-on .f2-r5-cl1{opacity:1}
+/* D · tiles toned by value; the numbers fade in or out */
+.f2-r5-tile{border-radius:8px;background:var(--tone)}
+.f2-r5-tile b{position:absolute;inset:0;display:grid;place-items:center;font:600 16px/24px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .2s}
+.f2-r5-tile.is-dark b{color:#FFFFFF}
+.f2-r5-pD.is-on .f2-r5-tile b{opacity:1}
+.f2-r5-tl{text-align:center;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+
+/* the entrance: views rise 12 px, 80 ms apart; dots one by one; grounds and chips fade in; the specimen grows from
+   96 %; the tiles fill from white to their tones */
+.f2-r5-view{transition:opacity .4s var(--e) var(--d,0ms),transform .4s var(--e) var(--d,0ms)}
+.f2-r5-pre .f2-r5-view{opacity:0;transform:translateY(12px)}
+.f2-r5-dot{transition:opacity .2s var(--d,0ms),transform .3s var(--e) var(--d,0ms)}
+.f2-r5-pre .f2-r5-dot{opacity:0;transform:scale(0)}
+.f2-r5-gr,.f2-r5-chip{transition:opacity .4s var(--e) .18s}
+.f2-r5-pre .f2-r5-gr,.f2-r5-pre .f2-r5-chip{opacity:0}
+.f2-r5-spec{transition:opacity .4s var(--e) .26s,transform .4s var(--e) .26s}
+.f2-r5-pre .f2-r5-spec{opacity:0;transform:scale(.96)}
+.f2-r5-tile{transition:background-color .4s var(--e) var(--d,0ms)}
+.f2-r5-pre .f2-r5-tile{background:#FFFFFF}
+
+/* one column under 1080 px, panels A to D */
+@media (max-width:1079px){
+  .f2-r5-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r5-panel{padding:16px}
+}
+
+/* Rule 6 · One job for each fill (f-r06-notation.js). Paper "Fig · 6 · Notation": one field across the 12 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status. Core candidates. */
+#demo-notation.f2-root{background:none;padding:0;border-radius:0}
+#demo-notation .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-notation .f2-status{padding:12px 16px 14px}
+
+.f2-r6-chartf{padding:24px;display:flex;flex-direction:column;gap:20px}
+/* the key: by fill, or the four hue names as printed in grey; the two cross-fade */
+.f2-r6-key{display:grid}
+.f2-r6-kf,.f2-r6-kh{grid-area:1/1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px;opacity:0;transition:opacity .2s}
+.f2-r6-kf.is-on,.f2-r6-kh.is-on{opacity:1}
+.f2-r6-ki{display:inline-flex;align-items:center;gap:8px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r6-kn{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r6-sw{flex:none;display:block;width:14px;height:14px;box-sizing:border-box}
+.f2-r6-sw-actual{background:var(--f2-slate);border-radius:2px}
+.f2-r6-sw-plan{background:#FFFFFF;border:1.5px dashed var(--f2-slate)}
+.f2-r6-sw-ly{background:var(--f2-slate2);border-radius:2px}
+.f2-r6-sw-grey{background:#98A2B1;border-radius:2px}
+
+/* the plot; under a 56 px slot it scrolls sideways inside its field */
+.f2-r6-scroll{overflow-x:auto;overflow-y:hidden;border-radius:6px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.f2-r6-scroll:focus-visible{outline-offset:4px}
+.f2-r6-plot{position:relative;height:272px;-webkit-user-select:none;user-select:none}
+.f2-r6-svgw{position:relative}
+.f2-r6-gl{stroke:var(--f2-relief);stroke-width:1}
+.f2-r6-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r6-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-r6-sleeve{fill:#FFFFFF;stroke:var(--f2-slate);stroke-width:1.5}
+.f2-r6-fc{stroke:var(--f2-slate);stroke-width:1.5}
+.f2-r6-ty:not([fill]){fill:var(--f2-slate)}
+/* the pointed month: a band behind its slot, a card beside its bars */
+.f2-r6-band{position:absolute;left:0;top:0;height:248px;border-radius:6px;background:var(--f2-sheet);opacity:0;transition:opacity .12s,transform .15s cubic-bezier(.2,.7,.2,1)}
+.f2-r6-band.on{opacity:1}
+.f2-r6-card{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:4px;padding:10px 12px;background:#FFFFFF;border:1px solid var(--f2-rule);border-radius:8px;box-shadow:0 1px 2px rgba(18,25,35,.12);
+  white-space:nowrap;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s cubic-bezier(.2,.7,.2,1)}
+.f2-r6-card.on{opacity:1;transform:none}
+.f2-r6-ct{font:600 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r6-cr{display:flex;align-items:center;gap:8px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r6-cr b{font-weight:600;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r6-cr svg,.f2-r6-cm{flex:none;display:block;width:10px;height:10px;box-sizing:border-box}
+.f2-r6-cm.f2-r6-sw-plan{border-width:1.5px}
+
+@media (max-width:1079px){
+  .f2-r6-chartf{padding:16px;gap:16px}
+}
+
+/* Rule 7 · Share one axis (f-r07-axis.js). Paper "Fig · 7 · Share one axis": readout 3 columns, plot 9 columns. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-axis .f2-title h3{white-space:normal}
+.r7 .f2-ctl{column-gap:24px}
+.r7 .f2-seg{flex-wrap:wrap;max-width:100%}
+.r7-ord{display:inline-flex;align-items:center;gap:6px 10px;flex-wrap:wrap}
+.r7-ord-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r7-field{padding:20px 24px 16px}
+
+.r7-top,.r7-row,.r7-axis{display:grid;grid-template-columns:var(--r7-rw,224px) minmax(0,1fr);column-gap:32px}
+.r7-top{height:20px;align-items:center}
+.r7-cap{justify-self:end;font:500 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.r7-pz{position:relative;height:20px}
+.r7-pill{position:absolute;top:0;left:0;height:20px;min-width:56px;padding:0 8px;border-radius:10px;box-sizing:border-box;background:var(--f2-ink);color:#fff;
+  font:600 12px/20px var(--sans,"Instrument Sans");font-variant-numeric:tabular-nums;text-align:center;white-space:nowrap;transform:translateX(-50%);opacity:0;transition:opacity .15s}
+.r7-pt .r7-pill{opacity:1}
+
+.r7-stack{position:relative;height:calc(4 * var(--r7-slot,80px));touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.r7-stack::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(3 * var(--r7-slot,80px));pointer-events:none;
+  background:linear-gradient(to top,var(--f2-relief) 1px,transparent 1px) 0 0/100% var(--r7-slot,80px) repeat-y}
+.r7-row{position:absolute;left:0;right:0;top:0;height:var(--r7-slot,80px);align-items:center;transition:transform .42s cubic-bezier(.65,0,.35,1)}
+.r7-still .r7-row,.r7-still .r7-shift{transition:none!important}
+.r7-read{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.r7-name{min-width:0}
+.r7-name b{display:block;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.r7-name span{display:block;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r7-val{text-align:right;flex:none}
+.r7-num{display:block;font:600 24px/28px var(--sans,"Instrument Sans");letter-spacing:-.01em;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r7-wk{display:block;height:0;overflow:hidden;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .2s}
+.r7-own .r7-wk{height:16px;opacity:1}
+.r7-plot{height:var(--r7-ph,80px);cursor:crosshair;min-width:0}
+
+/* marks */
+.r7-line{fill:none;stroke:var(--f2-slate);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.r7-shift{transition:transform .35s cubic-bezier(.33,1,.68,1)}
+.r7-otick{stroke:var(--f2-slate2);stroke-width:1;opacity:0;transition:opacity .2s}
+.r7-own .r7-otick{opacity:1}
+.r7-guide{stroke:var(--f2-ink);stroke-width:1;opacity:0;transition:opacity .15s}
+.r7-pt .r7-guide{opacity:1}
+.r7-dot-o{fill:#fff}
+.r7-dot-i{fill:var(--f2-ink)}
+.r7-dot{opacity:1;transition:opacity .15s}
+.r7-row:not(.is-drawn) .r7-dot{opacity:0}
+
+/* week axis */
+.r7-axis{height:28px;transition:opacity .3s}
+.r7-pre .r7-axis{opacity:0}
+.r7-axt{padding-top:8px;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r7-ticks{position:relative;height:28px;border-top:1px solid var(--f2-rule2);transition:opacity .2s}
+.r7-own .r7-ticks{opacity:.4}
+.r7-tick{position:absolute;top:7px;width:40px;margin-left:-20px;text-align:center;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.r7-tick>span,.r7-tick>b{display:block;transition:opacity .15s}
+.r7-tick>b{position:absolute;inset:0;font-weight:600;color:var(--f2-ink);opacity:0}
+.r7-tick.is-on>span{opacity:0}
+.r7-tick.is-on>b{opacity:1}
+
+/* one column: the readout becomes a line above each panel, the plot takes the full width */
+@media (max-width:1079px){
+  .r7-field{padding:16px}
+  .r7-top,.r7-row,.r7-axis{grid-template-columns:minmax(0,1fr)}
+  .r7-pz{display:none}
+  .r7-row{grid-template-rows:28px var(--r7-ph,72px);align-items:stretch}
+  .r7-read{align-items:center}
+  .r7-name{display:flex;align-items:baseline;gap:8px;min-width:0;white-space:nowrap;overflow:hidden}
+  .r7-name span{overflow:hidden;text-overflow:ellipsis}
+  .r7-val{display:flex;flex-direction:row-reverse;align-items:baseline;gap:8px}
+  .r7-num{font-size:20px;line-height:24px}
+  .r7-own .r7-wk{height:auto}
+  .r7-axis{height:auto}
+  .r7-axt{order:2;padding:0 0 0;margin-top:2px}
+}
+
+/* Rule 8 · Tables to be read (f-r08-table.js). Paper "Fig · 8 · Tables to be read": rules field 4 columns, table 8. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-table .f2-title h3{white-space:normal}
+.r8 .f2-ctl{gap:8px}
+.r8 .f2-body{grid-template-columns:var(--r8-rw,356px) minmax(0,1fr)}
+
+/* the five rules */
+.r8-rules{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:24px}
+.r8 .r8-rules .f2-switch{align-items:flex-start;gap:12px;padding:0;color:var(--f2-ink2)}
+.r8-sl{display:flex;flex-direction:column}
+.r8-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.r8-src{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+
+/* the table: fixed proportional columns (120 · 188 · 116 · 136 · 132 of 692), so no rule changes a width */
+.r8-tfield{padding:20px 24px 16px}
+.r8-scroll{position:relative}
+.r8-table{position:relative;--r8-cols:minmax(0,120fr) minmax(0,188fr) minmax(0,116fr) minmax(0,136fr) minmax(0,132fr)}
+.r8-thead,.r8-tbody{position:relative;z-index:1}
+.r8-hrow,.r8-tr{display:grid;grid-template-columns:var(--r8-cols);position:relative}
+.r8-hrow{min-height:36px;align-items:end}
+.r8-tr{height:44px;align-items:center;border-radius:6px}
+@media (hover:hover){.r8-tr:hover{background:var(--f2-sheet)}}
+.r8-th,.r8-td{display:flex;align-items:center;min-width:0;padding:0}
+.r8-th{padding-bottom:8px;font:500 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r8-td{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:nowrap}
+.r8-td.r8-reg{font-weight:500}
+.r8-t{display:block;min-width:0}
+.r8-ghost{position:absolute;white-space:nowrap;pointer-events:none;z-index:3}
+
+/* rule 2 · align: figures and their headers right, tabular; off: left, proportional, 10 px from the cell edge */
+#demo-table .r8-td.r8-n{font-variant-numeric:proportional-nums}
+#demo-table.r8-al .r8-td.r8-n{font-variant-numeric:tabular-nums}
+#demo-table.r8-al .r8-n{justify-content:flex-end;text-align:right}
+#demo-table:not(.r8-al) .r8-n{padding-left:10px}
+
+/* the revenue cell: a bar lane (80 px, flexible only when space is short), 12 px, then the figure (at least 40 px);
+   set left, the figure comes first and its bar follows it */
+.r8-grp{display:flex;align-items:center;min-width:0;max-width:100%}
+.r8-lane{flex:0 1 auto;width:80px;min-width:0;height:8px;margin-right:12px;transition:width .3s cubic-bezier(.33,1,.68,1),margin .3s cubic-bezier(.33,1,.68,1)}
+#demo-table:not(.r8-al) .r8-lane{order:2;margin-right:0;margin-left:12px}
+#demo-table:not(.r8-bars) .r8-lane{width:0;margin-right:0;margin-left:0}
+.r8-bar{display:block;height:8px;border-radius:2px;background:var(--f2-slate);transform-origin:left center}
+.r8-rev .r8-t{flex:none;min-width:var(--r8-figw,40px)}
+#demo-table.r8-al .r8-rev .r8-t{text-align:right}
+
+/* rule 1 · furniture (shown when the rule is off): boxes, header fill, every other row filled, semibold headers */
+.r8-fills,.r8-lines{position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;opacity:0;transition:opacity .2s}
+.r8-fills{z-index:0}
+.r8-lines{z-index:2}
+.r8-fills i{position:absolute;left:0;right:0;background:var(--f2-sheet)}
+.r8-lines b{position:absolute;left:0;top:0;box-sizing:border-box;border:1px solid var(--f2-rule)}
+.r8-lines i{position:absolute;background:var(--f2-rule)}
+#demo-table:not(.r8-furn) .r8-fills,#demo-table:not(.r8-furn) .r8-lines{opacity:1}
+.r8-hrule{position:absolute;left:0;right:0;top:35px;height:1px;background:var(--f2-rule2);transition:opacity .2s;z-index:2}
+#demo-table:not(.r8-furn) .r8-hrule{opacity:0}
+#demo-table:not(.r8-furn) .r8-th,#demo-table:not(.r8-furn) .r8-td{padding-left:10px}
+#demo-table:not(.r8-furn).r8-al .r8-n{padding-right:10px}
+#demo-table:not(.r8-furn) .r8-th{font-weight:600;color:var(--f2-ink2)}
+#demo-table:not(.r8-furn) .r8-td.r8-reg{font-weight:400}
+
+/* before the entrance */
+.r8-pre .r8-tbody .r8-tr{opacity:0}
+
+/* one column: the rules above the table; the table scrolls sideways in its field when narrower than it can be read */
+@media (max-width:1079px){
+  .r8 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r8-rules{padding:16px;gap:14px}
+  .r8-tfield{padding:16px}
+  .r8-scroll{overflow-x:auto;overscroll-behavior-x:contain}
+  .r8-table{min-width:560px}
+}
+
+/* Rule 9 · Type for figures (f-r09-type.js). Paper "Fig · 9 · Type for figures": specimen 4 columns, faces 8. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-type .f2-title h3{white-space:normal}
+#demo-type .f2-head{min-height:54px}   /* Paper fixes the controls row at 38 px: 12 + 38 + 4 */
+.r9 .f2-ctl{column-gap:24px}
+.r9 .f2-body{grid-template-columns:var(--r9-sw,356px) minmax(0,1fr)}
+.r9-probe{position:fixed;left:-10000px;top:0;visibility:hidden;white-space:pre;font-size:100px;line-height:1;font-kerning:normal;pointer-events:none}
+
+/* the specimen: the selected row in the selected face at 56 px, and its two widths */
+.r9-spec{display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:20px 24px;position:relative}
+.r9-sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.r9-sface{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.r9-snote{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);text-align:right}
+.r9-sbox{position:relative;height:68px;font-size:56px;line-height:68px;font-weight:400;color:var(--f2-ink);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+.r9-sghost{position:absolute;margin:0;pointer-events:none}
+.r9-sg{display:inline-block;transition:color .2s}
+.r9-sb{position:absolute;right:0;top:0;font-weight:700;color:var(--f2-ink);opacity:0;transition:opacity .2s}
+.r9-bold .r9-sg{color:var(--f2-slate2)}
+.r9-bold .r9-sb{opacity:1}
+.r9-sm{border-top:1px solid var(--f2-relief);padding-top:10px}
+.r9-sm>div{display:flex;align-items:center;justify-content:space-between;height:24px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r9-v{color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.r9-vd{font-weight:600}
+
+/* the matrix: label 132 + five faces of 112 (of 692), figures right-aligned 12 px from the column edge */
+.r9-mfield{padding:20px 24px 16px}
+.r9-mx{position:relative;--r9-cols:minmax(0,132fr) repeat(5,minmax(0,112fr))}
+.r9-band{position:absolute;left:0;top:-8px;width:112px;height:0;border-radius:8px;background:var(--f2-sheet);transition:transform .25s cubic-bezier(.33,1,.68,1);z-index:0}
+.r9-still .r9-band{transition:none}
+.r9-hd,.r9-row,.r9-ms{display:grid;grid-template-columns:var(--r9-cols);position:relative;z-index:1}
+.r9-hd{min-height:30px;align-items:end;padding-bottom:6px;border-bottom:1px solid var(--f2-relief)}
+#demo-type .r9-fn{appearance:none;background:none;border:0;margin:0;padding:0 12px 0 0;text-align:right;font-size:12px;line-height:16px;font-weight:500;color:var(--f2-ink2);cursor:pointer;white-space:nowrap;border-radius:4px}
+#demo-type .r9-fn.is-face{font-weight:600;color:var(--f2-ink)}
+.r9-row{height:32px;align-items:center;cursor:pointer;border-radius:4px}
+.r9-row.r9-ruled{border-top:1px solid var(--f2-relief)}
+.r9-lab{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+.r9-bold .r9-row.is-sel .r9-lab{font-weight:600;color:var(--f2-ink)}
+.r9-row .r9-lab.r9-two{white-space:normal;font-size:13px;line-height:15px;overflow:visible;text-overflow:clip}
+.r9-c{position:relative;display:block;text-align:right;padding-right:12px;font-size:18px;line-height:24px;font-weight:400;color:var(--f2-ink);white-space:nowrap;font-variant-numeric:tabular-nums lining-nums}
+.r9-prop .r9-c,.r9-prop .r9-sbox{font-variant-numeric:proportional-nums lining-nums}
+.r9-g{display:inline-block;transition:color .2s}
+.r9-b{position:absolute;right:12px;top:0;font-weight:700;opacity:0;transition:opacity .2s}
+.r9-bold .r9-row.is-sel .r9-g{color:var(--f2-slate2)}
+.r9-bold .r9-row.is-sel .r9-b{opacity:1}
+.r9-ms{height:36px;align-items:center;border-top:1px solid var(--f2-rule)}
+.r9-ms .r9-lab{font-size:12px;line-height:16px;color:var(--f2-ink3)}
+.r9-m{display:block;text-align:right;padding-right:12px;font:400 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums;cursor:pointer}
+.r9-m.is-on{font-weight:600;color:var(--f2-ink)}
+
+/* before the entrance */
+.r9-pre .r9-spec,.r9-pre .r9-mx [data-face]{opacity:0}
+
+/* one column: the specimen above the matrix; the matrix keeps its widths and scrolls sideways in its field */
+@media (max-width:1079px){
+  .r9 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r9-spec{padding:16px;gap:16px}
+  .r9-mfield{padding:16px}
+  .r9-scroll{overflow-x:auto;padding-top:8px;margin-top:-8px;overscroll-behavior-x:contain}
+  .r9-mx{min-width:692px}
+}
+
+/* Rule 10 · Uncertainty only when earned (f-r10-uncertainty.js). Paper "Fig · 10 · Uncertainty when earned":
+   readout 3 columns, plot 9; rows: slider 44, line 48, interval 48, dots 104, cumulative 120, axis 28. */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-uncertainty .f2-title h3{white-space:normal}
+#demo-uncertainty .f2-head{min-height:54px}   /* Paper fixes the controls row at 38 px: 12 + 38 + 4 */
+.r10-field{padding:20px 24px 16px}
+
+.r10-row,.r10-axis{display:grid;grid-template-columns:var(--r10-rw,224px) minmax(0,1fr);column-gap:32px;align-items:center}
+.r10-row[data-form]{border-top:1px solid var(--f2-relief)}
+.r10-plot{position:relative;min-width:0;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.r10-srow .r10-plot{height:44px}
+.r10-line .r10-plot,.r10-interval .r10-plot{height:47px}
+.r10-dots .r10-plot{height:calc(var(--r10-hd,104px) - 1px)}
+.r10-cdf .r10-plot{height:119px}
+.r10-svg{overflow:visible}
+
+/* readouts */
+.r10-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.r10-head span:first-child{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.r10-head span:last-child{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);text-align:right}
+.r10-read{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.r10-nm{min-width:0}
+.r10-nm b{display:block;font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.r10-desc{display:block;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.r10-rd{flex:none;font:600 20px/24px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r10-rd.is-na{color:var(--f2-ink3)}
+
+/* marks */
+.r10-track{fill:var(--f2-well)}
+.r10-fill{fill:var(--f2-slate)}
+.r10-knob{fill:#fff;stroke:var(--f2-ink);stroke-width:1.5}
+.r10-val{font-size:14px;font-weight:600;fill:var(--f2-ink)}
+.r10-sline{stroke:var(--f2-ink);stroke-width:1;pointer-events:none}
+.r10-hit{stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:grab}
+.r10-zone{fill:var(--f2-sheet)}
+.r10-lab{font-size:12px;fill:var(--f2-ink3)}
+.r10-zlab.is-off{display:none}
+.r10-band{fill:var(--f2-slate2)}
+.r10-dot{fill:var(--f2-slate);transition:fill .15s}
+.r10-dot.is-out{fill:var(--f2-ink)}
+.r10-curve{fill:none;stroke:var(--f2-slate);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.r10-br{stroke:var(--f2-ink);stroke-width:1.5}
+.r10-xo{fill:#fff}
+.r10-xi{fill:var(--f2-ink)}
+.r10-xl{font-size:12px;font-weight:600;fill:var(--f2-ink)}
+.r10-drag,.r10-drag *{cursor:grabbing!important}
+
+/* demand axis */
+.r10-axis{align-items:start;height:28px}
+.r10-axt{padding-top:7px;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r10-ticks{position:relative;height:28px;border-top:1px solid var(--f2-rule2)}
+.r10-tick{position:absolute;top:7px;width:40px;margin-left:-20px;text-align:center;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+
+/* before the entrance */
+.r10-pre .r10-dot,.r10-pre .r10-curve,.r10-pre .r10-band,.r10-pre .r10-cross{opacity:0}
+
+/* one column: each readout becomes a line above its form; the slider keeps its place above the plot */
+@media (max-width:1079px){
+  .r10-field{padding:16px}
+  .r10-row,.r10-axis{grid-template-columns:minmax(0,1fr)}
+  .r10-row[data-form] .r10-read{padding:8px 0 0}
+  .r10-srow .r10-head{padding-bottom:2px}
+  .r10-nm{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:8px}
+  .r10-rd{font-size:16px;line-height:20px}
+  .r10-axis{height:auto}
+  .r10-axt{order:2;padding-top:2px}
+}
+
+/* Rule 11 · Control on its consequence (f-r11-control.js). Paper "Fig · 11 · Control on its consequence":
+   plot field 8 columns, consequences 4 (split at the centre of the gutter). */
+/* figures.css sets .stage h3 to nowrap: long titles must wrap on a phone. */
+#demo-control .f2-title h3{white-space:normal}
+#demo-control .f2-head{min-height:54px}   /* Paper fixes the controls row at 38 px: 12 + 38 + 4 */
+#demo-control .f2-btn:disabled{opacity:1;color:var(--f2-rule2);border-color:var(--f2-relief);cursor:default}
+.r11 .f2-body{grid-template-columns:var(--r11-pw,740px) minmax(0,1fr)}
+
+/* the plot: the price is a point on its own revenue curve */
+.r11-pfield{display:flex;flex-direction:column;gap:8px;padding:20px 24px 16px}
+.r11-unit{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-plot{height:344px;min-width:0}
+.r11-svg{overflow:visible}
+.r11-rev{fill:none;stroke:var(--f2-slate);stroke-width:2;stroke-linejoin:round}
+.r11-mar{fill:none;stroke:var(--f2-slate2);stroke-width:2;stroke-linejoin:round}
+.r11-cl{font-size:13px;font-weight:500;fill:var(--f2-ink2)}
+.r11-rl{font-size:12px;fill:var(--f2-ink3)}
+.r11-rec{fill:none;stroke:var(--f2-slate);stroke-width:1.5;stroke-dasharray:3 2.5}
+.r11-gh{fill:var(--f2-slate2)}
+.r11-guide{stroke:var(--f2-rule2);stroke-width:1;stroke-dasharray:3 3}
+.r11-mmc{fill:#fff;stroke:var(--f2-ink);stroke-width:2}
+.r11-pillr{fill:var(--f2-ink)}
+.r11-pillt{font-size:12px;font-weight:600;fill:#fff}
+.r11-xt{transition:opacity .15s}
+.r11-xt.is-hid{opacity:0}
+.r11-hit{fill:transparent}
+.r11-pto{fill:#fff}
+.r11-pti{fill:var(--f2-ink)}
+.r11-ptl{font-size:12px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s;pointer-events:none}
+.r11-pt.is-dragging .r11-ptl{opacity:1}
+.r11-drag,.r11-drag *{cursor:grabbing!important}
+
+/* consequences: four readouts with their change since the start, then the history pinned to the bottom */
+.r11-cfield{display:flex;flex-direction:column;gap:20px;padding:20px 24px}
+/* each readout spans three rows of the readout grid (subgrid), so a label that wraps keeps its neighbour's value in line */
+.r11-ro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}
+.r11-cell{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0;align-content:start;min-width:0}
+.r11-ch{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;column-gap:6px;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-ch .r11-d{margin-left:auto}
+.r11-d{font-weight:500;color:var(--f2-ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r11-v{font:600 24px/30px var(--sans,"Instrument Sans");letter-spacing:-.01em;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r11-u{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-hist{margin-top:auto;border-top:1px solid var(--f2-relief);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.r11-hh{display:flex;justify-content:space-between;align-items:baseline;font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-trail{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;min-height:24px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3);font-variant-numeric:tabular-nums}
+.r11-step{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.r11-step i{flex:none;width:9px;height:9px;border-radius:5px;background:var(--f2-slate2)}
+.r11-step.is-cur i{background:var(--f2-ink)}
+.r11-step b{font-weight:600;color:var(--f2-ink)}
+.r11-step em{font-style:normal;margin-left:-4px;color:var(--f2-ink3)}
+.r11-step[title]{cursor:help}
+.r11-start{font:400 12px/16px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r11-arr{color:var(--f2-rule2)}
+.r11-btns{display:flex;flex-wrap:wrap;gap:8px}
+.r11-btns[hidden],.r11-ask[hidden]{display:none}
+/* the reason an override needs */
+.r11-ask{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:10px;background:var(--f2-sheet);overflow:hidden}
+.r11-q{font:600 13px/18px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+#demo-control .r11-why{display:block;width:100%;height:36px;box-sizing:border-box;margin:0;padding:0 10px;border:1px solid var(--f2-rule);border-radius:8px;background:#fff;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);outline:none}
+#demo-control .r11-why::placeholder{color:var(--f2-ink3);opacity:.8}
+#demo-control .r11-why:focus{border-color:var(--f2-rule2);box-shadow:0 0 0 1px var(--f2-rule2)}
+.r11-askb{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+#demo-control .r11-cancel{appearance:none;background:none;border:0;border-radius:8px;padding:6px 8px;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3);cursor:pointer}
+#demo-control .r11-cancel:hover{color:var(--f2-ink)}
+
+/* before the entrance */
+.r11-pre .r11-rev,.r11-pre .r11-mar,.r11-pre .r11-pt,.r11-pre .r11-mm,.r11-pre .r11-rec{opacity:0}
+
+/* one column: the consequences under the plot, the readouts in one row of four when the width allows */
+@media (max-width:1079px){
+  .r11 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r11-pfield,.r11-cfield{padding:16px}
+  .r11-ro{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+}
+
+/* Rule 12 · Plain words (f-r12-terms.js). Paper "Fig · 12 · Plain words": the list 4 columns, the card 8. */
+/* figures.css styles .stage button, h3 and h4 (nowrap, inherited fonts), hence the ids below. */
+#demo-terms .f2-title h3{white-space:normal}
+#demo-terms .f2-head{min-height:54px}   /* Paper keeps the header at the 54 px of the figures with controls */
+.r12 .f2-body{grid-template-columns:var(--r12-lw,356px) minmax(0,1fr)}
+
+/* the list: a radio group; the selection band slides between rows */
+.r12-lfield{position:relative;padding:16px}
+.r12-list{position:relative;display:flex;flex-direction:column;gap:2px;z-index:1}
+#demo-terms .r12-row{appearance:none;display:flex;align-items:center;justify-content:space-between;gap:12px;height:36px;margin:0;padding:0 12px;border:0;border-radius:8px;background:transparent;font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);text-align:left;cursor:pointer;transition:background .15s,color .15s}
+@media (hover:hover){#demo-terms .r12-row:hover:not([aria-checked="true"]){background:var(--f2-sheet)}}
+#demo-terms .r12-row[aria-checked="true"]{color:var(--f2-ink);font-weight:600}
+.r12-nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.r12-vl{flex:none;font-weight:400;color:var(--f2-ink3);font-variant-numeric:tabular-nums;white-space:nowrap}
+#demo-terms .r12-row[aria-checked="true"] .r12-vl{color:var(--f2-ink)}
+.r12-sel{position:absolute;left:0;top:0;width:0;height:36px;border-radius:8px;background:var(--f2-relief);transition:transform .2s cubic-bezier(.33,1,.68,1),width .2s cubic-bezier(.33,1,.68,1);z-index:0;pointer-events:none}
+.r12-sel.r12-still{transition:none}
+
+/* the card */
+.r12-cfield{display:flex;flex-direction:column;padding:20px 24px}
+.r12-card{display:flex;flex-direction:column;flex:1;min-width:0}
+.r12-ch{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:4px 16px}
+#demo-terms .r12-name{display:block;margin:0;font:600 20px/28px var(--sans,"Instrument Sans");color:var(--f2-ink);white-space:normal}
+.r12-inst{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r12-io{font-size:12px;line-height:16px}
+.r12-inst s{text-decoration:line-through 1px;color:var(--f2-ink3)}
+.r12-big{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 10px;padding-top:4px}
+.r12-value{font:600 44px/52px var(--sans,"Instrument Sans");letter-spacing:-.02em;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r12-unit{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r12-defs{margin-top:auto;padding-top:20px}
+.r12-def{display:flex;gap:24px;padding:12px 0;border-top:1px solid var(--f2-relief)}
+.r12-def:last-child{padding-bottom:0}
+.r12-dl{flex:none;width:104px;font:500 13px/22px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.r12-dt{flex:1;min-width:0;font:400 15px/22px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.r12-work .r12-dt{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 7px}
+.r12-n{font-weight:600;color:var(--f2-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.r12-w{color:var(--f2-ink2)}
+.r12-o{color:var(--f2-ink3)}
+#demo-terms .r12-link{appearance:none;margin:0;padding:0;border:0;border-bottom:1px solid var(--f2-rule2);border-radius:0;background:none;font:400 15px/21px var(--sans,"Instrument Sans");color:var(--f2-ink2);cursor:pointer;transition:border-color .15s,color .15s}
+#demo-terms .r12-link:hover{color:var(--f2-ink);border-bottom-color:var(--f2-ink)}
+
+/* before the entrance */
+.r12-pre .r12-row,.r12-pre .r12-sel{opacity:0}
+
+/* one column: the list becomes a row of chips that scrolls sideways above the card */
+@media (max-width:1079px){
+  .r12 .f2-body{grid-template-columns:minmax(0,1fr)}
+  .r12-lfield{padding:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+  .r12-lfield::-webkit-scrollbar{display:none}
+  .r12-list{flex-direction:row;gap:4px;width:max-content}
+  #demo-terms .r12-row{flex:none;height:36px;gap:8px}
+  .r12-cfield{padding:16px}
+  .r12-value{font-size:36px;line-height:44px}
+  .r12-def{flex-direction:column;gap:2px;padding:10px 0}
+  .r12-dl{width:auto;line-height:18px}
+}
+
+/* The system · Tune the system (f-tune.js). Paper "Fig · 9 · Tune" (7LD-0). The sheet is the cover's dashboard sheet
+   (f-cover.css, cv- classes), so the tokens set on this root restyle it with everything inside. */
+#demo-tune.f2-root{container-type:normal}
+.tn-sheet{display:flex;flex-direction:column;gap:var(--cv-inset,8px)}
+.tn-sheet .cv-grid{margin-top:0}
+.cv-head.tn-head{justify-content:space-between;align-items:center;gap:8px 16px}
+.tn-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 12px;min-width:0}
+.tn-ctl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px;padding:4px 16px 8px}
+.tn-c{display:flex;align-items:center;gap:12px;flex:1 1 220px;max-width:336px;min-width:0}
+.tn-c.tn-dens{flex:0 0 auto;max-width:100%;flex-wrap:wrap;row-gap:6px}
+.tn-c .f2-slider{width:100%;gap:12px}
+.tn-c .f2-sl-label{white-space:nowrap}
+.f2-root .tn-c .f2-range{flex:1 1 auto;width:auto;min-width:64px}
+.tn-c .f2-slider output{flex:none;width:44px;min-width:0;font-variant-numeric:tabular-nums}
+.tn-lab{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);white-space:nowrap}
+.tn-sheet .f2-status{transition:none}
+@media (max-width:639px){
+  .cv-head.tn-head{flex-direction:column;align-items:flex-start}
+  .tn-ctl{padding:4px 12px 8px}
+  .tn-c,.tn-c.tn-dens{flex:1 1 100%;max-width:none}
 }

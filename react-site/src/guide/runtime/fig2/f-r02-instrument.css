@@ -1,0 +1,76 @@
+/* Rule 2 · Instrument builder (f-r02-instrument.js). Paper "Fig · 2 · Instrument": controls 4 columns, card 8 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status; switches keep the kit's type
+   (the first edition's `.stage button` rule would otherwise win). Core candidates. */
+#demo-instrument.f2-root{background:none;padding:0;border-radius:0}
+#demo-instrument .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-instrument .f2-status{padding:12px 16px 14px}
+#demo-instrument .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+
+.f2-r2-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+
+/* controls: four switches, then the value */
+.f2-r2-ctl{display:flex;flex-direction:column;gap:20px;padding:24px}
+.f2-r2-sws{display:flex;flex-direction:column;gap:16px}
+.f2-r2 .f2-switch{display:flex;align-items:flex-start;gap:12px;padding:0;width:100%;transition:opacity .2s}
+.f2-r2 .f2-switch>span{display:flex;flex-direction:column;min-width:0}
+.f2-r2 .f2-switch:disabled{opacity:.4;cursor:default}
+.f2-r2-st{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2)}
+.f2-r2-sq{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-val{border-top:1px solid var(--f2-relief);padding-top:20px}
+.f2-r2 .f2-slider{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;row-gap:8px}
+.f2-r2 .f2-slider .f2-sl-label{grid-area:1/1}
+.f2-r2 .f2-slider output{grid-area:1/2;min-width:0;white-space:nowrap}
+.f2-r2 .f2-slider .f2-range{grid-area:2/1/3/3;width:100%;height:18px}
+
+/* the card: the instrument, vertically centred */
+.f2-r2-cardf{display:flex;flex-direction:column;justify-content:center;padding:40px 48px}
+.f2-r2-head{display:flex;flex-direction:column;gap:8px;padding-bottom:12px}
+.f2-r2-lrow{display:flex;align-items:baseline;gap:10px}
+.f2-r2-name{font:600 16px/24px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.f2-r2-basis{font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-vrow{display:flex;align-items:baseline;gap:8px}
+.f2-r2-num{font:600 56px/60px var(--sans,"Instrument Sans");letter-spacing:-.03em;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r2-unit{font:500 16px/24px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-rail{position:relative;height:58px}
+.f2-r2-gapin{padding-top:16px}
+.f2-r2-gaprow{display:flex;align-items:baseline;gap:8px}
+.f2-r2-gap{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r2-words{display:inline-grid;font:400 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink3)}
+.f2-r2-words>span{grid-area:1/1;opacity:0;transition:opacity .15s}
+.f2-r2-words>span.on{opacity:1}
+
+/* the rail */
+.f2-r2-track{fill:var(--f2-well)}
+.f2-r2-bar{fill:var(--f2-slate)}
+.f2-r2-tick{fill:var(--f2-ink);stroke:#FFFFFF;stroke-width:4;paint-order:stroke}
+.f2-r2-tl{font-size:12px;font-weight:500;fill:var(--f2-ink2);transition:opacity .15s}
+.f2-r2-tl.is-near{opacity:0}
+.f2-r2-ax{font-size:12px;fill:var(--f2-ink3)}
+/* the end of the bar: a 44 px target; on hover an 18 px handle and a ring 6 px outside it; the value while dragged */
+.f2-r2 .f2-r2-h:focus-visible{outline:none}
+.f2-r2-h{outline:none;touch-action:none}
+.f2-r2-hit{fill:transparent}
+.f2-r2-ring{fill:none;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r2-knob{fill:#FFFFFF;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r2-hv{font-size:14px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s}
+.f2-r2-h:hover .f2-r2-ring,.f2-r2-h:hover .f2-r2-knob,.f2-r2-h.is-dragging .f2-r2-ring,.f2-r2-h.is-dragging .f2-r2-knob,.f2-r2-h:focus-visible .f2-r2-knob{opacity:1}
+.f2-r2-h:focus-visible .f2-r2-ring{opacity:1;stroke:#2146D6;stroke-width:2}
+.f2-r2-h.is-showing .f2-r2-hv{opacity:1}
+
+/* switched-off parts fade out where they stand; nothing reflows */
+.f2-r2-p-unit,.f2-r2-p-scale,.f2-r2-p-comp,.f2-r2-p-gap{transition:opacity .2s cubic-bezier(.2,.7,.2,1)}
+.f2-r2.no-unit .f2-r2-p-unit,.f2-r2.no-scale .f2-r2-p-scale,.f2-r2.no-comp .f2-r2-p-comp,.f2-r2.no-gap .f2-r2-p-gap{opacity:0}
+.f2-r2.no-scale .f2-r2-h{visibility:hidden;pointer-events:none}
+
+/* one column under 1080 px: controls on top (switches two by two where there is room), the card below */
+@media (max-width:1079px){
+  .f2-r2-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r2-ctl{padding:16px}
+  .f2-r2-cardf{padding:28px 20px 24px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r2-sws{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 32px}
+}
+@media (max-width:639px){
+  .f2-r2-num{font-size:48px;line-height:52px}
+}

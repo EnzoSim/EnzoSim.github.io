@@ -1,0 +1,75 @@
+/* Rule 4 · A balance that must hold (f-r04-identity.js). Paper "Fig · 4 · Identity": ledger 4 columns, plot 8 columns. */
+/* The sheet is the figure (Paper): no stage ring; kit padding for header and status; the header switch keeps the kit's
+   type and its ink-2 label. Core candidates. */
+#demo-bridge.f2-root{background:none;padding:0;border-radius:0}
+#demo-bridge .f2-head{padding:12px 16px 4px;min-height:42px}
+#demo-bridge .f2-status{padding:12px 16px 14px}
+#demo-bridge .f2-switch{font:500 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink2);gap:10px;padding:0}
+
+.f2-r4-grid{display:grid;grid-template-columns:calc((100% - 336px) / 3 + 100px) minmax(0,1fr);gap:8px}
+
+/* the ledger: three terms, then the closing balance under an ink rule */
+.f2-r4-led{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:24px}
+.f2-r4-terms{display:flex;flex-direction:column;gap:20px}
+.f2-r4 .f2-slider{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;row-gap:8px}
+.f2-r4 .f2-slider .f2-sl-label{grid-area:1/1}
+.f2-r4 .f2-slider output{grid-area:1/2;min-width:0;white-space:nowrap}
+.f2-r4 .f2-slider .f2-range{grid-area:2/1/3/3;width:100%;height:18px}
+.f2-r4-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1.5px solid var(--f2-ink);padding-top:12px}
+.f2-r4-total span{font:600 14px/20px var(--sans,"Instrument Sans");color:var(--f2-ink)}
+.f2-r4-cv{font:600 20px/28px var(--sans,"Instrument Sans");letter-spacing:-.01em;color:var(--f2-ink);font-variant-numeric:tabular-nums}
+.f2-r4-lrow,.f2-r4-total{transition:opacity .15s}
+
+/* the plot */
+.f2-r4-plotf{display:flex;flex-direction:column;justify-content:center;padding:24px}
+.f2-r4-plot{position:relative;-webkit-user-select:none;user-select:none}
+.f2-r4-gl,.f2-r4-div{stroke:var(--f2-relief);stroke-width:1}
+.f2-r4-base{stroke:var(--f2-rule2);stroke-width:1}
+.f2-r4-ax{font-size:12px;fill:var(--f2-ink3)}
+.f2-r4-tt{font-size:12px;font-weight:600;fill:var(--f2-ink3)}
+.f2-r4-o,.f2-r4-s-o{fill:var(--f2-slate)}
+.f2-r4-r,.f2-r4-p,.f2-r4-s-r,.f2-r4-s-p{fill:var(--f2-slate2)}
+.f2-r4-c,.f2-r4-x,.f2-r4-s-c{fill:var(--f2-ink)}
+.f2-r4-ln{font-size:12px;font-weight:500}
+.f2-r4-lv{font-size:14px;font-weight:600}
+.f2-r4-lab text{fill:var(--f2-ink)}
+.f2-r4-lab-o:is(.is-in,.is-in1) text,.f2-r4-lab-c:is(.is-in,.is-in1) text{fill:#FFFFFF}
+.f2-r4-lab-o.is-in .f2-r4-ln,.f2-r4-lab-c.is-in .f2-r4-ln{opacity:.8}
+.f2-r4-lab-x .f2-r4-ln{font-weight:600}
+.f2-r4-lab{pointer-events:none}
+.f2-r4-bal{stroke:var(--f2-ink3);stroke-width:1}
+.f2-r4-bl{font-size:12px;fill:var(--f2-ink3);transition:opacity .15s}
+.f2-r4-bl.is-near{opacity:0}
+.f2-r4-sv{font-size:12px;font-weight:600;fill:var(--f2-ink2)}
+.f2-r4-sv.is-c{fill:var(--f2-ink)}
+.f2-r4-con{stroke:var(--f2-rule2);stroke-width:1}
+/* the handles: a white knob with a 1.5 px ink ring 6 px outside it on hover and drag; the value above while dragged */
+.f2-r4 .f2-r4-h:focus-visible{outline:none}
+.f2-r4-h{outline:none}
+.f2-r4-hit{fill:transparent}
+.f2-r4-ring{fill:none;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r4-knob{fill:#FFFFFF;stroke:var(--f2-ink);stroke-width:1.5;opacity:0;transition:opacity .15s}
+.f2-r4-hv{font-size:14px;font-weight:600;fill:var(--f2-ink);opacity:0;transition:opacity .15s;pointer-events:none}
+.f2-r4-h:hover .f2-r4-ring,.f2-r4-h:hover .f2-r4-knob,.f2-r4-h.is-dragging .f2-r4-ring,.f2-r4-h.is-dragging .f2-r4-knob,.f2-r4-h:focus-visible .f2-r4-knob{opacity:1}
+.f2-r4-h:focus-visible .f2-r4-ring{opacity:1;stroke:#2146D6;stroke-width:2}
+.f2-r4-h.is-showing .f2-r4-hv{opacity:1}
+/* pointing at a term: it stays, the rest fade to half */
+.f2-r4-seg,.f2-r4-step{transition:opacity .15s}
+.f2-r4.is-pt :is(.f2-r4-seg,.f2-r4-lab,.f2-r4-step,.f2-r4-lrow,.f2-r4-total):not(.is-lit){opacity:.5}
+
+/* narrow plots: the waterfall opens in its own block under the columns */
+.f2-r4-wfw{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,.7,.2,1) .25s}
+.f2-r4.is-wf.is-narrow .f2-r4-wfw{grid-template-rows:1fr;transition-delay:0s}
+.f2-r4:not(.is-narrow) .f2-r4-wfw{display:none}
+.f2-r4-wfi{overflow:hidden;min-height:0}
+.f2-r4-wfp{padding-top:20px}
+
+/* one column under 1080 px: the ledger on top (its three terms side by side where there is room), the plot below */
+@media (max-width:1079px){
+  .f2-r4-grid{grid-template-columns:minmax(0,1fr)}
+  .f2-r4-led,.f2-r4-plotf{padding:16px}
+  .f2-r4-led{gap:20px}
+}
+@media (min-width:640px) and (max-width:1079px){
+  .f2-r4-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px}
+}
