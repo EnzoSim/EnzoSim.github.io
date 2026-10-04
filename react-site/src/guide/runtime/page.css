@@ -66,7 +66,7 @@ p{margin:0}
 .head-r{display:none}
 .crumb .short{display:none}
 .progress{height:3px;background:var(--sheet)}
-.progress i{display:block;height:3px;width:0;background:var(--cobalt);transition:width .1s linear}
+.progress i{display:block;height:3px;width:0;background:var(--ink);transition:width .1s linear}
 .menu-sheet{display:none}
 
 /* ---------- cover ---------- */
@@ -481,3 +481,9 @@ p{margin:0}
 .js-motion .reveal.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .stat b{font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.strip{margin-inline:0;overflow-x:auto;-webkit-mask-image:none;mask-image:none}.strip-track{animation:none}.strip li[aria-hidden]{display:none}.js-motion .reveal{opacity:1;transform:none}}
+/* the chapters run on: once the next chapter is appended, the card that linked to it goes and a rule takes its place */
+.chap.joined>.ch-foot{display:none}
+.chap+.chap{margin-top:152px;border-top:1px solid var(--rule)}
+.chap-end{height:1px}
+@media (max-width:1079px){.chap+.chap{margin-top:72px}}
+@media print{.chap-end{display:none}}

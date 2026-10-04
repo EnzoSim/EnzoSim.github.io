@@ -151,8 +151,8 @@ export default {
     kicker: 'A study guide in nine chapters · Enzo Simier · October 2026',
     title: 'Learn dashboard design with me',
     lede: [
-      'A dashboard that supports a decision has to answer several questions at a glance: what happened, compared with what, what is expected next, how sure that is, and what a change would do. The craft of showing such answers is older than the screen.',
-      'This guide follows the people who worked it out, in grid design, cartography, control rooms, business reporting, perception research and interactive explanation. It shows who they were and what they made, turns their work into twelve rules with a model to play with for each, reads what neighbouring fields have since found, and opens the dashboards we built with those rules.',
+      'Most dashboards show numbers and leave the reader to work out what they mean. The people who solved that problem were drawing railway timetables, mountain maps, control panels and trade accounts long before there were screens.',
+      'This guide puts their answers to work. It starts with who they were, turns what they found into twelve rules, each with a model you can change, and ends with the dashboards we built that way. It reads as one page: keep scrolling and each chapter follows the last.',
     ],
     insideLabel: 'Inside',
     stats: [
@@ -174,7 +174,7 @@ export default {
     aboutTitle: 'About the data',
     about:
       'The dashboard below and the figures in the rule chapters use invented numbers, computed in the page. The spread around the dashboard’s forecast stands in for a model whose error has been measured. Rule 10 explains why a real dashboard should draw a spread only then.',
-    contentsNote: 'The chapters can be read in any order',
+    contentsNote: 'Keep scrolling to read them in order, or open any one',
     insideCol: 'Inside',
   },
 

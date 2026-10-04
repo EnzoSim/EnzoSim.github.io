@@ -119,6 +119,9 @@ function shell({ L, LANGS, ch, title, description, body, data, extraScripts = ''
   const O = otherLang(L, LANGS);
   const url = SITE + urlFor(L, ch);
   const alt = O ? SITE + (ch ? urlFor(O, O.chapters.find((c) => c.n === ch.n)) : urlFor(O, null)) : null;
+  // Chapters run on: each page names the chapter that follows it, and page.js appends it when the reader gets near the end.
+  const nextCh = L.chapters[(ch ? L.chapters.findIndex((c) => c.n === ch.n) : -1) + 1] || null;
+  const extraSrc = [...extraScripts.matchAll(/src="([^"]+)"/g)].map((m) => m[1]);
   return `<!doctype html>
 <html lang="${L.lang}">
 <head>
@@ -146,13 +149,16 @@ function shell({ L, LANGS, ch, title, description, body, data, extraScripts = ''
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=Geist+Mono:wght@400..600&family=Geist:wght@400;700&family=Archivo:wght@400;700&display=swap">
 <link rel="stylesheet" href="${ASSETS}guide.css?v=${BUILD}">
 </head>
-<body data-chapter="${ch ? ch.n : 0}"${bodyClass ? ` class="${bodyClass}"` : ''}>
+<body data-chapter="${ch ? ch.n : 0}">
 <a class="skip" href="#main">${esc(L.ui.skip)}</a>
 ${header(L, ch, LANGS)}
 <main id="main" class="wrap">
+<div class="chap${bodyClass ? ' ' + bodyClass : ''}" data-n="${ch ? ch.n : 0}" data-url="${urlFor(L, ch)}" data-title="${esc(title)}"${alt ? ` data-alt="${alt.slice(SITE.length)}"` : ''}${nextCh ? ` data-next="${urlFor(L, nextCh)}"` : ''}${extraSrc.length ? ` data-scripts="${extraSrc.join(' ')}"` : ''}>
 ${body}
+<script type="application/json" class="chap-data">${JSON.stringify(data || {}).replace(/</g, '\\u003c')}</script>
+</div>
 </main>
-<script>window.GUIDE_DATA=${JSON.stringify(data || {})};${figureLinks(L)}</script>${anchors ? `<script>window.GUIDE_ANCHORS=${JSON.stringify(anchors)};</script>` : ''}
+<script>window.GUIDE_DATA=JSON.parse(document.querySelector('.chap-data').textContent);${figureLinks(L)}</script>${anchors ? `<script>window.GUIDE_ANCHORS=${JSON.stringify(anchors)};</script>` : ''}
 <script src="${ASSETS}fig2.js?v=${BUILD}" defer></script>
 <script src="${ASSETS}figures.js?v=${BUILD}" defer></script>
 <script src="${ASSETS}page.js?v=${BUILD}" defer></script>${extraScripts}
@@ -306,8 +312,8 @@ function ruleChapter(L, LANGS, ch) {
   const fmt = L.ui.checked('{k}', '{n}');
   const body = `${head}
 ${sections}
-<section class="sec check" data-key="${ch.key}" data-fmt="${esc(fmt)}" aria-labelledby="check-h">
-  <div class="sec-head"><div><h2 id="check-h">${esc(L.ui.beforeMoveOn)}</h2><span class="note">${esc(L.ui.beforeNote)}</span></div><span class="count">${esc(L.ui.checked(0, ch.rules.length))}</span></div>
+<section class="sec check" data-key="${ch.key}" data-fmt="${esc(fmt)}" aria-labelledby="check-h-${ch.n}">
+  <div class="sec-head"><div><h2 id="check-h-${ch.n}">${esc(L.ui.beforeMoveOn)}</h2><span class="note">${esc(L.ui.beforeNote)}</span></div><span class="count">${esc(L.ui.checked(0, ch.rules.length))}</span></div>
   <ul>${checks}</ul>
 </section>
 ${chapterFoot(L, ch)}

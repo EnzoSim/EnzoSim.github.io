@@ -155,8 +155,8 @@ export default {
     kicker: 'Un guide d’étude en neuf chapitres · Enzo Simier · octobre 2026',
     title: 'Apprendre à concevoir des tableaux de bord avec moi',
     lede: [
-      'Un tableau de bord qui aide à décider doit répondre d’un coup d’œil à plusieurs questions : ce qui s’est passé, par rapport à quoi, ce qui est attendu ensuite, avec quelle certitude, et ce que ferait un changement. L’art de montrer de telles réponses est plus ancien que l’écran.',
-      'Ce guide suit les personnes qui l’ont mis au point, dans la conception de grilles, la cartographie, les salles de contrôle, les rapports de gestion, la recherche sur la perception et l’explication interactive. Il montre qui elles étaient et ce qu’elles ont fait, transforme leur travail en douze règles accompagnées chacune d’un modèle à manipuler, lit ce que les domaines voisins ont découvert depuis, et ouvre les tableaux de bord que nous avons construits avec ces règles.',
+      'La plupart des tableaux de bord montrent des nombres et laissent le lecteur deviner ce qu’ils veulent dire. Les personnes qui ont résolu ce problème dessinaient des horaires de chemin de fer, des cartes de montagne, des pupitres de contrôle et des comptes du commerce bien avant l’arrivée des écrans.',
+      'Ce guide met leurs réponses au travail. Il commence par qui elles étaient, transforme ce qu’elles ont trouvé en douze règles, chacune avec un modèle à manipuler, et se termine par les tableaux de bord que nous avons construits ainsi. Il se lit comme une seule page : continuez à défiler, les chapitres s’enchaînent.',
     ],
     insideLabel: 'Au sommaire',
     stats: [
@@ -178,7 +178,7 @@ export default {
     aboutTitle: 'À propos des données',
     about:
       'Le tableau de bord ci-dessous et les figures des chapitres de règles utilisent des nombres inventés, calculés dans la page. La dispersion autour de la prévision du tableau de bord tient lieu d’un modèle dont l’erreur aurait été mesurée. La règle 10 explique pourquoi un vrai tableau de bord ne devrait dessiner une dispersion qu’à cette condition.',
-    contentsNote: 'Les chapitres peuvent se lire dans n’importe quel ordre',
+    contentsNote: 'Continuez à défiler pour les lire dans l’ordre, ou ouvrez celui que vous voulez',
     insideCol: 'Contenu',
   },
 
