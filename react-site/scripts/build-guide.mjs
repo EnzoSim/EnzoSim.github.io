@@ -103,7 +103,7 @@ function header(L, ch, LANGS) {
     <div class="head-r">${lang ? lang.replace('class="lang"', 'class="lang lang-m"') : ''}<button type="button" class="menu-btn" aria-expanded="false" aria-controls="menu-sheet">${esc(L.ui.menu)}<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 L5 6.5 L8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div>
   </div>
   <div class="progress" aria-hidden="true"><i></i></div>
-  <nav class="menu-sheet" id="menu-sheet" aria-label="${esc(L.ui.chapters)}"><a href="${urlFor(L, null)}"${ch ? '' : ' aria-current="page"'}><span>·</span>${esc(L.ui.contents)}</a>${menu}</nav>
+  <nav class="menu-sheet" id="menu-sheet" aria-label="${esc(L.ui.chapters)}"><a href="${urlFor(L, null)}"${ch ? '' : ' aria-current="page"'}><span>·</span>${esc(L.ui.contents)}</a>${menu}${lang ? lang.replace('class="lang"', 'class="lang lang-s"') : ''}</nav>
 </header>`;
 }
 

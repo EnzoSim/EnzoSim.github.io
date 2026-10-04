@@ -221,6 +221,7 @@ input[type=range]{accent-color:var(--cobalt);margin:0;height:20px;width:100%}
 .pp-lab{position:sticky;left:0;z-index:1;justify-self:start;background:var(--field)}
 .pp-lab span{position:absolute;left:24px;right:8px;display:flex;align-items:center;font-size:14px;line-height:18px;font-weight:500;color:var(--ink2)}
 .pp-lab.narrow span{left:14px;font-size:13px;line-height:16px}
+@media (max-width:640px){.pp-lab.narrow span{left:10px;right:4px;font-size:12px;line-height:15px}}
 .who{padding:18px 24px 20px}
 .who-top{display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap}
 .who-top b{font-size:22px;line-height:28px;font-weight:600;letter-spacing:-.01em}

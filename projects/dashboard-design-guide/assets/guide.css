@@ -221,6 +221,7 @@ input[type=range]{accent-color:var(--cobalt);margin:0;height:20px;width:100%}
 .pp-lab{position:sticky;left:0;z-index:1;justify-self:start;background:var(--field)}
 .pp-lab span{position:absolute;left:24px;right:8px;display:flex;align-items:center;font-size:14px;line-height:18px;font-weight:500;color:var(--ink2)}
 .pp-lab.narrow span{left:14px;font-size:13px;line-height:16px}
+@media (max-width:640px){.pp-lab.narrow span{left:10px;right:4px;font-size:12px;line-height:15px}}
 .who{padding:18px 24px 20px}
 .who-top{display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap}
 .who-top b{font-size:22px;line-height:28px;font-weight:600;letter-spacing:-.01em}
@@ -387,6 +388,7 @@ p{margin:0}
 .progress{height:3px;background:var(--sheet)}
 .progress i{display:block;height:3px;width:0;background:var(--ink);transition:width .1s linear}
 .menu-sheet{display:none}
+.lang-s{display:none}
 
 /* ---------- cover ---------- */
 .hero{padding-top:156px}
@@ -614,7 +616,8 @@ p{margin:0}
   .menu-sheet.open{display:block}
   .menu-sheet a{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);font:600 18px/24px var(--sans)}
   .menu-sheet a span{font:600 26px/24px var(--sans);font-variation-settings:"wdth" 75;font-stretch:75%;color:var(--ink3)}
-  .menu-sheet a[aria-current="page"]{color:var(--cobalt)}
+  .menu-sheet>a[aria-current="page"] span{color:var(--ink)}
+  .menu-sheet>a:not([aria-current="page"]){color:var(--ink2)}
   .crumb .mid{display:none}
   .hero{padding-top:82px}
   .display{font-size:clamp(46px,11vw,120px);line-height:.95}
@@ -806,6 +809,83 @@ p{margin:0}
 .chap-end{height:1px}
 @media (max-width:1079px){.chap+.chap{margin-top:72px}}
 @media print{.chap-end{display:none}}
+
+/* ---------- the phone: one column designed for a thumb, not the desktop page stacked ---------- */
+@media (max-width:640px){
+  html{scroll-padding-top:68px}
+  .wrap,.g-head .wrap{padding-inline:20px}
+  /* header: where you are, and one button */
+  .g-head-in{height:56px;gap:12px}
+  .menu-sheet{inset:59px 0 auto 0;max-height:calc(100dvh - 59px);padding:4px 20px 24px}
+  .head-r .lang-m{display:none}
+  .menu-sheet .lang-s{display:inline-flex;margin:20px 0 0}
+  .menu-sheet .lang-s a{display:inline-flex;grid-template-columns:none;height:32px;padding:0 14px;border:0;border-radius:16px;font:600 13px/1 var(--sans)}
+  .crumb{flex:1}
+  .crumb .here{flex:1;min-width:0;display:flex;align-items:center;gap:10px;color:var(--ink3)}
+  .crumb .here .short{overflow:hidden;text-overflow:ellipsis}
+  body:not([data-chapter="0"]) .crumb>a:first-child,body:not([data-chapter="0"]) .crumb>span{display:none}
+  .crumb .here[data-n]{color:var(--ink);font-size:15px}
+  .crumb .here[data-n]::before{content:attr(data-n);flex:none;width:26px;height:26px;border-radius:13px;background:var(--ink);color:var(--page);display:inline-flex;align-items:center;justify-content:center;font:600 13px/1 var(--sans)}
+  .menu-btn{height:36px;padding:0 14px;border-radius:18px}
+  /* cover */
+  .hero{padding-top:44px}
+  .display{font-size:clamp(46px,13.6vw,64px);line-height:.94;letter-spacing:-.04em}
+  .hero-row{row-gap:24px;margin-top:24px}
+  .hero-row .lede{font-size:19px;line-height:28px}
+  .hero-row .lede2{font-size:16px;line-height:25px}
+  .stat b{font-size:44px;line-height:42px}
+  .strip{margin-inline:-20px}
+  .strip li{width:132px}
+  /* rhythm and type */
+  .sec{padding-top:56px}
+  .rule,.rfield{padding-top:56px;gap:20px}
+  .sec-head h2.big{font-size:26px;line-height:30px}
+  .prose{font-size:17px;line-height:27px}
+  .prose p{margin-bottom:16px}
+  .tb{row-gap:16px}
+  .tb+.tb{margin-top:16px}
+  .notes{border-top:0;padding-top:0}
+  .notes ul{gap:6px}
+  .notes li{font-size:13px;line-height:18px;color:var(--ink3)}
+  .notes li a{color:var(--ink2);font-weight:500}
+  .cap{font-size:13px;line-height:19px}
+  /* chapter opener: the numeral sits beside the title, the faces keep to one row */
+  .opener{grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:0;padding-top:32px;align-items:start}
+  .numeral{font-size:88px;line-height:72px;padding-top:2px}
+  .op-text{display:contents}
+  .op-text h1{font-size:clamp(32px,9.4vw,40px);line-height:1.02;align-self:center}
+  .standfirst,.op-index{grid-column:1 / -1}
+  .standfirst{font-size:18px;line-height:27px;margin-top:20px}
+  .op-index{margin-top:24px;row-gap:20px}
+  .op-list a{font-size:17px;line-height:22px;padding:11px 0}
+  .minis{flex-wrap:nowrap;gap:8px}
+  .minis a,.minis span.m{flex:1 1 0;min-width:0;max-width:56px;width:auto;height:auto;aspect-ratio:1}
+  /* rules */
+  .rule-head h2{font-size:30px;line-height:33px}
+  .ol-main p{font-size:19px;line-height:26px}
+  .seen-in{font-size:15px;line-height:22px}
+  /* people: a small portrait beside the name; the year tile for people without a photograph goes */
+  .spread,.spread.flip{grid-template-columns:84px minmax(0,1fr);column-gap:16px;row-gap:0;padding:28px 0 32px;align-items:center}
+  .spread .ph{max-width:none;border-radius:10px}
+  .spread .ph.work{display:none}
+  .spread .ph.work+.sp-text{grid-column:1 / -1}
+  .spread .sp-text{display:contents}
+  .spread .sp-text>*{grid-column:1 / -1}
+  .spread .ph:not(.work)~.sp-text>.kicker,.spread .ph:not(.work)~.sp-text>h2,.spread .ph:not(.work)~.sp-text>.life{grid-column:2}
+  .spread .ph:not(.work){grid-row:1 / span 3}
+  .sp-text h2{font-size:26px;line-height:28px;margin-top:4px}
+  .sp-text .pull{font-size:19px;line-height:27px;margin-top:20px}
+  .sp-cols{margin-top:20px;gap:20px}
+  .learn{margin-top:20px;padding:16px 18px 18px}
+  .learn p{font-size:18px;line-height:25px}
+  /* dashboards we made */
+  .case-head h2{font-size:28px;line-height:31px}
+  .case-head .q{font-size:18px;line-height:27px}
+  .shot{margin-inline:-12px}
+  .next{padding:20px}
+  .chap+.chap{margin-top:56px}
+}
+@media (max-width:640px) and (prefers-reduced-motion:reduce){.strip{margin-inline:0}}
 
 /* Learn dashboard design with me: what the figures of "What neighbouring fields know" add to figures.css.
    Only what the existing classes do not cover, in the same custom properties. research.js writes the markup.

@@ -1024,7 +1024,7 @@ function demoPeople(root){
     <section class="sheet s1"><div class="field scroll"><div id="pp-view"></div></div><div class="field who" id="pp-card" aria-live="polite"></div></section>`;
   const view=$('#pp-view',root),card=$('#pp-card',root);
   function render(focus){
-    const sc=view.parentElement,cw=Math.floor(sc.clientWidth),narrow=cw>0&&cw<700,W=Math.max(820,cw),LW=narrow?124:212,PRE=92,X0=LW+PRE+20,X1=W-32,TOP=22,FR=15,GAP=32;
+    const sc=view.parentElement,cw=Math.floor(sc.clientWidth),narrow=cw>0&&cw<700,W=Math.max(820,cw),LW=narrow?(cw<480?96:124):212,PRE=92,X0=LW+PRE+20,X1=W-32,TOP=22,FR=15,GAP=32;
     const x=y=>X0+(y-1900)/130*(X1-X0);
     // Faces are 30 px across. One that would overlap the face before it moves up or down a level, and a crowded row grows taller.
     const LV=[0,-GAP,GAP,-2*GAP,2*GAP];

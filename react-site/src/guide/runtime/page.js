@@ -138,7 +138,14 @@
       if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
       a.classList.toggle('seen', !on && seen.indexOf(a.getAttribute('data-n')) >= 0);
     });
-    each(document, '.menu-sheet a', function (a) {
+    // On a phone the header names the chapter being read.
+    var title = c.querySelector('h1');
+    each(document, '.crumb .here .short', function (s) {
+      if (!s.getAttribute('data-guide')) s.setAttribute('data-guide', s.textContent);
+      s.textContent = n === '0' || !title ? s.getAttribute('data-guide') : title.textContent;
+    });
+    each(document, '.crumb .here', function (a) { if (n === '0') a.removeAttribute('data-n'); else a.setAttribute('data-n', n); });
+    each(document, '.menu-sheet > a', function (a) {
       if (a.getAttribute('href') === url) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
     each(document, '.lang', function (g) {
