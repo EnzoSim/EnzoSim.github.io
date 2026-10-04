@@ -2,6 +2,7 @@
 // and the dashboards we made. Loaded by scripts/build-guide.mjs.
 import fs from 'node:fs';
 import path from 'node:path';
+import { ideaFigure } from './ideas/index.mjs';
 
 // A capture saved beside its double-resolution twin (name@2x.jpg) is offered to sharp screens.
 const srcset2x = ({ OUT, ASSETS }, src) => {
@@ -55,6 +56,8 @@ export function people(ctx) {
     (p.projects || [])
       .map((x) => `<li><b class="tnum">${esc(x.year)}</b><span><strong>${esc(x.title)}</strong> ${esc(x.what)}</span></li>`)
       .join('');
+  // The profile lists the works by year and title; the drawing beside them says what the person proposed.
+  const works = (p) => (p.projects || []).map((x) => `<li><b class="tnum">${esc(x.year)}</b><span><strong>${esc(x.title)}</strong></span></li>`).join('');
   const spread = (p, i) => `<article class="spread${i % 2 ? ' flip' : ''}" id="p-${p.id}" aria-labelledby="p-${p.id}-h">
   ${photoBlock(p, 704)}
   <div class="sp-text">
@@ -63,8 +66,8 @@ export function people(ctx) {
     <p class="life">${esc(p.l)}</p>
     ${p.pull ? `<p class="pull">${esc(p.pull)}</p>` : ''}
     <div class="sp-cols">
-      <div><span class="kicker">${esc(L.ui.projectsLabel)}</span><ol class="projects">${projects(p)}</ol></div>
-      <div><span class="kicker">${esc(L.ui.broughtLabel)}</span><p class="brought">${esc(p.brought)}</p></div>
+      ${ideaFigure(p.id, L.lang, esc) || `<div><span class="kicker">${esc(L.ui.broughtLabel)}</span><p class="brought">${esc(p.brought)}</p></div>`}
+      <div><span class="kicker">${esc(L.ui.projectsLabel)}</span><ol class="projects short">${works(p)}</ol></div>
     </div>
     <div class="learn"><span class="kicker">${esc(L.ui.learnLabel)}</span><p>${esc(p.learn)}</p></div>
     <div class="in-guide"><span class="kicker">${esc(L.ui.inThisGuide)}</span>${ruleLinks(ctx, p.r)}${p.u ? `<a class="ext" href="${esc(p.u)}" rel="noopener">${esc(p.w)} ↗</a>` : ''}</div>
@@ -74,8 +77,9 @@ export function people(ctx) {
   ${photoBlock(p, 160)}
   <div class="pc-text"><h3>${esc(nm(p.n))}</h3><p class="life">${esc(p.l)}</p>
     <p class="made"><b class="tnum">${esc((p.projects && p.projects[0] && p.projects[0].year) || p.y)}</b> ${esc((p.projects && p.projects[0] && p.projects[0].title) || p.w)}</p>
-    <p class="brought">${esc(p.brought || p.d)}</p>
+    ${ideaFigure(p.id, L.lang, esc) ? '' : `<p class="brought">${esc(p.brought || p.d)}</p>`}
   </div>
+  ${ideaFigure(p.id, L.lang, esc)}
   ${p.learn ? `<p class="learn-s"><span class="kicker">${esc(L.ui.learnLabel)}</span>${esc(p.learn)}</p>` : ''}
   <div class="in-guide">${ruleLinks(ctx, p.r)}</div>
 </li>`;
@@ -101,6 +105,7 @@ export function people(ctx) {
   // The card under the time axis links the first rule a person informs, by its title.
   const ruleTitles = Object.fromEntries(Object.entries(readJSON(`content/rules.${L.lang}.json`) || {}).map(([n, r]) => [n, String(r.title || '').replace(/<[^>]+>/g, '')]));
   const body = `${head}
+<svg class="idea-defs" width="0" height="0" aria-hidden="true"><defs><pattern id="i-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" class="s-slate" stroke-width="1.5"/></pattern></defs></svg>
 <section class="sec" id="timeline" aria-labelledby="tl-h">
   <div class="sec-head"><div><h2 class="big" id="tl-h">${esc(L.ui.timelineTitle)}</h2><span class="note">${esc(L.ui.timelineNote)}</span></div></div>
   <figure class="fig"><div class="stage" id="demo-people"></div><figcaption class="cap">${L.ui.timelineCaption}</figcaption></figure>

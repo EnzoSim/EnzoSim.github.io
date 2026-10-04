@@ -163,12 +163,42 @@
     for (var i = 0; i < list.length; i++) if (list[i].getBoundingClientRect().top <= line) at = list[i];
     if (!at) return;
     setCurrent(at, current === null);
-    if (bar) {
-      var r = at.getBoundingClientRect(), span = r.height - innerHeight;
-      bar.style.width = (span > 0 ? Math.min(100, Math.max(0, (-r.top / span) * 100)) : 100) + '%';
+    var r = at.getBoundingClientRect(), span = r.height - innerHeight;
+    var p = span > 0 ? Math.min(100, Math.max(0, (-r.top / span) * 100)) : 100;
+    if (bar) bar.style.width = p + '%';
+    if (dock) {
+      var n = +at.getAttribute('data-n'), h = at.querySelector('h1');
+      dock.n.textContent = n || '·';
+      dock.t.textContent = h ? h.textContent : '';
+      dock.p.textContent = Math.round(p) + (doc.lang === 'fr' ? '\u202f%' : '%');
+      dock.segs.forEach(function (s) { s.b.style.width = (s.n < n ? 100 : s.n === n ? p : 0) + '%'; });
     }
   }
   var queue = function () { if (!tick) { tick = true; requestAnimationFrame(onScroll); } };
+
+  // The floating bar at the bottom: the chapter being read, one segment per chapter, and the share of it read.
+  var dock = null;
+  (function () {
+    var rail = document.querySelectorAll('.chrail a.rc');
+    if (!main || !rail.length) return;
+    var el = document.createElement('nav');
+    el.className = 'dock';
+    el.setAttribute('aria-label', (document.querySelector('.chrail') || el).getAttribute('aria-label') || 'Chapters');
+    el.innerHTML = '<span class="dock-n"></span><span class="dock-t"></span><span class="dock-segs"></span><span class="dock-p" aria-hidden="true"></span>';
+    var segs = [];
+    each(document, '.chrail a.rc', function (a) {
+      var s = document.createElement('a'), tip = a.querySelector('.tip');
+      s.href = a.getAttribute('href');
+      s.title = a.getAttribute('data-n') + ' · ' + (tip ? tip.textContent : '');
+      s.setAttribute('aria-label', s.title);
+      s.innerHTML = '<i><b></b></i>';
+      el.querySelector('.dock-segs').appendChild(s);
+      segs.push({ n: +a.getAttribute('data-n'), b: s.querySelector('b') });
+    });
+    document.body.appendChild(el);
+    doc.classList.add('has-dock');
+    dock = { n: el.querySelector('.dock-n'), t: el.querySelector('.dock-t'), p: el.querySelector('.dock-p'), segs: segs };
+  })();
 
   var loading = false, sentinel = null, nearEnd = null;
   function loadScript(src) {
