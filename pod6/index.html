@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Pod 6 cost explorer · an independent analysis by Enzo Simier</title>
+<meta name="description" content="What Eight Sleep’s Pod 6 costs to own next to the Chilipad 2.0 once the plan and the upkeep are counted, by sleeper setup, horizon and market, and what an offer must earn back. An independent analysis by Enzo Simier on public list prices; not affiliated with Eight Sleep, Sleepme or BedJet.">
+<meta property="og:title" content="Pod 6 cost explorer: the plan, the upkeep and the gap">
+<meta property="og:description" content="Count the Chilipad’s cleaner and the five-year gap to the Pod 6 shrinks from $896 to $16. Six stores on one scale, and what a discount must earn back. An independent analysis by Enzo Simier on public list prices.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_CA">
+<meta property="og:url" content="https://enzosimier.com/pod6/">
+<meta property="og:image" content="https://enzosimier.com/pod6/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://dashboard-production-94ec.up.railway.app">
+<style>
+  html, body { margin: 0; height: 100%; background: #E3E7ED; }
+  iframe { position: fixed; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+<body>
+<!-- The dashboard, full screen. It runs on Railway; this page is its only address: the frame takes this page's
+     view (?v=1&view=…), and this address follows the view as it changes, so it can be shared as it is.
+     Unlisted: no link from the site, not in the sitemap, noindex. -->
+<iframe id="dashboard" title="Pod 6 cost explorer: an independent analysis" allow="clipboard-write"></iframe>
+<script>
+  (function () {
+    var DASH = "https://dashboard-production-94ec.up.railway.app";
+    document.getElementById("dashboard").src = DASH + "/" + location.search;
+    window.addEventListener("message", function (event) {
+      var data = event.data;
+      if (event.origin !== DASH || !data || data.type !== "pod6:url") return;
+      var search = String(data.search || "");
+      if (!/^[\w.%=&+~-]*$/.test(search)) return;
+      try { history.replaceState(null, "", location.pathname + (search ? "?" + search : "")); } catch (error) { /* the address stays as it is */ }
+    });
+  })();
+</script>
+</body>
+</html>
