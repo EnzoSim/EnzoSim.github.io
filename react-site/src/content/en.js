@@ -22,7 +22,7 @@ export const en = {
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'Applied-economics research, comparative equity work, a biotech catalyst calendar, and a public working library.',
+        'Applied-economics research, a café pricing dashboard, comparative equity work, a biotech catalyst calendar, and a public working library.',
     },
   },
   a11y: {
@@ -76,6 +76,15 @@ export const en = {
         note: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
         href: null,
         cta: null,
+      },
+      {
+        slug: 'cafe-pricing',
+        field: 'Café pricing',
+        title: 'Comptoir',
+        context: 'Dashboard · 71 Montréal cafés, Railway',
+        note: 'What a café should raise, hold or trim this month: sixteen coffees costed from its own sheet, elasticities from its own price changes, and every neighbour’s posted price, dated and linked.',
+        href: '/cafes/',
+        cta: 'Open the dashboard',
       },
       {
         slug: 'energy-scarcity',
