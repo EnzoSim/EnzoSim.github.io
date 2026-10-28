@@ -82,7 +82,7 @@ export const en = {
         field: 'Airline economics',
         title: 'Perishable Capacity',
         context: 'A study book · 24 chapters · PDF and EPUB',
-        note: 'Airline network planning and revenue management from first principles: demand and choice models, spill, route economics, schedules, fleet assignment, crews, pricing and bid prices, each derived in full and worked on one running case, Montréal to Seville on an A321XLR.',
+        note: 'How an airline decides where to fly, how often, with which aircraft and at what price, derived from first principles.',
         href: '/projects/perishable-capacity/',
         cta: 'Read the book',
       },
