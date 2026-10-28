@@ -22,7 +22,7 @@ export const en = {
     projects: {
       title: 'Projects · Enzo Simier',
       description:
-        'Applied-economics research, a café pricing dashboard, comparative equity work, a biotech catalyst calendar, and a public working library.',
+        'Applied-economics research, a study book on airline network planning, a café pricing dashboard, comparative equity work, a biotech catalyst calendar, and a public working library.',
     },
   },
   a11y: {
@@ -76,6 +76,15 @@ export const en = {
         note: 'Does volumetric pricing change water use, cost recovery, and welfare across Québec municipalities?',
         href: null,
         cta: null,
+      },
+      {
+        slug: 'perishable-capacity',
+        field: 'Airline economics',
+        title: 'Perishable Capacity',
+        context: 'A study book · 24 chapters · PDF and EPUB',
+        note: 'Airline network planning and revenue management from first principles: demand and choice models, spill, route economics, schedules, fleet assignment, crews, pricing and bid prices, each derived in full and worked on one running case, Montréal to Seville on an A321XLR.',
+        href: '/projects/perishable-capacity/',
+        cta: 'Read the book',
       },
       {
         slug: 'cafe-pricing',
