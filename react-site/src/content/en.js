@@ -81,7 +81,7 @@ export const en = {
         slug: 'perishable-capacity',
         field: 'Airline economics',
         title: 'Perishable Capacity',
-        context: 'A study book · 24 chapters · PDF and EPUB',
+        context: 'A study book · 17 chapters · PDF and EPUB',
         note: 'How an airline decides where to fly, how often, with which aircraft and at what price, derived from first principles.',
         href: '/projects/perishable-capacity/',
         cta: 'Read the book',
